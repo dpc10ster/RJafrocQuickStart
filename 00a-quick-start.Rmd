@@ -5,7 +5,7 @@
 
 
 ## TBA How much finished {#quick-start-help-how-much-finished}
-30% (need to add images for one reader; add one-modality dataset)
+40% (need to add images for one reader; add one-modality dataset)
 
 
 ## Getting help on the software {#quick-start-help-getting-help}
