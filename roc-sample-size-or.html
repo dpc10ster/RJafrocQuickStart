@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 16 Sample size estimation for ROC studies OR method | The RJafroc Quick Start Book</title>
+  <meta name="description" content="Artificial intelligence and observer performance book based on RJafroc." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 16 Sample size estimation for ROC studies OR method | The RJafroc Quick Start Book" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Artificial intelligence and observer performance book based on RJafroc." />
+  <meta name="github-repo" content="dpc10ster/RJafrocQuickStart" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 16 Sample size estimation for ROC studies OR method | The RJafroc Quick Start Book" />
+  
+  <meta name="twitter:description" content="Artificial intelligence and observer performance book based on RJafroc." />
+  
+
+<meta name="author" content="Dev P. Chakraborty, PhD" />
+
+
+<meta name="date" content="2021-12-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="roc-sample-size-dbm.html"/>
+<link rel="next" href="analyzing-froc-data.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RJafroc documentation</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tba-how-much-finished"><i class="fa fa-check"></i>TBA How much finished</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#the-pdf-file-of-the-book"><i class="fa fa-check"></i>The pdf file of the book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#the-html-version-of-the-book"><i class="fa fa-check"></i>The html version of the book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#a-note-on-the-online-distribution-mechanism-of-the-book"><i class="fa fa-check"></i>A note on the online distribution mechanism of the book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#structure-of-the-book"><i class="fa fa-check"></i>Structure of the book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contributing-to-this-book"><i class="fa fa-check"></i>Contributing to this book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#is-this-book-relevant-to-you-and-what-are-the-alternatives"><i class="fa fa-check"></i>Is this book relevant to you and what are the alternatives?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#todos-tba"><i class="fa fa-check"></i>ToDos TBA</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#chapters-needing-heavy-edits"><i class="fa fa-check"></i>Chapters needing heavy edits</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#shelved-vs.-removed-vs.-parked-folders-needing-heavy-edits"><i class="fa fa-check"></i>Shelved vs. removed vs. parked folders needing heavy edits</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#coding-aids"><i class="fa fa-check"></i>Coding aids</a></li>
+</ul></li>
+<li class="part"><span><b>Quick Start</b></span></li>
+<li class="chapter" data-level="1" data-path="quick-start-help.html"><a href="quick-start-help.html"><i class="fa fa-check"></i><b>1</b> Help</a><ul>
+<li class="chapter" data-level="1.1" data-path="quick-start-help.html"><a href="quick-start-help.html#quick-start-help-how-much-finished"><i class="fa fa-check"></i><b>1.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="1.2" data-path="quick-start-help.html"><a href="quick-start-help.html#quick-start-help-getting-help"><i class="fa fa-check"></i><b>1.2</b> Getting help on the software</a></li>
+<li class="chapter" data-level="1.3" data-path="quick-start-help.html"><a href="quick-start-help.html#quick-start-help-references"><i class="fa fa-check"></i><b>1.3</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="quick-start-data-format.html"><a href="quick-start-data-format.html"><i class="fa fa-check"></i><b>2</b> JAFROC ROC data format</a><ul>
+<li class="chapter" data-level="2.1" data-path="quick-start-data-format.html"><a href="quick-start-data-format.html#quick-start-data-format-how-much-finished"><i class="fa fa-check"></i><b>2.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="2.2" data-path="quick-start-data-format.html"><a href="quick-start-data-format.html#quick-start-data-format-intro"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
+<li class="chapter" data-level="2.3" data-path="quick-start-data-format.html"><a href="quick-start-data-format.html#quick-start-data-format-note-to-existing-users"><i class="fa fa-check"></i><b>2.3</b> Note to existing users</a></li>
+<li class="chapter" data-level="2.4" data-path="quick-start-data-format.html"><a href="quick-start-data-format.html#quick-start-data-format-contents"><i class="fa fa-check"></i><b>2.4</b> Contents of Excel file</a></li>
+<li class="chapter" data-level="2.5" data-path="quick-start-data-format.html"><a href="quick-start-data-format.html#quick-start-data-format-truth-worksheet"><i class="fa fa-check"></i><b>2.5</b> The <code>Truth</code> worksheet</a></li>
+<li class="chapter" data-level="2.6" data-path="quick-start-data-format.html"><a href="quick-start-data-format.html#quick-start-data-fp-worksheet"><i class="fa fa-check"></i><b>2.6</b> The false positive (FP) ratings</a></li>
+<li class="chapter" data-level="2.7" data-path="quick-start-data-format.html"><a href="quick-start-data-format.html#quick-start-data-format-tp-worksheet"><i class="fa fa-check"></i><b>2.7</b> The true positive (TP) ratings</a></li>
+<li class="chapter" data-level="2.8" data-path="quick-start-data-format.html"><a href="quick-start-data-format.html#quick-start-data-format-single-reader"><i class="fa fa-check"></i><b>2.8</b> A single reader dataset</a></li>
+<li class="chapter" data-level="2.9" data-path="quick-start-data-format.html"><a href="quick-start-data-format.html#quick-start-data-format-references"><i class="fa fa-check"></i><b>2.9</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="quick-start-read-datafile.html"><a href="quick-start-read-datafile.html"><i class="fa fa-check"></i><b>3</b> Reading the Excel data file</a><ul>
+<li class="chapter" data-level="3.1" data-path="quick-start-read-datafile.html"><a href="quick-start-read-datafile.html#quick-start-read-datafile-how-much-finished"><i class="fa fa-check"></i><b>3.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="3.2" data-path="quick-start-read-datafile.html"><a href="quick-start-read-datafile.html#quick-start-read-datafile-intro"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
+<li class="chapter" data-level="3.3" data-path="quick-start-read-datafile.html"><a href="quick-start-read-datafile.html#quick-start-read-datafile-structure-roc-dataset"><i class="fa fa-check"></i><b>3.3</b> The structure of an ROC dataset</a></li>
+<li class="chapter" data-level="3.4" data-path="quick-start-read-datafile.html"><a href="quick-start-read-datafile.html#quick-start-read-datafile-correspondence-nl-fp"><i class="fa fa-check"></i><b>3.4</b> Correspondence between <code>NL</code> member of dataset and the <code>FP</code> worksheet</a></li>
+<li class="chapter" data-level="3.5" data-path="quick-start-read-datafile.html"><a href="quick-start-read-datafile.html#quick-start-read-datafile-correspondence-case-index-vs-case-id"><i class="fa fa-check"></i><b>3.5</b> Case-index vs. caseID</a></li>
+<li class="chapter" data-level="3.6" data-path="quick-start-read-datafile.html"><a href="quick-start-read-datafile.html#quick-start-read-datafile-correspondence-ll-tp"><i class="fa fa-check"></i><b>3.6</b> Correspondence between <code>LL</code> member of dataset and the <code>TP</code> worksheet</a></li>
+<li class="chapter" data-level="3.7" data-path="quick-start-read-datafile.html"><a href="quick-start-read-datafile.html#quick-start-read-datafile-references"><i class="fa fa-check"></i><b>3.7</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html"><i class="fa fa-check"></i><b>4</b> Data format and reading FROC data</a><ul>
+<li class="chapter" data-level="4.1" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-format-how-much-finished"><i class="fa fa-check"></i><b>4.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="4.2" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-intro"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
+<li class="chapter" data-level="4.3" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-truth"><i class="fa fa-check"></i><b>4.3</b> The <code>Truth</code> worksheet</a></li>
+<li class="chapter" data-level="4.4" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-structure"><i class="fa fa-check"></i><b>4.4</b> Reading the FROC dataset</a></li>
+<li class="chapter" data-level="4.5" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-fp"><i class="fa fa-check"></i><b>4.5</b> The false positive (FP) ratings</a></li>
+<li class="chapter" data-level="4.6" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-tp"><i class="fa fa-check"></i><b>4.6</b> The true positive (TP) ratings</a></li>
+<li class="chapter" data-level="4.7" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-distribution-diseased-cases"><i class="fa fa-check"></i><b>4.7</b> On the distribution of numbers of lesions in diseased cases</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-lesion-distribution"><i class="fa fa-check"></i><b>4.7.1</b> Definition of <code>lesDistr</code> array</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-lesion-weights"><i class="fa fa-check"></i><b>4.8</b> Definition of <code>lesWghtDistr</code> array</a></li>
+<li class="chapter" data-level="4.9" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-format-references"><i class="fa fa-check"></i><b>4.9</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="quick-start-lroc-data.html"><a href="quick-start-lroc-data.html"><i class="fa fa-check"></i><b>5</b> Data format and reading LROC data</a><ul>
+<li class="chapter" data-level="5.1" data-path="quick-start-lroc-data.html"><a href="quick-start-lroc-data.html#quick-start-lroc-data-how-much-finished"><i class="fa fa-check"></i><b>5.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="5.2" data-path="quick-start-lroc-data.html"><a href="quick-start-lroc-data.html#quick-start-lroc-data-intro"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
+<li class="chapter" data-level="5.3" data-path="quick-start-lroc-data.html"><a href="quick-start-lroc-data.html#quick-start-lroc-truth"><i class="fa fa-check"></i><b>5.3</b> <code>Truth</code> worksheet</a></li>
+<li class="chapter" data-level="5.4" data-path="quick-start-lroc-data.html"><a href="quick-start-lroc-data.html#quick-start-lroc-tp1"><i class="fa fa-check"></i><b>5.4</b> <code>TP</code> worksheet, forced localization true</a></li>
+<li class="chapter" data-level="5.5" data-path="quick-start-lroc-data.html"><a href="quick-start-lroc-data.html#quick-start-lroc-fp1"><i class="fa fa-check"></i><b>5.5</b> <code>FP</code> worksheet, forced localization true</a></li>
+<li class="chapter" data-level="5.6" data-path="quick-start-lroc-data.html"><a href="quick-start-lroc-data.html#quick-start-lroc-data-1"><i class="fa fa-check"></i><b>5.6</b> Reading forced localization true LROC dataset</a></li>
+<li class="chapter" data-level="5.7" data-path="quick-start-lroc-data.html"><a href="quick-start-lroc-data.html#quick-start-lroc-tp2"><i class="fa fa-check"></i><b>5.7</b> <code>TP</code> worksheet, forced localization false</a></li>
+<li class="chapter" data-level="5.8" data-path="quick-start-lroc-data.html"><a href="quick-start-lroc-data.html#quick-start-lroc-fp2"><i class="fa fa-check"></i><b>5.8</b> <code>FP</code> worksheet, forced localization false</a></li>
+<li class="chapter" data-level="5.9" data-path="quick-start-lroc-data.html"><a href="quick-start-lroc-data.html#quick-start-lroc-data-2"><i class="fa fa-check"></i><b>5.9</b> Reading forced localization false LROC dataset</a></li>
+<li class="chapter" data-level="5.10" data-path="quick-start-lroc-data.html"><a href="quick-start-lroc-data.html#quick-start-lroc-data-summary"><i class="fa fa-check"></i><b>5.10</b> Summary</a></li>
+<li class="chapter" data-level="5.11" data-path="quick-start-lroc-data.html"><a href="quick-start-lroc-data.html#quick-start-lroc-data-references"><i class="fa fa-check"></i><b>5.11</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html"><i class="fa fa-check"></i><b>6</b> DBM analysis text output</a><ul>
+<li class="chapter" data-level="6.1" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-how-much-finished"><i class="fa fa-check"></i><b>6.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="6.2" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-intro"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
+<li class="chapter" data-level="6.3" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-analyze-dataset"><i class="fa fa-check"></i><b>6.3</b> Analyzing the ROC dataset</a></li>
+<li class="chapter" data-level="6.4" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-explanation"><i class="fa fa-check"></i><b>6.4</b> Explanation of the output</a></li>
+<li class="chapter" data-level="6.5" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-references"><i class="fa fa-check"></i><b>6.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html"><i class="fa fa-check"></i><b>7</b> OR analysis text output</a><ul>
+<li class="chapter" data-level="7.1" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-how-much-finished"><i class="fa fa-check"></i><b>7.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="7.2" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-intro"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
+<li class="chapter" data-level="7.3" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-analyze-dataset"><i class="fa fa-check"></i><b>7.3</b> Analyzing the ROC dataset</a></li>
+<li class="chapter" data-level="7.4" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-explanation"><i class="fa fa-check"></i><b>7.4</b> Explanation of the output</a></li>
+<li class="chapter" data-level="7.5" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-references"><i class="fa fa-check"></i><b>7.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html"><i class="fa fa-check"></i><b>8</b> OR analysis Excel output</a><ul>
+<li class="chapter" data-level="8.1" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html#quick-start-or-excel-how-much-finished"><i class="fa fa-check"></i><b>8.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="8.2" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html#quick-start-or-excel-intro"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
+<li class="chapter" data-level="8.3" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html#quick-start-or-excel-output"><i class="fa fa-check"></i><b>8.3</b> Generating the Excel output file</a></li>
+<li class="chapter" data-level="8.4" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html#quick-start-or-excel-references"><i class="fa fa-check"></i><b>8.4</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="dbm-analysis-background.html"><a href="dbm-analysis-background.html"><i class="fa fa-check"></i><b>9</b> DBM method background</a><ul>
+<li class="chapter" data-level="9.1" data-path="dbm-analysis-background.html"><a href="dbm-analysis-background.html#dbm-analysis-background-how-much-finished"><i class="fa fa-check"></i><b>9.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="9.2" data-path="dbm-analysis-background.html"><a href="dbm-analysis-background.html#dbm-analysis-background-introduction"><i class="fa fa-check"></i><b>9.2</b> Introduction</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="dbm-analysis-background.html"><a href="dbm-analysis-background.html#historical-background"><i class="fa fa-check"></i><b>9.2.1</b> Historical background</a></li>
+<li class="chapter" data-level="9.2.2" data-path="dbm-analysis-background.html"><a href="dbm-analysis-background.html#the-wagner-analogy"><i class="fa fa-check"></i><b>9.2.2</b> The Wagner analogy</a></li>
+<li class="chapter" data-level="9.2.3" data-path="dbm-analysis-background.html"><a href="dbm-analysis-background.html#the-shortage-of-numbers-to-analyze-and-a-pivotal-breakthrough"><i class="fa fa-check"></i><b>9.2.3</b> The shortage of numbers to analyze and a pivotal breakthrough</a></li>
+<li class="chapter" data-level="9.2.4" data-path="dbm-analysis-background.html"><a href="dbm-analysis-background.html#organization-of-chapter"><i class="fa fa-check"></i><b>9.2.4</b> Organization of chapter</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="dbm-analysis-background.html"><a href="dbm-analysis-background.html#dbm-analysis-background-random-fixed-factors"><i class="fa fa-check"></i><b>9.3</b> Random and fixed factors</a></li>
+<li class="chapter" data-level="9.4" data-path="dbm-analysis-background.html"><a href="dbm-analysis-background.html#dbm-analysis-background-reader-case-populations"><i class="fa fa-check"></i><b>9.4</b> Reader and case populations</a></li>
+<li class="chapter" data-level="9.5" data-path="dbm-analysis-background.html"><a href="dbm-analysis-background.html#dbm-analysis-background-threeAnalyses"><i class="fa fa-check"></i><b>9.5</b> Three types of analyses</a></li>
+<li class="chapter" data-level="9.6" data-path="dbm-analysis-background.html"><a href="dbm-analysis-background.html#dbm-analysis-background-approach"><i class="fa fa-check"></i><b>9.6</b> General approach</a></li>
+<li class="chapter" data-level="9.7" data-path="dbm-analysis-background.html"><a href="dbm-analysis-background.html#dbm-analysis-background-summary"><i class="fa fa-check"></i><b>9.7</b> Summary TBA</a></li>
+<li class="chapter" data-level="9.8" data-path="dbm-analysis-background.html"><a href="dbm-analysis-background.html#dbm-analysis-background-references"><i class="fa fa-check"></i><b>9.8</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html"><i class="fa fa-check"></i><b>10</b> Significance Testing using the DBM Method</a><ul>
+<li class="chapter" data-level="10.1" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#dbm-analysis-significance-testing-how-much-finished"><i class="fa fa-check"></i><b>10.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="10.2" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#the-dbm-sampling-model"><i class="fa fa-check"></i><b>10.2</b> The DBM sampling model</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#explanation-of-terms-in-the-model"><i class="fa fa-check"></i><b>10.2.1</b> Explanation of terms in the model</a></li>
+<li class="chapter" data-level="10.2.2" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#meanings-of-variance-components-in-the-dbm-model-tba-this-section-can-be-improved"><i class="fa fa-check"></i><b>10.2.2</b> Meanings of variance components in the DBM model (<strong>TBA this section can be improved</strong>)</a></li>
+<li class="chapter" data-level="10.2.3" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#definitions-of-mean-squares"><i class="fa fa-check"></i><b>10.2.3</b> Definitions of mean-squares</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#expected-values-of-mean-squares"><i class="fa fa-check"></i><b>10.3</b> Expected values of mean squares</a></li>
+<li class="chapter" data-level="10.4" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#dbm-analysis-significance-testing-RRRC-analysis"><i class="fa fa-check"></i><b>10.4</b> Random-reader random-case (RRRC) analysis</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#calculation-of-mean-squares-an-example"><i class="fa fa-check"></i><b>10.4.1</b> Calculation of mean squares: an example</a></li>
+<li class="chapter" data-level="10.4.2" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#dbm-analysis-significance-testing-sig-testing"><i class="fa fa-check"></i><b>10.4.2</b> Significance testing</a></li>
+<li class="chapter" data-level="10.4.3" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#the-satterthwaite-approximation"><i class="fa fa-check"></i><b>10.4.3</b> The Satterthwaite approximation</a></li>
+<li class="chapter" data-level="10.4.4" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#decision-rules-p-value-and-confidence-intervals"><i class="fa fa-check"></i><b>10.4.4</b> Decision rules, p-value and confidence intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#sample-size-estimation-for-random-reader-random-case-generalization"><i class="fa fa-check"></i><b>10.5</b> Sample size estimation for random-reader random-case generalization</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#the-non-centrality-parameter"><i class="fa fa-check"></i><b>10.5.1</b> The non-centrality parameter</a></li>
+<li class="chapter" data-level="10.5.2" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#the-denominator-degrees-of-freedom"><i class="fa fa-check"></i><b>10.5.2</b> The denominator degrees of freedom</a></li>
+<li class="chapter" data-level="10.5.3" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#example-of-sample-size-estimation-rrrc-generalization"><i class="fa fa-check"></i><b>10.5.3</b> Example of sample size estimation, RRRC generalization</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#significance-testing-and-sample-size-estimation-for-fixed-reader-random-case-generalization"><i class="fa fa-check"></i><b>10.6</b> Significance testing and sample size estimation for fixed-reader random-case generalization</a></li>
+<li class="chapter" data-level="10.7" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#significance-testing-and-sample-size-estimation-for-random-reader-fixed-case-generalization"><i class="fa fa-check"></i><b>10.7</b> Significance testing and sample size estimation for random-reader fixed-case generalization</a></li>
+<li class="chapter" data-level="10.8" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#dbm-analysis-significance-testing-summary"><i class="fa fa-check"></i><b>10.8</b> Summary TBA</a></li>
+<li class="chapter" data-level="10.9" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#things-for-me-to-think-about"><i class="fa fa-check"></i><b>10.9</b> Things for me to think about</a><ul>
+<li class="chapter" data-level="10.9.1" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#expected-values-of-mean-squares-1"><i class="fa fa-check"></i><b>10.9.1</b> Expected values of mean squares</a></li>
+</ul></li>
+<li class="chapter" data-level="10.10" data-path="dbm-analysis-significance-testing.html"><a href="dbm-analysis-significance-testing.html#dbm-analysis-significance-testing-references"><i class="fa fa-check"></i><b>10.10</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="dbm-analysis-special-cases.html"><a href="dbm-analysis-special-cases.html"><i class="fa fa-check"></i><b>11</b> DBM method special cases</a><ul>
+<li class="chapter" data-level="11.1" data-path="dbm-analysis-special-cases.html"><a href="dbm-analysis-special-cases.html#dbm-analysis-special-cases-fits-how-much-finished"><i class="fa fa-check"></i><b>11.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="11.2" data-path="dbm-analysis-special-cases.html"><a href="dbm-analysis-special-cases.html#FRRCDBMAnalysis"><i class="fa fa-check"></i><b>11.2</b> Fixed-reader random-case (FRRC) analysis</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="dbm-analysis-special-cases.html"><a href="dbm-analysis-special-cases.html#FRRCSingleReaderDBMAnalysis"><i class="fa fa-check"></i><b>11.2.1</b> Single-reader multiple-treatment analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="dbm-analysis-special-cases.html"><a href="dbm-analysis-special-cases.html#dbm-analysis-special-cases-RRFCAnalysis"><i class="fa fa-check"></i><b>11.3</b> Random-reader fixed-case (RRFC) analysis</a></li>
+<li class="chapter" data-level="11.4" data-path="dbm-analysis-special-cases.html"><a href="dbm-analysis-special-cases.html#dbm-analysis-special-cases-references"><i class="fa fa-check"></i><b>11.4</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="or-method-intro.html"><a href="or-method-intro.html"><i class="fa fa-check"></i><b>12</b> Introduction to the Obuchowski-Rockette method</a><ul>
+<li class="chapter" data-level="12.1" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-how-much-finished"><i class="fa fa-check"></i><b>12.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="12.2" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-helper-functions"><i class="fa fa-check"></i><b>12.2</b> Locations of helper functions</a></li>
+<li class="chapter" data-level="12.3" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-intro"><i class="fa fa-check"></i><b>12.3</b> Introduction</a></li>
+<li class="chapter" data-level="12.4" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-single-reader"><i class="fa fa-check"></i><b>12.4</b> Single-reader multiple-treatment</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-single-reader-overview"><i class="fa fa-check"></i><b>12.4.1</b> Overview</a></li>
+<li class="chapter" data-level="12.4.2" data-path="or-method-intro.html"><a href="or-method-intro.html#st-or-multiple-treatment"><i class="fa fa-check"></i><b>12.4.2</b> Significance testing</a></li>
+<li class="chapter" data-level="12.4.3" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-pvalue-ci"><i class="fa fa-check"></i><b>12.4.3</b> p-value and confidence interval</a></li>
+<li class="chapter" data-level="12.4.4" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-single-reader-nh-validation"><i class="fa fa-check"></i><b>12.4.4</b> Null hypothesis validation</a></li>
+<li class="chapter" data-level="12.4.5" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-single-reader-application-roc"><i class="fa fa-check"></i><b>12.4.5</b> Application 1</a></li>
+<li class="chapter" data-level="12.4.6" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-single-reader-application-froc"><i class="fa fa-check"></i><b>12.4.6</b> Application 2</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-single-treatment"><i class="fa fa-check"></i><b>12.5</b> Single-treatment multiple-reader</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-single-treatment-overview"><i class="fa fa-check"></i><b>12.5.1</b> Overview</a></li>
+<li class="chapter" data-level="12.5.2" data-path="or-method-intro.html"><a href="or-method-intro.html#st-or-multiple-reader"><i class="fa fa-check"></i><b>12.5.2</b> Significance testing</a></li>
+<li class="chapter" data-level="12.5.3" data-path="or-method-intro.html"><a href="or-method-intro.html#st-or-multiple-reader-example-three"><i class="fa fa-check"></i><b>12.5.3</b> Special case</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-multiple-reader-multiple-treatment"><i class="fa fa-check"></i><b>12.6</b> Multiple-reader multiple-treatment</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="or-method-intro.html"><a href="or-method-intro.html#StrCovMatrix"><i class="fa fa-check"></i><b>12.6.1</b> Structure of the covariance matrix</a></li>
+<li class="chapter" data-level="12.6.2" data-path="or-method-intro.html"><a href="or-method-intro.html#PhysicalMeaningsOfCovMatrix"><i class="fa fa-check"></i><b>12.6.2</b> Physical meanings of the covariance terms</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-summary"><i class="fa fa-check"></i><b>12.7</b> Summary</a></li>
+<li class="chapter" data-level="12.8" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-discussion"><i class="fa fa-check"></i><b>12.8</b> Discussion</a></li>
+<li class="chapter" data-level="12.9" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-elementary-stats"><i class="fa fa-check"></i><b>12.9</b> Appendix: Covariance and correlation</a><ul>
+<li class="chapter" data-level="12.9.1" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-elementary-stats-f-stat-chisq-stat"><i class="fa fa-check"></i><b>12.9.1</b> Relation: chisquare and F with infinite ddf</a></li>
+<li class="chapter" data-level="12.9.2" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-elementary-stats-def-cov-matrix"><i class="fa fa-check"></i><b>12.9.2</b> Definitions of covariance and correlation</a></li>
+<li class="chapter" data-level="12.9.3" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-elementary-stats-equal-variance"><i class="fa fa-check"></i><b>12.9.3</b> Special case when variables have equal variances</a></li>
+<li class="chapter" data-level="12.9.4" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-elementary-stats-est-cov-matrix"><i class="fa fa-check"></i><b>12.9.4</b> Estimating the variance-covariance matrix</a></li>
+<li class="chapter" data-level="12.9.5" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-elementary-stats-jack-var-inflation-factor"><i class="fa fa-check"></i><b>12.9.5</b> The variance inflation factor</a></li>
+<li class="chapter" data-level="12.9.6" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-elementary-stats-meaning-cov-matrix"><i class="fa fa-check"></i><b>12.9.6</b> Meaning of the covariance matrix</a></li>
+<li class="chapter" data-level="12.9.7" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-elementary-stats-code-cov-matrix"><i class="fa fa-check"></i><b>12.9.7</b> Code illustrating the covariance matrix</a></li>
+<li class="chapter" data-level="12.9.8" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-compare-dbm-or"><i class="fa fa-check"></i><b>12.9.8</b> Comparing DBM to Obuchowski and Rockette for single-reader multiple-treatments</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="or-method-intro.html"><a href="or-method-intro.html#or-method-intro-references"><i class="fa fa-check"></i><b>12.10</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="or-analysis-st.html"><a href="or-analysis-st.html"><i class="fa fa-check"></i><b>13</b> Obuchowski Rockette (OR) Analysis</a><ul>
+<li class="chapter" data-level="13.1" data-path="or-analysis-st.html"><a href="or-analysis-st.html#or-analysis-st-how-much-finished"><i class="fa fa-check"></i><b>13.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="13.2" data-path="or-analysis-st.html"><a href="or-analysis-st.html#or-analysis-st-introduction"><i class="fa fa-check"></i><b>13.2</b> Introduction</a></li>
+<li class="chapter" data-level="13.3" data-path="or-analysis-st.html"><a href="or-analysis-st.html#or-analysis-st-rrrc"><i class="fa fa-check"></i><b>13.3</b> Random-reader random-case</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="or-analysis-st.html"><a href="or-analysis-st.html#TwoAnecdotes"><i class="fa fa-check"></i><b>13.3.1</b> Two anecdotes</a></li>
+<li class="chapter" data-level="13.3.2" data-path="or-analysis-st.html"><a href="or-analysis-st.html#Hills-ddf"><i class="fa fa-check"></i><b>13.3.2</b> Hillis ddf</a></li>
+<li class="chapter" data-level="13.3.3" data-path="or-analysis-st.html"><a href="or-analysis-st.html#decision-rule-p-value-and-confidence-interval"><i class="fa fa-check"></i><b>13.3.3</b> Decision rule, p-value and confidence interval</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="or-analysis-st.html"><a href="or-analysis-st.html#or-analysis-st-frrc"><i class="fa fa-check"></i><b>13.4</b> Fixed-reader random-case</a></li>
+<li class="chapter" data-level="13.5" data-path="or-analysis-st.html"><a href="or-analysis-st.html#or-analysis-st-rrfc"><i class="fa fa-check"></i><b>13.5</b> Random-reader fixed-case</a></li>
+<li class="chapter" data-level="13.6" data-path="or-analysis-st.html"><a href="or-analysis-st.html#or-analysis-st-single-treatment"><i class="fa fa-check"></i><b>13.6</b> Single treatment analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="or-applications.html"><a href="or-applications.html"><i class="fa fa-check"></i><b>14</b> Obuchowski Rockette Applications</a><ul>
+<li class="chapter" data-level="14.1" data-path="or-applications.html"><a href="or-applications.html#or-applications-how-much-finished"><i class="fa fa-check"></i><b>14.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="14.2" data-path="or-applications.html"><a href="or-applications.html#or-applications-introduction"><i class="fa fa-check"></i><b>14.2</b> Introduction</a></li>
+<li class="chapter" data-level="14.3" data-path="or-applications.html"><a href="or-applications.html#or-applications-dataset02-hand"><i class="fa fa-check"></i><b>14.3</b> Hand calculation</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="or-applications.html"><a href="or-applications.html#or-applications-RRRC-dataset02-hand"><i class="fa fa-check"></i><b>14.3.1</b> Random-Reader Random-Case (RRRC) analysis</a></li>
+<li class="chapter" data-level="14.3.2" data-path="or-applications.html"><a href="or-applications.html#or-applications-FRRC-dataset02-hand"><i class="fa fa-check"></i><b>14.3.2</b> Fixed-Reader Random-Case (FRRC) analysis</a></li>
+<li class="chapter" data-level="14.3.3" data-path="or-applications.html"><a href="or-applications.html#or-applications-RRFC-dataset02-hand"><i class="fa fa-check"></i><b>14.3.3</b> Random-Reader Fixed-Case (RRFC) analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="or-applications.html"><a href="or-applications.html#or-applications-dataset02-RJafroc"><i class="fa fa-check"></i><b>14.4</b> RJafroc: dataset02</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="or-applications.html"><a href="or-applications.html#or-applications-RRRC-dataset02-RJafroc"><i class="fa fa-check"></i><b>14.4.1</b> Random-Reader Random-Case (RRRC) analysis</a></li>
+<li class="chapter" data-level="14.4.2" data-path="or-applications.html"><a href="or-applications.html#or-applications-FRRC-dataset02-RJafroc"><i class="fa fa-check"></i><b>14.4.2</b> Fixed-Reader Random-Case (FRRC) analysis</a></li>
+<li class="chapter" data-level="14.4.3" data-path="or-applications.html"><a href="or-applications.html#or-applications-RRFC-dataset02-RJafroc"><i class="fa fa-check"></i><b>14.4.3</b> Random-Reader Fixed-Case (RRFC) analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="or-applications.html"><a href="or-applications.html#or-applications-dataset04-RJafroc"><i class="fa fa-check"></i><b>14.5</b> RJafroc: dataset04</a><ul>
+<li class="chapter" data-level="14.5.1" data-path="or-applications.html"><a href="or-applications.html#or-applications-RRRC-dataset04"><i class="fa fa-check"></i><b>14.5.1</b> Random-Reader Random-Case (RRRC) analysis</a></li>
+<li class="chapter" data-level="14.5.2" data-path="or-applications.html"><a href="or-applications.html#or-applications-FRRC-dataset04"><i class="fa fa-check"></i><b>14.5.2</b> Fixed-Reader Random-Case (FRRC) analysis</a></li>
+<li class="chapter" data-level="14.5.3" data-path="or-applications.html"><a href="or-applications.html#or-applications-RRFC-dataset04"><i class="fa fa-check"></i><b>14.5.3</b> Random-Reader Fixed-Case (RRFC) analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="or-applications.html"><a href="or-applications.html#or-applications-dataset04-FROC-RJafroc"><i class="fa fa-check"></i><b>14.6</b> RJafroc: dataset04, FROC</a><ul>
+<li class="chapter" data-level="14.6.1" data-path="or-applications.html"><a href="or-applications.html#or-applications-RRRC-dataset04-FROC"><i class="fa fa-check"></i><b>14.6.1</b> Random-Reader Random-Case (RRRC) analysis</a></li>
+<li class="chapter" data-level="14.6.2" data-path="or-applications.html"><a href="or-applications.html#or-applications-FRRC-dataset04-FROC"><i class="fa fa-check"></i><b>14.6.2</b> Fixed-Reader Random-Case (FRRC) analysis</a></li>
+<li class="chapter" data-level="14.6.3" data-path="or-applications.html"><a href="or-applications.html#or-applications-RRFC-dataset04-FROC"><i class="fa fa-check"></i><b>14.6.3</b> Random-Reader Fixed-Case (RRFC) analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="or-applications.html"><a href="or-applications.html#or-applications-dataset04-FROC-DBM-RJafroc"><i class="fa fa-check"></i><b>14.7</b> RJafroc: dataset04, FROC/DBM</a><ul>
+<li class="chapter" data-level="14.7.1" data-path="or-applications.html"><a href="or-applications.html#or-applications-RRRC-dataset04-FROC-DBM"><i class="fa fa-check"></i><b>14.7.1</b> Random-Reader Random-Case (RRRC) analysis</a></li>
+<li class="chapter" data-level="14.7.2" data-path="or-applications.html"><a href="or-applications.html#or-applications-FRRC-dataset04-FROC-DBM"><i class="fa fa-check"></i><b>14.7.2</b> Fixed-Reader Random-Case (FRRC) analysis</a></li>
+<li class="chapter" data-level="14.7.3" data-path="or-applications.html"><a href="or-applications.html#or-applications-RRFC-dataset04-FROC-DBM"><i class="fa fa-check"></i><b>14.7.3</b> Random-Reader Fixed-Case (RRFC) analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="14.8" data-path="or-applications.html"><a href="or-applications.html#or-applications-Summary"><i class="fa fa-check"></i><b>14.8</b> Summary</a></li>
+<li class="chapter" data-level="14.9" data-path="or-applications.html"><a href="or-applications.html#or-applications-Discussion"><i class="fa fa-check"></i><b>14.9</b> Discussion</a></li>
+<li class="chapter" data-level="14.10" data-path="or-applications.html"><a href="or-applications.html#ToMullOver1-tentative"><i class="fa fa-check"></i><b>14.10</b> Tentative</a></li>
+<li class="chapter" data-level="14.11" data-path="or-applications.html"><a href="or-applications.html#or-applications-references"><i class="fa fa-check"></i><b>14.11</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html"><i class="fa fa-check"></i><b>15</b> Sample size estimation for ROC studies DBM method</a><ul>
+<li class="chapter" data-level="15.1" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-how-much-finished"><i class="fa fa-check"></i><b>15.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="15.2" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-introduction"><i class="fa fa-check"></i><b>15.2</b> Introduction</a></li>
+<li class="chapter" data-level="15.3" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#StatPower1"><i class="fa fa-check"></i><b>15.3</b> Statistical Power</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#observed-vs.-anticipated-effect-size"><i class="fa fa-check"></i><b>15.3.1</b> Observed vs. anticipated effect-size</a></li>
+<li class="chapter" data-level="15.3.2" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-dependence-of-stats-power"><i class="fa fa-check"></i><b>15.3.2</b> Dependence of statistical power on estimates of model parameters</a></li>
+<li class="chapter" data-level="15.3.3" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRRC-sample-size-estimation"><i class="fa fa-check"></i><b>15.3.3</b> Formulae for random-reader random-case (RRRC) sample size estimation</a></li>
+<li class="chapter" data-level="15.3.4" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-sig-testing"><i class="fa fa-check"></i><b>15.3.4</b> Significance testing</a></li>
+<li class="chapter" data-level="15.3.5" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-pvalue-ci"><i class="fa fa-check"></i><b>15.3.5</b> p-value and confidence interval</a></li>
+<li class="chapter" data-level="15.3.6" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-CompareDBM2OR"><i class="fa fa-check"></i><b>15.3.6</b> Comparing DBM to Obuchowski and Rockette for single-reader multiple-treatments</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-FRRC-sample-size-estimation"><i class="fa fa-check"></i><b>15.4</b> Formulae for fixed-reader random-case (FRRC) sample size estimation</a><ul>
+<li class="chapter" data-level="15.4.1" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRFC-sample-size-estimation"><i class="fa fa-check"></i><b>15.4.1</b> Formulae for random-reader fixed-case (RRFC) sample size estimation</a></li>
+<li class="chapter" data-level="15.4.2" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-FRRCAnalysis"><i class="fa fa-check"></i><b>15.4.2</b> Fixed-reader random-case (FRRC) analysis TBA</a></li>
+<li class="chapter" data-level="15.4.3" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRFCAnalysis"><i class="fa fa-check"></i><b>15.4.3</b> Random-reader fixed-case (RRFC) analysis</a></li>
+<li class="chapter" data-level="15.4.4" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-STMRAnalysis"><i class="fa fa-check"></i><b>15.4.4</b> Single-treatment multiple-reader analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#discussionsummary2"><i class="fa fa-check"></i><b>15.5</b> Discussion/Summary/2</a></li>
+<li class="chapter" data-level="15.6" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-references"><i class="fa fa-check"></i><b>15.6</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html"><i class="fa fa-check"></i><b>16</b> Sample size estimation for ROC studies OR method</a><ul>
+<li class="chapter" data-level="16.1" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html#roc-sample-size-or-how-much-finished"><i class="fa fa-check"></i><b>16.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="16.2" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html#roc-sample-size-or-introduction"><i class="fa fa-check"></i><b>16.2</b> Introduction</a></li>
+<li class="chapter" data-level="16.3" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html#StatPower2"><i class="fa fa-check"></i><b>16.3</b> Statistical Power</a><ul>
+<li class="chapter" data-level="16.3.1" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html#sample-size-estimation-for-random-reader-random-cases"><i class="fa fa-check"></i><b>16.3.1</b> Sample size estimation for random-reader random-cases</a></li>
+<li class="chapter" data-level="16.3.2" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html#roc-sample-size-or-dependence-of-stats-power"><i class="fa fa-check"></i><b>16.3.2</b> Dependence of statistical power on estimates of model parameters</a></li>
+<li class="chapter" data-level="16.3.3" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html#roc-sample-size-or-RRRC-sample-size-estimation"><i class="fa fa-check"></i><b>16.3.3</b> Formulae for random-reader random-case (RRRC) sample size estimation</a></li>
+<li class="chapter" data-level="16.3.4" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html#roc-sample-size-or-sig-testing"><i class="fa fa-check"></i><b>16.3.4</b> Significance testing</a></li>
+<li class="chapter" data-level="16.3.5" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html#roc-sample-size-or-pvalue-ci"><i class="fa fa-check"></i><b>16.3.5</b> p-value and confidence interval</a></li>
+<li class="chapter" data-level="16.3.6" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html#roc-sample-size-or-CompareDBM2OR"><i class="fa fa-check"></i><b>16.3.6</b> Comparing DBM to Obuchowski and Rockette for single-reader multiple-treatments</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html#roc-sample-size-or-FRRC-sample-size-estimation"><i class="fa fa-check"></i><b>16.4</b> Formulae for fixed-reader random-case (FRRC) sample size estimation</a><ul>
+<li class="chapter" data-level="16.4.1" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html#roc-sample-size-or-RRFC-sample-size-estimation"><i class="fa fa-check"></i><b>16.4.1</b> Formulae for random-reader fixed-case (RRFC) sample size estimation</a></li>
+<li class="chapter" data-level="16.4.2" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html#example-1"><i class="fa fa-check"></i><b>16.4.2</b> Example 1</a></li>
+<li class="chapter" data-level="16.4.3" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html#roc-sample-size-or-FRRCAnalysis"><i class="fa fa-check"></i><b>16.4.3</b> Fixed-reader random-case (FRRC) analysis</a></li>
+<li class="chapter" data-level="16.4.4" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html#roc-sample-size-or-RRFCAnalysis"><i class="fa fa-check"></i><b>16.4.4</b> Random-reader fixed-case (RRFC) analysis</a></li>
+<li class="chapter" data-level="16.4.5" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html#roc-sample-size-or-STMRAnalysis"><i class="fa fa-check"></i><b>16.4.5</b> Single-treatment multiple-reader analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html#discussionsummary3"><i class="fa fa-check"></i><b>16.5</b> Discussion/Summary/3</a></li>
+<li class="chapter" data-level="16.6" data-path="roc-sample-size-or.html"><a href="roc-sample-size-or.html#roc-sample-size-or-references"><i class="fa fa-check"></i><b>16.6</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html"><i class="fa fa-check"></i><b>17</b> Analyzing FROC data</a><ul>
+<li class="chapter" data-level="17.1" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-how-much-finished"><i class="fa fa-check"></i><b>17.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="17.2" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-intro"><i class="fa fa-check"></i><b>17.2</b> Introduction</a></li>
+<li class="chapter" data-level="17.3" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-example1"><i class="fa fa-check"></i><b>17.3</b> Example 1</a></li>
+<li class="chapter" data-level="17.4" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-plotting"><i class="fa fa-check"></i><b>17.4</b> Plotting wAFROC and ROC curves</a></li>
+<li class="chapter" data-level="17.5" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-reporting"><i class="fa fa-check"></i><b>17.5</b> Reporting an FROC study</a></li>
+<li class="chapter" data-level="17.6" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#crossed-treatment-analysis"><i class="fa fa-check"></i><b>17.6</b> Crossed-treatment analysis</a></li>
+<li class="chapter" data-level="17.7" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-rjafroc-history"><i class="fa fa-check"></i><b>17.7</b> Discussion / Summary</a></li>
+<li class="chapter" data-level="17.8" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-references"><i class="fa fa-check"></i><b>17.8</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>18</b> FROC sample size</a><ul>
+<li class="chapter" data-level="18.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-how-much-finished"><i class="fa fa-check"></i><b>18.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="18.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>18.2</b> Introduction</a></li>
+<li class="chapter" data-level="18.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-example1"><i class="fa fa-check"></i><b>18.3</b> Example 1</a></li>
+<li class="chapter" data-level="18.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-plotting"><i class="fa fa-check"></i><b>18.4</b> Plotting wAFROC and ROC curves</a></li>
+<li class="chapter" data-level="18.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-fitrsmroc-usage-example"><i class="fa fa-check"></i><b>18.5</b> <code>FitRsmROC</code> usage example</a></li>
+<li class="chapter" data-level="18.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-discussion-summary"><i class="fa fa-check"></i><b>18.6</b> Discussion / Summary</a></li>
+<li class="chapter" data-level="18.7" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-references"><i class="fa fa-check"></i><b>18.7</b> References</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The RJafroc Quick Start Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="roc-sample-size-or" class="section level1">
+<h1><span class="header-section-number">Chapter 16</span> Sample size estimation for ROC studies OR method</h1>
+<div id="roc-sample-size-or-how-much-finished" class="section level2">
+<h2><span class="header-section-number">16.1</span> TBA How much finished</h2>
+<p>70%</p>
+</div>
+<div id="roc-sample-size-or-introduction" class="section level2">
+<h2><span class="header-section-number">16.2</span> Introduction</h2>
+</div>
+<div id="StatPower2" class="section level2">
+<h2><span class="header-section-number">16.3</span> Statistical Power</h2>
+<p><span class="math display" id="eq:DefinitionStatPower1">\[\begin{equation}
+Power = 1 - \beta
+\tag{16.1}
+\end{equation}\]</span></p>
+<div id="sample-size-estimation-for-random-reader-random-cases" class="section level3">
+<h3><span class="header-section-number">16.3.1</span> Sample size estimation for random-reader random-cases</h3>
+<p>For convenience the OR model is repeated below with the case-set index suppressed:</p>
+<p><span class="math display" id="eq:ORModelSsOR">\[\begin{equation}
+Y_{n(ijk)}=\mu+\tau_i+R_j+C_k+(\tau R)_{ij}+(\tau C)_{ik}+(RC)_{jk}+(\tau RC)_{ijk}+\epsilon_ {n(ijk)}
+\tag{16.2}
+\end{equation}\]</span></p>
+<p>As usual, the treatment effects <span class="math inline">\(\tau_i\)</span> are subject to the constraint that they sum to zero. The observed effect size (a random variable) is defined by:</p>
+<p><span class="math display" id="eq:EffectSize1">\[\begin{equation}
+d=\theta_{1\bullet}-\theta_{2\bullet}
+\tag{16.3}
+\end{equation}\]</span></p>
+<p>It is a realization of a random variable, so one has some leeway in the choice of anticipated effect size. In the significance-testing procedure described in TBA Chapter 09 interest was in the distribution of the F-statistic when the NH is true. For sample size estimation, one needs to know the distribution of the statistic when the NH is false. It was shown that then the observed F-statistic TBA Eqn. (9.35) is distributed as a non-central F-distribution <span class="math inline">\(F_{ndf,ddf,\Delta}\)</span> with non-centrality parameter <span class="math inline">\(\Delta\)</span>:</p>
+<p><span class="math display" id="eq:FDBMSampling1">\[\begin{equation}
+F_{DBM|AH} \sim F_{ndf,ddf,\Delta}
+\tag{16.4}
+\end{equation}\]</span></p>
+<p>The non-centrality parameter was defined, Eqn. TBA (9.34), by:</p>
+<p><span class="math display" id="eq:DefDelta1">\[\begin{equation}
+\Delta=\frac{JK\sigma_{Y;\tau}^2}{\left ( \sigma_{Y;\epsilon}^2 + \sigma_{Y;\tau RC}^2 \right )+K\sigma_{Y;\tau R}^2+J\sigma_{Y;\tau C}^2}
+\tag{16.5}
+\end{equation}\]</span></p>
+<p>To minimize confusion, this equation has been rewritten here using the subscript <span class="math inline">\(Y\)</span> to explicitly denote pseudo-value derived quantities (in TBA Chapter 09 this subscript was suppressed.</p>
+<p>The estimate of <span class="math inline">\(\sigma_{Y;\tau C}^2\)</span> can turn out to bee negative. To avoid a negative denominator, Hillis suggests the following modification:</p>
+<p><span class="math display" id="eq:DefDeltaHillis1">\[\begin{equation}
+\Delta=\frac{JK\sigma_{Y;\tau}^2}{\left ( \sigma_{Y;\epsilon}^2 + \sigma_{Y;\tau RC}^2 \right )+K\sigma_{Y;\tau R}^2+\max \left (J\sigma_{Y;\tau C}^2 ,0 \right )}
+\tag{16.6}
+\end{equation}\]</span></p>
+<p>This expression depends on three variance components, <span class="math inline">\((\sigma_{Y;\epsilon}^2 + \sigma_{Y;\tau RC}^2)\)</span> - the two terms are inseparable - <span class="math inline">\(\sigma_{Y;\tau R}^2\)</span> and <span class="math inline">\(\sigma_{Y;\tau C}^2\)</span>. The <span class="math inline">\(ddf\)</span> term appearing in TBA Eqn. (11.4) was defined by TBA Eqn. (9.24) - this quantity does not change between NH and AH:</p>
+<p><span class="math display" id="eq:ddfH1">\[\begin{equation}
+ddf_H=\frac{\left [MSTR+\max(MSTR-MSTRC,0)  \right ]^2}{\frac{[MSTR]^2}{(I-1)(J-1)}}
+\tag{16.7}
+\end{equation}\]</span></p>
+<p>The mean squares in this expression can be expressed in terms of the three variance-components appearing in TBA Eqn. (11.6). Hillis and Berbaum <span class="citation">(Hillis and Berbaum <a href="#ref-RN1476" role="doc-biblioref">2004</a>)</span> have derived these expression and they will not be repeated here (Eqn. 4 in the cited reference). RJafroc implements a function to calculate the mean squares, <code>UtilMeanSquares()</code>, which allows ddf to be calculated using Eqn. TBA (11.7). The sample size functions in this package need only the three variance-components (the formula for <span class="math inline">\(ddf_H\)</span> is implemented internally).</p>
+<p>For two treatments, since the individual treatment effects must be the negatives of each other (because they sum to zero), it is easily shown that:</p>
+<p><span class="math display" id="eq:sigma2Tau1">\[\begin{equation}
+\sigma_{Y;\tau}^2=\frac{d^2}{2}
+\tag{16.8}
+\end{equation}\]</span></p>
+</div>
+<div id="roc-sample-size-or-dependence-of-stats-power" class="section level3">
+<h3><span class="header-section-number">16.3.2</span> Dependence of statistical power on estimates of model parameters</h3>
+<p>Examination of the expression for , Eqn. (11.5), shows that statistical power increases if:</p>
+<ul>
+<li>The numerator is large. This occurs if: (a) the anticipated effect-size <span class="math inline">\(d\)</span> is large. Since effect-size enters as the <em>square</em>, TBA Eqn. (11.8), it is has a particularly strong effect; (b) If <span class="math inline">\(J \times K\)</span> is large. Both of these results should be obvious, as a large effect size and a large sample size should result in increased probability of rejecting the NH.</li>
+<li>The denominator is small. The first term in the denominator is <span class="math inline">\(\left ( \sigma_{Y;\epsilon}^2 + \sigma_{Y;\tau RC}^2 \right )\)</span>. These two terms cannot be separated. This is the residual variability of the jackknife pseudovalues. It should make sense that the smaller the variability, the larger is the non-centrality parameter and the statistical power.</li>
+<li>The next term in the denominator is <span class="math inline">\(K\sigma_{Y;\tau R}^2\)</span>, the treatment-reader variance component multiplied by the total number of cases. The reader variance <span class="math inline">\(\sigma_{Y;R}^2\)</span> has no effect on statistical power, because it has an equal effect on both treatments and cancels out in the difference. Instead, it is the treatment-reader variance <span class="math inline">\(\sigma_{Y;R}^2\)</span> that contributes “noise” tending to confound the estimate of the effect-size.</li>
+<li>The variance components estimated by the ANOVA procedure are realizations of random variables and as such subject to noise (there actually exists a beast such as variance of a variance). The presence of the <span class="math inline">\(K\)</span> term, usually large, can amplify the effect of noise in the estimate of <span class="math inline">\(\sigma_{Y;R}^2\)</span>, making the sample size estimation procedure less accurate.</li>
+<li>The final term in the denominator is <span class="math inline">\(J\sigma_{Y;\tau C}^2\)</span>. The variance <span class="math inline">\(\sigma_{Y;C}^2\)</span> has no impact on statistical power, as it cancels out in the difference. The treatment-case variance component introduces “noise” into the estimate of the effect size, thereby decreasing power. Since it is multiplied by J, the number of readers, and typically <span class="math inline">\(J&lt;&lt;K\)</span>, the error amplification effect on accuracy of the sample size estimate is not as bad as with the treatment-reader variance component.</li>
+<li>Accuracy of sample size estimation, essentially estimating confidence intervals for statistical power, is addressed in <span class="citation">(Chakraborty <a href="#ref-RN2027" role="doc-biblioref">2010</a>)</span>.</li>
+</ul>
+</div>
+<div id="roc-sample-size-or-RRRC-sample-size-estimation" class="section level3">
+<h3><span class="header-section-number">16.3.3</span> Formulae for random-reader random-case (RRRC) sample size estimation</h3>
+</div>
+<div id="roc-sample-size-or-sig-testing" class="section level3">
+<h3><span class="header-section-number">16.3.4</span> Significance testing</h3>
+</div>
+<div id="roc-sample-size-or-pvalue-ci" class="section level3">
+<h3><span class="header-section-number">16.3.5</span> p-value and confidence interval</h3>
+</div>
+<div id="roc-sample-size-or-CompareDBM2OR" class="section level3">
+<h3><span class="header-section-number">16.3.6</span> Comparing DBM to Obuchowski and Rockette for single-reader multiple-treatments</h3>
+<p>Having performed a pilot study and planning to perform a pivotal study, sample size estimation follows the following procedure, which assumes that both reader and case are treated as random factors. Different formulae, described later, apply when either reader or case is treated as a fixed factor.</p>
+<ul>
+<li>Perform OR analysis on the pilot data. This yields the observed effect size as well as estimates of all relevant variance components and mean squares appearing in TBA Eqn. (11.5) and Eqn. (11.7).</li>
+<li>This is the difficult but critical part: make an educated guess regarding the effect-size, <span class="math inline">\(d\)</span>, that one is interested in “detecting” (i.e., hoping to reject the NH with probability <span class="math inline">\(1-\beta\)</span>). The author prefers the term “anticipated” effect-size to “true” effect-size (the latter implies knowledge of the true difference between the modalities which, as noted earlier, would obviate the need for a pivotal study).</li>
+<li>Two scenarios are considered below. In the first scenario, the effect-size is assumed equal to that observed in the pilot study, i.e., <span class="math inline">\(d = d_{obs}\)</span>.</li>
+<li>In the second, so-called “best-case” scenario, one assumes that the anticipate value of <span class="math inline">\(d\)</span> is the observed value plus two-sigma of the confidence interval, in the correct direction, of course, i.e., <span class="math inline">\(d=\left | d_{obs} \right |+2\sigma\)</span>. Here <span class="math inline">\(\sigma\)</span> is one-fourth the width of the 95% confidence interval for <span class="math inline">\(d_{obs}\)</span>. Anticipating more than <span class="math inline">\(2\sigma\)</span> greater than the observed effect-size would be overly optimistic. The width of the CI implies that chances are less than 2.5% that the anticipated value is at or beyond the overly optimistic value. These points will become clearer when example datasets are analyzed below.</li>
+<li>Calculate statistical power using the distribution implied by Eqn. (11.4), to calculate the probability that a random value of the relevant F-statistic will exceed the critical value, as in §11.3.2.</li>
+<li>If power is below the desired or “target” power, one tries successively larger value of <span class="math inline">\(J\)</span> and / or <span class="math inline">\(K\)</span> until the target power is reached.</li>
+</ul>
+</div>
+</div>
+<div id="roc-sample-size-or-FRRC-sample-size-estimation" class="section level2">
+<h2><span class="header-section-number">16.4</span> Formulae for fixed-reader random-case (FRRC) sample size estimation</h2>
+<p>It was shown in TBA §9.8.2 that for fixed-reader analysis the non-centrality parameter is defined by:</p>
+<p><span class="math display" id="eq:DeltaFRRC1">\[\begin{equation}
+\Delta=\frac{JK\sigma_{Y;\tau}^2}{\sigma_{Y;\epsilon}^2+\sigma_{Y;\tau RC}^2+J\sigma_{Y;\tau C}^2}
+\tag{16.9}
+\end{equation}\]</span></p>
+<p>The sampling distribution of the F-statistic under the AH is:</p>
+<p><span class="math display" id="eq:SamplingFFRRC1">\[\begin{equation}
+F_{AH|R}\equiv \frac{MST}{MSTC}\sim F_{I-1,(I-1)(K-1),\Delta}
+\tag{16.10}
+\end{equation}\]</span></p>
+<div id="roc-sample-size-or-RRFC-sample-size-estimation" class="section level3">
+<h3><span class="header-section-number">16.4.1</span> Formulae for random-reader fixed-case (RRFC) sample size estimation</h3>
+<p>It is shown in TBA §9.9 that for fixed-case analysis the non-centrality parameter is defined by:</p>
+<p><span class="math display" id="eq:DeltaFRRFC1">\[\begin{equation}
+\Delta=\frac{JK\sigma_{Y;\tau}^2}{\sigma_{Y;\epsilon}^2+\sigma_{Y;\tau RC}^2+K\sigma_{Y;\tau R}^2}
+\tag{16.11}
+\end{equation}\]</span></p>
+<p>Under the AH, the test statistic is distributed as a non-central F-distribution as follows:</p>
+<p><span class="math display" id="eq:SamplingFRRFC1">\[\begin{equation}
+F_{AH|C}\equiv \frac{MST}{MSTR}\sim F_{I-1,(I-1)(J-1),\Delta}
+\tag{16.12}
+\end{equation}\]</span></p>
+</div>
+<div id="example-1" class="section level3">
+<h3><span class="header-section-number">16.4.2</span> Example 1</h3>
+<p>In the first example the Van Dyke dataset is regarded as a pilot study. Two implementations are shown, a direct application of the relevant formulae, including usage of the mean squares, which in principle can be calculated from the three variance-components. This is then compared to the <code>RJafroc</code> implementation.</p>
+<p>Shown first is the “open” implementation.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="roc-sample-size-or.html#cb126-1"></a>alpha &lt;-<span class="st"> </span><span class="fl">0.05</span>;<span class="kw">cat</span>(<span class="st">&quot;alpha = &quot;</span>, alpha, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb126-2"><a href="roc-sample-size-or.html#cb126-2"></a><span class="co">#&gt; alpha =  0.05</span></span>
+<span id="cb126-3"><a href="roc-sample-size-or.html#cb126-3"></a>rocData &lt;-<span class="st"> </span>dataset02 <span class="co"># select Van Dyke dataset</span></span>
+<span id="cb126-4"><a href="roc-sample-size-or.html#cb126-4"></a>retDbm &lt;-<span class="st"> </span><span class="kw">StSignificanceTesting</span>(<span class="dt">dataset =</span> rocData, <span class="dt">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;DBM&quot;</span>) </span>
+<span id="cb126-5"><a href="roc-sample-size-or.html#cb126-5"></a>varYTR &lt;-<span class="st"> </span>retDbm<span class="op">$</span>ANOVA<span class="op">$</span>VarCom[<span class="st">&quot;VarTR&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
+<span id="cb126-6"><a href="roc-sample-size-or.html#cb126-6"></a>varYTC &lt;-<span class="st"> </span>retDbm<span class="op">$</span>ANOVA<span class="op">$</span>VarCom[<span class="st">&quot;VarTC&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
+<span id="cb126-7"><a href="roc-sample-size-or.html#cb126-7"></a>varYEps &lt;-<span class="st"> </span>retDbm<span class="op">$</span>ANOVA<span class="op">$</span>VarCom[<span class="st">&quot;VarErr&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
+<span id="cb126-8"><a href="roc-sample-size-or.html#cb126-8"></a>effectSize &lt;-<span class="st"> </span>retDbm<span class="op">$</span>FOMs<span class="op">$</span>trtMeanDiffs[<span class="st">&quot;trt0-trt1&quot;</span>,<span class="st">&quot;Estimate&quot;</span>]</span>
+<span id="cb126-9"><a href="roc-sample-size-or.html#cb126-9"></a><span class="kw">cat</span>(<span class="st">&quot;effect size = &quot;</span>, effectSize, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb126-10"><a href="roc-sample-size-or.html#cb126-10"></a><span class="co">#&gt; effect size =  -0.043800322</span></span>
+<span id="cb126-11"><a href="roc-sample-size-or.html#cb126-11"></a></span>
+<span id="cb126-12"><a href="roc-sample-size-or.html#cb126-12"></a><span class="co">#RRRC</span></span>
+<span id="cb126-13"><a href="roc-sample-size-or.html#cb126-13"></a>J &lt;-<span class="st"> </span><span class="dv">10</span>; K &lt;-<span class="st"> </span><span class="dv">163</span></span>
+<span id="cb126-14"><a href="roc-sample-size-or.html#cb126-14"></a>ncp &lt;-<span class="st"> </span>(<span class="fl">0.5</span><span class="op">*</span>J<span class="op">*</span>K<span class="op">*</span>(effectSize)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(K<span class="op">*</span>varYTR<span class="op">+</span><span class="kw">max</span>(J<span class="op">*</span>varYTC,<span class="dv">0</span>)<span class="op">+</span>varYEps)</span>
+<span id="cb126-15"><a href="roc-sample-size-or.html#cb126-15"></a>MS &lt;-<span class="st"> </span><span class="kw">UtilMeanSquares</span>(rocData, <span class="dt">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;DBM&quot;</span>)</span>
+<span id="cb126-16"><a href="roc-sample-size-or.html#cb126-16"></a>ddf &lt;-<span class="st"> </span>(MS<span class="op">$</span>msTR<span class="op">+</span><span class="kw">max</span>(MS<span class="op">$</span>msTC<span class="op">-</span>MS<span class="op">$</span>msTRC,<span class="dv">0</span>))<span class="op">^</span><span class="dv">2</span><span class="op">/</span>(MS<span class="op">$</span>msTR<span class="op">^</span><span class="dv">2</span>)<span class="op">*</span>(J<span class="dv">-1</span>)</span>
+<span id="cb126-17"><a href="roc-sample-size-or.html#cb126-17"></a>FCrit &lt;-<span class="st"> </span><span class="kw">qf</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha, <span class="dv">1</span>, ddf)</span>
+<span id="cb126-18"><a href="roc-sample-size-or.html#cb126-18"></a>Power &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(FCrit, <span class="dv">1</span>, ddf, <span class="dt">ncp =</span> ncp)</span>
+<span id="cb126-19"><a href="roc-sample-size-or.html#cb126-19"></a><span class="kw">data.frame</span>(<span class="st">&quot;J&quot;</span>=<span class="st"> </span>J,  <span class="st">&quot;K&quot;</span> =<span class="st"> </span>K, <span class="st">&quot;FCrit&quot;</span> =<span class="st"> </span>FCrit, <span class="st">&quot;ddf&quot;</span> =<span class="st"> </span>ddf, <span class="st">&quot;ncp&quot;</span> =<span class="st"> </span>ncp, <span class="st">&quot;RRRCPower&quot;</span> =<span class="st"> </span>Power)</span>
+<span id="cb126-20"><a href="roc-sample-size-or.html#cb126-20"></a><span class="co">#&gt;    J   K     FCrit       ddf       ncp  RRRCPower</span></span>
+<span id="cb126-21"><a href="roc-sample-size-or.html#cb126-21"></a><span class="co">#&gt; 1 10 163 4.1270572 34.334268 8.1269825 0.79111255</span></span>
+<span id="cb126-22"><a href="roc-sample-size-or.html#cb126-22"></a></span>
+<span id="cb126-23"><a href="roc-sample-size-or.html#cb126-23"></a><span class="co">#FRRC</span></span>
+<span id="cb126-24"><a href="roc-sample-size-or.html#cb126-24"></a>J &lt;-<span class="st"> </span><span class="dv">10</span>; K &lt;-<span class="st"> </span><span class="dv">133</span></span>
+<span id="cb126-25"><a href="roc-sample-size-or.html#cb126-25"></a>ncp &lt;-<span class="st"> </span>(<span class="fl">0.5</span><span class="op">*</span>J<span class="op">*</span>K<span class="op">*</span>(effectSize)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(<span class="kw">max</span>(J<span class="op">*</span>varYTC,<span class="dv">0</span>)<span class="op">+</span>varYEps)</span>
+<span id="cb126-26"><a href="roc-sample-size-or.html#cb126-26"></a>ddf &lt;-<span class="st"> </span>(K<span class="dv">-1</span>)</span>
+<span id="cb126-27"><a href="roc-sample-size-or.html#cb126-27"></a>FCrit &lt;-<span class="st"> </span><span class="kw">qf</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha, <span class="dv">1</span>, ddf)</span>
+<span id="cb126-28"><a href="roc-sample-size-or.html#cb126-28"></a>Power &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(FCrit, <span class="dv">1</span>, ddf, <span class="dt">ncp =</span> ncp)</span>
+<span id="cb126-29"><a href="roc-sample-size-or.html#cb126-29"></a><span class="kw">data.frame</span>(<span class="st">&quot;J&quot;</span>=<span class="st"> </span>J,  <span class="st">&quot;K&quot;</span> =<span class="st"> </span>K, <span class="st">&quot;FCrit&quot;</span> =<span class="st"> </span>FCrit, <span class="st">&quot;ddf&quot;</span> =<span class="st"> </span>ddf, <span class="st">&quot;ncp&quot;</span> =<span class="st"> </span>ncp, <span class="st">&quot;RRRCPower&quot;</span> =<span class="st"> </span>Power)</span>
+<span id="cb126-30"><a href="roc-sample-size-or.html#cb126-30"></a><span class="co">#&gt;    J   K    FCrit ddf       ncp  RRRCPower</span></span>
+<span id="cb126-31"><a href="roc-sample-size-or.html#cb126-31"></a><span class="co">#&gt; 1 10 133 3.912875 132 7.9873835 0.80111671</span></span>
+<span id="cb126-32"><a href="roc-sample-size-or.html#cb126-32"></a></span>
+<span id="cb126-33"><a href="roc-sample-size-or.html#cb126-33"></a><span class="co">#RRFC</span></span>
+<span id="cb126-34"><a href="roc-sample-size-or.html#cb126-34"></a>J &lt;-<span class="st"> </span><span class="dv">10</span>; K &lt;-<span class="st"> </span><span class="dv">53</span></span>
+<span id="cb126-35"><a href="roc-sample-size-or.html#cb126-35"></a>ncp &lt;-<span class="st"> </span>(<span class="fl">0.5</span><span class="op">*</span>J<span class="op">*</span>K<span class="op">*</span>(effectSize)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(K<span class="op">*</span>varYTR<span class="op">+</span>varYEps)</span>
+<span id="cb126-36"><a href="roc-sample-size-or.html#cb126-36"></a>ddf &lt;-<span class="st"> </span>(J<span class="dv">-1</span>)</span>
+<span id="cb126-37"><a href="roc-sample-size-or.html#cb126-37"></a>FCrit &lt;-<span class="st"> </span><span class="kw">qf</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha, <span class="dv">1</span>, ddf)</span>
+<span id="cb126-38"><a href="roc-sample-size-or.html#cb126-38"></a>Power &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(FCrit, <span class="dv">1</span>, ddf, <span class="dt">ncp =</span> ncp)</span>
+<span id="cb126-39"><a href="roc-sample-size-or.html#cb126-39"></a><span class="kw">data.frame</span>(<span class="st">&quot;J&quot;</span>=<span class="st"> </span>J,  <span class="st">&quot;K&quot;</span> =<span class="st"> </span>K, <span class="st">&quot;FCrit&quot;</span> =<span class="st"> </span>FCrit, <span class="st">&quot;ddf&quot;</span> =<span class="st"> </span>ddf, <span class="st">&quot;ncp&quot;</span> =<span class="st"> </span>ncp, <span class="st">&quot;RRRCPower&quot;</span> =<span class="st"> </span>Power)</span>
+<span id="cb126-40"><a href="roc-sample-size-or.html#cb126-40"></a><span class="co">#&gt;    J  K    FCrit ddf       ncp  RRRCPower</span></span>
+<span id="cb126-41"><a href="roc-sample-size-or.html#cb126-41"></a><span class="co">#&gt; 1 10 53 5.117355   9 10.048716 0.80496663</span></span></code></pre></div>
+<p>For 10 readers, the numbers of cases needed for 80% power is largest (163) for RRRC and least for RRFC (53). For all three analyses, the expectation of 80% power is met - the numbers of cases and readers were chosen to achieve close to 80% statistical power. Intermediate quantities such as the critical value of the F-statistic, <code>ddf</code> and <code>ncp</code> are shown. The reader should confirm that the code does in fact implement the relevant formulae. Shown next is the <code>RJafroc</code> implementation. The relevant file is mainSsDbm.R, a listing of which follows:</p>
+</div>
+<div id="roc-sample-size-or-FRRCAnalysis" class="section level3">
+<h3><span class="header-section-number">16.4.3</span> Fixed-reader random-case (FRRC) analysis</h3>
+</div>
+<div id="roc-sample-size-or-RRFCAnalysis" class="section level3">
+<h3><span class="header-section-number">16.4.4</span> Random-reader fixed-case (RRFC) analysis</h3>
+</div>
+<div id="roc-sample-size-or-STMRAnalysis" class="section level3">
+<h3><span class="header-section-number">16.4.5</span> Single-treatment multiple-reader analysis</h3>
+</div>
+</div>
+<div id="discussionsummary3" class="section level2">
+<h2><span class="header-section-number">16.5</span> Discussion/Summary/3</h2>
+</div>
+<div id="roc-sample-size-or-references" class="section level2">
+<h2><span class="header-section-number">16.6</span> References</h2>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-RN2027">
+<p>Chakraborty, Dev Prasad. 2010. “Prediction Accuracy of a Sample-Size Estimation Method for ROC Studies.” Journal Article. <em>Academic Radiology</em> 17: 628–38. <a href="https://doi.org/10.1016/j.acra.2010.01.007">https://doi.org/10.1016/j.acra.2010.01.007</a>.</p>
+</div>
+<div id="ref-RN1476">
+<p>Hillis, Stephen L., and K. S. Berbaum. 2004. “Power Estimation for the Dorfman-Berbaum-Metz Method.” Journal Article. <em>Acad. Radiol.</em> 11 (11): 1260–73. <a href="https://doi.org/10.1016/j.acra.2004.08.009">https://doi.org/10.1016/j.acra.2004.08.009</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="roc-sample-size-dbm.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analyzing-froc-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["RJafrocQuickStart.pdf", "RJafrocQuickStart.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
