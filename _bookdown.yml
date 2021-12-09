@@ -1,0 +1,35 @@
+book_filename: "RJafrocQuickStart"
+chapter_name: "Chapter "
+repo: https://github.com/dpc10ster/RJafrocQuickStart
+output_dir: docs
+delete_merged_file: TRUE
+rmd_files: [
+  "index.Rmd", 
+  "00a-quick-start.Rmd", 
+  "00b-quick-start.Rmd", 
+  "00c-quick-start.Rmd", 
+  "00d-quick-start.Rmd", 
+  "00e-quick-start.Rmd", 
+  "00f-quick-start.Rmd", 
+  "00g-quick-start.Rmd", 
+  "00h-quick-start.Rmd", 
+  "09a-dbm-analysis-background.Rmd",
+  "09b-dbm-analysis-significance-testing.Rmd",
+  "09c-dbm-analysis-miscellaneous.Rmd",
+  "10a-or-analysis-introduction.Rmd",
+  "10b-or-analysis-significance-testing.Rmd",
+  "10c-or-analysis-applications.Rmd",
+  "11a-roc-sample-size-dbm.Rmd",
+  "11b-roc-sample-size-or.Rmd",
+  "18a-analyzing-froc-data.Rmd",
+  "18b-froc-sample-size.Rmd",
+]
+clean: [packages.bib, myRefs.bbl]
+new_session: yes
+language:
+  label:
+    fig: "FIGURE "
+    tab: "TABLE "
+  ui:
+    edit: "Edit"
+    chapter_name: "Chapter "

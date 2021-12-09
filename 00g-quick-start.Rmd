@@ -1,0 +1,94 @@
+# OR analysis text output {#quick-start-or-text}
+
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(RJafroc)
+```
+
+## TBA How much finished {#quick-start-or-text-how-much-finished}
+90%
+
+
+## Introduction {#quick-start-or-text-intro}
+This chapter illustrates significance testing using the DBM and OR methods. 
+
+
+## Analyzing the ROC dataset {#quick-start-or-text-analyze-dataset}
+
+The only change is to specify `method = "OR"` in the significance testing function. The same dataset is used as was used in the previous chapter. 
+
+```{r quick-start-or-text-significance-testing}
+ret <- StSignificanceTesting(dataset03, FOM = "Wilcoxon", method = "OR")
+```             
+
+## Explanation of the output {#quick-start-or-text-explanation}
+The function returns a list with 5 members.  
+
+* `FOMs`: figures of merit, identical to that in the DBM method. 
+* `ANOVA`: ANOVA tables.
+* `RRRC`: random-reader random-case analyses results.
+* `FRRC`: fixed-reader random-case analyses results.
+* `RRFC`" random-reader fixed-case analyses results.
+
+Let us consider the ones that are different from the DBM method. 
+
+
+* ANOVA is a list of 4
+    + `TRanova` is a [3x3] dataframe: the treatment-reader ANOVA table, see below, where SS is the sum of squares, DF is the denominator degrees of freedom and MS is the mean squares, and T = treatment, R = reader, TR = treatment-reader.  
+    + `VarCom` is a [6x2] dataframe: the variance components, see below, where `varR` is the reader variance, `varTR` is the treatment-reader variance, `Cov1`, `Cov2`,`Cov3` and `Var` are as defined in the OR model. The second column lists the correlations defined in the OR model.
+    + `IndividualTrt` is a [2x4] dataframe: the individual treatment mean-squares, variances and $Cov_2$, averaged over all readers, see below, where `msREachTrt` is the mean square reader, `varEachTrt` is the variance and `cov2EachTrt` is `Cov2EachTrt` in each treatment.
+    + `IndividualRdr` is a [2x4] dataframe: the individual reader variance components averaged over treatments, see below, where `msTEachRdr` is the mean square treatment, `varEachRdr` is the variance and `cov1EachRdr` is $Cov_1$ for each reader.
+    
+```{r}
+ret$ANOVA$TRanova
+ret$ANOVA$VarCom
+ret$ANOVA$IndividualTrt
+ret$ANOVA$IndividualRdr
+```             
+
+* RRRC, a list of 3 containing results of random-reader random-case analyses
+    + `FTtests`: is a [2x4] dataframe: results of the F-tests, see below, where `FStat` is the F-statistic and `p` is the p-value. The first row is the treatment effect and the second is the error term.
+    + `ciDiffTrt`: is a [1x7] dataframe: the confidence intervals between different treatments, see below, where `StdErr` is the standard error of the estimate, `t` is the t-statistic and `PrGTt` is the p-value.
+    + `ciAvgRdrEachTrt`: is a [2x5] dataframe: the confidence intervals for the average reader over each treatment, see below, where `CILower` is the lower 95% confidence interval and `CIUpper` is the upper 95% confidence interval.
+    
+```{r}
+ret$RRRC$FTests
+ret$RRRC$ciDiffTrt
+ret$RRRC$ciAvgRdrEachTrt
+```             
+
+* FRRC, a list of 5 containing results of fixed-reader random-case analyses
+    + `FTtests`: is a [2x4] dataframe: results of the chisquare-tests, see below. Here is a difference from DBM: in the OR method for FRRC the denominator degrees of freedom of the F-statistic is infinite, and the test becomes equivalent to a chisquare test with the degrees of freedom equal to $I-1$, where $I$ is the number of treatments.
+    + `ciDiffTrt`: is a [1x6] dataframe: the confidence intervals between different treatments, see below. An additional column lists 
+    + `ciAvgRdrEachTrt`: is a [2x5] dataframe: the confidence intervals for the average reader over each treatment
+    + `ciDiffTrtEachRdr`: is a [4x6] dataframe: the confidence intervals for each different-treatment pairing for each reader. 
+   + `IndividualRdrVarCov1`: is a [4x2] dataframe: $Var$ and $Cov_1$ for individual readers. 
+    
+```{r}
+ret$FRRC$FTests
+ret$FRRC$ciDiffTrt
+ret$FRRC$ciAvgRdrEachTrt
+ret$FRRC$ciDiffTrtEachRdr
+ret$FRRC$IndividualRdrVarCov1
+```             
+
+    
+* RRFC, a list of 3 containing results of random-reader fixed-case analyses
+    + `FTtests`: is a [2x4] dataframe: results of the F-tests, see below. 
+    + `ciDiffTrt`: is a [1x7] dataframe: the confidence intervals between different treatments, see below. 
+    + `ciAvgRdrEachTrt`: is a [2x5] dataframe: the confidence intervals for the average reader over each  over each treatment.  
+
+    
+```{r}
+ret$RRFC$FTests
+ret$RRFC$ciDiffTrt
+ret$RRFC$ciAvgRdrEachTrt
+```             
+
+
+## References {#quick-start-or-text-references}

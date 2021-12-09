@@ -1,0 +1,14 @@
+base
+methods
+datasets
+utils
+grDevices
+graphics
+stats
+kableExtra
+seqinr
+RJafroc
+ggplot2
+gridExtra
+binom
+here
