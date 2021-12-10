@@ -10,7 +10,7 @@ bibliography: [packages.bib, myRefs.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: dpc10ster/RJafrocQuickStart
-description: "Quick start for those already somewhat familiar running Windows JAFROC to analyze their data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze their data."
+description: "This book is for those already somewhat familiar running Windows JAFROC to analyze their data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze their data."
 ---
 
 
@@ -18,6 +18,7 @@ description: "Quick start for those already somewhat familiar running Windows JA
 
 
 # Preface {-}
+
 * This book is currently (as of December 2021) in preparation. 
 * TBA
 
