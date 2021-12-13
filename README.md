@@ -5,13 +5,15 @@
 * This online book is for those already somewhat familiar running Windows JAFROC to analyze data. 
 * The Windows program has been replaced by `RJafroc`. 
 * This book dives into how to use `RJafroc` to analyze ROC/FROC data.
-* This book is currently (as of December 2021) in preparation.
-* Parts labeled TBA and TODOLAST need to be updated on final revision.
+* It starts with explanation of the dataset structures for ROC and FROC studies.
+* This is followed by an explanation of DBM and OR analyses.
 
 
 ## How much finished {-}
 
-70%
+* HMF approximately 70%
+* This book is currently (as of December 2021) in preparation.
+* Parts labeled TBA and TODOLAST need to be updated on final revision.
 
 
 ## The pdf file of the book {-}
