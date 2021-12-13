@@ -19,15 +19,19 @@ description: "This book is for those already somewhat familiar running Windows J
 
 # Preface {-}
 
-* This book is currently (as of December 2021) in preparation.
-* Incomplete parts are tagged with TBA (to be added);  
-* TBA
+* This online book is for those already somewhat familiar running Windows JAFROC to analyze data. 
+* The Windows program has been replaced by `RJafroc`. 
+* This book dives into how to use `RJafroc` to analyze ROC/FROC data.
+* It starts with explanation of the dataset structures for ROC and FROC studies.
+* This is followed by an explanation of DBM and OR analyses.
 
 
 
 ## TBA How much finished {-}
 
-70%
+* HMF approximately 70%
+* This book is currently (as of December 2021) in preparation.
+* Parts labeled TBA and TODOLAST need to be updated on final revision.
 
 
 ## The pdf file of the book {-}
@@ -50,12 +54,8 @@ TBA
 
 Questions? Raise an `Issue` on the `GitHub` [interface](https://github.com/dpc10ster/RJafrocQuickStart). Click on the `Issues` tab under `dpc10ster/RJafrocQuickStart`, then click on `New issue`. When done this way, contributions from users automatically become part of the `GitHub` documentation/history of the book.
 
-## ToDos TBA {-}
 
-* Parts labeled TBA and TODOLAST need to be updated on final revision.
-
-
-## Coding aids, not meant for the reader {-}
+## Coding aids (for me) {-}
 
 * sprintf("%.4f", proper formatting of numbers
 * OpPtStr(, do:
