@@ -134,7 +134,7 @@
 
 \title{The RJafroc Quick Start Book}
 \author{Dev P. Chakraborty, PhD}
-\date{2021-12-10}
+\date{2021-12-13}
 
 \begin{document}
 \maketitle
@@ -151,6 +151,8 @@
 \tightlist
 \item
   This book is currently (as of December 2021) in preparation.
+\item
+  Incomplete parts are tagged with TBA (to be added);\\
 \item
   TBA
 \end{itemize}
@@ -173,31 +175,9 @@ Go \href{https://github.com/dpc10ster/RJafrocQuickStart/blob/gh-pages/RJafrocQui
 
 Go \href{https://dpc10ster.github.io/RJafrocQuickStart/}{here} to view the \texttt{html} version of the book.
 
-\hypertarget{a-note-on-the-online-distribution-mechanism-of-the-book}{%
-\section*{A note on the online distribution mechanism of the book}\label{a-note-on-the-online-distribution-mechanism-of-the-book}}
-\addcontentsline{toc}{section}{A note on the online distribution mechanism of the book}
-
-\begin{itemize}
-\tightlist
-\item
-  In the hard-copy version of my book \citep{chakraborty2017observer} the online distribution mechanism was \texttt{BitBucket}.
-\item
-  \texttt{BitBucket} allows code sharing within a \emph{closed} group of a few users (e.g., myself and a grad student).
-\item
-  Since the purpose of open-source code is to encourage collaborations, this was, in hindsight, an unfortunate choice. Moreover, as my experience with R-packages grew, it became apparent that the vast majority of R-packages are shared on \texttt{GitHub}, not \texttt{BitBucket}.
-\item
-  For these reasons I have switched to \texttt{GitHub}. All previous instructions pertaining to \texttt{BitBucket} are obsolete.
-\item
-  In order to access \texttt{GitHub} material one needs to create a (free) \texttt{GitHub} account.
-\item
-  Go to \href{https://github.com}{this link} and click on \texttt{Sign\ Up}.
-\end{itemize}
-
 \hypertarget{structure-of-the-book}{%
 \section*{Structure of the book}\label{structure-of-the-book}}
 \addcontentsline{toc}{section}{Structure of the book}
-
-The book is divided into parts as follows:
 
 TBA
 
@@ -205,13 +185,7 @@ TBA
 \section*{Contributing to this book}\label{contributing-to-this-book}}
 \addcontentsline{toc}{section}{Contributing to this book}
 
-I appreciate constructive feedback on this document. To do this raise an \texttt{Issue} on the \texttt{GitHub} \href{https://github.com/dpc10ster/RJafrocQuickStart}{interface}. Click on the \texttt{Issues} tab under \texttt{dpc10ster/RJafrocQuickStart}, then click on \texttt{New\ issue}. When done this way, contributions from users automatically become part of the \texttt{GitHub} documentation/history of the book.
-
-\hypertarget{is-this-book-relevant-to-you-and-what-are-the-alternatives}{%
-\section*{Is this book relevant to you and what are the alternatives?}\label{is-this-book-relevant-to-you-and-what-are-the-alternatives}}
-\addcontentsline{toc}{section}{Is this book relevant to you and what are the alternatives?}
-
-TBA
+Questions? Raise an \texttt{Issue} on the \texttt{GitHub} \href{https://github.com/dpc10ster/RJafrocQuickStart}{interface}. Click on the \texttt{Issues} tab under \texttt{dpc10ster/RJafrocQuickStart}, then click on \texttt{New\ issue}. When done this way, contributions from users automatically become part of the \texttt{GitHub} documentation/history of the book.
 
 \hypertarget{todos-tba}{%
 \section*{ToDos TBA}\label{todos-tba}}
@@ -223,26 +197,12 @@ TBA
   Parts labeled TBA and TODOLAST need to be updated on final revision.
 \end{itemize}
 
-\hypertarget{chapters-needing-heavy-edits}{%
-\section*{Chapters needing heavy edits}\label{chapters-needing-heavy-edits}}
-\addcontentsline{toc}{section}{Chapters needing heavy edits}
-
-TBA
-
-\hypertarget{shelved-vs.-removed-vs.-parked-folders-needing-heavy-edits}{%
-\section*{Shelved vs.~removed vs.~parked folders needing heavy edits}\label{shelved-vs.-removed-vs.-parked-folders-needing-heavy-edits}}
-\addcontentsline{toc}{section}{Shelved vs.~removed vs.~parked folders needing heavy edits}
-
-TBA
-
-\hypertarget{coding-aids}{%
-\section*{Coding aids}\label{coding-aids}}
-\addcontentsline{toc}{section}{Coding aids}
+\hypertarget{coding-aids-not-meant-for-the-reader}{%
+\section*{Coding aids, not meant for the reader}\label{coding-aids-not-meant-for-the-reader}}
+\addcontentsline{toc}{section}{Coding aids, not meant for the reader}
 
 \begin{itemize}
 \tightlist
-\item
-  TBA
 \item
   sprintf(``\%.4f'', proper formatting of numbers
 \item
@@ -4348,7 +4308,7 @@ Shown below are results obtained using \texttt{RJafroc} function \texttt{StSigni
 
 \begin{verbatim}
 ##   ORBoot.Chisq ORBoot.ddf ORBoot.P.val
-## 1    1.0997568          1   0.29431948
+## 1    1.2137207          1   0.27059649
 \end{verbatim}
 
 The DBM and OR-jackknife methods yield identical F-statistics, but the denominator degrees of freedom are different, \((I-1)(K-1)\) = 113 for DBM and \(\infty\) for OR. The F-statistics for OR-bootstrap and OR-DeLong are different.

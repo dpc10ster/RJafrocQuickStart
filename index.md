@@ -1,7 +1,7 @@
 --- 
 title: "The RJafroc Quick Start Book"
 author: "Dev P. Chakraborty, PhD"
-date: "2021-12-10"
+date: "2021-12-13"
 site: bookdown::bookdown_site
 output: 
    bookdown::pdf_document: default
@@ -10,7 +10,7 @@ bibliography: [packages.bib, myRefs.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: dpc10ster/RJafrocQuickStart
-description: "This book is for those already somewhat familiar running Windows JAFROC to analyze their data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze their data."
+description: "This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data."
 ---
 
 
@@ -19,7 +19,8 @@ description: "This book is for those already somewhat familiar running Windows J
 
 # Preface {-}
 
-* This book is currently (as of December 2021) in preparation. 
+* This book is currently (as of December 2021) in preparation.
+* Incomplete parts are tagged with TBA (to be added);  
 * TBA
 
 
@@ -27,6 +28,7 @@ description: "This book is for those already somewhat familiar running Windows J
 ## TBA How much finished {-}
 
 70%
+
 
 ## The pdf file of the book {-}
 
@@ -38,45 +40,23 @@ Go [here](https://github.com/dpc10ster/RJafrocQuickStart/blob/gh-pages/RJafrocQu
 Go [here](https://dpc10ster.github.io/RJafrocQuickStart/) to view the `html` version of the book.
 
 
-## A note on the online distribution mechanism of the book {-}
-
-* In the hard-copy version of my book [@chakraborty2017observer] the online distribution mechanism was `BitBucket`. 
-* `BitBucket` allows code sharing within a _closed_ group of a few users (e.g., myself and a grad student). 
-* Since the purpose of open-source code is to encourage collaborations, this was, in hindsight, an unfortunate choice. Moreover, as my experience with R-packages grew, it became apparent that the vast majority of R-packages are shared on `GitHub`, not `BitBucket`. 
-* For these reasons I have switched to `GitHub`. All previous instructions pertaining to `BitBucket` are obsolete.
-* In order to access `GitHub` material one needs to create a (free) `GitHub` account. 
-* Go to [this link](https://github.com) and click on `Sign Up`.
 
 ## Structure of the book {-}
-
-The book is divided into parts as follows:
 
 TBA
 
 
 ## Contributing to this book {-}
 
-I appreciate constructive feedback on this document. To do this raise an `Issue` on the `GitHub` [interface](https://github.com/dpc10ster/RJafrocQuickStart). Click on the `Issues` tab under `dpc10ster/RJafrocQuickStart`, then click on `New issue`. When done this way, contributions from users automatically become part of the `GitHub` documentation/history of the book.
-
-## Is this book relevant to you and what are the alternatives? {-}
-
-TBA
+Questions? Raise an `Issue` on the `GitHub` [interface](https://github.com/dpc10ster/RJafrocQuickStart). Click on the `Issues` tab under `dpc10ster/RJafrocQuickStart`, then click on `New issue`. When done this way, contributions from users automatically become part of the `GitHub` documentation/history of the book.
 
 ## ToDos TBA {-}
 
 * Parts labeled TBA and TODOLAST need to be updated on final revision.
 
-## Chapters needing heavy edits {-}
 
-TBA
+## Coding aids, not meant for the reader {-}
 
-## Shelved vs. removed vs. parked folders needing heavy edits {-}
-
-TBA
-
-## Coding aids {-}
-
-* TBA
 * sprintf("%.4f", proper formatting of numbers
 * OpPtStr(, do:
 * kbl(dfA, caption = "....", booktabs = TRUE, escape = FALSE) %>% collapse_rows(columns = c(1, 3), valign = "middle") %>% kable_styling(latex_options = c("basic", "scale_down", "HOLD_position"), row_label_position = "c") 
