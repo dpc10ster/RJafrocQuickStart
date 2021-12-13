@@ -60,7 +60,7 @@ Questions? Raise an `Issue` on the `GitHub` [interface](https://github.com/dpc10
 * Parts labeled TBA and TODOLAST need to be updated on final revision.
 
 
-## Coding aids, not meant for the reader {-}
+## Coding aids for me:( {-}
 
 * sprintf("%.4f", proper formatting of numbers
 * OpPtStr(, do:
