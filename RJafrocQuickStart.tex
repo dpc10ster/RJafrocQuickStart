@@ -4308,7 +4308,7 @@ Shown below are results obtained using \texttt{RJafroc} function \texttt{StSigni
 
 \begin{verbatim}
 ##   ORBoot.Chisq ORBoot.ddf ORBoot.P.val
-## 1    1.3390713          1   0.24719781
+## 1    1.0215081          1   0.31216155
 \end{verbatim}
 
 The DBM and OR-jackknife methods yield identical F-statistics, but the denominator degrees of freedom are different, \((I-1)(K-1)\) = 113 for DBM and \(\infty\) for OR. The F-statistics for OR-bootstrap and OR-DeLong are different.
@@ -7026,7 +7026,20 @@ Since confusion still appears to exist, especially among statisticians, regardin
 \hypertarget{overview}{%
 \section{Overview}\label{overview}}
 
-FROC sample size estimation is split into two parts. The first part goes into the details. The second part encapsulates most of the details in a new function, which makes for easier application.
+This chapter is split into two parts.
+
+\begin{itemize}
+\item
+  The first part goes into the details of FROC paradigm sample size estimation.
+\item
+  The second part encapsulates most of the details in a new function \texttt{SsFrocNhRsmModel()}, which encapsulates some of the code in the first part (that relating to building the NH model), thereby making it easier for the user to perform FROC sample size estimation.
+\end{itemize}
+
+These parts are independently included in two \texttt{RJafroc} vignettes (on the GitHub \texttt{master} branch, not the CRAN uploaded version). These are located at:
+
+\url{https://dpc10ster.github.io/RJafroc/articles/Ch19Vig1FrocSampleSize.html}
+
+\url{https://dpc10ster.github.io/RJafroc/articles/Ch19Vig2FrocSampleSize.html}
 
 \hypertarget{part-1}{%
 \section{Part 1}\label{part-1}}
