@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 DBM analysis text output | The RJafroc Quick Start Book</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 DBM analysis text output | The RJafroc Quick Start Book" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   <meta name="github-repo" content="dpc10ster/RJafrocQuickStart" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2021-12-13" />
+<meta name="date" content="2022-06-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,8 +50,9 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -398,14 +398,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.7" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-rjafroc-history"><i class="fa fa-check"></i><b>17.7</b> Discussion / Summary</a></li>
 <li class="chapter" data-level="17.8" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-references"><i class="fa fa-check"></i><b>17.8</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>18</b> FROC sample size</a><ul>
+<li class="chapter" data-level="18" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>18</b> Sample size estimation for FROC studies</a><ul>
 <li class="chapter" data-level="18.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-how-much-finished"><i class="fa fa-check"></i><b>18.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="18.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>18.2</b> Introduction</a></li>
-<li class="chapter" data-level="18.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-example1"><i class="fa fa-check"></i><b>18.3</b> Example 1</a></li>
-<li class="chapter" data-level="18.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-plotting"><i class="fa fa-check"></i><b>18.4</b> Plotting wAFROC and ROC curves</a></li>
-<li class="chapter" data-level="18.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-fitrsmroc-usage-example"><i class="fa fa-check"></i><b>18.5</b> <code>FitRsmROC</code> usage example</a></li>
-<li class="chapter" data-level="18.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-discussion-summary"><i class="fa fa-check"></i><b>18.6</b> Discussion / Summary</a></li>
-<li class="chapter" data-level="18.7" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-references"><i class="fa fa-check"></i><b>18.7</b> References</a></li>
+<li class="chapter" data-level="18.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#overview"><i class="fa fa-check"></i><b>18.2</b> Overview</a></li>
+<li class="chapter" data-level="18.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-1"><i class="fa fa-check"></i><b>18.3</b> Part 1</a><ul>
+<li class="chapter" data-level="18.3.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>18.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="18.3.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#relating-an-roc-effect-size-to-a-wafroc-effect-size"><i class="fa fa-check"></i><b>18.3.2</b> Relating an ROC effect-size to a wAFROC effect-size</a></li>
+<li class="chapter" data-level="18.3.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#computing-the-respective-variance-components"><i class="fa fa-check"></i><b>18.3.3</b> Computing the respective variance components</a></li>
+<li class="chapter" data-level="18.3.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#comparing-roc-power-to-wafroc-power-for-equivalent-effect-sizes"><i class="fa fa-check"></i><b>18.3.4</b> Comparing ROC power to wAFROC power for equivalent effect-sizes</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-2"><i class="fa fa-check"></i><b>18.4</b> Part 2</a><ul>
+<li class="chapter" data-level="18.4.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#introduction"><i class="fa fa-check"></i><b>18.4.1</b> Introduction</a></li>
+<li class="chapter" data-level="18.4.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#constructing-the-nh-model-for-the-dataset"><i class="fa fa-check"></i><b>18.4.2</b> Constructing the NH model for the dataset</a></li>
+<li class="chapter" data-level="18.4.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#extracting-the-wafroc-variance-components"><i class="fa fa-check"></i><b>18.4.3</b> Extracting the wAFROC variance components</a></li>
+<li class="chapter" data-level="18.4.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-power-for-specified-roc-effect-size-number-of-readers-j-and-number-of-cases-k"><i class="fa fa-check"></i><b>18.4.4</b> wAFROC power for specified ROC effect size, number of readers J and number of cases K</a></li>
+<li class="chapter" data-level="18.4.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-number-of-cases-for-80-power-for-a-given-number-of-readers-j"><i class="fa fa-check"></i><b>18.4.5</b> wAFROC number of cases for 80% power for a given number of readers J</a></li>
+<li class="chapter" data-level="18.4.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k"><i class="fa fa-check"></i><b>18.4.6</b> wAFROC-FOM power for a given number of readers J and cases K</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-references"><i class="fa fa-check"></i><b>18.5</b> References</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -427,23 +437,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="quick-start-dbm-text" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> DBM analysis text output</h1>
-<div id="quick-start-dbm-text-how-much-finished" class="section level2">
-<h2><span class="header-section-number">6.1</span> TBA How much finished</h2>
+<div id="quick-start-dbm-text" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 6</span> DBM analysis text output<a href="quick-start-dbm-text.html#quick-start-dbm-text" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="quick-start-dbm-text-how-much-finished" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.1</span> TBA How much finished<a href="quick-start-dbm-text.html#quick-start-dbm-text-how-much-finished" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>50%</p>
 </div>
-<div id="quick-start-dbm-text-intro" class="section level2">
-<h2><span class="header-section-number">6.2</span> Introduction</h2>
+<div id="quick-start-dbm-text-intro" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.2</span> Introduction<a href="quick-start-dbm-text.html#quick-start-dbm-text-intro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This chapter illustrates significance testing using the DBM method.</p>
 </div>
-<div id="quick-start-dbm-text-analyze-dataset" class="section level2">
-<h2><span class="header-section-number">6.3</span> Analyzing the ROC dataset</h2>
+<div id="quick-start-dbm-text-analyze-dataset" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.3</span> Analyzing the ROC dataset<a href="quick-start-dbm-text.html#quick-start-dbm-text-analyze-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This illustrates the <code>StSignificanceTesting()</code> function. The significance testing method is specified as <code>"DBM"</code> and the figure of merit <code>FOM</code> is specified as “Wilcoxon”. The embedded dataset <code>dataset03</code> is used.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="quick-start-dbm-text.html#cb20-1"></a>ret &lt;-<span class="st"> </span><span class="kw">StSignificanceTesting</span>(dataset03, <span class="dt">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;DBM&quot;</span>)</span></code></pre></div>
 </div>
-<div id="quick-start-dbm-text-explanation" class="section level2">
-<h2><span class="header-section-number">6.4</span> Explanation of the output</h2>
+<div id="quick-start-dbm-text-explanation" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.4</span> Explanation of the output<a href="quick-start-dbm-text.html#quick-start-dbm-text-explanation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The function returns a list with 5 members:</p>
 <ul>
 <li><code>FOMs</code>: figures of merit.</li>
@@ -686,8 +696,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb30-12"><a href="quick-start-dbm-text.html#cb30-12"></a><span class="co">#&gt; trtTREAT1 0.84774989 0.011098012  3 0.81243106 0.88306871</span></span>
 <span id="cb30-13"><a href="quick-start-dbm-text.html#cb30-13"></a><span class="co">#&gt; trtTREAT2 0.83689507 0.007771730  3 0.81216196 0.86162818</span></span></code></pre></div>
 </div>
-<div id="quick-start-dbm-text-references" class="section level2">
-<h2><span class="header-section-number">6.5</span> References</h2>
+<div id="quick-start-dbm-text-references" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.5</span> References<a href="quick-start-dbm-text.html#quick-start-dbm-text-references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>

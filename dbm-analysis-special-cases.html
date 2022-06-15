@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 11 DBM method special cases | The RJafroc Quick Start Book</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 11 DBM method special cases | The RJafroc Quick Start Book" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   <meta name="github-repo" content="dpc10ster/RJafrocQuickStart" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2021-12-13" />
+<meta name="date" content="2022-06-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,8 +50,9 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -398,14 +398,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.7" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-rjafroc-history"><i class="fa fa-check"></i><b>17.7</b> Discussion / Summary</a></li>
 <li class="chapter" data-level="17.8" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-references"><i class="fa fa-check"></i><b>17.8</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>18</b> FROC sample size</a><ul>
+<li class="chapter" data-level="18" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>18</b> Sample size estimation for FROC studies</a><ul>
 <li class="chapter" data-level="18.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-how-much-finished"><i class="fa fa-check"></i><b>18.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="18.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>18.2</b> Introduction</a></li>
-<li class="chapter" data-level="18.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-example1"><i class="fa fa-check"></i><b>18.3</b> Example 1</a></li>
-<li class="chapter" data-level="18.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-plotting"><i class="fa fa-check"></i><b>18.4</b> Plotting wAFROC and ROC curves</a></li>
-<li class="chapter" data-level="18.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-fitrsmroc-usage-example"><i class="fa fa-check"></i><b>18.5</b> <code>FitRsmROC</code> usage example</a></li>
-<li class="chapter" data-level="18.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-discussion-summary"><i class="fa fa-check"></i><b>18.6</b> Discussion / Summary</a></li>
-<li class="chapter" data-level="18.7" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-references"><i class="fa fa-check"></i><b>18.7</b> References</a></li>
+<li class="chapter" data-level="18.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#overview"><i class="fa fa-check"></i><b>18.2</b> Overview</a></li>
+<li class="chapter" data-level="18.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-1"><i class="fa fa-check"></i><b>18.3</b> Part 1</a><ul>
+<li class="chapter" data-level="18.3.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>18.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="18.3.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#relating-an-roc-effect-size-to-a-wafroc-effect-size"><i class="fa fa-check"></i><b>18.3.2</b> Relating an ROC effect-size to a wAFROC effect-size</a></li>
+<li class="chapter" data-level="18.3.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#computing-the-respective-variance-components"><i class="fa fa-check"></i><b>18.3.3</b> Computing the respective variance components</a></li>
+<li class="chapter" data-level="18.3.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#comparing-roc-power-to-wafroc-power-for-equivalent-effect-sizes"><i class="fa fa-check"></i><b>18.3.4</b> Comparing ROC power to wAFROC power for equivalent effect-sizes</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-2"><i class="fa fa-check"></i><b>18.4</b> Part 2</a><ul>
+<li class="chapter" data-level="18.4.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#introduction"><i class="fa fa-check"></i><b>18.4.1</b> Introduction</a></li>
+<li class="chapter" data-level="18.4.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#constructing-the-nh-model-for-the-dataset"><i class="fa fa-check"></i><b>18.4.2</b> Constructing the NH model for the dataset</a></li>
+<li class="chapter" data-level="18.4.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#extracting-the-wafroc-variance-components"><i class="fa fa-check"></i><b>18.4.3</b> Extracting the wAFROC variance components</a></li>
+<li class="chapter" data-level="18.4.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-power-for-specified-roc-effect-size-number-of-readers-j-and-number-of-cases-k"><i class="fa fa-check"></i><b>18.4.4</b> wAFROC power for specified ROC effect size, number of readers J and number of cases K</a></li>
+<li class="chapter" data-level="18.4.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-number-of-cases-for-80-power-for-a-given-number-of-readers-j"><i class="fa fa-check"></i><b>18.4.5</b> wAFROC number of cases for 80% power for a given number of readers J</a></li>
+<li class="chapter" data-level="18.4.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k"><i class="fa fa-check"></i><b>18.4.6</b> wAFROC-FOM power for a given number of readers J and cases K</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-references"><i class="fa fa-check"></i><b>18.5</b> References</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -427,15 +437,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="dbm-analysis-special-cases" class="section level1">
-<h1><span class="header-section-number">Chapter 11</span> DBM method special cases</h1>
+<div id="dbm-analysis-special-cases" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 11</span> DBM method special cases<a href="dbm-analysis-special-cases.html#dbm-analysis-special-cases" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Special cases of DBM analysis are described here, namely fixed-reader random-case (FRRC), sub-special case of which is Single-reader multiple-treatment analysis, and random-reader fixed-case (RRFC).</p>
-<div id="dbm-analysis-special-cases-fits-how-much-finished" class="section level2">
-<h2><span class="header-section-number">11.1</span> TBA How much finished</h2>
+<div id="dbm-analysis-special-cases-fits-how-much-finished" class="section level2 hasAnchor">
+<h2><span class="header-section-number">11.1</span> TBA How much finished<a href="dbm-analysis-special-cases.html#dbm-analysis-special-cases-fits-how-much-finished" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>30%</p>
 </div>
-<div id="FRRCDBMAnalysis" class="section level2">
-<h2><span class="header-section-number">11.2</span> Fixed-reader random-case (FRRC) analysis</h2>
+<div id="FRRCDBMAnalysis" class="section level2 hasAnchor">
+<h2><span class="header-section-number">11.2</span> Fixed-reader random-case (FRRC) analysis<a href="dbm-analysis-special-cases.html#FRRCDBMAnalysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The model is the same as in Eqn. <a href="dbm-analysis-significance-testing.html#eq:DefDBMModel">(10.4)</a> except one sets <span class="math inline">\(\sigma_{R}^{2}\)</span> = <span class="math inline">\(\sigma_{\tau R}^{2}\)</span> = 0 in Table <a href="dbm-analysis-significance-testing.html#tab:ExpValMs">10.1</a>. The appropriate test statistic is:</p>
 <p><span class="math display">\[\begin{equation}
 \frac{E\left ( MST \right )}{E\left ( MSTC \right )} = \frac{\sigma_{\epsilon}^{2}+\sigma_{\tau RC}^{2}+J\sigma_{\tau C}^{2}+JK\sigma_{\tau}^{2}}{\sigma_{\epsilon}^{2}+\sigma_{\tau RC}^{2}+J\sigma_{\tau C}^{2}}
@@ -469,11 +479,11 @@ p=\Pr\left ( F&gt; F_{DBM|R} \mid F \sim F_{I-1,(I-1)(K-1)} \right )
 CI_{1-\alpha}=\left ( \theta_{i \bullet} - \theta_{i&#39; \bullet} \right ) \pm t_{\alpha/2,(I-1)(K-1)}\sqrt{2\frac{MST}{JK}}
 \tag{11.5}
 \end{equation}\]</span></p>
-<div id="FRRCSingleReaderDBMAnalysis" class="section level3">
-<h3><span class="header-section-number">11.2.1</span> Single-reader multiple-treatment analysis</h3>
+<div id="FRRCSingleReaderDBMAnalysis" class="section level3 hasAnchor">
+<h3><span class="header-section-number">11.2.1</span> Single-reader multiple-treatment analysis<a href="dbm-analysis-special-cases.html#FRRCSingleReaderDBMAnalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>With a single reader interpreting cases in two or more treatments, the reader factor must necessarily be regarded as fixed. The preceding analysis is applicable. One simply puts <span class="math inline">\(J = 1\)</span> in the equations above.</p>
-<div id="example-5-code-illustrating-p-values-for-frrc-analysis-van-dyke-data" class="section level4">
-<h4><span class="header-section-number">11.2.1.1</span> Example 5: Code illustrating p-values for FRRC analysis, Van Dyke data</h4>
+<div id="example-5-code-illustrating-p-values-for-frrc-analysis-van-dyke-data" class="section level4 hasAnchor">
+<h4><span class="header-section-number">11.2.1.1</span> Example 5: Code illustrating p-values for FRRC analysis, Van Dyke data<a href="dbm-analysis-special-cases.html#example-5-code-illustrating-p-values-for-frrc-analysis-van-dyke-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="dbm-analysis-special-cases.html#cb44-1"></a>alpha &lt;-<span class="st"> </span><span class="fl">0.05</span></span>
 <span id="cb44-2"><a href="dbm-analysis-special-cases.html#cb44-2"></a>retMS &lt;-<span class="st"> </span><span class="kw">UtilMeanSquares</span>(dataset02)</span>
 <span id="cb44-3"><a href="dbm-analysis-special-cases.html#cb44-3"></a>I &lt;-<span class="st"> </span><span class="kw">length</span>(dataset02<span class="op">$</span>ratings<span class="op">$</span>NL[,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>])</span>
@@ -523,8 +533,8 @@ CI_{1-\alpha}=\left ( \theta_{i \bullet} - \theta_{i&#39; \bullet} \right ) \pm 
 </div>
 </div>
 </div>
-<div id="dbm-analysis-special-cases-RRFCAnalysis" class="section level2">
-<h2><span class="header-section-number">11.3</span> Random-reader fixed-case (RRFC) analysis</h2>
+<div id="dbm-analysis-special-cases-RRFCAnalysis" class="section level2 hasAnchor">
+<h2><span class="header-section-number">11.3</span> Random-reader fixed-case (RRFC) analysis<a href="dbm-analysis-special-cases.html#dbm-analysis-special-cases-RRFCAnalysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The model is the same as in TBA <a href="dbm-analysis-significance-testing.html#eq:pseudoValPrime">(10.1)</a> Eqn. (9.4) except one puts <span class="math inline">\(\sigma_C^2 = \sigma_{\tau C}^2 =0\)</span> in Table Table <a href="dbm-analysis-significance-testing.html#tab:ExpValMs">10.1</a>. It follows that:</p>
 <p><span class="math display">\[\begin{equation}
 \frac{E(MST)}{E(MSTR)}=\frac{\sigma_\epsilon^2+\sigma_{\tau RC}^2+K\sigma_{\tau R}^2+JK\sigma_{\tau}^2}{\sigma_\epsilon^2+\sigma_{\tau RC}^2+K\sigma_{\tau R}^2}
@@ -558,8 +568,8 @@ p=\Pr\left ( F&gt;F_{DBM|C} \mid F \sim F_{I-1,(I-1)(J-1)} \right )
 CI_{1-\alpha}=\left ( \theta_{i \bullet} - \theta_{i&#39; \bullet} \right ) \pm t_{\alpha/2,(I-1)(J-1)}\sqrt{2\frac{MSTR}{JK}}
 \tag{11.10}
 \end{equation}\]</span></p>
-<div id="example-6-code-illustrating-analysis-for-rrfc-analysis-van-dyke-data" class="section level4">
-<h4><span class="header-section-number">11.3.0.1</span> Example 6: Code illustrating analysis for RRFC analysis, Van Dyke data</h4>
+<div id="example-6-code-illustrating-analysis-for-rrfc-analysis-van-dyke-data" class="section level4 hasAnchor">
+<h4><span class="header-section-number">11.3.0.1</span> Example 6: Code illustrating analysis for RRFC analysis, Van Dyke data<a href="dbm-analysis-special-cases.html#example-6-code-illustrating-analysis-for-rrfc-analysis-van-dyke-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="dbm-analysis-special-cases.html#cb45-1"></a>FDbmFC &lt;-<span class="st"> </span>retMS<span class="op">$</span>msT <span class="op">/</span><span class="st"> </span>retMS<span class="op">$</span>msTR</span>
 <span id="cb45-2"><a href="dbm-analysis-special-cases.html#cb45-2"></a>ndf &lt;-<span class="st"> </span>(I<span class="dv">-1</span>)</span>
 <span id="cb45-3"><a href="dbm-analysis-special-cases.html#cb45-3"></a>ddf &lt;-<span class="st"> </span>(I<span class="dv">-1</span>)<span class="op">*</span>(J<span class="dv">-1</span>)</span>
@@ -586,8 +596,8 @@ CI_{1-\alpha}=\left ( \theta_{i \bullet} - \theta_{i&#39; \bullet} \right ) \pm 
 <span id="cb45-24"><a href="dbm-analysis-special-cases.html#cb45-24"></a><span class="co">#&gt; 1 0.041958752 -0.085020224 -0.043800322 -0.0025804202</span></span></code></pre></div>
 </div>
 </div>
-<div id="dbm-analysis-special-cases-references" class="section level2">
-<h2><span class="header-section-number">11.4</span> References</h2>
+<div id="dbm-analysis-special-cases-references" class="section level2 hasAnchor">
+<h2><span class="header-section-number">11.4</span> References<a href="dbm-analysis-special-cases.html#dbm-analysis-special-cases-references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>

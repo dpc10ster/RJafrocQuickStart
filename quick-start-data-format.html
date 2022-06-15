@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 JAFROC ROC data format | The RJafroc Quick Start Book</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 JAFROC ROC data format | The RJafroc Quick Start Book" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   <meta name="github-repo" content="dpc10ster/RJafrocQuickStart" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2021-12-13" />
+<meta name="date" content="2022-06-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,8 +50,9 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -398,14 +398,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.7" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-rjafroc-history"><i class="fa fa-check"></i><b>17.7</b> Discussion / Summary</a></li>
 <li class="chapter" data-level="17.8" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-references"><i class="fa fa-check"></i><b>17.8</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>18</b> FROC sample size</a><ul>
+<li class="chapter" data-level="18" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>18</b> Sample size estimation for FROC studies</a><ul>
 <li class="chapter" data-level="18.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-how-much-finished"><i class="fa fa-check"></i><b>18.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="18.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>18.2</b> Introduction</a></li>
-<li class="chapter" data-level="18.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-example1"><i class="fa fa-check"></i><b>18.3</b> Example 1</a></li>
-<li class="chapter" data-level="18.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-plotting"><i class="fa fa-check"></i><b>18.4</b> Plotting wAFROC and ROC curves</a></li>
-<li class="chapter" data-level="18.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-fitrsmroc-usage-example"><i class="fa fa-check"></i><b>18.5</b> <code>FitRsmROC</code> usage example</a></li>
-<li class="chapter" data-level="18.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-discussion-summary"><i class="fa fa-check"></i><b>18.6</b> Discussion / Summary</a></li>
-<li class="chapter" data-level="18.7" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-references"><i class="fa fa-check"></i><b>18.7</b> References</a></li>
+<li class="chapter" data-level="18.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#overview"><i class="fa fa-check"></i><b>18.2</b> Overview</a></li>
+<li class="chapter" data-level="18.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-1"><i class="fa fa-check"></i><b>18.3</b> Part 1</a><ul>
+<li class="chapter" data-level="18.3.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>18.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="18.3.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#relating-an-roc-effect-size-to-a-wafroc-effect-size"><i class="fa fa-check"></i><b>18.3.2</b> Relating an ROC effect-size to a wAFROC effect-size</a></li>
+<li class="chapter" data-level="18.3.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#computing-the-respective-variance-components"><i class="fa fa-check"></i><b>18.3.3</b> Computing the respective variance components</a></li>
+<li class="chapter" data-level="18.3.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#comparing-roc-power-to-wafroc-power-for-equivalent-effect-sizes"><i class="fa fa-check"></i><b>18.3.4</b> Comparing ROC power to wAFROC power for equivalent effect-sizes</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-2"><i class="fa fa-check"></i><b>18.4</b> Part 2</a><ul>
+<li class="chapter" data-level="18.4.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#introduction"><i class="fa fa-check"></i><b>18.4.1</b> Introduction</a></li>
+<li class="chapter" data-level="18.4.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#constructing-the-nh-model-for-the-dataset"><i class="fa fa-check"></i><b>18.4.2</b> Constructing the NH model for the dataset</a></li>
+<li class="chapter" data-level="18.4.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#extracting-the-wafroc-variance-components"><i class="fa fa-check"></i><b>18.4.3</b> Extracting the wAFROC variance components</a></li>
+<li class="chapter" data-level="18.4.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-power-for-specified-roc-effect-size-number-of-readers-j-and-number-of-cases-k"><i class="fa fa-check"></i><b>18.4.4</b> wAFROC power for specified ROC effect size, number of readers J and number of cases K</a></li>
+<li class="chapter" data-level="18.4.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-number-of-cases-for-80-power-for-a-given-number-of-readers-j"><i class="fa fa-check"></i><b>18.4.5</b> wAFROC number of cases for 80% power for a given number of readers J</a></li>
+<li class="chapter" data-level="18.4.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k"><i class="fa fa-check"></i><b>18.4.6</b> wAFROC-FOM power for a given number of readers J and cases K</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-references"><i class="fa fa-check"></i><b>18.5</b> References</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -427,14 +437,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="quick-start-data-format" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> JAFROC ROC data format</h1>
-<div id="quick-start-data-format-how-much-finished" class="section level2">
-<h2><span class="header-section-number">2.1</span> TBA How much finished</h2>
+<div id="quick-start-data-format" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 2</span> JAFROC ROC data format<a href="quick-start-data-format.html#quick-start-data-format" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="quick-start-data-format-how-much-finished" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.1</span> TBA How much finished<a href="quick-start-data-format.html#quick-start-data-format-how-much-finished" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>80% (need to add images for one reader; add one-modality dataset)</p>
 </div>
-<div id="quick-start-data-format-intro" class="section level2">
-<h2><span class="header-section-number">2.2</span> Introduction</h2>
+<div id="quick-start-data-format-intro" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.2</span> Introduction<a href="quick-start-data-format.html#quick-start-data-format-intro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>JAFROC data format is named after the file format adopted circa. 2006 for the input Excel file to Windows JAFROC software.</li>
 <li>The purpose of this chapter is to explain the data format of this file.</li>
@@ -447,23 +457,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The above is termed a <em>positive-directed</em> rating scale. If lower numbers correspond to greater confidence, termed a negative-directed rating scale, a simple transformation to <span class="math inline">\(max(rating) - rating + 1\)</span>, where <span class="math inline">\(max(rating)\)</span> is the maximum rating, over all readers, modalities and cases, will convert a negative-directed rating scale to a positive directed rating scale.</li>
 </ul>
 </div>
-<div id="quick-start-data-format-note-to-existing-users" class="section level2">
-<h2><span class="header-section-number">2.3</span> Note to existing users</h2>
+<div id="quick-start-data-format-note-to-existing-users" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.3</span> Note to existing users<a href="quick-start-data-format.html#quick-start-data-format-note-to-existing-users" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>The Excel file format has recently undergone changes, involving three additional columns in the <code>Truth</code> worksheet.</li>
 <li><code>RJafroc</code> will work with old format Excel files as the additional columns are ignored.</li>
 <li>Reasons for the change will become clearer in later chapters.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></li>
 </ul>
 </div>
-<div id="quick-start-data-format-contents" class="section level2">
-<h2><span class="header-section-number">2.4</span> Contents of Excel file</h2>
+<div id="quick-start-data-format-contents" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.4</span> Contents of Excel file<a href="quick-start-data-format.html#quick-start-data-format-contents" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>The illustrations in this chapter correspond to Excel file <code>R/quick-start/rocCr.xlsx</code> in the project directory.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> This is termed a <em>toy file</em>, i.e., an artificial small dataset created to illustrate essential features of the data format.</li>
 <li>The Excel file has three worksheets: <code>Truth</code>, <code>NL</code> (or <code>FP</code>) and <code>LL</code> (or <code>TP</code>).</li>
 </ul>
 </div>
-<div id="quick-start-data-format-truth-worksheet" class="section level2">
-<h2><span class="header-section-number">2.5</span> The <code>Truth</code> worksheet</h2>
+<div id="quick-start-data-format-truth-worksheet" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.5</span> The <code>Truth</code> worksheet<a href="quick-start-data-format.html#quick-start-data-format-truth-worksheet" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><img src="images/quick-start/rocCrTruth.png" style="width:100.0%" /></p>
 <ul>
 <li>The <code>Truth</code> worksheet contains 6 columns: <code>CaseID</code>, <code>LesionID</code>, <code>Weight</code>, <code>ReaderID</code>, <code>ModalityID</code> and <code>Paradigm</code>.</li>
@@ -489,8 +499,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>There are 2 modalities in the dataset (each cell in the <code>ModalityID</code> column contains the string <code>0, 1</code>).</li>
 </ul>
 </div>
-<div id="quick-start-data-fp-worksheet" class="section level2">
-<h2><span class="header-section-number">2.6</span> The false positive (FP) ratings</h2>
+<div id="quick-start-data-fp-worksheet" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.6</span> The false positive (FP) ratings<a href="quick-start-data-format.html#quick-start-data-fp-worksheet" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>These are found in the <code>FP</code> or <code>NL</code> worksheet, see below.</p>
 <p><img src="images/quick-start/rocCrFp.png" style="width:100.0%" /></p>
 <ul>
@@ -502,8 +512,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>FP_Rating</code>: the floating point ratings of non-diseased cases. Each row of this worksheet contains a rating corresponding to the values of <code>ReaderID</code>, <code>ModalityID</code> and <code>CaseID</code> for that row.</li>
 </ul>
 </div>
-<div id="quick-start-data-format-tp-worksheet" class="section level2">
-<h2><span class="header-section-number">2.7</span> The true positive (TP) ratings</h2>
+<div id="quick-start-data-format-tp-worksheet" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.7</span> The true positive (TP) ratings<a href="quick-start-data-format.html#quick-start-data-format-tp-worksheet" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>These are found in the <code>TP</code> or <code>LL</code> worksheet, see below.</p>
 <p><img src="images/quick-start/rocCrTp.png" style="width:100.0%" /></p>
 <ul>
@@ -515,8 +525,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>TP_Rating</code>: the floating point ratings of diseased cases. Each row of this worksheet contains a rating corresponding to the values of <code>ReaderID</code>, <code>ModalityID</code>, <code>LesionID</code> and <code>CaseID</code> for that row.</li>
 </ul>
 </div>
-<div id="quick-start-data-format-single-reader" class="section level2">
-<h2><span class="header-section-number">2.8</span> A single reader dataset</h2>
+<div id="quick-start-data-format-single-reader" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.8</span> A single reader dataset<a href="quick-start-data-format.html#quick-start-data-format-single-reader" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="quick-start-data-format.html#cb1-1"></a>rocCr1R &lt;-<span class="st"> &quot;R/quick-start/rocCr1R.xlsx&quot;</span></span>
 <span id="cb1-2"><a href="quick-start-data-format.html#cb1-2"></a>x &lt;-<span class="st"> </span><span class="kw">DfReadDataFile</span>(rocCr1R, <span class="dt">newExcelFileFormat =</span> <span class="ot">TRUE</span>)</span>
 <span id="cb1-3"><a href="quick-start-data-format.html#cb1-3"></a><span class="kw">str</span>(x)</span>
@@ -540,8 +550,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-21"><a href="quick-start-data-format.html#cb1-21"></a><span class="co">#&gt;   ..$ readerID     : Named chr &quot;1&quot;</span></span>
 <span id="cb1-22"><a href="quick-start-data-format.html#cb1-22"></a><span class="co">#&gt;   .. ..- attr(*, &quot;names&quot;)= chr &quot;1&quot;</span></span></code></pre></div>
 </div>
-<div id="quick-start-data-format-references" class="section level2">
-<h2><span class="header-section-number">2.9</span> References</h2>
+<div id="quick-start-data-format-references" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.9</span> References<a href="quick-start-data-format.html#quick-start-data-format-references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>

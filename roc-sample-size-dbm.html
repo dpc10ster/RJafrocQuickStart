@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 15 Sample size estimation for ROC studies DBM method | The RJafroc Quick Start Book</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 15 Sample size estimation for ROC studies DBM method | The RJafroc Quick Start Book" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   <meta name="github-repo" content="dpc10ster/RJafrocQuickStart" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2021-12-13" />
+<meta name="date" content="2022-06-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,8 +50,9 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -398,14 +398,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.7" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-rjafroc-history"><i class="fa fa-check"></i><b>17.7</b> Discussion / Summary</a></li>
 <li class="chapter" data-level="17.8" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-references"><i class="fa fa-check"></i><b>17.8</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>18</b> FROC sample size</a><ul>
+<li class="chapter" data-level="18" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>18</b> Sample size estimation for FROC studies</a><ul>
 <li class="chapter" data-level="18.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-how-much-finished"><i class="fa fa-check"></i><b>18.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="18.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>18.2</b> Introduction</a></li>
-<li class="chapter" data-level="18.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-example1"><i class="fa fa-check"></i><b>18.3</b> Example 1</a></li>
-<li class="chapter" data-level="18.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-plotting"><i class="fa fa-check"></i><b>18.4</b> Plotting wAFROC and ROC curves</a></li>
-<li class="chapter" data-level="18.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-fitrsmroc-usage-example"><i class="fa fa-check"></i><b>18.5</b> <code>FitRsmROC</code> usage example</a></li>
-<li class="chapter" data-level="18.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-discussion-summary"><i class="fa fa-check"></i><b>18.6</b> Discussion / Summary</a></li>
-<li class="chapter" data-level="18.7" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-references"><i class="fa fa-check"></i><b>18.7</b> References</a></li>
+<li class="chapter" data-level="18.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#overview"><i class="fa fa-check"></i><b>18.2</b> Overview</a></li>
+<li class="chapter" data-level="18.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-1"><i class="fa fa-check"></i><b>18.3</b> Part 1</a><ul>
+<li class="chapter" data-level="18.3.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>18.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="18.3.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#relating-an-roc-effect-size-to-a-wafroc-effect-size"><i class="fa fa-check"></i><b>18.3.2</b> Relating an ROC effect-size to a wAFROC effect-size</a></li>
+<li class="chapter" data-level="18.3.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#computing-the-respective-variance-components"><i class="fa fa-check"></i><b>18.3.3</b> Computing the respective variance components</a></li>
+<li class="chapter" data-level="18.3.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#comparing-roc-power-to-wafroc-power-for-equivalent-effect-sizes"><i class="fa fa-check"></i><b>18.3.4</b> Comparing ROC power to wAFROC power for equivalent effect-sizes</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-2"><i class="fa fa-check"></i><b>18.4</b> Part 2</a><ul>
+<li class="chapter" data-level="18.4.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#introduction"><i class="fa fa-check"></i><b>18.4.1</b> Introduction</a></li>
+<li class="chapter" data-level="18.4.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#constructing-the-nh-model-for-the-dataset"><i class="fa fa-check"></i><b>18.4.2</b> Constructing the NH model for the dataset</a></li>
+<li class="chapter" data-level="18.4.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#extracting-the-wafroc-variance-components"><i class="fa fa-check"></i><b>18.4.3</b> Extracting the wAFROC variance components</a></li>
+<li class="chapter" data-level="18.4.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-power-for-specified-roc-effect-size-number-of-readers-j-and-number-of-cases-k"><i class="fa fa-check"></i><b>18.4.4</b> wAFROC power for specified ROC effect size, number of readers J and number of cases K</a></li>
+<li class="chapter" data-level="18.4.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-number-of-cases-for-80-power-for-a-given-number-of-readers-j"><i class="fa fa-check"></i><b>18.4.5</b> wAFROC number of cases for 80% power for a given number of readers J</a></li>
+<li class="chapter" data-level="18.4.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k"><i class="fa fa-check"></i><b>18.4.6</b> wAFROC-FOM power for a given number of readers J and cases K</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-references"><i class="fa fa-check"></i><b>18.5</b> References</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -427,14 +437,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="roc-sample-size-dbm" class="section level1">
-<h1><span class="header-section-number">Chapter 15</span> Sample size estimation for ROC studies DBM method</h1>
-<div id="roc-sample-size-dbm-how-much-finished" class="section level2">
-<h2><span class="header-section-number">15.1</span> TBA How much finished</h2>
+<div id="roc-sample-size-dbm" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 15</span> Sample size estimation for ROC studies DBM method<a href="roc-sample-size-dbm.html#roc-sample-size-dbm" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="roc-sample-size-dbm-how-much-finished" class="section level2 hasAnchor">
+<h2><span class="header-section-number">15.1</span> TBA How much finished<a href="roc-sample-size-dbm.html#roc-sample-size-dbm-how-much-finished" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>80%</p>
 </div>
-<div id="roc-sample-size-dbm-introduction" class="section level2">
-<h2><span class="header-section-number">15.2</span> Introduction</h2>
+<div id="roc-sample-size-dbm-introduction" class="section level2 hasAnchor">
+<h2><span class="header-section-number">15.2</span> Introduction<a href="roc-sample-size-dbm.html#roc-sample-size-dbm-introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The question addressed here is “how many readers and cases”, usually abbreviated to “sample-size”, should one employ to conduct a “well-planned” ROC study. The reasons for the quotes around “well-planned” will shortly become clear. If cost were no concern, the reply would be: “as many readers and cases as one can get”. There are other causes affecting sample-size, e.g., the data collection paradigm and analysis, however, this chapter is restricted to the MRMC ROC data collection paradigm, with data analyzed by the DBM method described in a previous chapter. The next chapter will deal with data analyzed by the OR method.</p>
 <p>It turns out that provided one can specify conceptually valid effect-sizes between different paradigms (i.e., in the same “units”), the methods described in this chapter are extensible to other paradigms; see TBA Chapter 19 for sample size estimation for FROC studies. <em>For this reason it is important to understand the concepts of sample-size estimation in the simpler ROC context.</em></p>
 <p>For simplicity and practicality, this chapter, and the next, is restricted to analysis of two-treatment data (<span class="math inline">\(I = 2\)</span>). The purpose of most imaging system assessment studies is to determine, for a given diagnostic task, whether radiologists perform better using a new treatment over the conventional treatment, and whether the difference is statistically significant. Therefore, the two-treatment case is the most common one encountered. While it is possible to extend the methods to more than two treatments, the extensions are not, in my opinion, clinically interesting.</p>
@@ -447,20 +457,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This chapter will focus on the DBM approach. Since it is based on a standard ANOVA model, it is easier to extend the NH testing procedure described in Chapter 09 to the alternative hypothesis, which is relevant for sample size estimation. [TBA Online Appendix 11.A shows how to translate the DBM formulae to the OR method <span class="citation">(Hillis, Obuchowski, and Berbaum <a href="#ref-RN2137" role="doc-biblioref">2011</a>)</span>.]</p>
 <p>Given an effect-size, and choosing this wisely is the most difficult part of the process, the method described in this chapter uses pseudovalue variance components estimated by the DBM method to predict sample-sizes (i.e., different combinations of numbers of readers and cases) necessary to achieve a desired power.</p>
 </div>
-<div id="StatPower1" class="section level2">
-<h2><span class="header-section-number">15.3</span> Statistical Power</h2>
+<div id="StatPower1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">15.3</span> Statistical Power<a href="roc-sample-size-dbm.html#StatPower1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The concept of statistical power was introduced in [TBA Chapter 08] but is worth repeating. There are two possible decisions following a test of a null hypothesis (NH): reject or fail to reject the NH. Each decision is associated with a probability on an erroneous conclusion. If the NH is true and one rejects it, the probability of the ensuing Type-I error is denoted <span class="math inline">\(\alpha\)</span>. If the NH is false and one fails to reject it, the probability of the ensuing Type II- error is denoted <span class="math inline">\(\beta\)</span>. Statistical power is the complement of <span class="math inline">\(\beta\)</span>, i.e.,</p>
 <p><span class="math display" id="eq:DefinitionStatPower">\[\begin{equation}
 Power = 1 - \beta
 \tag{15.1}
 \end{equation}\]</span></p>
 <p>Typically, one aims for <span class="math inline">\(\beta = 0.2\)</span> or less, i.e., a statistical power of 80% or more. Like <span class="math inline">\(\alpha\)</span> = 0.05, this is a <em>convention</em> and more nuanced cost-benefit considerations may cause the researcher to adopt a different value.</p>
-<div id="observed-vs.-anticipated-effect-size" class="section level3">
-<h3><span class="header-section-number">15.3.1</span> Observed vs. anticipated effect-size</h3>
+<div id="observed-vs.-anticipated-effect-size" class="section level3 hasAnchor">
+<h3><span class="header-section-number">15.3.1</span> Observed vs. anticipated effect-size<a href="roc-sample-size-dbm.html#observed-vs.-anticipated-effect-size" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><em>Assuming no other similar studies have already been conducted with the treatments in question, the observed effect-size, although “merely an estimate”, is the best information available at the end of the pilot study regarding the value of the true effect-size. From the two previous chapters one knows that the significance testing software will report not only the observed effect-size, but also a 95% confidence interval associate with it. It will be shown later how one can use this information to make an educated guess regarding the value of the anticipated effect-size.</em></p>
 </div>
-<div id="roc-sample-size-dbm-dependence-of-stats-power" class="section level3">
-<h3><span class="header-section-number">15.3.2</span> Dependence of statistical power on estimates of model parameters</h3>
+<div id="roc-sample-size-dbm-dependence-of-stats-power" class="section level3 hasAnchor">
+<h3><span class="header-section-number">15.3.2</span> Dependence of statistical power on estimates of model parameters<a href="roc-sample-size-dbm.html#roc-sample-size-dbm-dependence-of-stats-power" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Examination of the expression for , Eqn. (11.5), shows that statistical power increases if:</p>
 <ul>
 <li>The numerator is large. This occurs if: (a) the anticipated effect-size <span class="math inline">\(d\)</span> is large. Since effect-size enters as the <em>square</em>, TBA Eqn. (11.8), it is has a particularly strong effect; (b) If <span class="math inline">\(J \times K\)</span> is large. Both of these results should be obvious, as a large effect size and a large sample size should result in increased probability of rejecting the NH.</li>
@@ -471,17 +481,17 @@ Power = 1 - \beta
 <li>Accuracy of sample size estimation, essentially estimating confidence intervals for statistical power, is addressed in <span class="citation">(Chakraborty <a href="#ref-RN2027" role="doc-biblioref">2010</a>)</span>.</li>
 </ul>
 </div>
-<div id="roc-sample-size-dbm-RRRC-sample-size-estimation" class="section level3">
-<h3><span class="header-section-number">15.3.3</span> Formulae for random-reader random-case (RRRC) sample size estimation</h3>
+<div id="roc-sample-size-dbm-RRRC-sample-size-estimation" class="section level3 hasAnchor">
+<h3><span class="header-section-number">15.3.3</span> Formulae for random-reader random-case (RRRC) sample size estimation<a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRRC-sample-size-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="roc-sample-size-dbm-sig-testing" class="section level3">
-<h3><span class="header-section-number">15.3.4</span> Significance testing</h3>
+<div id="roc-sample-size-dbm-sig-testing" class="section level3 hasAnchor">
+<h3><span class="header-section-number">15.3.4</span> Significance testing<a href="roc-sample-size-dbm.html#roc-sample-size-dbm-sig-testing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="roc-sample-size-dbm-pvalue-ci" class="section level3">
-<h3><span class="header-section-number">15.3.5</span> p-value and confidence interval</h3>
+<div id="roc-sample-size-dbm-pvalue-ci" class="section level3 hasAnchor">
+<h3><span class="header-section-number">15.3.5</span> p-value and confidence interval<a href="roc-sample-size-dbm.html#roc-sample-size-dbm-pvalue-ci" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="roc-sample-size-dbm-CompareDBM2OR" class="section level3">
-<h3><span class="header-section-number">15.3.6</span> Comparing DBM to Obuchowski and Rockette for single-reader multiple-treatments</h3>
+<div id="roc-sample-size-dbm-CompareDBM2OR" class="section level3 hasAnchor">
+<h3><span class="header-section-number">15.3.6</span> Comparing DBM to Obuchowski and Rockette for single-reader multiple-treatments<a href="roc-sample-size-dbm.html#roc-sample-size-dbm-CompareDBM2OR" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Having performed a pilot study and planning to perform a pivotal study, sample size estimation follows the following procedure, which assumes that both reader and case are treated as random factors. Different formulae, described later, apply when either reader or case is treated as a fixed factor.</p>
 <ul>
 <li>Perform DBM analysis on the pilot data. This yields the observed effect size as well as estimates of all relevant variance components and mean squares appearing in TBA Eqn. (11.5) and Eqn. (11.7).</li>
@@ -493,8 +503,8 @@ Power = 1 - \beta
 </ul>
 </div>
 </div>
-<div id="roc-sample-size-dbm-FRRC-sample-size-estimation" class="section level2">
-<h2><span class="header-section-number">15.4</span> Formulae for fixed-reader random-case (FRRC) sample size estimation</h2>
+<div id="roc-sample-size-dbm-FRRC-sample-size-estimation" class="section level2 hasAnchor">
+<h2><span class="header-section-number">15.4</span> Formulae for fixed-reader random-case (FRRC) sample size estimation<a href="roc-sample-size-dbm.html#roc-sample-size-dbm-FRRC-sample-size-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>It was shown in TBA §9.8.2 that for fixed-reader analysis the non-centrality parameter is defined by:</p>
 <p><span class="math display" id="eq:DeltaFRRC">\[\begin{equation}
 \Delta=\frac{JK\sigma_{\tau}^2}{\sigma_{\epsilon}^2+\sigma_{\tau RC}^2+J\sigma_{\tau C}^2}
@@ -505,8 +515,8 @@ Power = 1 - \beta
 F_{AH|R}\equiv \frac{MST}{MSTC}\sim F_{I-1,(I-1)(K-1),\Delta}
 \tag{15.3}
 \end{equation}\]</span></p>
-<div id="roc-sample-size-dbm-RRFC-sample-size-estimation" class="section level3">
-<h3><span class="header-section-number">15.4.1</span> Formulae for random-reader fixed-case (RRFC) sample size estimation</h3>
+<div id="roc-sample-size-dbm-RRFC-sample-size-estimation" class="section level3 hasAnchor">
+<h3><span class="header-section-number">15.4.1</span> Formulae for random-reader fixed-case (RRFC) sample size estimation<a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRFC-sample-size-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>It is shown in TBA §9.9 that for fixed-case analysis the non-centrality parameter is defined by:</p>
 <p><span class="math display" id="eq:DeltaFRRFC">\[\begin{equation}
 \Delta=\frac{JK\sigma_{\tau}^2}{\sigma_{\epsilon}^2+\sigma_{\tau RC}^2+K\sigma_{\tau R}^2}
@@ -518,23 +528,23 @@ F_{AH|C}\equiv \frac{MST}{MSTR}\sim F_{I-1,(I-1)(J-1),\Delta}
 \tag{15.5}
 \end{equation}\]</span></p>
 </div>
-<div id="roc-sample-size-dbm-FRRCAnalysis" class="section level3">
-<h3><span class="header-section-number">15.4.2</span> Fixed-reader random-case (FRRC) analysis TBA</h3>
+<div id="roc-sample-size-dbm-FRRCAnalysis" class="section level3 hasAnchor">
+<h3><span class="header-section-number">15.4.2</span> Fixed-reader random-case (FRRC) analysis TBA<a href="roc-sample-size-dbm.html#roc-sample-size-dbm-FRRCAnalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>It is a realization of a random variable, so one has some leeway in the choice of anticipated effect size - more on this later.
 Here <span class="math inline">\(J^*\)</span> and <span class="math inline">\(K^*\)</span> refer to the number of readers and cases in the <em>pilot</em> study.</p>
 </div>
-<div id="roc-sample-size-dbm-RRFCAnalysis" class="section level3">
-<h3><span class="header-section-number">15.4.3</span> Random-reader fixed-case (RRFC) analysis</h3>
+<div id="roc-sample-size-dbm-RRFCAnalysis" class="section level3 hasAnchor">
+<h3><span class="header-section-number">15.4.3</span> Random-reader fixed-case (RRFC) analysis<a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRFCAnalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="roc-sample-size-dbm-STMRAnalysis" class="section level3">
-<h3><span class="header-section-number">15.4.4</span> Single-treatment multiple-reader analysis</h3>
+<div id="roc-sample-size-dbm-STMRAnalysis" class="section level3 hasAnchor">
+<h3><span class="header-section-number">15.4.4</span> Single-treatment multiple-reader analysis<a href="roc-sample-size-dbm.html#roc-sample-size-dbm-STMRAnalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
 </div>
-<div id="discussionsummary2" class="section level2">
-<h2><span class="header-section-number">15.5</span> Discussion/Summary/2</h2>
+<div id="discussionsummary2" class="section level2 hasAnchor">
+<h2><span class="header-section-number">15.5</span> Discussion/Summary/2<a href="roc-sample-size-dbm.html#discussionsummary2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="roc-sample-size-dbm-references" class="section level2">
-<h2><span class="header-section-number">15.6</span> References</h2>
+<div id="roc-sample-size-dbm-references" class="section level2 hasAnchor">
+<h2><span class="header-section-number">15.6</span> References<a href="roc-sample-size-dbm.html#roc-sample-size-dbm-references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>

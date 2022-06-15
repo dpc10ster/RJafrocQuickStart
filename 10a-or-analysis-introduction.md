@@ -236,8 +236,7 @@ Here is an application of the method for an ROC dataset, `dataset02`, which cons
 
 ```{.r .numberLines}
 ds <- DfExtractDataset(dataset02, rdrs = 1)
-fom <- as.vector(UtilFigureOfMerit(ds, FOM = "Wilcoxon"))
-fom <- t(fom)
+fom <- as.vector(unlist(UtilFigureOfMerit(ds, FOM = "Wilcoxon")), mode = "numeric")
 vc <- UtilORVarComponentsFactorial(ds, FOM = "Wilcoxon")
 Cov1 <- vc$IndividualRdr$cov1EachRdr
 Var <- vc$IndividualRdr$varEachRdr
@@ -276,8 +275,7 @@ Here is an application of the method for an FROC dataset, `dataset04`, which con
 
 ```{.r .numberLines}
 ds <- DfExtractDataset(dataset04, rdrs = 1, trts = c(4,5))
-fom <- as.vector(UtilFigureOfMerit(ds, FOM = "wAFROC"))
-fom <- t(fom)
+fom <- as.vector(unlist(UtilFigureOfMerit(ds, FOM = "wAFROC")), mode = "numeric")
 vc <- UtilORVarComponentsFactorial(ds, FOM = "wAFROC")
 Cov1 <- vc$IndividualRdr$cov1EachRdr
 Var <- vc$IndividualRdr$varEachRdr
@@ -969,7 +967,7 @@ data.frame("ORBoot:Chisq" = ret4$FRRC$FTests["Treatment", "Chisq"],
 
 ```
 ##   ORBoot.Chisq ORBoot.ddf ORBoot.P.val
-## 1    1.1172153          1   0.29051886
+## 1    1.3454534          1   0.24607453
 ```
 
 The DBM and OR-jackknife methods yield identical F-statistics, but the denominator degrees of freedom are different, $(I-1)(K-1)$ = 113 for DBM and $\infty$ for OR. The F-statistics for OR-bootstrap and OR-DeLong are different.

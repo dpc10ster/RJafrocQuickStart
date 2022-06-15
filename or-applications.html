@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 14 Obuchowski Rockette Applications | The RJafroc Quick Start Book</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 14 Obuchowski Rockette Applications | The RJafroc Quick Start Book" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   <meta name="github-repo" content="dpc10ster/RJafrocQuickStart" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2021-12-13" />
+<meta name="date" content="2022-06-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,8 +50,9 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -398,14 +398,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.7" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-rjafroc-history"><i class="fa fa-check"></i><b>17.7</b> Discussion / Summary</a></li>
 <li class="chapter" data-level="17.8" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-references"><i class="fa fa-check"></i><b>17.8</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>18</b> FROC sample size</a><ul>
+<li class="chapter" data-level="18" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>18</b> Sample size estimation for FROC studies</a><ul>
 <li class="chapter" data-level="18.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-how-much-finished"><i class="fa fa-check"></i><b>18.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="18.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>18.2</b> Introduction</a></li>
-<li class="chapter" data-level="18.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-example1"><i class="fa fa-check"></i><b>18.3</b> Example 1</a></li>
-<li class="chapter" data-level="18.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-plotting"><i class="fa fa-check"></i><b>18.4</b> Plotting wAFROC and ROC curves</a></li>
-<li class="chapter" data-level="18.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-fitrsmroc-usage-example"><i class="fa fa-check"></i><b>18.5</b> <code>FitRsmROC</code> usage example</a></li>
-<li class="chapter" data-level="18.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-discussion-summary"><i class="fa fa-check"></i><b>18.6</b> Discussion / Summary</a></li>
-<li class="chapter" data-level="18.7" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-references"><i class="fa fa-check"></i><b>18.7</b> References</a></li>
+<li class="chapter" data-level="18.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#overview"><i class="fa fa-check"></i><b>18.2</b> Overview</a></li>
+<li class="chapter" data-level="18.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-1"><i class="fa fa-check"></i><b>18.3</b> Part 1</a><ul>
+<li class="chapter" data-level="18.3.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>18.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="18.3.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#relating-an-roc-effect-size-to-a-wafroc-effect-size"><i class="fa fa-check"></i><b>18.3.2</b> Relating an ROC effect-size to a wAFROC effect-size</a></li>
+<li class="chapter" data-level="18.3.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#computing-the-respective-variance-components"><i class="fa fa-check"></i><b>18.3.3</b> Computing the respective variance components</a></li>
+<li class="chapter" data-level="18.3.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#comparing-roc-power-to-wafroc-power-for-equivalent-effect-sizes"><i class="fa fa-check"></i><b>18.3.4</b> Comparing ROC power to wAFROC power for equivalent effect-sizes</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-2"><i class="fa fa-check"></i><b>18.4</b> Part 2</a><ul>
+<li class="chapter" data-level="18.4.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#introduction"><i class="fa fa-check"></i><b>18.4.1</b> Introduction</a></li>
+<li class="chapter" data-level="18.4.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#constructing-the-nh-model-for-the-dataset"><i class="fa fa-check"></i><b>18.4.2</b> Constructing the NH model for the dataset</a></li>
+<li class="chapter" data-level="18.4.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#extracting-the-wafroc-variance-components"><i class="fa fa-check"></i><b>18.4.3</b> Extracting the wAFROC variance components</a></li>
+<li class="chapter" data-level="18.4.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-power-for-specified-roc-effect-size-number-of-readers-j-and-number-of-cases-k"><i class="fa fa-check"></i><b>18.4.4</b> wAFROC power for specified ROC effect size, number of readers J and number of cases K</a></li>
+<li class="chapter" data-level="18.4.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-number-of-cases-for-80-power-for-a-given-number-of-readers-j"><i class="fa fa-check"></i><b>18.4.5</b> wAFROC number of cases for 80% power for a given number of readers J</a></li>
+<li class="chapter" data-level="18.4.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k"><i class="fa fa-check"></i><b>18.4.6</b> wAFROC-FOM power for a given number of readers J and cases K</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-references"><i class="fa fa-check"></i><b>18.5</b> References</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -427,14 +437,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="or-applications" class="section level1">
-<h1><span class="header-section-number">Chapter 14</span> Obuchowski Rockette Applications</h1>
-<div id="or-applications-how-much-finished" class="section level2">
-<h2><span class="header-section-number">14.1</span> TBA How much finished</h2>
+<div id="or-applications" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 14</span> Obuchowski Rockette Applications<a href="or-applications.html#or-applications" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="or-applications-how-much-finished" class="section level2 hasAnchor">
+<h2><span class="header-section-number">14.1</span> TBA How much finished<a href="or-applications.html#or-applications-how-much-finished" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>80%</p>
 </div>
-<div id="or-applications-introduction" class="section level2">
-<h2><span class="header-section-number">14.2</span> Introduction</h2>
+<div id="or-applications-introduction" class="section level2 hasAnchor">
+<h2><span class="header-section-number">14.2</span> Introduction<a href="or-applications.html#or-applications-introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This chapter illustrates Obuchowski-Rockette analysis with several examples. The first example is a full-blown “hand-calculation” for <code>dataset02</code>, showing explicit implementations of formulae presented in the previous chapter. The second example shows application of the <code>RJafroc</code> package function <code>StSignificanceTesting()</code> to the same dataset: this function encapsulates all formulae and accomplishes all analyses with one function call. The third example shows application of the <code>StSignificanceTesting()</code> function to an ROC dataset derived from the Federica Zanca dataset <span class="citation">(Zanca et al. <a href="#ref-RN1882" role="doc-biblioref">2009</a>)</span>, which has five modalities and four readers. This illustrates multiple treatment pairings (in contrast, <code>dataset02</code> has only one treatment pairing). The fourth example shows application of <code>StSignificanceTesting()</code> to <code>dataset04</code>, which is an <strong>FROC</strong> dataset (in contrast to the previous examples, which employed <strong>ROC</strong> datasets). It illustrates the key difference involved in FROC analysis, namely the choice of figure of merit. The final example again uses <code>dataset04</code>, i.e., FROC data, <em>but this time we use DBM analysis</em>. Since DBM analysis is pseudovalue based, and the figure of merit is not the empirical AUC under the ROC, one may expect to see differences from the previously presented OR analysis on the same dataset.</p>
 <p>Each analysis involves the following steps:</p>
 <ul>
@@ -449,8 +459,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 </div>
-<div id="or-applications-dataset02-hand" class="section level2">
-<h2><span class="header-section-number">14.3</span> Hand calculation</h2>
+<div id="or-applications-dataset02-hand" class="section level2 hasAnchor">
+<h2><span class="header-section-number">14.3</span> Hand calculation<a href="or-applications.html#or-applications-dataset02-hand" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Dataset <code>dataset02</code> is well-know in the literature <span class="citation">(Van Dyke et al. <a href="#ref-RN1993" role="doc-biblioref">1993</a>)</span> as it has been widely used to illustrate advances in ROC methodology. The following code extract the numbers of modalities, readers and cases for <code>dataset02</code> and defines strings <code>modalityID</code>, <code>readerID</code> and <code>diffTRName</code> that are needed for the hand-calculations.</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="or-applications.html#cb94-1"></a>I &lt;-<span class="st"> </span><span class="kw">length</span>(dataset02<span class="op">$</span>ratings<span class="op">$</span>NL[,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>])</span>
 <span id="cb94-2"><a href="or-applications.html#cb94-2"></a>J &lt;-<span class="st"> </span><span class="kw">length</span>(dataset02<span class="op">$</span>ratings<span class="op">$</span>NL[<span class="dv">1</span>,,<span class="dv">1</span>,<span class="dv">1</span>])</span>
@@ -470,8 +480,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb94-16"><a href="or-applications.html#cb94-16"></a>  }</span>
 <span id="cb94-17"><a href="or-applications.html#cb94-17"></a>}</span></code></pre></div>
 <p>The dataset consists of I = 2 treatments, J = 5 readers and K = 114 cases.</p>
-<div id="or-applications-RRRC-dataset02-hand" class="section level3">
-<h3><span class="header-section-number">14.3.1</span> Random-Reader Random-Case (RRRC) analysis</h3>
+<div id="or-applications-RRRC-dataset02-hand" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.3.1</span> Random-Reader Random-Case (RRRC) analysis<a href="or-applications.html#or-applications-RRRC-dataset02-hand" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>The first step is to calculate the figures of merit using <code>UtilFigureOfMerit()</code>.</li>
 <li>Note that the <code>FOM</code> argument has to be explicitly specified as there is no default.</li>
@@ -612,8 +622,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb102-29"><a href="or-applications.html#cb102-29"></a><span class="co">#&gt; trt0   0.8970 0.03317 12.74  0.8252  0.9689 0.0004840</span></span>
 <span id="cb102-30"><a href="or-applications.html#cb102-30"></a><span class="co">#&gt; trt1   0.9408 0.02157 12.71  0.8941  0.9875 0.0002042</span></span></code></pre></div>
 </div>
-<div id="or-applications-FRRC-dataset02-hand" class="section level3">
-<h3><span class="header-section-number">14.3.2</span> Fixed-Reader Random-Case (FRRC) analysis</h3>
+<div id="or-applications-FRRC-dataset02-hand" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.3.2</span> Fixed-Reader Random-Case (FRRC) analysis<a href="or-applications.html#or-applications-FRRC-dataset02-hand" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>The chi-square statistic is calculated using Eqn. <a href="or-analysis-st.html#eq:DefFStatFRRC-OR">(13.13)</a> and Eqn. <a href="or-analysis-st.html#eq:ChisqStatFRRC-OR">(13.15)</a>.</li>
 <li>The needed quantities are in <code>vc</code>.</li>
@@ -757,8 +767,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb106-52"><a href="or-applications.html#cb106-52"></a><span class="co">#&gt; rdr4::trt0-trt1  -0.1002 0.0441 -2.273 0.0230 -0.1865 -0.01381</span></span></code></pre></div>
 <p>The notation in the first column shows the reader and the treatment pairing. For example, <code>rdr1::trt0-trt1</code> means the FOM difference for reader <code>rdr1</code>. Only the fifth reader, i.e., <code>rdr4</code>, shows a significant difference between the treatments: the p-value is 0.023001 and the confidence interval also does not include zero. The large FOM difference for this reader, -0.100161, was enough to result in a significant finding for FRRC analysis. The FOM differences for the other readers are about a factor of 2.1522491 or more smaller than that for this reader.</p>
 </div>
-<div id="or-applications-RRFC-dataset02-hand" class="section level3">
-<h3><span class="header-section-number">14.3.3</span> Random-Reader Fixed-Case (RRFC) analysis</h3>
+<div id="or-applications-RRFC-dataset02-hand" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.3.3</span> Random-Reader Fixed-Case (RRFC) analysis<a href="or-applications.html#or-applications-RRFC-dataset02-hand" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The F-statistic is shown in Eqn. <a href="or-analysis-st.html#eq:DefFStatRRFC">(13.20)</a>. This time <code>ndf</code> = <span class="math inline">\(I-1\)</span> and <code>ddf</code> = <span class="math inline">\((I-1) \times (J-1)\)</span>, the values proposed in the Obuchowski-Rockette paper. The implementation follows:</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="or-applications.html#cb107-1"></a>den &lt;-<span class="st"> </span>vc<span class="op">$</span>TRanova[<span class="st">&quot;TR&quot;</span>,<span class="st">&quot;MS&quot;</span>]</span>
 <span id="cb107-2"><a href="or-applications.html#cb107-2"></a>f &lt;-<span class="st"> </span>vc<span class="op">$</span>TRanova[<span class="st">&quot;T&quot;</span>,<span class="st">&quot;MS&quot;</span>]<span class="op">/</span>den</span>
@@ -806,8 +816,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 </div>
-<div id="or-applications-dataset02-RJafroc" class="section level2">
-<h2><span class="header-section-number">14.4</span> RJafroc: dataset02</h2>
+<div id="or-applications-dataset02-RJafroc" class="section level2 hasAnchor">
+<h2><span class="header-section-number">14.4</span> RJafroc: dataset02<a href="or-applications.html#or-applications-dataset02-RJafroc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The second example shows application of the <code>RJafroc</code> package function <code>StSignificanceTesting()</code> to <code>dataset02</code>. This function encapsulates all formulae discussed previously and accomplishes the analyses with a single function call. It returns an object, denoted <code>st1</code> below, that contains all results of the analysis. It is a <code>list</code> with the following components:</p>
 <ul>
 <li><code>FOMs</code>, this in turn is a <code>list</code> containing the following data frames:
@@ -848,8 +858,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Online help on the <code>StSignificanceTesting()</code> function is available:</p>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="or-applications.html#cb109-1"></a>?<span class="st">`</span><span class="dt">StSignificanceTesting</span><span class="st">`</span></span></code></pre></div>
 <p>The lower right <code>RStudio</code> panel contains the online description. Click on the small up-and-right pointing arrow icon to expand this to a new window.</p>
-<div id="or-applications-RRRC-dataset02-RJafroc" class="section level3">
-<h3><span class="header-section-number">14.4.1</span> Random-Reader Random-Case (RRRC) analysis</h3>
+<div id="or-applications-RRRC-dataset02-RJafroc" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.4.1</span> Random-Reader Random-Case (RRRC) analysis<a href="or-applications.html#or-applications-RRRC-dataset02-RJafroc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Since <code>analysisOption</code> is not explicitly specified in the following code, the function <code>StSignificanceTesting</code> performs all three analyses: <code>RRRC</code>, <code>FRRC</code> and <code>RRFC</code>.</li>
 <li>Likewise, the significance level of the test, also an argument, <code>alpha</code>, defaults to 0.05.</li>
@@ -939,8 +949,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>st1$RRRC$ciAvgRdrEachTrt</code> contains confidence intervals for each treatment, averaged over readers, i.e., <span class="math inline">\(CI_{1-\alpha,RRRC,\theta_{i \bullet}}\)</span>.</li>
 </ul>
 </div>
-<div id="or-applications-FRRC-dataset02-RJafroc" class="section level3">
-<h3><span class="header-section-number">14.4.2</span> Fixed-Reader Random-Case (FRRC) analysis</h3>
+<div id="or-applications-FRRC-dataset02-RJafroc" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.4.2</span> Fixed-Reader Random-Case (FRRC) analysis<a href="or-applications.html#or-applications-FRRC-dataset02-RJafroc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Displayed next are the results of FRRC analysis, contained in <code>st1$FRRC</code>.</li>
 <li><code>st1$FRRC$FTests</code> contains the results of the F-tests: the degrees of freedom, the mean-squares, the observed value of the F-statistic and the p-value for rejecting the NH, listed separately, where applicable, for the treatment and error terms.</li>
@@ -981,8 +991,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>st1$FRRC$st1$FRRC$ciDiffTrtEachRdr</code> contains confidence intervals for inter-treatment difference FOMs, for each reader, i.e., <span class="math inline">\(CI_{1-\alpha,FRRC,\theta_{i j} - \theta_{i&#39; j}}\)</span>.</li>
 </ul>
 </div>
-<div id="or-applications-RRFC-dataset02-RJafroc" class="section level3">
-<h3><span class="header-section-number">14.4.3</span> Random-Reader Fixed-Case (RRFC) analysis</h3>
+<div id="or-applications-RRFC-dataset02-RJafroc" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.4.3</span> Random-Reader Fixed-Case (RRFC) analysis<a href="or-applications.html#or-applications-RRFC-dataset02-RJafroc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="or-applications.html#cb119-1"></a><span class="kw">print</span>(st1<span class="op">$</span>RRFC<span class="op">$</span>FTests, <span class="dt">digits =</span> <span class="dv">4</span>)</span>
 <span id="cb119-2"><a href="or-applications.html#cb119-2"></a><span class="co">#&gt;    DF       MS     F       p</span></span>
 <span id="cb119-3"><a href="or-applications.html#cb119-3"></a><span class="co">#&gt; T   1 0.004796 8.704 0.04196</span></span>
@@ -1006,8 +1016,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 </div>
-<div id="or-applications-dataset04-RJafroc" class="section level2">
-<h2><span class="header-section-number">14.5</span> RJafroc: dataset04</h2>
+<div id="or-applications-dataset04-RJafroc" class="section level2 hasAnchor">
+<h2><span class="header-section-number">14.5</span> RJafroc: dataset04<a href="or-applications.html#or-applications-dataset04-RJafroc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>The third example uses the Federica Zanca dataset <span class="citation">(Zanca et al. <a href="#ref-RN1882" role="doc-biblioref">2009</a>)</span>, i.e., <code>dataset04</code>, which has five modalities and four readers.</li>
 <li>It illustrates the situation when multiple treatment pairings are involved. In contrast, the previous example had only one treatment pairing.</li>
@@ -1218,8 +1228,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb122-200"><a href="or-applications.html#cb122-200"></a><span class="co">#&gt; Trt3    0.810 0.0215  3   0.741   0.878</span></span>
 <span id="cb122-201"><a href="or-applications.html#cb122-201"></a><span class="co">#&gt; Trt4    0.851 0.0254  3   0.770   0.931</span></span>
 <span id="cb122-202"><a href="or-applications.html#cb122-202"></a><span class="co">#&gt; Trt5    0.808 0.0210  3   0.742   0.875</span></span></code></pre></div>
-<div id="or-applications-RRRC-dataset04" class="section level3">
-<h3><span class="header-section-number">14.5.1</span> Random-Reader Random-Case (RRRC) analysis</h3>
+<div id="or-applications-RRRC-dataset04" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.5.1</span> Random-Reader Random-Case (RRRC) analysis<a href="or-applications.html#or-applications-RRRC-dataset04" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p><code>st2$RRRC$FTests</code> contains the results of the F-test.</p></li>
 <li><p>In this example <code>ndf</code> = 4 because there are I = 5 treatments. Since the p-value is less than 0.05, at least one treatment-pairing FOM difference is significantly different from zero.</p></li>
@@ -1230,8 +1240,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Looking at the <code>Estimate</code> column one confirms that <code>trt5</code> has the smallest FOM while <code>trt4</code> has the highest.</p></li>
 </ul>
 </div>
-<div id="or-applications-FRRC-dataset04" class="section level3">
-<h3><span class="header-section-number">14.5.2</span> Fixed-Reader Random-Case (FRRC) analysis</h3>
+<div id="or-applications-FRRC-dataset04" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.5.2</span> Fixed-Reader Random-Case (FRRC) analysis<a href="or-applications.html#or-applications-FRRC-dataset04" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p><code>st2$FRRC$FTests</code> contains results of the F-tests, which in this situation is actually a chi-square test of the NH.</p></li>
 <li><p>Again, <code>ndf</code> = 4 because there are I = 5 treatments. Since the p-value is less than 0.05, at least one treatment-pairing FOM difference is significantly different from zero.</p></li>
@@ -1242,8 +1252,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>The <code>Estimate</code> column confirms that <code>trt5</code> has the smallest FOM while <code>trt4</code> has the highest.</p></li>
 </ul>
 </div>
-<div id="or-applications-RRFC-dataset04" class="section level3">
-<h3><span class="header-section-number">14.5.3</span> Random-Reader Fixed-Case (RRFC) analysis</h3>
+<div id="or-applications-RRFC-dataset04" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.5.3</span> Random-Reader Fixed-Case (RRFC) analysis<a href="or-applications.html#or-applications-RRFC-dataset04" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p><code>st2$RRFC$FTests</code> contains the results of the F-test of the NH.</p></li>
 <li><p>Again, <code>ndf</code> = 4 because there are I = 5 treatments. Since the p-value is less than 0.05, at least one treatment-pairing FOM difference is significantly different from zero.</p></li>
@@ -1255,8 +1265,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 </div>
-<div id="or-applications-dataset04-FROC-RJafroc" class="section level2">
-<h2><span class="header-section-number">14.6</span> RJafroc: dataset04, FROC</h2>
+<div id="or-applications-dataset04-FROC-RJafroc" class="section level2 hasAnchor">
+<h2><span class="header-section-number">14.6</span> RJafroc: dataset04, FROC<a href="or-applications.html#or-applications-dataset04-FROC-RJafroc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>The fourth example uses <code>dataset04</code>, but this time we use the FROC data, specifically, we do not convert it to inferred-ROC.</li>
 <li>Since this is an FROC dataset, one needs to use an FROC figure of merit.</li>
@@ -1464,8 +1474,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb123-197"><a href="or-applications.html#cb123-197"></a><span class="co">#&gt; Trt3    0.723 0.0207  3   0.657   0.788</span></span>
 <span id="cb123-198"><a href="or-applications.html#cb123-198"></a><span class="co">#&gt; Trt4    0.769 0.0311  3   0.670   0.868</span></span>
 <span id="cb123-199"><a href="or-applications.html#cb123-199"></a><span class="co">#&gt; Trt5    0.714 0.0273  3   0.627   0.801</span></span></code></pre></div>
-<div id="or-applications-RRRC-dataset04-FROC" class="section level3">
-<h3><span class="header-section-number">14.6.1</span> Random-Reader Random-Case (RRRC) analysis</h3>
+<div id="or-applications-RRRC-dataset04-FROC" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.6.1</span> Random-Reader Random-Case (RRRC) analysis<a href="or-applications.html#or-applications-RRRC-dataset04-FROC" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p><code>st3$RRRC$FTests</code> contains the results of the F-tests.</p></li>
 <li><p>The p-value is much smaller than that obtained after converting to an ROC dataset. Specifically, for FROC analysis, the p-value is 1.1710500410^{-4} while that for ROC analysis is 0.03054456. The F-statistic and the <code>ddf</code> are both larger for FROC analysis, both of of which result in increased probability of rejecting the NH, i.e., FROC analysis has greater power than ROC analysis.</p></li>
@@ -1478,8 +1488,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>st3$RRRC$st1$RRRC$ciDiffTrtEachRdr</code> contains confidence intervals for inter-treatment difference FOMs, for each reader, i.e., <span class="math inline">\(CI_{1-\alpha,RRRC,\theta_{i j} - \theta_{i&#39; j}}\)</span>.</p></li>
 </ul>
 </div>
-<div id="or-applications-FRRC-dataset04-FROC" class="section level3">
-<h3><span class="header-section-number">14.6.2</span> Fixed-Reader Random-Case (FRRC) analysis</h3>
+<div id="or-applications-FRRC-dataset04-FROC" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.6.2</span> Fixed-Reader Random-Case (FRRC) analysis<a href="or-applications.html#or-applications-FRRC-dataset04-FROC" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p><code>st3$FRRC$FTests</code> contains results of the F-test of the NH.</p></li>
 <li><p>Again, <code>ndf</code> = 4 because there are I = 5 treatments. Since the p-value is less than 0.05, at least one treatment-pairing FOM difference is significantly different from zero.</p></li>
@@ -1491,8 +1501,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>st3$FRRC$st1$FRRC$ciDiffTrtEachRdr</code> contains confidence intervals for inter-treatment difference FOMs, for each reader, i.e., <span class="math inline">\(CI_{1-\alpha,FRRC,\theta_{i j} - \theta_{i&#39; j}}\)</span>.</p></li>
 </ul>
 </div>
-<div id="or-applications-RRFC-dataset04-FROC" class="section level3">
-<h3><span class="header-section-number">14.6.3</span> Random-Reader Fixed-Case (RRFC) analysis</h3>
+<div id="or-applications-RRFC-dataset04-FROC" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.6.3</span> Random-Reader Fixed-Case (RRFC) analysis<a href="or-applications.html#or-applications-RRFC-dataset04-FROC" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p><code>st3$RRFC$FTests</code> contains results of the F-test of the NH.</p></li>
 <li><p>Again, <code>ndf</code> = 4 because there are I = 5 treatments. Since the p-value is less than 0.05, at least one treatment-pairing FOM difference is significantly different from zero.</p></li>
@@ -1502,8 +1512,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 </div>
-<div id="or-applications-dataset04-FROC-DBM-RJafroc" class="section level2">
-<h2><span class="header-section-number">14.7</span> RJafroc: dataset04, FROC/DBM</h2>
+<div id="or-applications-dataset04-FROC-DBM-RJafroc" class="section level2 hasAnchor">
+<h2><span class="header-section-number">14.7</span> RJafroc: dataset04, FROC/DBM<a href="or-applications.html#or-applications-dataset04-FROC-DBM-RJafroc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>The fourth example again uses <code>dataset04</code>, i.e., FROC data, <em>but this time using DBM analysis</em>.</li>
 <li>The key difference below is in the call to <code>StSignificanceTesting()</code> function, where we set <code>method = "DBM"</code>.</li>
@@ -1702,16 +1712,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb124-191"><a href="or-applications.html#cb124-191"></a><span class="co">#&gt; trt3    0.723 0.0207  3   0.657   0.788</span></span>
 <span id="cb124-192"><a href="or-applications.html#cb124-192"></a><span class="co">#&gt; trt4    0.769 0.0311  3   0.670   0.868</span></span>
 <span id="cb124-193"><a href="or-applications.html#cb124-193"></a><span class="co">#&gt; trt5    0.714 0.0273  3   0.627   0.801</span></span></code></pre></div>
-<div id="or-applications-RRRC-dataset04-FROC-DBM" class="section level3">
-<h3><span class="header-section-number">14.7.1</span> Random-Reader Random-Case (RRRC) analysis</h3>
+<div id="or-applications-RRRC-dataset04-FROC-DBM" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.7.1</span> Random-Reader Random-Case (RRRC) analysis<a href="or-applications.html#or-applications-RRRC-dataset04-FROC-DBM" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p><code>st4$RRRC$FTests</code> contains the results of the F-test of the NH.</p></li>
 <li><p><code>st4$RRRC$ciDiffTrt</code> contains the confidence intervals for the inter-treatment difference FOMs, averaged over readers, i.e., <span class="math inline">\(CI_{1-\alpha,RRRC,\theta_{i \bullet} - \theta_{i&#39; \bullet}}\)</span>.</p></li>
 <li><p><code>st4$RRRC$ciAvgRdrEachTrt</code> contains confidence intervals for each treatment, averaged over readers, i.e., <span class="math inline">\(CI_{1-\alpha,RRRC,\theta_{i \bullet}}\)</span>.</p></li>
 </ul>
 </div>
-<div id="or-applications-FRRC-dataset04-FROC-DBM" class="section level3">
-<h3><span class="header-section-number">14.7.2</span> Fixed-Reader Random-Case (FRRC) analysis</h3>
+<div id="or-applications-FRRC-dataset04-FROC-DBM" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.7.2</span> Fixed-Reader Random-Case (FRRC) analysis<a href="or-applications.html#or-applications-FRRC-dataset04-FROC-DBM" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p><code>st4$FRRC$FTests</code> contains results of the F-test of the NH, which is actually a chi-square statistic.</p></li>
 <li><p><code>st4$FRRC$ciDiffTrt</code> contains confidence intervals for the inter-treatment difference FOMs, averaged over readers, i.e., <span class="math inline">\(CI_{1-\alpha,FRRC,\theta_{i \bullet} - \theta_{i&#39; \bullet}}\)</span>.</p></li>
@@ -1721,8 +1731,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>st4$FRRC$ciDiffTrtEachRdr</code> contains confidence intervals for inter-treatment difference FOMs, for each reader, i.e., <span class="math inline">\(CI_{1-\alpha,FRRC,\theta_{i j} - \theta_{i&#39; j}}\)</span>.</p></li>
 </ul>
 </div>
-<div id="or-applications-RRFC-dataset04-FROC-DBM" class="section level3">
-<h3><span class="header-section-number">14.7.3</span> Random-Reader Fixed-Case (RRFC) analysis</h3>
+<div id="or-applications-RRFC-dataset04-FROC-DBM" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.7.3</span> Random-Reader Fixed-Case (RRFC) analysis<a href="or-applications.html#or-applications-RRFC-dataset04-FROC-DBM" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p><code>st4$RRFC$FTests</code> contains the results of the F-test of the NH.</p></li>
 <li><p><code>st4$RRFC$ciDiffTrt</code> contains confidence intervals for the inter-treatment paired difference FOMs, averaged over readers, i.e., <span class="math inline">\(CI_{1-\alpha,RRFC,\theta_{i \bullet} - \theta_{i&#39; \bullet}}\)</span>.</p></li>
@@ -1731,14 +1741,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 </div>
-<div id="or-applications-Summary" class="section level2">
-<h2><span class="header-section-number">14.8</span> Summary</h2>
+<div id="or-applications-Summary" class="section level2 hasAnchor">
+<h2><span class="header-section-number">14.8</span> Summary<a href="or-applications.html#or-applications-Summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="or-applications-Discussion" class="section level2">
-<h2><span class="header-section-number">14.9</span> Discussion</h2>
+<div id="or-applications-Discussion" class="section level2 hasAnchor">
+<h2><span class="header-section-number">14.9</span> Discussion<a href="or-applications.html#or-applications-Discussion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="ToMullOver1-tentative" class="section level2">
-<h2><span class="header-section-number">14.10</span> Tentative</h2>
+<div id="ToMullOver1-tentative" class="section level2 hasAnchor">
+<h2><span class="header-section-number">14.10</span> Tentative<a href="or-applications.html#ToMullOver1-tentative" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="or-applications.html#cb125-1"></a>ds1 &lt;-<span class="st"> </span>dataset04 <span class="co"># do NOT convert to ROC</span></span>
 <span id="cb125-2"><a href="or-applications.html#cb125-2"></a><span class="co"># comment/uncomment following code to disable/enable unequal weights</span></span>
 <span id="cb125-3"><a href="or-applications.html#cb125-3"></a><span class="co"># K2 &lt;- length(ds1$ratings$LL[1,1,,1])</span></span>
@@ -1759,8 +1769,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb125-18"><a href="or-applications.html#cb125-18"></a><span class="kw">print</span>(st5, <span class="dt">digits =</span> <span class="dv">4</span>)</span></code></pre></div>
 <p>A comparison was run between results of OR and DBM for the FROC dataset. Except for <code>FRRC</code>, where differences are expected (because <code>ddf</code> in the former is <span class="math inline">\(\infty\)</span>, while that in the later is <span class="math inline">\((I-1)\times(J-1))\)</span>, the results for the p-values were identical. This was true for the following FOMs: <code>wAFROC</code>, with equal and unequal weights, and <code>MaxLLF</code>. The confidence intervals (again, excluding <code>FRRC</code>) were identical for <code>FOM</code> = <code>wAFROC</code>. Slight differences were observed for <code>FOM</code> = <code>MaxLLF</code>.</p>
 </div>
-<div id="or-applications-references" class="section level2">
-<h2><span class="header-section-number">14.11</span> References</h2>
+<div id="or-applications-references" class="section level2 hasAnchor">
+<h2><span class="header-section-number">14.11</span> References<a href="or-applications.html#or-applications-references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>

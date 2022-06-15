@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 16 Sample size estimation for ROC studies OR method | The RJafroc Quick Start Book</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 16 Sample size estimation for ROC studies OR method | The RJafroc Quick Start Book" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   <meta name="github-repo" content="dpc10ster/RJafrocQuickStart" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2021-12-13" />
+<meta name="date" content="2022-06-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,8 +50,9 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -398,14 +398,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.7" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-rjafroc-history"><i class="fa fa-check"></i><b>17.7</b> Discussion / Summary</a></li>
 <li class="chapter" data-level="17.8" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-references"><i class="fa fa-check"></i><b>17.8</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>18</b> FROC sample size</a><ul>
+<li class="chapter" data-level="18" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>18</b> Sample size estimation for FROC studies</a><ul>
 <li class="chapter" data-level="18.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-how-much-finished"><i class="fa fa-check"></i><b>18.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="18.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>18.2</b> Introduction</a></li>
-<li class="chapter" data-level="18.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-example1"><i class="fa fa-check"></i><b>18.3</b> Example 1</a></li>
-<li class="chapter" data-level="18.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-plotting"><i class="fa fa-check"></i><b>18.4</b> Plotting wAFROC and ROC curves</a></li>
-<li class="chapter" data-level="18.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-fitrsmroc-usage-example"><i class="fa fa-check"></i><b>18.5</b> <code>FitRsmROC</code> usage example</a></li>
-<li class="chapter" data-level="18.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-discussion-summary"><i class="fa fa-check"></i><b>18.6</b> Discussion / Summary</a></li>
-<li class="chapter" data-level="18.7" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-references"><i class="fa fa-check"></i><b>18.7</b> References</a></li>
+<li class="chapter" data-level="18.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#overview"><i class="fa fa-check"></i><b>18.2</b> Overview</a></li>
+<li class="chapter" data-level="18.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-1"><i class="fa fa-check"></i><b>18.3</b> Part 1</a><ul>
+<li class="chapter" data-level="18.3.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>18.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="18.3.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#relating-an-roc-effect-size-to-a-wafroc-effect-size"><i class="fa fa-check"></i><b>18.3.2</b> Relating an ROC effect-size to a wAFROC effect-size</a></li>
+<li class="chapter" data-level="18.3.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#computing-the-respective-variance-components"><i class="fa fa-check"></i><b>18.3.3</b> Computing the respective variance components</a></li>
+<li class="chapter" data-level="18.3.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#comparing-roc-power-to-wafroc-power-for-equivalent-effect-sizes"><i class="fa fa-check"></i><b>18.3.4</b> Comparing ROC power to wAFROC power for equivalent effect-sizes</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-2"><i class="fa fa-check"></i><b>18.4</b> Part 2</a><ul>
+<li class="chapter" data-level="18.4.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#introduction"><i class="fa fa-check"></i><b>18.4.1</b> Introduction</a></li>
+<li class="chapter" data-level="18.4.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#constructing-the-nh-model-for-the-dataset"><i class="fa fa-check"></i><b>18.4.2</b> Constructing the NH model for the dataset</a></li>
+<li class="chapter" data-level="18.4.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#extracting-the-wafroc-variance-components"><i class="fa fa-check"></i><b>18.4.3</b> Extracting the wAFROC variance components</a></li>
+<li class="chapter" data-level="18.4.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-power-for-specified-roc-effect-size-number-of-readers-j-and-number-of-cases-k"><i class="fa fa-check"></i><b>18.4.4</b> wAFROC power for specified ROC effect size, number of readers J and number of cases K</a></li>
+<li class="chapter" data-level="18.4.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-number-of-cases-for-80-power-for-a-given-number-of-readers-j"><i class="fa fa-check"></i><b>18.4.5</b> wAFROC number of cases for 80% power for a given number of readers J</a></li>
+<li class="chapter" data-level="18.4.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k"><i class="fa fa-check"></i><b>18.4.6</b> wAFROC-FOM power for a given number of readers J and cases K</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-references"><i class="fa fa-check"></i><b>18.5</b> References</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -427,23 +437,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="roc-sample-size-or" class="section level1">
-<h1><span class="header-section-number">Chapter 16</span> Sample size estimation for ROC studies OR method</h1>
-<div id="roc-sample-size-or-how-much-finished" class="section level2">
-<h2><span class="header-section-number">16.1</span> TBA How much finished</h2>
+<div id="roc-sample-size-or" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 16</span> Sample size estimation for ROC studies OR method<a href="roc-sample-size-or.html#roc-sample-size-or" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="roc-sample-size-or-how-much-finished" class="section level2 hasAnchor">
+<h2><span class="header-section-number">16.1</span> TBA How much finished<a href="roc-sample-size-or.html#roc-sample-size-or-how-much-finished" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>70%</p>
 </div>
-<div id="roc-sample-size-or-introduction" class="section level2">
-<h2><span class="header-section-number">16.2</span> Introduction</h2>
+<div id="roc-sample-size-or-introduction" class="section level2 hasAnchor">
+<h2><span class="header-section-number">16.2</span> Introduction<a href="roc-sample-size-or.html#roc-sample-size-or-introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="StatPower2" class="section level2">
-<h2><span class="header-section-number">16.3</span> Statistical Power</h2>
+<div id="StatPower2" class="section level2 hasAnchor">
+<h2><span class="header-section-number">16.3</span> Statistical Power<a href="roc-sample-size-or.html#StatPower2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><span class="math display" id="eq:DefinitionStatPower1">\[\begin{equation}
 Power = 1 - \beta
 \tag{16.1}
 \end{equation}\]</span></p>
-<div id="sample-size-estimation-for-random-reader-random-cases" class="section level3">
-<h3><span class="header-section-number">16.3.1</span> Sample size estimation for random-reader random-cases</h3>
+<div id="sample-size-estimation-for-random-reader-random-cases" class="section level3 hasAnchor">
+<h3><span class="header-section-number">16.3.1</span> Sample size estimation for random-reader random-cases<a href="roc-sample-size-or.html#sample-size-estimation-for-random-reader-random-cases" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For convenience the OR model is repeated below with the case-set index suppressed:</p>
 <p><span class="math display" id="eq:ORModelSsOR">\[\begin{equation}
 Y_{n(ijk)}=\mu+\tau_i+R_j+C_k+(\tau R)_{ij}+(\tau C)_{ik}+(RC)_{jk}+(\tau RC)_{ijk}+\epsilon_ {n(ijk)}
@@ -482,8 +492,8 @@ ddf_H=\frac{\left [MSTR+\max(MSTR-MSTRC,0)  \right ]^2}{\frac{[MSTR]^2}{(I-1)(J-
 \tag{16.8}
 \end{equation}\]</span></p>
 </div>
-<div id="roc-sample-size-or-dependence-of-stats-power" class="section level3">
-<h3><span class="header-section-number">16.3.2</span> Dependence of statistical power on estimates of model parameters</h3>
+<div id="roc-sample-size-or-dependence-of-stats-power" class="section level3 hasAnchor">
+<h3><span class="header-section-number">16.3.2</span> Dependence of statistical power on estimates of model parameters<a href="roc-sample-size-or.html#roc-sample-size-or-dependence-of-stats-power" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Examination of the expression for , Eqn. (11.5), shows that statistical power increases if:</p>
 <ul>
 <li>The numerator is large. This occurs if: (a) the anticipated effect-size <span class="math inline">\(d\)</span> is large. Since effect-size enters as the <em>square</em>, TBA Eqn. (11.8), it is has a particularly strong effect; (b) If <span class="math inline">\(J \times K\)</span> is large. Both of these results should be obvious, as a large effect size and a large sample size should result in increased probability of rejecting the NH.</li>
@@ -494,17 +504,17 @@ ddf_H=\frac{\left [MSTR+\max(MSTR-MSTRC,0)  \right ]^2}{\frac{[MSTR]^2}{(I-1)(J-
 <li>Accuracy of sample size estimation, essentially estimating confidence intervals for statistical power, is addressed in <span class="citation">(Chakraborty <a href="#ref-RN2027" role="doc-biblioref">2010</a>)</span>.</li>
 </ul>
 </div>
-<div id="roc-sample-size-or-RRRC-sample-size-estimation" class="section level3">
-<h3><span class="header-section-number">16.3.3</span> Formulae for random-reader random-case (RRRC) sample size estimation</h3>
+<div id="roc-sample-size-or-RRRC-sample-size-estimation" class="section level3 hasAnchor">
+<h3><span class="header-section-number">16.3.3</span> Formulae for random-reader random-case (RRRC) sample size estimation<a href="roc-sample-size-or.html#roc-sample-size-or-RRRC-sample-size-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="roc-sample-size-or-sig-testing" class="section level3">
-<h3><span class="header-section-number">16.3.4</span> Significance testing</h3>
+<div id="roc-sample-size-or-sig-testing" class="section level3 hasAnchor">
+<h3><span class="header-section-number">16.3.4</span> Significance testing<a href="roc-sample-size-or.html#roc-sample-size-or-sig-testing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="roc-sample-size-or-pvalue-ci" class="section level3">
-<h3><span class="header-section-number">16.3.5</span> p-value and confidence interval</h3>
+<div id="roc-sample-size-or-pvalue-ci" class="section level3 hasAnchor">
+<h3><span class="header-section-number">16.3.5</span> p-value and confidence interval<a href="roc-sample-size-or.html#roc-sample-size-or-pvalue-ci" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="roc-sample-size-or-CompareDBM2OR" class="section level3">
-<h3><span class="header-section-number">16.3.6</span> Comparing DBM to Obuchowski and Rockette for single-reader multiple-treatments</h3>
+<div id="roc-sample-size-or-CompareDBM2OR" class="section level3 hasAnchor">
+<h3><span class="header-section-number">16.3.6</span> Comparing DBM to Obuchowski and Rockette for single-reader multiple-treatments<a href="roc-sample-size-or.html#roc-sample-size-or-CompareDBM2OR" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Having performed a pilot study and planning to perform a pivotal study, sample size estimation follows the following procedure, which assumes that both reader and case are treated as random factors. Different formulae, described later, apply when either reader or case is treated as a fixed factor.</p>
 <ul>
 <li>Perform OR analysis on the pilot data. This yields the observed effect size as well as estimates of all relevant variance components and mean squares appearing in TBA Eqn. (11.5) and Eqn. (11.7).</li>
@@ -516,8 +526,8 @@ ddf_H=\frac{\left [MSTR+\max(MSTR-MSTRC,0)  \right ]^2}{\frac{[MSTR]^2}{(I-1)(J-
 </ul>
 </div>
 </div>
-<div id="roc-sample-size-or-FRRC-sample-size-estimation" class="section level2">
-<h2><span class="header-section-number">16.4</span> Formulae for fixed-reader random-case (FRRC) sample size estimation</h2>
+<div id="roc-sample-size-or-FRRC-sample-size-estimation" class="section level2 hasAnchor">
+<h2><span class="header-section-number">16.4</span> Formulae for fixed-reader random-case (FRRC) sample size estimation<a href="roc-sample-size-or.html#roc-sample-size-or-FRRC-sample-size-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>It was shown in TBA §9.8.2 that for fixed-reader analysis the non-centrality parameter is defined by:</p>
 <p><span class="math display" id="eq:DeltaFRRC1">\[\begin{equation}
 \Delta=\frac{JK\sigma_{Y;\tau}^2}{\sigma_{Y;\epsilon}^2+\sigma_{Y;\tau RC}^2+J\sigma_{Y;\tau C}^2}
@@ -528,8 +538,8 @@ ddf_H=\frac{\left [MSTR+\max(MSTR-MSTRC,0)  \right ]^2}{\frac{[MSTR]^2}{(I-1)(J-
 F_{AH|R}\equiv \frac{MST}{MSTC}\sim F_{I-1,(I-1)(K-1),\Delta}
 \tag{16.10}
 \end{equation}\]</span></p>
-<div id="roc-sample-size-or-RRFC-sample-size-estimation" class="section level3">
-<h3><span class="header-section-number">16.4.1</span> Formulae for random-reader fixed-case (RRFC) sample size estimation</h3>
+<div id="roc-sample-size-or-RRFC-sample-size-estimation" class="section level3 hasAnchor">
+<h3><span class="header-section-number">16.4.1</span> Formulae for random-reader fixed-case (RRFC) sample size estimation<a href="roc-sample-size-or.html#roc-sample-size-or-RRFC-sample-size-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>It is shown in TBA §9.9 that for fixed-case analysis the non-centrality parameter is defined by:</p>
 <p><span class="math display" id="eq:DeltaFRRFC1">\[\begin{equation}
 \Delta=\frac{JK\sigma_{Y;\tau}^2}{\sigma_{Y;\epsilon}^2+\sigma_{Y;\tau RC}^2+K\sigma_{Y;\tau R}^2}
@@ -541,8 +551,8 @@ F_{AH|C}\equiv \frac{MST}{MSTR}\sim F_{I-1,(I-1)(J-1),\Delta}
 \tag{16.12}
 \end{equation}\]</span></p>
 </div>
-<div id="example-1" class="section level3">
-<h3><span class="header-section-number">16.4.2</span> Example 1</h3>
+<div id="example-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">16.4.2</span> Example 1<a href="roc-sample-size-or.html#example-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the first example the Van Dyke dataset is regarded as a pilot study. Two implementations are shown, a direct application of the relevant formulae, including usage of the mean squares, which in principle can be calculated from the three variance-components. This is then compared to the <code>RJafroc</code> implementation.</p>
 <p>Shown first is the “open” implementation.</p>
 <div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="roc-sample-size-or.html#cb126-1"></a>alpha &lt;-<span class="st"> </span><span class="fl">0.05</span>;<span class="kw">cat</span>(<span class="st">&quot;alpha = &quot;</span>, alpha, <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
@@ -588,21 +598,21 @@ F_{AH|C}\equiv \frac{MST}{MSTR}\sim F_{I-1,(I-1)(J-1),\Delta}
 <span id="cb126-41"><a href="roc-sample-size-or.html#cb126-41"></a><span class="co">#&gt; 1 10 53 5.117355   9 10.048716 0.80496663</span></span></code></pre></div>
 <p>For 10 readers, the numbers of cases needed for 80% power is largest (163) for RRRC and least for RRFC (53). For all three analyses, the expectation of 80% power is met - the numbers of cases and readers were chosen to achieve close to 80% statistical power. Intermediate quantities such as the critical value of the F-statistic, <code>ddf</code> and <code>ncp</code> are shown. The reader should confirm that the code does in fact implement the relevant formulae. Shown next is the <code>RJafroc</code> implementation. The relevant file is mainSsDbm.R, a listing of which follows:</p>
 </div>
-<div id="roc-sample-size-or-FRRCAnalysis" class="section level3">
-<h3><span class="header-section-number">16.4.3</span> Fixed-reader random-case (FRRC) analysis</h3>
+<div id="roc-sample-size-or-FRRCAnalysis" class="section level3 hasAnchor">
+<h3><span class="header-section-number">16.4.3</span> Fixed-reader random-case (FRRC) analysis<a href="roc-sample-size-or.html#roc-sample-size-or-FRRCAnalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="roc-sample-size-or-RRFCAnalysis" class="section level3">
-<h3><span class="header-section-number">16.4.4</span> Random-reader fixed-case (RRFC) analysis</h3>
+<div id="roc-sample-size-or-RRFCAnalysis" class="section level3 hasAnchor">
+<h3><span class="header-section-number">16.4.4</span> Random-reader fixed-case (RRFC) analysis<a href="roc-sample-size-or.html#roc-sample-size-or-RRFCAnalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="roc-sample-size-or-STMRAnalysis" class="section level3">
-<h3><span class="header-section-number">16.4.5</span> Single-treatment multiple-reader analysis</h3>
+<div id="roc-sample-size-or-STMRAnalysis" class="section level3 hasAnchor">
+<h3><span class="header-section-number">16.4.5</span> Single-treatment multiple-reader analysis<a href="roc-sample-size-or.html#roc-sample-size-or-STMRAnalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
 </div>
-<div id="discussionsummary3" class="section level2">
-<h2><span class="header-section-number">16.5</span> Discussion/Summary/3</h2>
+<div id="discussionsummary3" class="section level2 hasAnchor">
+<h2><span class="header-section-number">16.5</span> Discussion/Summary/3<a href="roc-sample-size-or.html#discussionsummary3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="roc-sample-size-or-references" class="section level2">
-<h2><span class="header-section-number">16.6</span> References</h2>
+<div id="roc-sample-size-or-references" class="section level2 hasAnchor">
+<h2><span class="header-section-number">16.6</span> References<a href="roc-sample-size-or.html#roc-sample-size-or-references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>

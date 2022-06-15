@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Significance Testing using the DBM Method | The RJafroc Quick Start Book</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Significance Testing using the DBM Method | The RJafroc Quick Start Book" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   <meta name="github-repo" content="dpc10ster/RJafrocQuickStart" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2021-12-13" />
+<meta name="date" content="2022-06-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,8 +50,9 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -398,14 +398,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.7" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-rjafroc-history"><i class="fa fa-check"></i><b>17.7</b> Discussion / Summary</a></li>
 <li class="chapter" data-level="17.8" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-references"><i class="fa fa-check"></i><b>17.8</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>18</b> FROC sample size</a><ul>
+<li class="chapter" data-level="18" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>18</b> Sample size estimation for FROC studies</a><ul>
 <li class="chapter" data-level="18.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-how-much-finished"><i class="fa fa-check"></i><b>18.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="18.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>18.2</b> Introduction</a></li>
-<li class="chapter" data-level="18.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-example1"><i class="fa fa-check"></i><b>18.3</b> Example 1</a></li>
-<li class="chapter" data-level="18.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-plotting"><i class="fa fa-check"></i><b>18.4</b> Plotting wAFROC and ROC curves</a></li>
-<li class="chapter" data-level="18.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-fitrsmroc-usage-example"><i class="fa fa-check"></i><b>18.5</b> <code>FitRsmROC</code> usage example</a></li>
-<li class="chapter" data-level="18.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-discussion-summary"><i class="fa fa-check"></i><b>18.6</b> Discussion / Summary</a></li>
-<li class="chapter" data-level="18.7" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-references"><i class="fa fa-check"></i><b>18.7</b> References</a></li>
+<li class="chapter" data-level="18.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#overview"><i class="fa fa-check"></i><b>18.2</b> Overview</a></li>
+<li class="chapter" data-level="18.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-1"><i class="fa fa-check"></i><b>18.3</b> Part 1</a><ul>
+<li class="chapter" data-level="18.3.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>18.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="18.3.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#relating-an-roc-effect-size-to-a-wafroc-effect-size"><i class="fa fa-check"></i><b>18.3.2</b> Relating an ROC effect-size to a wAFROC effect-size</a></li>
+<li class="chapter" data-level="18.3.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#computing-the-respective-variance-components"><i class="fa fa-check"></i><b>18.3.3</b> Computing the respective variance components</a></li>
+<li class="chapter" data-level="18.3.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#comparing-roc-power-to-wafroc-power-for-equivalent-effect-sizes"><i class="fa fa-check"></i><b>18.3.4</b> Comparing ROC power to wAFROC power for equivalent effect-sizes</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-2"><i class="fa fa-check"></i><b>18.4</b> Part 2</a><ul>
+<li class="chapter" data-level="18.4.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#introduction"><i class="fa fa-check"></i><b>18.4.1</b> Introduction</a></li>
+<li class="chapter" data-level="18.4.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#constructing-the-nh-model-for-the-dataset"><i class="fa fa-check"></i><b>18.4.2</b> Constructing the NH model for the dataset</a></li>
+<li class="chapter" data-level="18.4.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#extracting-the-wafroc-variance-components"><i class="fa fa-check"></i><b>18.4.3</b> Extracting the wAFROC variance components</a></li>
+<li class="chapter" data-level="18.4.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-power-for-specified-roc-effect-size-number-of-readers-j-and-number-of-cases-k"><i class="fa fa-check"></i><b>18.4.4</b> wAFROC power for specified ROC effect size, number of readers J and number of cases K</a></li>
+<li class="chapter" data-level="18.4.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-number-of-cases-for-80-power-for-a-given-number-of-readers-j"><i class="fa fa-check"></i><b>18.4.5</b> wAFROC number of cases for 80% power for a given number of readers J</a></li>
+<li class="chapter" data-level="18.4.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k"><i class="fa fa-check"></i><b>18.4.6</b> wAFROC-FOM power for a given number of readers J and cases K</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-references"><i class="fa fa-check"></i><b>18.5</b> References</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -427,14 +437,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="dbm-analysis-significance-testing" class="section level1">
-<h1><span class="header-section-number">Chapter 10</span> Significance Testing using the DBM Method</h1>
-<div id="dbm-analysis-significance-testing-how-much-finished" class="section level2">
-<h2><span class="header-section-number">10.1</span> TBA How much finished</h2>
+<div id="dbm-analysis-significance-testing" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 10</span> Significance Testing using the DBM Method<a href="dbm-analysis-significance-testing.html#dbm-analysis-significance-testing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="dbm-analysis-significance-testing-how-much-finished" class="section level2 hasAnchor">
+<h2><span class="header-section-number">10.1</span> TBA How much finished<a href="dbm-analysis-significance-testing.html#dbm-analysis-significance-testing-how-much-finished" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>60%</p>
 </div>
-<div id="the-dbm-sampling-model" class="section level2">
-<h2><span class="header-section-number">10.2</span> The DBM sampling model</h2>
+<div id="the-dbm-sampling-model" class="section level2 hasAnchor">
+<h2><span class="header-section-number">10.2</span> The DBM sampling model<a href="dbm-analysis-significance-testing.html#the-dbm-sampling-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>DBM = Dorfman Berbaum Metz</p>
 <p>The figure-of-merit has three indices:</p>
 <ul>
@@ -484,8 +494,8 @@ Y_{ijk} \equiv Y_{1(ijk)}\\
 \tag{10.6}
 \end{equation}\]</span></p>
 <p><em>The basic assumption of the DBM model is that the pseudovalues can be regarded as independent and identically distributed observations. That being the case, the pseudovalues can be analyzed by standard ANOVA techniques.</em> Since pseduovalues are computed from a common dataset, this assumption is, non-intuitive. However, for the special case of Wilcoxon figure of merit, it is justified.</p>
-<div id="explanation-of-terms-in-the-model" class="section level3">
-<h3><span class="header-section-number">10.2.1</span> Explanation of terms in the model</h3>
+<div id="explanation-of-terms-in-the-model" class="section level3 hasAnchor">
+<h3><span class="header-section-number">10.2.1</span> Explanation of terms in the model<a href="dbm-analysis-significance-testing.html#explanation-of-terms-in-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The right hand side of Eqn. <a href="dbm-analysis-significance-testing.html#eq:pseudoValPrime">(10.1)</a> consists of one fixed and 7 random effects. The current analysis assumes readers and cases as random factors (RRRC), so by definition <span class="math inline">\(R_j\)</span> and <span class="math inline">\(C_k\)</span> are random effects, and moreover, any term that includes a random factor is a random effect; for example, <span class="math inline">\((\tau R)_{ij}\)</span> is a random effect because it includes the <span class="math inline">\(R\)</span> factor. Here is a list of the random terms:</p>
 <p><span class="math display" id="eq:DBMRandomTerms">\[\begin{equation}
 R_j, C_k, (\tau R)_{ij}, (\tau C)_{ik}, (RC)_{jk},  (\tau RC)_{ijk},  \epsilon_{ijk}
@@ -508,8 +518,8 @@ R_j, C_k, (\tau R)_{ij}, (\tau C)_{ik}, (RC)_{jk},  (\tau RC)_{ijk},  \epsilon_{
 <p><strong>Unless explicitly stated otherwise, all variance symbols in this chapter refer to pseudovalues. </strong>
 Another convention: <span class="math inline">\((\tau R)_{ij}\)</span> is <em>not</em> the product of the treatment and reader factors, rather it is a single factor, namely the treatment-reader factor with <span class="math inline">\(IJ\)</span> levels, subscripted by the index <span class="math inline">\(ij\)</span> and similarly for the other product-like terms in Equation <a href="dbm-analysis-significance-testing.html#eq:samplingOfDbmTerms">(10.8)</a>.</p>
 </div>
-<div id="meanings-of-variance-components-in-the-dbm-model-tba-this-section-can-be-improved" class="section level3">
-<h3><span class="header-section-number">10.2.2</span> Meanings of variance components in the DBM model (<strong>TBA this section can be improved</strong>)</h3>
+<div id="meanings-of-variance-components-in-the-dbm-model-tba-this-section-can-be-improved" class="section level3 hasAnchor">
+<h3><span class="header-section-number">10.2.2</span> Meanings of variance components in the DBM model (<strong>TBA this section can be improved</strong>)<a href="dbm-analysis-significance-testing.html#meanings-of-variance-components-in-the-dbm-model-tba-this-section-can-be-improved" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The variances defined in <a href="dbm-analysis-significance-testing.html#eq:samplingOfDbmTerms">(10.8)</a> are collectively termed <em>variance components</em>. Specifically, they are jackknife pseudovalue variance components, to be distinguished from figure of merit (FOM) variance components to be introduced in TBA Chapter 10. They are in order: <span class="math inline">\(\sigma_{R}^{2} ,\sigma_{C}^{2} \sigma_{\tau R}^{2},\sigma_{\tau C}^{2},\sigma_{RC}^{2}, \sigma_{\tau RC}^{2},\sigma_{\epsilon}^{2}\)</span>. They have the following meanings.</p>
 <ul>
 <li>The term <span class="math inline">\(\sigma_{R}^{2}\)</span> is the variance of readers that is independent of treatment or case, which are modeled separately. It is not to be confused with the terms <span class="math inline">\(\sigma_{br+wr}^{2}\)</span> and <span class="math inline">\(\sigma_{cs+wr}^{2}\)</span> used in §9.3, which describe the variability of <span class="math inline">\(\theta\)</span> measured under specified conditions. [A jackknife pseudovalue is a weighted difference of FOM like quantities, TBA <a href="dbm-analysis-significance-testing.html#eq:pseudoValPrime">(10.1)</a>. Its meaning will be explored later. For now, <em>a pseudovalue variance is distinct from a FOM variance</em>.]</li>
@@ -531,8 +541,8 @@ Another convention: <span class="math inline">\((\tau R)_{ij}\)</span> is <em>no
 <p>It can be easily seen that the reader and case averaged difference between two different treatments <span class="math inline">\(i\)</span> and <span class="math inline">\(i&#39;\)</span> is estimated by <span class="math inline">\(\tau_i-\tau_{i&#39;} = Y_{i \bullet \bullet} - Y_{i&#39; \bullet \bullet}\)</span>.</p>
 <p>Estimating the strengths of the random terms is a little more complicated. It involves methods adapted from least squares, or maximum likelihood, and more esoteric ways. I do not feel comfortable going into these methods. Instead, results are presented and arguments are made to make them plausible. The starting point is definitions of quantities called <strong>mean squares</strong> and their expected values.</p>
 </div>
-<div id="definitions-of-mean-squares" class="section level3">
-<h3><span class="header-section-number">10.2.3</span> Definitions of mean-squares</h3>
+<div id="definitions-of-mean-squares" class="section level3 hasAnchor">
+<h3><span class="header-section-number">10.2.3</span> Definitions of mean-squares<a href="dbm-analysis-significance-testing.html#definitions-of-mean-squares" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Again, to be clear, one chould put a <span class="math inline">\(Y\)</span> subscript (or superscript) on each of the following definitions, but that would make the notation unnecessarily cumbersome.</p>
 <p><em>In this chapter, all mean-square quantities are calculated using pseudovalues, not figure-of-merit values. The presence of three subscripts on Y should make this clear. Also the replication index and the nesting notation are suppressed. The notation is abbreviated so MST is the mean square corresponding to the treatment effect, etc.</em></p>
 <p>The definitions of the mean-squares below match those (where provided) in <span class="citation">(Hillis and Berbaum <a href="#ref-RN1476" role="doc-biblioref">2004</a>, 1261)</span>.</p>
@@ -551,8 +561,8 @@ Another convention: <span class="math inline">\((\tau R)_{ij}\)</span> is <em>no
 <p>Note the absence of <span class="math inline">\(MSE\)</span>, corresponding to the <span class="math inline">\(\epsilon\)</span> term on the right hand side of <a href="dbm-analysis-significance-testing.html#eq:MeanSquares">(10.10)</a>. With only one observation per treatment-reader-case combination, MSE cannot be estimated; it effectively gets absorbed into the <span class="math inline">\(MSTRC\)</span> term.</p>
 </div>
 </div>
-<div id="expected-values-of-mean-squares" class="section level2">
-<h2><span class="header-section-number">10.3</span> Expected values of mean squares</h2>
+<div id="expected-values-of-mean-squares" class="section level2 hasAnchor">
+<h2><span class="header-section-number">10.3</span> Expected values of mean squares<a href="dbm-analysis-significance-testing.html#expected-values-of-mean-squares" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <blockquote>
 <p>“In our original formulation [2], expected mean squares for the ANOVA were derived from a restricted parameterization in which mixed-factor interactions sum to zero over indexes of fixed effects. In the restricted parameterization, the mixed effects are correlated, parameters are sometimes awkward to define [17], and extension to unbalanced designs is dubious [17, 18]. In this article, we recommend the unrestricted parameterization. The restricted and unrestricted parameterizations are special cases of a general model by Scheffe [19] that allows an arbitrary covariance structure among experimental units within a level of a random factor. Tables 1 and 2 show the ANOVA tables with expected mean squares for the unrestricted formulation.”</p>
 <p>— <span class="citation">(Dorfman, Berbaum, and Lenth <a href="#ref-RN2079" role="doc-biblioref">1995</a>)</span></p>
@@ -619,11 +629,11 @@ Another convention: <span class="math inline">\((\tau R)_{ij}\)</span> is <em>no
 \end{equation}\]</span></p>
 <p>Since treatment is a fixed effect, the variance symbol <span class="math inline">\(\sigma_{\tau}^{2}\)</span>, which is used for notational consistency in Table <a href="dbm-analysis-significance-testing.html#tab:ExpValMs">10.1</a>, could cause confusion. The right hand side “looks like” a variance, indeed one that could be calculated for just two treatments but, of course, random sampling from a <em>distribution of treatments</em> is not the intent of the notation.</p>
 </div>
-<div id="dbm-analysis-significance-testing-RRRC-analysis" class="section level2">
-<h2><span class="header-section-number">10.4</span> Random-reader random-case (RRRC) analysis</h2>
+<div id="dbm-analysis-significance-testing-RRRC-analysis" class="section level2 hasAnchor">
+<h2><span class="header-section-number">10.4</span> Random-reader random-case (RRRC) analysis<a href="dbm-analysis-significance-testing.html#dbm-analysis-significance-testing-RRRC-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Both readers and cases are regarded as random factors. The expected mean squares in Table Table <a href="dbm-analysis-significance-testing.html#tab:ExpValMs">10.1</a> are variance-like quantities; specifically, they are weighted linear combinations of the variances appearing in <a href="dbm-analysis-significance-testing.html#eq:samplingOfDbmTerms">(10.8)</a>. For single factors the column headed “degrees of freedom” (<span class="math inline">\(df\)</span>) is one less than the number of levels of the corresponding factor; estimating a variance requires first estimating the mean, which imposes a constraint, thereby decreasing <span class="math inline">\(df\)</span> by one. For interaction terms, <span class="math inline">\(df\)</span> is the product of the degrees of freedom for the individual factors. As an example, the term <span class="math inline">\((\tau RC)_{ijk}\)</span> contains three individual factors, and therefore <span class="math inline">\(df = (I-1)(J-1)(K-1)\)</span>. The number of degrees of freedom can be thought of as the amount of information available in estimating a mean square. As a special case, with no replications, the <span class="math inline">\(\epsilon\)</span> term has zero <span class="math inline">\(df\)</span> as <span class="math inline">\(N-1 = 0\)</span>. With only one observation <span class="math inline">\(Y_{1(ijk)}\)</span> there is no information to estimate the variance corresponding to the <span class="math inline">\(\epsilon\)</span> term. To estimate this term one needs to replicate the study several times – each time the same readers interpret the same cases in all treatments – a very boring task for the reader and totally unnecessary from the researcher’s point of view.</p>
-<div id="calculation-of-mean-squares-an-example" class="section level3">
-<h3><span class="header-section-number">10.4.1</span> Calculation of mean squares: an example</h3>
+<div id="calculation-of-mean-squares-an-example" class="section level3 hasAnchor">
+<h3><span class="header-section-number">10.4.1</span> Calculation of mean squares: an example<a href="dbm-analysis-significance-testing.html#calculation-of-mean-squares-an-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p>We choose <code>dataset02</code> to illustrate calculation of mean squares for pseudovalues. This is referred to in the book as the “VD” dataset <span class="citation">(Van Dyke et al. <a href="#ref-RN1993" role="doc-biblioref">1993</a>)</span>. It consists of 114 cases, 45 of which are diseased, interpreted in two treatments by five radiologists using the ROC paradigm.</p></li>
 <li><p>The first line computes the pseudovalues using the <code>RJafroc</code> function <code>UtilPseudoValues()</code>, and the second line extracts the numbers of treatments, readers and cases. The following lines calculate, using Equation <a href="dbm-analysis-significance-testing.html#eq:MeanSquares">(10.10)</a> the mean-squares. After displaying the results of the calculation, the results are compared to those calculated by the <code>RJafroc</code> function <code>UtilMeanSquares()</code>.</p></li>
@@ -709,8 +719,8 @@ Another convention: <span class="math inline">\((\tau R)_{ij}\)</span> is <em>no
 <span id="cb37-79"><a href="dbm-analysis-significance-testing.html#cb37-79"></a><span class="co">#&gt;         msT       msR       msC       msTR       msTC       msRC     msTRC</span></span>
 <span id="cb37-80"><a href="dbm-analysis-significance-testing.html#cb37-80"></a><span class="co">#&gt; 1 0.5467634 0.4373268 0.3968699 0.06281749 0.09984808 0.06450106 0.0399716</span></span></code></pre></div>
 </div>
-<div id="dbm-analysis-significance-testing-sig-testing" class="section level3">
-<h3><span class="header-section-number">10.4.2</span> Significance testing</h3>
+<div id="dbm-analysis-significance-testing-sig-testing" class="section level3 hasAnchor">
+<h3><span class="header-section-number">10.4.2</span> Significance testing<a href="dbm-analysis-significance-testing.html#dbm-analysis-significance-testing-sig-testing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If the NH of no treatment effect is true, i.e., if <span class="math inline">\(\sigma_{\tau}^{2}\)</span> = 0, then according to Table <a href="dbm-analysis-significance-testing.html#tab:ExpValMs">10.1</a> the following holds (the last term in the row labeled <span class="math inline">\(T\)</span> in Table <a href="dbm-analysis-significance-testing.html#tab:ExpValMs">10.1</a> drops out):</p>
 <p><span class="math display" id="eq:ExpMST">\[\begin{equation}
 E\left ( MST\mid NH \right ) = \sigma_{\epsilon}^{2} + \sigma_{\tau RC}^{2} + K\sigma_{\tau R}^{2} + J\sigma_{\tau C}^{2}
@@ -752,8 +762,8 @@ F_{DBM|NH} \sim F_{\text{ndf},\text{ddf}} \\
 \end{align}\]</span></p>
 <p>The next topic is estimating <span class="math inline">\(ddf\)</span>.</p>
 </div>
-<div id="the-satterthwaite-approximation" class="section level3">
-<h3><span class="header-section-number">10.4.3</span> The Satterthwaite approximation</h3>
+<div id="the-satterthwaite-approximation" class="section level3 hasAnchor">
+<h3><span class="header-section-number">10.4.3</span> The Satterthwaite approximation<a href="dbm-analysis-significance-testing.html#the-satterthwaite-approximation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The denominator of the F-ratio is <span class="math inline">\(MSTR+MSTC-MSTRC\)</span>. This is not a <em>simple</em> mean square (I am using terminology in the Satterthwaite papers - he means any mean square defined by equations such as in Equation <a href="dbm-analysis-significance-testing.html#eq:MeanSquares">(10.10)</a>). Rather it is a <em>linear combination of mean squares</em> (with coefficients 1, 1 and -1), and the resulting value could even be negative leading to a negative <span class="math inline">\(F_{DBM|NH}\)</span>, which is an illegal value for a sample from an F-distribution (a ratio of two variances). In 1941 Satterthwaite <span class="citation">(Satterthwaite <a href="#ref-RN2359" role="doc-biblioref">1941</a>, <a href="#ref-RN2360" role="doc-biblioref">1946</a>)</span> proposed an approximate degree of freedom for a linear combination of simple mean square quantities. TBA Online Appendix 9.A explains the approximation in more detail. The end result is that the mean square quantity described in Equation <a href="dbm-analysis-significance-testing.html#eq:DefFStatRRRC">(10.15)</a> has an approximate degree of freedom defined by (this is called the <em>Satterthwaite’s approximation</em>):</p>
 <p><span class="math display" id="eq:ddfSatter">\[\begin{equation}
 ddf_{Sat}=\frac{\left ( MSTR + MSTC - MSTRC \right )^2}{\left ( \frac{MSTR^2}{(I-1)(J-1)} + \frac{MSTC^2}{(I-1)(K-1)} + \frac{MSTRC^2}{(I-1)(J-1)(K-1)}  \right )}
@@ -778,8 +788,8 @@ F_{DBM} \sim F_{\text{ndf},\text{ddf}_H} \\
 \end{equation}\]</span></p>
 <p>Instead of 4 rules, as in the original DBM method, the Hillis modification involves just one rule, summarized by Equations <a href="dbm-analysis-significance-testing.html#eq:DefddfH">(10.19)</a> through <a href="dbm-analysis-significance-testing.html#eq:NhDistrDBMDefFStatRRRCHillis">(10.20)</a>. Moreover, the F-statistic is constrained to non-negative values. Using simulation testing <span class="citation">(Hillis, Berbaum, and Metz <a href="#ref-RN1866" role="doc-biblioref">2008</a>)</span> he has been shown that the modified DBM method has better null hypothesis behavior than the original DBM method. The latter tended to be too conservative, typically yielding Type I error rates smaller than the expected 5% for <span class="math inline">\(\alpha\)</span> = 0.05.</p>
 </div>
-<div id="decision-rules-p-value-and-confidence-intervals" class="section level3">
-<h3><span class="header-section-number">10.4.4</span> Decision rules, p-value and confidence intervals</h3>
+<div id="decision-rules-p-value-and-confidence-intervals" class="section level3 hasAnchor">
+<h3><span class="header-section-number">10.4.4</span> Decision rules, p-value and confidence intervals<a href="dbm-analysis-significance-testing.html#decision-rules-p-value-and-confidence-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <em>critical</em> value of the F-distribution, denoted <span class="math inline">\(F_{1-\alpha,\text{ndf},\text{ddf}_H}\)</span>, is defined such that fraction <span class="math inline">\(1-\alpha\)</span> of the distribution lies to the left of the critical value, in other words it is the <span class="math inline">\(1-\alpha\)</span> <em>quantile</em> of the F-distribution:</p>
 <p><span class="math display" id="eq:critValFStat">\[\begin{equation}
 \Pr\left ( F\leq F_{1-\alpha,\text{ndf},\text{ddf}_H} \mid F\sim F_{\text{ndf},\text{ddf}_H}\right ) = 1 - \alpha
@@ -793,16 +803,16 @@ F_{DBM} \sim F_{\text{ndf},\text{ddf}_H} \\
 <li> is large: the more the number of treatment pairings, the greater the chance that at least one pairing will reject the NH. This is one reason sample size calculations are rarely conducted for more than 2-treatments.</li>
 <li><span class="math inline">\(\text{ddf}_H\)</span> is large: this causes the critical value to decrease, see below, and is more likely to be exceeded by the observed value of <span class="math inline">\(F_{DBM}\)</span>.</li>
 </ul>
-<div id="p-value-of-the-f-test" class="section level4">
-<h4><span class="header-section-number">10.4.4.1</span> p-value of the F-test</h4>
+<div id="p-value-of-the-f-test" class="section level4 hasAnchor">
+<h4><span class="header-section-number">10.4.4.1</span> p-value of the F-test<a href="dbm-analysis-significance-testing.html#p-value-of-the-f-test" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><strong>The p-value of the test is the probability, under the NH, that an equal or larger value of the F-statistic than observed <span class="math inline">\(F_{DBM}\)</span> could occur by chance.</strong> In other words, it is the area under the (central) F-distribution <span class="math inline">\(F_{\text{ndf},\text{ddf}}\)</span> that lies to the right of the observed value of <span class="math inline">\(F_{DBM}\)</span>:</p>
 <p><span class="math display" id="eq:pValueRRRC">\[\begin{equation}
 p=\Pr\left ( F &gt; F_{DBM} \mid F \sim F_{\text{ndf},\text{ddf}_H} \right )
 \tag{10.22}
 \end{equation}\]</span></p>
 </div>
-<div id="confidence-intervals-for-inter-treatment-fom-differences" class="section level4">
-<h4><span class="header-section-number">10.4.4.2</span> Confidence intervals for inter-treatment FOM differences</h4>
+<div id="confidence-intervals-for-inter-treatment-fom-differences" class="section level4 hasAnchor">
+<h4><span class="header-section-number">10.4.4.2</span> Confidence intervals for inter-treatment FOM differences<a href="dbm-analysis-significance-testing.html#confidence-intervals-for-inter-treatment-fom-differences" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>If <span class="math inline">\(p &lt; \alpha\)</span> then the NH that all treatments are identical is rejected at significance level <span class="math inline">\(\alpha\)</span>. That informs the researcher that there exists at least one treatment-pair that has a difference significantly different from zero. To identify which pair(s) are different, one calculates confidence intervals for each paired difference. Hillis in <span class="citation">(Hillis et al. <a href="#ref-RN1772" role="doc-biblioref">2005</a>)</span> has shown that the <span class="math inline">\((1-\alpha)\)</span> confidence interval for <span class="math inline">\(Y_{i \bullet \bullet} - Y_{i&#39; \bullet \bullet}\)</span> is given by:</p>
 <p><span class="math display" id="eq:CIRRRCDBM">\[\begin{equation}
 CI_{1-\alpha}=\left ( Y_{i \bullet \bullet} - Y_{i&#39; \bullet \bullet} \right ) \pm t_{\alpha/2;\text{ddf}_H} \sqrt{\frac{2}{JK}\left ( MSTR + \max\left ( MSTC-MSTRC,0 \right ) \right )}
@@ -830,8 +840,8 @@ CI_{1-\alpha}=\left ( \theta_{i \bullet} - \theta_{i&#39; \bullet} \right ) \pm 
 </ul>
 <p>For more than two treatments the first two rules are equivalent and if a significant difference is found using either of them, then one can use the confidence intervals to determine which treatment pair differences are significantly different from zero. The first F-test is called the <em>overall F-test</em> and the subsequent tests the <em>treatment-pair t-tests</em>. One only conducts treatment pair t-tests if the overall F-test yields a significant result.</p>
 </div>
-<div id="code-illustrating-the-f-statistic-ddf-and-p-value-for-rrrc-analysis-van-dyke-data" class="section level4">
-<h4><span class="header-section-number">10.4.4.3</span> Code illustrating the F-statistic, ddf and p-value for RRRC analysis, Van Dyke data</h4>
+<div id="code-illustrating-the-f-statistic-ddf-and-p-value-for-rrrc-analysis-van-dyke-data" class="section level4 hasAnchor">
+<h4><span class="header-section-number">10.4.4.3</span> Code illustrating the F-statistic, ddf and p-value for RRRC analysis, Van Dyke data<a href="dbm-analysis-significance-testing.html#code-illustrating-the-f-statistic-ddf-and-p-value-for-rrrc-analysis-van-dyke-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Line 1 defines <span class="math inline">\(\alpha\)</span>. Line 2 forms a data frame from previously calculated mean-squares. Line 3 calculates the denominator appearing in Equation <a href="dbm-analysis-significance-testing.html#eq:FStatHillis">(10.18)</a>. Line 4 computes the observed value of <span class="math inline">\(F_{DBM}\)</span>, namely the ratio of the numerator and denominator in Equation <a href="dbm-analysis-significance-testing.html#eq:FStatHillis">(10.18)</a>. Line 5 sets <span class="math inline">\(\text{ndf}\)</span> to <span class="math inline">\(I - 1\)</span>. Line 6 computes <span class="math inline">\(\text{ddf}_H\)</span>. Line 7 computes the critical value of the F-distribution <span class="math inline">\(F_{crit}\equiv F_{\text{ndf},\text{ddf}_H}\)</span>. Line 8 calculates the p-value, using the definition Equation <a href="dbm-analysis-significance-testing.html#eq:pValueRRRC">(10.22)</a>. Line 9 prints out the just calculated quantities. The next line uses the <code>RJafroc</code> function <code>StSignificanceTesting()</code> and the 2nd last line prints out corresponding <code>RJafroc</code>-computed quantities. Note the correspondences between the values just computed and those provide by <code>RJafroc</code>. Note that the FOM difference is not significant at the 5% level of significance as <span class="math inline">\(p &gt; \alpha\)</span>. The last line shows that <span class="math inline">\(F_{DBM}\)</span> does not exceed <span class="math inline">\(F_{crit}\)</span>. The two rules are equivalent.</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="dbm-analysis-significance-testing.html#cb38-1"></a>alpha &lt;-<span class="st"> </span><span class="fl">0.05</span></span>
 <span id="cb38-2"><a href="dbm-analysis-significance-testing.html#cb38-2"></a>retMS &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;msT&quot;</span> =<span class="st"> </span>msT, <span class="st">&quot;msR&quot;</span> =<span class="st"> </span>msR, <span class="st">&quot;msC&quot;</span> =<span class="st"> </span>msC, </span>
@@ -857,8 +867,8 @@ CI_{1-\alpha}=\left ( \theta_{i \bullet} - \theta_{i&#39; \bullet} \right ) \pm 
 <span id="cb38-22"><a href="dbm-analysis-significance-testing.html#cb38-22"></a>F_DBM <span class="op">&gt;</span><span class="st"> </span>FCrit</span>
 <span id="cb38-23"><a href="dbm-analysis-significance-testing.html#cb38-23"></a><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
 </div>
-<div id="code-illustrating-the-inter-treatment-confidence-interval-for-rrrc-analysis-van-dyke-data" class="section level4">
-<h4><span class="header-section-number">10.4.4.4</span> Code illustrating the inter-treatment confidence interval for RRRC analysis, Van Dyke data</h4>
+<div id="code-illustrating-the-inter-treatment-confidence-interval-for-rrrc-analysis-van-dyke-data" class="section level4 hasAnchor">
+<h4><span class="header-section-number">10.4.4.4</span> Code illustrating the inter-treatment confidence interval for RRRC analysis, Van Dyke data<a href="dbm-analysis-significance-testing.html#code-illustrating-the-inter-treatment-confidence-interval-for-rrrc-analysis-van-dyke-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Line 1 computes the FOM matrix using function <code>UtilFigureOfMerit</code>. The next 9 lines compute the treatment FOM differences. The next line <code>nDiffs</code> (for “number of differences”) evaluates to 1, as with two treatments, there is only one difference. The next line initializes <code>CI_DIFF_FOM_RRRC</code>, which stands for “confidence intervals, FOM differences, for RRRC analysis”. The next 8 lines evaluate, using Equation <a href="dbm-analysis-significance-testing.html#eq:confIntervalRRRC">(10.25)</a>, and prints the lower value, the mid-point and the upper value of the confidence interval. Finally, these values are compared to those yielded by <code>RJafroc</code>. The FOM difference is not significant, whether viewed from the point of view of the F-statistic not exceeding the critical value, the observed p-value being larger than alpha or the 95% CI for the FOM difference including zero.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="dbm-analysis-significance-testing.html#cb39-1"></a>theta &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(<span class="kw">UtilFigureOfMerit</span>(dataset02, <span class="dt">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>))</span>
 <span id="cb39-2"><a href="dbm-analysis-significance-testing.html#cb39-2"></a>theta_i_dot &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="dt">dim =</span> I)</span>
@@ -890,10 +900,10 @@ CI_{1-\alpha}=\left ( \theta_{i \bullet} - \theta_{i&#39; \bullet} \right ) \pm 
 </div>
 </div>
 </div>
-<div id="sample-size-estimation-for-random-reader-random-case-generalization" class="section level2">
-<h2><span class="header-section-number">10.5</span> Sample size estimation for random-reader random-case generalization</h2>
-<div id="the-non-centrality-parameter" class="section level3">
-<h3><span class="header-section-number">10.5.1</span> The non-centrality parameter</h3>
+<div id="sample-size-estimation-for-random-reader-random-case-generalization" class="section level2 hasAnchor">
+<h2><span class="header-section-number">10.5</span> Sample size estimation for random-reader random-case generalization<a href="dbm-analysis-significance-testing.html#sample-size-estimation-for-random-reader-random-case-generalization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-non-centrality-parameter" class="section level3 hasAnchor">
+<h3><span class="header-section-number">10.5.1</span> The non-centrality parameter<a href="dbm-analysis-significance-testing.html#the-non-centrality-parameter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the significance-testing procedure just described, the relevant distribution was that of the F-statistic when the NH is true, Equation <a href="dbm-analysis-significance-testing.html#eq:NhDistrDBMDefFStatRRRCHillis">(10.20)</a>. <em>For sample size estimation, one needs to know the distribution of the statistic when the NH is false.</em> In the latter condition (i.e., the AH) the observed F-statistic, defined by Equation <a href="dbm-analysis-significance-testing.html#eq:DefFStatRRRC">(10.15)</a>, is distributed as a <em>non-central</em> F-distribution <span class="math inline">\(F_{\text{ndf},{\text{ddf}}_H,\Delta}\)</span> with <em>non-centrality parameter</em> <span class="math inline">\(\Delta\)</span>:</p>
 <p><span class="math display" id="eq:AhDistrDBMFStatRRRC">\[\begin{equation}
 F_{DBM|AH} \sim F_{\text{ndf},ddf_H,\Delta}
@@ -938,8 +948,8 @@ d=\theta_{1\bullet}-\theta_{2\bullet}
 <li>The three variances, determined from the pilot study via Equation <a href="dbm-analysis-significance-testing.html#eq:HBEqn4Pilot">(10.31)</a>, are assumed to apply unchanged to the pivotal study (as they are sample-size independent parameters of the DBM model).</li>
 </ul>
 </div>
-<div id="the-denominator-degrees-of-freedom" class="section level3">
-<h3><span class="header-section-number">10.5.2</span> The denominator degrees of freedom</h3>
+<div id="the-denominator-degrees-of-freedom" class="section level3 hasAnchor">
+<h3><span class="header-section-number">10.5.2</span> The denominator degrees of freedom<a href="dbm-analysis-significance-testing.html#the-denominator-degrees-of-freedom" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>(The numerator degrees of freedom of the non-central <span class="math inline">\(F\)</span> distribution is always unity.) It remains to calculate the appropriate denominator degrees of freedom for the pivotal study. This is denoted <span class="math inline">\(df_2\)</span>, to distinguish it from <span class="math inline">\(ddf_H\)</span>, where the latter applies to the pilot study as in Equation <a href="dbm-analysis-significance-testing.html#eq:DefddfH">(10.19)</a>.</li>
 <li>The starting point is Equation <a href="dbm-analysis-significance-testing.html#eq:DefddfH">(10.19)</a> with the left hand side replaced by <span class="math inline">\(df_2\)</span>, and with the emphasis that <em>all quantities appearing in it apply to the pivotal study</em>.</li>
@@ -959,8 +969,8 @@ df_2 = \frac{(\max(\sigma_{\tau R}^2,0)+(\max(J\sigma_{\tau C}^2,0)+\sigma_{\eps
 \tag{10.33}
 \end{equation}\]</span></p>
 </div>
-<div id="example-of-sample-size-estimation-rrrc-generalization" class="section level3">
-<h3><span class="header-section-number">10.5.3</span> Example of sample size estimation, RRRC generalization</h3>
+<div id="example-of-sample-size-estimation-rrrc-generalization" class="section level3 hasAnchor">
+<h3><span class="header-section-number">10.5.3</span> Example of sample size estimation, RRRC generalization<a href="dbm-analysis-significance-testing.html#example-of-sample-size-estimation-rrrc-generalization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The Van Dyke dataset is regarded as a pilot study. In the first block of code function <code>StSignificanceTesting()</code> is used to get the DBM variances (i.e., <code>VarTR</code> = <span class="math inline">\(\sigma_{\tau R}^2\)</span>, etc.) and the effect size <span class="math inline">\(d\)</span>.</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="dbm-analysis-significance-testing.html#cb40-1"></a>rocData &lt;-<span class="st"> </span>dataset02 <span class="co"># select Van Dyke dataset</span></span>
 <span id="cb40-2"><a href="dbm-analysis-significance-testing.html#cb40-2"></a>retDbm &lt;-<span class="st"> </span><span class="kw">StSignificanceTesting</span>(<span class="dt">dataset =</span> rocData,</span>
@@ -983,8 +993,8 @@ df_2 = \frac{(\max(\sigma_{\tau R}^2,0)+(\max(J\sigma_{\tau C}^2,0)+\sigma_{\eps
 <span id="cb41-10"><a href="dbm-analysis-significance-testing.html#cb41-10"></a><span class="co">#&gt; 1 10 163  3.9930236 63.137871 8.1269825 0.80156249</span></span></code></pre></div>
 </div>
 </div>
-<div id="significance-testing-and-sample-size-estimation-for-fixed-reader-random-case-generalization" class="section level2">
-<h2><span class="header-section-number">10.6</span> Significance testing and sample size estimation for fixed-reader random-case generalization</h2>
+<div id="significance-testing-and-sample-size-estimation-for-fixed-reader-random-case-generalization" class="section level2 hasAnchor">
+<h2><span class="header-section-number">10.6</span> Significance testing and sample size estimation for fixed-reader random-case generalization<a href="dbm-analysis-significance-testing.html#significance-testing-and-sample-size-estimation-for-fixed-reader-random-case-generalization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The extension to FRRC generalization is as follows. One sets <span class="math inline">\(\sigma_R^2 = 0\)</span> and <span class="math inline">\(\sigma_{\tau R}^2 = 0\)</span> in the DBM model <a href="dbm-analysis-significance-testing.html#eq:DefDBMModel">(10.4)</a>. The F-statistic for testing the NH and its distribution under the NH is:</p>
 <p><span class="math display" id="eq:DefFStatFRRC-DBM1">\[\begin{equation}
 F=\frac{\text{MST}}{\text{MSTC}} \sim F_{I-1,(I-1)(K-1)}
@@ -1008,8 +1018,8 @@ F=\frac{\text{MST}}{\text{MSTC}} \sim F_{I-1,(I-1)(K-1)}
 <span id="cb42-10"><a href="dbm-analysis-significance-testing.html#cb42-10"></a><span class="co">#&gt;    J   K fvalueFRRC df2 deltaFRRC  powerFRRC</span></span>
 <span id="cb42-11"><a href="dbm-analysis-significance-testing.html#cb42-11"></a><span class="co">#&gt; 1 10 133   3.912875 132 7.9873835 0.80111671</span></span></code></pre></div>
 </div>
-<div id="significance-testing-and-sample-size-estimation-for-random-reader-fixed-case-generalization" class="section level2">
-<h2><span class="header-section-number">10.7</span> Significance testing and sample size estimation for random-reader fixed-case generalization</h2>
+<div id="significance-testing-and-sample-size-estimation-for-random-reader-fixed-case-generalization" class="section level2 hasAnchor">
+<h2><span class="header-section-number">10.7</span> Significance testing and sample size estimation for random-reader fixed-case generalization<a href="dbm-analysis-significance-testing.html#significance-testing-and-sample-size-estimation-for-random-reader-fixed-case-generalization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The extension to RRFC generalization is as follows. One sets <span class="math inline">\(\sigma_C^2 = 0\)</span> and <span class="math inline">\(\sigma_{\tau C}^2 = 0\)</span> in the DBM model <a href="dbm-analysis-significance-testing.html#eq:DefDBMModel">(10.4)</a>. The F-statistic for testing the NH and its distribution under the NH is:</p>
 <p><span class="math display" id="eq:DefFStatFRRC-DBM2">\[\begin{equation}
 F=\frac{\text{MST}}{\text{MSTR}} \sim F_{I-1,(I-1)(J-1)}
@@ -1034,18 +1044,18 @@ F=\frac{\text{MST}}{\text{MSTR}} \sim F_{I-1,(I-1)(J-1)}
 <span id="cb43-11"><a href="dbm-analysis-significance-testing.html#cb43-11"></a><span class="co">#&gt; 1 10 53   5.117355   9 10.048716 0.80496663</span></span></code></pre></div>
 <p>It is evident that for this dataset, for 10 readers, the numbers of cases needed for 80% power is largest (163) for RRRC and least for RRFC (53). For all three analyses, the expectation of 80% power is met - the numbers of cases and readers were deliberately chosen to achieve close to 80% statistical power.</p>
 </div>
-<div id="dbm-analysis-significance-testing-summary" class="section level2">
-<h2><span class="header-section-number">10.8</span> Summary TBA</h2>
+<div id="dbm-analysis-significance-testing-summary" class="section level2 hasAnchor">
+<h2><span class="header-section-number">10.8</span> Summary TBA<a href="dbm-analysis-significance-testing.html#dbm-analysis-significance-testing-summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This chapter has detailed analysis of MRMC ROC data using the DBM method. A reason for the level of detail is that almost all of the material carries over to other data collection paradigms, and a thorough understanding of the relatively simple ROC paradigm data is helpful to understanding the more complex ones.</p>
 <p>DBM has been used in several hundred ROC studies (Prof. Kevin Berbaum, private communication ca. 2010). While the method allows generalization of a study finding, e.g., rejection of the NH, to the population of readers and cases, I believe this is sometimes taken too literally. If a study is done at a single hospital, then the radiologists tend to be more homogenous as compared to sampling radiologists from different hospitals. This is because close interactions between radiologists at a hospital tend to homogenize reading styles and performance. A similar issue applies to patient characteristics, which are also expected to vary more between different geographical locations than within a given location served by the hospital. This means is that single hospital study based p-values may tend to be biased downwards, declaring differences that may not be replicable if a wider sampling “net” were used using the same sample size. The price paid for a wider sampling net is that one must use more readers and cases to achieve the same sensitivity to genuine treatment effects, i.e., statistical power (i.e., there is no “free-lunch”).</p>
 <p>A third MRMC ROC method, due to Clarkson, Kupinski and Barrett19,20, implemented in open-source JAVA software by Gallas and colleagues22,44 (<a href="http://didsr.github.io/iMRMC/" class="uri">http://didsr.github.io/iMRMC/</a>) is available on the web. Clarkson et al19,20 provide a probabilistic rationale for the DBM model, provided the figure of merit is the empirical <span class="math inline">\(AUC\)</span>. The method is elegant but it is only applicable as long as one is using the empirical AUC as the figure of merit (FOM) for quantifying observer performance. In contrast the DBM approach outlined in this chapter, and the approach outlined in the following chapter, are applicable to any scalar FOM. Broader applicability ensures that significance-testing methods described in this, and the following chapter, apply to other ROC FOMs, such as binormal model or other fitted AUCs, and more importantly, to other observer performance paradigms, such as free-response ROC paradigm. An advantage of the Clarkson et al. approach is that it predicts truth-state dependence of the variance components. One knows from modeling ROC data that diseased cases tend to have greater variance than non-diseased ones, and there is no reason to suspect that similar differences do not exist between the variance components.</p>
 <p>Testing validity of an analysis method via simulation testing is only as good as the simulator used to generate the datasets, and this is where current research is at a bottleneck. The simulator plays a central role in ROC analysis. In my opinion this is not widely appreciated. In contrast, simulators are taken very seriously in other disciplines, such as cosmology, high-energy physics and weather forecasting. The simulator used to validate3 DBM is that proposed by Roe and Metz39 in 1997. This simulator has several shortcomings. (a) It assumes that the ratings are distributed like an equal-variance binormal model, which is not true for most clinical datasets (recall that the b-parameter of the binormal model is usually less than one). Work extending this simulator to unequal variance has been published3. (b) It does not take into account that some lesions are not visible, which is the basis of the contaminated binormal model (CBM). A CBM model based simulator would use equal variance distributions with the difference that the distribution for diseased cases would be a mixture distribution with two peaks. The radiological search model (RSM) of free-response data, Chapter 16 &amp;17 also implies a mixture distribution for diseased cases, and it goes farther, as it predicts some cases yield no z-samples, which means they will always be rated in the lowest bin no matter how low the reporting threshold. Both CBM and RSM account for truth dependence by accounting for the underlying perceptual process. (c) The Roe-Metz simulator is out dated; the parameter values are based on datasets then available (prior to 1997). Medical imaging technology has changed substantially in the intervening decades. d Finally, the methodology used to arrive at the proposed parameter values is not clearly described. Needed is a more realistic simulator, incorporating knowledge from alternative ROC models and paradigms that is calibrated, by a clearly defined method, to current datasets.</p>
 <p>Since ROC studies in medical imaging have serious health-care related consequences, no method should be used unless it has been thoroughly validated. Much work still remains to be done in proper simulator design, on which validation is dependent.</p>
 </div>
-<div id="things-for-me-to-think-about" class="section level2">
-<h2><span class="header-section-number">10.9</span> Things for me to think about</h2>
-<div id="expected-values-of-mean-squares-1" class="section level3">
-<h3><span class="header-section-number">10.9.1</span> Expected values of mean squares</h3>
+<div id="things-for-me-to-think-about" class="section level2 hasAnchor">
+<h2><span class="header-section-number">10.9</span> Things for me to think about<a href="dbm-analysis-significance-testing.html#things-for-me-to-think-about" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="expected-values-of-mean-squares-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">10.9.1</span> Expected values of mean squares<a href="dbm-analysis-significance-testing.html#expected-values-of-mean-squares-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Assuming no replications the expected mean squares are as follows, Table Table <a href="dbm-analysis-significance-testing.html#tab:ExpValMs">10.1</a>; understanding how this table is derived, would lead me outside my expertise and the scope of this book; suffice to say that these are <em>unconstrained</em> estimates (as summarized in the quotation above) which are different from the <em>constrained</em> estimates appearing in the original DBM publication <span class="citation">(Dorfman, Berbaum, and Metz <a href="#ref-RN204" role="doc-biblioref">1992</a>)</span>, Table 9.2; the differences between these two types of estimates is summarized in <span class="citation">(Dorfman, Berbaum, and Lenth <a href="#ref-RN2079" role="doc-biblioref">1995</a>)</span>. For reference, Table 9.3 is the table published in the most recent paper that I am aware of <span class="citation">(Hillis <a href="#ref-RN2508" role="doc-biblioref">2014</a>)</span>. All three tables are different! <strong>In this chapter I will stick to Table Table <a href="dbm-analysis-significance-testing.html#tab:ExpValMs">10.1</a> for the subsequent development.</strong></p>
 <table>
 <caption>Table 9.1 Unconstrained expected values of mean-squares, as in <span class="citation">(Dorfman, Berbaum, and Lenth <a href="#ref-RN2079" role="doc-biblioref">1995</a>)</span></caption>
@@ -1205,8 +1215,8 @@ F=\frac{\text{MST}}{\text{MSTR}} \sim F_{I-1,(I-1)(J-1)}
 </table>
 </div>
 </div>
-<div id="dbm-analysis-significance-testing-references" class="section level2">
-<h2><span class="header-section-number">10.10</span> References</h2>
+<div id="dbm-analysis-significance-testing-references" class="section level2 hasAnchor">
+<h2><span class="header-section-number">10.10</span> References<a href="dbm-analysis-significance-testing.html#dbm-analysis-significance-testing-references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
