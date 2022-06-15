@@ -236,8 +236,8 @@ Here is an application of the method for an ROC dataset, `dataset02`, which cons
 
 ```{r, attr.source = ".numberLines"}
 ds <- DfExtractDataset(dataset02, rdrs = 1)
-fom <- as.vector(UtilFigureOfMerit(ds, FOM = "Wilcoxon"))
-fom <- t(fom)
+fom <- as.vector(unlist(UtilFigureOfMerit(ds, FOM = "Wilcoxon")), mode = "numeric")
+#fom <- t(fom)
 vc <- UtilORVarComponentsFactorial(ds, FOM = "Wilcoxon")
 Cov1 <- vc$IndividualRdr$cov1EachRdr
 Var <- vc$IndividualRdr$varEachRdr
