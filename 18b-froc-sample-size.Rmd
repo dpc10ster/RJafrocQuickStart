@@ -19,7 +19,19 @@ library(here)
 
 ## Overview
 
-FROC sample size estimation is split into two parts. The first part goes into the details. The second part encapsulates most of the details in a new function, which makes for easier application.
+This chapter is split into two parts. 
+
+* The first part goes into the details of FROC paradigm sample size estimation. 
+
+* The second part encapsulates most of the details in a new function `SsFrocNhRsmModel()`, which encapsulates some of the code in the first part (that relating to building the NH model), thereby making it easier for the user to perform FROC sample size estimation.
+
+These parts are independently included in two `RJafroc` vignettes (on the GitHub `master` branch, not the CRAN uploaded version). These are located at: 
+
+https://dpc10ster.github.io/RJafroc/articles/Ch19Vig1FrocSampleSize.html
+
+https://dpc10ster.github.io/RJafroc/articles/Ch19Vig2FrocSampleSize.html
+
+
 
 ## Part 1
 
