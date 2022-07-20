@@ -67,23 +67,16 @@ rocDataB <- DfBinDataset(rocData, opChType = "ROC") # unnecessary as data is alr
 # but cant hurt
 ```
 
-The next code block determines `lesDistr`, the lesion distribution array, which has `Lmax` (maximum number of lesions per diseased case over the dataset) rows and two columns. The first column contains the integers 1, 2, ..., `Lmax` and the second column contains the fraction of diseased cases with the number of lesions per case specified in the first column. The second column will sum to unity. The RSM fitting algorithm needs to know how lesion-rich the dataset is, as the RSM predicted ROC-AUC depends on the lesion-richness of the dataset. For reasons that will become clear below, one also needs the distribution of the lesion weights. Note that `lesDist` is determined from the FROC dataset as the lesion-richness information is lost upon conversion to an ROC dataset. The `PlotRsmOperatingCharacteristics` function used below sets `relWeights = 0`, which ensures equally weighted lesions: on cases with one lesion the weight of the lesion is unity, on cases with two lesions the weights of each lesion is 1/2 and on cases with three lesions the weight of each lesion is 1/3, etc..
+The next code block determines `lesDistr`, the lesion distribution array, which has `Lmax` (maximum number of lesions per diseased case over the dataset) rows and two columns. The first column contains the integers 1, 2, ..., `Lmax` and the second column contains the fraction of diseased cases with the number of lesions per case specified in the first column. The second column will sum to unity. The RSM fitting algorithm needs to know how lesion-rich the dataset is, as the RSM predicted ROC-AUC depends on the lesion-richness of the dataset. For reasons that will become clear below, one also needs the distribution of the lesion weights. Note that `lesDist` is determined from the FROC dataset as the lesion-richness information is lost upon conversion to an ROC dataset. The `PlotRsmOperatingCharacteristics` function used below sets `relWeights = 0`, which ensures equally weighted lesions: on cases with one lesion the weight of the lesion is unity, on cases with two lesions the weights of each lesion is 1/2 and on cases with three lesions the weight of each lesion is 1/3, etc.. TBA due to changes in lesDist etc.
 
 
 ```r
-lesDistr <- UtilLesionDistr(frocData)
+lesDistr <- UtilLesionDistrVector(frocData)
 print(lesDistr)
 ```
 
 ```
-##      [,1] [,2]
-## [1,]    1 0.69
-## [2,]    2 0.20
-## [3,]    3 0.11
-```
-
-```r
-lesDistr <- lesDistr[,2]
+## [1] 0.69 0.20 0.11
 ```
 
 For this dataset `Lmax` is 3, and fraction 0.69 of diseased cases have one lesion, fraction 0.2 of diseased cases have two lesions and fraction 0.11 of diseased cases have three lesions. 
@@ -117,7 +110,7 @@ nuPMed <- median(RsmParms[,,3])
 ```
 
 
-The defining values of the fitting model are `muMed` = 3.3105557,  `lambdaPMed` = 1.714368 and `nuPMed` = 0.7036567. Note that these obey the constraints `lambdaPMed > 0` and `0 < nuP < 1`. One converts the physical parameters to the intrinsic values:
+The defining values of the fitting model are `muMed` = 3.3121519,  `lambdaPMed` = 1.714368 and `nuPMed` = 0.7036564. Note that these obey the constraints `lambdaPMed > 0` and `0 < nuP < 1`. One converts the physical parameters to the intrinsic values:
 
 
 
@@ -127,7 +120,7 @@ lambdaMed <- temp$lambda
 nuMed <- temp$nu
 ```
 
-In terms of intrinsic parameters, the defining values of the fitting model are `muMed` = 3.3105557,  `lambdaMed` = 5.6755108 and `nuMed` = 0.3673814. We are now ready to calculate the expected NH FOMs using the ROC -AUC and the wAFROC FOM.  
+In terms of intrinsic parameters, the defining values of the fitting model are `muMed` = 3.3121519,  `lambdaMed` = 5.6782473 and `nuMed` = 0.3672041. We are now ready to calculate the expected NH FOMs using the ROC -AUC and the wAFROC FOM.  
 
 
 ```r
@@ -140,7 +133,7 @@ aucwAfrocNH <- PlotRsmOperatingCharacteristics(muMed, lambdaMed, nuMed,
 
 * The plotting function `PlotRsmOperatingCharacteristics()` returns a number of other objects, most importantly the plot, but here we use only the AUC, which is obtained by numerical integration of the predicted operating characteristics. 
 
-* One has `aucRocNH = 0.8791301` and `aucwAfrocNH = 0.7198929`. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes the localization constraint. 
+* One has `aucRocNH = 0.8791542` and `aucwAfrocNH = 0.7199233`. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes the localization constraint. 
 
 * To induce the alternative hypothesis condition, one increments $\mu_{NH}$ by $\Delta_{\mu}$. The resulting ROC-AUC and wAFROC-AUC are calculated, again by numerical integration of the RSM predicted ROC and wAFROC curves, leading to the corresponding effect-sizes (note that in each equation below one takes the difference between the AH value minus the NH value):
 
@@ -161,26 +154,26 @@ for (i in 1:length(deltaMu)) {
 ```
 
 ```
-## ES_ROC =  0.0006197813 , ES_wAFROC =  0.001328972 
-## ES_ROC =  0.001234752 , ES_wAFROC =  0.002649814 
-## ES_ROC =  0.00184496 , ES_wAFROC =  0.003962591 
-## ES_ROC =  0.002450451 , ES_wAFROC =  0.005267363 
-## ES_ROC =  0.003051273 , ES_wAFROC =  0.006564192 
-## ES_ROC =  0.003647472 , ES_wAFROC =  0.00785314 
-## ES_ROC =  0.004239094 , ES_wAFROC =  0.009134268 
-## ES_ROC =  0.004826184 , ES_wAFROC =  0.01040764 
-## ES_ROC =  0.005408788 , ES_wAFROC =  0.0116733 
-## ES_ROC =  0.00598695 , ES_wAFROC =  0.01293133 
-## ES_ROC =  0.006560717 , ES_wAFROC =  0.01418178 
-## ES_ROC =  0.007130131 , ES_wAFROC =  0.01542471 
-## ES_ROC =  0.007695238 , ES_wAFROC =  0.01666018 
-## ES_ROC =  0.00825608 , ES_wAFROC =  0.01788824 
-## ES_ROC =  0.008812701 , ES_wAFROC =  0.01910896 
-## ES_ROC =  0.009365145 , ES_wAFROC =  0.0203224 
-## ES_ROC =  0.009913453 , ES_wAFROC =  0.0215286 
-## ES_ROC =  0.01045767 , ES_wAFROC =  0.02272763 
-## ES_ROC =  0.01099783 , ES_wAFROC =  0.02391954 
-## ES_ROC =  0.01153399 , ES_wAFROC =  0.02510439
+## ES_ROC =  0.0006191512 , ES_wAFROC =  0.001327918 
+## ES_ROC =  0.0012335 , ES_wAFROC =  0.002647718 
+## ES_ROC =  0.001843092 , ES_wAFROC =  0.003959464 
+## ES_ROC =  0.002447976 , ES_wAFROC =  0.005263216 
+## ES_ROC =  0.003048197 , ES_wAFROC =  0.006559037 
+## ES_ROC =  0.003643803 , ES_wAFROC =  0.007846987 
+## ES_ROC =  0.004234838 , ES_wAFROC =  0.009127128 
+## ES_ROC =  0.004821349 , ES_wAFROC =  0.01039952 
+## ES_ROC =  0.005403381 , ES_wAFROC =  0.01166422 
+## ES_ROC =  0.005980979 , ES_wAFROC =  0.0129213 
+## ES_ROC =  0.006554188 , ES_wAFROC =  0.0141708 
+## ES_ROC =  0.007123051 , ES_wAFROC =  0.0154128 
+## ES_ROC =  0.007687614 , ES_wAFROC =  0.01664735 
+## ES_ROC =  0.008247919 , ES_wAFROC =  0.0178745 
+## ES_ROC =  0.00880401 , ES_wAFROC =  0.01909432 
+## ES_ROC =  0.009355929 , ES_wAFROC =  0.02030686 
+## ES_ROC =  0.00990372 , ES_wAFROC =  0.02151218 
+## ES_ROC =  0.01044743 , ES_wAFROC =  0.02271034 
+## ES_ROC =  0.01098709 , ES_wAFROC =  0.02390139 
+## ES_ROC =  0.01152274 , ES_wAFROC =  0.02508539
 ```
 
 Here is a plot of wAFROC effect size (y-axis) vs. ROC effect size.
@@ -212,7 +205,7 @@ effectSizewAFROC <- effectSizeROC*scaleFactor$coefficients[1] # r2 = summary(sca
 ```
 
 
-The slope of the zero-intercept constrained straight line fit is `scaleFactor` = 2.1686863 and the squared correlation coefficient is `R2` = 0.9999904. Therefore, the conversion from ROC to wAFROC effect size is: `effectSizewAFROC = scaleFactor * effectSizeROC`. **The wAFROC effect size is twice the ROC effect size.** All that remains is to calculate the variance components using the two FOMs.
+The slope of the zero-intercept constrained straight line fit is `scaleFactor` = 2.1691632 and the squared correlation coefficient is `R2` = 0.9999904. Therefore, the conversion from ROC to wAFROC effect size is: `effectSizewAFROC = scaleFactor * effectSizeROC`. **The wAFROC effect size is twice the ROC effect size.** All that remains is to calculate the variance components using the two FOMs.
 
 
 ### Computing the respective variance components
@@ -295,16 +288,16 @@ for (i in 1:length(effectSizeROC)) {
 ```
 
 ```
-## ROC-ES =  0.01 , wAFROC-ES =  0.021686863 , Power-ROC =  0.064430457 , Power-wAFROC =  0.126619 
-## ROC-ES =  0.02 , wAFROC-ES =  0.043373726 , Power-ROC =  0.10878897 , Power-wAFROC =  0.36052645 
-## ROC-ES =  0.03 , wAFROC-ES =  0.065060589 , Power-ROC =  0.18471152 , Power-wAFROC =  0.66861813 
-## ROC-ES =  0.04 , wAFROC-ES =  0.086747452 , Power-ROC =  0.29079274 , Power-wAFROC =  0.88966483 
-## ROC-ES =  0.05 , wAFROC-ES =  0.10843431 , Power-ROC =  0.41954431 , Power-wAFROC =  0.9777141 
-## ROC-ES =  0.06 , wAFROC-ES =  0.13012118 , Power-ROC =  0.55738123 , Power-wAFROC =  0.99734912 
-## ROC-ES =  0.07 , wAFROC-ES =  0.15180804 , Power-ROC =  0.68816012 , Power-wAFROC =  0.9998169 
-## ROC-ES =  0.08 , wAFROC-ES =  0.1734949 , Power-ROC =  0.79836108 , Power-wAFROC =  0.9999927 
-## ROC-ES =  0.09 , wAFROC-ES =  0.19518177 , Power-ROC =  0.88095077 , Power-wAFROC =  0.99999983 
-## ROC-ES =  0.1 , wAFROC-ES =  0.21686863 , Power-ROC =  0.93606799 , Power-wAFROC =  1
+## ROC-ES =  0.01 , wAFROC-ES =  0.021691632 , Power-ROC =  0.064430457 , Power-wAFROC =  0.12665349 
+## ROC-ES =  0.02 , wAFROC-ES =  0.043383263 , Power-ROC =  0.10878897 , Power-wAFROC =  0.36065725 
+## ROC-ES =  0.03 , wAFROC-ES =  0.065074895 , Power-ROC =  0.18471152 , Power-wAFROC =  0.6688074 
+## ROC-ES =  0.04 , wAFROC-ES =  0.086766526 , Power-ROC =  0.29079274 , Power-wAFROC =  0.88979509 
+## ROC-ES =  0.05 , wAFROC-ES =  0.10845816 , Power-ROC =  0.41954431 , Power-wAFROC =  0.97775966 
+## ROC-ES =  0.06 , wAFROC-ES =  0.13014979 , Power-ROC =  0.55738123 , Power-wAFROC =  0.9973575 
+## ROC-ES =  0.07 , wAFROC-ES =  0.15184142 , Power-ROC =  0.68816012 , Power-wAFROC =  0.99981772 
+## ROC-ES =  0.08 , wAFROC-ES =  0.17353305 , Power-ROC =  0.79836108 , Power-wAFROC =  0.99999274 
+## ROC-ES =  0.09 , wAFROC-ES =  0.19522468 , Power-ROC =  0.88095077 , Power-wAFROC =  0.99999983 
+## ROC-ES =  0.1 , wAFROC-ES =  0.21691632 , Power-ROC =  0.93606799 , Power-wAFROC =  1
 ```
 
 
@@ -354,7 +347,7 @@ scaleFactor <- ret$scaleFactor
 ```
 
 
-The fitting model is defined by `muMed` = 3.31593086,  `lambdaMed` = 5.61409412  and  `nuMed` = 0.3696988 and `lesDistr`. The effect size scale factor is 2.15402673.
+The fitting model is defined by `muMed` = 3.31491361,  `lambdaMed` = 5.61237183  and  `nuMed` = 0.36980616 and `lesDistr`. The effect size scale factor is 2.15372685.
 
 
 
@@ -365,7 +358,7 @@ aucwAfrocNH <- PlotRsmOperatingCharacteristics(muMed, lambdaMed, nuMed,
                                                lesDistr = lesDistr, OpChType = "wAFROC")$aucwAFROC
 ```
 
-The null hypothesis ROC AUC is 0.87907254 and the corresponding NH wAFROC AUC is 0.72323267. 
+The null hypothesis ROC AUC is 0.8790548 and the corresponding NH wAFROC AUC is 0.72320816. 
 
 ### Extracting the wAFROC variance components
 
@@ -402,7 +395,7 @@ cat("ROC-ES = ", ROC_ES, ", wAFROC-ES = ", ROC_ES * scaleFactor, ", Power-wAFROC
 ```
 
 ```
-## ROC-ES =  0.05 , wAFROC-ES =  0.10770134 , Power-wAFROC =  0.97627452
+## ROC-ES =  0.05 , wAFROC-ES =  0.10768634 , Power-wAFROC =  0.97624427
 ```
 
 ### wAFROC number of cases for 80% power for a given number of readers J
@@ -421,7 +414,7 @@ cat("ROC-ES = ", ROC_ES, ", wAFROC-ES = ", ROC_ES * scaleFactor,
 ```
 
 ```
-## ROC-ES =  0.05 , wAFROC-ES =  0.10770134 , K80RRRC =  42 , Power-wAFROC =  0.80472815
+## ROC-ES =  0.05 , wAFROC-ES =  0.10768634 , K80RRRC =  42 , Power-wAFROC =  0.80462043
 ```
 
 
@@ -438,7 +431,7 @@ cat("ROC-ES = ", ROC_ES, ", wAFROC-ES = ", ROC_ES * scaleFactor,
 ```
 
 ```
-## ROC-ES =  0.05 , wAFROC-ES =  0.10770134 , powerRRRC =  0.80472815
+## ROC-ES =  0.05 , wAFROC-ES =  0.10768634 , powerRRRC =  0.80462043
 ```
 
 

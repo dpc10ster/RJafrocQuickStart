@@ -23,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2022-06-15" />
+<meta name="date" content="2022-07-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,7 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.7" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-distribution-diseased-cases"><i class="fa fa-check"></i><b>4.7</b> On the distribution of numbers of lesions in diseased cases</a><ul>
 <li class="chapter" data-level="4.7.1" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-lesion-distribution"><i class="fa fa-check"></i><b>4.7.1</b> Definition of <code>lesDistr</code> array</a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-lesion-weights"><i class="fa fa-check"></i><b>4.8</b> Definition of <code>lesWghtDistr</code> array</a></li>
+<li class="chapter" data-level="4.8" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-lesion-weights"><i class="fa fa-check"></i><b>4.8</b> TBA Definition of <code>lesWghtDistr</code> array</a></li>
 <li class="chapter" data-level="4.9" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-format-references"><i class="fa fa-check"></i><b>4.9</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="quick-start-lroc-data.html"><a href="quick-start-lroc-data.html"><i class="fa fa-check"></i><b>5</b> Data format and reading LROC data</a><ul>
@@ -450,8 +450,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Explain the data format of the input Excel file for FROC datasets.</li>
 <li>Explain the format of the FROC dataset.</li>
-<li>Explain the lesion distribution array returned by <code>UtilLesionDistr()</code>.</li>
-<li>Explain the lesion weights array returned by <code>UtilLesionWeightsDistr()</code>.</li>
+<li>Explain the lesion distribution array returned by <code>UtilLesionDistrVector()</code>.</li>
+<li>Explain the lesion weights array returned by <code>UtilLesionWeightsMatrix()</code>.</li>
 <li>Details on the FROC paradigm are in my book <span class="citation">(Chakraborty <a href="#ref-chakraborty2017observer" role="doc-biblioref">2017</a>)</span>.</li>
 </ul>
 <p>The chapter is illustrated with a toy data file, <code>R/quick-start/frocCr.xlsx</code> in which readers ‘0’, ‘1’ and ‘2’ interpret 8 cases in two modalities, ‘0’ and ‘1’. The design is ‘factorial’, abbreviated to <code>FCTRL</code> in the software; this is also termed a ‘fully-crossed’ design. The Excel file has three worksheets named <code>Truth</code>, <code>NL</code> (or <code>FP</code>) and <code>LL</code> (or <code>TP</code>).</p>
@@ -685,32 +685,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>This tells us that fraction 0.217 of (diseased) cases contain 1 lesion</li>
 <li>And fraction 0.2 of (diseased) cases contain 2 lesions</li>
 <li>Etc.</li>
-<li>This information is obtained using the function <code>UtilLesionDistr()</code></li>
+<li>This information is obtained using the function <code>UtilLesionDistrVector()</code></li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="quick-start-froc-data-format.html#cb10-1"></a>lesDistr &lt;-<span class="st"> </span><span class="kw">UtilLesionDistr</span>(x)</span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="quick-start-froc-data-format.html#cb10-1"></a>lesDistr &lt;-<span class="st"> </span><span class="kw">UtilLesionDistrVector</span>(x)</span>
 <span id="cb10-2"><a href="quick-start-froc-data-format.html#cb10-2"></a>lesDistr</span>
-<span id="cb10-3"><a href="quick-start-froc-data-format.html#cb10-3"></a><span class="co">#&gt;       [,1]        [,2]</span></span>
-<span id="cb10-4"><a href="quick-start-froc-data-format.html#cb10-4"></a><span class="co">#&gt;  [1,]    1 0.217391304</span></span>
-<span id="cb10-5"><a href="quick-start-froc-data-format.html#cb10-5"></a><span class="co">#&gt;  [2,]    2 0.200000000</span></span>
-<span id="cb10-6"><a href="quick-start-froc-data-format.html#cb10-6"></a><span class="co">#&gt;  [3,]    3 0.113043478</span></span>
-<span id="cb10-7"><a href="quick-start-froc-data-format.html#cb10-7"></a><span class="co">#&gt;  [4,]    4 0.086956522</span></span>
-<span id="cb10-8"><a href="quick-start-froc-data-format.html#cb10-8"></a><span class="co">#&gt;  [5,]    5 0.043478261</span></span>
-<span id="cb10-9"><a href="quick-start-froc-data-format.html#cb10-9"></a><span class="co">#&gt;  [6,]    6 0.095652174</span></span>
-<span id="cb10-10"><a href="quick-start-froc-data-format.html#cb10-10"></a><span class="co">#&gt;  [7,]    7 0.052173913</span></span>
-<span id="cb10-11"><a href="quick-start-froc-data-format.html#cb10-11"></a><span class="co">#&gt;  [8,]    8 0.069565217</span></span>
-<span id="cb10-12"><a href="quick-start-froc-data-format.html#cb10-12"></a><span class="co">#&gt;  [9,]    9 0.017391304</span></span>
-<span id="cb10-13"><a href="quick-start-froc-data-format.html#cb10-13"></a><span class="co">#&gt; [10,]   10 0.026086957</span></span>
-<span id="cb10-14"><a href="quick-start-froc-data-format.html#cb10-14"></a><span class="co">#&gt; [11,]   11 0.026086957</span></span>
-<span id="cb10-15"><a href="quick-start-froc-data-format.html#cb10-15"></a><span class="co">#&gt; [12,]   12 0.026086957</span></span>
-<span id="cb10-16"><a href="quick-start-froc-data-format.html#cb10-16"></a><span class="co">#&gt; [13,]   16 0.017391304</span></span>
-<span id="cb10-17"><a href="quick-start-froc-data-format.html#cb10-17"></a><span class="co">#&gt; [14,]   20 0.008695652</span></span></code></pre></div>
+<span id="cb10-3"><a href="quick-start-froc-data-format.html#cb10-3"></a><span class="co">#&gt;  [1] 0.217391304 0.200000000 0.113043478 0.086956522 0.043478261 0.095652174</span></span>
+<span id="cb10-4"><a href="quick-start-froc-data-format.html#cb10-4"></a><span class="co">#&gt;  [7] 0.052173913 0.069565217 0.017391304 0.026086957 0.026086957 0.026086957</span></span>
+<span id="cb10-5"><a href="quick-start-froc-data-format.html#cb10-5"></a><span class="co">#&gt; [13] 0.017391304 0.008695652</span></span></code></pre></div>
 <ul>
-<li>The <code>UtilLesionDistr()</code> function returns an array with two columns and number of rows equal to the number of <em>distinct non-zero</em> values of lesions per case.</li>
+<li>TBA The <code>UtilLesionDistrVector()</code> function returns an array with two columns and number of rows equal to the number of <em>distinct non-zero</em> values of lesions per case.</li>
 <li>The first column contains the number of distinct non-zero values of lesions per case, 14 in the current example.</li>
 <li>The second column contains the fraction of diseased cases with the number of lesions indicated in the first column.</li>
 <li>The second column must sum to unity</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="quick-start-froc-data-format.html#cb11-1"></a><span class="kw">sum</span>(<span class="kw">UtilLesionDistr</span>(x)[,<span class="dv">2</span>])</span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="quick-start-froc-data-format.html#cb11-1"></a><span class="kw">sum</span>(<span class="kw">UtilLesionDistrVector</span>(x))</span>
 <span id="cb11-2"><a href="quick-start-froc-data-format.html#cb11-2"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
 <ul>
 <li>The lesion distribution array will come in handy when it comes to predicting the operating characteristics from using the Radiological Search Model (RSM), as detailed in TBA Chapter 17.</li>
@@ -718,7 +706,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="quick-start-froc-data-lesion-weights" class="section level2 hasAnchor">
-<h2><span class="header-section-number">4.8</span> Definition of <code>lesWghtDistr</code> array<a href="quick-start-froc-data-format.html#quick-start-froc-data-lesion-weights" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">4.8</span> TBA Definition of <code>lesWghtDistr</code> array<a href="quick-start-froc-data-format.html#quick-start-froc-data-lesion-weights" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>This is returned by <code>UtilLesionWeightsDistr()</code>.</li>
 <li>This contains the same number of rows as <code>lesDistr</code>.</li>
@@ -727,11 +715,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The second through the last columns contain the weights of cases with number of lesions per case corresponding to row 1.</li>
 <li>Missing values are filled with <code>-Inf</code>.</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="quick-start-froc-data-format.html#cb12-1"></a>lesWghtDistr &lt;-<span class="st"> </span><span class="kw">UtilLesionWeightsDistr</span>(x)</span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="quick-start-froc-data-format.html#cb12-1"></a>lesWghtDistr &lt;-<span class="st"> </span><span class="kw">UtilLesionWeightsMatrixDataset</span>(x, <span class="dt">relWeights =</span> <span class="dv">0</span>)</span>
 <span id="cb12-2"><a href="quick-start-froc-data-format.html#cb12-2"></a><span class="kw">cat</span>(<span class="st">&quot;dim(lesDistr) =&quot;</span>, <span class="kw">dim</span>(lesDistr),<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb12-3"><a href="quick-start-froc-data-format.html#cb12-3"></a><span class="co">#&gt; dim(lesDistr) = 14 2</span></span>
+<span id="cb12-3"><a href="quick-start-froc-data-format.html#cb12-3"></a><span class="co">#&gt; dim(lesDistr) =</span></span>
 <span id="cb12-4"><a href="quick-start-froc-data-format.html#cb12-4"></a><span class="kw">cat</span>(<span class="st">&quot;dim(lesWghtDistr) =&quot;</span>, <span class="kw">dim</span>(lesWghtDistr),<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb12-5"><a href="quick-start-froc-data-format.html#cb12-5"></a><span class="co">#&gt; dim(lesWghtDistr) = 14 21</span></span>
+<span id="cb12-5"><a href="quick-start-froc-data-format.html#cb12-5"></a><span class="co">#&gt; dim(lesWghtDistr) = 14 15</span></span>
 <span id="cb12-6"><a href="quick-start-froc-data-format.html#cb12-6"></a><span class="kw">cat</span>(<span class="st">&quot;lesWghtDistr = </span><span class="ch">\n\n</span><span class="st">&quot;</span>)</span>
 <span id="cb12-7"><a href="quick-start-froc-data-format.html#cb12-7"></a><span class="co">#&gt; lesWghtDistr =</span></span>
 <span id="cb12-8"><a href="quick-start-froc-data-format.html#cb12-8"></a>lesWghtDistr</span>
@@ -748,38 +736,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb12-19"><a href="quick-start-froc-data-format.html#cb12-19"></a><span class="co">#&gt; [10,]   10 0.10000000 0.10000000 0.10000000 0.10000000 0.10000000 0.10000000</span></span>
 <span id="cb12-20"><a href="quick-start-froc-data-format.html#cb12-20"></a><span class="co">#&gt; [11,]   11 0.09090909 0.09090909 0.09090909 0.09090909 0.09090909 0.09090909</span></span>
 <span id="cb12-21"><a href="quick-start-froc-data-format.html#cb12-21"></a><span class="co">#&gt; [12,]   12 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333</span></span>
-<span id="cb12-22"><a href="quick-start-froc-data-format.html#cb12-22"></a><span class="co">#&gt; [13,]   16 0.06250000 0.06250000 0.06250000 0.06250000 0.06250000 0.06250000</span></span>
-<span id="cb12-23"><a href="quick-start-froc-data-format.html#cb12-23"></a><span class="co">#&gt; [14,]   20 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000</span></span>
-<span id="cb12-24"><a href="quick-start-froc-data-format.html#cb12-24"></a><span class="co">#&gt;             [,8]       [,9]      [,10]      [,11]      [,12]      [,13]  [,14]</span></span>
-<span id="cb12-25"><a href="quick-start-froc-data-format.html#cb12-25"></a><span class="co">#&gt;  [1,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf</span></span>
-<span id="cb12-26"><a href="quick-start-froc-data-format.html#cb12-26"></a><span class="co">#&gt;  [2,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf</span></span>
-<span id="cb12-27"><a href="quick-start-froc-data-format.html#cb12-27"></a><span class="co">#&gt;  [3,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf</span></span>
-<span id="cb12-28"><a href="quick-start-froc-data-format.html#cb12-28"></a><span class="co">#&gt;  [4,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf</span></span>
-<span id="cb12-29"><a href="quick-start-froc-data-format.html#cb12-29"></a><span class="co">#&gt;  [5,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf</span></span>
-<span id="cb12-30"><a href="quick-start-froc-data-format.html#cb12-30"></a><span class="co">#&gt;  [6,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf</span></span>
-<span id="cb12-31"><a href="quick-start-froc-data-format.html#cb12-31"></a><span class="co">#&gt;  [7,] 0.14285714       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf</span></span>
-<span id="cb12-32"><a href="quick-start-froc-data-format.html#cb12-32"></a><span class="co">#&gt;  [8,] 0.12500000 0.12500000       -Inf       -Inf       -Inf       -Inf   -Inf</span></span>
-<span id="cb12-33"><a href="quick-start-froc-data-format.html#cb12-33"></a><span class="co">#&gt;  [9,] 0.11111111 0.11111111 0.11111111       -Inf       -Inf       -Inf   -Inf</span></span>
-<span id="cb12-34"><a href="quick-start-froc-data-format.html#cb12-34"></a><span class="co">#&gt; [10,] 0.10000000 0.10000000 0.10000000 0.10000000       -Inf       -Inf   -Inf</span></span>
-<span id="cb12-35"><a href="quick-start-froc-data-format.html#cb12-35"></a><span class="co">#&gt; [11,] 0.09090909 0.09090909 0.09090909 0.09090909 0.09090909       -Inf   -Inf</span></span>
-<span id="cb12-36"><a href="quick-start-froc-data-format.html#cb12-36"></a><span class="co">#&gt; [12,] 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333   -Inf</span></span>
-<span id="cb12-37"><a href="quick-start-froc-data-format.html#cb12-37"></a><span class="co">#&gt; [13,] 0.06250000 0.06250000 0.06250000 0.06250000 0.06250000 0.06250000 0.0625</span></span>
-<span id="cb12-38"><a href="quick-start-froc-data-format.html#cb12-38"></a><span class="co">#&gt; [14,] 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000 0.0500</span></span>
-<span id="cb12-39"><a href="quick-start-froc-data-format.html#cb12-39"></a><span class="co">#&gt;        [,15]  [,16]  [,17] [,18] [,19] [,20] [,21]</span></span>
-<span id="cb12-40"><a href="quick-start-froc-data-format.html#cb12-40"></a><span class="co">#&gt;  [1,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf</span></span>
-<span id="cb12-41"><a href="quick-start-froc-data-format.html#cb12-41"></a><span class="co">#&gt;  [2,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf</span></span>
-<span id="cb12-42"><a href="quick-start-froc-data-format.html#cb12-42"></a><span class="co">#&gt;  [3,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf</span></span>
-<span id="cb12-43"><a href="quick-start-froc-data-format.html#cb12-43"></a><span class="co">#&gt;  [4,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf</span></span>
-<span id="cb12-44"><a href="quick-start-froc-data-format.html#cb12-44"></a><span class="co">#&gt;  [5,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf</span></span>
-<span id="cb12-45"><a href="quick-start-froc-data-format.html#cb12-45"></a><span class="co">#&gt;  [6,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf</span></span>
-<span id="cb12-46"><a href="quick-start-froc-data-format.html#cb12-46"></a><span class="co">#&gt;  [7,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf</span></span>
-<span id="cb12-47"><a href="quick-start-froc-data-format.html#cb12-47"></a><span class="co">#&gt;  [8,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf</span></span>
-<span id="cb12-48"><a href="quick-start-froc-data-format.html#cb12-48"></a><span class="co">#&gt;  [9,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf</span></span>
-<span id="cb12-49"><a href="quick-start-froc-data-format.html#cb12-49"></a><span class="co">#&gt; [10,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf</span></span>
-<span id="cb12-50"><a href="quick-start-froc-data-format.html#cb12-50"></a><span class="co">#&gt; [11,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf</span></span>
-<span id="cb12-51"><a href="quick-start-froc-data-format.html#cb12-51"></a><span class="co">#&gt; [12,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf</span></span>
-<span id="cb12-52"><a href="quick-start-froc-data-format.html#cb12-52"></a><span class="co">#&gt; [13,] 0.0625 0.0625 0.0625  -Inf  -Inf  -Inf  -Inf</span></span>
-<span id="cb12-53"><a href="quick-start-froc-data-format.html#cb12-53"></a><span class="co">#&gt; [14,] 0.0500 0.0500 0.0500  0.05  0.05  0.05  0.05</span></span></code></pre></div>
+<span id="cb12-22"><a href="quick-start-froc-data-format.html#cb12-22"></a><span class="co">#&gt; [13,]   13 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308</span></span>
+<span id="cb12-23"><a href="quick-start-froc-data-format.html#cb12-23"></a><span class="co">#&gt; [14,]   14 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857</span></span>
+<span id="cb12-24"><a href="quick-start-froc-data-format.html#cb12-24"></a><span class="co">#&gt;             [,8]       [,9]      [,10]      [,11]      [,12]      [,13]</span></span>
+<span id="cb12-25"><a href="quick-start-froc-data-format.html#cb12-25"></a><span class="co">#&gt;  [1,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf</span></span>
+<span id="cb12-26"><a href="quick-start-froc-data-format.html#cb12-26"></a><span class="co">#&gt;  [2,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf</span></span>
+<span id="cb12-27"><a href="quick-start-froc-data-format.html#cb12-27"></a><span class="co">#&gt;  [3,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf</span></span>
+<span id="cb12-28"><a href="quick-start-froc-data-format.html#cb12-28"></a><span class="co">#&gt;  [4,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf</span></span>
+<span id="cb12-29"><a href="quick-start-froc-data-format.html#cb12-29"></a><span class="co">#&gt;  [5,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf</span></span>
+<span id="cb12-30"><a href="quick-start-froc-data-format.html#cb12-30"></a><span class="co">#&gt;  [6,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf</span></span>
+<span id="cb12-31"><a href="quick-start-froc-data-format.html#cb12-31"></a><span class="co">#&gt;  [7,] 0.14285714       -Inf       -Inf       -Inf       -Inf       -Inf</span></span>
+<span id="cb12-32"><a href="quick-start-froc-data-format.html#cb12-32"></a><span class="co">#&gt;  [8,] 0.12500000 0.12500000       -Inf       -Inf       -Inf       -Inf</span></span>
+<span id="cb12-33"><a href="quick-start-froc-data-format.html#cb12-33"></a><span class="co">#&gt;  [9,] 0.11111111 0.11111111 0.11111111       -Inf       -Inf       -Inf</span></span>
+<span id="cb12-34"><a href="quick-start-froc-data-format.html#cb12-34"></a><span class="co">#&gt; [10,] 0.10000000 0.10000000 0.10000000 0.10000000       -Inf       -Inf</span></span>
+<span id="cb12-35"><a href="quick-start-froc-data-format.html#cb12-35"></a><span class="co">#&gt; [11,] 0.09090909 0.09090909 0.09090909 0.09090909 0.09090909       -Inf</span></span>
+<span id="cb12-36"><a href="quick-start-froc-data-format.html#cb12-36"></a><span class="co">#&gt; [12,] 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333</span></span>
+<span id="cb12-37"><a href="quick-start-froc-data-format.html#cb12-37"></a><span class="co">#&gt; [13,] 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308</span></span>
+<span id="cb12-38"><a href="quick-start-froc-data-format.html#cb12-38"></a><span class="co">#&gt; [14,] 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857</span></span>
+<span id="cb12-39"><a href="quick-start-froc-data-format.html#cb12-39"></a><span class="co">#&gt;            [,14]      [,15]</span></span>
+<span id="cb12-40"><a href="quick-start-froc-data-format.html#cb12-40"></a><span class="co">#&gt;  [1,]       -Inf       -Inf</span></span>
+<span id="cb12-41"><a href="quick-start-froc-data-format.html#cb12-41"></a><span class="co">#&gt;  [2,]       -Inf       -Inf</span></span>
+<span id="cb12-42"><a href="quick-start-froc-data-format.html#cb12-42"></a><span class="co">#&gt;  [3,]       -Inf       -Inf</span></span>
+<span id="cb12-43"><a href="quick-start-froc-data-format.html#cb12-43"></a><span class="co">#&gt;  [4,]       -Inf       -Inf</span></span>
+<span id="cb12-44"><a href="quick-start-froc-data-format.html#cb12-44"></a><span class="co">#&gt;  [5,]       -Inf       -Inf</span></span>
+<span id="cb12-45"><a href="quick-start-froc-data-format.html#cb12-45"></a><span class="co">#&gt;  [6,]       -Inf       -Inf</span></span>
+<span id="cb12-46"><a href="quick-start-froc-data-format.html#cb12-46"></a><span class="co">#&gt;  [7,]       -Inf       -Inf</span></span>
+<span id="cb12-47"><a href="quick-start-froc-data-format.html#cb12-47"></a><span class="co">#&gt;  [8,]       -Inf       -Inf</span></span>
+<span id="cb12-48"><a href="quick-start-froc-data-format.html#cb12-48"></a><span class="co">#&gt;  [9,]       -Inf       -Inf</span></span>
+<span id="cb12-49"><a href="quick-start-froc-data-format.html#cb12-49"></a><span class="co">#&gt; [10,]       -Inf       -Inf</span></span>
+<span id="cb12-50"><a href="quick-start-froc-data-format.html#cb12-50"></a><span class="co">#&gt; [11,]       -Inf       -Inf</span></span>
+<span id="cb12-51"><a href="quick-start-froc-data-format.html#cb12-51"></a><span class="co">#&gt; [12,]       -Inf       -Inf</span></span>
+<span id="cb12-52"><a href="quick-start-froc-data-format.html#cb12-52"></a><span class="co">#&gt; [13,] 0.07692308       -Inf</span></span>
+<span id="cb12-53"><a href="quick-start-froc-data-format.html#cb12-53"></a><span class="co">#&gt; [14,] 0.07142857 0.07142857</span></span></code></pre></div>
 <ul>
 <li>Row 3 corresponds to 3 lesions per case and the weights are 1/3, 1/3 and 1/3.</li>
 <li>Row 13 corresponds to 16 lesions per case and the weights are 0.06250000, 0.06250000, …, repeated 13 times.</li>

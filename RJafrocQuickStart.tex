@@ -134,7 +134,7 @@
 
 \title{The RJafroc Quick Start Book}
 \author{Dev P. Chakraborty, PhD}
-\date{2022-06-15}
+\date{2022-07-20}
 
 \begin{document}
 \maketitle
@@ -674,9 +674,9 @@ The purpose of this chapter is to:
 \item
   Explain the format of the FROC dataset.
 \item
-  Explain the lesion distribution array returned by \texttt{UtilLesionDistr()}.
+  Explain the lesion distribution array returned by \texttt{UtilLesionDistrVector()}.
 \item
-  Explain the lesion weights array returned by \texttt{UtilLesionWeightsDistr()}.
+  Explain the lesion weights array returned by \texttt{UtilLesionWeightsMatrix()}.
 \item
   Details on the FROC paradigm are in my book \citep{chakraborty2017observer}.
 \end{itemize}
@@ -1053,35 +1053,23 @@ These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
 \item
   Etc.
 \item
-  This information is obtained using the function \texttt{UtilLesionDistr()}
+  This information is obtained using the function \texttt{UtilLesionDistrVector()}
 \end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{lesDistr <-}\StringTok{ }\KeywordTok{UtilLesionDistr}\NormalTok{(x)}
+\NormalTok{lesDistr <-}\StringTok{ }\KeywordTok{UtilLesionDistrVector}\NormalTok{(x)}
 \NormalTok{lesDistr}
-\CommentTok{#>       [,1]        [,2]}
-\CommentTok{#>  [1,]    1 0.217391304}
-\CommentTok{#>  [2,]    2 0.200000000}
-\CommentTok{#>  [3,]    3 0.113043478}
-\CommentTok{#>  [4,]    4 0.086956522}
-\CommentTok{#>  [5,]    5 0.043478261}
-\CommentTok{#>  [6,]    6 0.095652174}
-\CommentTok{#>  [7,]    7 0.052173913}
-\CommentTok{#>  [8,]    8 0.069565217}
-\CommentTok{#>  [9,]    9 0.017391304}
-\CommentTok{#> [10,]   10 0.026086957}
-\CommentTok{#> [11,]   11 0.026086957}
-\CommentTok{#> [12,]   12 0.026086957}
-\CommentTok{#> [13,]   16 0.017391304}
-\CommentTok{#> [14,]   20 0.008695652}
+\CommentTok{#>  [1] 0.217391304 0.200000000 0.113043478 0.086956522 0.043478261 0.095652174}
+\CommentTok{#>  [7] 0.052173913 0.069565217 0.017391304 0.026086957 0.026086957 0.026086957}
+\CommentTok{#> [13] 0.017391304 0.008695652}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{itemize}
 \tightlist
 \item
-  The \texttt{UtilLesionDistr()} function returns an array with two columns and number of rows equal to the number of \emph{distinct non-zero} values of lesions per case.
+  TBA The \texttt{UtilLesionDistrVector()} function returns an array with two columns and number of rows equal to the number of \emph{distinct non-zero} values of lesions per case.
 \item
   The first column contains the number of distinct non-zero values of lesions per case, 14 in the current example.
 \item
@@ -1092,7 +1080,7 @@ These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{sum}\NormalTok{(}\KeywordTok{UtilLesionDistr}\NormalTok{(x)[,}\DecValTok{2}\NormalTok{])}
+\KeywordTok{sum}\NormalTok{(}\KeywordTok{UtilLesionDistrVector}\NormalTok{(x))}
 \CommentTok{#> [1] 1}
 \end{Highlighting}
 \end{Shaded}
@@ -1104,7 +1092,7 @@ These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
 \end{itemize}
 
 \hypertarget{quick-start-froc-data-lesion-weights}{%
-\section{\texorpdfstring{Definition of \texttt{lesWghtDistr} array}{Definition of lesWghtDistr array}}\label{quick-start-froc-data-lesion-weights}}
+\section{\texorpdfstring{TBA Definition of \texttt{lesWghtDistr} array}{TBA Definition of lesWghtDistr array}}\label{quick-start-froc-data-lesion-weights}}
 
 \begin{itemize}
 \tightlist
@@ -1124,11 +1112,11 @@ These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{lesWghtDistr <-}\StringTok{ }\KeywordTok{UtilLesionWeightsDistr}\NormalTok{(x)}
+\NormalTok{lesWghtDistr <-}\StringTok{ }\KeywordTok{UtilLesionWeightsMatrixDataset}\NormalTok{(x, }\DataTypeTok{relWeights =} \DecValTok{0}\NormalTok{)}
 \KeywordTok{cat}\NormalTok{(}\StringTok{"dim(lesDistr) ="}\NormalTok{, }\KeywordTok{dim}\NormalTok{(lesDistr),}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
-\CommentTok{#> dim(lesDistr) = 14 2}
+\CommentTok{#> dim(lesDistr) =}
 \KeywordTok{cat}\NormalTok{(}\StringTok{"dim(lesWghtDistr) ="}\NormalTok{, }\KeywordTok{dim}\NormalTok{(lesWghtDistr),}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
-\CommentTok{#> dim(lesWghtDistr) = 14 21}
+\CommentTok{#> dim(lesWghtDistr) = 14 15}
 \KeywordTok{cat}\NormalTok{(}\StringTok{"lesWghtDistr = }\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
 \CommentTok{#> lesWghtDistr =}
 \NormalTok{lesWghtDistr}
@@ -1145,38 +1133,38 @@ These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
 \CommentTok{#> [10,]   10 0.10000000 0.10000000 0.10000000 0.10000000 0.10000000 0.10000000}
 \CommentTok{#> [11,]   11 0.09090909 0.09090909 0.09090909 0.09090909 0.09090909 0.09090909}
 \CommentTok{#> [12,]   12 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333}
-\CommentTok{#> [13,]   16 0.06250000 0.06250000 0.06250000 0.06250000 0.06250000 0.06250000}
-\CommentTok{#> [14,]   20 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000}
-\CommentTok{#>             [,8]       [,9]      [,10]      [,11]      [,12]      [,13]  [,14]}
-\CommentTok{#>  [1,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf}
-\CommentTok{#>  [2,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf}
-\CommentTok{#>  [3,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf}
-\CommentTok{#>  [4,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf}
-\CommentTok{#>  [5,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf}
-\CommentTok{#>  [6,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf}
-\CommentTok{#>  [7,] 0.14285714       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf}
-\CommentTok{#>  [8,] 0.12500000 0.12500000       -Inf       -Inf       -Inf       -Inf   -Inf}
-\CommentTok{#>  [9,] 0.11111111 0.11111111 0.11111111       -Inf       -Inf       -Inf   -Inf}
-\CommentTok{#> [10,] 0.10000000 0.10000000 0.10000000 0.10000000       -Inf       -Inf   -Inf}
-\CommentTok{#> [11,] 0.09090909 0.09090909 0.09090909 0.09090909 0.09090909       -Inf   -Inf}
-\CommentTok{#> [12,] 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333   -Inf}
-\CommentTok{#> [13,] 0.06250000 0.06250000 0.06250000 0.06250000 0.06250000 0.06250000 0.0625}
-\CommentTok{#> [14,] 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000 0.0500}
-\CommentTok{#>        [,15]  [,16]  [,17] [,18] [,19] [,20] [,21]}
-\CommentTok{#>  [1,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf}
-\CommentTok{#>  [2,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf}
-\CommentTok{#>  [3,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf}
-\CommentTok{#>  [4,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf}
-\CommentTok{#>  [5,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf}
-\CommentTok{#>  [6,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf}
-\CommentTok{#>  [7,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf}
-\CommentTok{#>  [8,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf}
-\CommentTok{#>  [9,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf}
-\CommentTok{#> [10,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf}
-\CommentTok{#> [11,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf}
-\CommentTok{#> [12,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf}
-\CommentTok{#> [13,] 0.0625 0.0625 0.0625  -Inf  -Inf  -Inf  -Inf}
-\CommentTok{#> [14,] 0.0500 0.0500 0.0500  0.05  0.05  0.05  0.05}
+\CommentTok{#> [13,]   13 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308}
+\CommentTok{#> [14,]   14 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857}
+\CommentTok{#>             [,8]       [,9]      [,10]      [,11]      [,12]      [,13]}
+\CommentTok{#>  [1,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf}
+\CommentTok{#>  [2,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf}
+\CommentTok{#>  [3,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf}
+\CommentTok{#>  [4,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf}
+\CommentTok{#>  [5,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf}
+\CommentTok{#>  [6,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf}
+\CommentTok{#>  [7,] 0.14285714       -Inf       -Inf       -Inf       -Inf       -Inf}
+\CommentTok{#>  [8,] 0.12500000 0.12500000       -Inf       -Inf       -Inf       -Inf}
+\CommentTok{#>  [9,] 0.11111111 0.11111111 0.11111111       -Inf       -Inf       -Inf}
+\CommentTok{#> [10,] 0.10000000 0.10000000 0.10000000 0.10000000       -Inf       -Inf}
+\CommentTok{#> [11,] 0.09090909 0.09090909 0.09090909 0.09090909 0.09090909       -Inf}
+\CommentTok{#> [12,] 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333}
+\CommentTok{#> [13,] 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308}
+\CommentTok{#> [14,] 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857}
+\CommentTok{#>            [,14]      [,15]}
+\CommentTok{#>  [1,]       -Inf       -Inf}
+\CommentTok{#>  [2,]       -Inf       -Inf}
+\CommentTok{#>  [3,]       -Inf       -Inf}
+\CommentTok{#>  [4,]       -Inf       -Inf}
+\CommentTok{#>  [5,]       -Inf       -Inf}
+\CommentTok{#>  [6,]       -Inf       -Inf}
+\CommentTok{#>  [7,]       -Inf       -Inf}
+\CommentTok{#>  [8,]       -Inf       -Inf}
+\CommentTok{#>  [9,]       -Inf       -Inf}
+\CommentTok{#> [10,]       -Inf       -Inf}
+\CommentTok{#> [11,]       -Inf       -Inf}
+\CommentTok{#> [12,]       -Inf       -Inf}
+\CommentTok{#> [13,] 0.07692308       -Inf}
+\CommentTok{#> [14,] 0.07142857 0.07142857}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4308,7 +4296,7 @@ Shown below are results obtained using \texttt{RJafroc} function \texttt{StSigni
 
 \begin{verbatim}
 ##   ORBoot.Chisq ORBoot.ddf ORBoot.P.val
-## 1    1.0215081          1   0.31216155
+## 1    1.1612251          1   0.28121162
 \end{verbatim}
 
 The DBM and OR-jackknife methods yield identical F-statistics, but the denominator degrees of freedom are different, \((I-1)(K-1)\) = 113 for DBM and \(\infty\) for OR. The F-statistics for OR-bootstrap and OR-DeLong are different.
@@ -7095,27 +7083,18 @@ The next section explains the steps used to implement \#2 above.
 \end{Highlighting}
 \end{Shaded}
 
-The next code block determines \texttt{lesDistr}, the lesion distribution array, which has \texttt{Lmax} (maximum number of lesions per diseased case over the dataset) rows and two columns. The first column contains the integers 1, 2, \ldots, \texttt{Lmax} and the second column contains the fraction of diseased cases with the number of lesions per case specified in the first column. The second column will sum to unity. The RSM fitting algorithm needs to know how lesion-rich the dataset is, as the RSM predicted ROC-AUC depends on the lesion-richness of the dataset. For reasons that will become clear below, one also needs the distribution of the lesion weights. Note that \texttt{lesDist} is determined from the FROC dataset as the lesion-richness information is lost upon conversion to an ROC dataset. The \texttt{PlotRsmOperatingCharacteristics} function used below sets \texttt{relWeights\ =\ 0}, which ensures equally weighted lesions: on cases with one lesion the weight of the lesion is unity, on cases with two lesions the weights of each lesion is 1/2 and on cases with three lesions the weight of each lesion is 1/3, etc..
+The next code block determines \texttt{lesDistr}, the lesion distribution array, which has \texttt{Lmax} (maximum number of lesions per diseased case over the dataset) rows and two columns. The first column contains the integers 1, 2, \ldots, \texttt{Lmax} and the second column contains the fraction of diseased cases with the number of lesions per case specified in the first column. The second column will sum to unity. The RSM fitting algorithm needs to know how lesion-rich the dataset is, as the RSM predicted ROC-AUC depends on the lesion-richness of the dataset. For reasons that will become clear below, one also needs the distribution of the lesion weights. Note that \texttt{lesDist} is determined from the FROC dataset as the lesion-richness information is lost upon conversion to an ROC dataset. The \texttt{PlotRsmOperatingCharacteristics} function used below sets \texttt{relWeights\ =\ 0}, which ensures equally weighted lesions: on cases with one lesion the weight of the lesion is unity, on cases with two lesions the weights of each lesion is 1/2 and on cases with three lesions the weight of each lesion is 1/3, etc.. TBA due to changes in lesDist etc.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{lesDistr <-}\StringTok{ }\KeywordTok{UtilLesionDistr}\NormalTok{(frocData)}
+\NormalTok{lesDistr <-}\StringTok{ }\KeywordTok{UtilLesionDistrVector}\NormalTok{(frocData)}
 \KeywordTok{print}\NormalTok{(lesDistr)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##      [,1] [,2]
-## [1,]    1 0.69
-## [2,]    2 0.20
-## [3,]    3 0.11
+## [1] 0.69 0.20 0.11
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{lesDistr <-}\StringTok{ }\NormalTok{lesDistr[,}\DecValTok{2}\NormalTok{]}
-\end{Highlighting}
-\end{Shaded}
 
 For this dataset \texttt{Lmax} is 3, and fraction 0.69 of diseased cases have one lesion, fraction 0.2 of diseased cases have two lesions and fraction 0.11 of diseased cases have three lesions.
 
@@ -7147,7 +7126,7 @@ I recommend taking the median of each of the parameters, over all treatment-read
 \end{Highlighting}
 \end{Shaded}
 
-The defining values of the fitting model are \texttt{muMed} = 3.3105557, \texttt{lambdaPMed} = 1.714368 and \texttt{nuPMed} = 0.7036567. Note that these obey the constraints \texttt{lambdaPMed\ \textgreater{}\ 0} and \texttt{0\ \textless{}\ nuP\ \textless{}\ 1}. One converts the physical parameters to the intrinsic values:
+The defining values of the fitting model are \texttt{muMed} = 3.3121519, \texttt{lambdaPMed} = 1.714368 and \texttt{nuPMed} = 0.7036564. Note that these obey the constraints \texttt{lambdaPMed\ \textgreater{}\ 0} and \texttt{0\ \textless{}\ nuP\ \textless{}\ 1}. One converts the physical parameters to the intrinsic values:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7157,7 +7136,7 @@ The defining values of the fitting model are \texttt{muMed} = 3.3105557, \texttt
 \end{Highlighting}
 \end{Shaded}
 
-In terms of intrinsic parameters, the defining values of the fitting model are \texttt{muMed} = 3.3105557, \texttt{lambdaMed} = 5.6755108 and \texttt{nuMed} = 0.3673814. We are now ready to calculate the expected NH FOMs using the ROC -AUC and the wAFROC FOM.
+In terms of intrinsic parameters, the defining values of the fitting model are \texttt{muMed} = 3.3121519, \texttt{lambdaMed} = 5.6782473 and \texttt{nuMed} = 0.3672041. We are now ready to calculate the expected NH FOMs using the ROC -AUC and the wAFROC FOM.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7172,7 +7151,7 @@ In terms of intrinsic parameters, the defining values of the fitting model are \
 \item
   The plotting function \texttt{PlotRsmOperatingCharacteristics()} returns a number of other objects, most importantly the plot, but here we use only the AUC, which is obtained by numerical integration of the predicted operating characteristics.
 \item
-  One has \texttt{aucRocNH\ =\ 0.8791301} and \texttt{aucwAfrocNH\ =\ 0.7198929}. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes the localization constraint.
+  One has \texttt{aucRocNH\ =\ 0.8791542} and \texttt{aucwAfrocNH\ =\ 0.7199233}. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes the localization constraint.
 \item
   To induce the alternative hypothesis condition, one increments \(\mu_{NH}\) by \(\Delta_{\mu}\). The resulting ROC-AUC and wAFROC-AUC are calculated, again by numerical integration of the RSM predicted ROC and wAFROC curves, leading to the corresponding effect-sizes (note that in each equation below one takes the difference between the AH value minus the NH value):
 \item
@@ -7194,26 +7173,26 @@ In terms of intrinsic parameters, the defining values of the fitting model are \
 \end{Shaded}
 
 \begin{verbatim}
-## ES_ROC =  0.0006197813 , ES_wAFROC =  0.001328972 
-## ES_ROC =  0.001234752 , ES_wAFROC =  0.002649814 
-## ES_ROC =  0.00184496 , ES_wAFROC =  0.003962591 
-## ES_ROC =  0.002450451 , ES_wAFROC =  0.005267363 
-## ES_ROC =  0.003051273 , ES_wAFROC =  0.006564192 
-## ES_ROC =  0.003647472 , ES_wAFROC =  0.00785314 
-## ES_ROC =  0.004239094 , ES_wAFROC =  0.009134268 
-## ES_ROC =  0.004826184 , ES_wAFROC =  0.01040764 
-## ES_ROC =  0.005408788 , ES_wAFROC =  0.0116733 
-## ES_ROC =  0.00598695 , ES_wAFROC =  0.01293133 
-## ES_ROC =  0.006560717 , ES_wAFROC =  0.01418178 
-## ES_ROC =  0.007130131 , ES_wAFROC =  0.01542471 
-## ES_ROC =  0.007695238 , ES_wAFROC =  0.01666018 
-## ES_ROC =  0.00825608 , ES_wAFROC =  0.01788824 
-## ES_ROC =  0.008812701 , ES_wAFROC =  0.01910896 
-## ES_ROC =  0.009365145 , ES_wAFROC =  0.0203224 
-## ES_ROC =  0.009913453 , ES_wAFROC =  0.0215286 
-## ES_ROC =  0.01045767 , ES_wAFROC =  0.02272763 
-## ES_ROC =  0.01099783 , ES_wAFROC =  0.02391954 
-## ES_ROC =  0.01153399 , ES_wAFROC =  0.02510439
+## ES_ROC =  0.0006191512 , ES_wAFROC =  0.001327918 
+## ES_ROC =  0.0012335 , ES_wAFROC =  0.002647718 
+## ES_ROC =  0.001843092 , ES_wAFROC =  0.003959464 
+## ES_ROC =  0.002447976 , ES_wAFROC =  0.005263216 
+## ES_ROC =  0.003048197 , ES_wAFROC =  0.006559037 
+## ES_ROC =  0.003643803 , ES_wAFROC =  0.007846987 
+## ES_ROC =  0.004234838 , ES_wAFROC =  0.009127128 
+## ES_ROC =  0.004821349 , ES_wAFROC =  0.01039952 
+## ES_ROC =  0.005403381 , ES_wAFROC =  0.01166422 
+## ES_ROC =  0.005980979 , ES_wAFROC =  0.0129213 
+## ES_ROC =  0.006554188 , ES_wAFROC =  0.0141708 
+## ES_ROC =  0.007123051 , ES_wAFROC =  0.0154128 
+## ES_ROC =  0.007687614 , ES_wAFROC =  0.01664735 
+## ES_ROC =  0.008247919 , ES_wAFROC =  0.0178745 
+## ES_ROC =  0.00880401 , ES_wAFROC =  0.01909432 
+## ES_ROC =  0.009355929 , ES_wAFROC =  0.02030686 
+## ES_ROC =  0.00990372 , ES_wAFROC =  0.02151218 
+## ES_ROC =  0.01044743 , ES_wAFROC =  0.02271034 
+## ES_ROC =  0.01098709 , ES_wAFROC =  0.02390139 
+## ES_ROC =  0.01152274 , ES_wAFROC =  0.02508539
 \end{verbatim}
 
 Here is a plot of wAFROC effect size (y-axis) vs.~ROC effect size.
@@ -7245,7 +7224,7 @@ The plot is very close to linear. This makes it easy to design an interpolation 
 \end{Highlighting}
 \end{Shaded}
 
-The slope of the zero-intercept constrained straight line fit is \texttt{scaleFactor} = 2.1686863 and the squared correlation coefficient is \texttt{R2} = 0.9999904. Therefore, the conversion from ROC to wAFROC effect size is: \texttt{effectSizewAFROC\ =\ scaleFactor\ *\ effectSizeROC}. \textbf{The wAFROC effect size is twice the ROC effect size.} All that remains is to calculate the variance components using the two FOMs.
+The slope of the zero-intercept constrained straight line fit is \texttt{scaleFactor} = 2.1691632 and the squared correlation coefficient is \texttt{R2} = 0.9999904. Therefore, the conversion from ROC to wAFROC effect size is: \texttt{effectSizewAFROC\ =\ scaleFactor\ *\ effectSizeROC}. \textbf{The wAFROC effect size is twice the ROC effect size.} All that remains is to calculate the variance components using the two FOMs.
 
 \hypertarget{computing-the-respective-variance-components}{%
 \subsection{Computing the respective variance components}\label{computing-the-respective-variance-components}}
@@ -7331,16 +7310,16 @@ We are now ready to compare ROC and wAFROC powers for equivalent effect sizes. T
 \end{Shaded}
 
 \begin{verbatim}
-## ROC-ES =  0.01 , wAFROC-ES =  0.021686863 , Power-ROC =  0.064430457 , Power-wAFROC =  0.126619 
-## ROC-ES =  0.02 , wAFROC-ES =  0.043373726 , Power-ROC =  0.10878897 , Power-wAFROC =  0.36052645 
-## ROC-ES =  0.03 , wAFROC-ES =  0.065060589 , Power-ROC =  0.18471152 , Power-wAFROC =  0.66861813 
-## ROC-ES =  0.04 , wAFROC-ES =  0.086747452 , Power-ROC =  0.29079274 , Power-wAFROC =  0.88966483 
-## ROC-ES =  0.05 , wAFROC-ES =  0.10843431 , Power-ROC =  0.41954431 , Power-wAFROC =  0.9777141 
-## ROC-ES =  0.06 , wAFROC-ES =  0.13012118 , Power-ROC =  0.55738123 , Power-wAFROC =  0.99734912 
-## ROC-ES =  0.07 , wAFROC-ES =  0.15180804 , Power-ROC =  0.68816012 , Power-wAFROC =  0.9998169 
-## ROC-ES =  0.08 , wAFROC-ES =  0.1734949 , Power-ROC =  0.79836108 , Power-wAFROC =  0.9999927 
-## ROC-ES =  0.09 , wAFROC-ES =  0.19518177 , Power-ROC =  0.88095077 , Power-wAFROC =  0.99999983 
-## ROC-ES =  0.1 , wAFROC-ES =  0.21686863 , Power-ROC =  0.93606799 , Power-wAFROC =  1
+## ROC-ES =  0.01 , wAFROC-ES =  0.021691632 , Power-ROC =  0.064430457 , Power-wAFROC =  0.12665349 
+## ROC-ES =  0.02 , wAFROC-ES =  0.043383263 , Power-ROC =  0.10878897 , Power-wAFROC =  0.36065725 
+## ROC-ES =  0.03 , wAFROC-ES =  0.065074895 , Power-ROC =  0.18471152 , Power-wAFROC =  0.6688074 
+## ROC-ES =  0.04 , wAFROC-ES =  0.086766526 , Power-ROC =  0.29079274 , Power-wAFROC =  0.88979509 
+## ROC-ES =  0.05 , wAFROC-ES =  0.10845816 , Power-ROC =  0.41954431 , Power-wAFROC =  0.97775966 
+## ROC-ES =  0.06 , wAFROC-ES =  0.13014979 , Power-ROC =  0.55738123 , Power-wAFROC =  0.9973575 
+## ROC-ES =  0.07 , wAFROC-ES =  0.15184142 , Power-ROC =  0.68816012 , Power-wAFROC =  0.99981772 
+## ROC-ES =  0.08 , wAFROC-ES =  0.17353305 , Power-ROC =  0.79836108 , Power-wAFROC =  0.99999274 
+## ROC-ES =  0.09 , wAFROC-ES =  0.19522468 , Power-ROC =  0.88095077 , Power-wAFROC =  0.99999983 
+## ROC-ES =  0.1 , wAFROC-ES =  0.21691632 , Power-ROC =  0.93606799 , Power-wAFROC =  1
 \end{verbatim}
 
 Since the wAFROC effect size is about a factor of two larger than the ROC effect size, wAFROC power is larger than that for ROC. The effect is magnified as the effect size enters as the square in the formula for the power (this overwhelms the slight increase in variability of wAFROC-FOM relative to ROC-FOM noted previously). The following is a plot of the respective powers.
@@ -7386,7 +7365,7 @@ One starts by extracting the first two treatments from \texttt{dataset04}, which
 \end{Highlighting}
 \end{Shaded}
 
-The fitting model is defined by \texttt{muMed} = 3.31593086, \texttt{lambdaMed} = 5.61409412 and \texttt{nuMed} = 0.3696988 and \texttt{lesDistr}. The effect size scale factor is 2.15402673.
+The fitting model is defined by \texttt{muMed} = 3.31491361, \texttt{lambdaMed} = 5.61237183 and \texttt{nuMed} = 0.36980616 and \texttt{lesDistr}. The effect size scale factor is 2.15372685.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7397,7 +7376,7 @@ The fitting model is defined by \texttt{muMed} = 3.31593086, \texttt{lambdaMed} 
 \end{Highlighting}
 \end{Shaded}
 
-The null hypothesis ROC AUC is 0.87907254 and the corresponding NH wAFROC AUC is 0.72323267.
+The null hypothesis ROC AUC is 0.8790548 and the corresponding NH wAFROC AUC is 0.72320816.
 
 \hypertarget{extracting-the-wafroc-variance-components}{%
 \subsection{Extracting the wAFROC variance components}\label{extracting-the-wafroc-variance-components}}
@@ -7436,7 +7415,7 @@ The following example is for ROC effect size = 0.05, 5 readers (\texttt{J\ =\ 5}
 \end{Shaded}
 
 \begin{verbatim}
-## ROC-ES =  0.05 , wAFROC-ES =  0.10770134 , Power-wAFROC =  0.97627452
+## ROC-ES =  0.05 , wAFROC-ES =  0.10768634 , Power-wAFROC =  0.97624427
 \end{verbatim}
 
 \hypertarget{wafroc-number-of-cases-for-80-power-for-a-given-number-of-readers-j}{%
@@ -7456,7 +7435,7 @@ The following example is for ROC effect size = 0.05, 5 readers (\texttt{J\ =\ 5}
 \end{Shaded}
 
 \begin{verbatim}
-## ROC-ES =  0.05 , wAFROC-ES =  0.10770134 , K80RRRC =  42 , Power-wAFROC =  0.80472815
+## ROC-ES =  0.05 , wAFROC-ES =  0.10768634 , K80RRRC =  42 , Power-wAFROC =  0.80462043
 \end{verbatim}
 
 \hypertarget{wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k}{%
@@ -7473,7 +7452,7 @@ The following example is for ROC effect size = 0.05, 5 readers (\texttt{J\ =\ 5}
 \end{Shaded}
 
 \begin{verbatim}
-## ROC-ES =  0.05 , wAFROC-ES =  0.10770134 , powerRRRC =  0.80472815
+## ROC-ES =  0.05 , wAFROC-ES =  0.10768634 , powerRRRC =  0.80462043
 \end{verbatim}
 
 The estimated power is close to 80\% as the number of cases (\texttt{ret2\$KRRRC\ =\ 42}) was chosen deliberately from the previous code block.

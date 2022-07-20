@@ -17,8 +17,8 @@ The purpose of this chapter is to:
 
 * Explain the data format of the input Excel file for FROC datasets. 
 * Explain the format of the FROC dataset.
-* Explain the lesion distribution array returned by `UtilLesionDistr()`.
-* Explain the lesion weights array returned by `UtilLesionWeightsDistr()`.
+* Explain the lesion distribution array returned by `UtilLesionDistrVector()`.
+* Explain the lesion weights array returned by `UtilLesionWeightsMatrix()`.
 * Details on the FROC paradigm are in my book [@chakraborty2017observer].
 
 The chapter is illustrated with a toy data file, `R/quick-start/frocCr.xlsx` in which readers '0', '1' and '2' interpret 8 cases in two modalities, '0' and '1'. The design is 'factorial', abbreviated to `FCTRL` in the software; this is also termed a 'fully-crossed' design. The Excel file has three worksheets named `Truth`, `NL` (or `FP`) and `LL` (or `TP`). 
@@ -260,44 +260,32 @@ for (el in 1:max(x$lesions$perCase)) cat("fraction of diseased cases with", el, 
 * This tells us that fraction 0.217 of (diseased) cases contain 1 lesion
 * And fraction 0.2 of (diseased) cases contain 2 lesions
 * Etc.
-* This information is obtained using the function `UtilLesionDistr()` 
+* This information is obtained using the function `UtilLesionDistrVector()` 
 
 
 ```r
-lesDistr <- UtilLesionDistr(x)
+lesDistr <- UtilLesionDistrVector(x)
 lesDistr
-#>       [,1]        [,2]
-#>  [1,]    1 0.217391304
-#>  [2,]    2 0.200000000
-#>  [3,]    3 0.113043478
-#>  [4,]    4 0.086956522
-#>  [5,]    5 0.043478261
-#>  [6,]    6 0.095652174
-#>  [7,]    7 0.052173913
-#>  [8,]    8 0.069565217
-#>  [9,]    9 0.017391304
-#> [10,]   10 0.026086957
-#> [11,]   11 0.026086957
-#> [12,]   12 0.026086957
-#> [13,]   16 0.017391304
-#> [14,]   20 0.008695652
+#>  [1] 0.217391304 0.200000000 0.113043478 0.086956522 0.043478261 0.095652174
+#>  [7] 0.052173913 0.069565217 0.017391304 0.026086957 0.026086957 0.026086957
+#> [13] 0.017391304 0.008695652
 ```
 
-* The `UtilLesionDistr()` function returns an array with two columns and number of rows equal to the number of *distinct non-zero* values of lesions per case.
+* TBA The `UtilLesionDistrVector()` function returns an array with two columns and number of rows equal to the number of *distinct non-zero* values of lesions per case.
 * The first column contains the number of distinct non-zero values of lesions per case, 14 in the current example.
 * The second column contains the fraction of diseased cases with the number of lesions indicated in the first column.
 * The second column must sum to unity
 
 
 ```r
-sum(UtilLesionDistr(x)[,2])
+sum(UtilLesionDistrVector(x))
 #> [1] 1
 ```
 
 * The lesion distribution array will come in handy when it comes to predicting the operating characteristics from using the Radiological Search Model (RSM), as detailed in TBA Chapter 17.
 
 
-## Definition of `lesWghtDistr` array {#quick-start-froc-data-lesion-weights}
+## TBA Definition of `lesWghtDistr` array {#quick-start-froc-data-lesion-weights}
 * This is returned by `UtilLesionWeightsDistr()`.
 * This contains the same number of rows as `lesDistr`.
 * The number of columns is one plus the number of rows as `lesDistr`.
@@ -307,11 +295,11 @@ sum(UtilLesionDistr(x)[,2])
 
 
 ```r
-lesWghtDistr <- UtilLesionWeightsDistr(x)
+lesWghtDistr <- UtilLesionWeightsMatrixDataset(x, relWeights = 0)
 cat("dim(lesDistr) =", dim(lesDistr),"\n")
-#> dim(lesDistr) = 14 2
+#> dim(lesDistr) =
 cat("dim(lesWghtDistr) =", dim(lesWghtDistr),"\n")
-#> dim(lesWghtDistr) = 14 21
+#> dim(lesWghtDistr) = 14 15
 cat("lesWghtDistr = \n\n")
 #> lesWghtDistr =
 lesWghtDistr
@@ -328,38 +316,38 @@ lesWghtDistr
 #> [10,]   10 0.10000000 0.10000000 0.10000000 0.10000000 0.10000000 0.10000000
 #> [11,]   11 0.09090909 0.09090909 0.09090909 0.09090909 0.09090909 0.09090909
 #> [12,]   12 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333
-#> [13,]   16 0.06250000 0.06250000 0.06250000 0.06250000 0.06250000 0.06250000
-#> [14,]   20 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000
-#>             [,8]       [,9]      [,10]      [,11]      [,12]      [,13]  [,14]
-#>  [1,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf
-#>  [2,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf
-#>  [3,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf
-#>  [4,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf
-#>  [5,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf
-#>  [6,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf
-#>  [7,] 0.14285714       -Inf       -Inf       -Inf       -Inf       -Inf   -Inf
-#>  [8,] 0.12500000 0.12500000       -Inf       -Inf       -Inf       -Inf   -Inf
-#>  [9,] 0.11111111 0.11111111 0.11111111       -Inf       -Inf       -Inf   -Inf
-#> [10,] 0.10000000 0.10000000 0.10000000 0.10000000       -Inf       -Inf   -Inf
-#> [11,] 0.09090909 0.09090909 0.09090909 0.09090909 0.09090909       -Inf   -Inf
-#> [12,] 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333   -Inf
-#> [13,] 0.06250000 0.06250000 0.06250000 0.06250000 0.06250000 0.06250000 0.0625
-#> [14,] 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000 0.0500
-#>        [,15]  [,16]  [,17] [,18] [,19] [,20] [,21]
-#>  [1,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf
-#>  [2,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf
-#>  [3,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf
-#>  [4,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf
-#>  [5,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf
-#>  [6,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf
-#>  [7,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf
-#>  [8,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf
-#>  [9,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf
-#> [10,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf
-#> [11,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf
-#> [12,]   -Inf   -Inf   -Inf  -Inf  -Inf  -Inf  -Inf
-#> [13,] 0.0625 0.0625 0.0625  -Inf  -Inf  -Inf  -Inf
-#> [14,] 0.0500 0.0500 0.0500  0.05  0.05  0.05  0.05
+#> [13,]   13 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308
+#> [14,]   14 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857
+#>             [,8]       [,9]      [,10]      [,11]      [,12]      [,13]
+#>  [1,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#>  [2,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#>  [3,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#>  [4,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#>  [5,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#>  [6,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#>  [7,] 0.14285714       -Inf       -Inf       -Inf       -Inf       -Inf
+#>  [8,] 0.12500000 0.12500000       -Inf       -Inf       -Inf       -Inf
+#>  [9,] 0.11111111 0.11111111 0.11111111       -Inf       -Inf       -Inf
+#> [10,] 0.10000000 0.10000000 0.10000000 0.10000000       -Inf       -Inf
+#> [11,] 0.09090909 0.09090909 0.09090909 0.09090909 0.09090909       -Inf
+#> [12,] 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333
+#> [13,] 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308
+#> [14,] 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857
+#>            [,14]      [,15]
+#>  [1,]       -Inf       -Inf
+#>  [2,]       -Inf       -Inf
+#>  [3,]       -Inf       -Inf
+#>  [4,]       -Inf       -Inf
+#>  [5,]       -Inf       -Inf
+#>  [6,]       -Inf       -Inf
+#>  [7,]       -Inf       -Inf
+#>  [8,]       -Inf       -Inf
+#>  [9,]       -Inf       -Inf
+#> [10,]       -Inf       -Inf
+#> [11,]       -Inf       -Inf
+#> [12,]       -Inf       -Inf
+#> [13,] 0.07692308       -Inf
+#> [14,] 0.07142857 0.07142857
 ```
 
 * Row 3 corresponds to 3 lesions per case and the weights are 1/3, 1/3 and 1/3.
