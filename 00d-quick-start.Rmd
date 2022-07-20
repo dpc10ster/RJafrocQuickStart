@@ -23,8 +23,8 @@ The purpose of this chapter is to:
 
 * Explain the data format of the input Excel file for FROC datasets. 
 * Explain the format of the FROC dataset.
-* Explain the lesion distribution array returned by `UtilLesionDistr()`.
-* Explain the lesion weights array returned by `UtilLesionWeightsDistr()`.
+* Explain the lesion distribution array returned by `UtilLesionDistrVector()`.
+* Explain the lesion weights array returned by `UtilLesionWeightsMatrix()`.
 * Details on the FROC paradigm are in my book [@chakraborty2017observer].
 
 The chapter is illustrated with a toy data file, `R/quick-start/frocCr.xlsx` in which readers '0', '1' and '2' interpret 8 cases in two modalities, '0' and '1'. The design is 'factorial', abbreviated to `FCTRL` in the software; this is also termed a 'fully-crossed' design. The Excel file has three worksheets named `Truth`, `NL` (or `FP`) and `LL` (or `TP`). 
@@ -164,26 +164,26 @@ for (el in 1:max(x$lesions$perCase)) cat("fraction of diseased cases with", el, 
 * This tells us that fraction 0.217 of (diseased) cases contain 1 lesion
 * And fraction 0.2 of (diseased) cases contain 2 lesions
 * Etc.
-* This information is obtained using the function `UtilLesionDistr()` 
+* This information is obtained using the function `UtilLesionDistrVector()` 
 
 ```{r}
-lesDistr <- UtilLesionDistr(x)
+lesDistr <- UtilLesionDistrVector(x)
 lesDistr
 ```
 
-* The `UtilLesionDistr()` function returns an array with two columns and number of rows equal to the number of *distinct non-zero* values of lesions per case.
+* TBA The `UtilLesionDistrVector()` function returns an array with two columns and number of rows equal to the number of *distinct non-zero* values of lesions per case.
 * The first column contains the number of distinct non-zero values of lesions per case, 14 in the current example.
 * The second column contains the fraction of diseased cases with the number of lesions indicated in the first column.
 * The second column must sum to unity
 
 ```{r}
-sum(UtilLesionDistr(x)[,2])
+sum(UtilLesionDistrVector(x))
 ```
 
 * The lesion distribution array will come in handy when it comes to predicting the operating characteristics from using the Radiological Search Model (RSM), as detailed in TBA Chapter 17.
 
 
-## Definition of `lesWghtDistr` array {#quick-start-froc-data-lesion-weights}
+## TBA Definition of `lesWghtDistr` array {#quick-start-froc-data-lesion-weights}
 * This is returned by `UtilLesionWeightsDistr()`.
 * This contains the same number of rows as `lesDistr`.
 * The number of columns is one plus the number of rows as `lesDistr`.
@@ -192,7 +192,7 @@ sum(UtilLesionDistr(x)[,2])
 * Missing values are filled with `-Inf`.
 
 ```{r}
-lesWghtDistr <- UtilLesionWeightsDistr(x)
+lesWghtDistr <- UtilLesionWeightsMatrixDataset(x, relWeights = 0)
 cat("dim(lesDistr) =", dim(lesDistr),"\n")
 cat("dim(lesWghtDistr) =", dim(lesWghtDistr),"\n")
 cat("lesWghtDistr = \n\n")
