@@ -23,6 +23,14 @@ rmd_files: [
   "11b-roc-sample-size-or.Rmd",
   "18a-analyzing-froc-data.Rmd",
   "18b-froc-sample-size.Rmd",
+  "19a-f-distribution.Rmd",
+  "19b-rsm-operating-characteristics.Rmd",
+  "19c-improper-rocs.Rmd",
+  "19d-degenerate-rocs.Rmd",
+  "19e-proproc-rocs.Rmd",
+  "19f-metz-eqn-36.Rmd",
+  "19g-cbm-plots.Rmd",
+  "19h-roi-paradigm.Rmd",
 ]
 clean: [packages.bib, myRefs.bbl]
 new_session: yes
