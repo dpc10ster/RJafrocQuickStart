@@ -24,8 +24,27 @@ vignette: >
   library(mvtnorm)
 ```
 
+
+## TBA How much finished {#cbm-plots-how-much-finished}
+10%
+
+
+## Introduction {#cbm-plots-introduction}
+So far, two methods have been described for fitting curves to ROC operating points, namely the (unequal variance) binormal model, book Chapter 06 and the radiological search model (RSM), book Chapter 16. The binormal model has been widely used to fit ROC operating points in many studies, dating to the early 1960s, and in a wide range of applications that are not just limited to medical imaging. It is a two-parameter model, i.e., $a$, $b$, excluding threshold parameters. However, binormal model fits almost invariably lead to ROC curves that inappropriately cross the chance diagonal, leading to a prediction of a region of the ROC curve where performance is worse than chance, even for expert observers. By convention, such curves are termed "improper". A chance line crossing near the upper right corner, which occurs when $b < 1$, and the fact that the ROC curve must eventually reach (1, 1) implies the curve must turn upwards as one approaches (1, 1), thereby displaying a "hook". The hook occurs near the origin if $b > 1$. Since $b$ is a continuous-variable parameter, there is zero probability that an estimate of $b$ will be exactly equal to one, the only condition under which there is no "hook". *Therefore, every fitted binormal model ROC curve is improper.*
+
+The improper behavior is often not readily visible. One may need to "zoom-in" on the upper-right corner to see it. This has been used as an argument for minimizing its importance / relevance [@metz1978rocmethodology]. This is as illogical as claiming nuclei are not relevant because one cannot easily see them. In an influential publication [@metz1989some] Metz has stated that the hook may be an "extrapolation artifact". The late Professor Charles ("Charlie") E. Metz has been a seminal force in this field, but science does not care how right one has been in the past; every scientist, including Einstein, makes mistakes^[Einstein famously fought against quantum mechanics, coming up with clever thought experiments that in turn kept other quantum mechanics researchers busy refuting each argument. He famously inserted a "fudge" parameter into his general relativity equations – now called the cosmological constant - to stop the universe from expanding; "the worst mistake of my life" as subsequently acknowledged by him.]. If Charlie really believed in the artifact "excuse", he would not have put a major effort into developing the proper ROC model and implementing it in PROPROC software[@metz1999proper; @pan1997proper].  Other semantic excuses have been made, e.g., [@pesce2010convexity] that proper ROC behavior is only expected of ideal observers and real observers are not ideal ^[This is an actual reviewer comment on one of the author's recent publications.]. The difference between real and ideal observers is taken into account in model observer theory by allowing the observer's efficiency to be less than unity. Efficiency is the ability of the observer is able to extract relevant information from the image. It is defined as the square of the $d'$ ratios ^[Recall that $d'$ is the effective separation of two unit variance distributions yielding the observed AUC.], real to ideal, as measured by 2AFC experiments, and is expected to be less than unity [@burgess1981density]. Since 2AFC derived AUCs are model-independent, efficiency has nothing to do with the shape of the ROC curve, in particular whether it is proper or not. In the author's judgment, any fit that predicts worse than chance level performance anywhere on the ROC plot, visible or not, is scientifically indefensible. 
+
+Since the "hook" is obviously an incorrect prediction, much effort has gone into developing models that always predict proper ROC curves, i.e., those that do not drop below the chance diagonal. These are called "proper" ROC curves (some of literature uses the quotes and some does not). There are at least four methods for fitting proper ROC curves, and these are listed in reverse chronological order. The most recent (2016) one [@chakraborty2011estimating; @chakraborty2012inverse] is based on the radiological search model (RSM), which was described in book Chapter 18. Next, (2000) is a method [@dorfman2000contaminated1; @dorfman2000contaminated2; @dorfman2000contaminated3] based on the contaminated binormal model (CBM), available as part of DBM-MRMC software from a University of Iowa website. Next, (1999) is the binormal model-based proper ROC fitting algorithm3,4 developed by Metz and Pan, implemented in PROPROC software, also available as part of DBM-MRMC software and which is implemented in the `RJafroc` package. Next, (1997) is the bigamma model12 fitting algorithm, for which no software currently exists, as far as the author is aware. Next, (1996) is LROCFIT, based on the location ROC (LROC) paradigm13, which also predicts proper ROC curves, but the data has to be acquired according to the LROC paradigm, while all of the other methods described in this chapter, and in Chapter 18, work with ROC data. 
+
+A related issue is data degeneracy that occurs when a reader fails to provide an interior ROC point, i.e., a point that lies inside the ROC unit-square, as distinct from points on the axes. The binormal model is unable to yield reasonable fits to such data, which tend to be generated by experts. Inability to fit a dataset means the researcher has no option but to discard them, or use empirical methods. The CBM and RSM methods are able to fit degenerate datasets. It has been claimed incorrectly, as shown below, that PROPROC can fit degenerate datasets – it cannot.
+
+There is a theorem relating the slope of a general ROC curve, independent of model assumptions, to a quantity called the likelihood ratio. This will lead to the distinction between "proper" and "improper" ROC curves. Needed first is an understanding of the likelihood ratio and demonstration (not a proof) of an important theorem, namely the slope of the ROC curve always equals the likelihood ratio, independent of parametric assumptions.
+
+
 ## Helper functions
-```{r echo=FALSE}
+
+The following computes the y-coordinate of the ROC predicted by the CBM. 
+```{r echo=T}
 CbmRocY <- function (x, mu, alpha) {
   y <- (1-alpha)*(1-pnorm(qnorm(1-x))) + alpha*(1-pnorm(qnorm(1-x)-mu))
   return(y)
@@ -35,7 +54,7 @@ CbmRocY <- function (x, mu, alpha) {
 
 ## Main code and output
   
-```{r, fig.show='hold', echo=FALSE}
+```{r, fig.show='hold', echo=T}
 FPF <- seq(0.0, 1, 0.001)
 alphaArr <- c(0.2, 0.8);muArr <- c(1,3)
 myLabel <- c("A", "B", "C", "D")
@@ -64,7 +83,7 @@ for (i in 1:2)
 Plots A - D show ROC curves predicted by the CBM model; the corresponding values of the $mu$ and $alpha$ parameters are indicated above the plots. For small $mu$ and/or $alpha$  the curve approaches the chance diagonal, consistent with the notion that if the lesion is not visible, performance can be no better than chance level.
 
 ## pdf plots
-```{r, fig.show='hold', echo=FALSE}
+```{r, fig.show='hold', echo=T}
 FPF <- seq(0.0, 1, 0.001)
 alphaArr <- c(0.2, 0.8);muArr <- c(1,3)
 myLabel <- c("E", "F", "G", "H")
