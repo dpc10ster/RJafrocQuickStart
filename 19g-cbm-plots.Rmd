@@ -236,7 +236,7 @@ plotSlope <- list()
 for (i in 1:length(zArray)) 
 {
   z <- zArray[[i]]
-  lr <-b*dnorm(a-b*z)/dnorm(-z) # same as likelihood ratio
+  lr <-b*dnorm(a-b*z)/dnorm(-z)
   slopePlot <- data.frame(z = z, lr = lr)
   plotSlope[[i]] <- ggplot(slopePlot, aes(x = z, y = lr)) + geom_line() + 
     ggtitle(paste0("Plot ", LETTERS[i], ": range=", zArrayText[i]))
@@ -513,7 +513,7 @@ for (i in 1:2)
     2 * pmvnorm(lower, upper, sigma = sigma)
   A_prop <-  as.numeric(A_prop)
   
-  slope <-b*dnorm(a-b*z)/dnorm(-z) # same as likelihood ratio
+  slope <-b*dnorm(a-b*z)/dnorm(-z)
   
   slopePlot <- data.frame(z = z, slope = slope)
   plotSlope[[i]] <- ggplot(slopePlot, aes(x = z, y = slope)) + 
@@ -563,7 +563,6 @@ The contaminated binormal model9-11, or CBM, is an alternate model for decision 
 Therefore, CBM is characterized by the parameters $\begin{matrix}\mu, & \alpha & \text{and} & \zeta_r, & \text{where} &  r=1,2,...,R_{\text{ROC}-1}& \end{matrix}$. The parameters $\mu, \alpha$ can be used to predict the ROC curve and the area under the curve.
 
 
-## CBM formalism {#proper-roc-models-cbm-formalism}
 
 For non-diseased cases, the $\text{pdf}$ is the same as for the binormal model:
 
@@ -582,19 +581,37 @@ For diseased cases the $\text{pdf}$ is a mixture of two unit variance distributi
 
 The likelihood ratio for the CBM model is given by the ratio of the two pdfs:
 
-  	.	(20.26)
 
-The likelihood function increases monotonically as z increases: this proves that the predicted ROC curve is proper, i.e., its slope decreases monotonically as the operating point moves up the curve (causing both z and the likelihood ratio to decrease). The slope at the origin (infinite z) is infinite and the slope at the upper-right corner is  . The predicted ROC coordinates are:
+\begin{equation}
+\left.\begin{aligned}
+l_\text{CBM}\left( z|a,b \right)&=\frac{\left( 1-\alpha \right)\phi(z) + \alpha \phi(z-\mu_\text{CBM})}{\phi(z)}\\
+&=\left( 1-\alpha \right)+\alpha \, exp\left(-\frac{\mu_\text{CBM}^2}{2}+z\,\mu_\text{CBM}  \right)
+\end{aligned}\right\}
+(\#eq:proper-roc-models-cbm-likelihood)
+\end{equation} 
 
-  	.	(20.27)
 
-  	.	(20.28)
+The function increases monotonically as $z$ increases proving that the predicted ROC curve is proper, i.e., its slope decreases monotonically as the operating point moves up the curve (causing both $z$ and the likelihood ratio to decrease). The slope at the origin (infinite $z$) is infinite and the slope at the upper-right corner is  $(1-\alpha)$. The predicted ROC coordinates are:
 
-Since on non-diseased cases the sampling behaviors are identical, the expression for   is identical to that for the binormal model, Eqn. (6.12). Eqn. (20.28) can be understood as follows.   is the probability that a z-sample exceeds  . There are two possibilities: the z-sample arose from the 0-centered distribution, which occurs with probability  , or it arose from the  -centered distribution, which occurs with probability  . In the former case, the probability that the z-sample exceeds   is  . In the latter case, the probability that the z-sample exceeds   is  . To obtain the net probability one sums these component probabilities in proportion to the probabilities   and   that the samples were from the zero centered or   centered distributions, respectively. A similar logic can be used to derive the AUC under the CBM fitted ROC curve. 
 
-  		.	(20.29)
+\begin{equation}
+\left.\begin{aligned}
+\text{FPF}\left( \zeta \right) &= \Phi\left( -\zeta \right)\\
+\text{TPF}\left( \zeta \right) &= \left( 1-\alpha \right)\Phi\left( -\zeta \right)+\alpha \,\Phi\left( \mu_\text{CBM}-\zeta \right)
+\end{aligned}\right\}
+(\#eq:proper-roc-models-cbm-fpf-tpf)
+\end{equation} 
 
-In the limit  ,   and in the limit  ,  and the bounds   is always true.
+
+Since on non-diseased cases the sampling behaviors are identical, the expression for $\text{FPF}\left( \zeta \right)$ is identical to that for the binormal model: the probability that the z-sample for a non-diseased case exceeds $\zeta$ is $\Phi\left( -\zeta \right)$. The second Eqn. \@ref(eq:proper-roc-models-cbm-fpf-tpf) can be understood as follows. $\text{TPF}\left( \zeta \right)$ is the probability that a diseased case z-sample exceeds $\zeta$. There are two possibilities: the z-sample arose from the zero-centered distribution, which occurs with probability $\left( 1-\alpha \right)$, or it arose from the $\mu_\text{CBM}$-centered distribution, which occurs with probability $\alpha$. In the former case, the probability that the z-sample exceeds $\zeta$ is $\Phi\left( -\zeta \right)$. In the latter case, the probability is $\Phi\left( \mu_\text{CBM}-\zeta \right)$. The net probability is the weighted sum of these component probabilities in proportion to their relative frequencies $\left( 1-\alpha \right):\alpha$. A similar logic can be used to derive the AUC under the CBM fitted ROC curve: 
+
+
+\begin{equation}
+\text{AUC}_\text{CBM}=0.5\left( 1-\alpha \right)+\alpha \,\Phi\left( \frac {\mu_\text{CBM}}{\sqrt{2}} \right)
+(\#eq:proper-roc-models-cbm-auc)
+\end{equation} 
+
+In the limit $\mu_\text{CBM} \rightarrow \infty$, $\text{AUC}_\text{CBM} \rightarrow 0.5\left( 1+\alpha \right)$ and in the limit $\mu_\text{CBM} \rightarrow 0$, $\text{AUC}_\text{CBM} \rightarrow 0.5$.
 
 The following figures should further clarify these equations. Fig. 20.7 (A-D) shows ROC curves predicted by the CBM model; the corresponding values of the   parameters are indicated in the legend. For small   and/or   the curve approaches the chance diagonal, consistent with the notion that if the lesion is not visible, performance can be no better than chance level.
 
@@ -606,20 +623,9 @@ Fig. 20.8 (A-D) are the corresponding slope (or likelihood ratio) plots for the 
 The pdf functions, which resemble Fig. 20.4 (A), are not shown. They can be viewed by running the code. Close examination of the region near the flat part shows it does not plateau at zero; rather the minimum is at  , explaining the non-zero limiting slope of the predicted curve near (1, 1).
 
 
-## The bigamma model {#proper-roc-models-bigamma}
+### CBM plots
 
-See book.
-
-## Discussion / Summary {#proper-roc-models-discussion-summary}
-
-Most researchers in this field have avoided the subject of modeling ROC data. The exceptions are Dorfman, Metz, Swensson, Berbaum, and the author. There are a few reasons for this. First, the empirical AUC is easy to calculate. There is no degeneracy issue such as encountered with the binormal model. One can always calculate the empirical AUC, even when one should not, i.e., when a close look at the plot suggests there might be a problem with the dataset. Second, some prefer non-parametric analysis, in the mistaken belief that it is always better to make the analysis free of assumptions, especially normality assumptions. Good science is driven by testable assumptions. If the assumptions are valid, they add to the analysis. As an example, assuming the validity of the RSM, one can tease out measures of search and lesion-classification performance that says much more about what is limiting performance than a measurement of empirical AUC. Due to the central limit theorem the normal distribution plays a key role in data modeling in all branches of science. To abandon it and use the empirical AUC could be construed as a certain lack of intellectual curiosity. Third, non-parametric methods have been proposed that are applicable only to the empirical AUC. Usage of these methods is limited to empirical ROC analysis. One cannot even use them with fitted ROC curves, nor to other FOMs that measure localization performance. Moreover, users of non-parametric methods have not studied the validity of such analysis when the distribution of operating points varies widely; empirical AUC is more susceptible to such effects over which the researcher has little control. 
-
-With the easy availability of CBM and RSM, there is now no excuse for not using them. These programs are indeed bullet proof. Based on there very design, they can fit any dataset that one cares to throw at them. For reasons explained in the previous chapter, the author's preference is to use RSM, as it yields information about search and lesion-localization performance, which should impact on how radiologists and computer aided detection algorithms are trained and evaluated. The Windows version of CBM needs to be extended to calculate a goodness of fit statistic (this is done in the RJafroc implementation). This author also makes a recommendation against usage of PROPROC in its current form. Finally, the time has come to let go of the binormal model. It has outlived its 60 years of usage.
-
-
-
-
-## Helper functions
+### Main code and output
 
 The following computes the y-coordinate of the ROC predicted by the CBM. 
 ```{r echo=T}
@@ -629,13 +635,12 @@ CbmRocY <- function (x, mu, alpha) {
 }
 ```
 
-
-## Main code and output
   
 ```{r, fig.show='hold', echo=T}
 FPF <- seq(0.0, 1, 0.001)
-alphaArr <- c(0.2, 0.8);muArr <- c(1,3)
-myLabel <- c("A", "B", "C", "D")
+alphaArr <- c(0.2, 0.8)
+muArr <- c(1,3)
+plotRoc <- list()
 myLabelIndx <- 1
 for (i in 1:2)
   for (j in 1:2) 
@@ -645,26 +650,36 @@ for (i in 1:2)
       mu <- muArr[j]
       TPF <- CbmRocY(FPF, mu, alpha)
       rocPlot <- data.frame(FPF = FPF, TPF = TPF)
-      plotRoc <- ggplot(rocPlot, aes(x = FPF, y = TPF)) + 
+      plotRoc[[myLabelIndx]] <- ggplot(rocPlot, aes(x = FPF, y = TPF)) + 
         geom_line(data = rocPlot) + 
         scale_x_continuous(expand = c(0, 0)) + 
         scale_y_continuous(expand = c(0, 0)) +
-      ggtitle(myLabel[myLabelIndx]);myLabelIndx <- myLabelIndx + 1
-      print(plotRoc)
-      cat("Fig.", myLabel[myLabelIndx-1], ":", "mu = ", mu, ", alpha = ", alpha, "\n")
+        ggtitle(paste0("Plot ", 
+                   LETTERS[myLabelIndx], 
+                   ":", 
+                   sprintf(" alpha = %5.3f, mu = %5.3f", alpha, mu)))
+      myLabelIndx <- myLabelIndx + 1
     }
   }
 ```             
 
 
-## Comments
+```{r echo=FALSE, proper-roc-models-plots-4, fig.cap="The plots are labeled by the values of $c$ and $d_a$. Plots A and B are proper ROC plots while Plots C and D are the corresponding slope plots. In Plot A the slope is infinite near the origin and the curve approaches the upper-right corner with finite slope. The situation is reversed in Plot B where the slope is finite near the origin and the curve approaches the upper-right corner with zero slope.", fig.show='hold'}
+grid.arrange(grobs = list(plotRoc[[1]],
+                          plotRoc[[2]],
+                          plotRoc[[3]],
+                          plotRoc[[4]]),
+                          nrow =2, ncol=2)
+```
+
+
+### Comments
 Plots A - D show ROC curves predicted by the CBM model; the corresponding values of the $mu$ and $alpha$ parameters are indicated above the plots. For small $mu$ and/or $alpha$  the curve approaches the chance diagonal, consistent with the notion that if the lesion is not visible, performance can be no better than chance level.
 
-## pdf plots
+### pdf plots
 ```{r, fig.show='hold', echo=T}
 FPF <- seq(0.0, 1, 0.001)
-alphaArr <- c(0.2, 0.8);muArr <- c(1,3)
-myLabel <- c("E", "F", "G", "H")
+cbmPdfs <- list()
 myLabelIndx <- 1
 for (i in 1:2)
   for (j in 1:2) 
@@ -687,50 +702,90 @@ for (i in 1:2)
                   rep('dis', length(Pdf2)))
       )
       
-      cbmPdfs <- ggplot(df, aes(x = z, y = pdf, color = truth)) +
+      cbmPdfs[[myLabelIndx]] <- ggplot(df, aes(x = z, y = pdf, color = truth)) +
         geom_line(data = df) +
         scale_colour_manual(values=c("black","darkgrey")) +
         scale_x_continuous(expand = c(0, 0)) +
         scale_y_continuous(expand = c(0, 0)) +
         #theme(legend.position = c(0.5, 0.2)) +
         theme(legend.position = "none") +
-        ggtitle(myLabel[myLabelIndx]);myLabelIndx <- myLabelIndx + 1
-
-      print(cbmPdfs)
-      cat("Fig.", myLabel[myLabelIndx-1], ":", "mu = ", mu, ", alpha = ", alpha, "\n")
-      next
+        ggtitle(paste0("Plot ", 
+                   LETTERS[myLabelIndx], 
+                   ":", 
+                   sprintf(" alpha = %5.3f, mu = %5.3f", alpha, mu)))
+      myLabelIndx <- myLabelIndx + 1
     }
   }
 ```  
 
-## Comments
+```{r echo=FALSE, proper-roc-models-plots-5, fig.cap="The plots are labeled by the values of $c$ and $d_a$. Plots A and B are proper ROC plots while Plots C and D are the corresponding slope plots. In Plot A the slope is infinite near the origin and the curve approaches the upper-right corner with finite slope. The situation is reversed in Plot B where the slope is finite near the origin and the curve approaches the upper-right corner with zero slope.", fig.show='hold'}
+grid.arrange(grobs = list(cbmPdfs[[1]],
+                          cbmPdfs[[2]],
+                          cbmPdfs[[3]],
+                          cbmPdfs[[4]]),
+                          nrow =2, ncol=2)
+```
+
+
+### Comments
 The dark line is the diseased distribution. The grey line is the non-diseased distribution. The bimodal diseased distribution is clearly evident in plots F and H. 
 
-## likelihood ratio plots
+
+### Likelihood ratio plots
+
 ```{r, fig.show='hold', echo=FALSE}
 FPF <- seq(0.0, 1, 0.001)
-alphaArr <- c(0.2, 0.8);muArr <- c(1,3)
-myLabel <- c("I", "J", "K", "L")
+alphaArr <- c(0.2, 0.8)
+muArr <- c(1,3)
 myLabelIndx <- 1
+plotSlope <- list()
 for (i in 1:2)
   for (j in 1:2) 
   {
     {
       alpha <- alphaArr[i]
       mu <- muArr[j]
-      z <- seq(-3, 5 + mu, by = 0.01) # may need to adjust limits to view detail of slope plot near zero
-
-      slope <- ((1-alpha)*dnorm(-z) + alpha*dnorm(mu-z))/dnorm(-z) # same as likelihood ratio
+      # may need to adjust limits to view detail of slope plot near zero
+      if (mu == 1) z <- seq(-3, 1 + mu, by = 0.01) 
+      if (mu == 3) z <- seq(-3, mu, by = 0.01) 
+      #slope <- ((1-alpha)*dnorm(z) + alpha*dnorm(z-mu))/dnorm(z)
+      slope <- (1-alpha) + alpha*exp(-mu^2/2 + z*mu)
       slopePlot <- data.frame(z = z, slope = slope)
-      plotSlope <- ggplot(slopePlot, aes(x = z, y = slope)) + 
+      plotSlope[[myLabelIndx]] <- ggplot(slopePlot, aes(x = z, y = slope)) + 
         geom_line()  +
-        ggtitle(myLabel[myLabelIndx]);myLabelIndx <- myLabelIndx + 1
-      print(plotSlope)
-      cat("Fig.", myLabel[myLabelIndx-1], ":", "mu = ", mu, ", alpha = ", alpha, "\n")
-      next
+        ggtitle(paste0("Plot ", 
+                   LETTERS[myLabelIndx], 
+                   ":", 
+                   sprintf(" alpha = %5.3f, mu = %5.3f", alpha, mu)))
+      myLabelIndx <- myLabelIndx + 1
     }
   }
 ```  
 
-## Comments
+
+```{r echo=FALSE, proper-roc-models-plots-6, fig.cap="The plots are labeled by the values of $c$ and $d_a$. Plots A and B are proper ROC plots while Plots C and D are the corresponding slope plots. In Plot A the slope is infinite near the origin and the curve approaches the upper-right corner with finite slope. The situation is reversed in Plot B where the slope is finite near the origin and the curve approaches the upper-right corner with zero slope.", fig.show='hold'}
+grid.arrange(grobs = list(plotSlope[[1]],
+                          plotSlope[[2]],
+                          plotSlope[[3]],
+                          plotSlope[[4]]),
+                          nrow =2, ncol=2)
+```
+
+
+### Comments
+
 Close examination of the region near the flat part shows it does not plateau at zero; rather the minimum is at 1 - $alpha$, explaining the non-zero limiting slope of the predicted curve near (1, 1).
+
+## The bigamma model {#proper-roc-models-bigamma}
+
+See book.
+
+## Discussion / Summary {#proper-roc-models-discussion-summary}
+
+Most researchers in this field have avoided the subject of modeling ROC data. The exceptions are Dorfman, Metz, Swensson, Berbaum, and the author. There are a few reasons for this. First, the empirical AUC is easy to calculate. There is no degeneracy issue such as encountered with the binormal model. One can always calculate the empirical AUC, even when one should not, i.e., when a close look at the plot suggests there might be a problem with the dataset. Second, some prefer non-parametric analysis, in the mistaken belief that it is always better to make the analysis free of assumptions, especially normality assumptions. Good science is driven by testable assumptions. If the assumptions are valid, they add to the analysis. As an example, assuming the validity of the RSM, one can tease out measures of search and lesion-classification performance that says much more about what is limiting performance than a measurement of empirical AUC. Due to the central limit theorem the normal distribution plays a key role in data modeling in all branches of science. To abandon it and use the empirical AUC could be construed as a certain lack of intellectual curiosity. Third, non-parametric methods have been proposed that are applicable only to the empirical AUC. Usage of these methods is limited to empirical ROC analysis. One cannot even use them with fitted ROC curves, nor to other FOMs that measure localization performance. Moreover, users of non-parametric methods have not studied the validity of such analysis when the distribution of operating points varies widely; empirical AUC is more susceptible to such effects over which the researcher has little control. 
+
+With the easy availability of CBM and RSM, there is now no excuse for not using them. These programs are indeed bullet proof. Based on there very design, they can fit any dataset that one cares to throw at them. For reasons explained in the previous chapter, the author's preference is to use RSM, as it yields information about search and lesion-localization performance, which should impact on how radiologists and computer aided detection algorithms are trained and evaluated. The Windows version of CBM needs to be extended to calculate a goodness of fit statistic (this is done in the RJafroc implementation). This author also makes a recommendation against usage of PROPROC in its current form. Finally, the time has come to let go of the binormal model. It has outlived its 60 years of usage.
+
+
+
+
