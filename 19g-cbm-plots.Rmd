@@ -538,7 +538,7 @@ grid.arrange(grobs = list(plotRoc[[1]],
 
 
 
-It is important to understand that one moves up along the proper ROC curve by "cutting" the slope axis in plots C and D horizontally with a sliding threshold $\lambda$, starting with very high values and then lowering it downwards. In plot B the slope of the ROC curve starts at the origin with a large but finite value corresponding to the peak in Plot D. Above the peak, there are no solutions for $z$. The slope decreases monotonically to zero, corresponding to the flattening out of the slope at zero for $z \approx 2$. Alternatively, one can think of horizontally shrinking each of plots C and D to zero width, and all that remains is the slope axis with a thick vertical line superimposed on it, corresponding to the horizontally collapsed curves. In plot C this vertical line extends from positive infinity down to about 0.1, and represents the range of decision variable samples encountered by the observer on the likelihood ratio scale. In plot D this vertical line extends from a finite value (~9.4) to zero. Values outside of these ranges are not possible. 
+To further understand the relation between the ROC plots and the slope plots, one moves up along the proper ROC curve by "cutting" the slope axis in Plots C and D horizontally with a sliding threshold $\lambda$, starting with very high values and then lowering it downwards. In Plot B the slope of the ROC curve starts at the origin with a large but finite value corresponding to the peak in Plot D. Above the peak, there are no solutions for $z$. The slope decreases monotonically to zero, corresponding to the flattening out of the slope at zero for $z \approx 2$. Alternatively, one can think of horizontally shrinking each of Plots C and D to zero width, and all that remains is the slope axis with a thick vertical line superimposed on it, corresponding to the horizontally collapsed curves. In Plot C this vertical line extends from positive infinity down to about 0.1, and represents the range of decision variable samples encountered by the observer on the likelihood ratio scale. In Plot D this vertical line extends from a finite value (~9.4) to zero. Values outside of these ranges are not possible. 
 
 
 The two values of z corresponding to each cut implies, of course, that the binormal model based proper algorithm has to do a lot of bookkeeping, since, in general, each horizontal cut splits the decision axis into 3 regions. Prof. Metz solved this very difficult algorithmic task.
@@ -550,22 +550,35 @@ This is addressed in book Section TBA.
 
 ## The contaminated binormal model (CBM) {#proper-roc-models-cbm}
 
-The contaminated binormal model9-11, or CBM, is an alternate model for decision variable sampling in an ROC study. Like the binormal model, it too is a two-parameter model, excluding cutoffs. The first parameter is  , which is the separation of two unit-variance normal distributions, so the model does not allow unequal variances, which, as we have seen, is the basic cause for improper ROC curves, see Fig. 20.2 (B). CBM assumes that sampling for non-diseased cases is from the   distribution, while sampling for diseased cases is from the   distribution, provided the disease is visible, otherwise it is from the   distribution. In other words, for diseased cases the sampling is from a mixture distribution of two unit variance normal distributions, one   centered and the other zero-centered, with mixing fraction  ;  , the second parameter, is the fraction of diseased casers where the abnormality is actually visible. The binning is accomplished, as usual, by the cutoff vector  , where   is the number of ROC bins. Defining dummy cutoffs   and  , the binning rule is as before (Eqn. 4.12):
+The contaminated binormal model9-11, or CBM, is an alternate model for decision variable sampling in an ROC study. Like the binormal model, it too is a two-parameter model, excluding cutoffs. The first parameter is $\mu_\text{CBM}$, the separation of two unit-variance normal distributions. The sampling for non-diseased cases is from the $N(0,1)$ distribution, while sampling for diseased cases is from the $N(\mu_\text{CBM},1)$ distribution, provided the disease is visible, otherwise it is from the $N(0,1)$ distribution. In other words, for diseased cases the sampling is from a mixture distribution of two unit variance normal distributions, one centered at $\mu$ and the other centered at 0, with mixing fraction $\alpha$, the fraction of diseased cases where the abnormality is actually visible. The binning is accomplished, as usual, by the cutoff vector $\overrightarrow{\zeta}=\left( \zeta_1,...,\zeta_{\text{ROC}-1} \right)$, where $R_\text{ROC}$ is the number of ROC bins. Defining dummy cutoffs $\zeta_0=-\infty$  and  $\zeta_{\text{ROC}}=\infty$, the binning rule is as before:
 
- 	.	(20.23)
 
-Therefore, CBM is characterized by the parameters ( , , and  , r = 1, 2, ...,  ). The parameters   and   can be used to predict the ROC curve and the area under the curve (AUC). [The CBM  -parameter should not be confused with the binormal model parameter  the RSM  -parameter.]
+\begin{equation} 
+\begin{matrix}
+\text{if} & \zeta_{r-1} \le z < \zeta_r & \text{rating} = r 
+\end{matrix}
+\end{equation} 
+
+
+Therefore, CBM is characterized by the parameters $\begin{matrix}\mu, & \alpha & \text{and} & \zeta_r, & \text{where} &  r=1,2,...,R_{\text{ROC}-1}& \end{matrix}$. The parameters $\mu, \alpha$ can be used to predict the ROC curve and the area under the curve.
 
 
 ## CBM formalism {#proper-roc-models-cbm-formalism}
 
-For non-diseased cases, the pdf is the same as for the binormal model, Eqn. (6.23):
+For non-diseased cases, the $\text{pdf}$ is the same as for the binormal model:
 
-  	.	(20.24)
+\begin{equation}
+\text{pdf}_N=\phi(z) 
+(\#eq:proper-roc-models-cbm-pdfn)
+\end{equation} 
 
-For diseased cases the   is a mixture of two unit variance distributions, one centered at zero and the other at  , with mixing fractions   and  , respectively: 
+For diseased cases the $\text{pdf}$ is a mixture of two unit variance distributions, one centered at zero and the other at $\mu_\text{CBM}$, with mixing fractions $(1-\alpha)$ and $\alpha$, respectively: 
 
-  	.	(20.25)
+\begin{equation}
+\text{pdf}_D=\left( 1-\alpha \right)\phi(z) + \alpha \phi(z-\mu_\text{CBM})
+(\#eq:proper-roc-models-cbm-pdfd)
+\end{equation} 
+
 
 The likelihood ratio for the CBM model is given by the ratio of the two pdfs:
 
