@@ -419,14 +419,6 @@ metz-eqn-36
 helper-functions-1
 main-code-and-output-1
 discussion-1
-cbm-plots
-helper-functions-2
-main-code-and-output-2
-comments-3
-pdf-plots
-comments-4
-likelihood-ratio-plots
-comments-5
 roi-paradigm
 introduction-3
 an-example-roi-dataset

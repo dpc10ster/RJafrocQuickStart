@@ -4,7 +4,7 @@
 ---
 title: "RJafroc Vignette 5: PROPROC ROCs and pdfs"
 author: "Dev P. Chakraborty, PhD"
-date: "2022-07-27"
+date: "2022-08-02"
 output: rmarkdown::html_vignette
 fig.width: 4
 vignette: >

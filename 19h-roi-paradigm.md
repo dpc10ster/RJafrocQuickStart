@@ -4,7 +4,7 @@
 ---
 title: "RJafroc Vignette 8: Analyzing data acquired according to the ROI paradigm"
 author: "Dev P. Chakraborty, PhD"
-date: "2022-07-27"
+date: "2022-08-02"
 output: rmarkdown::html_vignette
 bibliography: myRefs.bib
 fig_caption: yes

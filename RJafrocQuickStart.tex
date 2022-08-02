@@ -134,7 +134,7 @@
 
 \title{The RJafroc Quick Start Book}
 \author{Dev P. Chakraborty, PhD}
-\date{2022-07-27}
+\date{2022-08-02}
 
 \begin{document}
 \maketitle
@@ -4296,7 +4296,7 @@ Shown below are results obtained using \texttt{RJafroc} function \texttt{StSigni
 
 \begin{verbatim}
 ##   ORBoot.Chisq ORBoot.ddf ORBoot.P.val
-## 1    1.3824861          1   0.23967813
+## 1    1.3505822          1   0.24517636
 \end{verbatim}
 
 The DBM and OR-jackknife methods yield identical F-statistics, but the denominator degrees of freedom are different, \((I-1)(K-1)\) = 113 for DBM and \(\infty\) for OR. The F-statistics for OR-bootstrap and OR-DeLong are different.
@@ -8290,63 +8290,6 @@ The two values of \texttt{z} corresponding to each cut implies, of course, that 
 \section{Discussion}\label{discussion-1}}
 
 Note the close correspondence between the formula, Eqn. 36 in the Metz-Pan paper and the numerical estimate. As a historical note, Eqn. 31 and Eqn. 36 (they differ only in parameterizations) in the referenced publication are provided without proof -- it was probably obvious to Prof Metz or he wanted to leave it to us ``mere mortals'' to figure it out, as a final parting gesture of his legacy. The author once put a significant effort into proving it and even had a bright graduate student from the biostatistics department work on it to no avail. The author has observed that these equations always yield very close to the numerical estimates, to within numerical precisions, so the theorem is correct empirically, but he has been unable to prove it analytically. It is left as an exercise for a gifted reader to prove/disprove these equations.
-
-\hypertarget{cbm-plots}{%
-\chapter{CBM plots}\label{cbm-plots}}
-
-\hypertarget{helper-functions-2}{%
-\section{Helper functions}\label{helper-functions-2}}
-
-\hypertarget{main-code-and-output-2}{%
-\section{Main code and output}\label{main-code-and-output-2}}
-
-\begin{verbatim}
-#> Fig. A : mu =  1 , alpha =  0.2
-#> Fig. B : mu =  3 , alpha =  0.2
-#> Fig. C : mu =  1 , alpha =  0.8
-#> Fig. D : mu =  3 , alpha =  0.8
-\end{verbatim}
-
-\includegraphics{19g-cbm-plots_files/figure-latex/unnamed-chunk-2-1.pdf} \includegraphics{19g-cbm-plots_files/figure-latex/unnamed-chunk-2-2.pdf} \includegraphics{19g-cbm-plots_files/figure-latex/unnamed-chunk-2-3.pdf} \includegraphics{19g-cbm-plots_files/figure-latex/unnamed-chunk-2-4.pdf}
-
-\hypertarget{comments-3}{%
-\section{Comments}\label{comments-3}}
-
-Plots A - D show ROC curves predicted by the CBM model; the corresponding values of the \(mu\) and \(alpha\) parameters are indicated above the plots. For small \(mu\) and/or \(alpha\) the curve approaches the chance diagonal, consistent with the notion that if the lesion is not visible, performance can be no better than chance level.
-
-\hypertarget{pdf-plots}{%
-\section{pdf plots}\label{pdf-plots}}
-
-\begin{verbatim}
-#> Fig. E : mu =  1 , alpha =  0.2
-#> Fig. F : mu =  3 , alpha =  0.2
-#> Fig. G : mu =  1 , alpha =  0.8
-#> Fig. H : mu =  3 , alpha =  0.8
-\end{verbatim}
-
-\includegraphics{19g-cbm-plots_files/figure-latex/unnamed-chunk-3-1.pdf} \includegraphics{19g-cbm-plots_files/figure-latex/unnamed-chunk-3-2.pdf} \includegraphics{19g-cbm-plots_files/figure-latex/unnamed-chunk-3-3.pdf} \includegraphics{19g-cbm-plots_files/figure-latex/unnamed-chunk-3-4.pdf}
-
-\hypertarget{comments-4}{%
-\section{Comments}\label{comments-4}}
-
-The dark line is the diseased distribution. The grey line is the non-diseased distribution. The bimodal diseased distribution is clearly evident in plots F and H.
-
-\hypertarget{likelihood-ratio-plots}{%
-\section{likelihood ratio plots}\label{likelihood-ratio-plots}}
-
-\begin{verbatim}
-#> Fig. I : mu =  1 , alpha =  0.2
-#> Fig. J : mu =  3 , alpha =  0.2
-#> Fig. K : mu =  1 , alpha =  0.8
-#> Fig. L : mu =  3 , alpha =  0.8
-\end{verbatim}
-
-\includegraphics{19g-cbm-plots_files/figure-latex/unnamed-chunk-4-1.pdf} \includegraphics{19g-cbm-plots_files/figure-latex/unnamed-chunk-4-2.pdf} \includegraphics{19g-cbm-plots_files/figure-latex/unnamed-chunk-4-3.pdf} \includegraphics{19g-cbm-plots_files/figure-latex/unnamed-chunk-4-4.pdf}
-
-\hypertarget{comments-5}{%
-\section{Comments}\label{comments-5}}
-
-Close examination of the region near the flat part shows it does not plateau at zero; rather the minimum is at 1 - \(alpha\), explaining the non-zero limiting slope of the predicted curve near (1, 1).
 
 \hypertarget{roi-paradigm}{%
 \chapter{ROI paradigm}\label{roi-paradigm}}

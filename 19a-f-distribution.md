@@ -5,7 +5,7 @@
 ---
 title: "RJafroc Vignette 1: Background on the F distribution"
 author: "Dev P. Chakraborty, PhD"
-date: "2022-07-27"
+date: "2022-08-02"
 output: rmarkdown::html_document
 bibliography: myRefs.bib
 vignette: >
