@@ -45,13 +45,13 @@ The next section explains the steps used to implement #2 above.
 
 ### Relating an ROC effect-size to a wAFROC effect-size
 
-* If there are more than two treatments in the pilot dataset extract those treatments that represent null hypothesis data: for example `DfExtractDataset(dataset, trts = c(1,2,4))` extracts treatments 1, 2 and 4. Save the extracted dataset to `dataset`. More than two treatments can be used if they have similar FOMs as the averaging/median procedure described below benefits from more data. However, the final sample size predictions are restricted to two treatments.
+* If there are more than two treatments in the pilot dataset extract those treatments that represent null hypothesis data: for example `DfExtractDataset(dataset, trts = c(1,2,4))` extracts treatments 1, 2 and 4. Save the extracted dataset to `dataset`. More than two treatments can be used if they have similar FOMs as the averaging/ian procedure described below benefits from more data. However, the final sample size predictions are restricted to two treatments.
 
 * If the original data is FROC, convert it to ROC using `DfFroc2Roc(dataset)`: this is because **the RSM fits binned ROC data**. The ROC dataset is `rocDataset`.
 
 * If the data uses continuous scale ratings, bin the data using `DfBinDataset(rocDataset, opChType = "ROC")`. The default number of bins should be used. Unlike binning using arbitrarily set thresholds, the thresholds found by `DfBinDataset` are unique in that they maximize ROC-AUC. The binned dataset is `rocDatasetB`. 
 
-* For each treatment and reader the inferred ROC data is fitted by `FitRsmRoc()`, see example below, yielding estimates of the RSM *physical* (or primed) parameters (not the *intrinsic* values).  
+* For each treatment and reader the inferred ROC data is fitted by `FitRsmRoc()`, see example below, yielding estimates of the RSM *physical* (or pri) parameters (not the *intrinsic* values).  
 
 * The following example uses the *first two* treatments of the "FED" dataset, `dataset04`, which is a 5 treatment 4 radiologist FROC dataset acquired by Dr. Federica Zanca et. al. [@RN1882]. The dataset has 5 treatments and 4 readers and 200 cases and was acquired on a 5-point integer scale, i.e., it is already binned. If not one needs to bin the dataset using `DfBinDataset()`. I need to emphasize this point: **if the dataset represents continuous ratings, as with a CAD algorithm, one must bin the dataset**. 
 
@@ -81,7 +81,7 @@ print(lesDistr)
 
 For this dataset `Lmax` is 3, and fraction 0.69 of diseased cases have one lesion, fraction 0.2 of diseased cases have two lesions and fraction 0.11 of diseased cases have three lesions. 
 
-The next code block determines the number of treatments and readers (`I` and `J`) from the dimensions of the `frocData$ratings$NL` array. It creates an array `RsmParms` to hold the RSM fitted parameter values. For each treatment and reader it applies the fitting algorithm `FitRsmRoc()`. The first three returned values are `mu`, `lambdaP` and `nuP`, corresponding to RSM parameters ${\mu}$, ${\lambda'}$ and ${\nu'}$.
+The next code block determines the number of treatments and readers (`I` and `J`) from the dimensions of the `frocData$ratings$NL` array. It creates an array `RsmParms` to hold the RSM fitted parameter values. For each treatment and reader it applies the fitting algorithm `FitRsmRoc()`. The first three returned values are `mu`, `lambda` and `nu`, corresponding to RSM parameters ${\mu}$, ${\lambda'}$ and ${\nu'}$.
 
 
 ```r
@@ -92,41 +92,31 @@ for (i in 1:I) {
   for (j in 1:J)  {
     x1 <- FitRsmRoc(rocDataB, trt = i, rdr = j, lesDistr)
     RsmParms[i,j,1] <- x1[[1]] # mu
-    RsmParms[i,j,2] <- x1[[2]] # lambdaP
-    RsmParms[i,j,3] <- x1[[3]] # nuP
+    RsmParms[i,j,2] <- x1[[2]] # lambda
+    RsmParms[i,j,3] <- x1[[3]] # nu
   }
 }
 ```
 
 
-I recommend taking the median of each of the parameters, over all treatment-reader indices, as representing the average NH dataset. The median is less sensitive to outliers than the mean.  
+I recommend taking the ian of each of the parameters, over all treatment-reader indices, as representing the average NH dataset. The ian is less sensitive to outliers than the mean.  
 
 
 
 ```r
-muMed <- median(RsmParms[,,1]) 
-lambdaPMed <- median(RsmParms[,,2])
-nuPMed <- median(RsmParms[,,3])
+mu <- median(RsmParms[,,1]) 
+lambda <- median(RsmParms[,,2])
+nu <- median(RsmParms[,,3])
 ```
 
 
-The defining values of the fitting model are `muMed` = 3.3121519,  `lambdaPMed` = 1.714368 and `nuPMed` = 0.7036564. Note that these obey the constraints `lambdaPMed > 0` and `0 < nuP < 1`. One converts the physical parameters to the intrinsic values:
-
-
-
-```r
-temp <- UtilPhysical2IntrinsicRSM(muMed, lambdaPMed, nuPMed)
-lambdaMed <- temp$lambda
-nuMed <- temp$nu
-```
-
-In terms of intrinsic parameters, the defining values of the fitting model are `muMed` = 3.3121519,  `lambdaMed` = 5.6782473 and `nuMed` = 0.3672041. We are now ready to calculate the expected NH FOMs using the ROC -AUC and the wAFROC FOM.  
+The defining values of the fitting model are `mu` = 3.3121519,  `lambda` = 1.714368 and `nu` = 0.7036564. Note that these obey the constraints `lambda > 0` and `0 < nu < 1`. We are now ready to calculate the expected NH FOMs using the ROC -AUC and the wAFROC FOM.  
 
 
 ```r
-aucRocNH <- PlotRsmOperatingCharacteristics(muMed, lambdaMed, nuMed, 
+aucRocNH <- PlotRsmOperatingCharacteristics(mu, lambda, nu, 
                                             lesDistr = lesDistr, OpChType = "ROC")$aucROC
-aucwAfrocNH <- PlotRsmOperatingCharacteristics(muMed, lambdaMed, nuMed, 
+aucwAfrocNH <- PlotRsmOperatingCharacteristics(mu, lambda, nu, 
                                                lesDistr = lesDistr, OpChType = "wAFROC")$aucwAFROC
 ```
 
@@ -146,34 +136,34 @@ deltaMu <- seq(0.01, 0.2, 0.01) # values of deltaMu to scan below
 esRoc <- array(dim = length(deltaMu));eswAfroc <- array(dim = length(deltaMu))
 for (i in 1:length(deltaMu)) {
   esRoc[i] <- PlotRsmOperatingCharacteristics(
-    muMed + deltaMu[i], lambdaMed, nuMed, lesDistr = lesDistr, OpChType = "ROC")$aucROC - aucRocNH
+    mu + deltaMu[i], lambda, nu, lesDistr = lesDistr, OpChType = "ROC")$aucROC - aucRocNH
   eswAfroc[i] <- PlotRsmOperatingCharacteristics(
-    muMed+ deltaMu[i], lambdaMed, nuMed, lesDistr = lesDistr, OpChType = "wAFROC")$aucwAFROC - aucwAfrocNH
+    mu+ deltaMu[i], lambda, nu, lesDistr = lesDistr, OpChType = "wAFROC")$aucwAFROC - aucwAfrocNH
   cat("ES_ROC = ", esRoc[i], ", ES_wAFROC = ", eswAfroc[i],"\n")
 }
 ```
 
 ```
-## ES_ROC =  0.0006191512 , ES_wAFROC =  0.001327918 
-## ES_ROC =  0.0012335 , ES_wAFROC =  0.002647718 
-## ES_ROC =  0.001843092 , ES_wAFROC =  0.003959464 
-## ES_ROC =  0.002447976 , ES_wAFROC =  0.005263216 
-## ES_ROC =  0.003048197 , ES_wAFROC =  0.006559037 
-## ES_ROC =  0.003643803 , ES_wAFROC =  0.007846987 
-## ES_ROC =  0.004234838 , ES_wAFROC =  0.009127128 
-## ES_ROC =  0.004821349 , ES_wAFROC =  0.01039952 
-## ES_ROC =  0.005403381 , ES_wAFROC =  0.01166422 
-## ES_ROC =  0.005980979 , ES_wAFROC =  0.0129213 
-## ES_ROC =  0.006554188 , ES_wAFROC =  0.0141708 
-## ES_ROC =  0.007123051 , ES_wAFROC =  0.0154128 
-## ES_ROC =  0.007687614 , ES_wAFROC =  0.01664735 
-## ES_ROC =  0.008247919 , ES_wAFROC =  0.0178745 
-## ES_ROC =  0.00880401 , ES_wAFROC =  0.01909432 
-## ES_ROC =  0.009355929 , ES_wAFROC =  0.02030686 
-## ES_ROC =  0.00990372 , ES_wAFROC =  0.02151218 
-## ES_ROC =  0.01044743 , ES_wAFROC =  0.02271034 
-## ES_ROC =  0.01098709 , ES_wAFROC =  0.02390139 
-## ES_ROC =  0.01152274 , ES_wAFROC =  0.02508539
+## ES_ROC =  0.0001500649 , ES_wAFROC =  0.000189712 
+## ES_ROC =  0.0002978454 , ES_wAFROC =  0.0003764812 
+## ES_ROC =  0.0004433681 , ES_wAFROC =  0.0005603432 
+## ES_ROC =  0.0005866597 , ES_wAFROC =  0.0007413331 
+## ES_ROC =  0.0007277463 , ES_wAFROC =  0.0009194859 
+## ES_ROC =  0.0008666543 , ES_wAFROC =  0.001094837 
+## ES_ROC =  0.001003409 , ES_wAFROC =  0.00126742 
+## ES_ROC =  0.001138038 , ES_wAFROC =  0.001437269 
+## ES_ROC =  0.001270565 , ES_wAFROC =  0.00160442 
+## ES_ROC =  0.001401017 , ES_wAFROC =  0.001768904 
+## ES_ROC =  0.001529418 , ES_wAFROC =  0.001930757 
+## ES_ROC =  0.001655794 , ES_wAFROC =  0.002090012 
+## ES_ROC =  0.00178017 , ES_wAFROC =  0.002246701 
+## ES_ROC =  0.00190257 , ES_wAFROC =  0.002400857 
+## ES_ROC =  0.002023021 , ES_wAFROC =  0.002552513 
+## ES_ROC =  0.002141544 , ES_wAFROC =  0.002701702 
+## ES_ROC =  0.002258166 , ES_wAFROC =  0.002848455 
+## ES_ROC =  0.002372911 , ES_wAFROC =  0.002992804 
+## ES_ROC =  0.002485801 , ES_wAFROC =  0.00313478 
+## ES_ROC =  0.002596862 , ES_wAFROC =  0.003274416
 ```
 
 Here is a plot of wAFROC effect size (y-axis) vs. ROC effect size.
@@ -193,7 +183,7 @@ p <- ggplot(data = df, aes(x = es_ROC, y = es_wAFROC)) +
 print(p)
 ```
 
-<img src="18b-froc-sample-size_files/figure-html/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" />
+<img src="18b-froc-sample-size_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" />
 
 The plot is very close to linear. This makes it easy to design an interpolation function. In the following code block the first line fits `eswAfroc` vs. `esRoc` using the linear model `lm()` function constrained to pass through the origin (the minus one): `scaleFactor <- lm(eswAfroc ~ -1 + esRoc)`. One expects this constraint since for `deltaMu = 0` the effect size must be zero no matter how it is measured. 
 
@@ -205,7 +195,7 @@ effectSizewAFROC <- effectSizeROC*scaleFactor$coefficients[1] # r2 = summary(sca
 ```
 
 
-The slope of the zero-intercept constrained straight line fit is `scaleFactor` = 2.1691632 and the squared correlation coefficient is `R2` = 0.9999904. Therefore, the conversion from ROC to wAFROC effect size is: `effectSizewAFROC = scaleFactor * effectSizeROC`. **The wAFROC effect size is twice the ROC effect size.** All that remains is to calculate the variance components using the two FOMs.
+The slope of the zero-intercept constrained straight line fit is `scaleFactor` = 1.2617239 and the squared correlation coefficient is `R2` = 0.9999997. Therefore, the conversion from ROC to wAFROC effect size is: `effectSizewAFROC = scaleFactor * effectSizeROC`. **The wAFROC effect size is twice the ROC effect size.** All that remains is to calculate the variance components using the two FOMs.
 
 
 ### Computing the respective variance components
@@ -288,16 +278,16 @@ for (i in 1:length(effectSizeROC)) {
 ```
 
 ```
-## ROC-ES =  0.01 , wAFROC-ES =  0.021691632 , Power-ROC =  0.064430457 , Power-wAFROC =  0.12665349 
-## ROC-ES =  0.02 , wAFROC-ES =  0.043383263 , Power-ROC =  0.10878897 , Power-wAFROC =  0.36065725 
-## ROC-ES =  0.03 , wAFROC-ES =  0.065074895 , Power-ROC =  0.18471152 , Power-wAFROC =  0.6688074 
-## ROC-ES =  0.04 , wAFROC-ES =  0.086766526 , Power-ROC =  0.29079274 , Power-wAFROC =  0.88979509 
-## ROC-ES =  0.05 , wAFROC-ES =  0.10845816 , Power-ROC =  0.41954431 , Power-wAFROC =  0.97775966 
-## ROC-ES =  0.06 , wAFROC-ES =  0.13014979 , Power-ROC =  0.55738123 , Power-wAFROC =  0.9973575 
-## ROC-ES =  0.07 , wAFROC-ES =  0.15184142 , Power-ROC =  0.68816012 , Power-wAFROC =  0.99981772 
-## ROC-ES =  0.08 , wAFROC-ES =  0.17353305 , Power-ROC =  0.79836108 , Power-wAFROC =  0.99999274 
-## ROC-ES =  0.09 , wAFROC-ES =  0.19522468 , Power-ROC =  0.88095077 , Power-wAFROC =  0.99999983 
-## ROC-ES =  0.1 , wAFROC-ES =  0.21691632 , Power-ROC =  0.93606799 , Power-wAFROC =  1
+## ROC-ES =  0.01 , wAFROC-ES =  0.012617239 , Power-ROC =  0.064430457 , Power-wAFROC =  0.075439644 
+## ROC-ES =  0.02 , wAFROC-ES =  0.025234479 , Power-ROC =  0.10878897 , Power-wAFROC =  0.15449773 
+## ROC-ES =  0.03 , wAFROC-ES =  0.037851718 , Power-ROC =  0.18471152 , Power-wAFROC =  0.28797922 
+## ROC-ES =  0.04 , wAFROC-ES =  0.050468957 , Power-ROC =  0.29079274 , Power-wAFROC =  0.4612966 
+## ROC-ES =  0.05 , wAFROC-ES =  0.063086196 , Power-ROC =  0.41954431 , Power-wAFROC =  0.6420946 
+## ROC-ES =  0.06 , wAFROC-ES =  0.075703436 , Power-ROC =  0.55738123 , Power-wAFROC =  0.79495349 
+## ROC-ES =  0.07 , wAFROC-ES =  0.088320675 , Power-ROC =  0.68816012 , Power-wAFROC =  0.90003872 
+## ROC-ES =  0.08 , wAFROC-ES =  0.10093791 , Power-ROC =  0.79836108 , Power-wAFROC =  0.95891383 
+## ROC-ES =  0.09 , wAFROC-ES =  0.11355515 , Power-ROC =  0.88095077 , Power-wAFROC =  0.98585038 
+## ROC-ES =  0.1 , wAFROC-ES =  0.12617239 , Power-ROC =  0.93606799 , Power-wAFROC =  0.9959336
 ```
 
 
@@ -317,7 +307,7 @@ p <- ggplot(mapping = aes(x = power_ROC, y = power_wAFROC)) +
 print(p)
 ```
 
-<img src="18b-froc-sample-size_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" />
+<img src="18b-froc-sample-size_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" />
 
 
 
@@ -340,21 +330,21 @@ One starts by extracting the first two treatments from `dataset04`, which repres
 lesDistr <- c(0.7, 0.2, 0.1)
 frocNhData <- DfExtractDataset(dataset04, trts = c(1,2))
 ret <- SsFrocNhRsmModel(frocNhData, lesDistr = lesDistr)
-muMed <- ret$muMed
-lambdaMed <- ret$lambdaMed
-nuMed <- ret$nuMed
+mu <- ret$mu
+lambda <- ret$lambda
+nu <- ret$nu
 scaleFactor <- ret$scaleFactor
 ```
 
 
-The fitting model is defined by `muMed` = 3.31491361,  `lambdaMed` = 5.61237183  and  `nuMed` = 0.36980616 and `lesDistr`. The effect size scale factor is 2.15372685.
+The fitting model is defined by `mu` = 3.31491361,  `lambda` = 1.6930673  and  `nu` = 0.70649936 and `lesDistr`. The effect size scale factor is 1.25445833.
 
 
 
 ```r
-aucRocNH <- PlotRsmOperatingCharacteristics(muMed, lambdaMed, nuMed, 
+aucRocNH <- PlotRsmOperatingCharacteristics(mu, lambda, nu, 
                                             lesDistr = lesDistr, OpChType = "ROC")$aucROC
-aucwAfrocNH <- PlotRsmOperatingCharacteristics(muMed, lambdaMed, nuMed, 
+aucwAfrocNH <- PlotRsmOperatingCharacteristics(mu, lambda, nu, 
                                                lesDistr = lesDistr, OpChType = "wAFROC")$aucwAFROC
 ```
 
@@ -395,7 +385,7 @@ cat("ROC-ES = ", ROC_ES, ", wAFROC-ES = ", ROC_ES * scaleFactor, ", Power-wAFROC
 ```
 
 ```
-## ROC-ES =  0.05 , wAFROC-ES =  0.10768634 , Power-wAFROC =  0.97624427
+## ROC-ES =  0.05 , wAFROC-ES =  0.062722916 , Power-wAFROC =  0.63713244
 ```
 
 ### wAFROC number of cases for 80% power for a given number of readers J
@@ -414,7 +404,7 @@ cat("ROC-ES = ", ROC_ES, ", wAFROC-ES = ", ROC_ES * scaleFactor,
 ```
 
 ```
-## ROC-ES =  0.05 , wAFROC-ES =  0.10768634 , K80RRRC =  42 , Power-wAFROC =  0.80462043
+## ROC-ES =  0.05 , wAFROC-ES =  0.062722916 , K80RRRC =  123 , Power-wAFROC =  0.80210887
 ```
 
 
@@ -431,11 +421,11 @@ cat("ROC-ES = ", ROC_ES, ", wAFROC-ES = ", ROC_ES * scaleFactor,
 ```
 
 ```
-## ROC-ES =  0.05 , wAFROC-ES =  0.10768634 , powerRRRC =  0.80462043
+## ROC-ES =  0.05 , wAFROC-ES =  0.062722916 , powerRRRC =  0.80210887
 ```
 
 
-The estimated power is close to 80% as the number of cases (`ret2$KRRRC = 42`) was chosen deliberately from the previous code block.
+The estimated power is close to 80% as the number of cases (`ret2$KRRRC = 123`) was chosen deliberately from the previous code block.
 
 
 ## References {#froc-sample-size-references}

@@ -125,6 +125,8 @@ eq:DeltaFRRC1
 eq:SamplingFFRRC1
 eq:DeltaFRRFC1
 eq:SamplingFRRFC1
+rationale-and-organization
+tba-acknowledgements
 quick-start-help
 quick-start-help-how-much-finished
 quick-start-help-getting-help
@@ -419,9 +421,3 @@ metz-eqn-36
 helper-functions-1
 main-code-and-output-1
 discussion-1
-roi-paradigm
-introduction-3
-an-example-roi-dataset
-the-roi-excel-data-file
-next
-references-2

@@ -4,7 +4,7 @@
 ---
 title: "RJafroc Vignette 6: Metz Eqn36 numerical check"
 author: "Dev P. Chakraborty, PhD"
-date: "2022-08-02"
+date: "2022-09-29"
 output: rmarkdown::html_vignette
 fig.width: 4
 vignette: >

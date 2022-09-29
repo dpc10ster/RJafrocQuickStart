@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 24 Metz Eqn 36 numerical check | The RJafroc Quick Start Book</title>
+  <title>The RJafroc Quick Start Book</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 24 Metz Eqn 36 numerical check | The RJafroc Quick Start Book" />
+  <meta property="og:title" content="The RJafroc Quick Start Book" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   <meta name="github-repo" content="dpc10ster/RJafrocQuickStart" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 24 Metz Eqn 36 numerical check | The RJafroc Quick Start Book" />
+  <meta name="twitter:title" content="The RJafroc Quick Start Book" />
   
   <meta name="twitter:description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="proproc-rocs.html"/>
 
+<link rel="next" href="quick-start-help.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -502,198 +502,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="metz-eqn-36" class="section level1 hasAnchor">
-<h1><span class="header-section-number">Chapter 24</span> Metz Eqn 36 numerical check<a href="metz-eqn-36.html#metz-eqn-36" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="helper-functions-1" class="section level2 hasAnchor">
-<h2><span class="header-section-number">24.1</span> Helper functions<a href="metz-eqn-36.html#helper-functions-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="header">
+<h1 class="title">The RJafroc Quick Start Book</h1>
+<p class="author"><em>Dev P. Chakraborty, PhD</em></p>
+<p class="date"><em>2022-09-29</em></p>
 </div>
-<div id="main-code-and-output-1" class="section level2 hasAnchor">
-<h2><span class="header-section-number">24.2</span> Main code and output<a href="metz-eqn-36.html#main-code-and-output-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="metz-eqn-36.html#cb166-1"></a>npts &lt;-<span class="st">  </span><span class="dv">10000</span></span>
-<span id="cb166-2"><a href="metz-eqn-36.html#cb166-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>) {</span>
-<span id="cb166-3"><a href="metz-eqn-36.html#cb166-3"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) {</span>
-<span id="cb166-4"><a href="metz-eqn-36.html#cb166-4"></a>    C  &lt;-<span class="st">  </span>c1[i,j]</span>
-<span id="cb166-5"><a href="metz-eqn-36.html#cb166-5"></a>    da  &lt;-<span class="st">  </span>d_a1[i,j]</span>
-<span id="cb166-6"><a href="metz-eqn-36.html#cb166-6"></a>    ret &lt;-<span class="st"> </span><span class="kw">GetLimits</span>(da,C)</span>
-<span id="cb166-7"><a href="metz-eqn-36.html#cb166-7"></a>    LL &lt;-<span class="st"> </span>ret<span class="op">$</span>LL;UL &lt;-<span class="st"> </span>ret<span class="op">$</span>UL</span>
-<span id="cb166-8"><a href="metz-eqn-36.html#cb166-8"></a>    vc  &lt;-<span class="st">  </span><span class="kw">seq</span> (LL, UL, <span class="dt">length.out =</span> npts)</span>
-<span id="cb166-9"><a href="metz-eqn-36.html#cb166-9"></a>    TPF  &lt;-<span class="st">  </span><span class="kw">TruePositiveFraction</span> (vc, da, C)</span>
-<span id="cb166-10"><a href="metz-eqn-36.html#cb166-10"></a>    FPF &lt;-<span class="st"> </span><span class="kw">FalsePositiveFraction</span> (vc, da, C)</span>
-<span id="cb166-11"><a href="metz-eqn-36.html#cb166-11"></a>    FPF &lt;-<span class="st"> </span><span class="kw">rev</span>(FPF);TPF &lt;-<span class="st"> </span><span class="kw">rev</span>(TPF)</span>
-<span id="cb166-12"><a href="metz-eqn-36.html#cb166-12"></a>    df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">FPF =</span> FPF, <span class="dt">TPF =</span> TPF)</span>
-<span id="cb166-13"><a href="metz-eqn-36.html#cb166-13"></a>    <span class="co"># do integral numerically</span></span>
-<span id="cb166-14"><a href="metz-eqn-36.html#cb166-14"></a>    numAuc &lt;-<span class="st"> </span><span class="kw">trapz</span>(FPF, TPF)</span>
-<span id="cb166-15"><a href="metz-eqn-36.html#cb166-15"></a>    <span class="co"># Implement Eqn. 36 from Metz-Pan paper </span></span>
-<span id="cb166-16"><a href="metz-eqn-36.html#cb166-16"></a>    rho &lt;-<span class="st"> </span><span class="op">-</span>(<span class="dv">1</span><span class="op">-</span>C<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>C<span class="op">^</span><span class="dv">2</span>);sigma &lt;-<span class="st"> </span><span class="kw">rbind</span>(<span class="kw">c</span>(<span class="dv">1</span>, rho), <span class="kw">c</span>(rho, <span class="dv">1</span>))</span>
-<span id="cb166-17"><a href="metz-eqn-36.html#cb166-17"></a>    lower &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="op">-</span><span class="ot">Inf</span>,<span class="dv">2</span>);upper &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span>da<span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">2</span>),<span class="dv">0</span>)</span>
-<span id="cb166-18"><a href="metz-eqn-36.html#cb166-18"></a>    aucProproc &lt;-<span class="st"> </span><span class="kw">pnorm</span>(da<span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">2</span>)) <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="kw">pmvnorm</span>(lower, upper, <span class="dt">sigma =</span> sigma)</span>
-<span id="cb166-19"><a href="metz-eqn-36.html#cb166-19"></a>    aucProproc &lt;-<span class="st">  </span><span class="kw">as.numeric</span>(aucProproc)</span>
-<span id="cb166-20"><a href="metz-eqn-36.html#cb166-20"></a>    <span class="kw">cat</span>(<span class="st">&quot;i = &quot;</span>, i,<span class="st">&quot;j = &quot;</span>, j,<span class="st">&quot;C = &quot;</span>, C, <span class="st">&quot;, da = &quot;</span>, da, <span class="st">&quot;aucProproc =&quot;</span>, aucProproc, <span class="st">&quot;Norm. Diff. = &quot;</span>, (aucProproc<span class="op">-</span>numAuc)<span class="op">/</span>aucProproc,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb166-21"><a href="metz-eqn-36.html#cb166-21"></a>  }</span>
-<span id="cb166-22"><a href="metz-eqn-36.html#cb166-22"></a>}</span>
-<span id="cb166-23"><a href="metz-eqn-36.html#cb166-23"></a><span class="co">#&gt; i =  1 j =  1 C =  -0.1322804 , da =  1.197239 aucProproc = 0.8014164 Norm. Diff. =  3.520017e-08 </span></span>
-<span id="cb166-24"><a href="metz-eqn-36.html#cb166-24"></a><span class="co">#&gt; i =  1 j =  2 C =  -0.08696513 , da =  1.771176 aucProproc = 0.8947898 Norm. Diff. =  4.741875e-08 </span></span>
-<span id="cb166-25"><a href="metz-eqn-36.html#cb166-25"></a><span class="co">#&gt; i =  1 j =  3 C =  -0.1444419 , da =  1.481935 aucProproc = 0.8526605 Norm. Diff. =  3.515431e-08 </span></span>
-<span id="cb166-26"><a href="metz-eqn-36.html#cb166-26"></a><span class="co">#&gt; i =  1 j =  4 C =  0.08046016 , da =  1.513757 aucProproc = 0.8577776 Norm. Diff. =  4.971428e-08 </span></span>
-<span id="cb166-27"><a href="metz-eqn-36.html#cb166-27"></a><span class="co">#&gt; i =  1 j =  5 C =  0.2225588 , da =  1.740157 aucProproc = 0.8909392 Norm. Diff. =  2.699855e-08 </span></span>
-<span id="cb166-28"><a href="metz-eqn-36.html#cb166-28"></a><span class="co">#&gt; i =  2 j =  1 C =  -0.08174248 , da =  0.6281251 aucProproc = 0.6716574 Norm. Diff. =  2.801793e-08 </span></span>
-<span id="cb166-29"><a href="metz-eqn-36.html#cb166-29"></a><span class="co">#&gt; i =  2 j =  2 C =  0.04976448 , da =  0.9738786 aucProproc = 0.7544739 Norm. Diff. =  5.275242e-08 </span></span>
-<span id="cb166-30"><a href="metz-eqn-36.html#cb166-30"></a><span class="co">#&gt; i =  2 j =  3 C =  -0.1326126 , da =  1.155871 aucProproc = 0.7931787 Norm. Diff. =  3.472577e-08 </span></span>
-<span id="cb166-31"><a href="metz-eqn-36.html#cb166-31"></a><span class="co">#&gt; i =  2 j =  4 C =  0.1182226 , da =  1.620176 aucProproc = 0.8740274 Norm. Diff. =  3.922161e-08 </span></span>
-<span id="cb166-32"><a href="metz-eqn-36.html#cb166-32"></a><span class="co">#&gt; i =  2 j =  5 C =  0.0781033 , da =  0.8928816 aucProproc = 0.7360989 Norm. Diff. =  3.798459e-08</span></span></code></pre></div>
+<div id="preface" class="section level1 unnumbered hasAnchor">
+<h1>Preface<a href="preface.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ul>
+<li>This online book is for those already somewhat familiar running Windows JAFROC to analyze data.</li>
+<li>The Windows program has been replaced by <code>RJafroc</code>.</li>
+<li>This book dives into how to use <code>RJafroc</code> to analyze ROC/FROC data.</li>
+<li>It starts with explanation of the dataset structures for ROC and FROC studies.</li>
+<li>This is followed by an explanation of DBM and OR analyses.</li>
+</ul>
+<div id="rationale-and-organization" class="section level2 hasAnchor">
+<h2><span class="header-section-number">0.1</span> Rationale and Organization<a href="preface.html#rationale-and-organization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Intended as an online update to my print book <span class="citation">(Chakraborty <a href="#ref-chakraborty2017observer" role="doc-biblioref">2017</a>)</span>.</li>
+<li>All references in this book to <code>RJafroc</code> refer to the R package with that name (case sensitive) <span class="citation">(Chakraborty and Zhai <a href="#ref-R-RJafroc" role="doc-biblioref">2022</a>)</span>.</li>
+<li>Since its publication in 2017 <code>RJafroc</code>, on which the <code>R</code> code examples in the print book depend, has evolved considerably causing many of the examples to “break” if one uses the most current version of <code>RJafroc</code>. The code will still run if one uses <a href="https://cran.r-project.org/src/contrib/Archive/RJafroc/"><code>RJafroc</code> 0.0.1</a> but this is inconvenient and misses out on many of the software improvements made since the print book appeared.</li>
+<li>This gives me the opportunity to update the print book.</li>
+<li>The online book has been divided into 3 books.
+<ul>
+<li><strong>This book:</strong> <a href="https://dpc10ster.github.io/RJafrocQuickStart/">RJafrocQuickStartBook</a>.</li>
+<li>The <a href="https://dpc10ster.github.io/RJafrocRocBook/">RJafrocRocBook</a> book.</li>
+<li>The <a href="https://dpc10ster.github.io/RJafrocFrocBook/">RJafrocFrocBook</a>.</li>
+</ul></li>
+</ul>
 </div>
-<div id="discussion-1" class="section level2 hasAnchor">
-<h2><span class="header-section-number">24.3</span> Discussion<a href="metz-eqn-36.html#discussion-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Note the close correspondence between the formula, Eqn. 36 in the Metz-Pan paper and the numerical estimate. As a historical note, Eqn. 31 and Eqn. 36 (they differ only in parameterizations) in the referenced publication are provided without proof – it was probably obvious to Prof Metz or he wanted to leave it to us “mere mortals” to figure it out, as a final parting gesture of his legacy. The author once put a significant effort into proving it and even had a bright graduate student from the biostatistics department work on it to no avail. The author has observed that these equations always yield very close to the numerical estimates, to within numerical precisions, so the theorem is correct empirically, but he has been unable to prove it analytically. It is left as an exercise for a gifted reader to prove/disprove these equations.</p>
+<div id="tba-acknowledgements" class="section level2 hasAnchor">
+<h2><span class="header-section-number">0.2</span> TBA Acknowledgements<a href="preface.html#tba-acknowledgements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Dr. Xuetong Zhai</p>
+<p>Dr. Peter Phillips</p>
+<p>Online Latex Editor <a href="https://latexeditor.lagrida.com/">at</a></p>
+<p>Dataset contributors</p>
 
-<div id="refs" class="references">
-<div>
-<p>Bunch, Philip C, John F Hamilton, Gary K Sanderson, and Arthur H Simmons. 1977. “A Free Response Approach to the Measurement and Characterization of Radiographic Observer Performance.” In <em>Application of Optical Instrumentation in Medicine Vi</em>, 127:124–35. International Society for Optics; Photonics.</p>
 </div>
-<div>
+</div>
+
+
+
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-chakraborty2017observer">
 <p>Chakraborty, Dev P. 2017. <em>Observer Performance Methods for Diagnostic Imaging: Foundations, Modeling, and Applications with R-Based Examples</em>. Boca Raton, FL: CRC Press.</p>
 </div>
-<div>
-<p>Chakraborty, Dev P. 2002. “Statistical Power in Observer Performance Studies: A Comparison of the ROC and Free-Response Methods in Tasks Involving Localization.” Journal Article. <em>Acad. Radiol.</em> 9 (2): 147–56. <a href="https://doi.org/10.1016/s1076-6332(03)80164-2">https://doi.org/10.1016/s1076-6332(03)80164-2</a>.</p>
-</div>
-<div>
-<p>Chakraborty, Dev Prasad. 2010. “Prediction Accuracy of a Sample-Size Estimation Method for ROC Studies.” Journal Article. <em>Academic Radiology</em> 17: 628–38. <a href="https://doi.org/10.1016/j.acra.2010.01.007">https://doi.org/10.1016/j.acra.2010.01.007</a>.</p>
-</div>
-<div>
+<div id="ref-R-RJafroc">
 <p>Chakraborty, Dev, and Xuetong Zhai. 2022. <em>RJafroc: Artificial Intelligence Systems and Observer Performance</em>. <a href="https://dpc10ster.github.io/RJafroc/">https://dpc10ster.github.io/RJafroc/</a>.</p>
 </div>
-<div>
-<p>Chakraborty, D. P., E. S. Breatnach, M. V. Yester, B. Soto, G. T. Barnes, and R. G. Fraser. 1986. “Digital and Conventional Chest Imaging: A Modified ROC Study of Observer Performance Using Simulated Nodules.” Journal Article. <em>Radiology</em> 158: 35–39. <a href="https://doi.org/10.1148/radiology.158.1.3940394">https://doi.org/10.1148/radiology.158.1.3940394</a>.</p>
 </div>
-<div>
-<p>Clarkson, Eric, Matthew A. Kupinski, and Harrison H. Barrett. 2006. “A Probabilistic Model for the MRMC Method, Part 1: Theoretical Development.” Journal Article. <em>Academic Radiology</em> 13 (11): 1410–21. <a href="https://doi.org/10.1016/j.acra.2006.07.016">https://doi.org/10.1016/j.acra.2006.07.016</a>.</p>
-</div>
-<div>
-<p>Cohen, Jacob. 1988. <em>Statistical Power Analysis for the Behavioral Sciences</em>. 2nd ed. Lawrence Erlbaum Associates.</p>
-</div>
-<div>
-<p>DeLong, E. R., D. M. DeLong, and D. L. Clarke-Pearson. 1988. “Comparing the Areas Under Two or More Correlated Receiver Operating Characteristic Curves: A Nonparametric Approach.” Journal Article. <em>Biometrics</em> 44: 837–45. <a href="https://doi.org/10.2307/2531595">https://doi.org/10.2307/2531595</a>.</p>
-</div>
-<div>
-<p>Dorfman, D. D., K. S. Berbaum, and C. E. Metz. 1992. “ROC Characteristic Rating Analysis: Generalization to the Population of Readers and Patients with the Jackknife Method.” Journal Article. <em>Invest. Radiol.</em> 27 (9): 723–31. <a href="https://pubmed.ncbi.nlm.nih.gov/1399456">https://pubmed.ncbi.nlm.nih.gov/1399456</a>.</p>
-</div>
-<div>
-<p>Dorfman, Donald D., Kevin S. Berbaum, and Russell V. Lenth. 1995. “Multireader, Multicase Receiver Operating Characteristic Methodology: A Bootstrap Analysis.” Journal Article. <em>Academic Radiology</em> 2 (7): 626–33. <a href="https://doi.org/10.1016/S1076-6332(05)80129-1">https://doi.org/10.1016/S1076-6332(05)80129-1</a>.</p>
-</div>
-<div>
-<p>Gallas, Brandon D. 2006. “One-Shot Estimate of MRMC Variance: AUC.” Journal Article. <em>Academic Radiology</em> 13 (3): 353–62. <a href="https://doi.org/10.1016/j.acra.2005.11.030">https://doi.org/10.1016/j.acra.2005.11.030</a>.</p>
-</div>
-<div>
-<p>Gallas, Brandon D., Gene a Pennello, and Kyle J. Myers. 2007. “Multireader Multicase Variance Analysis for Binary Data.” Journal Article. <em>Journal of the Optical Society of America. A, Optics, Image Science, and Vision</em> 24 (12): 70–80. <a href="https://doi.org/10.1364/josaa.24.000b70">https://doi.org/10.1364/josaa.24.000b70</a>.</p>
-</div>
-<div>
-<p>Hajian-Tilaki, K. O., James A. Hanley, L. Joseph, and J. P. Collet. 1997. “Extension of Receiver Operating Characteristic Analysis to Data Concerning Multiple Signal Detection Tasks.” Journal Article. <em>Acad Radiol</em> 4: 222–29. <a href="https://doi.org/10.1016/S1076-6332(05)80295-8">https://doi.org/10.1016/S1076-6332(05)80295-8</a>.</p>
-</div>
-<div>
-<p>Hillis, S. L., N. A. Obuchowski, K. M. Schartz, and K. S. Berbaum. 2005. “A Comparison of the Dorfman-Berbaum-Metz and Obuchowski-Rockette Methods for Receiver Operating Characteristic (ROC) Data.” Journal Article. <em>Statistics in Medicine</em> 24 (10): 1579–1607. <a href="https://doi.org/10.1002/sim.2024">https://doi.org/10.1002/sim.2024</a>.</p>
-</div>
-<div>
-<p>Hillis, Stephen L. 2007. “A Comparison of Denominator Degrees of Freedom Methods for Multiple Observer (ROC) Studies.” Journal Article. <em>Statistics in Medicine</em> 26: 596–619. <a href="https://doi.org/10.1002/sim.2532">https://doi.org/10.1002/sim.2532</a>.</p>
-</div>
-<div>
-<p>Hillis, Stephen L. 2014. “A Marginal‐mean ANOVA Approach for Analyzing Multireader Multicase Radiological Imaging Data.” Journal Article. <em>Statistics in Medicine</em> 33 (2): 330–60. <a href="https://doi.org/10.1002/sim.5926">https://doi.org/10.1002/sim.5926</a>.</p>
-</div>
-<div>
-<p>Hillis, Stephen L., and K. S. Berbaum. 2004. “Power Estimation for the Dorfman-Berbaum-Metz Method.” Journal Article. <em>Acad. Radiol.</em> 11 (11): 1260–73. <a href="https://doi.org/10.1016/j.acra.2004.08.009">https://doi.org/10.1016/j.acra.2004.08.009</a>.</p>
-</div>
-<div>
-<p>Hillis, Stephen L., K. S. Berbaum, and C. E. Metz. 2008. “Recent Developments in the Dorfman-Berbaum-Metz Procedure for Multireader (ROC) Study Analysis.” Journal Article. <em>Acad Radiol</em> 15 (5): 647–61. <a href="https://doi.org/10.1016/j.acra.2007.12.015">https://doi.org/10.1016/j.acra.2007.12.015</a>.</p>
-</div>
-<div>
-<p>Hillis, Stephen L., Nancy A. Obuchowski, and Kevin S. Berbaum. 2011. “Power Estimation for Multireader ROC Methods: An Updated and Unified Approach.” Journal Article. <em>Academic Radiology</em> 18 (2): 129–42. <a href="https://doi.org/10.1016/j.acra.2010.09.007">https://doi.org/10.1016/j.acra.2010.09.007</a>.</p>
-</div>
-<div>
-<p>ICRU. 1996. “Medical Imaging: The Assessment of Image Quality.” Journal Article. <em>JOURNAL OF THE ICRU</em> 54 (1): 37–40.</p>
-</div>
-<div>
-<p>Ishwaran, Hemant, and Constantine A. Gatsonis. 2000. “A General Class of Hierarchical Ordinal Regression Models with Applications to Correlated ROC Analysis.” Journal Article. <em>The Canadian Journal of Statistics</em> 28 (4): 731–50. <a href="https://doi.org/10.2307/3315913">https://doi.org/10.2307/3315913</a>.</p>
-</div>
-<div>
-<p>Kupinski, Matthew A., Eric Clarkson, and Harrison H. Barrett. 2006. “A Probabilistic Model for the MRMC Method, Part 2: Validation and Applications.” Journal Article. <em>Academic Radiology</em> 13 (11): 1422–30. <a href="https://doi.org/10.1016/j.acra.2006.07.015">https://doi.org/10.1016/j.acra.2006.07.015</a>.</p>
-</div>
-<div>
-<p>Larsen, Richard J., and Morris L. Marx. 2001. <em>An Introduction to Mathematical Statistics and Its Applications</em>. Book. 3rd ed. Upper Saddle River, NJ: Prentice-Hall Inc.</p>
-</div>
-<div>
-<p>Metz, C. E. 1978. “Basic Principles of ROC Analysis.” Journal Article. <em>Seminars in Nuclear Medicine</em> 8 (4): 283–98. <a href="https://doi.org/10.1016/s0001-2998(78)80014-2">https://doi.org/10.1016/s0001-2998(78)80014-2</a>.</p>
-</div>
-<div>
-<p>Niklason, L. T., N. M. Hickey, Dev P. Chakraborty, E. A. Sabbagh, M. V. Yester, R. G. Fraser, and G. T. Barnes. 1986. “Simulated Pulmonary Nodules: Detection with Dual-Energy Digital Versus Conventional Radiography.” Journal Article. <em>Radiology</em> 160: 589–93. <a href="https://doi.org/10.1148/radiology.160.3.3526398">https://doi.org/10.1148/radiology.160.3.3526398</a>.</p>
-</div>
-<div>
-<p>Obuchowski, Nancy A. 1998. “Sample Size Calculations in Studies of Test Accuracy.” Journal Article. <em>Statistical Methods in Medical Research</em> 7 (4): 371–92. <a href="https://doi.org/10.1177/096228029800700405">https://doi.org/10.1177/096228029800700405</a>.</p>
-</div>
-<div>
-<p>———. 2000. “Sample Size Tables for Receiver Operating Characteristic Studies.” Journal Article. <em>Am. J. Roentgenol.</em> 175 (3): 603–8. <a href="http://www.ajronline.org/cgi/content/abstract/175/3/603">http://www.ajronline.org/cgi/content/abstract/175/3/603</a>.</p>
-</div>
-<div>
-<p>Obuchowski, N. A., and H. E. Rockette. 1995. “Hypothesis Testing of the Diagnostic Accuracy for Multiple Diagnostic Tests: An ANOVA Approach with Dependent Observations.” Journal Article. <em>Communications in Statistics: Simulation and Computation</em> 24: 285–308. <a href="https://doi.org/10.1080/03610919508813243">https://doi.org/10.1080/03610919508813243</a>.</p>
-</div>
-<div>
-<p>Roe, C. A., and C. E. Metz. 1997a. “Dorfman-Berbaum-Metz Method for Statistical Analysis of Multireader, Multimodality Receiver Operating Characteristic Data: Validation with Computer Simulation.” Journal Article. <em>Acad Radiol</em> 4: 298–303. <a href="https://doi.org/10.1016/S1076-6332(97)80032-3">https://doi.org/10.1016/S1076-6332(97)80032-3</a>.</p>
-</div>
-<div>
-<p>———. 1997b. “Variance-Component Modeling in the Analysis of Receiver Operating Characteristic Index Estimates.” Journal Article. <em>Acad. Radiol.</em> 4 (8): 587–600. <a href="https://doi.org/10.1016/S1076-6332(97)80210-3">https://doi.org/10.1016/S1076-6332(97)80210-3</a>.</p>
-</div>
-<div>
-<p>Satterthwaite, F. E. 1941. “Synthesis of Variance.” Journal Article. <em>Psychometrika</em> 6 (5): 309–16.</p>
-</div>
-<div>
-<p>———. 1946. “An Approximate Distribution of Estimates of Variance Components.” Journal Article. <em>Biometrics Bulletin</em> 2 (6): 110–14.</p>
-</div>
-<div>
-<p>Starr, SJ, CE Metz, LB Lusted, PF Sharp, and KB Herath. 1977. “Comments on the Generalization of Receiver Operating Characteristic Analysis to Detection and Localization Tasks.” <em>Physics in Medicine &amp; Biology</em> 22 (2): 376.</p>
-</div>
-<div>
-<p>Starr, Stuart J, Charles E Metz, Lee B Lusted, and David J Goodenough. 1975. “Visual Detection and Localization of Radiographic Images.” <em>Radiology</em> 116 (3): 533–38.</p>
-</div>
-<div>
-<p>Swensson, Richard G. 1996. “Unified Measurement of Observer Performance in Detecting and Localizing Target Objects on Images.” <em>Medical Physics</em> 23 (10): 1709–25.</p>
-</div>
-<div>
-<p>Swets, John A., and Ronald M. Pickett. 1982. <em>Evaluation of Diagnostic Systems: Methods from Signal Detection Theory</em>. Book. First. Series in Cognition and Perception. New York: Academic Press.</p>
-</div>
-<div>
-<p>Toledano, A. Y. 2003. “Three Methods for Analyzing Correlated ROC Curves: A Comparison in Real Data Sets.” Journal Article. <em>Statistics in Medicine</em> 22 (18): 2919–33. <a href="https://doi.org/10.1002/sim.1518">https://doi.org/10.1002/sim.1518</a>.</p>
-</div>
-<div>
-<p>Toledano, A. Y., and C. Gatsonis. 1996. “Ordinal Regression Methodology for ROC Curves Derived from Correlated Data.” Journal Article. <em>Stat Med</em> 15 (16): 1807–26. <a href="https://doi.org/10.1002/(SICI)1097-0258(19960830)15:16%3C1807::AID-SIM333%3E3.0.CO;2-U">https://doi.org/10.1002/(SICI)1097-0258(19960830)15:16&lt;1807::AID-SIM333&gt;3.0.CO;2-U</a>.</p>
-</div>
-<div>
-<p>Van Dyke, C. W., R. D. White, N. A. Obuchowski, M. A. Geisinger, R. J. Lorig, and M. A. Meziane. 1993. “Cine MRI in the Diagnosis of Thoracic Aortic Dissection.” Journal Article. <em>79th RSNA Meetings</em>.</p>
-</div>
-<div>
-<p>Zanca, Federica, Jurgen Jacobs, Chantal Van Ongeval, Filip Claus, Valerie Celis, Catherine Geniets, Veerle Provost, Herman Pauwels, Guy Marchal, and Hilde Bosmans. 2009. “Evaluation of Clinical Image Processing Algorithms Used in Digital Mammography.” Journal Article. <em>Medical Physics</em> 36 (3): 765–75. <a href="https://doi.org/10.1118/1.3077121">https://doi.org/10.1118/1.3077121</a>.</p>
-</div>
-<div>
-<p>Zhou, Xiao-Hua, Donna K McClish, and Nancy A Obuchowski. 2009. <em>Statistical Methods in Diagnostic Medicine</em>. Vol. 569. John Wiley &amp; Sons. <a href="https://doi.org/110.1002/9780470906514">https://doi.org/110.1002/9780470906514</a>.</p>
-</div>
-</div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="proproc-rocs.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
+<a href="quick-start-help.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

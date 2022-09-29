@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 14 Obuchowski Rockette Applications | The RJafroc Quick Start Book</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 14 Obuchowski Rockette Applications | The RJafroc Quick Start Book" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2022-08-02" />
+<meta name="date" content="2022-09-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -139,13 +139,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">RJafroc documentation</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tba-how-much-finished"><i class="fa fa-check"></i>TBA How much finished</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#the-pdf-file-of-the-book"><i class="fa fa-check"></i>The pdf file of the book</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#the-html-version-of-the-book"><i class="fa fa-check"></i>The html version of the book</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#structure-of-the-book"><i class="fa fa-check"></i>Structure of the book</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contributing-to-this-book"><i class="fa fa-check"></i>Contributing to this book</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#coding-aids-for-me"><i class="fa fa-check"></i>Coding aids (for me)</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="preface.html"><a href="preface.html#rationale-and-organization"><i class="fa fa-check"></i><b>0.1</b> Rationale and Organization</a></li>
+<li class="chapter" data-level="0.2" data-path="preface.html"><a href="preface.html#tba-acknowledgements"><i class="fa fa-check"></i><b>0.2</b> TBA Acknowledgements</a></li>
 </ul></li>
 <li class="part"><span><b>Quick Start</b></span></li>
 <li class="chapter" data-level="1" data-path="quick-start-help.html"><a href="quick-start-help.html"><i class="fa fa-check"></i><b>1</b> Help</a><ul>
@@ -485,13 +481,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="24.1" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html#helper-functions-1"><i class="fa fa-check"></i><b>24.1</b> Helper functions</a></li>
 <li class="chapter" data-level="24.2" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html#main-code-and-output-1"><i class="fa fa-check"></i><b>24.2</b> Main code and output</a></li>
 <li class="chapter" data-level="24.3" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html#discussion-1"><i class="fa fa-check"></i><b>24.3</b> Discussion</a></li>
-</ul></li>
-<li class="chapter" data-level="25" data-path="roi-paradigm.html"><a href="roi-paradigm.html"><i class="fa fa-check"></i><b>25</b> ROI paradigm</a><ul>
-<li class="chapter" data-level="25.1" data-path="roi-paradigm.html"><a href="roi-paradigm.html#introduction-3"><i class="fa fa-check"></i><b>25.1</b> Introduction</a></li>
-<li class="chapter" data-level="25.2" data-path="roi-paradigm.html"><a href="roi-paradigm.html#an-example-roi-dataset"><i class="fa fa-check"></i><b>25.2</b> An example ROI dataset</a></li>
-<li class="chapter" data-level="25.3" data-path="roi-paradigm.html"><a href="roi-paradigm.html#the-roi-excel-data-file"><i class="fa fa-check"></i><b>25.3</b> The ROI Excel data file</a></li>
-<li class="chapter" data-level="25.4" data-path="roi-paradigm.html"><a href="roi-paradigm.html#next"><i class="fa fa-check"></i><b>25.4</b> Next</a></li>
-<li class="chapter" data-level="25.5" data-path="roi-paradigm.html"><a href="roi-paradigm.html#references-2"><i class="fa fa-check"></i><b>25.5</b> References</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1928,7 +1917,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

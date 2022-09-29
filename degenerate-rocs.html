@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 22 Degenerate ROC curves | The RJafroc Quick Start Book</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 22 Degenerate ROC curves | The RJafroc Quick Start Book" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2022-08-02" />
+<meta name="date" content="2022-09-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -139,13 +139,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">RJafroc documentation</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tba-how-much-finished"><i class="fa fa-check"></i>TBA How much finished</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#the-pdf-file-of-the-book"><i class="fa fa-check"></i>The pdf file of the book</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#the-html-version-of-the-book"><i class="fa fa-check"></i>The html version of the book</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#structure-of-the-book"><i class="fa fa-check"></i>Structure of the book</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contributing-to-this-book"><i class="fa fa-check"></i>Contributing to this book</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#coding-aids-for-me"><i class="fa fa-check"></i>Coding aids (for me)</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="preface.html"><a href="preface.html#rationale-and-organization"><i class="fa fa-check"></i><b>0.1</b> Rationale and Organization</a></li>
+<li class="chapter" data-level="0.2" data-path="preface.html"><a href="preface.html#tba-acknowledgements"><i class="fa fa-check"></i><b>0.2</b> TBA Acknowledgements</a></li>
 </ul></li>
 <li class="part"><span><b>Quick Start</b></span></li>
 <li class="chapter" data-level="1" data-path="quick-start-help.html"><a href="quick-start-help.html"><i class="fa fa-check"></i><b>1</b> Help</a><ul>
@@ -486,13 +482,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="24.2" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html#main-code-and-output-1"><i class="fa fa-check"></i><b>24.2</b> Main code and output</a></li>
 <li class="chapter" data-level="24.3" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html#discussion-1"><i class="fa fa-check"></i><b>24.3</b> Discussion</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="roi-paradigm.html"><a href="roi-paradigm.html"><i class="fa fa-check"></i><b>25</b> ROI paradigm</a><ul>
-<li class="chapter" data-level="25.1" data-path="roi-paradigm.html"><a href="roi-paradigm.html#introduction-3"><i class="fa fa-check"></i><b>25.1</b> Introduction</a></li>
-<li class="chapter" data-level="25.2" data-path="roi-paradigm.html"><a href="roi-paradigm.html#an-example-roi-dataset"><i class="fa fa-check"></i><b>25.2</b> An example ROI dataset</a></li>
-<li class="chapter" data-level="25.3" data-path="roi-paradigm.html"><a href="roi-paradigm.html#the-roi-excel-data-file"><i class="fa fa-check"></i><b>25.3</b> The ROI Excel data file</a></li>
-<li class="chapter" data-level="25.4" data-path="roi-paradigm.html"><a href="roi-paradigm.html#next"><i class="fa fa-check"></i><b>25.4</b> Next</a></li>
-<li class="chapter" data-level="25.5" data-path="roi-paradigm.html"><a href="roi-paradigm.html#references-2"><i class="fa fa-check"></i><b>25.5</b> References</a></li>
-</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -525,40 +514,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="understanding-degenerate-datasets" class="section level2 hasAnchor">
 <h2><span class="header-section-number">22.3</span> Understanding degenerate datasets<a href="degenerate-rocs.html#understanding-degenerate-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To understand this, consider that the non-diseased distribution is a Dirac delta function centered at zero (by definition such a function integrates to unity) and the unit variance diseased distribution is centered at 0.6744898. In other words this binormal model is characterized by <code>a = 0.6744898</code> and <code>b = 0</code>. What is the expected ROC curve? As the threshold <span class="math inline">\(\zeta\)</span> is moved from the far right, gradually to the left, TPF will increase but FPF is stuck at zero until the threshold reaches zero. Just before reaching this point, the coordinates of the ROC operating point are (0, 0.75). The 0.75 is due to the fact that <code>z = 0</code> is -0.6744898 units relative to the center of the diseased distribution, so the area under the diseased distribution below <code>z = 0</code> is 0.25. Since <code>pnorm</code> is the probability <em>below</em> the threshold, TPF must be its complement, namely 0.75. This explains the operating point (0,0.75), which lies on the y-axis. As the threshold crosses the zero-width delta function, FPF shoots up from 0 to 1, but TPF stays constant. Therefore, the operating point has jumped from (0, 0.75) to (1, 0.75). When the threshold is reduced further, the operating point moves up vertically, along the right side of the ROC plot, until the threshold is so small that virtually all of diseased distribution exceeds it and the operating point reaches (1, 1). The ROC curve is illustrated in plot A.</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="degenerate-rocs.html#cb163-1"></a>plotOP &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">FPF =</span> <span class="dv">0</span>, <span class="dt">TPF =</span> <span class="fl">0.75</span>)</span>
-<span id="cb163-2"><a href="degenerate-rocs.html#cb163-2"></a>a &lt;-<span class="st"> </span><span class="fl">0.6744898</span>; b &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb163-3"><a href="degenerate-rocs.html#cb163-3"></a>plotCurve &lt;-<span class="st"> </span><span class="kw">BMPoints</span>(a, b)</span>
-<span id="cb163-4"><a href="degenerate-rocs.html#cb163-4"></a>figA &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> FPF, <span class="dt">y =</span> TPF)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb163-5"><a href="degenerate-rocs.html#cb163-5"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> plotCurve) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb163-6"><a href="degenerate-rocs.html#cb163-6"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> plotOP)  <span class="op">+</span><span class="st"> </span></span>
-<span id="cb163-7"><a href="degenerate-rocs.html#cb163-7"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb163-8"><a href="degenerate-rocs.html#cb163-8"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span></span>
-<span id="cb163-9"><a href="degenerate-rocs.html#cb163-9"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;A&quot;</span>)</span>
-<span id="cb163-10"><a href="degenerate-rocs.html#cb163-10"></a><span class="kw">print</span>(figA)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="degenerate-rocs.html#cb162-1"></a>plotOP &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">FPF =</span> <span class="dv">0</span>, <span class="dt">TPF =</span> <span class="fl">0.75</span>)</span>
+<span id="cb162-2"><a href="degenerate-rocs.html#cb162-2"></a>a &lt;-<span class="st"> </span><span class="fl">0.6744898</span>; b &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb162-3"><a href="degenerate-rocs.html#cb162-3"></a>plotCurve &lt;-<span class="st"> </span><span class="kw">BMPoints</span>(a, b)</span>
+<span id="cb162-4"><a href="degenerate-rocs.html#cb162-4"></a>figA &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> FPF, <span class="dt">y =</span> TPF)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb162-5"><a href="degenerate-rocs.html#cb162-5"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> plotCurve) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb162-6"><a href="degenerate-rocs.html#cb162-6"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> plotOP)  <span class="op">+</span><span class="st"> </span></span>
+<span id="cb162-7"><a href="degenerate-rocs.html#cb162-7"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb162-8"><a href="degenerate-rocs.html#cb162-8"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span></span>
+<span id="cb162-9"><a href="degenerate-rocs.html#cb162-9"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;A&quot;</span>)</span>
+<span id="cb162-10"><a href="degenerate-rocs.html#cb162-10"></a><span class="kw">print</span>(figA)</span></code></pre></div>
 <p><img src="19d-degenerate-rocs_files/figure-html/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>This is an extreme example of an ROC curve with a “hook”. If the data is such that the only operating point provided by the observer is (0,0.75) then this curve will be an exact fit to the operating point.</p>
 </div>
 <div id="the-exact-fit-is-not-unique" class="section level2 hasAnchor">
 <h2><span class="header-section-number">22.4</span> The exact fit is not unique<a href="degenerate-rocs.html#the-exact-fit-is-not-unique" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Actually, given one operating point (0, 0.75) the preceding fit is not even unique. If the diseased distribution is shifted appropriately to the right of its previous position, and one can determine the necessary value of a, then the ROC curve will shoot upwards through the operating point (0, 0.75) to (0, 0.9), as in plot B, before proceeding horizontally to (1, 0.9) and then completing the curve to (1, 1). If the diseased distribution is shifted well to the right, i.e., a is very large, then the ROC curve will shoot upwards past the operating point, as in plot C, all the way to (0,1) before proceeding horizontally to (1, 1).</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="degenerate-rocs.html#cb164-1"></a>a &lt;-<span class="st"> </span><span class="fl">1.281552</span>; b &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb164-2"><a href="degenerate-rocs.html#cb164-2"></a>plotCurve &lt;-<span class="st"> </span><span class="kw">BMPoints</span>(a, b)</span>
-<span id="cb164-3"><a href="degenerate-rocs.html#cb164-3"></a>figB &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> FPF, <span class="dt">y =</span> TPF)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb164-4"><a href="degenerate-rocs.html#cb164-4"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> plotCurve) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb164-5"><a href="degenerate-rocs.html#cb164-5"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> plotOP)  <span class="op">+</span><span class="st"> </span></span>
-<span id="cb164-6"><a href="degenerate-rocs.html#cb164-6"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb164-7"><a href="degenerate-rocs.html#cb164-7"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span></span>
-<span id="cb164-8"><a href="degenerate-rocs.html#cb164-8"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;B&quot;</span>)</span>
-<span id="cb164-9"><a href="degenerate-rocs.html#cb164-9"></a></span>
-<span id="cb164-10"><a href="degenerate-rocs.html#cb164-10"></a>a &lt;-<span class="st"> </span><span class="ot">Inf</span>; b &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb164-11"><a href="degenerate-rocs.html#cb164-11"></a>plotCurve &lt;-<span class="st"> </span><span class="kw">BMPoints</span>(a, b)</span>
-<span id="cb164-12"><a href="degenerate-rocs.html#cb164-12"></a>figC &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> FPF, <span class="dt">y =</span> TPF)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb164-13"><a href="degenerate-rocs.html#cb164-13"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> plotCurve) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb164-14"><a href="degenerate-rocs.html#cb164-14"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> plotOP)  <span class="op">+</span><span class="st"> </span></span>
-<span id="cb164-15"><a href="degenerate-rocs.html#cb164-15"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb164-16"><a href="degenerate-rocs.html#cb164-16"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span></span>
-<span id="cb164-17"><a href="degenerate-rocs.html#cb164-17"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;C&quot;</span>)</span>
-<span id="cb164-18"><a href="degenerate-rocs.html#cb164-18"></a><span class="kw">print</span>(figB);<span class="kw">print</span>(figC)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="degenerate-rocs.html#cb163-1"></a>a &lt;-<span class="st"> </span><span class="fl">1.281552</span>; b &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb163-2"><a href="degenerate-rocs.html#cb163-2"></a>plotCurve &lt;-<span class="st"> </span><span class="kw">BMPoints</span>(a, b)</span>
+<span id="cb163-3"><a href="degenerate-rocs.html#cb163-3"></a>figB &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> FPF, <span class="dt">y =</span> TPF)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb163-4"><a href="degenerate-rocs.html#cb163-4"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> plotCurve) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb163-5"><a href="degenerate-rocs.html#cb163-5"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> plotOP)  <span class="op">+</span><span class="st"> </span></span>
+<span id="cb163-6"><a href="degenerate-rocs.html#cb163-6"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb163-7"><a href="degenerate-rocs.html#cb163-7"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span></span>
+<span id="cb163-8"><a href="degenerate-rocs.html#cb163-8"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;B&quot;</span>)</span>
+<span id="cb163-9"><a href="degenerate-rocs.html#cb163-9"></a></span>
+<span id="cb163-10"><a href="degenerate-rocs.html#cb163-10"></a>a &lt;-<span class="st"> </span><span class="ot">Inf</span>; b &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb163-11"><a href="degenerate-rocs.html#cb163-11"></a>plotCurve &lt;-<span class="st"> </span><span class="kw">BMPoints</span>(a, b)</span>
+<span id="cb163-12"><a href="degenerate-rocs.html#cb163-12"></a>figC &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> FPF, <span class="dt">y =</span> TPF)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb163-13"><a href="degenerate-rocs.html#cb163-13"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> plotCurve) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb163-14"><a href="degenerate-rocs.html#cb163-14"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> plotOP)  <span class="op">+</span><span class="st"> </span></span>
+<span id="cb163-15"><a href="degenerate-rocs.html#cb163-15"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb163-16"><a href="degenerate-rocs.html#cb163-16"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span></span>
+<span id="cb163-17"><a href="degenerate-rocs.html#cb163-17"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;C&quot;</span>)</span>
+<span id="cb163-18"><a href="degenerate-rocs.html#cb163-18"></a><span class="kw">print</span>(figB);<span class="kw">print</span>(figC)</span></code></pre></div>
 <p><img src="19d-degenerate-rocs_files/figure-html/unnamed-chunk-3-1.png" width="672" /><img src="19d-degenerate-rocs_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
 <p>All of these represent exact fits to the observed operating point, with <code>b = 0</code> and different values of <code>a</code>. Not one of them is reasonable.</p>
 </div>
@@ -569,15 +558,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="a-reasonable-fit-to-the-degenerate-dataset" class="section level2 hasAnchor">
 <h2><span class="header-section-number">22.6</span> A reasonable fit to the degenerate dataset<a href="degenerate-rocs.html#a-reasonable-fit-to-the-degenerate-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If the dataset yields a single operating point (0, 0.75), what is a reasonable ROC plot? There is a theorem that given an observed operating point, the line connecting that point to (1, 1) represents a lower bound on achievable performance by the observer. The observer using a guessing mechanism to classify the remaining cases achieves the lower bound. Here is an explanation of this theorem. Having rated the 75 easy diseased cases as fives, the observer is left with 25 diseased cases and 100 non-diseased cases, all of which appear definitely non-diseased to the observer. Suppose the observer randomly rates 20% of the remaining cases as fours. This would pick up five of the actually diseased cases and 20 non-diseased ones. Therefore, the total number of diseased cases rated four or higher is 80, and the corresponding number of non-diseased cases is 20. The new operating point of the observer is (0.20, 0.80). Now, one has two operating points, the original one on the y-axis at (0, 0.75) and an interior point (0.20, 0.80). Next, instead of randomly rating 20% of the remaining cases as fours, the observer rates 40% of them as fours, then the interior point would have been (0.40, 0.85). The reader can appreciate that simply by increasing the fraction of remaining cases that are randomly rated fours, the observer can move the operating point along the straight line connecting (0, 0.75) and (1, 1), as in plot D. Since a guessing mechanism is being used, this must represent a lower bound on performance. The resulting ROC curve is proper and the net AUC = 0.875.</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="degenerate-rocs.html#cb165-1"></a>mu &lt;-<span class="st"> </span><span class="ot">Inf</span>; alpha &lt;-<span class="st"> </span><span class="fl">0.75</span></span>
-<span id="cb165-2"><a href="degenerate-rocs.html#cb165-2"></a>plotCurve &lt;-<span class="st"> </span><span class="kw">CBMPoints</span>(mu, alpha)</span>
-<span id="cb165-3"><a href="degenerate-rocs.html#cb165-3"></a>figD &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> FPF, <span class="dt">y =</span> TPF)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb165-4"><a href="degenerate-rocs.html#cb165-4"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> plotCurve) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb165-5"><a href="degenerate-rocs.html#cb165-5"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> plotOP)  <span class="op">+</span><span class="st"> </span></span>
-<span id="cb165-6"><a href="degenerate-rocs.html#cb165-6"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb165-7"><a href="degenerate-rocs.html#cb165-7"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span></span>
-<span id="cb165-8"><a href="degenerate-rocs.html#cb165-8"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;D&quot;</span>)</span>
-<span id="cb165-9"><a href="degenerate-rocs.html#cb165-9"></a><span class="kw">print</span>(figD)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="degenerate-rocs.html#cb164-1"></a>mu &lt;-<span class="st"> </span><span class="ot">Inf</span>; alpha &lt;-<span class="st"> </span><span class="fl">0.75</span></span>
+<span id="cb164-2"><a href="degenerate-rocs.html#cb164-2"></a>plotCurve &lt;-<span class="st"> </span><span class="kw">CBMPoints</span>(mu, alpha)</span>
+<span id="cb164-3"><a href="degenerate-rocs.html#cb164-3"></a>figD &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> FPF, <span class="dt">y =</span> TPF)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb164-4"><a href="degenerate-rocs.html#cb164-4"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> plotCurve) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb164-5"><a href="degenerate-rocs.html#cb164-5"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> plotOP)  <span class="op">+</span><span class="st"> </span></span>
+<span id="cb164-6"><a href="degenerate-rocs.html#cb164-6"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb164-7"><a href="degenerate-rocs.html#cb164-7"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span></span>
+<span id="cb164-8"><a href="degenerate-rocs.html#cb164-8"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;D&quot;</span>)</span>
+<span id="cb164-9"><a href="degenerate-rocs.html#cb164-9"></a><span class="kw">print</span>(figD)</span></code></pre></div>
 <p><img src="19d-degenerate-rocs_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>For this dataset this is in fact the fit yielded by the contaminated binormal model (CBM) and the radiological search model (RSM). Why should one select the lowest possible performance consistent with the data? Because it yields a <em>unique</em> value for performance: any higher performance would not be unique.</p>
 
@@ -649,7 +638,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
