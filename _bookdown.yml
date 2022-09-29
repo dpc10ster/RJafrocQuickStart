@@ -4,7 +4,7 @@ repo: https://github.com/dpc10ster/RJafrocQuickStart
 output_dir: docs
 delete_merged_file: TRUE
 rmd_files: [
-  "index.Rmd", 
+  "00-preface.Rmd", 
   "00a-quick-start.Rmd", 
   "00b-quick-start.Rmd", 
   "00c-quick-start.Rmd", 
@@ -23,15 +23,16 @@ rmd_files: [
   "11b-roc-sample-size-or.Rmd",
   "18a-analyzing-froc-data.Rmd",
   "18b-froc-sample-size.Rmd",
-  "19a-f-distribution.Rmd",
+  "19a-fdistribution.Rmd",
   "19b-rsm-operating-characteristics.Rmd",
   "19c-improper-rocs.Rmd",
   "19d-degenerate-rocs.Rmd",
   "19e-proproc-rocs.Rmd",
   "19f-metz-eqn-36.Rmd",
-  "19h-roi-paradigm.Rmd",
 ]
-clean: [packages.bib, myRefs.bbl]
+
+
+clean: [packages.bib]
 new_session: yes
 language:
   label:

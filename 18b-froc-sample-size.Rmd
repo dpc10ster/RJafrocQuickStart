@@ -54,13 +54,13 @@ The next section explains the steps used to implement #2 above.
 
 ### Relating an ROC effect-size to a wAFROC effect-size
 
-* If there are more than two treatments in the pilot dataset extract those treatments that represent null hypothesis data: for example `DfExtractDataset(dataset, trts = c(1,2,4))` extracts treatments 1, 2 and 4. Save the extracted dataset to `dataset`. More than two treatments can be used if they have similar FOMs as the averaging/median procedure described below benefits from more data. However, the final sample size predictions are restricted to two treatments.
+* If there are more than two treatments in the pilot dataset extract those treatments that represent null hypothesis data: for example `DfExtractDataset(dataset, trts = c(1,2,4))` extracts treatments 1, 2 and 4. Save the extracted dataset to `dataset`. More than two treatments can be used if they have similar FOMs as the averaging/ian procedure described below benefits from more data. However, the final sample size predictions are restricted to two treatments.
 
 * If the original data is FROC, convert it to ROC using `DfFroc2Roc(dataset)`: this is because **the RSM fits binned ROC data**. The ROC dataset is `rocDataset`.
 
 * If the data uses continuous scale ratings, bin the data using `DfBinDataset(rocDataset, opChType = "ROC")`. The default number of bins should be used. Unlike binning using arbitrarily set thresholds, the thresholds found by `DfBinDataset` are unique in that they maximize ROC-AUC. The binned dataset is `rocDatasetB`. 
 
-* For each treatment and reader the inferred ROC data is fitted by `FitRsmRoc()`, see example below, yielding estimates of the RSM *physical* (or primed) parameters (not the *intrinsic* values).  
+* For each treatment and reader the inferred ROC data is fitted by `FitRsmRoc()`, see example below, yielding estimates of the RSM *physical* (or pri) parameters (not the *intrinsic* values).  
 
 * The following example uses the *first two* treatments of the "FED" dataset, `dataset04`, which is a 5 treatment 4 radiologist FROC dataset acquired by Dr. Federica Zanca et. al. [@RN1882]. The dataset has 5 treatments and 4 readers and 200 cases and was acquired on a 5-point integer scale, i.e., it is already binned. If not one needs to bin the dataset using `DfBinDataset()`. I need to emphasize this point: **if the dataset represents continuous ratings, as with a CAD algorithm, one must bin the dataset**. 
 
@@ -84,7 +84,7 @@ print(lesDistr)
 
 For this dataset `Lmax` is 3, and fraction `r lesDistr[1]` of diseased cases have one lesion, fraction `r lesDistr[2]` of diseased cases have two lesions and fraction `r lesDistr[3]` of diseased cases have three lesions. 
 
-The next code block determines the number of treatments and readers (`I` and `J`) from the dimensions of the `frocData$ratings$NL` array. It creates an array `RsmParms` to hold the RSM fitted parameter values. For each treatment and reader it applies the fitting algorithm `FitRsmRoc()`. The first three returned values are `mu`, `lambdaP` and `nuP`, corresponding to RSM parameters ${\mu}$, ${\lambda'}$ and ${\nu'}$.
+The next code block determines the number of treatments and readers (`I` and `J`) from the dimensions of the `frocData$ratings$NL` array. It creates an array `RsmParms` to hold the RSM fitted parameter values. For each treatment and reader it applies the fitting algorithm `FitRsmRoc()`. The first three returned values are `mu`, `lambda` and `nu`, corresponding to RSM parameters ${\mu}$, ${\lambda'}$ and ${\nu'}$.
 
 ```{r}
 I <- dim(frocData$ratings$NL)[1]
@@ -94,38 +94,29 @@ for (i in 1:I) {
   for (j in 1:J)  {
     x1 <- FitRsmRoc(rocDataB, trt = i, rdr = j, lesDistr)
     RsmParms[i,j,1] <- x1[[1]] # mu
-    RsmParms[i,j,2] <- x1[[2]] # lambdaP
-    RsmParms[i,j,3] <- x1[[3]] # nuP
+    RsmParms[i,j,2] <- x1[[2]] # lambda
+    RsmParms[i,j,3] <- x1[[3]] # nu
   }
 }
 ```
 
 
-I recommend taking the median of each of the parameters, over all treatment-reader indices, as representing the average NH dataset. The median is less sensitive to outliers than the mean.  
+I recommend taking the ian of each of the parameters, over all treatment-reader indices, as representing the average NH dataset. The ian is less sensitive to outliers than the mean.  
 
 
 ```{r}
-muMed <- median(RsmParms[,,1]) 
-lambdaPMed <- median(RsmParms[,,2])
-nuPMed <- median(RsmParms[,,3])
+mu <- median(RsmParms[,,1]) 
+lambda <- median(RsmParms[,,2])
+nu <- median(RsmParms[,,3])
 ```
 
 
-The defining values of the fitting model are `muMed` = `r muMed`,  `lambdaPMed` = `r lambdaPMed` and `nuPMed` = `r nuPMed`. Note that these obey the constraints `lambdaPMed > 0` and `0 < nuP < 1`. One converts the physical parameters to the intrinsic values:
-
-
-```{r}
-temp <- UtilPhysical2IntrinsicRSM(muMed, lambdaPMed, nuPMed)
-lambdaMed <- temp$lambda
-nuMed <- temp$nu
-```
-
-In terms of intrinsic parameters, the defining values of the fitting model are `muMed` = `r muMed`,  `lambdaMed` = `r lambdaMed` and `nuMed` = `r nuMed`. We are now ready to calculate the expected NH FOMs using the ROC -AUC and the wAFROC FOM.  
+The defining values of the fitting model are `mu` = `r mu`,  `lambda` = `r lambda` and `nu` = `r nu`. Note that these obey the constraints `lambda > 0` and `0 < nu < 1`. We are now ready to calculate the expected NH FOMs using the ROC -AUC and the wAFROC FOM.  
 
 ```{r}
-aucRocNH <- PlotRsmOperatingCharacteristics(muMed, lambdaMed, nuMed, 
+aucRocNH <- PlotRsmOperatingCharacteristics(mu, lambda, nu, 
                                             lesDistr = lesDistr, OpChType = "ROC")$aucROC
-aucwAfrocNH <- PlotRsmOperatingCharacteristics(muMed, lambdaMed, nuMed, 
+aucwAfrocNH <- PlotRsmOperatingCharacteristics(mu, lambda, nu, 
                                                lesDistr = lesDistr, OpChType = "wAFROC")$aucwAFROC
 ```
 
@@ -144,9 +135,9 @@ deltaMu <- seq(0.01, 0.2, 0.01) # values of deltaMu to scan below
 esRoc <- array(dim = length(deltaMu));eswAfroc <- array(dim = length(deltaMu))
 for (i in 1:length(deltaMu)) {
   esRoc[i] <- PlotRsmOperatingCharacteristics(
-    muMed + deltaMu[i], lambdaMed, nuMed, lesDistr = lesDistr, OpChType = "ROC")$aucROC - aucRocNH
+    mu + deltaMu[i], lambda, nu, lesDistr = lesDistr, OpChType = "ROC")$aucROC - aucRocNH
   eswAfroc[i] <- PlotRsmOperatingCharacteristics(
-    muMed+ deltaMu[i], lambdaMed, nuMed, lesDistr = lesDistr, OpChType = "wAFROC")$aucwAFROC - aucwAfrocNH
+    mu+ deltaMu[i], lambda, nu, lesDistr = lesDistr, OpChType = "wAFROC")$aucwAFROC - aucwAfrocNH
   cat("ES_ROC = ", esRoc[i], ", ES_wAFROC = ", eswAfroc[i],"\n")
 }
 ```
@@ -268,20 +259,20 @@ One starts by extracting the first two treatments from `dataset04`, which repres
 lesDistr <- c(0.7, 0.2, 0.1)
 frocNhData <- DfExtractDataset(dataset04, trts = c(1,2))
 ret <- SsFrocNhRsmModel(frocNhData, lesDistr = lesDistr)
-muMed <- ret$muMed
-lambdaMed <- ret$lambdaMed
-nuMed <- ret$nuMed
+mu <- ret$mu
+lambda <- ret$lambda
+nu <- ret$nu
 scaleFactor <- ret$scaleFactor
 ```
 
 
-The fitting model is defined by `muMed` = `r muMed`,  `lambdaMed` = `r lambdaMed`  and  `nuMed` = `r nuMed` and `lesDistr`. The effect size scale factor is `r scaleFactor`.
+The fitting model is defined by `mu` = `r mu`,  `lambda` = `r lambda`  and  `nu` = `r nu` and `lesDistr`. The effect size scale factor is `r scaleFactor`.
 
 
 ```{r}
-aucRocNH <- PlotRsmOperatingCharacteristics(muMed, lambdaMed, nuMed, 
+aucRocNH <- PlotRsmOperatingCharacteristics(mu, lambda, nu, 
                                             lesDistr = lesDistr, OpChType = "ROC")$aucROC
-aucwAfrocNH <- PlotRsmOperatingCharacteristics(muMed, lambdaMed, nuMed, 
+aucwAfrocNH <- PlotRsmOperatingCharacteristics(mu, lambda, nu, 
                                                lesDistr = lesDistr, OpChType = "wAFROC")$aucwAFROC
 ```
 

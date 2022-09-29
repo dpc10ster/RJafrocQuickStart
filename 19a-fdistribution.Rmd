@@ -3,7 +3,7 @@
 # F-distribution {#background-f-distribution}
 
 ---
-title: "RJafroc Vignette 1: Background on the F distribution"
+title: "Background on the F distribution"
 author: "Dev P. Chakraborty, PhD"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_document
@@ -20,6 +20,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 library(ggplot2)
+library(RJafroc)
 library(kableExtra)
 ```
 
