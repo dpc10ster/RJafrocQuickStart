@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 23 PROPROC ROC curves | The RJafroc Quick Start Book</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 23 PROPROC ROC curves | The RJafroc Quick Start Book" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2022-09-29" />
+<meta name="date" content="2022-12-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -139,9 +139,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">RJafroc documentation</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a><ul>
-<li class="chapter" data-level="0.1" data-path="preface.html"><a href="preface.html#rationale-and-organization"><i class="fa fa-check"></i><b>0.1</b> Rationale and Organization</a></li>
-<li class="chapter" data-level="0.2" data-path="preface.html"><a href="preface.html#tba-acknowledgements"><i class="fa fa-check"></i><b>0.2</b> TBA Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#rationale-and-organization"><i class="fa fa-check"></i><b>0.1</b> Rationale and Organization</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#tba-acknowledgements"><i class="fa fa-check"></i><b>0.2</b> TBA Acknowledgements</a></li>
 </ul></li>
 <li class="part"><span><b>Quick Start</b></span></li>
 <li class="chapter" data-level="1" data-path="quick-start-help.html"><a href="quick-start-help.html"><i class="fa fa-check"></i><b>1</b> Help</a><ul>
@@ -482,6 +482,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="24.2" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html#main-code-and-output-1"><i class="fa fa-check"></i><b>24.2</b> Main code and output</a></li>
 <li class="chapter" data-level="24.3" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html#discussion-1"><i class="fa fa-check"></i><b>24.3</b> Discussion</a></li>
 </ul></li>
+<li class="part"><span><b>Software details</b></span></li>
+<li class="chapter" data-level="25" data-path="dataset-object-details.html"><a href="dataset-object-details.html"><i class="fa fa-check"></i><b>25</b> Dataset object details</a><ul>
+<li class="chapter" data-level="25.1" data-path="dataset-object-details.html"><a href="dataset-object-details.html#introduction-3"><i class="fa fa-check"></i><b>25.1</b> Introduction</a></li>
+<li class="chapter" data-level="25.2" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-truth-worksheet"><i class="fa fa-check"></i><b>25.2</b> The <code>Truth</code> worksheet</a></li>
+<li class="chapter" data-level="25.3" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-structure-of-the-roc-split-plot-a-dataset"><i class="fa fa-check"></i><b>25.3</b> The structure of the ROC split-plot-A dataset</a></li>
+<li class="chapter" data-level="25.4" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-truthtablestr-member"><i class="fa fa-check"></i><b>25.4</b> The truthTableStr member</a></li>
+<li class="chapter" data-level="25.5" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-false-positive-fp-ratings"><i class="fa fa-check"></i><b>25.5</b> The false positive (FP) ratings</a></li>
+<li class="chapter" data-level="25.6" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-true-positive-tp-ratings"><i class="fa fa-check"></i><b>25.6</b> The true positive (TP) ratings</a></li>
+<li class="chapter" data-level="25.7" data-path="dataset-object-details.html"><a href="dataset-object-details.html#references-2"><i class="fa fa-check"></i><b>25.7</b> References</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -513,38 +523,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="main-code-and-output" class="section level2 hasAnchor">
 <h2><span class="header-section-number">23.3</span> Main code and output<a href="proproc-rocs.html#main-code-and-output" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="proproc-rocs.html#cb165-1"></a>c1Arr &lt;-<span class="st">   </span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.1322804</span>, <span class="fl">0.2225588</span>); daArr  &lt;-<span class="st">  </span><span class="kw">c</span>(<span class="fl">1.197239</span>, <span class="fl">1.740157</span>)</span>
-<span id="cb165-2"><a href="proproc-rocs.html#cb165-2"></a>myLabel &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>)</span>
-<span id="cb165-3"><a href="proproc-rocs.html#cb165-3"></a>myLabelIndx &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb165-4"><a href="proproc-rocs.html#cb165-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)</span>
-<span id="cb165-5"><a href="proproc-rocs.html#cb165-5"></a>{</span>
-<span id="cb165-6"><a href="proproc-rocs.html#cb165-6"></a>  c1 &lt;-<span class="st"> </span>c1Arr[i]</span>
-<span id="cb165-7"><a href="proproc-rocs.html#cb165-7"></a>  da &lt;-<span class="st"> </span>daArr[i]</span>
-<span id="cb165-8"><a href="proproc-rocs.html#cb165-8"></a>  ret &lt;-<span class="st"> </span><span class="kw">Transform2ab</span>(da, c1)</span>
-<span id="cb165-9"><a href="proproc-rocs.html#cb165-9"></a>  a &lt;-<span class="st"> </span>ret<span class="op">$</span>a;b &lt;-<span class="st"> </span>ret<span class="op">$</span>b</span>
-<span id="cb165-10"><a href="proproc-rocs.html#cb165-10"></a>  <span class="cf">if</span> (i <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) z &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="dt">by =</span> <span class="fl">0.01</span>) <span class="co"># may need to adjust limits to view detail of slope plot</span></span>
-<span id="cb165-11"><a href="proproc-rocs.html#cb165-11"></a>  <span class="cf">if</span> (i <span class="op">==</span><span class="st"> </span><span class="dv">2</span>) z &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">5</span>, <span class="dt">by =</span> <span class="fl">0.01</span>) <span class="co"># may need to adjust limits to view detail of slope plot</span></span>
-<span id="cb165-12"><a href="proproc-rocs.html#cb165-12"></a>  </span>
-<span id="cb165-13"><a href="proproc-rocs.html#cb165-13"></a>  FPF &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.0</span>, <span class="dv">1</span>, <span class="fl">0.001</span>)</span>
-<span id="cb165-14"><a href="proproc-rocs.html#cb165-14"></a>  TPF &lt;-<span class="st"> </span><span class="kw">rocY</span>(FPF, a, b)</span>
-<span id="cb165-15"><a href="proproc-rocs.html#cb165-15"></a>  </span>
-<span id="cb165-16"><a href="proproc-rocs.html#cb165-16"></a>  rocPlot &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">FPF =</span> FPF, <span class="dt">TPF =</span> TPF)</span>
-<span id="cb165-17"><a href="proproc-rocs.html#cb165-17"></a>  plotRoc &lt;-<span class="st"> </span><span class="kw">ggplot</span>(rocPlot, <span class="kw">aes</span>(<span class="dt">x =</span> FPF, <span class="dt">y =</span> TPF)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb165-18"><a href="proproc-rocs.html#cb165-18"></a><span class="st">    </span><span class="kw">geom_line</span>()  <span class="op">+</span><span class="st"> </span></span>
-<span id="cb165-19"><a href="proproc-rocs.html#cb165-19"></a><span class="st">   </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb165-20"><a href="proproc-rocs.html#cb165-20"></a><span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>))   <span class="op">+</span></span>
-<span id="cb165-21"><a href="proproc-rocs.html#cb165-21"></a><span class="st">    </span><span class="kw">ggtitle</span>(myLabel[myLabelIndx]);myLabelIndx &lt;-<span class="st"> </span>myLabelIndx <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb165-22"><a href="proproc-rocs.html#cb165-22"></a></span>
-<span id="cb165-23"><a href="proproc-rocs.html#cb165-23"></a>  slope &lt;-b<span class="op">*</span><span class="kw">dnorm</span>(a<span class="op">-</span>b<span class="op">*</span>z)<span class="op">/</span><span class="kw">dnorm</span>(<span class="op">-</span>z) <span class="co"># same as likelihood ratio</span></span>
-<span id="cb165-24"><a href="proproc-rocs.html#cb165-24"></a>  </span>
-<span id="cb165-25"><a href="proproc-rocs.html#cb165-25"></a>  slopePlot &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">z =</span> z, <span class="dt">slope =</span> slope)</span>
-<span id="cb165-26"><a href="proproc-rocs.html#cb165-26"></a>  p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(slopePlot, <span class="kw">aes</span>(<span class="dt">x =</span> z, <span class="dt">y =</span> slope)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb165-27"><a href="proproc-rocs.html#cb165-27"></a><span class="st">    </span><span class="kw">geom_line</span>()  <span class="op">+</span><span class="st"> </span></span>
-<span id="cb165-28"><a href="proproc-rocs.html#cb165-28"></a><span class="st">    </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb165-29"><a href="proproc-rocs.html#cb165-29"></a><span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>))  <span class="op">+</span></span>
-<span id="cb165-30"><a href="proproc-rocs.html#cb165-30"></a><span class="st">    </span><span class="kw">ggtitle</span>(myLabel[myLabelIndx]);myLabelIndx &lt;-<span class="st"> </span>myLabelIndx <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb165-31"><a href="proproc-rocs.html#cb165-31"></a>  <span class="kw">print</span>(plotRoc);<span class="kw">print</span>(p)</span>
-<span id="cb165-32"><a href="proproc-rocs.html#cb165-32"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="proproc-rocs.html#cb167-1"></a>c1Arr &lt;-<span class="st">   </span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.1322804</span>, <span class="fl">0.2225588</span>); daArr  &lt;-<span class="st">  </span><span class="kw">c</span>(<span class="fl">1.197239</span>, <span class="fl">1.740157</span>)</span>
+<span id="cb167-2"><a href="proproc-rocs.html#cb167-2"></a>myLabel &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>)</span>
+<span id="cb167-3"><a href="proproc-rocs.html#cb167-3"></a>myLabelIndx &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb167-4"><a href="proproc-rocs.html#cb167-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)</span>
+<span id="cb167-5"><a href="proproc-rocs.html#cb167-5"></a>{</span>
+<span id="cb167-6"><a href="proproc-rocs.html#cb167-6"></a>  c1 &lt;-<span class="st"> </span>c1Arr[i]</span>
+<span id="cb167-7"><a href="proproc-rocs.html#cb167-7"></a>  da &lt;-<span class="st"> </span>daArr[i]</span>
+<span id="cb167-8"><a href="proproc-rocs.html#cb167-8"></a>  ret &lt;-<span class="st"> </span><span class="kw">Transform2ab</span>(da, c1)</span>
+<span id="cb167-9"><a href="proproc-rocs.html#cb167-9"></a>  a &lt;-<span class="st"> </span>ret<span class="op">$</span>a;b &lt;-<span class="st"> </span>ret<span class="op">$</span>b</span>
+<span id="cb167-10"><a href="proproc-rocs.html#cb167-10"></a>  <span class="cf">if</span> (i <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) z &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="dt">by =</span> <span class="fl">0.01</span>) <span class="co"># may need to adjust limits to view detail of slope plot</span></span>
+<span id="cb167-11"><a href="proproc-rocs.html#cb167-11"></a>  <span class="cf">if</span> (i <span class="op">==</span><span class="st"> </span><span class="dv">2</span>) z &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">5</span>, <span class="dt">by =</span> <span class="fl">0.01</span>) <span class="co"># may need to adjust limits to view detail of slope plot</span></span>
+<span id="cb167-12"><a href="proproc-rocs.html#cb167-12"></a>  </span>
+<span id="cb167-13"><a href="proproc-rocs.html#cb167-13"></a>  FPF &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.0</span>, <span class="dv">1</span>, <span class="fl">0.001</span>)</span>
+<span id="cb167-14"><a href="proproc-rocs.html#cb167-14"></a>  TPF &lt;-<span class="st"> </span><span class="kw">rocY</span>(FPF, a, b)</span>
+<span id="cb167-15"><a href="proproc-rocs.html#cb167-15"></a>  </span>
+<span id="cb167-16"><a href="proproc-rocs.html#cb167-16"></a>  rocPlot &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">FPF =</span> FPF, <span class="dt">TPF =</span> TPF)</span>
+<span id="cb167-17"><a href="proproc-rocs.html#cb167-17"></a>  plotRoc &lt;-<span class="st"> </span><span class="kw">ggplot</span>(rocPlot, <span class="kw">aes</span>(<span class="dt">x =</span> FPF, <span class="dt">y =</span> TPF)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb167-18"><a href="proproc-rocs.html#cb167-18"></a><span class="st">    </span><span class="kw">geom_line</span>()  <span class="op">+</span><span class="st"> </span></span>
+<span id="cb167-19"><a href="proproc-rocs.html#cb167-19"></a><span class="st">   </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb167-20"><a href="proproc-rocs.html#cb167-20"></a><span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>))   <span class="op">+</span></span>
+<span id="cb167-21"><a href="proproc-rocs.html#cb167-21"></a><span class="st">    </span><span class="kw">ggtitle</span>(myLabel[myLabelIndx]);myLabelIndx &lt;-<span class="st"> </span>myLabelIndx <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb167-22"><a href="proproc-rocs.html#cb167-22"></a></span>
+<span id="cb167-23"><a href="proproc-rocs.html#cb167-23"></a>  slope &lt;-b<span class="op">*</span><span class="kw">dnorm</span>(a<span class="op">-</span>b<span class="op">*</span>z)<span class="op">/</span><span class="kw">dnorm</span>(<span class="op">-</span>z) <span class="co"># same as likelihood ratio</span></span>
+<span id="cb167-24"><a href="proproc-rocs.html#cb167-24"></a>  </span>
+<span id="cb167-25"><a href="proproc-rocs.html#cb167-25"></a>  slopePlot &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">z =</span> z, <span class="dt">slope =</span> slope)</span>
+<span id="cb167-26"><a href="proproc-rocs.html#cb167-26"></a>  p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(slopePlot, <span class="kw">aes</span>(<span class="dt">x =</span> z, <span class="dt">y =</span> slope)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb167-27"><a href="proproc-rocs.html#cb167-27"></a><span class="st">    </span><span class="kw">geom_line</span>()  <span class="op">+</span><span class="st"> </span></span>
+<span id="cb167-28"><a href="proproc-rocs.html#cb167-28"></a><span class="st">    </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb167-29"><a href="proproc-rocs.html#cb167-29"></a><span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>))  <span class="op">+</span></span>
+<span id="cb167-30"><a href="proproc-rocs.html#cb167-30"></a><span class="st">    </span><span class="kw">ggtitle</span>(myLabel[myLabelIndx]);myLabelIndx &lt;-<span class="st"> </span>myLabelIndx <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb167-31"><a href="proproc-rocs.html#cb167-31"></a>  <span class="kw">print</span>(plotRoc);<span class="kw">print</span>(p)</span>
+<span id="cb167-32"><a href="proproc-rocs.html#cb167-32"></a>}</span></code></pre></div>
 <p><img src="19e-proproc-rocs_files/figure-html/unnamed-chunk-2-1.png" width="672" /><img src="19e-proproc-rocs_files/figure-html/unnamed-chunk-2-2.png" width="672" /><img src="19e-proproc-rocs_files/figure-html/unnamed-chunk-2-3.png" width="672" /><img src="19e-proproc-rocs_files/figure-html/unnamed-chunk-2-4.png" width="672" /></p>
 </div>
 <div id="discussion" class="section level2 hasAnchor">

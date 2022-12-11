@@ -304,6 +304,14 @@ p <- ggplot(mapping = aes(x = power_ROC, y = power_wAFROC)) +
         axis.title.x = element_text(size = 10,face="bold"))  +
   scale_x_continuous(expand = c(0, 0)) + 
   scale_y_continuous(expand = c(0, 0))
+```
+
+```
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+```
+
+```r
 print(p)
 ```
 

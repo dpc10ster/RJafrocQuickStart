@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>The RJafroc Quick Start Book</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
   <meta property="og:title" content="The RJafroc Quick Start Book" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2022-08-02" />
+<meta name="date" content="2022-12-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -140,12 +140,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tba-how-much-finished"><i class="fa fa-check"></i>TBA How much finished</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#the-pdf-file-of-the-book"><i class="fa fa-check"></i>The pdf file of the book</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#the-html-version-of-the-book"><i class="fa fa-check"></i>The html version of the book</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#structure-of-the-book"><i class="fa fa-check"></i>Structure of the book</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contributing-to-this-book"><i class="fa fa-check"></i>Contributing to this book</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#coding-aids-for-me"><i class="fa fa-check"></i>Coding aids (for me)</a></li>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#rationale-and-organization"><i class="fa fa-check"></i><b>0.1</b> Rationale and Organization</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#tba-acknowledgements"><i class="fa fa-check"></i><b>0.2</b> TBA Acknowledgements</a></li>
 </ul></li>
 <li class="part"><span><b>Quick Start</b></span></li>
 <li class="chapter" data-level="1" data-path="quick-start-help.html"><a href="quick-start-help.html"><i class="fa fa-check"></i><b>1</b> Help</a><ul>
@@ -486,12 +482,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="24.2" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html#main-code-and-output-1"><i class="fa fa-check"></i><b>24.2</b> Main code and output</a></li>
 <li class="chapter" data-level="24.3" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html#discussion-1"><i class="fa fa-check"></i><b>24.3</b> Discussion</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="roi-paradigm.html"><a href="roi-paradigm.html"><i class="fa fa-check"></i><b>25</b> ROI paradigm</a><ul>
-<li class="chapter" data-level="25.1" data-path="roi-paradigm.html"><a href="roi-paradigm.html#introduction-3"><i class="fa fa-check"></i><b>25.1</b> Introduction</a></li>
-<li class="chapter" data-level="25.2" data-path="roi-paradigm.html"><a href="roi-paradigm.html#an-example-roi-dataset"><i class="fa fa-check"></i><b>25.2</b> An example ROI dataset</a></li>
-<li class="chapter" data-level="25.3" data-path="roi-paradigm.html"><a href="roi-paradigm.html#the-roi-excel-data-file"><i class="fa fa-check"></i><b>25.3</b> The ROI Excel data file</a></li>
-<li class="chapter" data-level="25.4" data-path="roi-paradigm.html"><a href="roi-paradigm.html#next"><i class="fa fa-check"></i><b>25.4</b> Next</a></li>
-<li class="chapter" data-level="25.5" data-path="roi-paradigm.html"><a href="roi-paradigm.html#references-2"><i class="fa fa-check"></i><b>25.5</b> References</a></li>
+<li class="part"><span><b>Software details</b></span></li>
+<li class="chapter" data-level="25" data-path="dataset-object-details.html"><a href="dataset-object-details.html"><i class="fa fa-check"></i><b>25</b> Dataset object details</a><ul>
+<li class="chapter" data-level="25.1" data-path="dataset-object-details.html"><a href="dataset-object-details.html#introduction-3"><i class="fa fa-check"></i><b>25.1</b> Introduction</a></li>
+<li class="chapter" data-level="25.2" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-truth-worksheet"><i class="fa fa-check"></i><b>25.2</b> The <code>Truth</code> worksheet</a></li>
+<li class="chapter" data-level="25.3" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-structure-of-the-roc-split-plot-a-dataset"><i class="fa fa-check"></i><b>25.3</b> The structure of the ROC split-plot-A dataset</a></li>
+<li class="chapter" data-level="25.4" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-truthtablestr-member"><i class="fa fa-check"></i><b>25.4</b> The truthTableStr member</a></li>
+<li class="chapter" data-level="25.5" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-false-positive-fp-ratings"><i class="fa fa-check"></i><b>25.5</b> The false positive (FP) ratings</a></li>
+<li class="chapter" data-level="25.6" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-true-positive-tp-ratings"><i class="fa fa-check"></i><b>25.6</b> The true positive (TP) ratings</a></li>
+<li class="chapter" data-level="25.7" data-path="dataset-object-details.html"><a href="dataset-object-details.html#references-2"><i class="fa fa-check"></i><b>25.7</b> References</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -516,7 +515,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">The RJafroc Quick Start Book</h1>
 <p class="author"><em>Dev P. Chakraborty, PhD</em></p>
-<p class="date"><em>2022-08-02</em></p>
+<p class="date"><em>2022-12-11</em></p>
 </div>
 <div id="preface" class="section level1 unnumbered hasAnchor">
 <h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -527,52 +526,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>It starts with explanation of the dataset structures for ROC and FROC studies.</li>
 <li>This is followed by an explanation of DBM and OR analyses.</li>
 </ul>
-<div id="tba-how-much-finished" class="section level2 unnumbered hasAnchor">
-<h2>TBA How much finished<a href="index.html#tba-how-much-finished" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="rationale-and-organization" class="section level2 hasAnchor">
+<h2><span class="header-section-number">0.1</span> Rationale and Organization<a href="index.html#rationale-and-organization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>HMF approximately 70%</li>
-<li>This book is currently (as of December 2021) in preparation.</li>
-<li>Parts labeled TBA and TODOLAST need to be updated on final revision.</li>
+<li>Intended as an online update to my print book <span class="citation">(Chakraborty <a href="#ref-chakraborty2017observer" role="doc-biblioref">2017</a>)</span>.</li>
+<li>All references in this book to <code>RJafroc</code> refer to the R package with that name (case sensitive) <span class="citation">(Chakraborty and Zhai <a href="#ref-R-RJafroc" role="doc-biblioref">2022</a>)</span>.</li>
+<li>Since its publication in 2017 <code>RJafroc</code>, on which the <code>R</code> code examples in the print book depend, has evolved considerably causing many of the examples to “break” if one uses the most current version of <code>RJafroc</code>. The code will still run if one uses <a href="https://cran.r-project.org/src/contrib/Archive/RJafroc/"><code>RJafroc</code> 0.0.1</a> but this is inconvenient and misses out on many of the software improvements made since the print book appeared.</li>
+<li>This gives me the opportunity to update the print book.</li>
+<li>The online book has been divided into 3 books.
+<ul>
+<li><strong>This book:</strong> <a href="https://dpc10ster.github.io/RJafrocQuickStart/">RJafrocQuickStartBook</a>.</li>
+<li>The <a href="https://dpc10ster.github.io/RJafrocRocBook/">RJafrocRocBook</a> book.</li>
+<li>The <a href="https://dpc10ster.github.io/RJafrocFrocBook/">RJafrocFrocBook</a>.</li>
+</ul></li>
 </ul>
 </div>
-<div id="the-pdf-file-of-the-book" class="section level2 unnumbered hasAnchor">
-<h2>The pdf file of the book<a href="index.html#the-pdf-file-of-the-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Go <a href="https://github.com/dpc10ster/RJafrocQuickStart/blob/gh-pages/RJafrocQuickStart.pdf">here</a> and then click on <code>Download</code> to get the <code>RJafrocQuickStart.pdf</code> file.</p>
-</div>
-<div id="the-html-version-of-the-book" class="section level2 unnumbered hasAnchor">
-<h2>The html version of the book<a href="index.html#the-html-version-of-the-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Go <a href="https://dpc10ster.github.io/RJafrocQuickStart/">here</a> to view the <code>html</code> version of the book.</p>
-</div>
-<div id="structure-of-the-book" class="section level2 unnumbered hasAnchor">
-<h2>Structure of the book<a href="index.html#structure-of-the-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>TBA</p>
-</div>
-<div id="contributing-to-this-book" class="section level2 unnumbered hasAnchor">
-<h2>Contributing to this book<a href="index.html#contributing-to-this-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Questions? Raise an <code>Issue</code> on the <code>GitHub</code> <a href="https://github.com/dpc10ster/RJafrocQuickStart">interface</a>. Click on the <code>Issues</code> tab under <code>dpc10ster/RJafrocQuickStart</code>, then click on <code>New issue</code>. When done this way, contributions from users automatically become part of the <code>GitHub</code> documentation/history of the book.</p>
-</div>
-<div id="coding-aids-for-me" class="section level2 unnumbered hasAnchor">
-<h2>Coding aids (for me)<a href="index.html#coding-aids-for-me" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>sprintf(“%.4f”, proper formatting of numbers</li>
-<li>OpPtStr(, do:</li>
-<li>kbl(dfA, caption = “….”, booktabs = TRUE, escape = FALSE) %&gt;% collapse_rows(columns = c(1, 3), valign = “middle”) %&gt;% kable_styling(latex_options = c(“basic”, “scale_down”, “HOLD_position”), row_label_position = “c”)</li>
-<li>```{r, attr.source = “.numberLines”}</li>
-<li>kbl(x12, caption = “Summary of optimization results using wAFROC-AUC.”, booktabs = TRUE, escape = FALSE) %&gt;% collapse_rows(columns = c(1), valign = “middle”) %&gt;% kable_styling(latex_options = c(“basic”, “scale_down”, “HOLD_position”), row_label_position = “c”)</li>
-<li><span class="math inline">\(\text{exp} \left ( -\lambda&#39; \right )\)</span> space before dollar sign generates a pdf error</li>
-<li>FP errors generated by GitHub actions due to undefined labels:
-Error: Error: pandoc version 1.12.3 or higher is required and was not found (see the help page ?rmarkdown::pandoc_available).
-In addition: Warning message:
-In verify_rstudio_version() :
-Please install or upgrade Pandoc to at least version 1.17.2; or if you are using RStudio, you can just install RStudio 1.0+.
-Execution halted</li>
-</ul>
+<div id="tba-acknowledgements" class="section level2 hasAnchor">
+<h2><span class="header-section-number">0.2</span> TBA Acknowledgements<a href="index.html#tba-acknowledgements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Dr. Xuetong Zhai</p>
+<p>Dr. Peter Phillips</p>
+<p>Online Latex Editor <a href="https://latexeditor.lagrida.com/">at</a></p>
+<p>Dataset contributors</p>
 
 </div>
 </div>
 
 
 
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-chakraborty2017observer">
+<p>Chakraborty, Dev P. 2017. <em>Observer Performance Methods for Diagnostic Imaging: Foundations, Modeling, and Applications with R-Based Examples</em>. Boca Raton, FL: CRC Press.</p>
+</div>
+<div id="ref-R-RJafroc">
+<p>Chakraborty, Dev, and Xuetong Zhai. 2022. <em>RJafroc: Artificial Intelligence Systems and Observer Performance</em>. <a href="https://dpc10ster.github.io/RJafroc/">https://dpc10ster.github.io/RJafroc/</a>.</p>
+</div>
+</div>
             </section>
 
           </div>
@@ -639,7 +628,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

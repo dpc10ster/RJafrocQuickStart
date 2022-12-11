@@ -41,6 +41,7 @@
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=2cm]{geometry}
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -134,7 +135,7 @@
 
 \title{The RJafroc Quick Start Book}
 \author{Dev P. Chakraborty, PhD}
-\date{2022-09-29}
+\date{2022-12-11}
 
 \begin{document}
 \maketitle
@@ -222,7 +223,7 @@ Dataset contributors
   \begin{itemize}
   \tightlist
   \item
-    ?\texttt{RJafroc-package} (RStudio will auto complete \ldots)
+    ?\texttt{RJafroc-package} (RStudio will auto complete \ldots) followed by Enter.
   \item
     Scroll down all the way and click on \texttt{Index}
   \end{itemize}
@@ -234,7 +235,7 @@ Dataset contributors
   \item
     \href{https://dpc10ster.github.io/RJafroc/}{RJafroc help site}
   \item
-    Look under \texttt{References}
+    Look under the \texttt{Reference} tab.
   \item
     For example, for help on the function \texttt{PlotEmpiricalOperatingCharacteristics}:
   \item
@@ -4269,7 +4270,7 @@ Shown below are results obtained using \texttt{RJafroc} function \texttt{StSigni
 
 \begin{verbatim}
 ##   ORBoot.Chisq ORBoot.ddf ORBoot.P.val
-## 1    1.4355954          1   0.23085344
+## 1     1.141613          1   0.28531175
 \end{verbatim}
 
 The DBM and OR-jackknife methods yield identical F-statistics, but the denominator degrees of freedom are different, \((I-1)(K-1)\) = 113 for DBM and \(\infty\) for OR. The F-statistics for OR-bootstrap and OR-DeLong are different.
@@ -7297,6 +7298,16 @@ Since the wAFROC effect size is about a factor of two larger than the ROC effect
         \DataTypeTok{axis.title.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{10}\NormalTok{,}\DataTypeTok{face=}\StringTok{"bold"}\NormalTok{))  }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## i Please use `linewidth` instead.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \KeywordTok{print}\NormalTok{(p)}
 \end{Highlighting}
 \end{Shaded}
@@ -8253,6 +8264,275 @@ The two values of \texttt{z} corresponding to each cut implies, of course, that 
 \section{Discussion}\label{discussion-1}}
 
 Note the close correspondence between the formula, Eqn. 36 in the Metz-Pan paper and the numerical estimate. As a historical note, Eqn. 31 and Eqn. 36 (they differ only in parameterizations) in the referenced publication are provided without proof -- it was probably obvious to Prof Metz or he wanted to leave it to us ``mere mortals'' to figure it out, as a final parting gesture of his legacy. The author once put a significant effort into proving it and even had a bright graduate student from the biostatistics department work on it to no avail. The author has observed that these equations always yield very close to the numerical estimates, to within numerical precisions, so the theorem is correct empirically, but he has been unable to prove it analytically. It is left as an exercise for a gifted reader to prove/disprove these equations.
+
+\hypertarget{part-software-details}{%
+\part*{Software details}\label{part-software-details}}
+\addcontentsline{toc}{part}{Software details}
+
+\hypertarget{dataset-object-details}{%
+\chapter{Dataset object details}\label{dataset-object-details}}
+
+\hypertarget{introduction-3}{%
+\section{Introduction}\label{introduction-3}}
+
+\begin{itemize}
+\tightlist
+\item
+  This vignette explains the data format of the input Excel file for an \textbf{ROC SPLIT-PLOT-A} dataset.
+\item
+  The \textbf{A} refers to Table VII, part (a), in \citep{RN2508}.
+\item
+  In a SPLIT-PLOT-A dataset two distinct groups of readers interpret all cases in two modalities.
+\item
+  The vignette is illustrated with a toy data file, \texttt{inst/extdata/toyFiles/FROC/frocSpA.xlsx} in which readers 1 and 2 interpret 10 cases in the first modality and readers 3 and 4 interpret the same cases in the second modality.
+\item
+  The Excel file has three worksheets named \texttt{Truth}, \texttt{NL} (or \texttt{FP}) and \texttt{LL} (or \texttt{TP}).
+\end{itemize}
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/software-details/frocSpATruth.png}
+
+\hypertarget{the-truth-worksheet}{%
+\section{\texorpdfstring{The \texttt{Truth} worksheet}{The Truth worksheet}}\label{the-truth-worksheet}}
+
+\begin{itemize}
+\tightlist
+\item
+  The \texttt{Truth} worksheet contains 6 columns: \texttt{CaseID}, \texttt{LesionID}, \texttt{Weight}, \texttt{ReaderID}, \texttt{ModalityID} and \texttt{Paradigm}.
+\item
+  The first five columns contain \emph{twice} as many rows as there are distinct cases in the dataset. The factor of two is coming from the two modalities.
+\item
+  The normal cases are numbered 6,7,8,9,10; the abnormal cases are numbered 16,17,18,19,20; i.e., \texttt{K1} = \texttt{K2} = 5 and \texttt{K} = 10. The number of rows of data is 2 * K = 20.
+\item
+  The \texttt{ReaderID} field for the first modality has \emph{two values} \texttt{1,\ 2} since readers 1 and 2 interpret all cases in the first modality. The corresponding values for the second modality are `3, 4'.
+\item
+  \texttt{ModalityID}: The first modality is labeled \texttt{(4)} and the second is `(2)' . The parentheses follow standard statistical notation for nested factors. In the example readers `(1, 2)' are nested within treatment `(4)' and readers `(3, 4)' are nested within treatment `(2)'. The number of readers in each treatment can differ. At least two readers are needed in each treatment.
+\item
+  \texttt{ReaderID}, the \texttt{ModalityID} are \emph{text formatted labels}.
+\item
+  \texttt{Paradigm}: The contents of this field are \texttt{ROC} and \texttt{SPLIT-PLOT-A} (case insensitive).
+\end{itemize}
+
+\hypertarget{the-structure-of-the-roc-split-plot-a-dataset}{%
+\section{The structure of the ROC split-plot-A dataset}\label{the-structure-of-the-roc-split-plot-a-dataset}}
+
+This code-chunk reads the data into a split plot dataset:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{frocSpA <-}\StringTok{ }\KeywordTok{system.file}\NormalTok{(}\StringTok{"extdata"}\NormalTok{, }\StringTok{"toyFiles/FROC/frocSpA.xlsx"}\NormalTok{,}
+                        \DataTypeTok{package =} \StringTok{"RJafroc"}\NormalTok{, }\DataTypeTok{mustWork =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{x <-}\StringTok{ }\KeywordTok{DfReadDataFile}\NormalTok{(frocSpA, }\DataTypeTok{newExcelFileFormat =} \OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{str}\NormalTok{(x)}
+\CommentTok{#> List of 3}
+\CommentTok{#>  $ ratings     :List of 3}
+\CommentTok{#>   ..$ NL   : num [1:2, 1:5, 1:11, 1:3] 1.5 -Inf 0.9 -Inf -Inf ...}
+\CommentTok{#>   ..$ LL   : num [1:2, 1:5, 1:5, 1:4] 5 -Inf -Inf -Inf -Inf ...}
+\CommentTok{#>   ..$ LL_IL: logi NA}
+\CommentTok{#>  $ lesions     :List of 3}
+\CommentTok{#>   ..$ perCase: int [1:5] 2 4 1 2 3}
+\CommentTok{#>   ..$ IDs    : num [1:5, 1:4] 1 1 1 1 1 ...}
+\CommentTok{#>   ..$ weights: num [1:5, 1:4] 0.5 0.25 1 0.5 0.333 ...}
+\CommentTok{#>  $ descriptions:List of 7}
+\CommentTok{#>   ..$ fileName     : chr "frocSpA"}
+\CommentTok{#>   ..$ type         : chr "FROC"}
+\CommentTok{#>   ..$ name         : logi NA}
+\CommentTok{#>   ..$ truthTableStr: num [1:2, 1:5, 1:11, 1:5] 1 NA 1 NA NA 1 NA 1 NA 1 ...}
+\CommentTok{#>   ..$ design       : chr "SPLIT-PLOT-A"}
+\CommentTok{#>   ..$ modalityID   : Named chr [1:2] "4" "2"}
+\CommentTok{#>   .. ..- attr(*, "names")= chr [1:2] "4" "2"}
+\CommentTok{#>   ..$ readerID     : Named chr [1:5] "1" "2" "3" "4" ...}
+\CommentTok{#>   .. ..- attr(*, "names")= chr [1:5] "1" "2" "3" "4" ...}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Flag \texttt{newExcelFileFormat} \textbf{must} be set to \texttt{TRUE} to the read split plot dataset.
+\item
+  The dataset object \texttt{x} is a \texttt{list} variable with 3 members: \texttt{x\$ratings}, \texttt{x\$lesions} and \texttt{x\$descriptions}.
+\item
+  There are \texttt{K2\ =\ 5} diseased cases (the length of the third dimension of \texttt{ratings\$LL}) and \texttt{K1\ =\ 5} non-diseased cases (the length of the third dimension of \texttt{ratings\$NL} minus \texttt{K2}).
+\item
+  \texttt{x\$ratings\$NL}, a {[}2, 4, 10, 1{]} array, contains the ratings of normal cases.
+\item
+  \texttt{x\$ratings\$LL}, a {[}2, 5, 5, 1{]} array, contains the ratings of abnormal cases.
+\item
+  The \texttt{dataType} member is which specifies the data collection method, \texttt{"ROC"} in this example.
+\item
+  The \texttt{x\$modalityID} member is a vector with two elements \texttt{"4"} and \texttt{"2"}, naming the two modalities.
+\item
+  The \texttt{x\$readerID} member is a vector with four elements \texttt{"1"}, \texttt{"2"}, \texttt{"3"}, ```4'', labeling the four readers.
+\item
+  The \texttt{x\$design} member is ; specifies the dataset design, ``SPLIT-PLOT-A'' for this example.
+\item
+  The \texttt{x\$descriptions\$truthTableStr} member quantifies the structure of the dataset, as explained next.
+\end{itemize}
+
+\hypertarget{the-truthtablestr-member}{%
+\section{The truthTableStr member}\label{the-truthtablestr-member}}
+
+\begin{itemize}
+\tightlist
+\item
+  This is a \texttt{2\ x\ 4\ x\ 10\ x\ 2} array, i.e., \texttt{I} x \texttt{J} x \texttt{K} x (maximum number of lesions per case plus 1). The \texttt{plus\ 1} is needed to accommodate normal cases.
+\item
+  Each entry in this array is either \texttt{1}, meaning the corresponding interpretation exists, or \texttt{NA}, meaning the corresponding interpretation does not exist.
+\item
+  The first reader interprets the normal cases in the first modality only:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{1}\NormalTok{]}
+\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
+\CommentTok{#> [1,]    1    1    1    1    1    1   NA   NA   NA    NA}
+\CommentTok{#> [2,]   NA   NA   NA   NA   NA   NA   NA   NA   NA    NA}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  The first reader interprets the abnormal cases also in the first modality only:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{2}\NormalTok{]}
+\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
+\CommentTok{#> [1,]   NA   NA   NA   NA   NA   NA    1    1    1     1}
+\CommentTok{#> [2,]   NA   NA   NA   NA   NA   NA   NA   NA   NA    NA}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Likewise for the second reader:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{1}\NormalTok{]}
+\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
+\CommentTok{#> [1,]    1    1    1    1    1    1   NA   NA   NA    NA}
+\CommentTok{#> [2,]   NA   NA   NA   NA   NA   NA   NA   NA   NA    NA}
+\NormalTok{x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{2}\NormalTok{]}
+\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
+\CommentTok{#> [1,]   NA   NA   NA   NA   NA   NA    1    1    1     1}
+\CommentTok{#> [2,]   NA   NA   NA   NA   NA   NA   NA   NA   NA    NA}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  The third reader interprets the cases in the second modality only:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{1}\NormalTok{]}
+\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
+\CommentTok{#> [1,]   NA   NA   NA   NA   NA   NA   NA   NA   NA    NA}
+\CommentTok{#> [2,]    1    1    1    1    1    1   NA   NA   NA    NA}
+\NormalTok{x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{2}\NormalTok{]}
+\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
+\CommentTok{#> [1,]   NA   NA   NA   NA   NA   NA   NA   NA   NA    NA}
+\CommentTok{#> [2,]   NA   NA   NA   NA   NA   NA    1    1    1     1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Likewise for the fourth reader:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,}\DecValTok{4}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{1}\NormalTok{]}
+\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
+\CommentTok{#> [1,]   NA   NA   NA   NA   NA   NA   NA   NA   NA    NA}
+\CommentTok{#> [2,]    1    1    1    1    1    1   NA   NA   NA    NA}
+\NormalTok{x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,}\DecValTok{4}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{2}\NormalTok{]}
+\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
+\CommentTok{#> [1,]   NA   NA   NA   NA   NA   NA   NA   NA   NA    NA}
+\CommentTok{#> [2,]   NA   NA   NA   NA   NA   NA    1    1    1     1}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{the-false-positive-fp-ratings}{%
+\section{The false positive (FP) ratings}\label{the-false-positive-fp-ratings}}
+
+These are found in the \texttt{FP} or \texttt{NL} worksheet:
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/software-details/frocSpAFp.png}
+
+\begin{itemize}
+\tightlist
+\item
+  The common vertical length is 20 in this example (1 modality times 4 readers times 5 non-diseased cases).
+\item
+  \texttt{ReaderID}: the reader labels: \texttt{1}, \texttt{2}, \texttt{3}, \texttt{4}, as declared in the \texttt{Truth} worksheet.
+\item
+  \texttt{ModalityID}: \texttt{4} or \texttt{2}, as declared in the \texttt{Truth} worksheet.
+\item
+  \texttt{CaseID}: \texttt{6}, \texttt{7}, \texttt{8}, \texttt{9}, or \texttt{10}, as declared in the \texttt{Truth} worksheet\\
+\item
+  \texttt{NL\_Rating}: the ratings of non-diseased cases.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OperatorTok{$}\NormalTok{ratings}\OperatorTok{$}\NormalTok{NL[,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{1}\NormalTok{]}
+\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
+\CommentTok{#> [1,]  1.5  1.5  1.2  2.1  1.1  3.2  1.9    1  1.1     1}
+\CommentTok{#> [2,] -Inf -Inf -Inf -Inf -Inf -Inf -Inf -Inf -Inf  -Inf}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{the-true-positive-tp-ratings}{%
+\section{The true positive (TP) ratings}\label{the-true-positive-tp-ratings}}
+
+These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/software-details/frocSpATp.png}
+
+\begin{itemize}
+\tightlist
+\item
+  This worksheet has the ratings of diseased cases.
+\item
+  The common vertical length is 20.
+\item
+  \texttt{ReaderID}: the reader labels: these must be from \texttt{1}, \texttt{2}, \texttt{3} or \texttt{4}, as declared in the \texttt{Truth} worksheet.
+\item
+  \texttt{ModalityID}: \texttt{4} or \texttt{2}, as declared in the \texttt{Truth} worksheet.
+\item
+  \texttt{CaseID}: \texttt{16}, \texttt{17}, \texttt{18}, \texttt{19}, or \texttt{20}, as declared in the \texttt{Truth} worksheet\\
+\item
+  \texttt{LL\_Rating}: the ratings of diseased cases.
+\item
+  The following shows that reader `1' interprets all abnormal cases in the first modality, while reader `3' interprets them in the second modality.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OperatorTok{$}\NormalTok{ratings}\OperatorTok{$}\NormalTok{LL[,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{,}\DecValTok{1}\NormalTok{]}
+\CommentTok{#>      [,1] [,2] [,3] [,4] [,5]}
+\CommentTok{#> [1,]    5  5.5  4.9    4  3.7}
+\CommentTok{#> [2,] -Inf -Inf -Inf -Inf -Inf}
+\NormalTok{x}\OperatorTok{$}\NormalTok{ratings}\OperatorTok{$}\NormalTok{LL[,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{,}\DecValTok{1}\NormalTok{]}
+\CommentTok{#>      [,1] [,2] [,3] [,4] [,5]}
+\CommentTok{#> [1,] -Inf -Inf -Inf -Inf -Inf}
+\CommentTok{#> [2,]  5.6  5.1  5.2  4.9  4.7}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{references-2}{%
+\section{References}\label{references-2}}
 
   \bibliography{packages.bib,myRefs.bib}
 

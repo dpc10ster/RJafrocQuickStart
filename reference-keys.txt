@@ -421,3 +421,11 @@ metz-eqn-36
 helper-functions-1
 main-code-and-output-1
 discussion-1
+dataset-object-details
+introduction-3
+the-truth-worksheet
+the-structure-of-the-roc-split-plot-a-dataset
+the-truthtablestr-member
+the-false-positive-fp-ratings
+the-true-positive-tp-ratings
+references-2

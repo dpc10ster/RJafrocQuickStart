@@ -3,7 +3,7 @@
 ---
 title: "RJafroc Vignette 2: RSM predicted operating characteristics"
 author: "Dev P. Chakraborty, PhD"
-date: "2022-09-29"
+date: "2022-12-11"
 output: rmarkdown::html_document
 bibliography: myRefs.bib
 fig_caption: yes

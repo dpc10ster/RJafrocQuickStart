@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 20 RSM operating characteristics | The RJafroc Quick Start Book</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 20 RSM operating characteristics | The RJafroc Quick Start Book" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2022-09-29" />
+<meta name="date" content="2022-12-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -139,9 +139,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">RJafroc documentation</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a><ul>
-<li class="chapter" data-level="0.1" data-path="preface.html"><a href="preface.html#rationale-and-organization"><i class="fa fa-check"></i><b>0.1</b> Rationale and Organization</a></li>
-<li class="chapter" data-level="0.2" data-path="preface.html"><a href="preface.html#tba-acknowledgements"><i class="fa fa-check"></i><b>0.2</b> TBA Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#rationale-and-organization"><i class="fa fa-check"></i><b>0.1</b> Rationale and Organization</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#tba-acknowledgements"><i class="fa fa-check"></i><b>0.2</b> TBA Acknowledgements</a></li>
 </ul></li>
 <li class="part"><span><b>Quick Start</b></span></li>
 <li class="chapter" data-level="1" data-path="quick-start-help.html"><a href="quick-start-help.html"><i class="fa fa-check"></i><b>1</b> Help</a><ul>
@@ -482,6 +482,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="24.2" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html#main-code-and-output-1"><i class="fa fa-check"></i><b>24.2</b> Main code and output</a></li>
 <li class="chapter" data-level="24.3" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html#discussion-1"><i class="fa fa-check"></i><b>24.3</b> Discussion</a></li>
 </ul></li>
+<li class="part"><span><b>Software details</b></span></li>
+<li class="chapter" data-level="25" data-path="dataset-object-details.html"><a href="dataset-object-details.html"><i class="fa fa-check"></i><b>25</b> Dataset object details</a><ul>
+<li class="chapter" data-level="25.1" data-path="dataset-object-details.html"><a href="dataset-object-details.html#introduction-3"><i class="fa fa-check"></i><b>25.1</b> Introduction</a></li>
+<li class="chapter" data-level="25.2" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-truth-worksheet"><i class="fa fa-check"></i><b>25.2</b> The <code>Truth</code> worksheet</a></li>
+<li class="chapter" data-level="25.3" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-structure-of-the-roc-split-plot-a-dataset"><i class="fa fa-check"></i><b>25.3</b> The structure of the ROC split-plot-A dataset</a></li>
+<li class="chapter" data-level="25.4" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-truthtablestr-member"><i class="fa fa-check"></i><b>25.4</b> The truthTableStr member</a></li>
+<li class="chapter" data-level="25.5" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-false-positive-fp-ratings"><i class="fa fa-check"></i><b>25.5</b> The false positive (FP) ratings</a></li>
+<li class="chapter" data-level="25.6" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-true-positive-tp-ratings"><i class="fa fa-check"></i><b>25.6</b> The true positive (TP) ratings</a></li>
+<li class="chapter" data-level="25.7" data-path="dataset-object-details.html"><a href="dataset-object-details.html#references-2"><i class="fa fa-check"></i><b>25.7</b> References</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -537,10 +547,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li>These parameters do not apply to individual cases; rather they refer to a large population (asymptotically infinite in size) of cases.</li>
 </ul>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="rsm-operating-characteristics.html#cb155-1"></a><span class="kw">str</span>(dataset04<span class="op">$</span>lesions<span class="op">$</span>IDs)</span>
-<span id="cb155-2"><a href="rsm-operating-characteristics.html#cb155-2"></a><span class="co">#&gt;  num [1:100, 1:3] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb155-3"><a href="rsm-operating-characteristics.html#cb155-3"></a><span class="kw">str</span>(dataset04<span class="op">$</span>lesions<span class="op">$</span>weights)</span>
-<span id="cb155-4"><a href="rsm-operating-characteristics.html#cb155-4"></a><span class="co">#&gt;  num [1:100, 1:3] 1 1 1 1 1 1 1 1 1 1 ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="rsm-operating-characteristics.html#cb157-1"></a><span class="kw">str</span>(dataset04<span class="op">$</span>lesions<span class="op">$</span>IDs)</span>
+<span id="cb157-2"><a href="rsm-operating-characteristics.html#cb157-2"></a><span class="co">#&gt;  num [1:100, 1:3] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb157-3"><a href="rsm-operating-characteristics.html#cb157-3"></a><span class="kw">str</span>(dataset04<span class="op">$</span>lesions<span class="op">$</span>weights)</span>
+<span id="cb157-4"><a href="rsm-operating-characteristics.html#cb157-4"></a><span class="co">#&gt;  num [1:100, 1:3] 1 1 1 1 1 1 1 1 1 1 ...</span></span></code></pre></div>
 <ul>
 <li>Note that the first index of both arrays is the case index for the 100 abnormal cases in this dataset.</li>
 <li>With finite number of cases the empirical operating characteristic (or for that matter any fitted operating characteristic) will have sampling variability as in the following example.</li>
@@ -548,8 +558,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="the-empirical-wafroc" class="section level2 hasAnchor">
 <h2><span class="header-section-number">20.5</span> The empirical wAFROC<a href="rsm-operating-characteristics.html#the-empirical-wafroc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="rsm-operating-characteristics.html#cb156-1"></a>p &lt;-<span class="st"> </span><span class="kw">PlotEmpiricalOperatingCharacteristics</span>(dataset04, <span class="dt">opChType =</span> <span class="st">&quot;wAFROC&quot;</span>)</span>
-<span id="cb156-2"><a href="rsm-operating-characteristics.html#cb156-2"></a>p<span class="op">$</span>Plot</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="rsm-operating-characteristics.html#cb158-1"></a>p &lt;-<span class="st"> </span><span class="kw">PlotEmpiricalOperatingCharacteristics</span>(dataset04, <span class="dt">opChType =</span> <span class="st">&quot;wAFROC&quot;</span>)</span>
+<span id="cb158-2"><a href="rsm-operating-characteristics.html#cb158-2"></a>p<span class="op">$</span>Plot</span></code></pre></div>
 <p><img src="19b-rsm-operating-characteristics_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <ul>
 <li>The piecewise linear nature of the plot, with sharp breaks, indicates that this is due to a finite dataset.</li>
@@ -558,32 +568,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="the-predicted-wafroc" class="section level2 hasAnchor">
 <h2><span class="header-section-number">20.6</span> The predicted wAFROC<a href="rsm-operating-characteristics.html#the-predicted-wafroc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="rsm-operating-characteristics.html#cb157-1"></a><span class="co">## Following example is for mu = 2, lambda = 1, nu = 0.6. 20% of the diseased </span></span>
-<span id="cb157-2"><a href="rsm-operating-characteristics.html#cb157-2"></a><span class="co">## cases have a single lesion, 40% have two lesions, 10% have 3 lesions, </span></span>
-<span id="cb157-3"><a href="rsm-operating-characteristics.html#cb157-3"></a><span class="co">## and 30% have 4 lesions.  </span></span>
-<span id="cb157-4"><a href="rsm-operating-characteristics.html#cb157-4"></a>lesDistr &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>)</span>
-<span id="cb157-5"><a href="rsm-operating-characteristics.html#cb157-5"></a></span>
-<span id="cb157-6"><a href="rsm-operating-characteristics.html#cb157-6"></a><span class="co">## On cases with one lesion the weights are 1, on cases with 2 lesions the weights</span></span>
-<span id="cb157-7"><a href="rsm-operating-characteristics.html#cb157-7"></a><span class="co">## are 0.4 and 0.6, on cases with three lesions the weights are 0.2, 0.3 and 0.5, and</span></span>
-<span id="cb157-8"><a href="rsm-operating-characteristics.html#cb157-8"></a><span class="co">## on cases with 4 lesions the weights are 0.3, 0.4, 0.2 and 0.1: </span></span>
-<span id="cb157-9"><a href="rsm-operating-characteristics.html#cb157-9"></a>relWeights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.3</span>,  <span class="fl">0.4</span>, <span class="fl">0.2</span>,  <span class="fl">0.1</span>)</span>
-<span id="cb157-10"><a href="rsm-operating-characteristics.html#cb157-10"></a>p &lt;-<span class="st"> </span><span class="kw">PlotRsmOperatingCharacteristics</span>(</span>
-<span id="cb157-11"><a href="rsm-operating-characteristics.html#cb157-11"></a>  <span class="dt">mu =</span> <span class="dv">2</span>, </span>
-<span id="cb157-12"><a href="rsm-operating-characteristics.html#cb157-12"></a>  <span class="dt">lambda =</span> <span class="dv">1</span>, </span>
-<span id="cb157-13"><a href="rsm-operating-characteristics.html#cb157-13"></a>  <span class="dt">nu =</span> <span class="fl">0.6</span>, </span>
-<span id="cb157-14"><a href="rsm-operating-characteristics.html#cb157-14"></a>  <span class="dt">OpChType =</span> <span class="st">&quot;wAFROC&quot;</span>, </span>
-<span id="cb157-15"><a href="rsm-operating-characteristics.html#cb157-15"></a>  <span class="dt">lesDistr =</span> lesDistr, </span>
-<span id="cb157-16"><a href="rsm-operating-characteristics.html#cb157-16"></a>  <span class="dt">relWeights =</span> relWeights, </span>
-<span id="cb157-17"><a href="rsm-operating-characteristics.html#cb157-17"></a>  <span class="dt">legendPosition =</span> <span class="st">&quot;bottom&quot;</span>, <span class="dt">nlfRange =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">llfRange =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
-<span id="cb157-18"><a href="rsm-operating-characteristics.html#cb157-18"></a>p<span class="op">$</span>wAFROCPlot</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="rsm-operating-characteristics.html#cb159-1"></a><span class="co">## Following example is for mu = 2, lambda = 1, nu = 0.6. 20% of the diseased </span></span>
+<span id="cb159-2"><a href="rsm-operating-characteristics.html#cb159-2"></a><span class="co">## cases have a single lesion, 40% have two lesions, 10% have 3 lesions, </span></span>
+<span id="cb159-3"><a href="rsm-operating-characteristics.html#cb159-3"></a><span class="co">## and 30% have 4 lesions.  </span></span>
+<span id="cb159-4"><a href="rsm-operating-characteristics.html#cb159-4"></a>lesDistr &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>)</span>
+<span id="cb159-5"><a href="rsm-operating-characteristics.html#cb159-5"></a></span>
+<span id="cb159-6"><a href="rsm-operating-characteristics.html#cb159-6"></a><span class="co">## On cases with one lesion the weights are 1, on cases with 2 lesions the weights</span></span>
+<span id="cb159-7"><a href="rsm-operating-characteristics.html#cb159-7"></a><span class="co">## are 0.4 and 0.6, on cases with three lesions the weights are 0.2, 0.3 and 0.5, and</span></span>
+<span id="cb159-8"><a href="rsm-operating-characteristics.html#cb159-8"></a><span class="co">## on cases with 4 lesions the weights are 0.3, 0.4, 0.2 and 0.1: </span></span>
+<span id="cb159-9"><a href="rsm-operating-characteristics.html#cb159-9"></a>relWeights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.3</span>,  <span class="fl">0.4</span>, <span class="fl">0.2</span>,  <span class="fl">0.1</span>)</span>
+<span id="cb159-10"><a href="rsm-operating-characteristics.html#cb159-10"></a>p &lt;-<span class="st"> </span><span class="kw">PlotRsmOperatingCharacteristics</span>(</span>
+<span id="cb159-11"><a href="rsm-operating-characteristics.html#cb159-11"></a>  <span class="dt">mu =</span> <span class="dv">2</span>, </span>
+<span id="cb159-12"><a href="rsm-operating-characteristics.html#cb159-12"></a>  <span class="dt">lambda =</span> <span class="dv">1</span>, </span>
+<span id="cb159-13"><a href="rsm-operating-characteristics.html#cb159-13"></a>  <span class="dt">nu =</span> <span class="fl">0.6</span>, </span>
+<span id="cb159-14"><a href="rsm-operating-characteristics.html#cb159-14"></a>  <span class="dt">OpChType =</span> <span class="st">&quot;wAFROC&quot;</span>, </span>
+<span id="cb159-15"><a href="rsm-operating-characteristics.html#cb159-15"></a>  <span class="dt">lesDistr =</span> lesDistr, </span>
+<span id="cb159-16"><a href="rsm-operating-characteristics.html#cb159-16"></a>  <span class="dt">relWeights =</span> relWeights, </span>
+<span id="cb159-17"><a href="rsm-operating-characteristics.html#cb159-17"></a>  <span class="dt">legendPosition =</span> <span class="st">&quot;bottom&quot;</span>, <span class="dt">nlfRange =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">llfRange =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb159-18"><a href="rsm-operating-characteristics.html#cb159-18"></a>p<span class="op">$</span>wAFROCPlot</span></code></pre></div>
 <p><img src="19b-rsm-operating-characteristics_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 <div id="the-distribution-of-number-of-lesions-and-weights" class="section level2 hasAnchor">
 <h2><span class="header-section-number">20.7</span> The distribution of number of lesions and weights<a href="rsm-operating-characteristics.html#the-distribution-of-number-of-lesions-and-weights" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="rsm-operating-characteristics.html#cb158-1"></a>lesDistr</span>
-<span id="cb158-2"><a href="rsm-operating-characteristics.html#cb158-2"></a><span class="co">#&gt; [1] 0.2 0.4 0.1 0.3</span></span>
-<span id="cb158-3"><a href="rsm-operating-characteristics.html#cb158-3"></a>relWeights</span>
-<span id="cb158-4"><a href="rsm-operating-characteristics.html#cb158-4"></a><span class="co">#&gt; [1] 0.3 0.4 0.2 0.1</span></span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="rsm-operating-characteristics.html#cb160-1"></a>lesDistr</span>
+<span id="cb160-2"><a href="rsm-operating-characteristics.html#cb160-2"></a><span class="co">#&gt; [1] 0.2 0.4 0.1 0.3</span></span>
+<span id="cb160-3"><a href="rsm-operating-characteristics.html#cb160-3"></a>relWeights</span>
+<span id="cb160-4"><a href="rsm-operating-characteristics.html#cb160-4"></a><span class="co">#&gt; [1] 0.3 0.4 0.2 0.1</span></span></code></pre></div>
 <ul>
 <li>The <code>lesDistr</code> array 0.2, 0.4, 0.1, 0.3 specifies the fraction of diseased cases with the number of lesions corresponding to the column index. To specify a dataset with exactly 3 lesions per diseased case use <code>lesDist = c(0, 0, 1, 0)</code>.</li>
 <li>The <code>relWeights</code> array 0.3, 0.4, 0.2, 0.1 specifies the relative weights.</li>
@@ -599,15 +609,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>By changing <code>OpChType</code> one can generate other operating characteristics.</li>
 <li>Note that lesiion weights argument is not needed for ROC curves. It is only needed for <code>wAFROC</code> and <code>wAFROC1</code> curves.</li>
 </ul>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="rsm-operating-characteristics.html#cb159-1"></a>lesDistr &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>)</span>
-<span id="cb159-2"><a href="rsm-operating-characteristics.html#cb159-2"></a>p &lt;-<span class="st"> </span><span class="kw">PlotRsmOperatingCharacteristics</span>(</span>
-<span id="cb159-3"><a href="rsm-operating-characteristics.html#cb159-3"></a>  <span class="dt">mu =</span> <span class="dv">2</span>, </span>
-<span id="cb159-4"><a href="rsm-operating-characteristics.html#cb159-4"></a>  <span class="dt">lambda =</span> <span class="dv">1</span>, </span>
-<span id="cb159-5"><a href="rsm-operating-characteristics.html#cb159-5"></a>  <span class="dt">nu =</span> <span class="fl">0.6</span>, </span>
-<span id="cb159-6"><a href="rsm-operating-characteristics.html#cb159-6"></a>  <span class="dt">OpChType =</span> <span class="st">&quot;ROC&quot;</span>,</span>
-<span id="cb159-7"><a href="rsm-operating-characteristics.html#cb159-7"></a>  <span class="dt">lesDistr =</span> lesDistr,  </span>
-<span id="cb159-8"><a href="rsm-operating-characteristics.html#cb159-8"></a>  <span class="dt">legendPosition =</span> <span class="st">&quot;bottom&quot;</span>)</span>
-<span id="cb159-9"><a href="rsm-operating-characteristics.html#cb159-9"></a>p<span class="op">$</span>ROCPlot</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="rsm-operating-characteristics.html#cb161-1"></a>lesDistr &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>)</span>
+<span id="cb161-2"><a href="rsm-operating-characteristics.html#cb161-2"></a>p &lt;-<span class="st"> </span><span class="kw">PlotRsmOperatingCharacteristics</span>(</span>
+<span id="cb161-3"><a href="rsm-operating-characteristics.html#cb161-3"></a>  <span class="dt">mu =</span> <span class="dv">2</span>, </span>
+<span id="cb161-4"><a href="rsm-operating-characteristics.html#cb161-4"></a>  <span class="dt">lambda =</span> <span class="dv">1</span>, </span>
+<span id="cb161-5"><a href="rsm-operating-characteristics.html#cb161-5"></a>  <span class="dt">nu =</span> <span class="fl">0.6</span>, </span>
+<span id="cb161-6"><a href="rsm-operating-characteristics.html#cb161-6"></a>  <span class="dt">OpChType =</span> <span class="st">&quot;ROC&quot;</span>,</span>
+<span id="cb161-7"><a href="rsm-operating-characteristics.html#cb161-7"></a>  <span class="dt">lesDistr =</span> lesDistr,  </span>
+<span id="cb161-8"><a href="rsm-operating-characteristics.html#cb161-8"></a>  <span class="dt">legendPosition =</span> <span class="st">&quot;bottom&quot;</span>)</span>
+<span id="cb161-9"><a href="rsm-operating-characteristics.html#cb161-9"></a>p<span class="op">$</span>ROCPlot</span></code></pre></div>
 <p><img src="19b-rsm-operating-characteristics_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="summary-2" class="section level2 hasAnchor">
