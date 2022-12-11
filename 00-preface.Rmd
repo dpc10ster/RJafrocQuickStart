@@ -1,26 +1,3 @@
---- 
-title: "The RJafroc Quick Start Book"
-author: "Dev P. Chakraborty, PhD"
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
-output: 
-   bookdown::pdf_document: default
-documentclass: book
-bibliography: [packages.bib, myRefs.bib]
-biblio-style: apalike
-link-citations: yes
-github-repo: dpc10ster/RJafrocQuickStart
-description: "This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data."
----
-
-
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'), 'packages.bib')
-```
-
-
 # Preface {-}
 
 * This online book is for those already somewhat familiar running Windows JAFROC to analyze data. 

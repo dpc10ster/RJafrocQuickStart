@@ -10,11 +10,11 @@
 
 ## Getting help on the software {#quick-start-help-getting-help}
 * If you have installed `RJafroc` from `GitHub`:
-    + ?`RJafroc-package` (RStudio will auto complete ...)
+    + ?`RJafroc-package` (RStudio will auto complete ...) followed by Enter.
     + Scroll down all the way and click on `Index`
 * Regardless of where you installed from use the `RJafroc` help site:
     + [RJafroc help site](https://dpc10ster.github.io/RJafroc/)
-    + Look under `References` 
+    + Look under the `Reference` tab. 
     + For example, for help on the function `PlotEmpiricalOperatingCharacteristics`:
     + [PlotEmpiricalOperatingCharacteristics](https://dpc10ster.github.io/RJafroc/reference/PlotEmpiricalOperatingCharacteristics.html)
 

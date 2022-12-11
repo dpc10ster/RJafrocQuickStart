@@ -4,7 +4,7 @@ repo: https://github.com/dpc10ster/RJafrocQuickStart
 output_dir: docs
 delete_merged_file: TRUE
 rmd_files: [
-  "00-preface.Rmd", 
+  "index.Rmd",
   "00a-quick-start.Rmd", 
   "00b-quick-start.Rmd", 
   "00c-quick-start.Rmd", 
@@ -29,6 +29,7 @@ rmd_files: [
   "19d-degenerate-rocs.Rmd",
   "19e-proproc-rocs.Rmd",
   "19f-metz-eqn-36.Rmd",
+  "20a-dataset-details.Rmd",
 ]
 
 
