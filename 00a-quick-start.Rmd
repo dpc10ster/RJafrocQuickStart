@@ -19,5 +19,3 @@
     + [PlotEmpiricalOperatingCharacteristics](https://dpc10ster.github.io/RJafroc/reference/PlotEmpiricalOperatingCharacteristics.html)
 
 
-
-## References {#quick-start-help-references}
