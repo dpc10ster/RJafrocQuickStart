@@ -1,3 +1,6 @@
+# (PART\*) ROC sample size {-}
+
+
 # Sample size estimation for ROC studies DBM method {#roc-sample-size-dbm}
 
 
@@ -15,11 +18,13 @@ library(RJafroc)
 
 
 ## TBA How much finished {#roc-sample-size-dbm-how-much-finished}
+
 80%
 
 
 
 ## Introduction {#roc-sample-size-dbm-introduction}
+
 The question addressed here is "how many readers and cases", usually abbreviated to "sample-size", should one employ to conduct a "well-planned" ROC study. The reasons for the quotes around "well-planned" will shortly become clear. If cost were no concern, the reply would be: "as many readers and cases as one can get". There are other causes affecting sample-size, e.g., the data collection paradigm and analysis, however, this chapter is restricted to the MRMC ROC data collection paradigm, with data analyzed by the DBM method described in a previous chapter. The next chapter will deal with data analyzed by the OR method.
 
 It turns out that provided one can specify conceptually valid effect-sizes between different paradigms (i.e., in the same "units"), the methods described in this chapter are extensible to other paradigms; see TBA Chapter 19 for sample size estimation for FROC studies. *For this reason it is important to understand the concepts of sample-size estimation in the simpler ROC context.*
@@ -43,6 +48,7 @@ This chapter will focus on the DBM approach. Since it is based on a standard ANO
 Given an effect-size, and choosing this wisely is the most difficult part of the process, the method described in this chapter uses pseudovalue variance components estimated by the DBM method to predict sample-sizes (i.e., different combinations of numbers of readers and cases) necessary to achieve a desired power. 
 
 ## Statistical Power {#StatPower1}
+
 The concept of statistical power was introduced in [TBA Chapter 08] but is worth repeating. There are two possible decisions following a test of a null hypothesis (NH): reject or fail to reject the NH. Each decision is associated with a probability on an erroneous conclusion. If the NH is true and one rejects it, the probability of the ensuing Type-I error is denoted $\alpha$. If the NH is false and one fails to reject it, the probability of the ensuing Type II- error is denoted $\beta$. Statistical power is the complement of $\beta$, i.e., 
 
 \begin{equation}
@@ -84,6 +90,7 @@ Having performed a pilot study and planning to perform a pivotal study, sample s
 
 
 ## Formulae for fixed-reader random-case (FRRC) sample size estimation {#roc-sample-size-dbm-FRRC-sample-size-estimation}
+
 It was shown in TBA §9.8.2 that for fixed-reader analysis the non-centrality parameter is defined by:
 
 \begin{equation}
@@ -123,5 +130,4 @@ Here $J^*$ and $K^*$ refer to the number of readers and cases in the *pilot* stu
 
 ## Discussion/Summary/2
 
-## References {#roc-sample-size-dbm-references}
 

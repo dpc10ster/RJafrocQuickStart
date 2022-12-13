@@ -204,4 +204,3 @@ lesWghtDistr
 * Note that the number of rows is less than the maximum number of lesions per case (20).
 * This is because some configurations of lesions per case (e.g., cases with 13 lesions per case) do not occur in this dataset. 
 
-## References {#quick-start-froc-data-format-references}

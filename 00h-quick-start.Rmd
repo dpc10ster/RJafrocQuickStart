@@ -62,4 +62,3 @@ knitr::include_graphics(c("R/quick-start/MyResultsRRRC.png", "R/quick-start/MyRe
 
 
 
-## References {#quick-start-or-excel-references}

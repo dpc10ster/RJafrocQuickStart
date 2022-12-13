@@ -5,7 +5,6 @@ output_dir: docs
 delete_merged_file: TRUE
 rmd_files: [
   "index.Rmd",
-  "00a-quick-start.Rmd", 
   "00b-quick-start.Rmd", 
   "00c-quick-start.Rmd", 
   "00d-quick-start.Rmd", 
@@ -30,6 +29,7 @@ rmd_files: [
   "19e-proproc-rocs.Rmd",
   "19f-metz-eqn-36.Rmd",
   "20a-dataset-details.Rmd",
+  "99-references.Rmd",
 ]
 
 
