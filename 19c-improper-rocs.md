@@ -3,7 +3,7 @@
 ---
 title: "RJafroc Vignette 3: Improper ROCs"
 author: "Dev P. Chakraborty, PhD"
-date: "2022-12-11"
+date: "2022-12-13"
 output: rmarkdown::html_vignette
 fig.width: 4
 vignette: >
@@ -16,15 +16,18 @@ vignette: >
 
 
 ## TBA How much finished {#improper-rocs-how-much-finished}
+
 10%
 
   
 ## The binormal model
+
   The binormal model has two parameters, `a` and `b`. The signal (or diseased cases) distribution has unit standard deviation. 
   The noise (or non-diseased cases) distribution has standard deviation `b`. The `a` parameter is the separation of the two distributions.
   
 ## Improper ROCs
-  Binormal model fits invariably lead to ROC curves that inappropriately cross the chance diagonal, leading to a prediction of a region of the ROC curve where performance is worse than chance, even for expert observers. By convention, such curves are termed *improper*. This vignette illustrates improper ROCs predicted by the binormal model.
+
+Binormal model fits invariably lead to ROC curves that inappropriately cross the chance diagonal, leading to a prediction of a region of the ROC curve where performance is worse than chance, even for expert observers. By convention, such curves are termed *improper*. This vignette illustrates improper ROCs predicted by the binormal model.
   
   
 
@@ -45,6 +48,7 @@ print(p)
 The red plot is the clearest example of an improper ROC. This type of curve occurs whenever `b < 1`. The chance line crossing near the upper right corner, around (0.919,0.919), and the fact that the ROC curve must eventually reach (1, 1) implies the curve must turn upwards as one approaches (1, 1), thereby displaying a "hook". Whenever `b != 1` the hook is there, regardless of whether it is easily visible or not. If `b < 1` the hook is near the upper right corner. If `b > 1` the hook is near the origin (see green line, corresponding to `b = 1.5`). With increasing `a` the hook is less prominent (blue line corresponding to `a = 1.5, b = 0.5` and purple line corresponding to `a = 2, b = 0.5`). But it is there. 
 
 ## Reason for improper ROCs
+
 The reason for the "hook"" becomes apparent upon examination of the pdfs. 
 <img src="19c-improper-rocs_files/figure-html/unnamed-chunk-2-1.png" width="672" /><img src="19c-improper-rocs_files/figure-html/unnamed-chunk-2-2.png" width="672" />
 

@@ -4,7 +4,7 @@
 ---
 title: "RJafroc Vignette 5: PROPROC ROCs and pdfs"
 author: "Dev P. Chakraborty, PhD"
-date: "2022-12-11"
+date: "2022-12-13"
 output: rmarkdown::html_vignette
 fig.width: 4
 vignette: >
@@ -16,6 +16,7 @@ vignette: >
 
 
 ## Helper functions
+
 
 
 ## Definitions of PROPROC parameters in terms of binormal model parameters
@@ -64,6 +65,7 @@ for (i in 1:2)
 
 
 ## Discussion
+
 Plot A is for `c1` =  -0.1322804, `da` = 1.197239 while plot C is for `c1` = 0.2225588, `da` = 1.740157. Plots B and D are the corresponding slope plots as functions of the binormal model z-sample. In plot A, the slope is infinite near the origin and the curve approaches the upper-right corner with finite slope. The situation is reversed in plot C where the slope is finite near the origin and the curve approaches the upper-right corner with zero slope. 
 
 These two readers are from a clinical dataset, `dataset01`. Highest rating inferred ROC data from original FROC data, were analyzed by PROPROC and the resulting parameter values are coded here. They were chosen as they demonstrate key differences in the shapes of proper ROC plots. Plot A corresponds to a negative value of `c1`, which implies `b < 1`. The slope of the proper ROC is infinite near the origin and approaches a positive constant near the upper right corner of the ROC. Plot C is for a positive value of `c1`, i.e., for `b > 1`. Now the slope of the proper ROC is finite near the origin and approaches zero near the upper right corner. 

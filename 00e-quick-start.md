@@ -197,4 +197,3 @@ For this modality-reader combination case 74 (i.e., the fifth diseased case) was
 The difference from the previous data structures is the existence of `LL_IL` in the `ratings` list, which contains the ratings of incorrect localizations. Recall that for ROC and FROC paradigms this member was `NA`. When the data obeys forced localization, the corresponding flag should be set to `TRUE`, otherwise it should be set to `FALSE`. The default value of this flag is `NA`, which will work for ROC or FROC datasets. For LROC datasets it should be set to `T/F`.
 
 
-## References {#quick-start-lroc-data-references}

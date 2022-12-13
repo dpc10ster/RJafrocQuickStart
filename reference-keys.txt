@@ -126,11 +126,11 @@ eq:SamplingFFRRC1
 eq:DeltaFRRFC1
 eq:SamplingFRRFC1
 rationale-and-organization
+getting-help-on-the-software
 tba-acknowledgements
-quick-start-help
-quick-start-help-how-much-finished
-quick-start-help-getting-help
-quick-start-help-references
+persons-who-have-stimulated-my-thinking
+contributors-to-the-software
+dataset-contributors
 quick-start-data-format
 quick-start-data-format-how-much-finished
 quick-start-data-format-intro
@@ -140,7 +140,6 @@ quick-start-data-format-truth-worksheet
 quick-start-data-fp-worksheet
 quick-start-data-format-tp-worksheet
 quick-start-data-format-single-reader
-quick-start-data-format-references
 quick-start-read-datafile
 quick-start-read-datafile-how-much-finished
 quick-start-read-datafile-intro
@@ -148,7 +147,6 @@ quick-start-read-datafile-structure-roc-dataset
 quick-start-read-datafile-correspondence-nl-fp
 quick-start-read-datafile-correspondence-case-index-vs-case-id
 quick-start-read-datafile-correspondence-ll-tp
-quick-start-read-datafile-references
 quick-start-froc-data-format
 quick-start-froc-data-format-how-much-finished
 quick-start-froc-data-intro
@@ -159,7 +157,6 @@ quick-start-froc-data-tp
 quick-start-froc-data-distribution-diseased-cases
 quick-start-froc-data-lesion-distribution
 quick-start-froc-data-lesion-weights
-quick-start-froc-data-format-references
 quick-start-lroc-data
 quick-start-lroc-data-how-much-finished
 quick-start-lroc-data-intro
@@ -171,24 +168,20 @@ quick-start-lroc-tp2
 quick-start-lroc-fp2
 quick-start-lroc-data-2
 quick-start-lroc-data-summary
-quick-start-lroc-data-references
 quick-start-dbm-text
 quick-start-dbm-text-how-much-finished
 quick-start-dbm-text-intro
 quick-start-dbm-text-analyze-dataset
 quick-start-dbm-text-explanation
-quick-start-dbm-text-references
 quick-start-or-text
 quick-start-or-text-how-much-finished
 quick-start-or-text-intro
 quick-start-or-text-analyze-dataset
 quick-start-or-text-explanation
-quick-start-or-text-references
 quick-start-or-excel
 quick-start-or-excel-how-much-finished
 quick-start-or-excel-intro
 quick-start-or-excel-output
-quick-start-or-excel-references
 dbm-analysis-background
 dbm-analysis-background-how-much-finished
 dbm-analysis-background-introduction
@@ -201,7 +194,6 @@ dbm-analysis-background-reader-case-populations
 dbm-analysis-background-threeAnalyses
 dbm-analysis-background-approach
 dbm-analysis-background-summary
-dbm-analysis-background-references
 dbm-analysis-significance-testing
 dbm-analysis-significance-testing-how-much-finished
 the-dbm-sampling-model
@@ -227,7 +219,6 @@ significance-testing-and-sample-size-estimation-for-random-reader-fixed-case-gen
 dbm-analysis-significance-testing-summary
 things-for-me-to-think-about
 expected-values-of-mean-squares-1
-dbm-analysis-significance-testing-references
 dbm-analysis-special-cases
 dbm-analysis-special-cases-fits-how-much-finished
 FRRCDBMAnalysis
@@ -235,7 +226,6 @@ FRRCSingleReaderDBMAnalysis
 example-5-code-illustrating-p-values-for-frrc-analysis-van-dyke-data
 dbm-analysis-special-cases-RRFCAnalysis
 example-6-code-illustrating-analysis-for-rrfc-analysis-van-dyke-data
-dbm-analysis-special-cases-references
 or-method-intro
 or-method-intro-how-much-finished
 or-method-intro-helper-functions
@@ -266,7 +256,6 @@ or-method-intro-elementary-stats-meaning-cov-matrix
 or-method-intro-elementary-stats-code-cov-matrix
 or-method-intro-compare-dbm-or
 jumping-ahead
-or-method-intro-references
 or-analysis-st
 or-analysis-st-how-much-finished
 or-analysis-st-introduction
@@ -303,7 +292,6 @@ or-applications-RRFC-dataset04-FROC-DBM
 or-applications-Summary
 or-applications-Discussion
 ToMullOver1-tentative
-or-applications-references
 roc-sample-size-dbm
 roc-sample-size-dbm-how-much-finished
 roc-sample-size-dbm-introduction
@@ -320,7 +308,6 @@ roc-sample-size-dbm-FRRCAnalysis
 roc-sample-size-dbm-RRFCAnalysis
 roc-sample-size-dbm-STMRAnalysis
 discussionsummary2
-roc-sample-size-dbm-references
 roc-sample-size-or
 roc-sample-size-or-how-much-finished
 roc-sample-size-or-introduction
@@ -338,7 +325,6 @@ roc-sample-size-or-FRRCAnalysis
 roc-sample-size-or-RRFCAnalysis
 roc-sample-size-or-STMRAnalysis
 discussionsummary3
-roc-sample-size-or-references
 analyzing-froc-data
 analyzing-froc-data-how-much-finished
 analyzing-froc-data-intro
@@ -347,7 +333,6 @@ analyzing-froc-data-plotting
 analyzing-froc-data-reporting
 crossed-treatment-analysis
 analyzing-froc-data-rjafroc-history
-analyzing-froc-data-references
 froc-sample-size
 froc-sample-size-how-much-finished
 overview
@@ -363,7 +348,6 @@ extracting-the-wafroc-variance-components
 wafroc-power-for-specified-roc-effect-size-number-of-readers-j-and-number-of-cases-k
 wafroc-number-of-cases-for-80-power-for-a-given-number-of-readers-j
 wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k
-froc-sample-size-references
 background-f-distribution
 background-f-distribution-how-much-finished
 background
@@ -388,7 +372,6 @@ fig.-j
 fig.-k
 fig.-l
 summary-1
-references
 rsm-operating-characteristics
 rsm-operating-characteristics-how-much-finished
 introduction-2
@@ -399,7 +382,6 @@ the-predicted-wafroc
 the-distribution-of-number-of-lesions-and-weights
 other-operating-characteristics
 summary-2
-references-1
 improper-rocs
 improper-rocs-how-much-finished
 the-binormal-model
@@ -424,8 +406,11 @@ discussion-1
 dataset-object-details
 introduction-3
 the-truth-worksheet
-the-structure-of-the-roc-split-plot-a-dataset
+the-structure-of-the-froc-factorial-dataset
 the-truthtablestr-member
-the-false-positive-fp-ratings
-the-true-positive-tp-ratings
-references-2
+explanation-for-non-diseased-cases
+explanation-for-diseased-cases-with-one-lesion
+explanation-for-diseased-cases-with-two-lesions
+explanation-for-diseased-cases-with-three-lesions
+the-non-lesion-localization-nl-or-fp-ratings
+the-lesion-localization-ll-or-tp-ratings

@@ -5,7 +5,7 @@
 ---
 title: "Background on the F distribution"
 author: "Dev P. Chakraborty, PhD"
-date: "2022-12-11"
+date: "2022-12-13"
 output: rmarkdown::html_document
 bibliography: myRefs.bib
 vignette: >
@@ -18,6 +18,7 @@ vignette: >
 
 
 ## TBA How much finished {#background-f-distribution-how-much-finished}
+
 10%
 
 
@@ -27,6 +28,7 @@ A number of vignettes used to be part of the `RJafroc` package. These have been 
 
 
 ## Introduction
+
 Since it plays an important role in sample size estimation, it is helpful to examine the behavior of the F-distribution. In the following `ndf` = numerator degrees of freedom, `ddf` = denominator degrees of freedom and `ncp` = non-centrality parameter (i.e., the $\Delta$ appearing in Eqn. (11.6) of [@chakraborty2017observer]). 
 
 The use of three `R` functions is demonstrated. 
@@ -39,6 +41,7 @@ The use of three `R` functions is demonstrated.
 
 
 ## Effect of `ncp` for `ndf` = 2 and `ddf` = 10
+
 * Four values of `ncp` are considered  (0, 2, 5, 10) for `ddf` = 10. 
 * `fCrit` is the critical value of the F distribution, i.e., that value such that fraction $\alpha$ of the area is to the right of the critical value, i.e., `fCrit` is identical in statistical notation to  ${{F}_{1-\alpha ,ndf,ddf}}$.
 
@@ -451,9 +454,9 @@ The larger that non-centrality parameter, the greater the shift to the right of 
 * The power has actually increased.
 
 ## Summary
+
 * Power increases with increasing `ddf` and `ncp`. 
 * The effect of increasing `ncp` is quite dramatic. This is because power depends on the square of `ncp`. 
 * As `ndf` increases, `fCrit` decreases, which makes it more likely that the NH will be rejected. 
 * With increasing numbers of treatments the probability is greater that the F-statistic will be large enough to exceed the critical value.
 
-## References

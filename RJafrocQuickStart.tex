@@ -135,7 +135,7 @@
 
 \title{The RJafroc Quick Start Book}
 \author{Dev P. Chakraborty, PhD}
-\date{2022-12-11}
+\date{2022-12-13}
 
 \begin{document}
 \maketitle
@@ -189,31 +189,8 @@
   \end{itemize}
 \end{itemize}
 
-\hypertarget{tba-acknowledgements}{%
-\section{TBA Acknowledgements}\label{tba-acknowledgements}}
-
-Dr.~Xuetong Zhai
-
-Dr.~Peter Phillips
-
-Online Latex Editor \href{https://latexeditor.lagrida.com/}{at}
-
-Dataset contributors
-
-\hypertarget{part-quick-start}{%
-\part*{Quick Start}\label{part-quick-start}}
-\addcontentsline{toc}{part}{Quick Start}
-
-\hypertarget{quick-start-help}{%
-\chapter{Help}\label{quick-start-help}}
-
-\hypertarget{quick-start-help-how-much-finished}{%
-\section{TBA How much finished}\label{quick-start-help-how-much-finished}}
-
-40\% (need to add images for one reader; add one-modality dataset)
-
-\hypertarget{quick-start-help-getting-help}{%
-\section{Getting help on the software}\label{quick-start-help-getting-help}}
+\hypertarget{getting-help-on-the-software}{%
+\section{Getting help on the software}\label{getting-help-on-the-software}}
 
 \begin{itemize}
 \tightlist
@@ -243,8 +220,33 @@ Dataset contributors
   \end{itemize}
 \end{itemize}
 
-\hypertarget{quick-start-help-references}{%
-\section{References}\label{quick-start-help-references}}
+\hypertarget{tba-acknowledgements}{%
+\section{TBA Acknowledgements}\label{tba-acknowledgements}}
+
+\hypertarget{persons-who-have-stimulated-my-thinking}{%
+\subsection{Persons who have stimulated my thinking:}\label{persons-who-have-stimulated-my-thinking}}
+
+Harold Kundel, MD
+
+Claudia Mello-Thoms, PhD
+
+\hypertarget{contributors-to-the-software}{%
+\subsection{Contributors to the software}\label{contributors-to-the-software}}
+
+Dr.~Xuetong Zhai
+
+Dr.~Peter Phillips
+
+Online Latex Editor \href{https://latexeditor.lagrida.com/}{at}
+
+\hypertarget{dataset-contributors}{%
+\subsection{Dataset contributors}\label{dataset-contributors}}
+
+TBA
+
+\hypertarget{part-quick-start}{%
+\part*{Quick Start}\label{part-quick-start}}
+\addcontentsline{toc}{part}{Quick Start}
 
 \hypertarget{quick-start-data-format}{%
 \chapter{JAFROC ROC data format}\label{quick-start-data-format}}
@@ -429,9 +431,6 @@ These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
 \CommentTok{#>   .. ..- attr(*, "names")= chr "1"}
 \end{Highlighting}
 \end{Shaded}
-
-\hypertarget{quick-start-data-format-references}{%
-\section{References}\label{quick-start-data-format-references}}
 
 \hypertarget{quick-start-read-datafile}{%
 \chapter{Reading the Excel data file}\label{quick-start-read-datafile}}
@@ -622,9 +621,6 @@ In the following code chunk the second statement reads the Excel file using the 
 \item
   There are no \texttt{-Inf} values in \texttt{x\$ratings\$LL}: \texttt{any(x\$ratings\$LL\ ==\ -Inf)} = FALSE. This is true for any ROC dataset.
 \end{itemize}
-
-\hypertarget{quick-start-read-datafile-references}{%
-\section{References}\label{quick-start-read-datafile-references}}
 
 \hypertarget{quick-start-froc-data-format}{%
 \chapter{Data format and reading FROC data}\label{quick-start-froc-data-format}}
@@ -1154,9 +1150,6 @@ These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
   This is because some configurations of lesions per case (e.g., cases with 13 lesions per case) do not occur in this dataset.
 \end{itemize}
 
-\hypertarget{quick-start-froc-data-format-references}{%
-\section{References}\label{quick-start-froc-data-format-references}}
-
 \hypertarget{quick-start-lroc-data}{%
 \chapter{Data format and reading LROC data}\label{quick-start-lroc-data}}
 
@@ -1416,9 +1409,6 @@ For this modality-reader combination case 74 (i.e., the fifth diseased case) was
 \section{Summary}\label{quick-start-lroc-data-summary}}
 
 The difference from the previous data structures is the existence of \texttt{LL\_IL} in the \texttt{ratings} list, which contains the ratings of incorrect localizations. Recall that for ROC and FROC paradigms this member was \texttt{NA}. When the data obeys forced localization, the corresponding flag should be set to \texttt{TRUE}, otherwise it should be set to \texttt{FALSE}. The default value of this flag is \texttt{NA}, which will work for ROC or FROC datasets. For LROC datasets it should be set to \texttt{T/F}.
-
-\hypertarget{quick-start-lroc-data-references}{%
-\section{References}\label{quick-start-lroc-data-references}}
 
 \hypertarget{quick-start-dbm-text}{%
 \chapter{DBM analysis text output}\label{quick-start-dbm-text}}
@@ -1788,9 +1778,6 @@ Let us consider them individually.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{quick-start-dbm-text-references}{%
-\section{References}\label{quick-start-dbm-text-references}}
-
 \hypertarget{quick-start-or-text}{%
 \chapter{OR analysis text output}\label{quick-start-or-text}}
 
@@ -2005,9 +1992,6 @@ Let us consider the ones that are different from the DBM method.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{quick-start-or-text-references}{%
-\section{References}\label{quick-start-or-text-references}}
-
 \hypertarget{quick-start-or-excel}{%
 \chapter{OR analysis Excel output}\label{quick-start-or-excel}}
 
@@ -2082,8 +2066,9 @@ The following screen shots display the contents of the created file \texttt{"R/q
 \caption{`RRRC`, `FRRC` and `RRFC` worksheets of Excel file `R/quick-start/MyResults.xlsx`}\label{fig:quick-start-or-xlsx3}
 \end{figure}
 
-\hypertarget{quick-start-or-excel-references}{%
-\section{References}\label{quick-start-or-excel-references}}
+\hypertarget{part-dbm-method}{%
+\part*{DBM method}\label{part-dbm-method}}
+\addcontentsline{toc}{part}{DBM method}
 
 \hypertarget{dbm-analysis-background}{%
 \chapter{DBM method background}\label{dbm-analysis-background}}
@@ -2145,7 +2130,7 @@ Likewise, there is a case-population, also modeled as a normal distribution, des
 \hypertarget{dbm-analysis-background-threeAnalyses}{%
 \section{Three types of analyses}\label{dbm-analysis-background-threeAnalyses}}
 
-\emph{MRMC analysis aims to draw conclusions regarding the significances of inter-treatment shifts in performance. Ideally a conclusion (i.e., a difference is significant) should generalize to the respective populations from which the random samples were obtained. In other words, the idea is to generalize from the observed samples to the underlying populations. Three types of analyses are possible depending on which factor(s) one regards as random and which as fixed: random-reader random-case (RRRC), fixed-reader random-case (FRRC) and random-reader fixed-case (RRFC). If a factor is regarded as random, then the conclusion of the study applies to the population from which the levels of the factor were sampled. If a factor is regarded as fixed, then the conclusion applies only to the specific levels of the sampled factor. For example, if reader is regarded as a random factor, the conclusion generalizes to the reader population from which the readers used in the study were obtained. If reader is regarded as a fixed factor, then the conclusion applies to the specific readers that participated in the study. Regarding a factor as fixed effectively ``freezes out'' the sampling variability of the population and interest then centers only on the specific levels of the factor used in the study. Likewise, treating case as a fixed factor means the conclusion of the study is specific to the case-set used in the study.}
+\emph{MRMC analysis aims to draw conclusions regarding the significance of inter-treatment differences in performance. Ideally a conclusion (i.e., a difference is significant) should generalize to the respective populations from which the random samples were obtained. In other words, the idea is to generalize from the observed samples to the underlying populations. Three types of analyses are possible depending on which factor(s) one regards as random and which as fixed: random-reader random-case (RRRC), fixed-reader random-case (FRRC) and random-reader fixed-case (RRFC). If a factor is regarded as random, then the conclusion of the study applies to the population from which the levels of the factor were sampled. If a factor is regarded as fixed, then the conclusion applies only to the specific levels of the sampled factor. For example, if reader is regarded as a random factor, the conclusion generalizes to the reader population from which the readers used in the study were obtained. If reader is regarded as a fixed factor, then the conclusion applies to the specific readers that participated in the study. Regarding a factor as fixed effectively ``freezes out'' the sampling variability of the population and interest then centers only on the specific levels of the factor used in the study. Likewise, treating case as a fixed factor means the conclusion of the study is specific to the case-set used in the study.}
 
 \hypertarget{dbm-analysis-background-approach}{%
 \section{General approach}\label{dbm-analysis-background-approach}}
@@ -2197,9 +2182,6 @@ A third MRMC ROC method, due to Clarkson, Kupinski and Barrett19,20, implemented
 Testing validity of an analysis method via simulation testing is only as good as the simulator used to generate the datasets, and this is where current research is at a bottleneck. The simulator plays a central role in ROC analysis. In my opinion this is not widely appreciated. In contrast, simulators are taken very seriously in other disciplines, such as cosmology, high-energy physics and weather forecasting. The simulator used to validate3 DBM is that proposed by Roe and Metz39 in 1997. This simulator has several shortcomings. (a) It assumes that the ratings are distributed like an equal-variance binormal model, which is not true for most clinical datasets (recall that the b-parameter of the binormal model is usually less than one). Work extending this simulator to unequal variance has been published3. (b) It does not take into account that some lesions are not visible, which is the basis of the contaminated binormal model (CBM). A CBM model based simulator would use equal variance distributions with the difference that the distribution for diseased cases would be a mixture distribution with two peaks. The radiological search model (RSM) of free-response data, Chapter 16 \&17 also implies a mixture distribution for diseased cases, and it goes farther, as it predicts some cases yield no z-samples, which means they will always be rated in the lowest bin no matter how low the reporting threshold. Both CBM and RSM account for truth dependence by accounting for the underlying perceptual process. (c) The Roe-Metz simulator is out dated; the parameter values are based on datasets then available (prior to 1997). Medical imaging technology has changed substantially in the intervening decades. (d) Finally, the methodology used to arrive at the proposed parameter values is not clearly described. Needed is a more realistic simulator, incorporating knowledge from alternative ROC models and paradigms that is calibrated, by a clearly defined method, to current datasets.
 
 Since ROC studies in medical imaging have serious health-care related consequences, no method should be used unless it has been thoroughly validated. Much work still remains to be done in proper simulator design, on which validation is dependent.
-
-\hypertarget{dbm-analysis-background-references}{%
-\section{References}\label{dbm-analysis-background-references}}
 
 \hypertarget{dbm-analysis-significance-testing}{%
 \chapter{Significance Testing using the DBM Method}\label{dbm-analysis-significance-testing}}
@@ -3060,9 +3042,6 @@ TRC & (I-1)(J-1)(K-1) & \(\sigma_{\epsilon}^{2}\) + \(\sigma_{\tau RC}^{2}\)\tab
 \bottomrule
 \end{longtable}
 
-\hypertarget{dbm-analysis-significance-testing-references}{%
-\section{References}\label{dbm-analysis-significance-testing-references}}
-
 \hypertarget{dbm-analysis-special-cases}{%
 \chapter{DBM method special cases}\label{dbm-analysis-special-cases}}
 
@@ -3265,8 +3244,9 @@ CI_{1-\alpha}=\left ( \theta_{i \bullet} - \theta_{i' \bullet} \right ) \pm t_{\
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{dbm-analysis-special-cases-references}{%
-\section{References}\label{dbm-analysis-special-cases-references}}
+\hypertarget{part-or-method}{%
+\part*{OR method}\label{part-or-method}}
+\addcontentsline{toc}{part}{OR method}
 
 \hypertarget{or-method-intro}{%
 \chapter{Introduction to the Obuchowski-Rockette method}\label{or-method-intro}}
@@ -4270,7 +4250,7 @@ Shown below are results obtained using \texttt{RJafroc} function \texttt{StSigni
 
 \begin{verbatim}
 ##   ORBoot.Chisq ORBoot.ddf ORBoot.P.val
-## 1     1.141613          1   0.28531175
+## 1    1.2282679          1   0.26774416
 \end{verbatim}
 
 The DBM and OR-jackknife methods yield identical F-statistics, but the denominator degrees of freedom are different, \((I-1)(K-1)\) = 113 for DBM and \(\infty\) for OR. The F-statistics for OR-bootstrap and OR-DeLong are different.
@@ -4413,9 +4393,6 @@ If RRRC analysis were conducted, the values are {[}one needs to analyze a datase
 \end{itemize}
 
 For \texttt{RRFC} analysis, one replaces \texttt{RRRC} with \texttt{RRFC}, etc. I should note that the auto-prompt feature of \texttt{RStudio} makes it unnecessary to enter the complex string names shown above - \texttt{RStudio} will suggest them.
-
-\hypertarget{or-method-intro-references}{%
-\section{References}\label{or-method-intro-references}}
 
 \hypertarget{or-analysis-st}{%
 \chapter{Obuchowski Rockette (OR) Analysis}\label{or-analysis-st}}
@@ -4714,7 +4691,6 @@ Here \(\text{MS(R)}_i\) is the reader mean-square for modality \(i\).
 TBA
 \#\# Summary\{\#or-analysis-st-summary\}
 \#\# Discussion\{\#or-analysis-st-discussion\}
-\#\# References \{\#or-analysis-st-references\}
 
 \hypertarget{or-applications}{%
 \chapter{Obuchowski Rockette Applications}\label{or-applications}}
@@ -6493,8 +6469,9 @@ The lower right \texttt{RStudio} panel contains the online description. Click on
 
 A comparison was run between results of OR and DBM for the FROC dataset. Except for \texttt{FRRC}, where differences are expected (because \texttt{ddf} in the former is \(\infty\), while that in the later is \((I-1)\times(J-1))\), the results for the p-values were identical. This was true for the following FOMs: \texttt{wAFROC}, with equal and unequal weights, and \texttt{MaxLLF}. The confidence intervals (again, excluding \texttt{FRRC}) were identical for \texttt{FOM} = \texttt{wAFROC}. Slight differences were observed for \texttt{FOM} = \texttt{MaxLLF}.
 
-\hypertarget{or-applications-references}{%
-\section{References}\label{or-applications-references}}
+\hypertarget{part-roc-sample-size}{%
+\part*{ROC sample size}\label{part-roc-sample-size}}
+\addcontentsline{toc}{part}{ROC sample size}
 
 \hypertarget{roc-sample-size-dbm}{%
 \chapter{Sample size estimation for ROC studies DBM method}\label{roc-sample-size-dbm}}
@@ -6645,9 +6622,6 @@ Here \(J^*\) and \(K^*\) refer to the number of readers and cases in the \emph{p
 
 \hypertarget{discussionsummary2}{%
 \section{Discussion/Summary/2}\label{discussionsummary2}}
-
-\hypertarget{roc-sample-size-dbm-references}{%
-\section{References}\label{roc-sample-size-dbm-references}}
 
 \hypertarget{roc-sample-size-or}{%
 \chapter{Sample size estimation for ROC studies OR method}\label{roc-sample-size-or}}
@@ -6876,8 +6850,9 @@ For 10 readers, the numbers of cases needed for 80\% power is largest (163) for 
 \hypertarget{discussionsummary3}{%
 \section{Discussion/Summary/3}\label{discussionsummary3}}
 
-\hypertarget{roc-sample-size-or-references}{%
-\section{References}\label{roc-sample-size-or-references}}
+\hypertarget{part-froc-analysis}{%
+\part*{FROC analysis}\label{part-froc-analysis}}
+\addcontentsline{toc}{part}{FROC analysis}
 
 \hypertarget{analyzing-froc-data}{%
 \chapter{Analyzing FROC data}\label{analyzing-froc-data}}
@@ -6974,8 +6949,9 @@ Interest in the FROC paradigm is evidenced by the fact that Ref. 3 describing th
 
 Since confusion still appears to exist, especially among statisticians, regarding perceived neglect of intra-image correlations of ratings and how true negatives are handled in FROC analysis11, we close with a quote from respected sources 12 ``(Chakraborty and Berbaum) have presented a solution to the FROC problem using a jackknife resampling approach that respects the correlation structure in the images \ldots{} their paradigm successfully passes a rigorous statistical validation test''. Since 2005 the National Institutes for Health (NIH) has been generous with supporting the research and users of JAFROC have been equally generous with providing their datasets, which have resulted in several collaborations.
 
-\hypertarget{analyzing-froc-data-references}{%
-\section{References}\label{analyzing-froc-data-references}}
+\hypertarget{part-froc-sample-size}{%
+\part*{FROC sample size}\label{part-froc-sample-size}}
+\addcontentsline{toc}{part}{FROC sample size}
 
 \hypertarget{froc-sample-size}{%
 \chapter{Sample size estimation for FROC studies}\label{froc-sample-size}}
@@ -7431,9 +7407,6 @@ The following example is for ROC effect size = 0.05, 5 readers (\texttt{J\ =\ 5}
 
 The estimated power is close to 80\% as the number of cases (\texttt{ret2\$KRRRC\ =\ 123}) was chosen deliberately from the previous code block.
 
-\hypertarget{froc-sample-size-references}{%
-\section{References}\label{froc-sample-size-references}}
-
 \hypertarget{part-rjafroc-vignettes}{%
 \part*{RJafroc Vignettes}\label{part-rjafroc-vignettes}}
 \addcontentsline{toc}{part}{RJafroc Vignettes}
@@ -7820,9 +7793,6 @@ ndf & ddf & fCrit\\
   With increasing numbers of treatments the probability is greater that the F-statistic will be large enough to exceed the critical value.
 \end{itemize}
 
-\hypertarget{references}{%
-\section{References}\label{references}}
-
 \hypertarget{rsm-operating-characteristics}{%
 \chapter{RSM operating characteristics}\label{rsm-operating-characteristics}}
 
@@ -8002,9 +7972,6 @@ ndf & ddf & fCrit\\
 
 \hypertarget{summary-2}{%
 \section{Summary}\label{summary-2}}
-
-\hypertarget{references-1}{%
-\section{References}\label{references-1}}
 
 \hypertarget{improper-rocs}{%
 \chapter{Improper ROC curves}\label{improper-rocs}}
@@ -8270,7 +8237,7 @@ Note the close correspondence between the formula, Eqn. 36 in the Metz-Pan paper
 \addcontentsline{toc}{part}{Software details}
 
 \hypertarget{dataset-object-details}{%
-\chapter{Dataset object details}\label{dataset-object-details}}
+\chapter{Excel file and dataset details}\label{dataset-object-details}}
 
 \hypertarget{introduction-3}{%
 \section{Introduction}\label{introduction-3}}
@@ -8278,18 +8245,14 @@ Note the close correspondence between the formula, Eqn. 36 in the Metz-Pan paper
 \begin{itemize}
 \tightlist
 \item
-  This vignette explains the data format of the input Excel file for an \textbf{ROC SPLIT-PLOT-A} dataset.
+  This chapter is included to document recent Excel file format changes and the new dataset structure.
 \item
-  The \textbf{A} refers to Table VII, part (a), in \citep{RN2508}.
-\item
-  In a SPLIT-PLOT-A dataset two distinct groups of readers interpret all cases in two modalities.
-\item
-  The vignette is illustrated with a toy data file, \texttt{inst/extdata/toyFiles/FROC/frocSpA.xlsx} in which readers 1 and 2 interpret 10 cases in the first modality and readers 3 and 4 interpret the same cases in the second modality.
+  We illustrate with a toy FROC data file in the \texttt{RJafroc} GitHub repository, \texttt{inst/extdata/toyFiles/FROC/frocCr.xlsx}, in which 3 readers interpret 3 non-diseased and 5 diseased cases using the FROC paradigm.
 \item
   The Excel file has three worksheets named \texttt{Truth}, \texttt{NL} (or \texttt{FP}) and \texttt{LL} (or \texttt{TP}).
 \end{itemize}
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/software-details/frocSpATruth.png}
+\includegraphics[width=1\textwidth,height=\textheight]{images/software-details/frocCrTruth.png}
 
 \hypertarget{the-truth-worksheet}{%
 \section{\texorpdfstring{The \texttt{Truth} worksheet}{The Truth worksheet}}\label{the-truth-worksheet}}
@@ -8299,74 +8262,87 @@ Note the close correspondence between the formula, Eqn. 36 in the Metz-Pan paper
 \item
   The \texttt{Truth} worksheet contains 6 columns: \texttt{CaseID}, \texttt{LesionID}, \texttt{Weight}, \texttt{ReaderID}, \texttt{ModalityID} and \texttt{Paradigm}.
 \item
-  The first five columns contain \emph{twice} as many rows as there are distinct cases in the dataset. The factor of two is coming from the two modalities.
+  The non-diseased cases are numbered 1,2,3; the diseased cases are numbered 70, 71, 72, 73, 74; i.e., \texttt{K1} = 3, \texttt{K2} = 5 and \texttt{K} = 8.
 \item
-  The normal cases are numbered 6,7,8,9,10; the abnormal cases are numbered 16,17,18,19,20; i.e., \texttt{K1} = \texttt{K2} = 5 and \texttt{K} = 10. The number of rows of data is 2 * K = 20.
+  The \texttt{ReaderID} field has \emph{three values} \texttt{0,\ 1,\ 2}.
 \item
-  The \texttt{ReaderID} field for the first modality has \emph{two values} \texttt{1,\ 2} since readers 1 and 2 interpret all cases in the first modality. The corresponding values for the second modality are `3, 4'.
+  \texttt{ModalityID}: The first modality is labeled \texttt{0} and the second is `1'.
 \item
-  \texttt{ModalityID}: The first modality is labeled \texttt{(4)} and the second is `(2)' . The parentheses follow standard statistical notation for nested factors. In the example readers `(1, 2)' are nested within treatment `(4)' and readers `(3, 4)' are nested within treatment `(2)'. The number of readers in each treatment can differ. At least two readers are needed in each treatment.
+  Note that \texttt{ReaderID} and \texttt{ModalityID} are \emph{text formatted labels}.
 \item
-  \texttt{ReaderID}, the \texttt{ModalityID} are \emph{text formatted labels}.
-\item
-  \texttt{Paradigm}: The contents of this field are \texttt{ROC} and \texttt{SPLIT-PLOT-A} (case insensitive).
+  \texttt{Paradigm}: The contents of this field are \texttt{FROC} and \texttt{FCTRL} (case insensitive, FCTRL stands for a factorial - or fully crossed - study design where each reader interprets all cases in all modalities).
 \end{itemize}
 
-\hypertarget{the-structure-of-the-roc-split-plot-a-dataset}{%
-\section{The structure of the ROC split-plot-A dataset}\label{the-structure-of-the-roc-split-plot-a-dataset}}
+\hypertarget{the-structure-of-the-froc-factorial-dataset}{%
+\section{The structure of the FROC factorial dataset}\label{the-structure-of-the-froc-factorial-dataset}}
 
-This code-chunk reads the data into a split plot dataset:
+The following code reads the Excel file into a dataset object \texttt{x}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{frocSpA <-}\StringTok{ }\KeywordTok{system.file}\NormalTok{(}\StringTok{"extdata"}\NormalTok{, }\StringTok{"toyFiles/FROC/frocSpA.xlsx"}\NormalTok{,}
+\NormalTok{frocCr <-}\StringTok{ }\KeywordTok{system.file}\NormalTok{(}\StringTok{"extdata"}\NormalTok{, }\StringTok{"toyFiles/FROC/frocCr.xlsx"}\NormalTok{,}
                         \DataTypeTok{package =} \StringTok{"RJafroc"}\NormalTok{, }\DataTypeTok{mustWork =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{x <-}\StringTok{ }\KeywordTok{DfReadDataFile}\NormalTok{(frocSpA, }\DataTypeTok{newExcelFileFormat =} \OtherTok{TRUE}\NormalTok{)}
-\KeywordTok{str}\NormalTok{(x)}
-\CommentTok{#> List of 3}
-\CommentTok{#>  $ ratings     :List of 3}
-\CommentTok{#>   ..$ NL   : num [1:2, 1:5, 1:11, 1:3] 1.5 -Inf 0.9 -Inf -Inf ...}
-\CommentTok{#>   ..$ LL   : num [1:2, 1:5, 1:5, 1:4] 5 -Inf -Inf -Inf -Inf ...}
-\CommentTok{#>   ..$ LL_IL: logi NA}
-\CommentTok{#>  $ lesions     :List of 3}
-\CommentTok{#>   ..$ perCase: int [1:5] 2 4 1 2 3}
-\CommentTok{#>   ..$ IDs    : num [1:5, 1:4] 1 1 1 1 1 ...}
-\CommentTok{#>   ..$ weights: num [1:5, 1:4] 0.5 0.25 1 0.5 0.333 ...}
-\CommentTok{#>  $ descriptions:List of 7}
-\CommentTok{#>   ..$ fileName     : chr "frocSpA"}
-\CommentTok{#>   ..$ type         : chr "FROC"}
-\CommentTok{#>   ..$ name         : logi NA}
-\CommentTok{#>   ..$ truthTableStr: num [1:2, 1:5, 1:11, 1:5] 1 NA 1 NA NA 1 NA 1 NA 1 ...}
-\CommentTok{#>   ..$ design       : chr "SPLIT-PLOT-A"}
-\CommentTok{#>   ..$ modalityID   : Named chr [1:2] "4" "2"}
-\CommentTok{#>   .. ..- attr(*, "names")= chr [1:2] "4" "2"}
-\CommentTok{#>   ..$ readerID     : Named chr [1:5] "1" "2" "3" "4" ...}
-\CommentTok{#>   .. ..- attr(*, "names")= chr [1:5] "1" "2" "3" "4" ...}
+\NormalTok{x <-}\StringTok{ }\KeywordTok{DfReadDataFile}\NormalTok{(frocCr, }\DataTypeTok{newExcelFileFormat =} \OtherTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{itemize}
 \tightlist
 \item
-  Flag \texttt{newExcelFileFormat} \textbf{must} be set to \texttt{TRUE} to the read split plot dataset.
+  Note that \texttt{newExcelFileFormat} \textbf{must} be set to \texttt{TRUE} to read the new Excel format dataset. The default is \texttt{FALSE} which applies to the old format Excel file with only the first three columns present in the \texttt{Truth} worksheet.
+\end{itemize}
+
+The structure of \texttt{x} is shown below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(x)}
+\CommentTok{#> List of 3}
+\CommentTok{#>  $ ratings     :List of 3}
+\CommentTok{#>   ..$ NL   : num [1:2, 1:3, 1:8, 1:2] 1.02 2.89 2.21 3.01 2.14 ...}
+\CommentTok{#>   ..$ LL   : num [1:2, 1:3, 1:5, 1:3] 5.28 5.2 5.14 4.77 4.66 4.87 3.01 3.27 3.31 3.19 ...}
+\CommentTok{#>   ..$ LL_IL: logi NA}
+\CommentTok{#>  $ lesions     :List of 3}
+\CommentTok{#>   ..$ perCase: int [1:5] 2 1 3 2 1}
+\CommentTok{#>   ..$ IDs    : num [1:5, 1:3] 1 1 1 1 1 ...}
+\CommentTok{#>   ..$ weights: num [1:5, 1:3] 0.3 1 0.333 0.1 1 ...}
+\CommentTok{#>  $ descriptions:List of 7}
+\CommentTok{#>   ..$ fileName     : chr "frocCr"}
+\CommentTok{#>   ..$ type         : chr "FROC"}
+\CommentTok{#>   ..$ name         : logi NA}
+\CommentTok{#>   ..$ truthTableStr: num [1:2, 1:3, 1:8, 1:4] 1 1 1 1 1 1 1 1 1 1 ...}
+\CommentTok{#>   ..$ design       : chr "FCTRL"}
+\CommentTok{#>   ..$ modalityID   : Named chr [1:2] "0" "1"}
+\CommentTok{#>   .. ..- attr(*, "names")= chr [1:2] "0" "1"}
+\CommentTok{#>   ..$ readerID     : Named chr [1:3] "0" "1" "2"}
+\CommentTok{#>   .. ..- attr(*, "names")= chr [1:3] "0" "1" "2"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
 \item
-  The dataset object \texttt{x} is a \texttt{list} variable with 3 members: \texttt{x\$ratings}, \texttt{x\$lesions} and \texttt{x\$descriptions}.
+  The dataset \texttt{x} is a \texttt{list} variable with 3 members: \texttt{x\$ratings}, \texttt{x\$lesions} and \texttt{x\$descriptions}.
 \item
-  There are \texttt{K2\ =\ 5} diseased cases (the length of the third dimension of \texttt{ratings\$LL}) and \texttt{K1\ =\ 5} non-diseased cases (the length of the third dimension of \texttt{ratings\$NL} minus \texttt{K2}).
+  There are \texttt{K2\ =\ 5} diseased cases (the length of the third dimension of \texttt{x\$ratings\$LL}) and \texttt{K1\ =\ 3} non-diseased cases (the length of the third dimension of \texttt{x\$ratings\$NL} minus \texttt{K2}).
 \item
-  \texttt{x\$ratings\$NL}, a {[}2, 4, 10, 1{]} array, contains the ratings of normal cases.
+  \texttt{x\$ratings\$NL} is a {[}2, 3, 8, 2{]} array containing the NL ratings on non-diseased and diseased cases.
 \item
-  \texttt{x\$ratings\$LL}, a {[}2, 5, 5, 1{]} array, contains the ratings of abnormal cases.
+  \texttt{x\$ratings\$LL} is a {[}2, 3, 5, 3{]} array containing the ratings of LLs on diseased cases.
 \item
-  The \texttt{dataType} member is which specifies the data collection method, \texttt{"ROC"} in this example.
+  The maximum number of lesions per case in the dataset is 3.
 \item
-  The \texttt{x\$modalityID} member is a vector with two elements \texttt{"4"} and \texttt{"2"}, naming the two modalities.
+  The number of lesions per diseased case is the vector \texttt{x\$lesions\$perCase}, i.e., 2, 1, 3, 2, 1 in this example.
 \item
-  The \texttt{x\$readerID} member is a vector with four elements \texttt{"1"}, \texttt{"2"}, \texttt{"3"}, ```4'', labeling the four readers.
+  The \texttt{x\$descriptions\$dataType} member is FROC, which specifies the data collection method.
 \item
-  The \texttt{x\$design} member is ; specifies the dataset design, ``SPLIT-PLOT-A'' for this example.
+  The \texttt{x\$descriptions\$modalityID} member is a vector with two elements 0, 1, naming the two modalities.
 \item
-  The \texttt{x\$descriptions\$truthTableStr} member quantifies the structure of the dataset, as explained next.
+  The \texttt{x\$readerID} member is a vector with three elements 0, 1, 2, naming the three readers.
+\item
+  The \texttt{x\$descriptions\$design} member is FCTRL; specifies the study design.
+\item
+  The \texttt{x\$descriptions\$truthTableStr} member quantifies the structure of the dataset, explained next.
 \end{itemize}
 
 \hypertarget{the-truthtablestr-member}{%
@@ -8375,164 +8351,138 @@ This code-chunk reads the data into a split plot dataset:
 \begin{itemize}
 \tightlist
 \item
-  This is a \texttt{2\ x\ 4\ x\ 10\ x\ 2} array, i.e., \texttt{I} x \texttt{J} x \texttt{K} x (maximum number of lesions per case plus 1). The \texttt{plus\ 1} is needed to accommodate normal cases.
+  For this dataset \texttt{I} = 2, \texttt{J} = 3 and \texttt{K} = 8.
 \item
-  Each entry in this array is either \texttt{1}, meaning the corresponding interpretation exists, or \texttt{NA}, meaning the corresponding interpretation does not exist.
+  \texttt{truthTableStr} is a \texttt{2\ x\ 3\ x\ 8\ x\ 4} array, i.e., \texttt{I} x \texttt{J} x \texttt{K} x (maximum number of lesions per case plus 1). The \texttt{plus\ 1} is needed to accommodate non-diseased cases.
 \item
-  The first reader interprets the normal cases in the first modality only:
+  Each entry in this array is either \texttt{1}, meaning the corresponding interpretation happened, or \texttt{NA}, meaning the corresponding interpretation did not happen.
 \end{itemize}
+
+\hypertarget{explanation-for-non-diseased-cases}{%
+\subsection{Explanation for non-diseased cases}\label{explanation-for-non-diseased-cases}}
+
+Since the fourth index is set to 1, in the following code only non-diseased cases yield ones and all diseased cases yield \texttt{NA}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{1}\NormalTok{]}
-\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
-\CommentTok{#> [1,]    1    1    1    1    1    1   NA   NA   NA    NA}
-\CommentTok{#> [2,]   NA   NA   NA   NA   NA   NA   NA   NA   NA    NA}
+\KeywordTok{all}\NormalTok{(x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,,}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{] }\OperatorTok{==}\DecValTok{1}\NormalTok{)}
+\CommentTok{#> [1] TRUE}
+\KeywordTok{all}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,,}\DecValTok{4}\OperatorTok{:}\DecValTok{8}\NormalTok{,}\DecValTok{1}\NormalTok{]))}
+\CommentTok{#> [1] TRUE}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{itemize}
-\tightlist
-\item
-  The first reader interprets the abnormal cases also in the first modality only:
-\end{itemize}
+\hypertarget{explanation-for-diseased-cases-with-one-lesion}{%
+\subsection{Explanation for diseased cases with one lesion}\label{explanation-for-diseased-cases-with-one-lesion}}
+
+Since the fourth index is set to 2, in the following code all non-diseased cases yield \texttt{NA} and all diseased cases yield 1 as all diseased cases have at least one lesion.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{2}\NormalTok{]}
-\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
-\CommentTok{#> [1,]   NA   NA   NA   NA   NA   NA    1    1    1     1}
-\CommentTok{#> [2,]   NA   NA   NA   NA   NA   NA   NA   NA   NA    NA}
+\KeywordTok{all}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,,}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{]))}
+\CommentTok{#> [1] TRUE}
+\KeywordTok{all}\NormalTok{(x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,,}\DecValTok{4}\OperatorTok{:}\DecValTok{8}\NormalTok{,}\DecValTok{2}\NormalTok{] }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{)}
+\CommentTok{#> [1] TRUE}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{itemize}
-\tightlist
-\item
-  Likewise for the second reader:
-\end{itemize}
+\hypertarget{explanation-for-diseased-cases-with-two-lesions}{%
+\subsection{Explanation for diseased cases with two lesions}\label{explanation-for-diseased-cases-with-two-lesions}}
+
+Since the fourth index is set to 3, in the following code all non-diseased cases yield \texttt{NA}; the first diseased case \texttt{70} yields 1 (this case contains two lesions); the second disease case \texttt{71} yields \texttt{NA} (this case contains only one lesion); the third disease case \texttt{72} yields \texttt{NA} (this case contains only two lesions); the fourth disease case \texttt{73} yields 1 (this case contains two lesions); the fifth disease case \texttt{74} yields \texttt{NA} (this case contains one lesion).
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{1}\NormalTok{]}
-\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
-\CommentTok{#> [1,]    1    1    1    1    1    1   NA   NA   NA    NA}
-\CommentTok{#> [2,]   NA   NA   NA   NA   NA   NA   NA   NA   NA    NA}
-\NormalTok{x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{2}\NormalTok{]}
-\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
-\CommentTok{#> [1,]   NA   NA   NA   NA   NA   NA    1    1    1     1}
-\CommentTok{#> [2,]   NA   NA   NA   NA   NA   NA   NA   NA   NA    NA}
+\CommentTok{# all non diseased cases}
+\KeywordTok{all}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,,}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{]))}
+\CommentTok{#> [1] TRUE}
+\CommentTok{# first diseased case}
+\KeywordTok{all}\NormalTok{(x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,,}\DecValTok{4}\NormalTok{,}\DecValTok{3}\NormalTok{] }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{)}
+\CommentTok{#> [1] TRUE}
+\CommentTok{# second diseased case}
+\KeywordTok{all}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,,}\DecValTok{5}\NormalTok{,}\DecValTok{3}\NormalTok{]))}
+\CommentTok{#> [1] TRUE}
+\CommentTok{# third diseased case}
+\KeywordTok{all}\NormalTok{(x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,,}\DecValTok{6}\NormalTok{,}\DecValTok{3}\NormalTok{] }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{)}
+\CommentTok{#> [1] TRUE}
+\CommentTok{# fourth diseased case}
+\KeywordTok{all}\NormalTok{(x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,,}\DecValTok{7}\NormalTok{,}\DecValTok{3}\NormalTok{] }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{)}
+\CommentTok{#> [1] TRUE}
+\CommentTok{# fifth diseased case}
+\KeywordTok{all}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,,}\DecValTok{8}\NormalTok{,}\DecValTok{3}\NormalTok{]))}
+\CommentTok{#> [1] TRUE}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{itemize}
-\tightlist
-\item
-  The third reader interprets the cases in the second modality only:
-\end{itemize}
+\hypertarget{explanation-for-diseased-cases-with-three-lesions}{%
+\subsection{Explanation for diseased cases with three lesions}\label{explanation-for-diseased-cases-with-three-lesions}}
+
+Since the fourth index is set to 4, in the following code all non-diseased cases yield \texttt{NA}; the first diseased case \texttt{70} yields \texttt{NA} (this case contains two lesions); the second disease case \texttt{71} yields \texttt{NA} (this case contains one lesion); the third disease case \texttt{72} yields \texttt{NA} (this case contains two lesions); the fourth disease case \texttt{73} yields 1 (this case contains three lesions); the fifth disease case \texttt{74} yields \texttt{NA} (this case contains one lesion).
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{1}\NormalTok{]}
-\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
-\CommentTok{#> [1,]   NA   NA   NA   NA   NA   NA   NA   NA   NA    NA}
-\CommentTok{#> [2,]    1    1    1    1    1    1   NA   NA   NA    NA}
-\NormalTok{x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{2}\NormalTok{]}
-\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
-\CommentTok{#> [1,]   NA   NA   NA   NA   NA   NA   NA   NA   NA    NA}
-\CommentTok{#> [2,]   NA   NA   NA   NA   NA   NA    1    1    1     1}
+\CommentTok{# all non diseased cases}
+\KeywordTok{all}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,,}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{]))}
+\CommentTok{#> [1] TRUE}
+\CommentTok{# first diseased case}
+\KeywordTok{all}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,,}\DecValTok{4}\NormalTok{,}\DecValTok{4}\NormalTok{]))}
+\CommentTok{#> [1] TRUE}
+\CommentTok{# second diseased case}
+\KeywordTok{all}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,,}\DecValTok{5}\NormalTok{,}\DecValTok{4}\NormalTok{]))}
+\CommentTok{#> [1] TRUE}
+\CommentTok{# third diseased case}
+\KeywordTok{all}\NormalTok{(x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,,}\DecValTok{6}\NormalTok{,}\DecValTok{4}\NormalTok{] }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{)}
+\CommentTok{#> [1] TRUE}
+\CommentTok{# fourth diseased case}
+\KeywordTok{all}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,,}\DecValTok{7}\NormalTok{,}\DecValTok{4}\NormalTok{]))}
+\CommentTok{#> [1] TRUE}
+\CommentTok{# fifth diseased case}
+\KeywordTok{all}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,,}\DecValTok{8}\NormalTok{,}\DecValTok{4}\NormalTok{]))}
+\CommentTok{#> [1] TRUE}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{itemize}
-\tightlist
-\item
-  Likewise for the fourth reader:
-\end{itemize}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,}\DecValTok{4}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{1}\NormalTok{]}
-\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
-\CommentTok{#> [1,]   NA   NA   NA   NA   NA   NA   NA   NA   NA    NA}
-\CommentTok{#> [2,]    1    1    1    1    1    1   NA   NA   NA    NA}
-\NormalTok{x}\OperatorTok{$}\NormalTok{descriptions}\OperatorTok{$}\NormalTok{truthTableStr[,}\DecValTok{4}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{2}\NormalTok{]}
-\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
-\CommentTok{#> [1,]   NA   NA   NA   NA   NA   NA   NA   NA   NA    NA}
-\CommentTok{#> [2,]   NA   NA   NA   NA   NA   NA    1    1    1     1}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{the-false-positive-fp-ratings}{%
-\section{The false positive (FP) ratings}\label{the-false-positive-fp-ratings}}
+\hypertarget{the-non-lesion-localization-nl-or-fp-ratings}{%
+\section{The non-lesion localization (NL or FP) ratings}\label{the-non-lesion-localization-nl-or-fp-ratings}}
 
 These are found in the \texttt{FP} or \texttt{NL} worksheet:
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/software-details/frocSpAFp.png}
+\includegraphics[width=1\textwidth,height=\textheight]{images/software-details/frocCrFp.png}
 
 \begin{itemize}
 \tightlist
 \item
-  The common vertical length is 20 in this example (1 modality times 4 readers times 5 non-diseased cases).
+  The common vertical length is 22 in this example.
 \item
-  \texttt{ReaderID}: the reader labels: \texttt{1}, \texttt{2}, \texttt{3}, \texttt{4}, as declared in the \texttt{Truth} worksheet.
+  \texttt{ReaderID}: the reader labels: \texttt{0}, 1\texttt{,}2\texttt{,\ as\ declared\ in\ the}Truth` worksheet.
 \item
-  \texttt{ModalityID}: \texttt{4} or \texttt{2}, as declared in the \texttt{Truth} worksheet.
+  \texttt{ModalityID}: the modality labels: \texttt{0} or \texttt{1}, as declared in the \texttt{Truth} worksheet.
 \item
-  \texttt{CaseID}: \texttt{6}, \texttt{7}, \texttt{8}, \texttt{9}, or \texttt{10}, as declared in the \texttt{Truth} worksheet\\
+  \texttt{CaseID}: \texttt{1}, \texttt{2}, \texttt{3}, \texttt{71}, \texttt{72}, \texttt{73}, \texttt{74}, as declared in the \texttt{Truth} worksheet; note that not all cases have NL marks on them.\\
 \item
   \texttt{NL\_Rating}: the ratings of non-diseased cases.
 \end{itemize}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{x}\OperatorTok{$}\NormalTok{ratings}\OperatorTok{$}\NormalTok{NL[,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{1}\NormalTok{]}
-\CommentTok{#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]}
-\CommentTok{#> [1,]  1.5  1.5  1.2  2.1  1.1  3.2  1.9    1  1.1     1}
-\CommentTok{#> [2,] -Inf -Inf -Inf -Inf -Inf -Inf -Inf -Inf -Inf  -Inf}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{the-true-positive-tp-ratings}{%
-\section{The true positive (TP) ratings}\label{the-true-positive-tp-ratings}}
+\hypertarget{the-lesion-localization-ll-or-tp-ratings}{%
+\section{The lesion localization (LL or TP) ratings}\label{the-lesion-localization-ll-or-tp-ratings}}
 
 These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/software-details/frocSpATp.png}
+\includegraphics[width=1\textwidth,height=\textheight]{images/software-details/frocCrTp.png}
 
 \begin{itemize}
 \tightlist
 \item
   This worksheet has the ratings of diseased cases.
 \item
-  The common vertical length is 20.
+  \texttt{ReaderID}: the reader labels: these must be from \texttt{0}, \texttt{1}, \texttt{2}, as declared in the \texttt{Truth} worksheet.
 \item
-  \texttt{ReaderID}: the reader labels: these must be from \texttt{1}, \texttt{2}, \texttt{3} or \texttt{4}, as declared in the \texttt{Truth} worksheet.
+  \texttt{ModalityID}: \texttt{0} or \texttt{1}, as declared in the \texttt{Truth} worksheet.
 \item
-  \texttt{ModalityID}: \texttt{4} or \texttt{2}, as declared in the \texttt{Truth} worksheet.
-\item
-  \texttt{CaseID}: \texttt{16}, \texttt{17}, \texttt{18}, \texttt{19}, or \texttt{20}, as declared in the \texttt{Truth} worksheet\\
+  \texttt{CaseID}: these must be from \texttt{70}, \texttt{71}, \texttt{72}, \texttt{73}, \texttt{74}, as declared in the \texttt{Truth} worksheet; not all diseased cases have LL marks.\\
 \item
   \texttt{LL\_Rating}: the ratings of diseased cases.
-\item
-  The following shows that reader `1' interprets all abnormal cases in the first modality, while reader `3' interprets them in the second modality.
 \end{itemize}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{x}\OperatorTok{$}\NormalTok{ratings}\OperatorTok{$}\NormalTok{LL[,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{,}\DecValTok{1}\NormalTok{]}
-\CommentTok{#>      [,1] [,2] [,3] [,4] [,5]}
-\CommentTok{#> [1,]    5  5.5  4.9    4  3.7}
-\CommentTok{#> [2,] -Inf -Inf -Inf -Inf -Inf}
-\NormalTok{x}\OperatorTok{$}\NormalTok{ratings}\OperatorTok{$}\NormalTok{LL[,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{,}\DecValTok{1}\NormalTok{]}
-\CommentTok{#>      [,1] [,2] [,3] [,4] [,5]}
-\CommentTok{#> [1,] -Inf -Inf -Inf -Inf -Inf}
-\CommentTok{#> [2,]  5.6  5.1  5.2  4.9  4.7}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{references-2}{%
-\section{References}\label{references-2}}
 
   \bibliography{packages.bib,myRefs.bib}
 

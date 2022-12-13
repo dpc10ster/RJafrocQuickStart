@@ -154,4 +154,3 @@ ret$RRFC$ciAvgRdrEachTrt
 ```
 
 
-## References {#quick-start-or-text-references}

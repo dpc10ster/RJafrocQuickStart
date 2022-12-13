@@ -726,5 +726,4 @@ $\epsilon$      0                $\sigma_{\epsilon}^{2}$
 
 Table: Table 9.3 As in Hillis "marginal-means ANOVA paper" [@RN2508]
 
-## References {#dbm-analysis-significance-testing-references}
 

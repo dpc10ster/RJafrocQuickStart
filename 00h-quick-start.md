@@ -60,4 +60,3 @@ The following screen shots display the contents of the created file `"R/quick-st
 
 
 
-## References {#quick-start-or-excel-references}

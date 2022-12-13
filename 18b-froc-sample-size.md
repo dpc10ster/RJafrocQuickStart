@@ -1,3 +1,6 @@
+# (PART\*) FROC sample size {-}
+
+
 # Sample size estimation for FROC studies {#froc-sample-size}
 
 
@@ -5,6 +8,7 @@
 
 
 ## TBA How much finished {#froc-sample-size-how-much-finished}
+
 80%
 
 
@@ -27,6 +31,7 @@ https://dpc10ster.github.io/RJafroc/articles/Ch19Vig2FrocSampleSize.html
 ## Part 1
 
 ### Introduction {#froc-sample-size-intro}
+
 FROC sample size estimation is not fundamentally different from the procedure outlined in TBA Chapter 11 for the ROC paradigm. To recapitulate, based on analysis of a pilot ROC dataset and using a specified FOM, e.g., `FOM = Wilcoxon`, and either `method = "DBM"` or `method = "OR"` for significance testing, one estimates the intrinsic variability of the data expressed in terms of variance components. For DBM analysis, these are the pseudovalue variance components, while for OR analysis these are the FOM treatment-reader variance component and the FOM covariances. The second step is to specify a clinically realistic effect-size, e.g., the anticipated AUC difference between the two modalities. Given these values, the sample size functions implemented in `RJafroc` (beginning with `Ss`) allow one to estimate the number of readers and cases necessary to detect (i.e., reject the null hypothesis) the modality AUC difference at specified Type II error rate $\beta$, typically chosen to be 20% - corresponding to 80% statistical power - and specified Type I error rate $\alpha$, typically chosen to be 5%. 
 
 
@@ -436,6 +441,5 @@ cat("ROC-ES = ", ROC_ES, ", wAFROC-ES = ", ROC_ES * scaleFactor,
 The estimated power is close to 80% as the number of cases (`ret2$KRRRC = 123`) was chosen deliberately from the previous code block.
 
 
-## References {#froc-sample-size-references}
 
 

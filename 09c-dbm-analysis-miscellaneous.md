@@ -191,5 +191,4 @@ data.frame("pValue" = retRJafroc$RRFC$FTests$p[1],
 ```
 
 
-## References {#dbm-analysis-special-cases-references}
 

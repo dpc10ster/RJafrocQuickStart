@@ -2,7 +2,7 @@
 title: "The RJafroc Quick Start Book"
 author: "Dev P. Chakraborty, PhD"
 geometry: margin=2cm
-date: "2022-12-11"
+date: "2022-12-13"
 site: bookdown::bookdown_site
 output: pdf_document
 documentclass: book
@@ -39,7 +39,29 @@ description: "This book is for those already somewhat familiar running Windows J
     + The [RJafrocFrocBook](https://dpc10ster.github.io/RJafrocFrocBook/).
 
 
+## Getting help on the software
+
+* If you have installed `RJafroc` from `GitHub`:
+    + ?`RJafroc-package` (RStudio will auto complete ...) followed by Enter.
+    + Scroll down all the way and click on `Index`
+* Regardless of where you installed from use the `RJafroc` help site:
+    + [RJafroc help site](https://dpc10ster.github.io/RJafroc/)
+    + Look under the `Reference` tab. 
+    + For example, for help on the function `PlotEmpiricalOperatingCharacteristics`:
+    + [PlotEmpiricalOperatingCharacteristics](https://dpc10ster.github.io/RJafroc/reference/PlotEmpiricalOperatingCharacteristics.html)
+
+
+
+
 ## TBA Acknowledgements
+
+### Persons who have stimulated my thinking:
+
+Harold Kundel, MD
+
+Claudia Mello-Thoms, PhD
+
+### Contributors to the software
 
 Dr. Xuetong Zhai
 
@@ -47,6 +69,8 @@ Dr. Peter Phillips
 
 Online Latex Editor [at](https://latexeditor.lagrida.com/) 
 
-Dataset contributors
+### Dataset contributors
+
+TBA
 
 

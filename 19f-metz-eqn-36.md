@@ -4,7 +4,7 @@
 ---
 title: "RJafroc Vignette 6: Metz Eqn36 numerical check"
 author: "Dev P. Chakraborty, PhD"
-date: "2022-12-11"
+date: "2022-12-13"
 output: rmarkdown::html_vignette
 fig.width: 4
 vignette: >
@@ -16,6 +16,7 @@ vignette: >
 
 
 ## Helper functions
+
 
 
 
@@ -59,4 +60,5 @@ for (i in 1:2) {
 
 
 ## Discussion
+
 Note the close correspondence between the formula, Eqn. 36 in the Metz-Pan paper and the numerical estimate. As a historical note, Eqn. 31 and Eqn. 36 (they differ only in parameterizations) in the referenced publication are provided without proof – it was probably obvious to Prof Metz or he wanted to leave it to us "mere mortals" to figure it out, as a final parting gesture of his legacy. The author once put a significant effort into proving it and even had a bright graduate student from the biostatistics department work on it to no avail. The author has observed that these equations always yield very close to the numerical estimates, to within numerical precisions, so the theorem is correct empirically, but he has been unable to prove it analytically. It is left as an exercise for a gifted reader to prove/disprove these equations.

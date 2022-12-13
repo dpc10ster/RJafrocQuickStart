@@ -292,5 +292,3 @@ ret$RRFC$ciAvgRdrEachTrt
 ```
 
 
-
-## References {#quick-start-dbm-text-references}

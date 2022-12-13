@@ -3,7 +3,7 @@
 ---
 title: "RJafroc Vignette 2: RSM predicted operating characteristics"
 author: "Dev P. Chakraborty, PhD"
-date: "2022-12-11"
+date: "2022-12-13"
 output: rmarkdown::html_document
 bibliography: myRefs.bib
 fig_caption: yes
@@ -17,21 +17,25 @@ vignette: >
 
 
 ## TBA How much finished {#rsm-operating-characteristics-how-much-finished}
+
 10%
 
 
 
 ## Introduction
+
 * The purpose of this vignette is to explain the operating characteristics predicted by the RSM. It relates to Chapter 17 in my book [@chakraborty2017observer]. 
 * This vignette is under development ...
 * Also to explain the difference between `dataset` members (`lesionID`, `lesionWeight`) and RSM parameters (`lesDistr`,  `lesWghtDistr`). 
 
 ## The distinction between predicted curves and empirical curves
+
 * Operating characteristics predicted by a model have zero sampling variability.  
 * Empirical operating characteristics, which apply to datasets, have non-zero sampling variability. 
 * If the model is correct, as the numbers of cases in the dataset increases, the empirical operating characteristic asymptotically approaches the predicted curve. 
 
 ## The RSM model
+
 * The 3 RSM parameters and two additional parameters characterizing the dataset determine the wAFROC curve.
 * The 3 RSM parameters are $\mu$, $\lambda$ and $\nu$. 
 * The two dataset parameters are:
@@ -109,6 +113,7 @@ relWeights
 
 
 ## Other operating characteristics
+
 * By changing `OpChType` one can generate other operating characteristics.
 * Note that lesiion weights argument is not needed for ROC curves. It is only needed for `wAFROC` and `wAFROC1` curves.
 
@@ -132,4 +137,3 @@ p$ROCPlot
 
 
 
-## References  
