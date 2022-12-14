@@ -1,4 +1,4 @@
-# Sample size estimation for ROC studies  OR method {#roc-sample-size-or}
+# Sample size ROC using OR method {#roc-sample-size-or}
 
 
 ```{r setup, include = FALSE}

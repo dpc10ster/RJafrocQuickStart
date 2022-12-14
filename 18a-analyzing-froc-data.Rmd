@@ -35,6 +35,7 @@ The chapter starts with analysis of a sample FROC dataset, #4 in Online Chapter 
 ## Example 1 {#analyzing-froc-data-example1}
 
 The following is a listing of file "mainAnalyzewAFROC.R". It performs both wAFROC and inferred ROC analyses of the same dataset and the results are saved to tables similar in structure to the Excel output tables shown for DBMH analysis of ROC data in §9.10.2. 
+
 Empirical wAFROC-AUC and ROC-AUC for all combinations of treatments and readers, and reader-averaged AUCs for each treatment (Rdr. Avg.). The weighted AFROC results were obtained from worksheet FOMs in file FedwAfroc.xlsx. The highest rating AUC results were obtained from worksheet FOMs in file FedHrAuc.xlsx. The wAFROC-AUCs are smaller than the corresponding ROC-AUCs. 
 
 
@@ -63,7 +64,7 @@ Table 19.3: Inferred ROC-AUC analysis: results of random-reader random-case (RRR
 
 
 
-## Plotting wAFROC and ROC curves {#analyzing-froc-data-plotting}
+## TBA Plotting wAFROC and ROC curves {#analyzing-froc-data-plotting}
 
 It is important to display empirical wAFROC/ROC curves, not just for publication purposes, but to get a better feel for the data. Since treatments 4 and 5 showed the largest difference, the corresponding /ROC plots for them are displayed. The code is in file mainwAfrocRocPlots.R.
 

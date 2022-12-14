@@ -22,16 +22,17 @@ knitr::write_bib(c(
 
 
 
-# Preface {-}
+# Preface {#quick-start-index-preface}
 
-* This online book is for those already somewhat familiar running Windows JAFROC to analyze data. 
+* This online book is for those already somewhat familiar running Windows JAFROC to analyze data. It is also intended for those unfamiliar with Windows JAFROC but have read the other books and wish to apply the methods.
 * The Windows program has been replaced by `RJafroc`. 
 * This book dives into how to use `RJafroc` to analyze ROC/FROC data.
 * It starts with explanation of the dataset structures for ROC and FROC studies.
 * This is followed by an explanation of DBM and OR analyses.
+* TBA.
 
 
-## Rationale and Organization
+## Rationale and Organization {#quick-start-index-rationale-and-organization}
 
 * Intended as an online update to my print book [@chakraborty2017observer].
 * All references in this book to `RJafroc` refer to the R package with that name (case sensitive) [@R-RJafroc]. 
@@ -43,12 +44,12 @@ knitr::write_bib(c(
     + The [RJafrocFrocBook](https://dpc10ster.github.io/RJafrocFrocBook/).
 
 
-## Getting help on the software
+## Getting help on the software {#quick-start-index-getting-help}
 
 * If you have installed `RJafroc` from `GitHub`:
     + ?`RJafroc-package` (RStudio will auto complete ...) followed by Enter.
     + Scroll down all the way and click on `Index`
-* Regardless of where you installed from use the `RJafroc` help site:
+* Regardless of where you installed from you can use the `RJafroc` website:
     + [RJafroc help site](https://dpc10ster.github.io/RJafroc/)
     + Look under the `Reference` tab. 
     + For example, for help on the function `PlotEmpiricalOperatingCharacteristics`:
@@ -57,7 +58,7 @@ knitr::write_bib(c(
 
 
 
-## TBA Acknowledgements
+## TBA Acknowledgements {#quick-start-index-acknowledgements}
 
 ### Persons who have stimulated my thinking:
 
@@ -65,16 +66,25 @@ Harold Kundel, MD
 
 Claudia Mello-Thoms, PhD
 
-### Contributors to the software
+Dr. Xuetong Zhai (contributed significantly to the significance testing sections and other chapters of my book).
 
-Dr. Xuetong Zhai
+### Contributors to the software {#quick-start-index-contributors}
+
+Dr. Xuetong Zhai (he developed the first version of `RJafroc`)
 
 Dr. Peter Phillips
 
 Online Latex Editor [at](https://latexeditor.lagrida.com/) 
 
-### Dataset contributors
+### Dataset contributors {#quick-start-index-dataset-contributors}
 
 TBA
+
+
+## Accessing files and code {#quick-start-index-how-to-access-files}
+
+To access files/code one needs to `fork` the `GitHub` repository. This will create, on your computer, a copy of all files used to create this document. To compile the files try `Build Book` and select `gitbook`. You will probably get errors corresponding to missing packages that are not loaded on your machine. All required packages are listed in the DESCRIPTION file. Install those packages and try again ...
+
+
 
 
