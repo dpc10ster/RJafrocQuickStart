@@ -144,14 +144,13 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{preface}{%
-\chapter*{Preface}\label{preface}}
-\addcontentsline{toc}{chapter}{Preface}
+\hypertarget{quick-start-index-preface}{%
+\chapter{Preface}\label{quick-start-index-preface}}
 
 \begin{itemize}
 \tightlist
 \item
-  This online book is for those already somewhat familiar running Windows JAFROC to analyze data.
+  This online book is for those already somewhat familiar running Windows JAFROC to analyze data. It is also intended for those unfamiliar with Windows JAFROC but have read the other books and wish to apply the methods.
 \item
   The Windows program has been replaced by \texttt{RJafroc}.
 \item
@@ -160,10 +159,12 @@
   It starts with explanation of the dataset structures for ROC and FROC studies.
 \item
   This is followed by an explanation of DBM and OR analyses.
+\item
+  TBA.
 \end{itemize}
 
-\hypertarget{rationale-and-organization}{%
-\section{Rationale and Organization}\label{rationale-and-organization}}
+\hypertarget{quick-start-index-rationale-and-organization}{%
+\section{Rationale and Organization}\label{quick-start-index-rationale-and-organization}}
 
 \begin{itemize}
 \tightlist
@@ -189,8 +190,8 @@
   \end{itemize}
 \end{itemize}
 
-\hypertarget{getting-help-on-the-software}{%
-\section{Getting help on the software}\label{getting-help-on-the-software}}
+\hypertarget{quick-start-index-getting-help}{%
+\section{Getting help on the software}\label{quick-start-index-getting-help}}
 
 \begin{itemize}
 \tightlist
@@ -205,7 +206,7 @@
     Scroll down all the way and click on \texttt{Index}
   \end{itemize}
 \item
-  Regardless of where you installed from use the \texttt{RJafroc} help site:
+  Regardless of where you installed from you can use the \texttt{RJafroc} website:
 
   \begin{itemize}
   \tightlist
@@ -220,8 +221,8 @@
   \end{itemize}
 \end{itemize}
 
-\hypertarget{tba-acknowledgements}{%
-\section{TBA Acknowledgements}\label{tba-acknowledgements}}
+\hypertarget{quick-start-index-acknowledgements}{%
+\section{TBA Acknowledgements}\label{quick-start-index-acknowledgements}}
 
 \hypertarget{persons-who-have-stimulated-my-thinking}{%
 \subsection{Persons who have stimulated my thinking:}\label{persons-who-have-stimulated-my-thinking}}
@@ -230,19 +231,26 @@ Harold Kundel, MD
 
 Claudia Mello-Thoms, PhD
 
-\hypertarget{contributors-to-the-software}{%
-\subsection{Contributors to the software}\label{contributors-to-the-software}}
+Dr.~Xuetong Zhai (contributed significantly to the significance testing sections and other chapters of my book).
 
-Dr.~Xuetong Zhai
+\hypertarget{quick-start-index-contributors}{%
+\subsection{Contributors to the software}\label{quick-start-index-contributors}}
+
+Dr.~Xuetong Zhai (he developed the first version of \texttt{RJafroc})
 
 Dr.~Peter Phillips
 
 Online Latex Editor \href{https://latexeditor.lagrida.com/}{at}
 
-\hypertarget{dataset-contributors}{%
-\subsection{Dataset contributors}\label{dataset-contributors}}
+\hypertarget{quick-start-index-dataset-contributors}{%
+\subsection{Dataset contributors}\label{quick-start-index-dataset-contributors}}
 
 TBA
+
+\hypertarget{quick-start-index-how-to-access-files}{%
+\section{Accessing files and code}\label{quick-start-index-how-to-access-files}}
+
+To access files/code one needs to \texttt{fork} the \texttt{GitHub} repository. This will create, on your computer, a copy of all files used to create this document. To compile the files try \texttt{Build\ Book} and select \texttt{gitbook}. You will probably get errors corresponding to missing packages that are not loaded on your machine. All required packages are listed in the DESCRIPTION file. Install those packages and try again \ldots{}
 
 \hypertarget{part-quick-start}{%
 \part*{Quick Start}\label{part-quick-start}}
@@ -262,9 +270,7 @@ TBA
 \begin{itemize}
 \tightlist
 \item
-  JAFROC data format is named after the file format adopted circa. 2006 for the input Excel file to Windows JAFROC software.
-\item
-  The purpose of this chapter is to explain the data format of this file.
+  The JAFROC Excel data format was adopted circa. 2006. The purpose of this chapter is to explain the format.
 \item
   Reading this file into a dataset object suitable for \texttt{RJafroc} analysis is the subject of the next chapter.
 \item
@@ -274,11 +280,9 @@ TBA
 \item
   In the ROC paradigm the observer assigns a rating to each image. A rating is an ordered numeric label, and, in our convention, higher values represent greater certainty or \textbf{confidence level} for presence of disease. With human observers, a 5 (or 6) point rating scale is typically used, with 1 representing highest confidence for \emph{absence} of disease and 5 (or 6) representing highest confidence for \emph{presence} of disease. Intermediate values represent intermediate confidence levels for presence or absence of disease.
 \item
-  Note that location information, if applicable, associated with the disease, is not collected.
+  In the ROC paradigm location information, if applicable, associated with the disease, is not collected.
 \item
-  There is no restriction to 5 or 6 ratings. With algorithmic observers, e.g., computer aided detection (CAD) algorithms, the rating could be a floating point number and have infinite precision. All that is required is that higher values correspond to greater confidence in presence of disease.
-\item
-  The above is termed a \emph{positive-directed} rating scale. If lower numbers correspond to greater confidence, termed a negative-directed rating scale, a simple transformation to \(max(rating) - rating + 1\), where \(max(rating)\) is the maximum rating, over all readers, modalities and cases, will convert a negative-directed rating scale to a positive directed rating scale.
+  There is no restriction to 5 or 6 ratings. With algorithmic observers, e.g., computer aided detection (CAD) algorithms, the rating could be a floating point number and have infinite precision. All that is required is that higher values correspond to greater confidence in presence of disease - termed a \emph{positive-directed} rating scale. If lower numbers correspond to greater confidence a transformation \(R \rightarrow \max(R) - R + 1\), where \(\max(R)\) is the maximum rating, over all readers, modalities and cases, will convert a negative-directed rating scale to a positive directed rating scale.
 \end{itemize}
 
 \hypertarget{quick-start-data-format-note-to-existing-users}{%
@@ -300,9 +304,9 @@ TBA
 \begin{itemize}
 \tightlist
 \item
-  The illustrations in this chapter correspond to Excel file \texttt{R/quick-start/rocCr.xlsx} in the project directory \footnote{To access files one needs to \texttt{fork} the repository, which creates, on your computer, a copy of all files used to create this document}. This is termed a \emph{toy file}, i.e., an artificial small dataset created to illustrate essential features of the data format.
+  The illustrations in this chapter correspond to Excel file \texttt{R/quick-start/rocCr.xlsx} in the project directory. This is termed a \emph{toy file}, i.e., an artificial small dataset created to illustrate essential features of the data format.
 \item
-  The Excel file has three worksheets: \texttt{Truth}, \texttt{NL} (or \texttt{FP}) and \texttt{LL} (or \texttt{TP}).
+  The Excel file has three worksheets: \texttt{Truth}, \texttt{NL} (or \texttt{FP}) and \texttt{LL} (or \texttt{TP}). The worksheet names are case insensitive.
 \end{itemize}
 
 \hypertarget{quick-start-data-format-truth-worksheet}{%
@@ -315,17 +319,13 @@ TBA
 \item
   The \texttt{Truth} worksheet contains 6 columns: \texttt{CaseID}, \texttt{LesionID}, \texttt{Weight}, \texttt{ReaderID}, \texttt{ModalityID} and \texttt{Paradigm}.
 \item
-  The first five columns contain as many rows as there are cases (images) in the dataset.
-\item
-  \texttt{CaseID}: \textbf{unique integers}, one per case, representing the cases in the dataset.
+  \texttt{CaseID}: \textbf{unique integers}, one per case, representing the cases in the dataset. In the current dataset, the non-diseased cases are labeled \texttt{1}, \texttt{2} and \texttt{3}, while the diseased cases are labeled \texttt{70}, \texttt{71}, \texttt{72}, \texttt{73} and \texttt{74}. The values do not have to be consecutive integers; they need not be ordered; the only requirement is that they be \textbf{unique integers}.
 \item
   \texttt{LesionID}: integers 0 or 1, with each 0 representing a non-diseased case and each 1 representing a diseased case.
 \item
-  In the current dataset, the non-diseased cases are labeled \texttt{1}, \texttt{2} and \texttt{3}, while the diseased cases are labeled \texttt{70}, \texttt{71}, \texttt{72}, \texttt{73} and \texttt{74}. The values do not have to be consecutive integers; they need not be ordered; the only requirement is that they be \textbf{unique integers}.
+  \texttt{Weight}: this field is not used for ROC data.
 \item
-  \texttt{Weight}: A floating point value, typically filled in with 0 or 1; this field is not used for ROC data.
-\item
-  \texttt{ReaderID}: a \textbf{comma-separated} listing of reader labels, each represented by a \textbf{unique integer}, that have interpreted the case. In the example shown below each cell has the value \texttt{0,\ 1,\ 2,\ 3,\ 4} meaning that each of these readers has interpreted all cases (hence the ``factorial'' design).
+  \texttt{ReaderID}: a \textbf{comma-separated} string containing the reader labels, each represented by a \textbf{unique integer}, that have interpreted the case. In the example shown below each cell has the value \texttt{0,\ 1,\ 2,\ 3,\ 4} meaning that each of these readers has interpreted all cases.
 
   \begin{itemize}
   \tightlist
@@ -335,7 +335,7 @@ TBA
     Select the worksheet, then \texttt{Format} - \texttt{Cells} - \texttt{Number} - \texttt{Text} - \texttt{OK}.
   \end{itemize}
 \item
-  \texttt{ModalityID}: a comma-separated listing of modalities, each represented by a \textbf{unique integer}, that are applied to each case. In the example each cell has the value \texttt{0,\ 1}.
+  \texttt{ModalityID}: a comma-separated string containing the modality labels, each represented by a \textbf{unique integer}. In the example each cell has the value \texttt{0,\ 1}.
 
   \begin{itemize}
   \tightlist
@@ -450,12 +450,11 @@ In the previous chapter I described the format of the Excel file \texttt{R/quick
 
 \includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/rocCrTruth.png}
 
-In the following code chunk the second statement reads the Excel file using the function \texttt{DfReadDataFile()} and saves it to object \texttt{x}. The third statement shows the structure of \texttt{x}.
+The following code reads the Excel file using the function \texttt{DfReadDataFile()} and saves it to object \texttt{x} and shows the structure of \texttt{x}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{rocCr <-}\StringTok{ "R/quick-start/rocCr.xlsx"}
-\NormalTok{x <-}\StringTok{ }\KeywordTok{DfReadDataFile}\NormalTok{(rocCr, }\DataTypeTok{newExcelFileFormat =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{x <-}\StringTok{ }\KeywordTok{DfReadDataFile}\NormalTok{(}\StringTok{"R/quick-start/rocCr.xlsx"}\NormalTok{, }\DataTypeTok{newExcelFileFormat =} \OtherTok{TRUE}\NormalTok{)}
 \KeywordTok{str}\NormalTok{(x)}
 \CommentTok{#> List of 3}
 \CommentTok{#>  $ ratings     :List of 3}
@@ -482,9 +481,9 @@ In the following code chunk the second statement reads the Excel file using the 
 \begin{itemize}
 \tightlist
 \item
-  In the above code chunk flag \texttt{newExcelFileFormat} is set to \texttt{TRUE} as otherwise columns D - F in the \texttt{Truth} worksheet are ignored and the dataset is assumed to be factorial, with \texttt{dataType} ``automatically'' determined from the contents of the FP and TP worksheets. \footnote{The assumptions underlying the ``automatic'' determination could be defeated by data entry errors.}
+  In the above code \texttt{newExcelFileFormat} is set to \texttt{TRUE} as otherwise columns D - F in the \texttt{Truth} worksheet are ignored and the dataset is assumed to be factorial, with \texttt{dataType} ``automatically'' determined from the contents of the FP and TP worksheets. \footnote{The assumptions underlying the ``automatic'' determination could be defeated by data entry errors.}
 \item
-  Flag \texttt{newExcelFileFormat\ =\ FALSE}, the default, is for compatibility with older JAFROC format Excel files, which did not have columns D - F in the \texttt{Truth} worksheet. Its usage is deprecated.
+  Flag \texttt{newExcelFileFormat\ =\ FALSE}, the default, is for compatibility with the original JAFROC format Excel format, which did not have columns D - F in the \texttt{Truth} worksheet. Its usage is deprecated.
 \item
   The dataset object \texttt{x} is a \texttt{list} variable with 3 members: \texttt{ratings}, \texttt{lesions} and \texttt{descriptions}.
 \item
@@ -525,7 +524,7 @@ In the following code chunk the second statement reads the Excel file using the 
   \item
     The \texttt{x\$descriptions\$name} member is the name of this dataset, if it is an embedded dataset, otherwise \texttt{NA}.
   \item
-    The \texttt{x\$descriptions\$truthTableStr} member, with dimension {[}2, 5, 8, 2{]}, quantifies the structure of the dataset, as explained in TBA Vignette \#3 (it is used to check for data entry errors).
+    The \texttt{x\$descriptions\$truthTableStr} member, intended for internal use, is explained in Section \ref{dataset-object-truth-table-str}.
   \item
     The \texttt{x\$descriptions\$design} member specifies the dataset design, which is ``FCTRL'' in the present example (a factorial dataset).
   \item
@@ -554,7 +553,7 @@ In the following code chunk the second statement reads the Excel file using the 
   \item
     The third dimension (8) comes from the \textbf{total} number of cases.
   \item
-    The fourth dimension is alway 1 for an ROC dataset.
+    The fourth dimension is always 1 for an ROC dataset.
   \end{itemize}
 \item
   The value of \texttt{x\$ratings\$NL{[}1,5,2,1{]}}, i.e., 5, corresponds to row 15 of the FP table, i.e., to \texttt{ModalityID} = 0, \texttt{ReaderID} = 4 and \texttt{CaseID} = 2.
@@ -565,14 +564,18 @@ In the following code chunk the second statement reads the Excel file using the 
 \end{itemize}
 
 \hypertarget{quick-start-read-datafile-correspondence-case-index-vs-case-id}{%
-\section{Case-index vs.~caseID}\label{quick-start-read-datafile-correspondence-case-index-vs-case-id}}
+\section{caseIndex vs.~caseID}\label{quick-start-read-datafile-correspondence-case-index-vs-case-id}}
 
 \begin{itemize}
 \tightlist
 \item
-  Regardless of what order they occur in the worksheet, the non-diseased cases are always indexed first. In the current example the case indices are 1, 2 and 3, corresponding to the three non-diseased cases with \texttt{caseIDs} equal to 1, 2 and 3.
+  The \texttt{caseIndex} is the array index used to access elements in the NL and LL arrays. The case-index is always an integer in the range 1, 2, \ldots, up to the array length. Remember that unlike C++, R indexing starts from 1.
 \item
-  Regardless of what order they occur in the worksheet, in the NL array the diseased cases are always indexed after the last non-diseased case. In the current example the case indices in the \texttt{NL} array are 4, 5, 6, 7 and 8, corresponding to the five diseased cases with \texttt{caseIDs} equal to 70, 71, 72, 73, and 74. In the \texttt{LL} array they are numbered 1, 2, 3, 4 and 5, corresponding to the five diseased cases with \texttt{caseIDs} equal to 70, 71, 72, 73, and 74. Some examples follow:
+  The \texttt{caseID} is any integer value, including zero, used to uniquely label the cases.
+\item
+  Regardless of what order they occur in the worksheet, the non-diseased cases are always ordered first. In the current example the case indices are 1, 2 and 3, corresponding to the three non-diseased cases with \texttt{caseIDs} equal to 1, 2 and 3.
+\item
+  Regardless of what order they occur in the worksheet, in the NL array the diseased cases are always ordered \emph{after} the last non-diseased case. In the current example the case indices in the \texttt{NL} array are 4, 5, 6, 7 and 8, corresponding to the five diseased cases with \texttt{caseIDs} equal to 70, 71, 72, 73, and 74. In the \texttt{LL} array they are indexed 1, 2, 3, 4 and 5. Some examples follow:
 \item
   \texttt{x\$ratings\$NL{[}1,3,2,1{]}}, a FP rating, refers to \texttt{ModalityID} 0, \texttt{ReaderID} 2 and \texttt{CaseID} 2 (since the modality and reader IDs start with 0).
 \item
@@ -737,7 +740,7 @@ The chapter is illustrated with a toy data file, \texttt{R/quick-start/frocCr.xl
 \hypertarget{quick-start-froc-data-structure}{%
 \section{Reading the FROC dataset}\label{quick-start-froc-data-structure}}
 
-The example shown above corresponds to file \texttt{R/quick-start/frocCr.xlsx} in the project directory. The next code chunk reads this file into an \texttt{R} object \texttt{x}.
+The example shown above corresponds to file \texttt{R/quick-start/frocCr.xlsx} in the project directory. The next code reads this file into an \texttt{R} object \texttt{x}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1249,7 +1252,7 @@ File \texttt{lroc2.xlsx} illustrates the paradigm when one mark-rating pair per 
 \hypertarget{quick-start-lroc-data-1}{%
 \section{Reading forced localization true LROC dataset}\label{quick-start-lroc-data-1}}
 
-The images shown above correspond to file \texttt{R/quick-start/lroc1.xlsx}. The next code chunk reads this file into an \texttt{R} object \texttt{x1}. Note the usage of the \texttt{lrocForcedMark} flag, which is set to \texttt{TRUE}, because this is a forced localization LROC dataset.
+The images shown above correspond to file \texttt{R/quick-start/lroc1.xlsx}. The next code reads this file into an \texttt{R} object \texttt{x1}. Note the usage of the \texttt{lrocForcedMark} flag, which is set to \texttt{TRUE}, because this is a forced localization LROC dataset.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1346,7 +1349,7 @@ For example, since none of the lesions are localized for \texttt{modalityID} = 1
 \hypertarget{quick-start-lroc-data-2}{%
 \section{Reading forced localization false LROC dataset}\label{quick-start-lroc-data-2}}
 
-The next example is for file \texttt{R/quick-start/lroc2.xlsx}. The following code chunk reads this file into an \texttt{R} object \texttt{x2}. Note that for this dataset one must set the \texttt{lrocForcedMark} flag to \texttt{FALSE}, because this is \emph{not} a forced localization LROC dataset. Setting \texttt{lrocForcedMark} flag to \texttt{TRUE} will generate an error.
+The next example is for file \texttt{R/quick-start/lroc2.xlsx}. The following code reads this file into an \texttt{R} object \texttt{x2}. Note that for this dataset one must set the \texttt{lrocForcedMark} flag to \texttt{FALSE}, because this is \emph{not} a forced localization LROC dataset. Setting \texttt{lrocForcedMark} flag to \texttt{TRUE} will generate an error.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2066,6 +2069,160 @@ The following screen shots display the contents of the created file \texttt{"R/q
 \caption{`RRRC`, `FRRC` and `RRFC` worksheets of Excel file `R/quick-start/MyResults.xlsx`}\label{fig:quick-start-or-xlsx3}
 \end{figure}
 
+\hypertarget{part-roc-sample-size}{%
+\part*{ROC sample size}\label{part-roc-sample-size}}
+\addcontentsline{toc}{part}{ROC sample size}
+
+\hypertarget{roc-sample-size-dbm}{%
+\chapter{Sample size estimation for ROC studies DBM method}\label{roc-sample-size-dbm}}
+
+\hypertarget{roc-sample-size-dbm-how-much-finished}{%
+\section{TBA How much finished}\label{roc-sample-size-dbm-how-much-finished}}
+
+80\%
+
+\hypertarget{roc-sample-size-dbm-introduction}{%
+\section{Introduction}\label{roc-sample-size-dbm-introduction}}
+
+The question addressed here is ``how many readers and cases'', usually abbreviated to \emph{sample-size}, should one employ to conduct a ``well-planned'' ROC study. The reasons for the quotes will shortly become clear. If cost were no concern, the reply would be: ``as many readers and cases as one can get''. While there are other considerations affecting sample-size, e.g., the data collection paradigm and the the analysis method, this chapter is restricted to the MRMC ROC data collection paradigm with data analyzed by the DBM method described in a previous chapter.
+
+It turns out that provided one can specify conceptually valid effect-sizes between different paradigms (i.e., in the same ``units''), the methods described in this chapter are extensible to other paradigms; see TBA Chapter 19 for sample size estimation for FROC studies. \emph{For this reason it is important to understand the concepts of sample-size estimation in the simpler ROC context.}
+
+For simplicity and practicality, this chapter, and the next, is restricted to analysis of two-treatment data (\(I = 2\)). The purpose of most imaging system assessment studies is to determine, for a given diagnostic task, whether radiologists perform better using a new treatment over the conventional treatment, and whether the difference is statistically significant. Therefore, the two-treatment case is the most common one encountered. While it is possible to extend the methods to more than two treatments, the extensions are not, in my opinion, clinically interesting.
+
+Assume the figure of merit (FOM) \(\theta\) is chosen to be the area AUC under the ROC curve (empirical or fitted is immaterial as far as the formulae are concerned; however, the choice will affect statistical power). The statistical analysis determines the significance level of the study, i.e., the probability or p-value for incorrectly rejecting the null hypothesis (NH) that the two \(\theta\)s are equal: \(NH: \theta_1 = \theta_2\), where the subscripts refer to the two treatments and the bullet represents the average over the reader index. If the p-value is smaller than a pre-specified \(\alpha\), typically set at 5\%, one rejects the NH and declares the treatments different at the \(\alpha\) significance level. Statistical power is the probability of correctly rejecting the null hypothesis when the alternative hypothesis \(AH: \theta_1 \neq \theta_2\) is true, (TBA Chapter 08).
+
+The value of the \emph{true} difference between the treatments, known as the \emph{true effect-size} is, of course, unknown. If it were known, there would be no need to conduct the ROC study. One would simply adopt the treatment with the higher \(\theta\). Sample-size estimation involves making an educated guess regarding the true effect-size , called the \emph{anticipated effect size}, and denoted by \(d\). To quote Harold Kundel \citep{RN1383}: ``any calculation of power amounts to specification of the anticipated effect-size''. Increasing the anticipated effect size will increase statistical power but may represent an unrealistic expectation of the true difference between the treatments, in the sense that it overestimates the ability of technology to achieve this much improvement. Conversely, an unduly small \(d\) might be clinically insignificant, besides requiring a very large sample-size to achieve sufficient statistical power.
+
+Statistical power depends on the magnitude of \(d\) divided by the standard deviation \(\sigma(d)\) of \(d\), i.e.~\(D=\frac{\left | d \right |}{\sigma (d)}\). The sign is relevant as it determines whether the project is worth pursuing at all (see TBA §11.8.4). The ratio is termed \citep{cohen1988statistical} Cohen's D. When this signal-to-noise-ratio-like quantity is large, statistical power approaches 100\%. Reader and case variability and data correlations determine \(\sigma(d)\). No matter how small the anticipated \(d\), as long as it is finite, then, using sufficiently large numbers of readers and cases \(\sigma(d)\) can be made sufficiently small to achieve near 100\% statistical power. Of course, a very small effect-size may not be clinically significant. There is a key difference between \emph{statistical significance} and \emph{clinical significance}. An effect-size in AUC units could be so small, e.g., 0.001, as to be clinically insignificant, but by employing a sufficiently large sample size one could design a study to detect this small - and clinically meaningless - difference with near unit probability, i.e., high statistical power.
+
+What determines clinical significance? A small effect-size, e.g., 0.01 AUC units, could be clinically significant if it applies to a large population, where the small benefit in detection rate is amplified by the number of patients benefiting from the new treatment. In contrast, for an ``orphan'' disease, i.e., one with very low prevalence, an effect-size of 0.05 might not be enough to justify the additional cost of the new treatment. The improvement might have to be 0.1 before it is worth it for a new treatment to be brought to market. One hates to monetize life and death issues, but there is no getting away from it, as cost/benefit issues determine clinical significance. The arbiters of clinical significance are engineers, imaging scientists, clinicians, epidemiologists, insurance companies and those who set government health care policies. The engineers and imaging scientists determine whether the effect-size the clinicians would like is feasible from technical and scientific viewpoints. The clinician determines, based on incidence of disease and other considerations, e.g., altruistic, malpractice, cost of the new device and insurance reimbursement, what effect-size is justifiable. Cohen has suggested that d values of 0.2, 0.5, and 0.8 be considered small, medium, and large, respectively, but he has also argued against their indiscriminate usage. However, after a study is completed, clinicians often find that an effect-size that biostatisticians label as small may, in certain circumstances, be clinically significant and an effect-size that they label as large may in other circumstances be clinically insignificant. Clearly, this is a complex issue. Some suggestions on choosing a clinically significant effect size are made in (TBA §11.12).
+
+Having developed a new imaging modality the R\&D team wishes to compare it to the existing standard with the short-term goal of making a submission to the FDA to allow them to perform pre-market testing of the device. The long-term goal is to commercialize the device. Assume the R\&D team has optimized the device based on physical measurements, (TBA Chapter 01), perhaps supplemented with anecdotal feedback from clinicians based on a few images. Needed at this point is a pilot study. A pilot study, conducted with a relatively small and practical sample size, is intended to provide estimates of different sources of variability and correlations. It also provides an initial estimate of the effect-size, termed the \emph{observed effect-size}, \(d\). Based on results from the pilot the sample-size tools described in this chapter permit estimation of the numbers of readers and cases that will reduce \(\sigma(d)\) sufficiently to achieve the desired power for the larger ``pivotal'' study. {[}A distinction could be made in the notation between observed and anticipated effect sizes, but it will be clear from the context. Later, it will be shown how one can make an educated guess about the anticipated effect size from an observed effect size.{]}
+
+This chapter is concerned with multiple-reader MRMC studies that follow the fully crossed factorial design meaning that each reader interprets a common case-set in all treatments. Since the resulting pairings (i.e., correlations) tend to decrease \(\sigma(d)\) (since the variations occur in tandem, they tend to cancel out in the difference, see (TBA Chapter 09, Introduction), for Dr.~Robert Wagner's sailboat analogy) it yields more statistical power compared to an unpaired design, and consequently this design is frequently used. Two sample-size estimation procedures for MRMC are the Hillis-Berbaum method \citep{RN1476} and the Obuchowski-Rockette \citep{RN1971} method. With recent work by Hillis, the two methods have been shown to be substantially equivalent.
+
+This chapter will focus on the DBM approach. Since it is based on a standard ANOVA model, it is easier to extend the NH testing procedure described in Chapter 09 to the alternative hypothesis, which is relevant for sample size estimation. {[}TBA Online Appendix 11.A shows how to translate the DBM formulae to the OR method \citep{RN2137}.{]}
+
+Given an effect-size, and choosing this wisely is the most difficult part of the process, the method described in this chapter uses pseudovalue variance components estimated by the DBM method to predict sample-sizes (i.e., different combinations of numbers of readers and cases) necessary to achieve a desired power.
+
+\hypertarget{StatPower1}{%
+\section{Statistical Power}\label{StatPower1}}
+
+The concept of statistical power was introduced in {[}TBA Chapter 08{]} but is worth repeating. There are two possible decisions following a test of a null hypothesis (NH): reject or fail to reject the NH. Each decision is associated with a probability on an erroneous conclusion. If the NH is true and one rejects it, the probability of the ensuing Type-I error is denoted \(\alpha\). If the NH is false and one fails to reject it, the probability of the ensuing Type II- error is denoted \(\beta\). Statistical power is the complement of \(\beta\), i.e.,
+
+\begin{equation}
+Power = 1 - \beta
+\label{eq:DefinitionStatPower}
+\end{equation}
+
+Typically, one aims for \(\beta = 0.2\) or less, i.e., a statistical power of 80\% or more. Like \(\alpha\) = 0.05, this is a \emph{convention} and more nuanced cost-benefit considerations may cause the researcher to adopt a different value.
+
+\hypertarget{observed-vs.-anticipated-effect-size}{%
+\subsection{Observed vs.~anticipated effect-size}\label{observed-vs.-anticipated-effect-size}}
+
+\emph{Assuming no other similar studies have already been conducted with the treatments in question, the observed effect-size, although ``merely an estimate'', is the best information available at the end of the pilot study regarding the value of the true effect-size. From the two previous chapters one knows that the significance testing software will report not only the observed effect-size, but also a 95\% confidence interval associate with it. It will be shown later how one can use this information to make an educated guess regarding the value of the anticipated effect-size.}
+
+\hypertarget{roc-sample-size-dbm-dependence-of-stats-power}{%
+\subsection{Dependence of statistical power on estimates of model parameters}\label{roc-sample-size-dbm-dependence-of-stats-power}}
+
+Examination of the expression for , Eqn. (11.5), shows that statistical power increases if:
+
+\begin{itemize}
+\tightlist
+\item
+  The numerator is large. This occurs if: (a) the anticipated effect-size \(d\) is large. Since effect-size enters as the \emph{square}, TBA Eqn. (11.8), it is has a particularly strong effect; (b) If \(J \times K\) is large. Both of these results should be obvious, as a large effect size and a large sample size should result in increased probability of rejecting the NH.
+\item
+  The denominator is small. The first term in the denominator is \(\left ( \sigma_{\epsilon}^2 + \sigma_{\tau RC}^2 \right )\). These two terms cannot be separated. This is the residual variability of the jackknife pseudovalues. It should make sense that the smaller the variability, the larger is the non-centrality parameter and the statistical power.
+\item
+  The next term in the denominator is \(K\sigma_{\tau R}^2\), the treatment-reader variance component multiplied by the total number of cases. The reader variance \(\sigma_{R}^2\) has no effect on statistical power, because it has an equal effect on both treatments and cancels out in the difference. Instead, it is the treatment-reader variance \(\sigma_{R}^2\) that contributes ``noise'' tending to confound the estimate of the effect-size.
+\item
+  The variance components estimated by the ANOVA procedure are realizations of random variables and as such subject to noise (there actually exists a beast such as variance of a variance). The presence of the \(K\) term, usually large, can amplify the effect of noise in the estimate of \(\sigma_{R}^2\), making the sample size estimation procedure less accurate.
+\item
+  The final term in the denominator is \(J\sigma_{\tau C}^2\). The variance \(\sigma_{C}^2\) has no impact on statistical power, as it cancels out in the difference. The treatment-case variance component introduces ``noise'' into the estimate of the effect size, thereby decreasing power. Since it is multiplied by J, the number of readers, and typically \(J<<K\), the error amplification effect on accuracy of the sample size estimate is not as bad as with the treatment-reader variance component.
+\item
+  Accuracy of sample size estimation, essentially estimating confidence intervals for statistical power, is addressed in \citep{RN2027}.
+\end{itemize}
+
+\hypertarget{roc-sample-size-dbm-RRRC-sample-size-estimation}{%
+\subsection{Formulae for random-reader random-case (RRRC) sample size estimation}\label{roc-sample-size-dbm-RRRC-sample-size-estimation}}
+
+\hypertarget{roc-sample-size-dbm-sig-testing}{%
+\subsection{Significance testing}\label{roc-sample-size-dbm-sig-testing}}
+
+\hypertarget{roc-sample-size-dbm-pvalue-ci}{%
+\subsection{p-value and confidence interval}\label{roc-sample-size-dbm-pvalue-ci}}
+
+\hypertarget{roc-sample-size-dbm-CompareDBM2OR}{%
+\subsection{Comparing DBM to Obuchowski and Rockette for single-reader multiple-treatments}\label{roc-sample-size-dbm-CompareDBM2OR}}
+
+Having performed a pilot study and planning to perform a pivotal study, sample size estimation follows the following procedure, which assumes that both reader and case are treated as random factors. Different formulae, described later, apply when either reader or case is treated as a fixed factor.
+
+\begin{itemize}
+\tightlist
+\item
+  Perform DBM analysis on the pilot data. This yields the observed effect size as well as estimates of all relevant variance components and mean squares appearing in TBA Eqn. (11.5) and Eqn. (11.7).
+\item
+  This is the difficult but critical part: make an educated guess regarding the effect-size, \(d\), that one is interested in ``detecting'' (i.e., hoping to reject the NH with probability \(1-\beta\)). The author prefers the term ``anticipated'' effect-size to ``true'' effect-size (the latter implies knowledge of the true difference between the modalities which, as noted earlier, would obviate the need for a pivotal study).
+\item
+  Two scenarios are considered below. In the first scenario, the effect-size is assumed equal to that observed in the pilot study, i.e., \(d = d_{obs}\).
+\item
+  In the second, so-called ``best-case'' scenario, one assumes that the anticipate value of \(d\) is the observed value plus two-sigma of the confidence interval, in the correct direction, of course, i.e., \(d=\left | d_{obs} \right |+2\sigma\). Here \(\sigma\) is one-fourth the width of the 95\% confidence interval for \(d_{obs}\). Anticipating more than \(2\sigma\) greater than the observed effect-size would be overly optimistic. The width of the CI implies that chances are less than 2.5\% that the anticipated value is at or beyond the overly optimistic value. These points will become clearer when example datasets are analyzed below.
+\item
+  Calculate statistical power using the distribution implied by Eqn. (11.4), to calculate the probability that a random value of the relevant F-statistic will exceed the critical value, as in §11.3.2.
+\item
+  If power is below the desired or ``target'' power, one tries successively larger value of \(J\) and / or \(K\) until the target power is reached.
+\end{itemize}
+
+\hypertarget{roc-sample-size-dbm-FRRC-sample-size-estimation}{%
+\section{Formulae for fixed-reader random-case (FRRC) sample size estimation}\label{roc-sample-size-dbm-FRRC-sample-size-estimation}}
+
+It was shown in TBA §9.8.2 that for fixed-reader analysis the non-centrality parameter is defined by:
+
+\begin{equation}
+\Delta=\frac{JK\sigma_{\tau}^2}{\sigma_{\epsilon}^2+\sigma_{\tau RC}^2+J\sigma_{\tau C}^2}
+\label{eq:DeltaFRRC}
+\end{equation}
+
+The sampling distribution of the F-statistic under the AH is:
+
+\begin{equation}
+F_{AH|R}\equiv \frac{MST}{MSTC}\sim F_{I-1,(I-1)(K-1),\Delta}
+\label{eq:SamplingFFRRC}
+\end{equation}
+
+\hypertarget{roc-sample-size-dbm-RRFC-sample-size-estimation}{%
+\subsection{Formulae for random-reader fixed-case (RRFC) sample size estimation}\label{roc-sample-size-dbm-RRFC-sample-size-estimation}}
+
+It is shown in TBA §9.9 that for fixed-case analysis the non-centrality parameter is defined by:
+
+\begin{equation}
+\Delta=\frac{JK\sigma_{\tau}^2}{\sigma_{\epsilon}^2+\sigma_{\tau RC}^2+K\sigma_{\tau R}^2}
+\label{eq:DeltaFRRFC}
+\end{equation}
+
+Under the AH, the test statistic is distributed as a non-central F-distribution as follows:
+
+\begin{equation}
+F_{AH|C}\equiv \frac{MST}{MSTR}\sim F_{I-1,(I-1)(J-1),\Delta}
+\label{eq:SamplingFRRFC}
+\end{equation}
+
+\hypertarget{roc-sample-size-dbm-FRRCAnalysis}{%
+\subsection{Fixed-reader random-case (FRRC) analysis TBA}\label{roc-sample-size-dbm-FRRCAnalysis}}
+
+It is a realization of a random variable, so one has some leeway in the choice of anticipated effect size - more on this later.
+Here \(J^*\) and \(K^*\) refer to the number of readers and cases in the \emph{pilot} study.
+
+\hypertarget{roc-sample-size-dbm-RRFCAnalysis}{%
+\subsection{Random-reader fixed-case (RRFC) analysis}\label{roc-sample-size-dbm-RRFCAnalysis}}
+
+\hypertarget{roc-sample-size-dbm-STMRAnalysis}{%
+\subsection{Single-treatment multiple-reader analysis}\label{roc-sample-size-dbm-STMRAnalysis}}
+
+\hypertarget{discussionsummary2}{%
+\section{Discussion/Summary/2}\label{discussionsummary2}}
+
 \hypertarget{part-froc-analysis}{%
 \part*{FROC analysis}\label{part-froc-analysis}}
 \addcontentsline{toc}{part}{FROC analysis}
@@ -2091,6 +2248,7 @@ The chapter starts with analysis of a sample FROC dataset, \#4 in Online Chapter
 \section{Example 1}\label{analyzing-froc-data-example1}}
 
 The following is a listing of file ``mainAnalyzewAFROC.R''. It performs both wAFROC and inferred ROC analyses of the same dataset and the results are saved to tables similar in structure to the Excel output tables shown for DBMH analysis of ROC data in §9.10.2.
+
 Empirical wAFROC-AUC and ROC-AUC for all combinations of treatments and readers, and reader-averaged AUCs for each treatment (Rdr. Avg.). The weighted AFROC results were obtained from worksheet FOMs in file FedwAfroc.xlsx. The highest rating AUC results were obtained from worksheet FOMs in file FedHrAuc.xlsx. The wAFROC-AUCs are smaller than the corresponding ROC-AUCs.
 
 The datasets that come with this book are described in Online Chapter 24. Four of these are ROC datasets, one an LROC dataset and the rest (nine) are FROC datasets. For non-ROC datasets, the highest rating method was used to infer the corresponding ROC data. The datasets are identified in the code by strings contained in the string-array variable fileNames (line 7 - 8). Line 9 selects the dataset to be analyzed. In the example shown the ``FED'' dataset has been selected. It is a 5 treatment 4 radiologist FROC dataset1 acquired by Dr.~Federica Zanca. Line 13 loads the dataset; this is done internal to the function loadDataFile(). Line 11 constructs the name of the wAFROC file and line 12 does the same for the ROC datafile. Line 15 which ``spills over'' to line 16 without the need for a special continuation character, generates an output file by performing DBMH significance testing (method = ``DBMH'') using fom = ``wAFROC'', i.e., the wAFROC figure of merit -- this is the critical change. If one changes this to fom = ``HrAuc'', lines 19 -- 20, then inferred ROC analysis occurs. In either case the default analysis, i.e., option = ``ALL'' is used, i.e., random-reader random-case (RRRC), fixed-reader random-case (FRRC) and random-reader fixed-case (RRFC). Results are shown below for random-reader random-case only.
@@ -2112,7 +2270,7 @@ Table 19.3 shows corresponding results for the inferred ROC-AUC FOM. Again the n
 Table 19.3: Inferred ROC-AUC analysis: results of random-reader random-case (RRRC) analysis, in worksheet ``RRRC''". ddf = denominator degrees of freedom of F-distribution. df = degrees of freedom of t-distribution. Stderr = standard error. CI = confidence interval; * = Significantly different at alpha = 0.05.{]}.
 
 \hypertarget{analyzing-froc-data-plotting}{%
-\section{Plotting wAFROC and ROC curves}\label{analyzing-froc-data-plotting}}
+\section{TBA Plotting wAFROC and ROC curves}\label{analyzing-froc-data-plotting}}
 
 It is important to display empirical wAFROC/ROC curves, not just for publication purposes, but to get a better feel for the data. Since treatments 4 and 5 showed the largest difference, the corresponding /ROC plots for them are displayed. The code is in file mainwAfrocRocPlots.R.
 
@@ -3463,9 +3621,11 @@ Note the close correspondence between the formula, Eqn. 36 in the Metz-Pan paper
 \item
   This chapter is included to document recent Excel file format changes and the new dataset structure.
 \item
-  We illustrate with a toy FROC data file in the \texttt{RJafroc} GitHub repository, \texttt{inst/extdata/toyFiles/FROC/frocCr.xlsx}, in which 3 readers interpret 3 non-diseased and 5 diseased cases using the FROC paradigm.
+  We illustrate with a toy FROC data file \texttt{images/software-details/frocCr.xlsx}, in which 3 readers interpret 3 non-diseased and 5 diseased cases using the FROC paradigm.
 \item
-  The Excel file has three worksheets named \texttt{Truth}, \texttt{NL} (or \texttt{FP}) and \texttt{LL} (or \texttt{TP}).
+  The Excel file has three worksheets named \texttt{Truth}, \texttt{NL} (or \texttt{FP}) and \texttt{LL} (or \texttt{TP}). The names are case insensitive.
+\item
+  An image of the \texttt{Truth} worksheet follows.
 \end{itemize}
 
 \includegraphics[width=1\textwidth,height=\textheight]{images/software-details/frocCrTruth.png}
@@ -3476,62 +3636,47 @@ Note the close correspondence between the formula, Eqn. 36 in the Metz-Pan paper
 \begin{itemize}
 \tightlist
 \item
-  The \texttt{Truth} worksheet contains 6 columns: \texttt{CaseID}, \texttt{LesionID}, \texttt{Weight}, \texttt{ReaderID}, \texttt{ModalityID} and \texttt{Paradigm}.
+  It contains 6 columns: \texttt{CaseID}, \texttt{LesionID}, \texttt{Weight}, \texttt{ReaderID}, \texttt{ModalityID} and \texttt{Paradigm}. Excepting the first (header) row, the first three columns must contain numbers and the last three columns must be string formatted.
 \item
-  The non-diseased cases are numbered 1,2,3; the diseased cases are numbered 70, 71, 72, 73, 74; i.e., \texttt{K1} = 3, \texttt{K2} = 5 and \texttt{K} = 8.
+  The \texttt{CaseID} field: the non-diseased cases are numbered with integers: \texttt{1}, \texttt{2}, \texttt{3}; the diseased cases are numbered with integers \texttt{70}, \texttt{71}, \texttt{72}, \texttt{73}, \texttt{74}. It is evident that \(K_1 = 3\), \(K_2 = 5\) and \(K = 8\). The values need not be sequential but they must be unique.
 \item
-  The \texttt{ReaderID} field has \emph{three values} \texttt{0,\ 1,\ 2}.
+  The \texttt{LesionID} field has \emph{integers}: \texttt{0} denotes a non-diseased case, \texttt{1} denotes the first lesion on a diseased case, \texttt{2} denotes the second lesion on a diseased case, \texttt{3} denotes the third lesion on a diseased case. \texttt{CaseID} \texttt{1}, \texttt{2}, \texttt{3} are non-diseased cases; \texttt{CaseID} \texttt{70} is the first diseased case with two lesions, \texttt{CaseID} \texttt{71} is the second diseased case with one lesion, \texttt{CaseID} \texttt{72} is the third diseased case with three lesions, \texttt{CaseID} \texttt{73} is the fourth diseased case with two lesions and \texttt{CaseID} \texttt{74} is the fifth diseased case with one lesion.
 \item
-  \texttt{ModalityID}: The first modality is labeled \texttt{0} and the second is `1'.
+  The \texttt{ReaderID} field has a string with \emph{three character values} ``0'', ``1'', ``2'', i.e., \texttt{J} = 3.
 \item
-  Note that \texttt{ReaderID} and \texttt{ModalityID} are \emph{text formatted labels}.
+  The \texttt{ModalityID} field has a string with \emph{two character values} ``0'', ``1'', i.e., \texttt{I} = 2.
 \item
-  \texttt{Paradigm}: The contents of this field are \texttt{FROC} and \texttt{FCTRL} (case insensitive, FCTRL stands for a factorial - or fully crossed - study design where each reader interprets all cases in all modalities).
+  Note that \texttt{ReaderID} and \texttt{ModalityID} contain \emph{text formatted labels}.
+\item
+  \texttt{Paradigm}: The contents of this field are two strings \texttt{FROC} and \texttt{FCTRL} (case insensitive, FCTRL stands for a factorial - or fully crossed - study design where each reader interprets all cases in all modalities).
 \end{itemize}
 
-\hypertarget{the-structure-of-the-froc-factorial-dataset}{%
-\section{The structure of the FROC factorial dataset}\label{the-structure-of-the-froc-factorial-dataset}}
+\hypertarget{the-structure-of-a-factorial-froc-dataset}{%
+\section{The structure of a factorial FROC dataset}\label{the-structure-of-a-factorial-froc-dataset}}
 
 The following code reads the Excel file into a dataset object \texttt{x}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{frocCr <-}\StringTok{ }\KeywordTok{system.file}\NormalTok{(}\StringTok{"extdata"}\NormalTok{, }\StringTok{"toyFiles/FROC/frocCr.xlsx"}\NormalTok{,}
-                        \DataTypeTok{package =} \StringTok{"RJafroc"}\NormalTok{, }\DataTypeTok{mustWork =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{x <-}\StringTok{ }\KeywordTok{DfReadDataFile}\NormalTok{(frocCr, }\DataTypeTok{newExcelFileFormat =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{x <-}\StringTok{ }\KeywordTok{DfReadDataFile}\NormalTok{(}\StringTok{"images/software-details/frocCr.xlsx"}\NormalTok{, }\DataTypeTok{newExcelFileFormat =} \OtherTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{itemize}
 \tightlist
 \item
-  Note that \texttt{newExcelFileFormat} \textbf{must} be set to \texttt{TRUE} to read the new Excel format dataset. The default is \texttt{FALSE} which applies to the old format Excel file with only the first three columns present in the \texttt{Truth} worksheet.
+  Note that \texttt{newExcelFileFormat} \textbf{must} be set to \texttt{TRUE} to read the new Excel format dataset. The default is \texttt{FALSE} which reads the original format Excel file with only the first three columns in the \texttt{Truth} worksheet.
 \end{itemize}
 
 The structure of \texttt{x} is shown below.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{str}\NormalTok{(x)}
+\KeywordTok{str}\NormalTok{(x, }\DataTypeTok{max.level =} \DecValTok{1}\NormalTok{)}
 \CommentTok{#> List of 3}
 \CommentTok{#>  $ ratings     :List of 3}
-\CommentTok{#>   ..$ NL   : num [1:2, 1:3, 1:8, 1:2] 1.02 2.89 2.21 3.01 2.14 ...}
-\CommentTok{#>   ..$ LL   : num [1:2, 1:3, 1:5, 1:3] 5.28 5.2 5.14 4.77 4.66 4.87 3.01 3.27 3.31 3.19 ...}
-\CommentTok{#>   ..$ LL_IL: logi NA}
 \CommentTok{#>  $ lesions     :List of 3}
-\CommentTok{#>   ..$ perCase: int [1:5] 2 1 3 2 1}
-\CommentTok{#>   ..$ IDs    : num [1:5, 1:3] 1 1 1 1 1 ...}
-\CommentTok{#>   ..$ weights: num [1:5, 1:3] 0.3 1 0.333 0.1 1 ...}
 \CommentTok{#>  $ descriptions:List of 7}
-\CommentTok{#>   ..$ fileName     : chr "frocCr"}
-\CommentTok{#>   ..$ type         : chr "FROC"}
-\CommentTok{#>   ..$ name         : logi NA}
-\CommentTok{#>   ..$ truthTableStr: num [1:2, 1:3, 1:8, 1:4] 1 1 1 1 1 1 1 1 1 1 ...}
-\CommentTok{#>   ..$ design       : chr "FCTRL"}
-\CommentTok{#>   ..$ modalityID   : Named chr [1:2] "0" "1"}
-\CommentTok{#>   .. ..- attr(*, "names")= chr [1:2] "0" "1"}
-\CommentTok{#>   ..$ readerID     : Named chr [1:3] "0" "1" "2"}
-\CommentTok{#>   .. ..- attr(*, "names")= chr [1:3] "0" "1" "2"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3539,6 +3684,20 @@ The structure of \texttt{x} is shown below.
 \tightlist
 \item
   The dataset \texttt{x} is a \texttt{list} variable with 3 members: \texttt{x\$ratings}, \texttt{x\$lesions} and \texttt{x\$descriptions}.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(x}\OperatorTok{$}\NormalTok{ratings)}
+\CommentTok{#> List of 3}
+\CommentTok{#>  $ NL   : num [1:2, 1:3, 1:8, 1:2] 1.02 2.89 2.21 3.01 2.14 ...}
+\CommentTok{#>  $ LL   : num [1:2, 1:3, 1:5, 1:3] 5.28 5.2 5.14 4.77 4.66 4.87 3.01 3.27 3.31 3.19 ...}
+\CommentTok{#>  $ LL_IL: logi NA}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
 \item
   There are \texttt{K2\ =\ 5} diseased cases (the length of the third dimension of \texttt{x\$ratings\$LL}) and \texttt{K1\ =\ 3} non-diseased cases (the length of the third dimension of \texttt{x\$ratings\$NL} minus \texttt{K2}).
 \item
@@ -3546,30 +3705,86 @@ The structure of \texttt{x} is shown below.
 \item
   \texttt{x\$ratings\$LL} is a {[}2, 3, 5, 3{]} array containing the ratings of LLs on diseased cases.
 \item
-  The maximum number of lesions per case in the dataset is 3.
-\item
-  The number of lesions per diseased case is the vector \texttt{x\$lesions\$perCase}, i.e., 2, 1, 3, 2, 1 in this example.
-\item
-  The \texttt{x\$descriptions\$dataType} member is FROC, which specifies the data collection method.
-\item
-  The \texttt{x\$descriptions\$modalityID} member is a vector with two elements 0, 1, naming the two modalities.
-\item
-  The \texttt{x\$readerID} member is a vector with three elements 0, 1, 2, naming the three readers.
-\item
-  The \texttt{x\$descriptions\$design} member is FCTRL; specifies the study design.
-\item
-  The \texttt{x\$descriptions\$truthTableStr} member quantifies the structure of the dataset, explained next.
+  \texttt{x\$ratings\$LL\_IL} is \texttt{NA}, this field applies to an LROC dataset (contains incorrect localizations on diseased cases).
 \end{itemize}
 
-\hypertarget{the-truthtablestr-member}{%
-\section{The truthTableStr member}\label{the-truthtablestr-member}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(x}\OperatorTok{$}\NormalTok{lesions)}
+\CommentTok{#> List of 3}
+\CommentTok{#>  $ perCase: int [1:5] 2 1 3 2 1}
+\CommentTok{#>  $ IDs    : num [1:5, 1:3] 1 1 1 1 1 ...}
+\CommentTok{#>  $ weights: num [1:5, 1:3] 0.3 1 0.333 0.1 1 ...}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{x\$lesions\$perCase} is the number of lesions per diseased case vector, i.e., 2, 1, 3, 2, 1.
+\item
+  \texttt{max(x\$lesions\$perCase)} is the maximum number of lesions per case, i.e., \texttt{r}max(x\(lesions\)perCase)`.
+\item
+  \texttt{x\$lesions\$weights} is the weights of lesions.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OperatorTok{$}\NormalTok{lesions}\OperatorTok{$}\NormalTok{weights}
+\CommentTok{#>           [,1]      [,2]      [,3]}
+\CommentTok{#> [1,] 0.3000000 0.7000000      -Inf}
+\CommentTok{#> [2,] 1.0000000      -Inf      -Inf}
+\CommentTok{#> [3,] 0.3333333 0.3333333 0.3333333}
+\CommentTok{#> [4,] 0.1000000 0.9000000      -Inf}
+\CommentTok{#> [5,] 1.0000000      -Inf      -Inf}
+\end{Highlighting}
+\end{Shaded}
+
+The weights for the first diseased case are 0.3 and 0.7. The weight for the second diseased case is 1. For the third diseased case the three weights are 1/3 each, etc. For each diseased case the finite weights sum to unity.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(x}\OperatorTok{$}\NormalTok{descriptions)}
+\CommentTok{#> List of 7}
+\CommentTok{#>  $ fileName     : chr "frocCr"}
+\CommentTok{#>  $ type         : chr "FROC"}
+\CommentTok{#>  $ name         : logi NA}
+\CommentTok{#>  $ truthTableStr: num [1:2, 1:3, 1:8, 1:4] 1 1 1 1 1 1 1 1 1 1 ...}
+\CommentTok{#>  $ design       : chr "FCTRL"}
+\CommentTok{#>  $ modalityID   : Named chr [1:2] "0" "1"}
+\CommentTok{#>   ..- attr(*, "names")= chr [1:2] "0" "1"}
+\CommentTok{#>  $ readerID     : Named chr [1:3] "0" "1" "2"}
+\CommentTok{#>   ..- attr(*, "names")= chr [1:3] "0" "1" "2"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  The \texttt{x\$descriptions\$filename} for internal use.
+\item
+  The \texttt{x\$descriptions\$type} member is FROC, which specifies the data collection method.
+\item
+  The \texttt{x\$descriptions\$name} for internal use.
+\item
+  The \texttt{x\$descriptions\$truthTableStr} member, for internal use, quantifies the structure of the dataset; it is explained in the next section.
+\item
+  The \texttt{x\$descriptions\$design} member is FCTRL; it specifies the study design.
+\item
+  The \texttt{x\$descriptions\$modalityID} member is a vector with two elements 0, 1 naming the two modalities.
+\item
+  The \texttt{x\$readerID} member is a vector with three elements 0, 1, 2 naming the three readers.
+\end{itemize}
+
+\hypertarget{dataset-object-truth-table-str}{%
+\section{The truthTableStr member}\label{dataset-object-truth-table-str}}
 
 \begin{itemize}
 \tightlist
 \item
   For this dataset \texttt{I} = 2, \texttt{J} = 3 and \texttt{K} = 8.
 \item
-  \texttt{truthTableStr} is a \texttt{2\ x\ 3\ x\ 8\ x\ 4} array, i.e., \texttt{I} x \texttt{J} x \texttt{K} x (maximum number of lesions per case plus 1). The \texttt{plus\ 1} is needed to accommodate non-diseased cases.
+  \texttt{truthTableStr} is a \texttt{2\ x\ 3\ x\ 8\ x\ 4} array, i.e., \texttt{I} x \texttt{J} x \texttt{K} x (maximum number of lesions per case plus 1 - the \texttt{plus\ 1} is needed to accommodate non-diseased cases).
 \item
   Each entry in this array is either \texttt{1}, meaning the corresponding interpretation happened, or \texttt{NA}, meaning the corresponding interpretation did not happen.
 \end{itemize}

@@ -58,7 +58,7 @@ The chapter is illustrated with a toy data file, `R/quick-start/frocCr.xlsx` in 
 * `Paradigm`: The contents are `FROC` and `FCTRL`: this is an `FROC` dataset and the design is "factorial".
 
 ## Reading the FROC dataset {#quick-start-froc-data-structure}
-The example shown above corresponds to file `R/quick-start/frocCr.xlsx` in the project directory. The next code chunk reads this file into an `R` object `x`.
+The example shown above corresponds to file `R/quick-start/frocCr.xlsx` in the project directory. The next code reads this file into an `R` object `x`.
 
 
 ```r

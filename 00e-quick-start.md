@@ -65,7 +65,7 @@ File `lroc2.xlsx` illustrates the paradigm when one mark-rating pair per case is
 
 
 ## Reading forced localization true LROC dataset {#quick-start-lroc-data-1}
-The images shown above correspond to file `R/quick-start/lroc1.xlsx`. The next code chunk reads this file into an `R` object `x1`. Note the usage of the `lrocForcedMark` flag, which is set to `TRUE`, because this is a forced localization LROC dataset. 
+The images shown above correspond to file `R/quick-start/lroc1.xlsx`. The next code reads this file into an `R` object `x1`. Note the usage of the `lrocForcedMark` flag, which is set to `TRUE`, because this is a forced localization LROC dataset. 
 
 
 ```r
@@ -145,7 +145,7 @@ x1$ratings$LL_IL[2,3,,1]
 
 
 ## Reading forced localization false LROC dataset {#quick-start-lroc-data-2}
-The next example is for file `R/quick-start/lroc2.xlsx`. The following code chunk reads this file into an `R` object `x2`. Note that for this dataset one must set the `lrocForcedMark` flag to `FALSE`, because this is *not* a forced localization LROC dataset. Setting `lrocForcedMark` flag to `TRUE` will generate an error.
+The next example is for file `R/quick-start/lroc2.xlsx`. The following code reads this file into an `R` object `x2`. Note that for this dataset one must set the `lrocForcedMark` flag to `FALSE`, because this is *not* a forced localization LROC dataset. Setting `lrocForcedMark` flag to `TRUE` will generate an error.
 
 
 ```r
