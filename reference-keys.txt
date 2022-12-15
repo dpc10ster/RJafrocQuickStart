@@ -22,10 +22,6 @@ quick-start-data-format-contents
 quick-start-data-format-truth-worksheet
 quick-start-data-fp-worksheet
 quick-start-data-format-tp-worksheet
-quick-start-data-format-single-reader
-quick-start-read-datafile
-quick-start-read-datafile-how-much-finished
-quick-start-read-datafile-intro
 quick-start-read-datafile-structure-roc-dataset
 quick-start-read-datafile-correspondence-nl-fp
 quick-start-read-datafile-correspondence-case-index-vs-case-id
@@ -162,7 +158,8 @@ discussion-1
 dataset-object-details
 introduction-3
 the-truth-worksheet
-the-structure-of-a-factorial-froc-dataset
+dataset-object-details-structure-roc-dataset
+dataset-object-details-structure-froc-dataset
 dataset-object-truth-table-str
 explanation-for-non-diseased-cases
 explanation-for-diseased-cases-with-one-lesion

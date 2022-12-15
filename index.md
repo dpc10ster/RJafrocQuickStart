@@ -2,7 +2,7 @@
 title: "The RJafroc Quick Start Book"
 author: "Dev P. Chakraborty, PhD"
 geometry: margin=2cm
-date: "2022-12-14"
+date: "2022-12-15"
 site: bookdown::bookdown_site
 output: pdf_document
 documentclass: book
@@ -70,7 +70,7 @@ Dr. Xuetong Zhai (he developed the first version of `RJafroc`)
 
 Dr. Peter Phillips
 
-Online Latex Editor [at](https://latexeditor.lagrida.com/) 
+Online Latex Editor at this [website](https://latexeditor.lagrida.com/). I found this very useful in learning and using Latex to write math equations. 
 
 ### Dataset contributors {#quick-start-index-dataset-contributors}
 
