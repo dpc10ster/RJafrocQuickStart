@@ -37,7 +37,72 @@ library(RJafroc)
 * Note that `ReaderID` and `ModalityID` contain *text formatted labels*. 
 * `Paradigm`: The contents of this field are two strings `FROC` and `FCTRL` (case insensitive, FCTRL stands for a factorial - or fully crossed - study design where each reader interprets all cases in all modalities). 
 
-## The structure of a factorial FROC dataset
+## The structure of a factorial ROC dataset object  {#dataset-object-details-structure-roc-dataset}
+
+```{r echo=FALSE}
+x <- DfReadDataFile("R/quick-start/rocCr.xlsx", newExcelFileFormat = TRUE)
+```             
+
+
+`x` is a `list` with `r length(x)` members: `ratings`, `lesions` and `descriptions`.
+
+
+```{r}
+str(x, max.level = 1)
+```             
+
+
+The `x$ratings` member contains 3 sub-lists.
+
+```{r}
+str(x$ratings)
+```             
+
+* `x$ratings$NL`, with dimension [2, 5, 8, 1], contains the ratings of normal cases. The first dimension (2) is the number of treatments, the second (5) is the number of readers and the third (8) is the total number of cases. For ROC datasets the fourth dimension is always unity. The five extra values ^[With only 3 non-diseased cases why does one need 8 values?] in the third dimension, of `x$ratings$NL` which are filled with `NAs`, are needed for compatibility with FROC datasets.
+
+* `x$ratings$LL`, with dimension [2, 5, 5, 1], contains the ratings of abnormal cases. The third dimension (5) corresponds to the 5 diseased cases.
+
+* `x$ratings$LL_IL`, equal to NA', is there for compatibility with LROC data, `IL`  denotes incorrect-localizations.
+
+
+The `x$lesions` member contains 3 sub-lists.
+
+
+```{r}
+str(x$lesions)
+```             
+
+
+* The `x$lesions$perCase` member is a vector with 5 ones representing the 5 diseased cases in the dataset. 
+
+* The `x$lesions$IDs` member is an array with 5 ones.
+
+
+```{r}
+x$lesions$weights
+```             
+
+`x$lesions$weights` member is an array with 5 ones. These are irrelevant for ROC datasets. They are there for compatibility with FROC datasets.
+
+
+`x$descriptions` contains 7 sub-lists.
+
+```{r}
+str(x$descriptions)
+```             
+
+
+* `x$descriptions$fileName` is intended for internal use. 
+* `x$descriptions$type` indicates that this is an `ROC` dataset. 
+* `x$descriptions$name` is intended for internal use. 
+* `x$descriptions$truthTableStr` is intended for internal use, see Section \@ref(dataset-object-truth-table-str).
+* `x$descriptions$design` specifies the dataset design, which is "FCTRL" in the present example ("FCTRL" = a factorial dataset).
+* `x$descriptions$modalityID` is a vector with two elements `"0"` and `"1"`, the names of the two modalities. 
+* `x$readerID` is a vector with five elements  `"0"`, `"1"`, `"2"`, `"3"` and `"4"`, the names of the five readers. 
+
+
+
+## The structure of a factorial FROC dataset {#dataset-object-details-structure-froc-dataset}
 
 The following code reads the Excel file into a dataset object `x`: 
 

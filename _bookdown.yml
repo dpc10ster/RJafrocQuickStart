@@ -6,7 +6,6 @@ delete_merged_file: TRUE
 rmd_files: [
   "index.Rmd",
   "00b-quick-start.Rmd", 
-  "00c-quick-start.Rmd", 
   "00d-quick-start.Rmd", 
   "00e-quick-start.Rmd", 
   "00f-quick-start.Rmd", 
