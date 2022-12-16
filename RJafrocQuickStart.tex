@@ -139,7 +139,7 @@
 
 \title{RJafroc Vignette 6: Metz Eqn36 numerical check}
 \author{Dev P. Chakraborty, PhD}
-\date{2022-12-15}
+\date{2022-12-16}
 
 \begin{document}
 \maketitle
@@ -264,7 +264,7 @@ To access files/code one needs to \texttt{fork} the \texttt{GitHub} repository. 
 \chapter{JAFROC ROC data format}\label{quick-start-data-format}}
 
 \hypertarget{quick-start-data-format-how-much-finished}{%
-\section{TBA How much finished}\label{quick-start-data-format-how-much-finished}}
+\section{How much finished}\label{quick-start-data-format-how-much-finished}}
 
 50\% (remove duplication)
 
@@ -274,7 +274,7 @@ To access files/code one needs to \texttt{fork} the \texttt{GitHub} repository. 
 \begin{itemize}
 \tightlist
 \item
-  The JAFROC Excel data format was adopted circa. 2006. The purpose of this chapter is to explain the format.
+  The JAFROC Excel data format was adopted circa. 2006. The purpose of this chapter is to explain the format of this file.
 \end{itemize}
 
 \hypertarget{quick-start-data-format-note-to-existing-users}{%
@@ -291,20 +291,22 @@ To access files/code one needs to \texttt{fork} the \texttt{GitHub} repository. 
 \end{itemize}
 
 \hypertarget{quick-start-data-format-contents}{%
-\section{The Excel file}\label{quick-start-data-format-contents}}
+\section{Excel ROC file format}\label{quick-start-data-format-contents}}
 
 \begin{itemize}
 \tightlist
 \item
-  The illustrations in this chapter correspond to Excel file \texttt{R/quick-start/rocCr.xlsx} in the project directory. See Section @ref(\#quick-start-index-how-to-access-files) for how to get this file, and all other files and code in this \texttt{bookdown} book, to your computer. This is a \emph{toy file}, i.e., an artificial small dataset used to illustrate essential features of the data format.
+  The illustrations in this chapter correspond to Excel file \texttt{R/quick-start/rocCr.xlsx} in the project directory. See Section @ref(\#quick-start-index-how-to-access-files) for how to get this file, and all other files and code in this \texttt{bookdown} book, to your computer.
+\item
+  This is a \emph{toy file}, i.e., an artificial small dataset used to illustrate essential features of the data format.
 \item
   The Excel file has three worksheets: \texttt{Truth}, \texttt{NL} (or \texttt{FP}) and \texttt{LL} (or \texttt{TP}). The worksheet names are case insensitive.
 \end{itemize}
 
+\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/rocCrTruth.png}
+
 \hypertarget{quick-start-data-format-truth-worksheet}{%
 \subsection{\texorpdfstring{The \texttt{Truth} worksheet}{The Truth worksheet}}\label{quick-start-data-format-truth-worksheet}}
-
-\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/rocCrTruth.png}
 
 \begin{itemize}
 \tightlist
@@ -349,22 +351,20 @@ To access files/code one needs to \texttt{fork} the \texttt{GitHub} repository. 
 \end{itemize}
 
 \hypertarget{quick-start-data-fp-worksheet}{%
-\subsection{The false positive (FP) ratings}\label{quick-start-data-fp-worksheet}}
-
-These are found in the \texttt{FP} or \texttt{NL} worksheet, see below.
+\subsection{The false positive (FP/NL) worksheet}\label{quick-start-data-fp-worksheet}}
 
 \includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/rocCrFp.png}
 
 \begin{itemize}
 \tightlist
 \item
-  It consists of 4 columns, each of length 30 (\# of modalities X number of readers X number of non-diseased cases).
+  It consists of 4 columns, each of length 30 (\# of modalities x number of readers x number of non-diseased cases).
 \item
-  \texttt{ReaderID}: the reader labels: \texttt{0}, \texttt{1}, \texttt{2}, \texttt{3} and \texttt{4}. Each reader label occurs 6 times (\# of modalities X number of non-diseased cases).
+  \texttt{ReaderID}: the reader labels: \texttt{0}, \texttt{1}, \texttt{2}, \texttt{3} and \texttt{4}. Each reader label occurs 6 times (\# of modalities x number of non-diseased cases).
 \item
-  \texttt{ModalityID}: the modality or treatment labels: \texttt{0} and \texttt{1}. Each label occurs 15 times (\# of readers X number of non-diseased cases).
+  \texttt{ModalityID}: the modality or treatment labels: \texttt{0} and \texttt{1}. Each label occurs 15 times (\# of readers x number of non-diseased cases).
 \item
-  \texttt{CaseID}: the case labels for non-diseased cases: \texttt{1}, \texttt{2} and \texttt{3}. Each label occurs 10 times (\# of modalities X \# of readers).
+  \texttt{CaseID}: the case labels for non-diseased cases: \texttt{1}, \texttt{2} and \texttt{3}. Each label occurs 10 times (\# of modalities x \# of readers).
 \item
   The label of a diseased case cannot occur in the FP worksheet. If it does the software generates an error.
 \item
@@ -372,30 +372,28 @@ These are found in the \texttt{FP} or \texttt{NL} worksheet, see below.
 \end{itemize}
 
 \hypertarget{quick-start-data-format-tp-worksheet}{%
-\subsection{The true positive (TP) ratings}\label{quick-start-data-format-tp-worksheet}}
-
-These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
+\subsection{The true positive (TP/LL) worksheet}\label{quick-start-data-format-tp-worksheet}}
 
 \includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/rocCrTp.png}
 
 \begin{itemize}
 \tightlist
 \item
-  It consists of 5 columns, each of length 50 (\# of modalities X number of readers X number of diseased cases).
+  It consists of 5 columns, each of length 50 (\# of modalities x number of readers x number of diseased cases).
 \item
-  \texttt{ReaderID}: the reader labels: \texttt{0}, \texttt{1}, \texttt{2}, \texttt{3} and \texttt{4}. Each reader label occurs 10 times (\# of modalities X number of diseased cases).
+  \texttt{ReaderID}: the reader labels: \texttt{0}, \texttt{1}, \texttt{2}, \texttt{3} and \texttt{4}. Each reader label occurs 10 times (\# of modalities x number of diseased cases).
 \item
-  \texttt{ModalityID}: the modality or treatment labels: \texttt{0} and \texttt{1}. Each label occurs 25 times (\# of readers X number of diseased cases).
+  \texttt{ModalityID}: the modality or treatment labels: \texttt{0} and \texttt{1}. Each label occurs 25 times (\# of readers x number of diseased cases).
 \item
   \texttt{LesionID}: For an ROC dataset this column contains fifty 1's (each diseased case has one lesion).
 \item
-  \texttt{CaseID}: the case labels for non-diseased cases: \texttt{70}, \texttt{71}, \texttt{72}, \texttt{73} and \texttt{74}. Each label occurs 10 times (\# of modalities X \# of readers). For an ROC dataset the label of a non-diseased case cannot occur in the TP worksheet. If it does the software generates an error.
+  \texttt{CaseID}: the case labels for non-diseased cases: \texttt{70}, \texttt{71}, \texttt{72}, \texttt{73} and \texttt{74}. Each label occurs 10 times (\# of modalities x \# of readers). For an ROC dataset the label of a non-diseased case cannot occur in the TP worksheet. If it does the software generates an error.
 \item
   \texttt{TP\_Rating}: the floating point ratings of diseased cases. Each row of this worksheet contains a rating corresponding to the values of \texttt{ReaderID}, \texttt{ModalityID}, \texttt{LesionID} and \texttt{CaseID} for that row.
 \end{itemize}
 
-\hypertarget{quick-start-read-datafile-structure-roc-dataset}{%
-\section{Reading the Excel file}\label{quick-start-read-datafile-structure-roc-dataset}}
+\hypertarget{quick-start-read-datafile}{%
+\section{Reading the Excel file}\label{quick-start-read-datafile}}
 
 The following code reads the Excel file and saves it to object \texttt{x}.
 
@@ -412,98 +410,10 @@ The following code reads the Excel file and saves it to object \texttt{x}.
   Flag \texttt{newExcelFileFormat\ =\ FALSE}, the default, is for compatibility with the original JAFROC format Excel format, which did not have columns D - F in the \texttt{Truth} worksheet. Its usage is deprecated.
 \end{itemize}
 
+\hypertarget{quick-start-read-datafile-structure-roc-dataset}{%
+\section{Structure of dataset object}\label{quick-start-read-datafile-structure-roc-dataset}}
+
 Most users will not need to be concerned with the internal structure of the dataset object \texttt{x}. For those interested in it, for my reference, and for ease of future maintenance of the software, this is deferred to Section \ref{dataset-object-details-structure-roc-dataset}.
-
-\hypertarget{quick-start-read-datafile-correspondence-nl-fp}{%
-\section{\texorpdfstring{Correspondence between \texttt{NL} member of dataset and the \texttt{FP} worksheet}{Correspondence between NL member of dataset and the FP worksheet}}\label{quick-start-read-datafile-correspondence-nl-fp}}
-
-\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/rocCrFp.png}
-
-\begin{itemize}
-\tightlist
-\item
-  The list member \texttt{x\$ratings\$NL} is an array with \texttt{dim\ =\ c(2,5,8,1)}.
-
-  \begin{itemize}
-  \tightlist
-  \item
-    The first dimension (2) comes from the number of modalities.
-  \item
-    The second dimension (5) comes from the number of readers.
-  \item
-    The third dimension (8) comes from the \textbf{total} number of cases.
-  \item
-    The fourth dimension is always 1 for an ROC dataset.
-  \end{itemize}
-\item
-  The value of \texttt{x\$ratings\$NL{[}1,5,2,1{]}}, i.e., 5, corresponds to row 15 of the FP table, i.e., to \texttt{ModalityID} = 0, \texttt{ReaderID} = 4 and \texttt{CaseID} = 2.
-\item
-  The value of \texttt{x\$ratings\$NL{[}2,3,2,1{]}}, i.e., 4, corresponds to row 24 of the FP table, i.e., to \texttt{ModalityID} 1, \texttt{ReaderID} 2 and \texttt{CaseID} 2.
-\item
-  All values for case index \textgreater{} 3 and case index \textless= 8 are \texttt{-Inf}. For example the value of \texttt{x\$ratings\$NL{[}2,3,4,1{]}} is \texttt{-Inf}. This is because there are only 3 non-diseased cases. The extra length is needed for compatibility with FROC datasets.
-\end{itemize}
-
-\hypertarget{quick-start-read-datafile-correspondence-case-index-vs-case-id}{%
-\section{caseIndex vs.~caseID}\label{quick-start-read-datafile-correspondence-case-index-vs-case-id}}
-
-\begin{itemize}
-\tightlist
-\item
-  The \texttt{caseIndex} is the array index used to access elements in the NL and LL arrays. The case-index is always an integer in the range 1, 2, \ldots, up to the array length. Remember that unlike C++, R indexing starts from 1.
-\item
-  The \texttt{caseID} is any integer value, including zero, used to uniquely label the cases.
-\item
-  Regardless of what order they occur in the worksheet, the non-diseased cases are always ordered first. In the current example the case indices are 1, 2 and 3, corresponding to the three non-diseased cases with \texttt{caseIDs} equal to 1, 2 and 3.
-\item
-  Regardless of what order they occur in the worksheet, in the NL array the diseased cases are always ordered \emph{after} the last non-diseased case. In the current example the case indices in the \texttt{NL} array are 4, 5, 6, 7 and 8, corresponding to the five diseased cases with \texttt{caseIDs} equal to 70, 71, 72, 73, and 74. In the \texttt{LL} array they are indexed 1, 2, 3, 4 and 5. Some examples follow:
-\item
-  \texttt{x\$ratings\$NL{[}1,3,2,1{]}}, a FP rating, refers to \texttt{ModalityID} 0, \texttt{ReaderID} 2 and \texttt{CaseID} 2 (since the modality and reader IDs start with 0).
-\item
-  \texttt{x\$ratings\$NL{[}2,5,4,1{]}}, a FP rating, refers to \texttt{ModalityID} 1, \texttt{ReaderID} 4 and \texttt{CaseID} 70, the first diseased case; this is \texttt{-Inf}.
-\item
-  \texttt{x\$ratings\$NL{[}1,4,8,1{]}}, a FP rating, refers to \texttt{ModalityID} 0, \texttt{ReaderID} 3 and \texttt{CaseID} 74, the last diseased case; this is \texttt{-Inf}.
-\item
-  \texttt{x\$ratings\$NL{[}1,3,9,1{]}}, a FP rating, is an illegal value, as the third index cannot exceed 8.
-\item
-  \texttt{x\$ratings\$NL{[}1,3,8,2{]}}, a FP rating, is an illegal value, as the fourth index cannot exceed 1 for an ROC dataset.
-\item
-  \texttt{x\$ratings\$LL{[}1,3,1,1{]}}, a TP rating, refers to \texttt{ModalityID} 0, \texttt{ReaderID} 2 and \texttt{CaseID} 70, the first diseased case.
-\item
-  \texttt{x\$ratings\$LL{[}2,5,4,1{]}}, a TP rating, refers to \texttt{ModalityID} 1, \texttt{ReaderID} 4 and \texttt{CaseID} 73, the fourth diseased case.
-\end{itemize}
-
-\hypertarget{quick-start-read-datafile-correspondence-ll-tp}{%
-\section{\texorpdfstring{Correspondence between \texttt{LL} member of dataset and the \texttt{TP} worksheet}{Correspondence between LL member of dataset and the TP worksheet}}\label{quick-start-read-datafile-correspondence-ll-tp}}
-
-\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/rocCrTp.png}
-
-\begin{itemize}
-\tightlist
-\item
-  The list member \texttt{x\$ratings\$LL} is an array with \texttt{dim\ =\ c(2,5,5,1)}.
-
-  \begin{itemize}
-  \tightlist
-  \item
-    The first dimension (2) comes from the number of modalities.
-  \item
-    The second dimension (5) comes from the number of readers.
-  \item
-    The third dimension (5) comes from the number of diseased cases.
-  \item
-    The fourth dimension is always 1 for an ROC dataset.
-  \end{itemize}
-\item
-  The value of \texttt{x\$ratings\$LL{[}1,1,5,1{]}}, i.e., 4, corresponds to row 6 of the TP table, i.e., to \texttt{ModalityID} = 0, \texttt{ReaderID} = 0 and \texttt{CaseID} = 74.
-\item
-  The value of \texttt{x\$ratings\$LL{[}1,2,2,1{]}}, i.e., 3, corresponds to row 8 of the TP table, i.e., to \texttt{ModalityID} = 0, \texttt{ReaderID} = 1 and \texttt{CaseID} = 71.
-\item
-  The value of \texttt{x\$ratings\$LL{[}1,4,4,1{]}}, i.e., 5, corresponds to row 21 of the TP table, i.e., to \texttt{ModalityID} = 0, \texttt{ReaderID} = 3 and \texttt{CaseID} = 74.
-\item
-  The value of \texttt{x\$ratings\$LL{[}1,5,2,1{]}}, i.e., 2, corresponds to row 23 of the TP table, i.e., to \texttt{ModalityID} = 0, \texttt{ReaderID} = 4 and \texttt{CaseID} = 71.
-\item
-  There are no \texttt{-Inf} values in \texttt{x\$ratings\$LL}: \texttt{any(x\$ratings\$LL\ ==\ -Inf)} = FALSE. This is true for any ROC dataset.
-\end{itemize}
 
 \hypertarget{quick-start-froc-data-format}{%
 \chapter{Data format and reading FROC data}\label{quick-start-froc-data-format}}
@@ -3496,43 +3406,19 @@ Note the close correspondence between the formula, Eqn. 36 in the Metz-Pan paper
 \hypertarget{introduction-3}{%
 \section{Introduction}\label{introduction-3}}
 
-\begin{itemize}
-\tightlist
-\item
-  This chapter is included to document recent Excel file format changes and the new dataset structure.
-\item
-  We illustrate with a toy FROC data file \texttt{images/software-details/frocCr.xlsx}, in which 3 readers interpret 3 non-diseased and 5 diseased cases using the FROC paradigm.
-\item
-  The Excel file has three worksheets named \texttt{Truth}, \texttt{NL} (or \texttt{FP}) and \texttt{LL} (or \texttt{TP}). The names are case insensitive.
-\item
-  An image of the \texttt{Truth} worksheet follows.
-\end{itemize}
+This chapter is included to document recent Excel file format changes and the new dataset structure.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/software-details/frocCrTruth.png}
+\hypertarget{dataset-object-details-roc-dataset}{%
+\section{ROC dataset}\label{dataset-object-details-roc-dataset}}
 
-\hypertarget{the-truth-worksheet}{%
-\section{\texorpdfstring{The \texttt{Truth} worksheet}{The Truth worksheet}}\label{the-truth-worksheet}}
-
-\begin{itemize}
-\tightlist
-\item
-  It contains 6 columns: \texttt{CaseID}, \texttt{LesionID}, \texttt{Weight}, \texttt{ReaderID}, \texttt{ModalityID} and \texttt{Paradigm}. Excepting the first (header) row, the first three columns must contain numbers and the last three columns must be string formatted.
-\item
-  The \texttt{CaseID} field: the non-diseased cases are numbered with integers: \texttt{1}, \texttt{2}, \texttt{3}; the diseased cases are numbered with integers \texttt{70}, \texttt{71}, \texttt{72}, \texttt{73}, \texttt{74}. It is evident that \(K_1 = 3\), \(K_2 = 5\) and \(K = 8\). The values need not be sequential but they must be unique.
-\item
-  The \texttt{LesionID} field has \emph{integers}: \texttt{0} denotes a non-diseased case, \texttt{1} denotes the first lesion on a diseased case, \texttt{2} denotes the second lesion on a diseased case, \texttt{3} denotes the third lesion on a diseased case. \texttt{CaseID} \texttt{1}, \texttt{2}, \texttt{3} are non-diseased cases; \texttt{CaseID} \texttt{70} is the first diseased case with two lesions, \texttt{CaseID} \texttt{71} is the second diseased case with one lesion, \texttt{CaseID} \texttt{72} is the third diseased case with three lesions, \texttt{CaseID} \texttt{73} is the fourth diseased case with two lesions and \texttt{CaseID} \texttt{74} is the fifth diseased case with one lesion.
-\item
-  The \texttt{ReaderID} field has a string with \emph{three character values} ``0'', ``1'', ``2'', i.e., \texttt{J} = 3.
-\item
-  The \texttt{ModalityID} field has a string with \emph{two character values} ``0'', ``1'', i.e., \texttt{I} = 2.
-\item
-  Note that \texttt{ReaderID} and \texttt{ModalityID} contain \emph{text formatted labels}.
-\item
-  \texttt{Paradigm}: The contents of this field are two strings \texttt{FROC} and \texttt{FCTRL} (case insensitive, FCTRL stands for a factorial - or fully crossed - study design where each reader interprets all cases in all modalities).
-\end{itemize}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{DfReadDataFile}\NormalTok{(}\StringTok{"R/quick{-}start/rocCr.xlsx"}\NormalTok{, }\AttributeTok{newExcelFileFormat =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{dataset-object-details-structure-roc-dataset}{%
-\section{The structure of a factorial ROC dataset object}\label{dataset-object-details-structure-roc-dataset}}
+\subsection{The structure of a factorial ROC dataset object}\label{dataset-object-details-structure-roc-dataset}}
 
 \texttt{x} is a \texttt{list} with 3 members: \texttt{ratings}, \texttt{lesions} and \texttt{descriptions}.
 
@@ -3636,10 +3522,104 @@ The \texttt{x\$lesions} member contains 3 sub-lists.
   \texttt{x\$readerID} is a vector with five elements \texttt{"0"}, \texttt{"1"}, \texttt{"2"}, \texttt{"3"} and \texttt{"4"}, the names of the five readers.
 \end{itemize}
 
-\hypertarget{dataset-object-details-structure-froc-dataset}{%
-\section{The structure of a factorial FROC dataset}\label{dataset-object-details-structure-froc-dataset}}
+\hypertarget{dataset-object-details-read-datafile-correspondence-nl-fp}{%
+\subsection{\texorpdfstring{The \texttt{FP} worksheet}{The FP worksheet}}\label{dataset-object-details-read-datafile-correspondence-nl-fp}}
 
-The following code reads the Excel file into a dataset object \texttt{x}:
+\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/rocCrFp.png}
+
+\begin{itemize}
+\tightlist
+\item
+  The list member \texttt{x\$ratings\$NL} is an array with \texttt{dim\ =\ c(2,5,8,1)}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The first dimension (2) comes from the number of modalities.
+  \item
+    The second dimension (5) comes from the number of readers.
+  \item
+    The third dimension (8) comes from the \textbf{total} number of cases.
+  \item
+    The fourth dimension is always 1 for an ROC dataset.
+  \end{itemize}
+\item
+  The value of \texttt{x\$ratings\$NL{[}1,5,2,1{]}}, i.e., 5, corresponds to row 15 of the FP table, i.e., to \texttt{ModalityID} = 0, \texttt{ReaderID} = 4 and \texttt{CaseID} = 2.
+\item
+  The value of \texttt{x\$ratings\$NL{[}2,3,2,1{]}}, i.e., 4, corresponds to row 24 of the FP table, i.e., to \texttt{ModalityID} 1, \texttt{ReaderID} 2 and \texttt{CaseID} 2.
+\item
+  All values for case index \textgreater{} 3 and case index \textless= 8 are \texttt{-Inf}. For example the value of \texttt{x\$ratings\$NL{[}2,3,4,1{]}} is \texttt{-Inf}. This is because there are only 3 non-diseased cases. The extra length is needed for compatibility with FROC datasets.
+\end{itemize}
+
+\hypertarget{dataset-object-details-read-datafile-correspondence-ll-tp}{%
+\subsection{\texorpdfstring{The \texttt{TP} worksheet}{The TP worksheet}}\label{dataset-object-details-read-datafile-correspondence-ll-tp}}
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/rocCrTp.png}
+
+\begin{itemize}
+\tightlist
+\item
+  The list member \texttt{x\$ratings\$LL} is an array with \texttt{dim\ =\ c(2,5,5,1)}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The first dimension (2) comes from the number of modalities.
+  \item
+    The second dimension (5) comes from the number of readers.
+  \item
+    The third dimension (5) comes from the number of diseased cases.
+  \item
+    The fourth dimension is always 1 for an ROC dataset.
+  \end{itemize}
+\item
+  The value of \texttt{x\$ratings\$LL{[}1,1,5,1{]}}, i.e., 4, corresponds to row 6 of the TP table, i.e., to \texttt{ModalityID} = 0, \texttt{ReaderID} = 0 and \texttt{CaseID} = 74.
+\item
+  The value of \texttt{x\$ratings\$LL{[}1,2,2,1{]}}, i.e., 3, corresponds to row 8 of the TP table, i.e., to \texttt{ModalityID} = 0, \texttt{ReaderID} = 1 and \texttt{CaseID} = 71.
+\item
+  The value of \texttt{x\$ratings\$LL{[}1,4,4,1{]}}, i.e., 5, corresponds to row 21 of the TP table, i.e., to \texttt{ModalityID} = 0, \texttt{ReaderID} = 3 and \texttt{CaseID} = 74.
+\item
+  The value of \texttt{x\$ratings\$LL{[}1,5,2,1{]}}, i.e., 2, corresponds to row 23 of the TP table, i.e., to \texttt{ModalityID} = 0, \texttt{ReaderID} = 4 and \texttt{CaseID} = 71.
+\item
+  There are no \texttt{-Inf} values in \texttt{x\$ratings\$LL}: \texttt{any(x\$ratings\$LL\ ==\ -Inf)} = FALSE. This is true for any ROC dataset.
+\end{itemize}
+
+\hypertarget{dataset-object-details-read-datafile-correspondence-case-index-vs-case-id}{%
+\subsection{caseIndex vs.~caseID}\label{dataset-object-details-read-datafile-correspondence-case-index-vs-case-id}}
+
+\begin{itemize}
+\tightlist
+\item
+  The \texttt{caseIndex} is the array index used to access elements in the NL and LL arrays. The case-index is always an integer in the range 1, 2, \ldots, up to the array length. Remember that unlike C++, R indexing starts from 1.
+\item
+  The \texttt{caseID} is any integer value, including zero, used to uniquely label the cases.
+\item
+  Regardless of what order they occur in the worksheet, the non-diseased cases are always ordered first. In the current example the case indices are 1, 2 and 3, corresponding to the three non-diseased cases with \texttt{caseIDs} equal to 1, 2 and 3.
+\item
+  Regardless of what order they occur in the worksheet, in the NL array the diseased cases are always ordered \emph{after} the last non-diseased case. In the current example the case indices in the \texttt{NL} array are 4, 5, 6, 7 and 8, corresponding to the five diseased cases with \texttt{caseIDs} equal to 70, 71, 72, 73, and 74. In the \texttt{LL} array they are indexed 1, 2, 3, 4 and 5. Some examples follow:
+\item
+  \texttt{x\$ratings\$NL{[}1,3,2,1{]}}, a FP rating, refers to \texttt{ModalityID} 0, \texttt{ReaderID} 2 and \texttt{CaseID} 2 (since the modality and reader IDs start with 0).
+\item
+  \texttt{x\$ratings\$NL{[}2,5,4,1{]}}, a FP rating, refers to \texttt{ModalityID} 1, \texttt{ReaderID} 4 and \texttt{CaseID} 70, the first diseased case; this is \texttt{-Inf}.
+\item
+  \texttt{x\$ratings\$NL{[}1,4,8,1{]}}, a FP rating, refers to \texttt{ModalityID} 0, \texttt{ReaderID} 3 and \texttt{CaseID} 74, the last diseased case; this is \texttt{-Inf}.
+\item
+  \texttt{x\$ratings\$NL{[}1,3,9,1{]}}, a FP rating, is an illegal value, as the third index cannot exceed 8.
+\item
+  \texttt{x\$ratings\$NL{[}1,3,8,2{]}}, a FP rating, is an illegal value, as the fourth index cannot exceed 1 for an ROC dataset.
+\item
+  \texttt{x\$ratings\$LL{[}1,3,1,1{]}}, a TP rating, refers to \texttt{ModalityID} 0, \texttt{ReaderID} 2 and \texttt{CaseID} 70, the first diseased case.
+\item
+  \texttt{x\$ratings\$LL{[}2,5,4,1{]}}, a TP rating, refers to \texttt{ModalityID} 1, \texttt{ReaderID} 4 and \texttt{CaseID} 73, the fourth diseased case.
+\end{itemize}
+
+\hypertarget{dataset-object-details-froc-dataset}{%
+\section{FROC dataset}\label{dataset-object-details-froc-dataset}}
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/software-details/frocCrTruth.png}
+
+\hypertarget{dataset-object-details-structure-froc-dataset}{%
+\subsection{The structure of a factorial FROC dataset}\label{dataset-object-details-structure-froc-dataset}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3647,13 +3627,7 @@ The following code reads the Excel file into a dataset object \texttt{x}:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{itemize}
-\tightlist
-\item
-  Note that \texttt{newExcelFileFormat} \textbf{must} be set to \texttt{TRUE} to read the new Excel format dataset. The default is \texttt{FALSE} which reads the original format Excel file with only the first three columns in the \texttt{Truth} worksheet.
-\end{itemize}
-
-The structure of \texttt{x} is shown below.
+The dataset \texttt{x} is a \texttt{list} variable with 3 members: \texttt{x\$ratings}, \texttt{x\$lesions} and \texttt{x\$descriptions}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3665,11 +3639,7 @@ The structure of \texttt{x} is shown below.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{itemize}
-\tightlist
-\item
-  The dataset \texttt{x} is a \texttt{list} variable with 3 members: \texttt{x\$ratings}, \texttt{x\$lesions} and \texttt{x\$descriptions}.
-\end{itemize}
+The \texttt{x\$ratings} member contains 3 sub-lists.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3686,12 +3656,14 @@ The structure of \texttt{x} is shown below.
 \item
   There are \texttt{K2\ =\ 5} diseased cases (the length of the third dimension of \texttt{x\$ratings\$LL}) and \texttt{K1\ =\ 3} non-diseased cases (the length of the third dimension of \texttt{x\$ratings\$NL} minus \texttt{K2}).
 \item
-  \texttt{x\$ratings\$NL} is a {[}2, 3, 8, 2{]} array containing the NL ratings on non-diseased and diseased cases.
+  \texttt{x\$ratings\$NL}, a {[}2, 3, 8, 2{]} array, contains the NL ratings on non-diseased and diseased cases.
 \item
-  \texttt{x\$ratings\$LL} is a {[}2, 3, 5, 3{]} array containing the ratings of LLs on diseased cases.
+  \texttt{x\$ratings\$LL}, a {[}2, 3, 5, 3{]} array, contains the ratings of LLs on diseased cases.
 \item
   \texttt{x\$ratings\$LL\_IL} is \texttt{NA}, this field applies to an LROC dataset (contains incorrect localizations on diseased cases).
 \end{itemize}
+
+The \texttt{x\$lesions} member contains 3 sub-lists.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3727,6 +3699,8 @@ The structure of \texttt{x} is shown below.
 
 The weights for the first diseased case are 0.3 and 0.7. The weight for the second diseased case is 1. For the third diseased case the three weights are 1/3 each, etc. For each diseased case the finite weights sum to unity.
 
+\texttt{x\$descriptions} contains 7 sub-lists.
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{str}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{descriptions)}
@@ -3746,23 +3720,23 @@ The weights for the first diseased case are 0.3 and 0.7. The weight for the seco
 \begin{itemize}
 \tightlist
 \item
-  The \texttt{x\$descriptions\$filename} for internal use.
+  \texttt{x\$descriptions\$filename} is for internal use.
 \item
-  The \texttt{x\$descriptions\$type} member is FROC, which specifies the data collection method.
+  \texttt{x\$descriptions\$type} is FROC, which specifies the data collection method.
 \item
-  The \texttt{x\$descriptions\$name} for internal use.
+  \texttt{x\$descriptions\$name} is for internal use.
 \item
-  The \texttt{x\$descriptions\$truthTableStr} member, for internal use, quantifies the structure of the dataset; it is explained in the next section.
+  \texttt{x\$descriptions\$truthTableStr} is for internal use; it quantifies the structure of the dataset; it is explained in the next section.
 \item
-  The \texttt{x\$descriptions\$design} member is FCTRL; it specifies the study design.
+  \texttt{x\$descriptions\$design} is FCTRL; it specifies the study design.
 \item
-  The \texttt{x\$descriptions\$modalityID} member is a vector with two elements 0, 1 naming the two modalities.
+  \texttt{x\$descriptions\$modalityID} is a vector with two elements 0, 1 naming the two modalities.
 \item
-  The \texttt{x\$readerID} member is a vector with three elements 0, 1, 2 naming the three readers.
+  \texttt{x\$readerID} is a vector with three elements 0, 1, 2 naming the three readers.
 \end{itemize}
 
 \hypertarget{dataset-object-truth-table-str}{%
-\section{The truthTableStr member}\label{dataset-object-truth-table-str}}
+\subsection{\texorpdfstring{\texttt{truthTableStr}}{truthTableStr}}\label{dataset-object-truth-table-str}}
 
 \begin{itemize}
 \tightlist
@@ -3775,7 +3749,7 @@ The weights for the first diseased case are 0.3 and 0.7. The weight for the seco
 \end{itemize}
 
 \hypertarget{explanation-for-non-diseased-cases}{%
-\subsection{Explanation for non-diseased cases}\label{explanation-for-non-diseased-cases}}
+\subsubsection{Explanation for non-diseased cases}\label{explanation-for-non-diseased-cases}}
 
 Since the fourth index is set to 1, in the following code only non-diseased cases yield ones and all diseased cases yield \texttt{NA}.
 
@@ -3789,7 +3763,7 @@ Since the fourth index is set to 1, in the following code only non-diseased case
 \end{Shaded}
 
 \hypertarget{explanation-for-diseased-cases-with-one-lesion}{%
-\subsection{Explanation for diseased cases with one lesion}\label{explanation-for-diseased-cases-with-one-lesion}}
+\subsubsection{Explanation for diseased cases with one lesion}\label{explanation-for-diseased-cases-with-one-lesion}}
 
 Since the fourth index is set to 2, in the following code all non-diseased cases yield \texttt{NA} and all diseased cases yield 1 as all diseased cases have at least one lesion.
 
@@ -3803,7 +3777,7 @@ Since the fourth index is set to 2, in the following code all non-diseased cases
 \end{Shaded}
 
 \hypertarget{explanation-for-diseased-cases-with-two-lesions}{%
-\subsection{Explanation for diseased cases with two lesions}\label{explanation-for-diseased-cases-with-two-lesions}}
+\subsubsection{Explanation for diseased cases with two lesions}\label{explanation-for-diseased-cases-with-two-lesions}}
 
 Since the fourth index is set to 3, in the following code all non-diseased cases yield \texttt{NA}; the first diseased case \texttt{70} yields 1 (this case contains two lesions); the second disease case \texttt{71} yields \texttt{NA} (this case contains only one lesion); the third disease case \texttt{72} yields \texttt{NA} (this case contains only two lesions); the fourth disease case \texttt{73} yields 1 (this case contains two lesions); the fifth disease case \texttt{74} yields \texttt{NA} (this case contains one lesion).
 
@@ -3831,7 +3805,7 @@ Since the fourth index is set to 3, in the following code all non-diseased cases
 \end{Shaded}
 
 \hypertarget{explanation-for-diseased-cases-with-three-lesions}{%
-\subsection{Explanation for diseased cases with three lesions}\label{explanation-for-diseased-cases-with-three-lesions}}
+\subsubsection{Explanation for diseased cases with three lesions}\label{explanation-for-diseased-cases-with-three-lesions}}
 
 Since the fourth index is set to 4, in the following code all non-diseased cases yield \texttt{NA}; the first diseased case \texttt{70} yields \texttt{NA} (this case contains two lesions); the second disease case \texttt{71} yields \texttt{NA} (this case contains one lesion); the third disease case \texttt{72} yields \texttt{NA} (this case contains two lesions); the fourth disease case \texttt{73} yields 1 (this case contains three lesions); the fifth disease case \texttt{74} yields \texttt{NA} (this case contains one lesion).
 
@@ -3858,8 +3832,8 @@ Since the fourth index is set to 4, in the following code all non-diseased cases
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{the-non-lesion-localization-nl-or-fp-ratings}{%
-\section{The non-lesion localization (NL or FP) ratings}\label{the-non-lesion-localization-nl-or-fp-ratings}}
+\hypertarget{the-fp-worksheet}{%
+\subsection{The FP worksheet}\label{the-fp-worksheet}}
 
 These are found in the \texttt{FP} or \texttt{NL} worksheet:
 
@@ -3879,8 +3853,8 @@ These are found in the \texttt{FP} or \texttt{NL} worksheet:
   \texttt{NL\_Rating}: the ratings of non-diseased cases.
 \end{itemize}
 
-\hypertarget{the-lesion-localization-ll-or-tp-ratings}{%
-\section{The lesion localization (LL or TP) ratings}\label{the-lesion-localization-ll-or-tp-ratings}}
+\hypertarget{the-tp-worksheet}{%
+\subsection{The TP worksheet}\label{the-tp-worksheet}}
 
 These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
 
