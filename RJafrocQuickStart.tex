@@ -139,7 +139,7 @@
 
 \title{RJafroc Vignette 6: Metz Eqn36 numerical check}
 \author{Dev P. Chakraborty, PhD}
-\date{2022-12-16}
+\date{2022-12-18}
 
 \begin{document}
 \maketitle
@@ -260,16 +260,16 @@ To access files/code one needs to \texttt{fork} the \texttt{GitHub} repository. 
 \part*{Quick Start}\label{part-quick-start}}
 \addcontentsline{toc}{part}{Quick Start}
 
-\hypertarget{quick-start-data-format}{%
-\chapter{JAFROC ROC data format}\label{quick-start-data-format}}
+\hypertarget{quick-start-roc}{%
+\chapter{JAFROC ROC data format}\label{quick-start-roc}}
 
-\hypertarget{quick-start-data-format-how-much-finished}{%
-\section{How much finished}\label{quick-start-data-format-how-much-finished}}
+\hypertarget{quick-start-roc-how-much-finished}{%
+\section{How much finished}\label{quick-start-roc-how-much-finished}}
 
 50\% (remove duplication)
 
-\hypertarget{quick-start-data-format-intro}{%
-\section{Introduction}\label{quick-start-data-format-intro}}
+\hypertarget{quick-start-roc-intro}{%
+\section{Introduction}\label{quick-start-roc-intro}}
 
 \begin{itemize}
 \tightlist
@@ -277,8 +277,8 @@ To access files/code one needs to \texttt{fork} the \texttt{GitHub} repository. 
   The JAFROC Excel data format was adopted circa. 2006. The purpose of this chapter is to explain the format of this file.
 \end{itemize}
 
-\hypertarget{quick-start-data-format-note-to-existing-users}{%
-\section{Note to existing users}\label{quick-start-data-format-note-to-existing-users}}
+\hypertarget{quick-start-roc-note}{%
+\section{Note to existing users}\label{quick-start-roc-note}}
 
 \begin{itemize}
 \tightlist
@@ -290,8 +290,8 @@ To access files/code one needs to \texttt{fork} the \texttt{GitHub} repository. 
   Going forward, one should use the new format, described below, and use \texttt{NewExcelFileFormat\ =\ TRUE} to read the file.
 \end{itemize}
 
-\hypertarget{quick-start-data-format-contents}{%
-\section{Excel ROC file format}\label{quick-start-data-format-contents}}
+\hypertarget{quick-start-roc-excel}{%
+\section{Excel ROC file format}\label{quick-start-roc-excel}}
 
 \begin{itemize}
 \tightlist
@@ -305,8 +305,8 @@ To access files/code one needs to \texttt{fork} the \texttt{GitHub} repository. 
 
 \includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/rocCrTruth.png}
 
-\hypertarget{quick-start-data-format-truth-worksheet}{%
-\subsection{\texorpdfstring{The \texttt{Truth} worksheet}{The Truth worksheet}}\label{quick-start-data-format-truth-worksheet}}
+\hypertarget{quick-start-roc-truth}{%
+\subsection{\texorpdfstring{The \texttt{Truth} worksheet}{The Truth worksheet}}\label{quick-start-roc-truth}}
 
 \begin{itemize}
 \tightlist
@@ -350,8 +350,8 @@ To access files/code one needs to \texttt{fork} the \texttt{GitHub} repository. 
   There are 2 modalities in the dataset (each cell in the \texttt{ModalityID} column contains the string \texttt{0,\ 1}).
 \end{itemize}
 
-\hypertarget{quick-start-data-fp-worksheet}{%
-\subsection{The false positive (FP/NL) worksheet}\label{quick-start-data-fp-worksheet}}
+\hypertarget{quick-start-roc-fp}{%
+\subsection{The false positive (FP/NL) worksheet}\label{quick-start-roc-fp}}
 
 \includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/rocCrFp.png}
 
@@ -371,8 +371,8 @@ To access files/code one needs to \texttt{fork} the \texttt{GitHub} repository. 
   \texttt{FP\_Rating}: the floating point ratings of non-diseased cases. Each row of this worksheet contains a rating corresponding to the values of \texttt{ReaderID}, \texttt{ModalityID} and \texttt{CaseID} for that row.
 \end{itemize}
 
-\hypertarget{quick-start-data-format-tp-worksheet}{%
-\subsection{The true positive (TP/LL) worksheet}\label{quick-start-data-format-tp-worksheet}}
+\hypertarget{quick-start-roc-tp}{%
+\subsection{The true positive (TP/LL) worksheet}\label{quick-start-roc-tp}}
 
 \includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/rocCrTp.png}
 
@@ -392,8 +392,8 @@ To access files/code one needs to \texttt{fork} the \texttt{GitHub} repository. 
   \texttt{TP\_Rating}: the floating point ratings of diseased cases. Each row of this worksheet contains a rating corresponding to the values of \texttt{ReaderID}, \texttt{ModalityID}, \texttt{LesionID} and \texttt{CaseID} for that row.
 \end{itemize}
 
-\hypertarget{quick-start-read-datafile}{%
-\section{Reading the Excel file}\label{quick-start-read-datafile}}
+\hypertarget{quick-start-roc-read}{%
+\section{Reading the Excel file}\label{quick-start-roc-read}}
 
 The following code reads the Excel file and saves it to object \texttt{x}.
 
@@ -410,44 +410,26 @@ The following code reads the Excel file and saves it to object \texttt{x}.
   Flag \texttt{newExcelFileFormat\ =\ FALSE}, the default, is for compatibility with the original JAFROC format Excel format, which did not have columns D - F in the \texttt{Truth} worksheet. Its usage is deprecated.
 \end{itemize}
 
-\hypertarget{quick-start-read-datafile-structure-roc-dataset}{%
-\section{Structure of dataset object}\label{quick-start-read-datafile-structure-roc-dataset}}
+\hypertarget{quick-start-roc-structure-dataset}{%
+\section{Structure of dataset object}\label{quick-start-roc-structure-dataset}}
 
 Most users will not need to be concerned with the internal structure of the dataset object \texttt{x}. For those interested in it, for my reference, and for ease of future maintenance of the software, this is deferred to Section \ref{dataset-object-details-structure-roc-dataset}.
 
-\hypertarget{quick-start-froc-data-format}{%
-\chapter{Data format and reading FROC data}\label{quick-start-froc-data-format}}
+\hypertarget{quick-start-froc}{%
+\chapter{JAFROC FROC data format}\label{quick-start-froc}}
 
-\hypertarget{quick-start-froc-data-format-how-much-finished}{%
-\section{TBA How much finished}\label{quick-start-froc-data-format-how-much-finished}}
+\hypertarget{quick-start-froc-how-much-finished}{%
+\section{TBA How much finished}\label{quick-start-froc-how-much-finished}}
 
 90\%
 
-\hypertarget{quick-start-froc-data-intro}{%
-\section{Introduction}\label{quick-start-froc-data-intro}}
+\hypertarget{quick-start-froc-intro}{%
+\section{Introduction}\label{quick-start-froc-intro}}
 
-In the Free-response Receiver Operating Characteristic (FROC) paradigm the observer searches each case for signs of \textbf{localized disease} and marks and rates localized regions that are sufficiently suspicious for presence of disease. FROC data consists of \textbf{mark-rating pairs}, where each mark is a localized-region that was considered sufficiently suspicious for presence of a localized lesion and the rating is it's confidence level. As in the ROC paradigm, the rating can be an integer or quasi-continuous (e.g., 0 -- 100), or a floating point value, \emph{as long as higher numbers represent greater confidence in presence of a lesion at the indicated region}. This is termed a positive-directed confidence level scheme. By adopting a proximity criterion, the investigator classifies each mark as a lesion localization (\texttt{LL}) - if it is close to a real lesion - or a non-lesion localization (\texttt{NL}) otherwise.
+The chapter is illustrated with a toy data file, \texttt{R/quick-start/frocCr.xlsx} in which readers `0', `1' and `2' interpret 8 cases in two modalities, `0' and `1'. The design is `factorial', abbreviated to \texttt{FCTRL} in the software; this is also termed a `fully-crossed' design. The Excel file has three worksheets named \texttt{Truth}, \texttt{NL} (or \texttt{FP}) and \texttt{LL} (or \texttt{TP}) - the names are case-insensitive.
 
-The purpose of this chapter is to:
-
-\begin{itemize}
-\tightlist
-\item
-  Explain the data format of the input Excel file for FROC datasets.
-\item
-  Explain the format of the FROC dataset.
-\item
-  Explain the lesion distribution array returned by \texttt{UtilLesionDistrVector()}.
-\item
-  Explain the lesion weights array returned by \texttt{UtilLesionWeightsMatrix()}.
-\item
-  Details on the FROC paradigm are in my book \citep{chakraborty2017observer}.
-\end{itemize}
-
-The chapter is illustrated with a toy data file, \texttt{R/quick-start/frocCr.xlsx} in which readers `0', `1' and `2' interpret 8 cases in two modalities, `0' and `1'. The design is `factorial', abbreviated to \texttt{FCTRL} in the software; this is also termed a `fully-crossed' design. The Excel file has three worksheets named \texttt{Truth}, \texttt{NL} (or \texttt{FP}) and \texttt{LL} (or \texttt{TP}).
-
-\hypertarget{quick-start-froc-data-truth}{%
-\section{\texorpdfstring{The \texttt{Truth} worksheet}{The Truth worksheet}}\label{quick-start-froc-data-truth}}
+\hypertarget{quick-start-froc-truth}{%
+\section{\texorpdfstring{The \texttt{Truth} worksheet}{The Truth worksheet}}\label{quick-start-froc-truth}}
 
 \includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/frocCrTruth.png}
 
@@ -497,7 +479,7 @@ The chapter is illustrated with a toy data file, \texttt{R/quick-start/frocCr.xl
   \item
     For each diseased case values that sum to unity.
   \item
-    A simple way to assign equal weights to all lesions in a case is to fill the \texttt{Weight} column with zeroes.
+    A shortcut to assigning equal weights to all lesions in a case is to fill the \texttt{Weight} column with zeroes.
   \end{itemize}
 \item
   \texttt{LesionID}
@@ -527,8 +509,8 @@ The chapter is illustrated with a toy data file, \texttt{R/quick-start/frocCr.xl
   \texttt{Paradigm}: The contents are \texttt{FROC} and \texttt{FCTRL}: this is an \texttt{FROC} dataset and the design is ``factorial''.
 \end{itemize}
 
-\hypertarget{quick-start-froc-data-structure}{%
-\section{Reading the FROC dataset}\label{quick-start-froc-data-structure}}
+\hypertarget{quick-start-froc-read}{%
+\section{Reading the FROC dataset}\label{quick-start-froc-read}}
 
 The example shown above corresponds to file \texttt{R/quick-start/frocCr.xlsx} in the project directory. The next code reads this file into an \texttt{R} object \texttt{x}.
 
@@ -559,7 +541,7 @@ The example shown above corresponds to file \texttt{R/quick-start/frocCr.xlsx} i
 \end{Highlighting}
 \end{Shaded}
 
-This follows the general description in Chapter \ref{quick-start-data-format}. The differences are described below.
+This follows the general description in Chapter \ref{quick-start-roc}. The differences are described below.
 
 \begin{itemize}
 \tightlist
@@ -613,8 +595,8 @@ This follows the general description in Chapter \ref{quick-start-data-format}. T
   The third diseased case has three equally weighted lesions, each with weight 1/3. Etc.
 \end{itemize}
 
-\hypertarget{quick-start-froc-data-fp}{%
-\section{The false positive (FP) ratings}\label{quick-start-froc-data-fp}}
+\hypertarget{quick-start-froc-fp}{%
+\section{The false positive (FP) ratings}\label{quick-start-froc-fp}}
 
 These are found in the \texttt{FP} or \texttt{NL} worksheet.
 
@@ -648,8 +630,8 @@ These are found in the \texttt{FP} or \texttt{NL} worksheet.
   The reader should confirm that the ratings in \texttt{x\$ratings\$NL} reflect the contents of the \texttt{FP} worksheet.
 \end{itemize}
 
-\hypertarget{quick-start-froc-data-tp}{%
-\section{The true positive (TP) ratings}\label{quick-start-froc-data-tp}}
+\hypertarget{quick-start-froc-tp}{%
+\section{The true positive (TP) ratings}\label{quick-start-froc-tp}}
 
 These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
 
@@ -671,8 +653,8 @@ These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
   The reader should confirm that the ratings in \texttt{x\$ratings\$LL} reflect the contents of the \texttt{TP} worksheet.
 \end{itemize}
 
-\hypertarget{quick-start-froc-data-distribution-diseased-cases}{%
-\section{On the distribution of numbers of lesions in diseased cases}\label{quick-start-froc-data-distribution-diseased-cases}}
+\hypertarget{quick-start-froc-lesion-weights}{%
+\section{On the distribution of numbers of lesions in diseased cases}\label{quick-start-froc-lesion-weights}}
 
 \begin{itemize}
 \tightlist
@@ -943,8 +925,8 @@ These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
   This is because some configurations of lesions per case (e.g., cases with 13 lesions per case) do not occur in this dataset.
 \end{itemize}
 
-\hypertarget{quick-start-lroc-data}{%
-\chapter{Data format and reading LROC data}\label{quick-start-lroc-data}}
+\hypertarget{quick-start-lroc}{%
+\chapter{JAFROC LROC data format}\label{quick-start-lroc}}
 
 \hypertarget{quick-start-lroc-data-how-much-finished}{%
 \section{TBA How much finished}\label{quick-start-lroc-data-how-much-finished}}
@@ -1071,7 +1053,7 @@ The images shown above correspond to file \texttt{R/quick-start/lroc1.xlsx}. The
 \end{Highlighting}
 \end{Shaded}
 
-This follows the general description in Chapter \ref{quick-start-data-format}. The differences are described below.
+This follows the general description in Chapter \ref{quick-start-roc}. The differences are described below.
 
 \begin{itemize}
 \tightlist
@@ -1864,7 +1846,7 @@ The following screen shots display the contents of the created file \texttt{"R/q
 \addcontentsline{toc}{part}{ROC sample size}
 
 \hypertarget{roc-sample-size-dbm}{%
-\chapter{Sample size estimation for ROC studies DBM method}\label{roc-sample-size-dbm}}
+\chapter{Sample size DBM-ROC}\label{roc-sample-size-dbm}}
 
 \hypertarget{roc-sample-size-dbm-how-much-finished}{%
 \section{TBA How much finished}\label{roc-sample-size-dbm-how-much-finished}}

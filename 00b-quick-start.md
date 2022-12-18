@@ -1,19 +1,19 @@
 # (PART\*) Quick Start {-}
 
 
-# JAFROC ROC data format {#quick-start-data-format}
+# JAFROC ROC data format {#quick-start-roc}
 
 
 
 
 
-## How much finished {#quick-start-data-format-how-much-finished} 
+## How much finished {#quick-start-roc-how-much-finished} 
 
 50% (remove duplication)
 
 
 
-## Introduction {#quick-start-data-format-intro}
+## Introduction {#quick-start-roc-intro}
 
 * The JAFROC Excel data format was adopted circa. 2006. The purpose of this chapter is to explain the format of this file. 
 <!-- * Reading this file into a dataset object suitable for `RJafroc` analysis is the subject of the next chapter.  -->
@@ -24,14 +24,14 @@
 <!-- * There is no restriction to 5 or 6 ratings. With algorithmic observers, e.g., computer aided detection (CAD) algorithms, the rating could be a floating point number and have infinite precision. All that is required is that higher values correspond to greater confidence in presence of disease - termed a *positive-directed* rating scale. If lower numbers correspond to greater confidence a transformation $R \rightarrow \max(R) - R + 1$, where $\max(R)$ is the maximum rating, over all readers, modalities and cases, will convert a negative-directed rating scale to a positive directed rating scale.  -->
 
 
-## Note to existing users {#quick-start-data-format-note-to-existing-users}
+## Note to existing users {#quick-start-roc-note}
 
 * The Excel file format has recently undergone changes involving three additional columns in the `Truth` worksheet. The changes are needed for easier generalization to other data collection paradigms (e.g., split plot designs) and for better data entry error control.
 * `RJafroc` will work with original format Excel files provided the `NewExcelFileFormat` flag is set to `FALSE`, the default. 
 * Going forward, one should use the new format, described below, and use `NewExcelFileFormat = TRUE` to read the file.
 
 
-## Excel ROC file format {#quick-start-data-format-contents}
+## Excel ROC file format {#quick-start-roc-excel}
 
 * The illustrations in this chapter correspond to Excel file `R/quick-start/rocCr.xlsx` in the project directory. See Section \@ref(#quick-start-index-how-to-access-files) for how to get this file, and all other files and code in this `bookdown` book, to your computer. 
 * This is a *toy file*, i.e., an artificial small dataset used to illustrate essential features of the data format. 
@@ -39,7 +39,7 @@
 
 ![](images/quick-start/rocCrTruth.png){width=100%}
 
-### The `Truth` worksheet {#quick-start-data-format-truth-worksheet}
+### The `Truth` worksheet {#quick-start-roc-truth}
 
 * The `Truth` worksheet contains 6 columns: `CaseID`, `LesionID`, `Weight`, `ReaderID`, `ModalityID` and `Paradigm`. 
 * `CaseID`: **unique integers**, one per case, representing the cases in the dataset. In the current dataset, the non-diseased cases are labeled `1`, `2` and `3`, while the diseased cases are labeled `70`, `71`, `72`, `73` and `74`. The values do not have to be consecutive integers; they need not be ordered; the only requirement is that they be **unique integers**.
@@ -58,7 +58,7 @@
 * There are 2 modalities in the dataset (each cell in the `ModalityID` column contains the string `0, 1`).
 
 
-### The false positive (FP/NL) worksheet {#quick-start-data-fp-worksheet}
+### The false positive (FP/NL) worksheet {#quick-start-roc-fp}
 
 ![](images/quick-start/rocCrFp.png){width=100%}
 
@@ -69,7 +69,7 @@
 * The label of a diseased case cannot occur in the FP worksheet. If it does the software generates an error. 
 * `FP_Rating`: the floating point ratings of non-diseased cases. Each row of this worksheet contains a rating corresponding to the values of `ReaderID`, `ModalityID` and `CaseID` for that row.  
 
-### The true positive (TP/LL) worksheet {#quick-start-data-format-tp-worksheet}
+### The true positive (TP/LL) worksheet {#quick-start-roc-tp}
 
 
 ![](images/quick-start/rocCrTp.png){width=100%}
@@ -85,7 +85,7 @@
 
 
 
-## Reading the Excel file {#quick-start-read-datafile}
+## Reading the Excel file {#quick-start-roc-read}
 
 The following code reads the Excel file and saves it to object `x`.
 
@@ -99,7 +99,7 @@ x <- DfReadDataFile("R/quick-start/rocCr.xlsx", newExcelFileFormat = TRUE)
 * Flag `newExcelFileFormat = FALSE`, the default, is for compatibility with the original JAFROC format Excel format, which did not have columns D - F in the `Truth` worksheet. Its usage is deprecated.
 
 
-## Structure of dataset object {#quick-start-read-datafile-structure-roc-dataset}
+## Structure of dataset object {#quick-start-roc-structure-dataset}
 
 Most users will not need to be concerned with the internal structure of the dataset object `x`. For those interested in it, for my reference, and for ease of future maintenance of the software, this is deferred to Section \@ref(dataset-object-details-structure-roc-dataset).
 

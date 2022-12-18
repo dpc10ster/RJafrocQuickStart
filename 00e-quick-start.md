@@ -1,4 +1,4 @@
-# Data format and reading LROC data {#quick-start-lroc-data}
+# JAFROC LROC data format {#quick-start-lroc}
 
 
 
@@ -7,10 +7,12 @@
 
 
 ## TBA How much finished {#quick-start-lroc-data-how-much-finished}
+
 70%
 
 
 ## Introduction {#quick-start-lroc-data-intro}
+
 In the Localization Receiver Operating Characteristic (LROC) paradigm [@starr1977comments; @starr1975visual; @swensson1996unified] the observer is restricted to at most one mark-rating pair per case. Additionally, each diseased case has *exactly* one lesion. On a diseased case and if the mark is close to the real lesion the investigator classifies the mark as a correct-localization (`CL`). Otherwise it is classified as an incorrect-localization (`IL`). On a non-diseased case the mark is always classified as a false-positive (`FP`). 
 
 The paradigm is illustrated with a few toy data files, `R/quick-start/lroc?.xlsx`, where `?` is `1` or `2`. These files illustrate two-modality three-reader LROC datasets with 3 non-diseased and 5 diseased cases. 
@@ -65,6 +67,7 @@ File `lroc2.xlsx` illustrates the paradigm when one mark-rating pair per case is
 
 
 ## Reading forced localization true LROC dataset {#quick-start-lroc-data-1}
+
 The images shown above correspond to file `R/quick-start/lroc1.xlsx`. The next code reads this file into an `R` object `x1`. Note the usage of the `lrocForcedMark` flag, which is set to `TRUE`, because this is a forced localization LROC dataset. 
 
 
@@ -93,7 +96,7 @@ str(x1)
 #>   .. ..- attr(*, "names")= chr [1:3] "0" "1" "2"
 ```
 
-This follows the general description in Chapter \@ref(quick-start-data-format). The differences are described below.
+This follows the general description in Chapter \@ref(quick-start-roc). The differences are described below.
 
 * `x1$ratings$NL` is a [2,3,8,1] dimension vector. For each modality and reader, only the first three elements, corresponding to the three non-diseased cases, are finite, the rest are `-Inf`.
 
@@ -145,6 +148,7 @@ x1$ratings$LL_IL[2,3,,1]
 
 
 ## Reading forced localization false LROC dataset {#quick-start-lroc-data-2}
+
 The next example is for file `R/quick-start/lroc2.xlsx`. The following code reads this file into an `R` object `x2`. Note that for this dataset one must set the `lrocForcedMark` flag to `FALSE`, because this is *not* a forced localization LROC dataset. Setting `lrocForcedMark` flag to `TRUE` will generate an error.
 
 
@@ -194,6 +198,7 @@ x2$ratings$LL_IL[2,3,,1]
 For this modality-reader combination case 74 (i.e., the fifth diseased case) was unmarked. It does not appear in either the TP or the FP worksheet.
 
 ## Summary {#quick-start-lroc-data-summary}
+
 The difference from the previous data structures is the existence of `LL_IL` in the `ratings` list, which contains the ratings of incorrect localizations. Recall that for ROC and FROC paradigms this member was `NA`. When the data obeys forced localization, the corresponding flag should be set to `TRUE`, otherwise it should be set to `FALSE`. The default value of this flag is `NA`, which will work for ROC or FROC datasets. For LROC datasets it should be set to `T/F`.
 
 

@@ -1,7 +1,7 @@
 # (PART\*) ROC sample size {-}
 
 
-# Sample size estimation for ROC studies DBM method {#roc-sample-size-dbm}
+# Sample size DBM-ROC {#roc-sample-size-dbm}
 
 
 

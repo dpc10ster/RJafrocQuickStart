@@ -4,7 +4,7 @@
 ---
 title: "RJafroc Vignette 4: Degenerate datasets in the binormal model"
 author: "Dev P. Chakraborty, PhD"
-date: "2022-12-16"
+date: "2022-12-18"
 output: rmarkdown::html_vignette
 fig.width: 4
 vignette: >
