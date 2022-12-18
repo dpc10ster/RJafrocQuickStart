@@ -1,4 +1,4 @@
-# Data format and reading FROC data {#quick-start-froc-data-format}
+# JAFROC FROC data format {#quick-start-froc}
 
 
 
@@ -12,24 +12,16 @@ library(RJafroc)
 
 
 
-## TBA How much finished {#quick-start-froc-data-format-how-much-finished}
+## TBA How much finished {#quick-start-froc-how-much-finished}
 90%
 
 
-## Introduction {#quick-start-froc-data-intro}
-In the Free-response Receiver Operating Characteristic (FROC) paradigm the observer searches each case for signs of **localized disease** and marks and rates localized regions that are sufficiently suspicious for presence of disease. FROC data consists of **mark-rating pairs**, where each mark is a localized-region that was considered sufficiently suspicious for presence of a localized lesion and the rating is it's confidence level. As in the ROC paradigm, the rating can be an integer or quasi-continuous (e.g., 0 – 100), or a floating point value, *as long as higher numbers represent greater confidence in presence of a lesion at the indicated region*. This is termed a positive-directed confidence level scheme. By adopting a proximity criterion, the investigator classifies each mark as a lesion localization (`LL`) - if it is close to a real lesion - or a non-lesion localization (`NL`) otherwise. 
+## Introduction {#quick-start-froc-intro}
 
-The purpose of this chapter is to:
+The chapter is illustrated with a toy data file, `R/quick-start/frocCr.xlsx` in which readers '0', '1' and '2' interpret 8 cases in two modalities, '0' and '1'. The design is 'factorial', abbreviated to `FCTRL` in the software; this is also termed a 'fully-crossed' design. The Excel file has three worksheets named `Truth`, `NL` (or `FP`) and `LL` (or `TP`) - the names are case-insensitive. 
 
-* Explain the data format of the input Excel file for FROC datasets. 
-* Explain the format of the FROC dataset.
-* Explain the lesion distribution array returned by `UtilLesionDistrVector()`.
-* Explain the lesion weights array returned by `UtilLesionWeightsMatrix()`.
-* Details on the FROC paradigm are in my book [@chakraborty2017observer].
+## The `Truth` worksheet {#quick-start-froc-truth}
 
-The chapter is illustrated with a toy data file, `R/quick-start/frocCr.xlsx` in which readers '0', '1' and '2' interpret 8 cases in two modalities, '0' and '1'. The design is 'factorial', abbreviated to `FCTRL` in the software; this is also termed a 'fully-crossed' design. The Excel file has three worksheets named `Truth`, `NL` (or `FP`) and `LL` (or `TP`). 
-
-## The `Truth` worksheet {#quick-start-froc-data-truth}
 ![](images/quick-start/frocCrTruth.png){width=100%}
 
 * The `Truth` worksheet contains 6 columns: `CaseID`, `LesionID`, `Weight`, `ReaderID`, `ModalityID` and `Paradigm`. 
@@ -50,7 +42,7 @@ The chapter is illustrated with a toy data file, `R/quick-start/frocCr.xlsx` in 
     + non-negative floating point values 
     + 0 for each non-diseased case
     + For each diseased case values that sum to unity. 
-    + A simple way to assign equal weights to all lesions in a case is to fill the `Weight` column with zeroes.
+    + A shortcut to assigning equal weights to all lesions in a case is to fill the `Weight` column with zeroes.
 * `LesionID` 
     + Diseased case `70` has two lesions, with `LesionID`s '1' and '2', and weights 0.3 and 0.7. 
     + Diseased case `71` has one lesion, with `LesionID` = 1, and `Weight` = 1. 
@@ -63,7 +55,8 @@ The chapter is illustrated with a toy data file, `R/quick-start/frocCr.xlsx` in 
 * There are 2 modalities in the dataset, as each cell in the `ModalityID` column contains '0, 1'.
 * `Paradigm`: The contents are `FROC` and `FCTRL`: this is an `FROC` dataset and the design is "factorial".
 
-## Reading the FROC dataset {#quick-start-froc-data-structure}
+## Reading the FROC dataset {#quick-start-froc-read}
+
 The example shown above corresponds to file `R/quick-start/frocCr.xlsx` in the project directory. The next code reads this file into an `R` object `x`.
 
 ```{r}
@@ -72,7 +65,7 @@ x <- DfReadDataFile(frocCr, newExcelFileFormat = TRUE)
 str(x)
 ```             
 
-This follows the general description in Chapter \@ref(quick-start-data-format). The differences are described below.
+This follows the general description in Chapter \@ref(quick-start-roc). The differences are described below.
 
 * The `x$descriptions$type` member indicates that this is an `FROC` dataset. 
 * The `x$lesions$perCase` member is a vector whose contents reflect the number of lesions in each diseased case, i.e., `r x$lesions$perCase` in the current example.
@@ -94,7 +87,8 @@ x$lesions$weights
 * The third diseased case has three equally weighted lesions, each with weight 1/3. Etc.
 
 
-## The false positive (FP) ratings {#quick-start-froc-data-fp}
+## The false positive (FP) ratings {#quick-start-froc-fp}
+
 These are found in the `FP` or `NL` worksheet.
 
 ![](images/quick-start/frocCrNL.png){width=100%}
@@ -112,7 +106,8 @@ These are found in the `FP` or `NL` worksheet.
 * The case with the most `NL` marks determines the length of the fourth dimension of the `x$ratings$NL` list member.
 * The reader should confirm that the ratings in `x$ratings$NL` reflect the contents of the `FP` worksheet.
 
-## The true positive (TP) ratings {#quick-start-froc-data-tp}
+## The true positive (TP) ratings {#quick-start-froc-tp}
+
 These are found in the `TP` or `LL` worksheet, see below.
 
 
@@ -125,7 +120,8 @@ These are found in the `TP` or `LL` worksheet, see below.
 * The length of the fourth dimension of the `x$ratings$LL` list member, `r length(x$ratings$LL[1,1,1,])` in the present example, is determined by the diseased case (72) with the most lesions in the `Truth` worksheet.
 * The reader should confirm that the ratings in `x$ratings$LL` reflect the contents of the `TP` worksheet.
 
-## On the distribution of numbers of lesions in diseased cases {#quick-start-froc-data-distribution-diseased-cases}  
+## On the distribution of numbers of lesions in diseased cases {#quick-start-froc-lesion-weights} 
+
 * Consider a much larger dataset, `dataset11`, with structure as shown below (for descriptions of all embedded datasets the `RJafroc` documentation):
 
 ```{r}
@@ -154,6 +150,7 @@ for (el in 1:max(x$lesions$perCase)) cat(
 * Etc.
 
 ### Definition of `lesDistr` array {#quick-start-froc-data-lesion-distribution}
+
 * What is the fraction of (diseased) cases with 1 lesion, 2 lesions etc.
 
 ```{r}
@@ -184,6 +181,7 @@ sum(UtilLesionDistrVector(x))
 
 
 ## TBA Definition of `lesWghtDistr` array {#quick-start-froc-data-lesion-weights}
+
 * This is returned by `UtilLesionWeightsDistr()`.
 * This contains the same number of rows as `lesDistr`.
 * The number of columns is one plus the number of rows as `lesDistr`.
