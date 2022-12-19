@@ -1,11 +1,7 @@
 # (PART\*) Quick Start {-}
 
 
-<<<<<<< Updated upstream
-# JAFROC ROC data format {#quick-start-roc}
-=======
-# JAFROC ROC data {#quick-start-data-format}
->>>>>>> Stashed changes
+# JAFROC ROC data {#quick-start-roc}
 
 
 ```{r setup, include = FALSE}
