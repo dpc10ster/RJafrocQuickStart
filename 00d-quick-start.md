@@ -1,4 +1,4 @@
-# JAFROC FROC data format {#quick-start-froc}
+# JAFROC FROC data {#quick-start-froc-data-format}
 
 
 
@@ -10,11 +10,11 @@
 90%
 
 
-## Introduction {#quick-start-froc-intro}
+## Introduction {#quick-start-froc-data-intro}
 
-The chapter is illustrated with a toy data file, `R/quick-start/frocCr.xlsx` in which readers '0', '1' and '2' interpret 8 cases in two modalities, '0' and '1'. The design is 'factorial', abbreviated to `FCTRL` in the software; this is also termed a 'fully-crossed' design. The Excel file has three worksheets named `Truth`, `NL` (or `FP`) and `LL` (or `TP`) - the names are case-insensitive. 
+The chapter is illustrated with a toy data file, `R/quick-start/frocCr.xlsx` in which readers '0', '1' and '2' interpret 8 cases in two modalities, '0' and '1'. The design is 'factorial', abbreviated to `FCTRL` in the software; this is also termed a 'fully-crossed' design. The Excel file has three worksheets named `Truth`, `NL` (or `FP`) and `LL` (or `TP`). The names are case-insensitive.
 
-## The `Truth` worksheet {#quick-start-froc-truth}
+## The `Truth` worksheet {#quick-start-froc-data-truth}
 
 ![](images/quick-start/frocCrTruth.png){width=100%}
 
@@ -49,7 +49,7 @@ The chapter is illustrated with a toy data file, `R/quick-start/frocCr.xlsx` in 
 * There are 2 modalities in the dataset, as each cell in the `ModalityID` column contains '0, 1'.
 * `Paradigm`: The contents are `FROC` and `FCTRL`: this is an `FROC` dataset and the design is "factorial".
 
-## Reading the FROC dataset {#quick-start-froc-read}
+## Reading the FROC dataset {#quick-start-froc-data-structure}
 
 The example shown above corresponds to file `R/quick-start/frocCr.xlsx` in the project directory. The next code reads this file into an `R` object `x`.
 
@@ -115,7 +115,7 @@ x$lesions$weights
 * The third diseased case has three equally weighted lesions, each with weight 1/3. Etc.
 
 
-## The false positive (FP) ratings {#quick-start-froc-fp}
+## The false positive (FP) ratings {#quick-start-froc-data-fp}
 
 These are found in the `FP` or `NL` worksheet.
 
@@ -134,7 +134,7 @@ These are found in the `FP` or `NL` worksheet.
 * The case with the most `NL` marks determines the length of the fourth dimension of the `x$ratings$NL` list member.
 * The reader should confirm that the ratings in `x$ratings$NL` reflect the contents of the `FP` worksheet.
 
-## The true positive (TP) ratings {#quick-start-froc-tp}
+## The true positive (TP) ratings {#quick-start-froc-data-tp}
 
 These are found in the `TP` or `LL` worksheet, see below.
 
@@ -148,7 +148,7 @@ These are found in the `TP` or `LL` worksheet, see below.
 * The length of the fourth dimension of the `x$ratings$LL` list member, 3 in the present example, is determined by the diseased case (72) with the most lesions in the `Truth` worksheet.
 * The reader should confirm that the ratings in `x$ratings$LL` reflect the contents of the `TP` worksheet.
 
-## On the distribution of numbers of lesions in diseased cases {#quick-start-froc-lesion-weights} 
+## On the distribution of numbers of lesions in diseased cases {#quick-start-froc-data-distribution-diseased-cases} 
 
 * Consider a much larger dataset, `dataset11`, with structure as shown below (for descriptions of all embedded datasets the `RJafroc` documentation):
 

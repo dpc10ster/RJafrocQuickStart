@@ -1,7 +1,7 @@
 # (PART\*) Quick Start {-}
 
 
-# JAFROC ROC data format {#quick-start-roc}
+# JAFROC ROC data {#quick-start-roc}
 
 
 

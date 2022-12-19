@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 OR analysis text output | RJafroc Vignette 6: Metz Eqn36 numerical check</title>
+  <title>Chapter 5 OR analysis text output | RJafroc Vignette 6: Metz Eqn36 numerical check</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 OR analysis text output | RJafroc Vignette 6: Metz Eqn36 numerical check" />
+  <meta property="og:title" content="Chapter 5 OR analysis text output | RJafroc Vignette 6: Metz Eqn36 numerical check" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   <meta name="github-repo" content="dpc10ster/RJafrocQuickStart" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 OR analysis text output | RJafroc Vignette 6: Metz Eqn36 numerical check" />
+  <meta name="twitter:title" content="Chapter 5 OR analysis text output | RJafroc Vignette 6: Metz Eqn36 numerical check" />
   
   <meta name="twitter:description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2022-12-18" />
+<meta name="date" content="2022-12-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -173,7 +173,7 @@ div.csl-indent {
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#quick-start-index-how-to-access-files"><i class="fa fa-check"></i><b>1.4</b> Accessing files and code</a></li>
 </ul></li>
 <li class="part"><span><b>Quick Start</b></span></li>
-<li class="chapter" data-level="2" data-path="quick-start-roc.html"><a href="quick-start-roc.html"><i class="fa fa-check"></i><b>2</b> JAFROC ROC data format</a>
+<li class="chapter" data-level="2" data-path="quick-start-roc.html"><a href="quick-start-roc.html"><i class="fa fa-check"></i><b>2</b> JAFROC ROC data</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-how-much-finished"><i class="fa fa-check"></i><b>2.1</b> How much finished</a></li>
 <li class="chapter" data-level="2.2" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-intro"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
@@ -187,200 +187,187 @@ div.csl-indent {
 <li class="chapter" data-level="2.5" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-read"><i class="fa fa-check"></i><b>2.5</b> Reading the Excel file</a></li>
 <li class="chapter" data-level="2.6" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-structure-dataset"><i class="fa fa-check"></i><b>2.6</b> Structure of dataset object</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="quick-start-froc.html"><a href="quick-start-froc.html"><i class="fa fa-check"></i><b>3</b> JAFROC FROC data format</a>
+<li class="chapter" data-level="3" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html"><i class="fa fa-check"></i><b>3</b> JAFROC FROC data</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="quick-start-froc.html"><a href="quick-start-froc.html#quick-start-froc-how-much-finished"><i class="fa fa-check"></i><b>3.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="3.2" data-path="quick-start-froc.html"><a href="quick-start-froc.html#quick-start-froc-intro"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
-<li class="chapter" data-level="3.3" data-path="quick-start-froc.html"><a href="quick-start-froc.html#quick-start-froc-truth"><i class="fa fa-check"></i><b>3.3</b> The <code>Truth</code> worksheet</a></li>
-<li class="chapter" data-level="3.4" data-path="quick-start-froc.html"><a href="quick-start-froc.html#quick-start-froc-read"><i class="fa fa-check"></i><b>3.4</b> Reading the FROC dataset</a></li>
-<li class="chapter" data-level="3.5" data-path="quick-start-froc.html"><a href="quick-start-froc.html#quick-start-froc-fp"><i class="fa fa-check"></i><b>3.5</b> The false positive (FP) ratings</a></li>
-<li class="chapter" data-level="3.6" data-path="quick-start-froc.html"><a href="quick-start-froc.html#quick-start-froc-tp"><i class="fa fa-check"></i><b>3.6</b> The true positive (TP) ratings</a></li>
-<li class="chapter" data-level="3.7" data-path="quick-start-froc.html"><a href="quick-start-froc.html#quick-start-froc-lesion-weights"><i class="fa fa-check"></i><b>3.7</b> On the distribution of numbers of lesions in diseased cases</a>
+<li class="chapter" data-level="3.1" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-how-much-finished"><i class="fa fa-check"></i><b>3.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="3.2" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-intro"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
+<li class="chapter" data-level="3.3" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-truth"><i class="fa fa-check"></i><b>3.3</b> The <code>Truth</code> worksheet</a></li>
+<li class="chapter" data-level="3.4" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-structure"><i class="fa fa-check"></i><b>3.4</b> Reading the FROC dataset</a></li>
+<li class="chapter" data-level="3.5" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-fp"><i class="fa fa-check"></i><b>3.5</b> The false positive (FP) ratings</a></li>
+<li class="chapter" data-level="3.6" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-tp"><i class="fa fa-check"></i><b>3.6</b> The true positive (TP) ratings</a></li>
+<li class="chapter" data-level="3.7" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-distribution-diseased-cases"><i class="fa fa-check"></i><b>3.7</b> On the distribution of numbers of lesions in diseased cases</a>
 <ul>
-<li class="chapter" data-level="3.7.1" data-path="quick-start-froc.html"><a href="quick-start-froc.html#quick-start-froc-data-lesion-distribution"><i class="fa fa-check"></i><b>3.7.1</b> Definition of <code>lesDistr</code> array</a></li>
+<li class="chapter" data-level="3.7.1" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-lesion-distribution"><i class="fa fa-check"></i><b>3.7.1</b> Definition of <code>lesDistr</code> array</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="quick-start-froc.html"><a href="quick-start-froc.html#quick-start-froc-data-lesion-weights"><i class="fa fa-check"></i><b>3.8</b> TBA Definition of <code>lesWghtDistr</code> array</a></li>
+<li class="chapter" data-level="3.8" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-lesion-weights"><i class="fa fa-check"></i><b>3.8</b> TBA Definition of <code>lesWghtDistr</code> array</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html"><i class="fa fa-check"></i><b>4</b> JAFROC LROC data format</a>
+<li class="chapter" data-level="4" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html"><i class="fa fa-check"></i><b>4</b> DBM analysis text output</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-how-much-finished"><i class="fa fa-check"></i><b>4.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="4.2" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-intro"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
-<li class="chapter" data-level="4.3" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-truth"><i class="fa fa-check"></i><b>4.3</b> <code>Truth</code> worksheet</a></li>
-<li class="chapter" data-level="4.4" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-tp1"><i class="fa fa-check"></i><b>4.4</b> <code>TP</code> worksheet, forced localization true</a></li>
-<li class="chapter" data-level="4.5" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-fp1"><i class="fa fa-check"></i><b>4.5</b> <code>FP</code> worksheet, forced localization true</a></li>
-<li class="chapter" data-level="4.6" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-1"><i class="fa fa-check"></i><b>4.6</b> Reading forced localization true LROC dataset</a></li>
-<li class="chapter" data-level="4.7" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-tp2"><i class="fa fa-check"></i><b>4.7</b> <code>TP</code> worksheet, forced localization false</a></li>
-<li class="chapter" data-level="4.8" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-fp2"><i class="fa fa-check"></i><b>4.8</b> <code>FP</code> worksheet, forced localization false</a></li>
-<li class="chapter" data-level="4.9" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-2"><i class="fa fa-check"></i><b>4.9</b> Reading forced localization false LROC dataset</a></li>
-<li class="chapter" data-level="4.10" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-summary"><i class="fa fa-check"></i><b>4.10</b> Summary</a></li>
+<li class="chapter" data-level="4.1" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-how-much-finished"><i class="fa fa-check"></i><b>4.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="4.2" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-intro"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
+<li class="chapter" data-level="4.3" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-analyze-dataset"><i class="fa fa-check"></i><b>4.3</b> Analyzing the ROC dataset</a></li>
+<li class="chapter" data-level="4.4" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-explanation"><i class="fa fa-check"></i><b>4.4</b> Explanation of the output</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html"><i class="fa fa-check"></i><b>5</b> DBM analysis text output</a>
+<li class="chapter" data-level="5" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html"><i class="fa fa-check"></i><b>5</b> OR analysis text output</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-how-much-finished"><i class="fa fa-check"></i><b>5.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="5.2" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-intro"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
-<li class="chapter" data-level="5.3" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-analyze-dataset"><i class="fa fa-check"></i><b>5.3</b> Analyzing the ROC dataset</a></li>
-<li class="chapter" data-level="5.4" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-explanation"><i class="fa fa-check"></i><b>5.4</b> Explanation of the output</a></li>
+<li class="chapter" data-level="5.1" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-how-much-finished"><i class="fa fa-check"></i><b>5.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="5.2" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-intro"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
+<li class="chapter" data-level="5.3" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-analyze-dataset"><i class="fa fa-check"></i><b>5.3</b> Analyzing the ROC dataset</a></li>
+<li class="chapter" data-level="5.4" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-explanation"><i class="fa fa-check"></i><b>5.4</b> Explanation of the output</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html"><i class="fa fa-check"></i><b>6</b> OR analysis text output</a>
+<li class="chapter" data-level="6" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html"><i class="fa fa-check"></i><b>6</b> OR analysis Excel output</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-how-much-finished"><i class="fa fa-check"></i><b>6.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="6.2" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-intro"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
-<li class="chapter" data-level="6.3" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-analyze-dataset"><i class="fa fa-check"></i><b>6.3</b> Analyzing the ROC dataset</a></li>
-<li class="chapter" data-level="6.4" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-explanation"><i class="fa fa-check"></i><b>6.4</b> Explanation of the output</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html"><i class="fa fa-check"></i><b>7</b> OR analysis Excel output</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html#quick-start-or-excel-how-much-finished"><i class="fa fa-check"></i><b>7.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="7.2" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html#quick-start-or-excel-intro"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
-<li class="chapter" data-level="7.3" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html#quick-start-or-excel-output"><i class="fa fa-check"></i><b>7.3</b> Generating the Excel output file</a></li>
+<li class="chapter" data-level="6.1" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html#quick-start-or-excel-how-much-finished"><i class="fa fa-check"></i><b>6.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="6.2" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html#quick-start-or-excel-intro"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
+<li class="chapter" data-level="6.3" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html#quick-start-or-excel-output"><i class="fa fa-check"></i><b>6.3</b> Generating the Excel output file</a></li>
 </ul></li>
 <li class="part"><span><b>ROC sample size</b></span></li>
-<li class="chapter" data-level="8" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html"><i class="fa fa-check"></i><b>8</b> Sample size DBM-ROC</a>
+<li class="chapter" data-level="7" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html"><i class="fa fa-check"></i><b>7</b> ROC-DBM sample size</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-how-much-finished"><i class="fa fa-check"></i><b>8.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="8.2" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-introduction"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
-<li class="chapter" data-level="8.3" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#StatPower1"><i class="fa fa-check"></i><b>8.3</b> Statistical Power</a>
+<li class="chapter" data-level="7.1" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-how-much-finished"><i class="fa fa-check"></i><b>7.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="7.2" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-introduction"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
+<li class="chapter" data-level="7.3" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#StatPower1"><i class="fa fa-check"></i><b>7.3</b> Statistical Power</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#observed-vs.-anticipated-effect-size"><i class="fa fa-check"></i><b>8.3.1</b> Observed vs. anticipated effect-size</a></li>
-<li class="chapter" data-level="8.3.2" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-dependence-of-stats-power"><i class="fa fa-check"></i><b>8.3.2</b> Dependence of statistical power on estimates of model parameters</a></li>
-<li class="chapter" data-level="8.3.3" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRRC-sample-size-estimation"><i class="fa fa-check"></i><b>8.3.3</b> Formulae for random-reader random-case (RRRC) sample size estimation</a></li>
-<li class="chapter" data-level="8.3.4" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-sig-testing"><i class="fa fa-check"></i><b>8.3.4</b> Significance testing</a></li>
-<li class="chapter" data-level="8.3.5" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-pvalue-ci"><i class="fa fa-check"></i><b>8.3.5</b> p-value and confidence interval</a></li>
-<li class="chapter" data-level="8.3.6" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-CompareDBM2OR"><i class="fa fa-check"></i><b>8.3.6</b> Comparing DBM to Obuchowski and Rockette for single-reader multiple-treatments</a></li>
+<li class="chapter" data-level="7.3.1" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#observed-vs.-anticipated-effect-size"><i class="fa fa-check"></i><b>7.3.1</b> Observed vs. anticipated effect-size</a></li>
+<li class="chapter" data-level="7.3.2" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-dependence-of-stats-power"><i class="fa fa-check"></i><b>7.3.2</b> Dependence of statistical power on estimates of model parameters</a></li>
+<li class="chapter" data-level="7.3.3" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRRC-sample-size-estimation"><i class="fa fa-check"></i><b>7.3.3</b> Formulae for random-reader random-case (RRRC) sample size estimation</a></li>
+<li class="chapter" data-level="7.3.4" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-sig-testing"><i class="fa fa-check"></i><b>7.3.4</b> Significance testing</a></li>
+<li class="chapter" data-level="7.3.5" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-pvalue-ci"><i class="fa fa-check"></i><b>7.3.5</b> p-value and confidence interval</a></li>
+<li class="chapter" data-level="7.3.6" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-CompareDBM2OR"><i class="fa fa-check"></i><b>7.3.6</b> Comparing DBM to Obuchowski and Rockette for single-reader multiple-treatments</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-FRRC-sample-size-estimation"><i class="fa fa-check"></i><b>8.4</b> Formulae for fixed-reader random-case (FRRC) sample size estimation</a>
+<li class="chapter" data-level="7.4" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-FRRC-sample-size-estimation"><i class="fa fa-check"></i><b>7.4</b> Formulae for fixed-reader random-case (FRRC) sample size estimation</a>
 <ul>
-<li class="chapter" data-level="8.4.1" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRFC-sample-size-estimation"><i class="fa fa-check"></i><b>8.4.1</b> Formulae for random-reader fixed-case (RRFC) sample size estimation</a></li>
-<li class="chapter" data-level="8.4.2" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-FRRCAnalysis"><i class="fa fa-check"></i><b>8.4.2</b> Fixed-reader random-case (FRRC) analysis TBA</a></li>
-<li class="chapter" data-level="8.4.3" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRFCAnalysis"><i class="fa fa-check"></i><b>8.4.3</b> Random-reader fixed-case (RRFC) analysis</a></li>
-<li class="chapter" data-level="8.4.4" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-STMRAnalysis"><i class="fa fa-check"></i><b>8.4.4</b> Single-treatment multiple-reader analysis</a></li>
+<li class="chapter" data-level="7.4.1" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRFC-sample-size-estimation"><i class="fa fa-check"></i><b>7.4.1</b> Formulae for random-reader fixed-case (RRFC) sample size estimation</a></li>
+<li class="chapter" data-level="7.4.2" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-FRRCAnalysis"><i class="fa fa-check"></i><b>7.4.2</b> Fixed-reader random-case (FRRC) analysis TBA</a></li>
+<li class="chapter" data-level="7.4.3" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRFCAnalysis"><i class="fa fa-check"></i><b>7.4.3</b> Random-reader fixed-case (RRFC) analysis</a></li>
+<li class="chapter" data-level="7.4.4" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-STMRAnalysis"><i class="fa fa-check"></i><b>7.4.4</b> Single-treatment multiple-reader analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#discussionsummary2"><i class="fa fa-check"></i><b>8.5</b> Discussion/Summary/2</a></li>
+<li class="chapter" data-level="7.5" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#discussionsummary2"><i class="fa fa-check"></i><b>7.5</b> Discussion/Summary/2</a></li>
 </ul></li>
 <li class="part"><span><b>FROC analysis</b></span></li>
-<li class="chapter" data-level="9" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html"><i class="fa fa-check"></i><b>9</b> Analyzing FROC data</a>
+<li class="chapter" data-level="8" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html"><i class="fa fa-check"></i><b>8</b> Analyzing FROC data</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-how-much-finished"><i class="fa fa-check"></i><b>9.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="9.2" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-intro"><i class="fa fa-check"></i><b>9.2</b> Introduction</a></li>
-<li class="chapter" data-level="9.3" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-example1"><i class="fa fa-check"></i><b>9.3</b> Example 1</a></li>
-<li class="chapter" data-level="9.4" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-plotting"><i class="fa fa-check"></i><b>9.4</b> TBA Plotting wAFROC and ROC curves</a></li>
-<li class="chapter" data-level="9.5" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-reporting"><i class="fa fa-check"></i><b>9.5</b> Reporting an FROC study</a></li>
-<li class="chapter" data-level="9.6" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#crossed-treatment-analysis"><i class="fa fa-check"></i><b>9.6</b> Crossed-treatment analysis</a></li>
-<li class="chapter" data-level="9.7" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-rjafroc-history"><i class="fa fa-check"></i><b>9.7</b> Discussion / Summary</a></li>
+<li class="chapter" data-level="8.1" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-how-much-finished"><i class="fa fa-check"></i><b>8.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="8.2" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-intro"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
+<li class="chapter" data-level="8.3" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-example1"><i class="fa fa-check"></i><b>8.3</b> Example 1</a></li>
+<li class="chapter" data-level="8.4" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-plotting"><i class="fa fa-check"></i><b>8.4</b> TBA Plotting wAFROC and ROC curves</a></li>
+<li class="chapter" data-level="8.5" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-reporting"><i class="fa fa-check"></i><b>8.5</b> Reporting an FROC study</a></li>
+<li class="chapter" data-level="8.6" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#crossed-treatment-analysis"><i class="fa fa-check"></i><b>8.6</b> Crossed-treatment analysis</a></li>
+<li class="chapter" data-level="8.7" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-rjafroc-history"><i class="fa fa-check"></i><b>8.7</b> Discussion / Summary</a></li>
 </ul></li>
 <li class="part"><span><b>FROC sample size</b></span></li>
-<li class="chapter" data-level="10" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>10</b> Sample size estimation for FROC studies</a>
+<li class="chapter" data-level="9" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>9</b> Sample size estimation for FROC studies</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-how-much-finished"><i class="fa fa-check"></i><b>10.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="10.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#overview"><i class="fa fa-check"></i><b>10.2</b> Overview</a></li>
-<li class="chapter" data-level="10.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-1"><i class="fa fa-check"></i><b>10.3</b> Part 1</a>
+<li class="chapter" data-level="9.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-how-much-finished"><i class="fa fa-check"></i><b>9.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="9.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#overview"><i class="fa fa-check"></i><b>9.2</b> Overview</a></li>
+<li class="chapter" data-level="9.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-1"><i class="fa fa-check"></i><b>9.3</b> Part 1</a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>10.3.1</b> Introduction</a></li>
-<li class="chapter" data-level="10.3.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#relating-an-roc-effect-size-to-a-wafroc-effect-size"><i class="fa fa-check"></i><b>10.3.2</b> Relating an ROC effect-size to a wAFROC effect-size</a></li>
-<li class="chapter" data-level="10.3.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#computing-the-respective-variance-components"><i class="fa fa-check"></i><b>10.3.3</b> Computing the respective variance components</a></li>
-<li class="chapter" data-level="10.3.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#comparing-roc-power-to-wafroc-power-for-equivalent-effect-sizes"><i class="fa fa-check"></i><b>10.3.4</b> Comparing ROC power to wAFROC power for equivalent effect-sizes</a></li>
+<li class="chapter" data-level="9.3.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>9.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.3.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#relating-an-roc-effect-size-to-a-wafroc-effect-size"><i class="fa fa-check"></i><b>9.3.2</b> Relating an ROC effect-size to a wAFROC effect-size</a></li>
+<li class="chapter" data-level="9.3.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#computing-the-respective-variance-components"><i class="fa fa-check"></i><b>9.3.3</b> Computing the respective variance components</a></li>
+<li class="chapter" data-level="9.3.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#comparing-roc-power-to-wafroc-power-for-equivalent-effect-sizes"><i class="fa fa-check"></i><b>9.3.4</b> Comparing ROC power to wAFROC power for equivalent effect-sizes</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-2"><i class="fa fa-check"></i><b>10.4</b> Part 2</a>
+<li class="chapter" data-level="9.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-2"><i class="fa fa-check"></i><b>9.4</b> Part 2</a>
 <ul>
-<li class="chapter" data-level="10.4.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#introduction"><i class="fa fa-check"></i><b>10.4.1</b> Introduction</a></li>
-<li class="chapter" data-level="10.4.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#constructing-the-nh-model-for-the-dataset"><i class="fa fa-check"></i><b>10.4.2</b> Constructing the NH model for the dataset</a></li>
-<li class="chapter" data-level="10.4.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#extracting-the-wafroc-variance-components"><i class="fa fa-check"></i><b>10.4.3</b> Extracting the wAFROC variance components</a></li>
-<li class="chapter" data-level="10.4.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-power-for-specified-roc-effect-size-number-of-readers-j-and-number-of-cases-k"><i class="fa fa-check"></i><b>10.4.4</b> wAFROC power for specified ROC effect size, number of readers J and number of cases K</a></li>
-<li class="chapter" data-level="10.4.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-number-of-cases-for-80-power-for-a-given-number-of-readers-j"><i class="fa fa-check"></i><b>10.4.5</b> wAFROC number of cases for 80% power for a given number of readers J</a></li>
-<li class="chapter" data-level="10.4.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k"><i class="fa fa-check"></i><b>10.4.6</b> wAFROC-FOM power for a given number of readers J and cases K</a></li>
+<li class="chapter" data-level="9.4.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#introduction"><i class="fa fa-check"></i><b>9.4.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.4.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#constructing-the-nh-model-for-the-dataset"><i class="fa fa-check"></i><b>9.4.2</b> Constructing the NH model for the dataset</a></li>
+<li class="chapter" data-level="9.4.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#extracting-the-wafroc-variance-components"><i class="fa fa-check"></i><b>9.4.3</b> Extracting the wAFROC variance components</a></li>
+<li class="chapter" data-level="9.4.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-power-for-specified-roc-effect-size-number-of-readers-j-and-number-of-cases-k"><i class="fa fa-check"></i><b>9.4.4</b> wAFROC power for specified ROC effect size, number of readers J and number of cases K</a></li>
+<li class="chapter" data-level="9.4.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-number-of-cases-for-80-power-for-a-given-number-of-readers-j"><i class="fa fa-check"></i><b>9.4.5</b> wAFROC number of cases for 80% power for a given number of readers J</a></li>
+<li class="chapter" data-level="9.4.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k"><i class="fa fa-check"></i><b>9.4.6</b> wAFROC-FOM power for a given number of readers J and cases K</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>RJafroc Vignettes</b></span></li>
-<li class="chapter" data-level="11" data-path="background-f-distribution.html"><a href="background-f-distribution.html"><i class="fa fa-check"></i><b>11</b> F-distribution</a>
+<li class="chapter" data-level="10" data-path="background-f-distribution.html"><a href="background-f-distribution.html"><i class="fa fa-check"></i><b>10</b> F-distribution</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="background-f-distribution.html"><a href="background-f-distribution.html#background-f-distribution-how-much-finished"><i class="fa fa-check"></i><b>11.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="11.2" data-path="background-f-distribution.html"><a href="background-f-distribution.html#background"><i class="fa fa-check"></i><b>11.2</b> Background</a></li>
-<li class="chapter" data-level="11.3" data-path="background-f-distribution.html"><a href="background-f-distribution.html#introduction-1"><i class="fa fa-check"></i><b>11.3</b> Introduction</a></li>
-<li class="chapter" data-level="11.4" data-path="background-f-distribution.html"><a href="background-f-distribution.html#effect-of-ncp-for-ndf-2-and-ddf-10"><i class="fa fa-check"></i><b>11.4</b> Effect of <code>ncp</code> for <code>ndf</code> = 2 and <code>ddf</code> = 10</a></li>
-<li class="chapter" data-level="11.5" data-path="background-f-distribution.html"><a href="background-f-distribution.html#comments"><i class="fa fa-check"></i><b>11.5</b> Comments</a>
+<li class="chapter" data-level="10.1" data-path="background-f-distribution.html"><a href="background-f-distribution.html#background-f-distribution-how-much-finished"><i class="fa fa-check"></i><b>10.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="10.2" data-path="background-f-distribution.html"><a href="background-f-distribution.html#background"><i class="fa fa-check"></i><b>10.2</b> Background</a></li>
+<li class="chapter" data-level="10.3" data-path="background-f-distribution.html"><a href="background-f-distribution.html#introduction-1"><i class="fa fa-check"></i><b>10.3</b> Introduction</a></li>
+<li class="chapter" data-level="10.4" data-path="background-f-distribution.html"><a href="background-f-distribution.html#effect-of-ncp-for-ndf-2-and-ddf-10"><i class="fa fa-check"></i><b>10.4</b> Effect of <code>ncp</code> for <code>ndf</code> = 2 and <code>ddf</code> = 10</a></li>
+<li class="chapter" data-level="10.5" data-path="background-f-distribution.html"><a href="background-f-distribution.html#comments"><i class="fa fa-check"></i><b>10.5</b> Comments</a>
 <ul>
-<li class="chapter" data-level="11.5.1" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-a"><i class="fa fa-check"></i><b>11.5.1</b> Fig. A</a></li>
-<li class="chapter" data-level="11.5.2" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-b"><i class="fa fa-check"></i><b>11.5.2</b> Fig. B</a></li>
-<li class="chapter" data-level="11.5.3" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-c"><i class="fa fa-check"></i><b>11.5.3</b> Fig. C</a></li>
-<li class="chapter" data-level="11.5.4" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-d"><i class="fa fa-check"></i><b>11.5.4</b> Fig. D</a></li>
-<li class="chapter" data-level="11.5.5" data-path="background-f-distribution.html"><a href="background-f-distribution.html#summary"><i class="fa fa-check"></i><b>11.5.5</b> Summary</a></li>
+<li class="chapter" data-level="10.5.1" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-a"><i class="fa fa-check"></i><b>10.5.1</b> Fig. A</a></li>
+<li class="chapter" data-level="10.5.2" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-b"><i class="fa fa-check"></i><b>10.5.2</b> Fig. B</a></li>
+<li class="chapter" data-level="10.5.3" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-c"><i class="fa fa-check"></i><b>10.5.3</b> Fig. C</a></li>
+<li class="chapter" data-level="10.5.4" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-d"><i class="fa fa-check"></i><b>10.5.4</b> Fig. D</a></li>
+<li class="chapter" data-level="10.5.5" data-path="background-f-distribution.html"><a href="background-f-distribution.html#summary"><i class="fa fa-check"></i><b>10.5.5</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="11.6" data-path="background-f-distribution.html"><a href="background-f-distribution.html#effect-of-ncp-for-ndf-2-and-ddf-100"><i class="fa fa-check"></i><b>11.6</b> Effect of <code>ncp</code> for <code>ndf</code> = 2 and <code>ddf</code> = 100</a></li>
-<li class="chapter" data-level="11.7" data-path="background-f-distribution.html"><a href="background-f-distribution.html#comments-1"><i class="fa fa-check"></i><b>11.7</b> Comments</a>
+<li class="chapter" data-level="10.6" data-path="background-f-distribution.html"><a href="background-f-distribution.html#effect-of-ncp-for-ndf-2-and-ddf-100"><i class="fa fa-check"></i><b>10.6</b> Effect of <code>ncp</code> for <code>ndf</code> = 2 and <code>ddf</code> = 100</a></li>
+<li class="chapter" data-level="10.7" data-path="background-f-distribution.html"><a href="background-f-distribution.html#comments-1"><i class="fa fa-check"></i><b>10.7</b> Comments</a>
 <ul>
-<li class="chapter" data-level="11.7.1" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-e"><i class="fa fa-check"></i><b>11.7.1</b> Fig. E</a></li>
-<li class="chapter" data-level="11.7.2" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-f"><i class="fa fa-check"></i><b>11.7.2</b> Fig. F</a></li>
-<li class="chapter" data-level="11.7.3" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-g"><i class="fa fa-check"></i><b>11.7.3</b> Fig. G</a></li>
-<li class="chapter" data-level="11.7.4" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-h"><i class="fa fa-check"></i><b>11.7.4</b> Fig. H</a></li>
+<li class="chapter" data-level="10.7.1" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-e"><i class="fa fa-check"></i><b>10.7.1</b> Fig. E</a></li>
+<li class="chapter" data-level="10.7.2" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-f"><i class="fa fa-check"></i><b>10.7.2</b> Fig. F</a></li>
+<li class="chapter" data-level="10.7.3" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-g"><i class="fa fa-check"></i><b>10.7.3</b> Fig. G</a></li>
+<li class="chapter" data-level="10.7.4" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-h"><i class="fa fa-check"></i><b>10.7.4</b> Fig. H</a></li>
 </ul></li>
-<li class="chapter" data-level="11.8" data-path="background-f-distribution.html"><a href="background-f-distribution.html#effect-of-ncp-for-ndf-1-ddf-100"><i class="fa fa-check"></i><b>11.8</b> Effect of <code>ncp</code> for <code>ndf</code> = 1, <code>ddf</code> = 100</a></li>
-<li class="chapter" data-level="11.9" data-path="background-f-distribution.html"><a href="background-f-distribution.html#comments-2"><i class="fa fa-check"></i><b>11.9</b> Comments</a>
+<li class="chapter" data-level="10.8" data-path="background-f-distribution.html"><a href="background-f-distribution.html#effect-of-ncp-for-ndf-1-ddf-100"><i class="fa fa-check"></i><b>10.8</b> Effect of <code>ncp</code> for <code>ndf</code> = 1, <code>ddf</code> = 100</a></li>
+<li class="chapter" data-level="10.9" data-path="background-f-distribution.html"><a href="background-f-distribution.html#comments-2"><i class="fa fa-check"></i><b>10.9</b> Comments</a>
 <ul>
-<li class="chapter" data-level="11.9.1" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-i"><i class="fa fa-check"></i><b>11.9.1</b> Fig. I</a></li>
-<li class="chapter" data-level="11.9.2" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-j"><i class="fa fa-check"></i><b>11.9.2</b> Fig. J</a></li>
-<li class="chapter" data-level="11.9.3" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-k"><i class="fa fa-check"></i><b>11.9.3</b> Fig. K</a></li>
-<li class="chapter" data-level="11.9.4" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-l"><i class="fa fa-check"></i><b>11.9.4</b> Fig. L</a></li>
+<li class="chapter" data-level="10.9.1" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-i"><i class="fa fa-check"></i><b>10.9.1</b> Fig. I</a></li>
+<li class="chapter" data-level="10.9.2" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-j"><i class="fa fa-check"></i><b>10.9.2</b> Fig. J</a></li>
+<li class="chapter" data-level="10.9.3" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-k"><i class="fa fa-check"></i><b>10.9.3</b> Fig. K</a></li>
+<li class="chapter" data-level="10.9.4" data-path="background-f-distribution.html"><a href="background-f-distribution.html#fig.-l"><i class="fa fa-check"></i><b>10.9.4</b> Fig. L</a></li>
 </ul></li>
-<li class="chapter" data-level="11.10" data-path="background-f-distribution.html"><a href="background-f-distribution.html#summary-1"><i class="fa fa-check"></i><b>11.10</b> Summary</a></li>
+<li class="chapter" data-level="10.10" data-path="background-f-distribution.html"><a href="background-f-distribution.html#summary-1"><i class="fa fa-check"></i><b>10.10</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html"><i class="fa fa-check"></i><b>12</b> RSM operating characteristics</a>
+<li class="chapter" data-level="11" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html"><i class="fa fa-check"></i><b>11</b> RSM operating characteristics</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#rsm-operating-characteristics-how-much-finished"><i class="fa fa-check"></i><b>12.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="12.2" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#introduction-2"><i class="fa fa-check"></i><b>12.2</b> Introduction</a></li>
-<li class="chapter" data-level="12.3" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#the-distinction-between-predicted-curves-and-empirical-curves"><i class="fa fa-check"></i><b>12.3</b> The distinction between predicted curves and empirical curves</a></li>
-<li class="chapter" data-level="12.4" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#the-rsm-model"><i class="fa fa-check"></i><b>12.4</b> The RSM model</a></li>
-<li class="chapter" data-level="12.5" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#the-empirical-wafroc"><i class="fa fa-check"></i><b>12.5</b> The empirical wAFROC</a></li>
-<li class="chapter" data-level="12.6" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#the-predicted-wafroc"><i class="fa fa-check"></i><b>12.6</b> The predicted wAFROC</a></li>
-<li class="chapter" data-level="12.7" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#the-distribution-of-number-of-lesions-and-weights"><i class="fa fa-check"></i><b>12.7</b> The distribution of number of lesions and weights</a></li>
-<li class="chapter" data-level="12.8" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#other-operating-characteristics"><i class="fa fa-check"></i><b>12.8</b> Other operating characteristics</a></li>
-<li class="chapter" data-level="12.9" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#summary-2"><i class="fa fa-check"></i><b>12.9</b> Summary</a></li>
+<li class="chapter" data-level="11.1" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#rsm-operating-characteristics-how-much-finished"><i class="fa fa-check"></i><b>11.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="11.2" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#introduction-2"><i class="fa fa-check"></i><b>11.2</b> Introduction</a></li>
+<li class="chapter" data-level="11.3" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#the-distinction-between-predicted-curves-and-empirical-curves"><i class="fa fa-check"></i><b>11.3</b> The distinction between predicted curves and empirical curves</a></li>
+<li class="chapter" data-level="11.4" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#the-rsm-model"><i class="fa fa-check"></i><b>11.4</b> The RSM model</a></li>
+<li class="chapter" data-level="11.5" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#the-empirical-wafroc"><i class="fa fa-check"></i><b>11.5</b> The empirical wAFROC</a></li>
+<li class="chapter" data-level="11.6" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#the-predicted-wafroc"><i class="fa fa-check"></i><b>11.6</b> The predicted wAFROC</a></li>
+<li class="chapter" data-level="11.7" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#the-distribution-of-number-of-lesions-and-weights"><i class="fa fa-check"></i><b>11.7</b> The distribution of number of lesions and weights</a></li>
+<li class="chapter" data-level="11.8" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#other-operating-characteristics"><i class="fa fa-check"></i><b>11.8</b> Other operating characteristics</a></li>
+<li class="chapter" data-level="11.9" data-path="rsm-operating-characteristics.html"><a href="rsm-operating-characteristics.html#summary-2"><i class="fa fa-check"></i><b>11.9</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="improper-rocs.html"><a href="improper-rocs.html"><i class="fa fa-check"></i><b>13</b> Improper ROC curves</a>
+<li class="chapter" data-level="12" data-path="improper-rocs.html"><a href="improper-rocs.html"><i class="fa fa-check"></i><b>12</b> Improper ROC curves</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="improper-rocs.html"><a href="improper-rocs.html#improper-rocs-how-much-finished"><i class="fa fa-check"></i><b>13.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="13.2" data-path="improper-rocs.html"><a href="improper-rocs.html#the-binormal-model"><i class="fa fa-check"></i><b>13.2</b> The binormal model</a></li>
-<li class="chapter" data-level="13.3" data-path="improper-rocs.html"><a href="improper-rocs.html#improper-rocs-1"><i class="fa fa-check"></i><b>13.3</b> Improper ROCs</a></li>
-<li class="chapter" data-level="13.4" data-path="improper-rocs.html"><a href="improper-rocs.html#reason-for-improper-rocs"><i class="fa fa-check"></i><b>13.4</b> Reason for improper ROCs</a></li>
+<li class="chapter" data-level="12.1" data-path="improper-rocs.html"><a href="improper-rocs.html#improper-rocs-how-much-finished"><i class="fa fa-check"></i><b>12.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="12.2" data-path="improper-rocs.html"><a href="improper-rocs.html#the-binormal-model"><i class="fa fa-check"></i><b>12.2</b> The binormal model</a></li>
+<li class="chapter" data-level="12.3" data-path="improper-rocs.html"><a href="improper-rocs.html#improper-rocs-1"><i class="fa fa-check"></i><b>12.3</b> Improper ROCs</a></li>
+<li class="chapter" data-level="12.4" data-path="improper-rocs.html"><a href="improper-rocs.html#reason-for-improper-rocs"><i class="fa fa-check"></i><b>12.4</b> Reason for improper ROCs</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="degenerate-rocs.html"><a href="degenerate-rocs.html"><i class="fa fa-check"></i><b>14</b> Degenerate ROC curves</a>
+<li class="chapter" data-level="13" data-path="degenerate-rocs.html"><a href="degenerate-rocs.html"><i class="fa fa-check"></i><b>13</b> Degenerate ROC curves</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="degenerate-rocs.html"><a href="degenerate-rocs.html#two-helper-functions"><i class="fa fa-check"></i><b>14.1</b> Two helper functions</a></li>
-<li class="chapter" data-level="14.2" data-path="degenerate-rocs.html"><a href="degenerate-rocs.html#degenerate-datasets"><i class="fa fa-check"></i><b>14.2</b> Degenerate datasets</a></li>
-<li class="chapter" data-level="14.3" data-path="degenerate-rocs.html"><a href="degenerate-rocs.html#understanding-degenerate-datasets"><i class="fa fa-check"></i><b>14.3</b> Understanding degenerate datasets</a></li>
-<li class="chapter" data-level="14.4" data-path="degenerate-rocs.html"><a href="degenerate-rocs.html#the-exact-fit-is-not-unique"><i class="fa fa-check"></i><b>14.4</b> The exact fit is not unique</a></li>
-<li class="chapter" data-level="14.5" data-path="degenerate-rocs.html"><a href="degenerate-rocs.html#comments-on-degeneracy"><i class="fa fa-check"></i><b>14.5</b> Comments on degeneracy</a></li>
-<li class="chapter" data-level="14.6" data-path="degenerate-rocs.html"><a href="degenerate-rocs.html#a-reasonable-fit-to-the-degenerate-dataset"><i class="fa fa-check"></i><b>14.6</b> A reasonable fit to the degenerate dataset</a></li>
+<li class="chapter" data-level="13.1" data-path="degenerate-rocs.html"><a href="degenerate-rocs.html#two-helper-functions"><i class="fa fa-check"></i><b>13.1</b> Two helper functions</a></li>
+<li class="chapter" data-level="13.2" data-path="degenerate-rocs.html"><a href="degenerate-rocs.html#degenerate-datasets"><i class="fa fa-check"></i><b>13.2</b> Degenerate datasets</a></li>
+<li class="chapter" data-level="13.3" data-path="degenerate-rocs.html"><a href="degenerate-rocs.html#understanding-degenerate-datasets"><i class="fa fa-check"></i><b>13.3</b> Understanding degenerate datasets</a></li>
+<li class="chapter" data-level="13.4" data-path="degenerate-rocs.html"><a href="degenerate-rocs.html#the-exact-fit-is-not-unique"><i class="fa fa-check"></i><b>13.4</b> The exact fit is not unique</a></li>
+<li class="chapter" data-level="13.5" data-path="degenerate-rocs.html"><a href="degenerate-rocs.html#comments-on-degeneracy"><i class="fa fa-check"></i><b>13.5</b> Comments on degeneracy</a></li>
+<li class="chapter" data-level="13.6" data-path="degenerate-rocs.html"><a href="degenerate-rocs.html#a-reasonable-fit-to-the-degenerate-dataset"><i class="fa fa-check"></i><b>13.6</b> A reasonable fit to the degenerate dataset</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="proproc-rocs.html"><a href="proproc-rocs.html"><i class="fa fa-check"></i><b>15</b> PROPROC ROC curves</a>
+<li class="chapter" data-level="14" data-path="proproc-rocs.html"><a href="proproc-rocs.html"><i class="fa fa-check"></i><b>14</b> PROPROC ROC curves</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="proproc-rocs.html"><a href="proproc-rocs.html#helper-functions"><i class="fa fa-check"></i><b>15.1</b> Helper functions</a></li>
-<li class="chapter" data-level="15.2" data-path="proproc-rocs.html"><a href="proproc-rocs.html#definitions-of-proproc-parameters-in-terms-of-binormal-model-parameters"><i class="fa fa-check"></i><b>15.2</b> Definitions of PROPROC parameters in terms of binormal model parameters</a></li>
-<li class="chapter" data-level="15.3" data-path="proproc-rocs.html"><a href="proproc-rocs.html#main-code-and-output"><i class="fa fa-check"></i><b>15.3</b> Main code and output</a></li>
-<li class="chapter" data-level="15.4" data-path="proproc-rocs.html"><a href="proproc-rocs.html#discussion"><i class="fa fa-check"></i><b>15.4</b> Discussion</a></li>
+<li class="chapter" data-level="14.1" data-path="proproc-rocs.html"><a href="proproc-rocs.html#helper-functions"><i class="fa fa-check"></i><b>14.1</b> Helper functions</a></li>
+<li class="chapter" data-level="14.2" data-path="proproc-rocs.html"><a href="proproc-rocs.html#definitions-of-proproc-parameters-in-terms-of-binormal-model-parameters"><i class="fa fa-check"></i><b>14.2</b> Definitions of PROPROC parameters in terms of binormal model parameters</a></li>
+<li class="chapter" data-level="14.3" data-path="proproc-rocs.html"><a href="proproc-rocs.html#main-code-and-output"><i class="fa fa-check"></i><b>14.3</b> Main code and output</a></li>
+<li class="chapter" data-level="14.4" data-path="proproc-rocs.html"><a href="proproc-rocs.html#discussion"><i class="fa fa-check"></i><b>14.4</b> Discussion</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html"><i class="fa fa-check"></i><b>16</b> Metz Eqn 36 numerical check</a>
+<li class="chapter" data-level="15" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html"><i class="fa fa-check"></i><b>15</b> Metz Eqn 36 numerical check</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html#helper-functions-1"><i class="fa fa-check"></i><b>16.1</b> Helper functions</a></li>
-<li class="chapter" data-level="16.2" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html#main-code-and-output-1"><i class="fa fa-check"></i><b>16.2</b> Main code and output</a></li>
-<li class="chapter" data-level="16.3" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html#discussion-1"><i class="fa fa-check"></i><b>16.3</b> Discussion</a></li>
+<li class="chapter" data-level="15.1" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html#helper-functions-1"><i class="fa fa-check"></i><b>15.1</b> Helper functions</a></li>
+<li class="chapter" data-level="15.2" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html#main-code-and-output-1"><i class="fa fa-check"></i><b>15.2</b> Main code and output</a></li>
+<li class="chapter" data-level="15.3" data-path="metz-eqn-36.html"><a href="metz-eqn-36.html#discussion-1"><i class="fa fa-check"></i><b>15.3</b> Discussion</a></li>
 </ul></li>
 <li class="part"><span><b>Software details</b></span></li>
-<li class="chapter" data-level="17" data-path="dataset-object-details.html"><a href="dataset-object-details.html"><i class="fa fa-check"></i><b>17</b> Excel file and dataset details</a>
+<li class="chapter" data-level="16" data-path="dataset-object-details.html"><a href="dataset-object-details.html"><i class="fa fa-check"></i><b>16</b> Excel file and dataset details</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="dataset-object-details.html"><a href="dataset-object-details.html#introduction-3"><i class="fa fa-check"></i><b>17.1</b> Introduction</a></li>
-<li class="chapter" data-level="17.2" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-roc-dataset"><i class="fa fa-check"></i><b>17.2</b> ROC dataset</a>
+<li class="chapter" data-level="16.1" data-path="dataset-object-details.html"><a href="dataset-object-details.html#introduction-3"><i class="fa fa-check"></i><b>16.1</b> Introduction</a></li>
+<li class="chapter" data-level="16.2" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-roc-dataset"><i class="fa fa-check"></i><b>16.2</b> ROC dataset</a>
 <ul>
-<li class="chapter" data-level="17.2.1" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-structure-roc-dataset"><i class="fa fa-check"></i><b>17.2.1</b> The structure of a factorial ROC dataset object</a></li>
-<li class="chapter" data-level="17.2.2" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-nl-fp"><i class="fa fa-check"></i><b>17.2.2</b> The <code>FP</code> worksheet</a></li>
-<li class="chapter" data-level="17.2.3" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-ll-tp"><i class="fa fa-check"></i><b>17.2.3</b> The <code>TP</code> worksheet</a></li>
-<li class="chapter" data-level="17.2.4" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-case-index-vs-case-id"><i class="fa fa-check"></i><b>17.2.4</b> caseIndex vs. caseID</a></li>
+<li class="chapter" data-level="16.2.1" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-structure-roc-dataset"><i class="fa fa-check"></i><b>16.2.1</b> The structure of a factorial ROC dataset object</a></li>
+<li class="chapter" data-level="16.2.2" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-nl-fp"><i class="fa fa-check"></i><b>16.2.2</b> The <code>FP</code> worksheet</a></li>
+<li class="chapter" data-level="16.2.3" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-ll-tp"><i class="fa fa-check"></i><b>16.2.3</b> The <code>TP</code> worksheet</a></li>
+<li class="chapter" data-level="16.2.4" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-case-index-vs-case-id"><i class="fa fa-check"></i><b>16.2.4</b> caseIndex vs. caseID</a></li>
 </ul></li>
-<li class="chapter" data-level="17.3" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-froc-dataset"><i class="fa fa-check"></i><b>17.3</b> FROC dataset</a>
+<li class="chapter" data-level="16.3" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-froc-dataset"><i class="fa fa-check"></i><b>16.3</b> FROC dataset</a>
 <ul>
-<li class="chapter" data-level="17.3.1" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-structure-froc-dataset"><i class="fa fa-check"></i><b>17.3.1</b> The structure of a factorial FROC dataset</a></li>
-<li class="chapter" data-level="17.3.2" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-truth-table-str"><i class="fa fa-check"></i><b>17.3.2</b> <code>truthTableStr</code></a></li>
-<li class="chapter" data-level="17.3.3" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-fp-worksheet"><i class="fa fa-check"></i><b>17.3.3</b> The FP worksheet</a></li>
-<li class="chapter" data-level="17.3.4" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-tp-worksheet"><i class="fa fa-check"></i><b>17.3.4</b> The TP worksheet</a></li>
+<li class="chapter" data-level="16.3.1" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-structure-froc-dataset"><i class="fa fa-check"></i><b>16.3.1</b> The structure of a factorial FROC dataset</a></li>
+<li class="chapter" data-level="16.3.2" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-truth-table-str"><i class="fa fa-check"></i><b>16.3.2</b> <code>truthTableStr</code></a></li>
+<li class="chapter" data-level="16.3.3" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-fp-worksheet"><i class="fa fa-check"></i><b>16.3.3</b> The FP worksheet</a></li>
+<li class="chapter" data-level="16.3.4" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-tp-worksheet"><i class="fa fa-check"></i><b>16.3.4</b> The TP worksheet</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>REFERENCES</a></li>
@@ -404,23 +391,23 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="quick-start-or-text" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> OR analysis text output<a href="quick-start-or-text.html#quick-start-or-text" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="quick-start-or-text-how-much-finished" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> TBA How much finished<a href="quick-start-or-text.html#quick-start-or-text-how-much-finished" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quick-start-or-text" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> OR analysis text output<a href="quick-start-or-text.html#quick-start-or-text" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="quick-start-or-text-how-much-finished" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> TBA How much finished<a href="quick-start-or-text.html#quick-start-or-text-how-much-finished" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>90%</p>
 </div>
-<div id="quick-start-or-text-intro" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Introduction<a href="quick-start-or-text.html#quick-start-or-text-intro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quick-start-or-text-intro" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Introduction<a href="quick-start-or-text.html#quick-start-or-text-intro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This chapter illustrates significance testing using the DBM and OR methods.</p>
 </div>
-<div id="quick-start-or-text-analyze-dataset" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Analyzing the ROC dataset<a href="quick-start-or-text.html#quick-start-or-text-analyze-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quick-start-or-text-analyze-dataset" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Analyzing the ROC dataset<a href="quick-start-or-text.html#quick-start-or-text-analyze-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The only change is to specify <code>method = "OR"</code> in the significance testing function. The same dataset is used as was used in the previous chapter.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="quick-start-or-text.html#cb30-1" aria-hidden="true" tabindex="-1"></a>ret <span class="ot">&lt;-</span> <span class="fu">StSignificanceTesting</span>(dataset03, <span class="at">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, <span class="at">method =</span> <span class="st">&quot;OR&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="quick-start-or-text.html#cb23-1" aria-hidden="true" tabindex="-1"></a>ret <span class="ot">&lt;-</span> <span class="fu">StSignificanceTesting</span>(dataset03, <span class="at">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, <span class="at">method =</span> <span class="st">&quot;OR&quot;</span>)</span></code></pre></div>
 </div>
-<div id="quick-start-or-text-explanation" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Explanation of the output<a href="quick-start-or-text.html#quick-start-or-text-explanation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quick-start-or-text-explanation" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Explanation of the output<a href="quick-start-or-text.html#quick-start-or-text-explanation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The function returns a list with 5 members.</p>
 <ul>
 <li><code>FOMs</code>: figures of merit, identical to that in the DBM method.</li>
@@ -440,29 +427,29 @@ div.csl-indent {
 <li><code>IndividualRdr</code> is a [2x4] dataframe: the individual reader variance components averaged over treatments, see below, where <code>msTEachRdr</code> is the mean square treatment, <code>varEachRdr</code> is the variance and <code>cov1EachRdr</code> is <span class="math inline">\(Cov_1\)</span> for each reader.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="quick-start-or-text.html#cb31-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>TRanova</span>
-<span id="cb31-2"><a href="quick-start-or-text.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               SS DF            MS</span></span>
-<span id="cb31-3"><a href="quick-start-or-text.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; T  0.00023565410  1 2.3565410e-04</span></span>
-<span id="cb31-4"><a href="quick-start-or-text.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R  0.00205217999  3 6.8406000e-04</span></span>
-<span id="cb31-5"><a href="quick-start-or-text.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TR 0.00015060792  3 5.0202641e-05</span></span>
-<span id="cb31-6"><a href="quick-start-or-text.html#cb31-6" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>VarCom</span>
-<span id="cb31-7"><a href="quick-start-or-text.html#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            Estimates       Rhos</span></span>
-<span id="cb31-8"><a href="quick-start-or-text.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarR   2.3319942e-05         NA</span></span>
-<span id="cb31-9"><a href="quick-start-or-text.html#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarTR -6.8389146e-04         NA</span></span>
-<span id="cb31-10"><a href="quick-start-or-text.html#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Cov1   7.9168215e-04 0.51887172</span></span>
-<span id="cb31-11"><a href="quick-start-or-text.html#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Cov2   4.8363767e-04 0.31697811</span></span>
-<span id="cb31-12"><a href="quick-start-or-text.html#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Cov3   5.1250915e-04 0.33590059</span></span>
-<span id="cb31-13"><a href="quick-start-or-text.html#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Var    1.5257762e-03         NA</span></span>
-<span id="cb31-14"><a href="quick-start-or-text.html#cb31-14" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>IndividualTrt</span>
-<span id="cb31-15"><a href="quick-start-or-text.html#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           DF    msREachTrt   varEachTrt   cov2EachTrt</span></span>
-<span id="cb31-16"><a href="quick-start-or-text.html#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1  3 0.00049266349 0.0015227779 0.00047229915</span></span>
-<span id="cb31-17"><a href="quick-start-or-text.html#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2  3 0.00024159915 0.0015287746 0.00049497620</span></span>
-<span id="cb31-18"><a href="quick-start-or-text.html#cb31-18" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>IndividualRdr</span>
-<span id="cb31-19"><a href="quick-start-or-text.html#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             DF    msTEachRdr   varEachRdr   cov1EachRdr</span></span>
-<span id="cb31-20"><a href="quick-start-or-text.html#cb31-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_1  1 7.3897606e-06 0.0014771675 0.00056158020</span></span>
-<span id="cb31-21"><a href="quick-start-or-text.html#cb31-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_2  1 2.3077021e-04 0.0015186058 0.00071581326</span></span>
-<span id="cb31-22"><a href="quick-start-or-text.html#cb31-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_3  1 1.4769293e-04 0.0013773788 0.00076508897</span></span>
-<span id="cb31-23"><a href="quick-start-or-text.html#cb31-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_4  1 4.0912170e-07 0.0017299529 0.00112424616</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="quick-start-or-text.html#cb24-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>TRanova</span>
+<span id="cb24-2"><a href="quick-start-or-text.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               SS DF            MS</span></span>
+<span id="cb24-3"><a href="quick-start-or-text.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; T  0.00023565410  1 2.3565410e-04</span></span>
+<span id="cb24-4"><a href="quick-start-or-text.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R  0.00205217999  3 6.8406000e-04</span></span>
+<span id="cb24-5"><a href="quick-start-or-text.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TR 0.00015060792  3 5.0202641e-05</span></span>
+<span id="cb24-6"><a href="quick-start-or-text.html#cb24-6" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>VarCom</span>
+<span id="cb24-7"><a href="quick-start-or-text.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            Estimates       Rhos</span></span>
+<span id="cb24-8"><a href="quick-start-or-text.html#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarR   2.3319942e-05         NA</span></span>
+<span id="cb24-9"><a href="quick-start-or-text.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarTR -6.8389146e-04         NA</span></span>
+<span id="cb24-10"><a href="quick-start-or-text.html#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Cov1   7.9168215e-04 0.51887172</span></span>
+<span id="cb24-11"><a href="quick-start-or-text.html#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Cov2   4.8363767e-04 0.31697811</span></span>
+<span id="cb24-12"><a href="quick-start-or-text.html#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Cov3   5.1250915e-04 0.33590059</span></span>
+<span id="cb24-13"><a href="quick-start-or-text.html#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Var    1.5257762e-03         NA</span></span>
+<span id="cb24-14"><a href="quick-start-or-text.html#cb24-14" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>IndividualTrt</span>
+<span id="cb24-15"><a href="quick-start-or-text.html#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           DF    msREachTrt   varEachTrt   cov2EachTrt</span></span>
+<span id="cb24-16"><a href="quick-start-or-text.html#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1  3 0.00049266349 0.0015227779 0.00047229915</span></span>
+<span id="cb24-17"><a href="quick-start-or-text.html#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2  3 0.00024159915 0.0015287746 0.00049497620</span></span>
+<span id="cb24-18"><a href="quick-start-or-text.html#cb24-18" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>IndividualRdr</span>
+<span id="cb24-19"><a href="quick-start-or-text.html#cb24-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             DF    msTEachRdr   varEachRdr   cov1EachRdr</span></span>
+<span id="cb24-20"><a href="quick-start-or-text.html#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_1  1 7.3897606e-06 0.0014771675 0.00056158020</span></span>
+<span id="cb24-21"><a href="quick-start-or-text.html#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_2  1 2.3077021e-04 0.0015186058 0.00071581326</span></span>
+<span id="cb24-22"><a href="quick-start-or-text.html#cb24-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_3  1 1.4769293e-04 0.0013773788 0.00076508897</span></span>
+<span id="cb24-23"><a href="quick-start-or-text.html#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_4  1 4.0912170e-07 0.0017299529 0.00112424616</span></span></code></pre></div>
 <ul>
 <li>RRRC, a list of 3 containing results of random-reader random-case analyses
 <ul>
@@ -471,19 +458,19 @@ div.csl-indent {
 <li><code>ciAvgRdrEachTrt</code>: is a [2x5] dataframe: the confidence intervals for the average reader over each treatment, see below, where <code>CILower</code> is the lower 95% confidence interval and <code>CIUpper</code> is the upper 95% confidence interval.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="quick-start-or-text.html#cb32-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>FTests</span>
-<span id="cb32-2"><a href="quick-start-or-text.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           DF            MS     FStat          p</span></span>
-<span id="cb32-3"><a href="quick-start-or-text.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Treatment  1 2.3565410e-04 4.6940577 0.11883786</span></span>
-<span id="cb32-4"><a href="quick-start-or-text.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error      3 5.0202641e-05        NA         NA</span></span>
-<span id="cb32-5"><a href="quick-start-or-text.html#cb32-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>ciDiffTrt</span>
-<span id="cb32-6"><a href="quick-start-or-text.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate       StdErr DF         t      PrGTt</span></span>
-<span id="cb32-7"><a href="quick-start-or-text.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.010854817 0.0050101218  3 2.1665774 0.11883786</span></span>
-<span id="cb32-8"><a href="quick-start-or-text.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                           CILower     CIUpper</span></span>
-<span id="cb32-9"><a href="quick-start-or-text.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 -0.0050896269 0.026799261</span></span>
-<span id="cb32-10"><a href="quick-start-or-text.html#cb32-10" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>ciAvgRdrEachTrt</span>
-<span id="cb32-11"><a href="quick-start-or-text.html#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate      StdErr         DF    CILower    CIUpper          Cov2</span></span>
-<span id="cb32-12"><a href="quick-start-or-text.html#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1 0.84774989 0.024402152  70.121788 0.79908282 0.89641696 0.00047229915</span></span>
-<span id="cb32-13"><a href="quick-start-or-text.html#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2 0.83689507 0.023566416 253.644028 0.79048429 0.88330585 0.00049497620</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="quick-start-or-text.html#cb25-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>FTests</span>
+<span id="cb25-2"><a href="quick-start-or-text.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           DF            MS     FStat          p</span></span>
+<span id="cb25-3"><a href="quick-start-or-text.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Treatment  1 2.3565410e-04 4.6940577 0.11883786</span></span>
+<span id="cb25-4"><a href="quick-start-or-text.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error      3 5.0202641e-05        NA         NA</span></span>
+<span id="cb25-5"><a href="quick-start-or-text.html#cb25-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>ciDiffTrt</span>
+<span id="cb25-6"><a href="quick-start-or-text.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate       StdErr DF         t      PrGTt</span></span>
+<span id="cb25-7"><a href="quick-start-or-text.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.010854817 0.0050101218  3 2.1665774 0.11883786</span></span>
+<span id="cb25-8"><a href="quick-start-or-text.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                           CILower     CIUpper</span></span>
+<span id="cb25-9"><a href="quick-start-or-text.html#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 -0.0050896269 0.026799261</span></span>
+<span id="cb25-10"><a href="quick-start-or-text.html#cb25-10" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>ciAvgRdrEachTrt</span>
+<span id="cb25-11"><a href="quick-start-or-text.html#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate      StdErr         DF    CILower    CIUpper          Cov2</span></span>
+<span id="cb25-12"><a href="quick-start-or-text.html#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1 0.84774989 0.024402152  70.121788 0.79908282 0.89641696 0.00047229915</span></span>
+<span id="cb25-13"><a href="quick-start-or-text.html#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2 0.83689507 0.023566416 253.644028 0.79048429 0.88330585 0.00049497620</span></span></code></pre></div>
 <ul>
 <li>FRRC, a list of 5 containing results of fixed-reader random-case analyses
 <ul>
@@ -494,36 +481,36 @@ div.csl-indent {
 <li><code>IndividualRdrVarCov1</code>: is a [4x2] dataframe: <span class="math inline">\(Var\)</span> and <span class="math inline">\(Cov_1\)</span> for individual readers.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="quick-start-or-text.html#cb33-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>FTests</span>
-<span id="cb33-2"><a href="quick-start-or-text.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     MS      Chisq DF          p</span></span>
-<span id="cb33-3"><a href="quick-start-or-text.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Treatment 0.0002356541 0.32101347  1 0.57099922</span></span>
-<span id="cb33-4"><a href="quick-start-or-text.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error     0.0007340941         NA NA         NA</span></span>
-<span id="cb33-5"><a href="quick-start-or-text.html#cb33-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciDiffTrt</span>
-<span id="cb33-6"><a href="quick-start-or-text.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate      StdErr          z      PrGTz      CILower</span></span>
-<span id="cb33-7"><a href="quick-start-or-text.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.010854817 0.019158472 0.56658051 0.57099922 -0.026695098</span></span>
-<span id="cb33-8"><a href="quick-start-or-text.html#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                         CIUpper</span></span>
-<span id="cb33-9"><a href="quick-start-or-text.html#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.048404732</span></span>
-<span id="cb33-10"><a href="quick-start-or-text.html#cb33-10" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciAvgRdrEachTrt</span>
-<span id="cb33-11"><a href="quick-start-or-text.html#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate      StdErr DF    CILower    CIUpper</span></span>
-<span id="cb33-12"><a href="quick-start-or-text.html#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1 0.84774989 0.027109386 99 0.79461647 0.90088331</span></span>
-<span id="cb33-13"><a href="quick-start-or-text.html#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2 0.83689507 0.027448603 99 0.78309680 0.89069334</span></span>
-<span id="cb33-14"><a href="quick-start-or-text.html#cb33-14" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciDiffTrtEachRdr</span>
-<span id="cb33-15"><a href="quick-start-or-text.html#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                       Estimate      StdErr           z</span></span>
-<span id="cb33-16"><a href="quick-start-or-text.html#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_1::trtTREAT1-trtTREAT2 0.00384441429 0.042792227 0.089839080</span></span>
-<span id="cb33-17"><a href="quick-start-or-text.html#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_2::trtTREAT1-trtTREAT2 0.02148349163 0.040069753 0.536152334</span></span>
-<span id="cb33-18"><a href="quick-start-or-text.html#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_3::trtTREAT1-trtTREAT2 0.01718679331 0.034993994 0.491135520</span></span>
-<span id="cb33-19"><a href="quick-start-or-text.html#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_4::trtTREAT1-trtTREAT2 0.00090456807 0.034805365 0.025989329</span></span>
-<span id="cb33-20"><a href="quick-start-or-text.html#cb33-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                       PrGTz      CILower     CIUpper</span></span>
-<span id="cb33-21"><a href="quick-start-or-text.html#cb33-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_1::trtTREAT1-trtTREAT2 0.92841509 -0.080026809 0.087715638</span></span>
-<span id="cb33-22"><a href="quick-start-or-text.html#cb33-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_2::trtTREAT1-trtTREAT2 0.59185327 -0.057051781 0.100018765</span></span>
-<span id="cb33-23"><a href="quick-start-or-text.html#cb33-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_3::trtTREAT1-trtTREAT2 0.62333060 -0.051400174 0.085773761</span></span>
-<span id="cb33-24"><a href="quick-start-or-text.html#cb33-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_4::trtTREAT1-trtTREAT2 0.97926585 -0.067312693 0.069121830</span></span>
-<span id="cb33-25"><a href="quick-start-or-text.html#cb33-25" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>IndividualRdrVarCov1</span>
-<span id="cb33-26"><a href="quick-start-or-text.html#cb33-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               varEachRdr   cov1EachRdr</span></span>
-<span id="cb33-27"><a href="quick-start-or-text.html#cb33-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_1 0.0014771675 0.00056158020</span></span>
-<span id="cb33-28"><a href="quick-start-or-text.html#cb33-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_2 0.0015186058 0.00071581326</span></span>
-<span id="cb33-29"><a href="quick-start-or-text.html#cb33-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_3 0.0013773788 0.00076508897</span></span>
-<span id="cb33-30"><a href="quick-start-or-text.html#cb33-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_4 0.0017299529 0.00112424616</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="quick-start-or-text.html#cb26-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>FTests</span>
+<span id="cb26-2"><a href="quick-start-or-text.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     MS      Chisq DF          p</span></span>
+<span id="cb26-3"><a href="quick-start-or-text.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Treatment 0.0002356541 0.32101347  1 0.57099922</span></span>
+<span id="cb26-4"><a href="quick-start-or-text.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error     0.0007340941         NA NA         NA</span></span>
+<span id="cb26-5"><a href="quick-start-or-text.html#cb26-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciDiffTrt</span>
+<span id="cb26-6"><a href="quick-start-or-text.html#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate      StdErr          z      PrGTz      CILower</span></span>
+<span id="cb26-7"><a href="quick-start-or-text.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.010854817 0.019158472 0.56658051 0.57099922 -0.026695098</span></span>
+<span id="cb26-8"><a href="quick-start-or-text.html#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                         CIUpper</span></span>
+<span id="cb26-9"><a href="quick-start-or-text.html#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.048404732</span></span>
+<span id="cb26-10"><a href="quick-start-or-text.html#cb26-10" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciAvgRdrEachTrt</span>
+<span id="cb26-11"><a href="quick-start-or-text.html#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate      StdErr DF    CILower    CIUpper</span></span>
+<span id="cb26-12"><a href="quick-start-or-text.html#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1 0.84774989 0.027109386 99 0.79461647 0.90088331</span></span>
+<span id="cb26-13"><a href="quick-start-or-text.html#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2 0.83689507 0.027448603 99 0.78309680 0.89069334</span></span>
+<span id="cb26-14"><a href="quick-start-or-text.html#cb26-14" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciDiffTrtEachRdr</span>
+<span id="cb26-15"><a href="quick-start-or-text.html#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                       Estimate      StdErr           z</span></span>
+<span id="cb26-16"><a href="quick-start-or-text.html#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_1::trtTREAT1-trtTREAT2 0.00384441429 0.042792227 0.089839080</span></span>
+<span id="cb26-17"><a href="quick-start-or-text.html#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_2::trtTREAT1-trtTREAT2 0.02148349163 0.040069753 0.536152334</span></span>
+<span id="cb26-18"><a href="quick-start-or-text.html#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_3::trtTREAT1-trtTREAT2 0.01718679331 0.034993994 0.491135520</span></span>
+<span id="cb26-19"><a href="quick-start-or-text.html#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_4::trtTREAT1-trtTREAT2 0.00090456807 0.034805365 0.025989329</span></span>
+<span id="cb26-20"><a href="quick-start-or-text.html#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                       PrGTz      CILower     CIUpper</span></span>
+<span id="cb26-21"><a href="quick-start-or-text.html#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_1::trtTREAT1-trtTREAT2 0.92841509 -0.080026809 0.087715638</span></span>
+<span id="cb26-22"><a href="quick-start-or-text.html#cb26-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_2::trtTREAT1-trtTREAT2 0.59185327 -0.057051781 0.100018765</span></span>
+<span id="cb26-23"><a href="quick-start-or-text.html#cb26-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_3::trtTREAT1-trtTREAT2 0.62333060 -0.051400174 0.085773761</span></span>
+<span id="cb26-24"><a href="quick-start-or-text.html#cb26-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_4::trtTREAT1-trtTREAT2 0.97926585 -0.067312693 0.069121830</span></span>
+<span id="cb26-25"><a href="quick-start-or-text.html#cb26-25" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>IndividualRdrVarCov1</span>
+<span id="cb26-26"><a href="quick-start-or-text.html#cb26-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               varEachRdr   cov1EachRdr</span></span>
+<span id="cb26-27"><a href="quick-start-or-text.html#cb26-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_1 0.0014771675 0.00056158020</span></span>
+<span id="cb26-28"><a href="quick-start-or-text.html#cb26-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_2 0.0015186058 0.00071581326</span></span>
+<span id="cb26-29"><a href="quick-start-or-text.html#cb26-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_3 0.0013773788 0.00076508897</span></span>
+<span id="cb26-30"><a href="quick-start-or-text.html#cb26-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_4 0.0017299529 0.00112424616</span></span></code></pre></div>
 <ul>
 <li>RRFC, a list of 3 containing results of random-reader fixed-case analyses
 <ul>
@@ -532,19 +519,19 @@ div.csl-indent {
 <li><code>ciAvgRdrEachTrt</code>: is a [2x5] dataframe: the confidence intervals for the average reader over each over each treatment.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="quick-start-or-text.html#cb34-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>FTests</span>
-<span id="cb34-2"><a href="quick-start-or-text.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    DF            MS         F          p</span></span>
-<span id="cb34-3"><a href="quick-start-or-text.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; T   1 2.3565410e-04 4.6940577 0.11883786</span></span>
-<span id="cb34-4"><a href="quick-start-or-text.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TR  3 5.0202641e-05        NA         NA</span></span>
-<span id="cb34-5"><a href="quick-start-or-text.html#cb34-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>ciDiffTrt</span>
-<span id="cb34-6"><a href="quick-start-or-text.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate       StdErr DF         t      PrGTt</span></span>
-<span id="cb34-7"><a href="quick-start-or-text.html#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.010854817 0.0050101218  3 2.1665774 0.11883786</span></span>
-<span id="cb34-8"><a href="quick-start-or-text.html#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                           CILower     CIUpper</span></span>
-<span id="cb34-9"><a href="quick-start-or-text.html#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 -0.0050896269 0.026799261</span></span>
-<span id="cb34-10"><a href="quick-start-or-text.html#cb34-10" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>ciAvgRdrEachTrt</span>
-<span id="cb34-11"><a href="quick-start-or-text.html#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate      StdErr DF    CILower    CIUpper</span></span>
-<span id="cb34-12"><a href="quick-start-or-text.html#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TrtTREAT1 0.84774989 0.011098012  3 0.81243106 0.88306871</span></span>
-<span id="cb34-13"><a href="quick-start-or-text.html#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TrtTREAT2 0.83689507 0.007771730  3 0.81216196 0.86162818</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="quick-start-or-text.html#cb27-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>FTests</span>
+<span id="cb27-2"><a href="quick-start-or-text.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    DF            MS         F          p</span></span>
+<span id="cb27-3"><a href="quick-start-or-text.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; T   1 2.3565410e-04 4.6940577 0.11883786</span></span>
+<span id="cb27-4"><a href="quick-start-or-text.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TR  3 5.0202641e-05        NA         NA</span></span>
+<span id="cb27-5"><a href="quick-start-or-text.html#cb27-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>ciDiffTrt</span>
+<span id="cb27-6"><a href="quick-start-or-text.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate       StdErr DF         t      PrGTt</span></span>
+<span id="cb27-7"><a href="quick-start-or-text.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.010854817 0.0050101218  3 2.1665774 0.11883786</span></span>
+<span id="cb27-8"><a href="quick-start-or-text.html#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                           CILower     CIUpper</span></span>
+<span id="cb27-9"><a href="quick-start-or-text.html#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 -0.0050896269 0.026799261</span></span>
+<span id="cb27-10"><a href="quick-start-or-text.html#cb27-10" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>ciAvgRdrEachTrt</span>
+<span id="cb27-11"><a href="quick-start-or-text.html#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate      StdErr DF    CILower    CIUpper</span></span>
+<span id="cb27-12"><a href="quick-start-or-text.html#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TrtTREAT1 0.84774989 0.011098012  3 0.81243106 0.88306871</span></span>
+<span id="cb27-13"><a href="quick-start-or-text.html#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TrtTREAT2 0.83689507 0.007771730  3 0.81216196 0.86162818</span></span></code></pre></div>
 
 </div>
 </div>

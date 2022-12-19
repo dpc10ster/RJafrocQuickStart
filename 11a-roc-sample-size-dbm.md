@@ -1,7 +1,7 @@
 # (PART\*) ROC sample size {-}
 
 
-# Sample size DBM-ROC {#roc-sample-size-dbm}
+# ROC-DBM sample size {#roc-sample-size-dbm}
 
 
 
