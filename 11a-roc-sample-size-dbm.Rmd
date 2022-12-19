@@ -1,7 +1,11 @@
 # (PART\*) ROC sample size {-}
 
 
+<<<<<<< Updated upstream
 # Sample size DBM-ROC {#roc-sample-size-dbm}
+=======
+# ROC-DBM sample size {#roc-sample-size-dbm}
+>>>>>>> Stashed changes
 
 
 

@@ -7,7 +7,6 @@ rmd_files: [
   "index.Rmd",
   "00b-quick-start.Rmd", 
   "00d-quick-start.Rmd", 
-  "00e-quick-start.Rmd", 
   "00f-quick-start.Rmd", 
   "00g-quick-start.Rmd", 
   "00h-quick-start.Rmd",
