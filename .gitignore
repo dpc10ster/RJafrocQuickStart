@@ -9,3 +9,4 @@ docs/
 _bookddown_files/
 packages.bib
 *.rds
+*.pdf
