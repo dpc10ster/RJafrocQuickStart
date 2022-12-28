@@ -1,18 +1,6 @@
 # Metz Eqn 36 numerical check {#metz-eqn-36}
 
 
----
-title: "RJafroc Vignette 6: Metz Eqn36 numerical check"
-author: "Dev P. Chakraborty, PhD"
-date: "2022-12-28"
-output: rmarkdown::html_vignette
-fig.width: 4
-vignette: >
-  %\VignetteIndexEntry{Metz Eqn36 numerical check}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-  
 
 
 ## Helper functions

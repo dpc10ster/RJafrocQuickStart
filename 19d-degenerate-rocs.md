@@ -1,18 +1,6 @@
 # Degenerate ROC curves {#degenerate-rocs}
 
 
----
-title: "RJafroc Vignette 4: Degenerate datasets in the binormal model"
-author: "Dev P. Chakraborty, PhD"
-date: "2022-12-28"
-output: rmarkdown::html_vignette
-fig.width: 4
-vignette: >
-  %\VignetteIndexEntry{Degenerate datasets in the binormal model}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-  
 
 
 ## Two helper functions

@@ -1,17 +1,6 @@
 # Improper ROC curves {#improper-rocs}
 
----
-title: "RJafroc Vignette 3: Improper ROCs"
-author: "Dev P. Chakraborty, PhD"
-date: "2022-12-28"
-output: rmarkdown::html_vignette
-fig.width: 4
-vignette: >
-  %\VignetteIndexEntry{Improper ROCs}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-  
+
 
 
 

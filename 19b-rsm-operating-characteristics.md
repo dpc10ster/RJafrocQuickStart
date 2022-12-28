@@ -1,19 +1,6 @@
 # RSM operating characteristics {#rsm-operating-characteristics}
 
----
-title: "RJafroc Vignette 2: RSM predicted operating characteristics"
-author: "Dev P. Chakraborty, PhD"
-date: "2022-12-28"
-output: rmarkdown::html_document
-bibliography: myRefs.bib
-fig_caption: yes
-fig.width: 4
-vignette: >
-  %\VignetteIndexEntry{RSM operating characteristics}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-  
+
 
 
 ## TBA How much finished {#rsm-operating-characteristics-how-much-finished}

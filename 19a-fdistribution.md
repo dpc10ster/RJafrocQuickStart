@@ -2,17 +2,6 @@
 
 # F-distribution {#background-f-distribution}
 
----
-title: "Background on the F distribution"
-author: "Dev P. Chakraborty, PhD"
-date: "2022-12-28"
-output: rmarkdown::html_document
-bibliography: myRefs.bib
-vignette: >
-  %\VignetteIndexEntry{ROC sample size background}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
 
 
 
