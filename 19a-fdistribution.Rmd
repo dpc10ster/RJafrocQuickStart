@@ -2,17 +2,6 @@
 
 # F-distribution {#background-f-distribution}
 
----
-title: "Background on the F distribution"
-author: "Dev P. Chakraborty, PhD"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_document
-bibliography: myRefs.bib
-vignette: >
-  %\VignetteIndexEntry{ROC sample size background}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(

@@ -1,18 +1,5 @@
 # PROPROC ROC curves {#proproc-rocs}
 
-
----
-title: "RJafroc Vignette 5: PROPROC ROCs and pdfs"
-author: "Dev P. Chakraborty, PhD"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-fig.width: 4
-vignette: >
-  %\VignetteIndexEntry{PROPROC ROCs}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-  
 ```{r setup, include = FALSE}
   knitr::opts_chunk$set(
   collapse = TRUE,

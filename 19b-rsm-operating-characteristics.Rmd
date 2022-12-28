@@ -1,19 +1,6 @@
 # RSM operating characteristics {#rsm-operating-characteristics}
 
----
-title: "RJafroc Vignette 2: RSM predicted operating characteristics"
-author: "Dev P. Chakraborty, PhD"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_document
-bibliography: myRefs.bib
-fig_caption: yes
-fig.width: 4
-vignette: >
-  %\VignetteIndexEntry{RSM operating characteristics}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-  
+
 ```{r setup, include = FALSE}
   knitr::opts_chunk$set(
   collapse = TRUE,

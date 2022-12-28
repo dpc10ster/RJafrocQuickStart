@@ -6,6 +6,6 @@ _book
 _RJafroc_files
 rsconnect
 docs/
-_bookddown_files
+_bookddown_files/
 packages.bib
 *.rds
