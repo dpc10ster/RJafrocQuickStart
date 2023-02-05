@@ -1,4 +1,8 @@
-### RJafrocQuickStart
+# RJafrocQuickStart
+
+# Summary
+
+See [this link](https://dpc10ster.github.io/ai-froc-research/) for a summary of my AI/FROC research websites. 
 
 # What is this repository for?
 
