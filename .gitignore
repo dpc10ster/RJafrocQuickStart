@@ -11,4 +11,8 @@ packages.bib
 *.rds
 *.pdf
 _bookdown_files/
-
+libs/
+what-is-this-repository-for.html
+summary.html
+rjafrocquickstart.html
+404.html
