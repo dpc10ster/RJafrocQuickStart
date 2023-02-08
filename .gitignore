@@ -10,3 +10,5 @@ _bookddown_files/
 packages.bib
 *.rds
 *.pdf
+_bookdown_files/
+
