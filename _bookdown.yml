@@ -17,10 +17,7 @@ rmd_files: [
   "19b-rsm-operating-characteristics.Rmd",
   "19c-improper-rocs.Rmd",
   "19d-degenerate-rocs.Rmd",
-  "19e-proproc-rocs.Rmd",
-  "19f-metz-eqn-36.Rmd",
-  "20a-dataset-details.Rmd",
-  "99-references.Rmd",
+  "22a-dataset-details.Rmd",
 ]
 
 
