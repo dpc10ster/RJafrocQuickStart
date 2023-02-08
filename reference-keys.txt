@@ -133,15 +133,6 @@ understanding-degenerate-datasets
 the-exact-fit-is-not-unique
 comments-on-degeneracy
 a-reasonable-fit-to-the-degenerate-dataset
-proproc-rocs
-helper-functions
-definitions-of-proproc-parameters-in-terms-of-binormal-model-parameters
-main-code-and-output
-discussion
-metz-eqn-36
-helper-functions-1
-main-code-and-output-1
-discussion-1
 dataset-object-details
 introduction-3
 dataset-object-details-roc-dataset
