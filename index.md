@@ -2,7 +2,7 @@
 title: "The RJafroc Quick Start Book"
 author: "Dev P. Chakraborty, PhD"
 geometry: margin=2cm
-date: "2023-03-12"
+date: "2023-04-23"
 site: bookdown::bookdown_site
 output: html_document
 documentclass: book
@@ -25,7 +25,7 @@ TBA
 
 ## Rationale and Organization {#quick-start-index-rationale-and-organization}
 
-* See [this link](https://dpc10ster.github.io/ai-froc-research/) for an important summary of my AI/FROC research websites. 
+* See [here](https://dpc10ster.github.io/ai-froc-research/) for an overview of my AI/FROC research websites. 
 * All references in this book to `RJafroc` refer to the `R` package with that name (case sensitive) [@R-RJafroc]. 
 
 
@@ -34,11 +34,9 @@ TBA
 * If you have installed `RJafroc` from `GitHub`:
     + Type ?`RJafroc-package` (RStudio will auto complete ...) followed by `Enter`.
     + Scroll down and click on `Index`
-* Regardless of where you installed from you can use the `RJafroc` website:
-    + [RJafroc help site](https://dpc10ster.github.io/RJafroc/)
+* Regardless of where you installed from you can use the `RJafroc` [website ](https://dpc10ster.github.io/RJafroc/) to access help.
     + Look under the `Reference` tab. 
-    + For example, for help on the function `PlotEmpiricalOperatingCharacteristics`:
-    + [PlotEmpiricalOperatingCharacteristics](https://dpc10ster.github.io/RJafroc/reference/PlotEmpiricalOperatingCharacteristics.html)
+    + For example, for help on the function `PlotEmpiricalOperatingCharacteristics` look [here](https://dpc10ster.github.io/RJafroc/reference/PlotEmpiricalOperatingCharacteristics.html)
 
 
 ## Acknowledgements {#quick-start-index-acknowledgements}

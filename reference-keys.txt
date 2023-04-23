@@ -20,6 +20,7 @@ quick-start-roc-intro
 quick-start-roc-note
 quick-start-roc-excel
 quick-start-roc-truth
+quick-start-roc-truth-comments
 quick-start-roc-fp
 quick-start-roc-tp
 quick-start-roc-read

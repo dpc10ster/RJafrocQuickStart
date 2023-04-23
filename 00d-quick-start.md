@@ -1,4 +1,4 @@
-# JAFROC FROC data {#quick-start-froc-data-format}
+# FROC data format {#quick-start-froc-data-format}
 
 
 

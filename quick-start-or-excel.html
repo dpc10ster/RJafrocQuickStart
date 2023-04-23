@@ -23,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2023-03-12" />
+<meta name="date" content="2023-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -171,21 +171,22 @@ div.csl-indent {
 <li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#quick-start-index-how-to-access-files"><i class="fa fa-check"></i><b>1.6</b> Accessing files and code</a></li>
 </ul></li>
 <li class="part"><span><b>Quick Start</b></span></li>
-<li class="chapter" data-level="2" data-path="quick-start-roc.html"><a href="quick-start-roc.html"><i class="fa fa-check"></i><b>2</b> JAFROC ROC data</a>
+<li class="chapter" data-level="2" data-path="quick-start-roc.html"><a href="quick-start-roc.html"><i class="fa fa-check"></i><b>2</b> ROC data format</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-how-much-finished"><i class="fa fa-check"></i><b>2.1</b> How much finished</a></li>
+<li class="chapter" data-level="2.1" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-how-much-finished"><i class="fa fa-check"></i><b>2.1</b> How much finished 50%</a></li>
 <li class="chapter" data-level="2.2" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-intro"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
 <li class="chapter" data-level="2.3" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-note"><i class="fa fa-check"></i><b>2.3</b> Note to existing users</a></li>
-<li class="chapter" data-level="2.4" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-excel"><i class="fa fa-check"></i><b>2.4</b> Excel ROC file format</a>
+<li class="chapter" data-level="2.4" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-excel"><i class="fa fa-check"></i><b>2.4</b> Three worksheets in the Excel data file</a>
 <ul>
 <li class="chapter" data-level="2.4.1" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-truth"><i class="fa fa-check"></i><b>2.4.1</b> The <code>Truth</code> worksheet</a></li>
-<li class="chapter" data-level="2.4.2" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-fp"><i class="fa fa-check"></i><b>2.4.2</b> The false positive (FP/NL) worksheet</a></li>
-<li class="chapter" data-level="2.4.3" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-tp"><i class="fa fa-check"></i><b>2.4.3</b> The true positive (TP/LL) worksheet</a></li>
+<li class="chapter" data-level="2.4.2" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-truth-comments"><i class="fa fa-check"></i><b>2.4.2</b> Comments on the <code>Truth</code> worksheet</a></li>
+<li class="chapter" data-level="2.4.3" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-fp"><i class="fa fa-check"></i><b>2.4.3</b> The FP/NL worksheet</a></li>
+<li class="chapter" data-level="2.4.4" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-tp"><i class="fa fa-check"></i><b>2.4.4</b> The TP/LL worksheet</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-read"><i class="fa fa-check"></i><b>2.5</b> Reading the Excel file</a></li>
 <li class="chapter" data-level="2.6" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-structure-dataset"><i class="fa fa-check"></i><b>2.6</b> Structure of dataset object</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html"><i class="fa fa-check"></i><b>3</b> JAFROC FROC data</a>
+<li class="chapter" data-level="3" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html"><i class="fa fa-check"></i><b>3</b> FROC data format</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-how-much-finished"><i class="fa fa-check"></i><b>3.1</b> TBA How much finished</a></li>
 <li class="chapter" data-level="3.2" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-intro"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
@@ -335,12 +336,12 @@ div.csl-indent {
 <div id="quick-start-or-excel-output" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> Generating the Excel output file<a href="quick-start-or-excel.html#quick-start-or-excel-output" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This illustrates the <code>UtilOutputReport()</code> function. The arguments are the embedded dataset, <code>dataset03</code>, the same dataset as in the previous two chapters, the report file base name <code>ReportFileBaseName</code> is set to <code>R/quick-start/MyResults</code>, the report file extension <code>ReportFileExt</code> is set to <code>xlsx</code>, the <code>FOM</code> is set to “Wilcoxon”, the <code>method</code> of analysis is set to “OR”, and the flag <code>overWrite = TRUE</code> overwrites any existing file with the same name, as otherwise the program will pause for user input.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="quick-start-or-excel.html#cb28-1" aria-hidden="true" tabindex="-1"></a>ret <span class="ot">&lt;-</span> <span class="fu">UtilOutputReport</span>(<span class="fu">get</span>(<span class="st">&quot;dataset03&quot;</span>), </span>
-<span id="cb28-2"><a href="quick-start-or-excel.html#cb28-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">ReportFileBaseName =</span> <span class="st">&quot;R/quick-start/MyResults&quot;</span>, </span>
-<span id="cb28-3"><a href="quick-start-or-excel.html#cb28-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">ReportFileExt =</span> <span class="st">&quot;xlsx&quot;</span>,  </span>
-<span id="cb28-4"><a href="quick-start-or-excel.html#cb28-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, </span>
-<span id="cb28-5"><a href="quick-start-or-excel.html#cb28-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">method =</span> <span class="st">&quot;OR&quot;</span>, </span>
-<span id="cb28-6"><a href="quick-start-or-excel.html#cb28-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">overWrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="quick-start-or-excel.html#cb29-1" aria-hidden="true" tabindex="-1"></a>ret <span class="ot">&lt;-</span> <span class="fu">UtilOutputReport</span>(<span class="fu">get</span>(<span class="st">&quot;dataset03&quot;</span>), </span>
+<span id="cb29-2"><a href="quick-start-or-excel.html#cb29-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">ReportFileBaseName =</span> <span class="st">&quot;R/quick-start/MyResults&quot;</span>, </span>
+<span id="cb29-3"><a href="quick-start-or-excel.html#cb29-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">ReportFileExt =</span> <span class="st">&quot;xlsx&quot;</span>,  </span>
+<span id="cb29-4"><a href="quick-start-or-excel.html#cb29-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, </span>
+<span id="cb29-5"><a href="quick-start-or-excel.html#cb29-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">method =</span> <span class="st">&quot;OR&quot;</span>, </span>
+<span id="cb29-6"><a href="quick-start-or-excel.html#cb29-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">overWrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>The following screen shots display the contents of the created file <code>"R/quick-start/MyResults.xlsx"</code>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:quick-start-or-xlsx1"></span>
 <img src="R/quick-start/MyResultsSummary.png" alt="`Summary` and `FOMs` worksheets of Excel file `R/quick-start/MyResults.xlsx`" width="50%" height="20%" /><img src="R/quick-start/MyResultsFOMs.png" alt="`Summary` and `FOMs` worksheets of Excel file `R/quick-start/MyResults.xlsx`" width="50%" height="20%" />

@@ -139,7 +139,7 @@
 
 \title{The RJafroc Quick Start Book}
 \author{Dev P. Chakraborty, PhD}
-\date{2023-03-12}
+\date{2023-04-23}
 
 \begin{document}
 \maketitle
@@ -159,7 +159,7 @@ TBA
 \begin{itemize}
 \tightlist
 \item
-  See \href{https://dpc10ster.github.io/ai-froc-research/}{this link} for an important summary of my AI/FROC research websites.
+  See \href{https://dpc10ster.github.io/ai-froc-research/}{here} for an overview of my AI/FROC research websites.
 \item
   All references in this book to \texttt{RJafroc} refer to the \texttt{R} package with that name (case sensitive) \citep{R-RJafroc}.
 \end{itemize}
@@ -180,18 +180,14 @@ TBA
     Scroll down and click on \texttt{Index}
   \end{itemize}
 \item
-  Regardless of where you installed from you can use the \texttt{RJafroc} website:
+  Regardless of where you installed from you can use the \texttt{RJafroc} \href{https://dpc10ster.github.io/RJafroc/}{website} to access help.
 
   \begin{itemize}
   \tightlist
   \item
-    \href{https://dpc10ster.github.io/RJafroc/}{RJafroc help site}
-  \item
     Look under the \texttt{Reference} tab.
   \item
-    For example, for help on the function \texttt{PlotEmpiricalOperatingCharacteristics}:
-  \item
-    \href{https://dpc10ster.github.io/RJafroc/reference/PlotEmpiricalOperatingCharacteristics.html}{PlotEmpiricalOperatingCharacteristics}
+    For example, for help on the function \texttt{PlotEmpiricalOperatingCharacteristics} look \href{https://dpc10ster.github.io/RJafroc/reference/PlotEmpiricalOperatingCharacteristics.html}{here}
   \end{itemize}
 \end{itemize}
 
@@ -235,21 +231,19 @@ To access files/code one needs to \texttt{fork} the \texttt{GitHub} repository. 
 \addcontentsline{toc}{part}{Quick Start}
 
 \hypertarget{quick-start-roc}{%
-\chapter{JAFROC ROC data}\label{quick-start-roc}}
+\chapter{ROC data format}\label{quick-start-roc}}
 
 \hypertarget{quick-start-roc-how-much-finished}{%
-\section{How much finished}\label{quick-start-roc-how-much-finished}}
+\section{How much finished 50\%}\label{quick-start-roc-how-much-finished}}
 
-50\% (remove duplication)
+(remove duplication)
 
 \hypertarget{quick-start-roc-intro}{%
 \section{Introduction}\label{quick-start-roc-intro}}
 
-\begin{itemize}
-\tightlist
-\item
-  The JAFROC Excel data format was adopted circa. 2006. The purpose of this chapter is to explain the format of this file.
-\end{itemize}
+The JAFROC Excel data format was adopted circa. 2006. The purpose of this chapter is to explain the format of this file and how to read this file into a dataset object suitable for analysis using the \texttt{RJafroc} package.
+
+In the ROC paradigm the observer assigns a rating to each image. A rating is an ordered numeric label, and, in our convention, higher values represent greater certainty or confidence for presence of disease. Location information associated with the disease, if applicable, is not collected.
 
 \hypertarget{quick-start-roc-note}{%
 \section{Note to existing users}\label{quick-start-roc-note}}
@@ -257,22 +251,30 @@ To access files/code one needs to \texttt{fork} the \texttt{GitHub} repository. 
 \begin{itemize}
 \tightlist
 \item
-  The Excel file format has recently undergone changes involving three additional columns in the \texttt{Truth} worksheet. The changes are needed for easier generalization to other data collection paradigms (e.g., split plot designs) and for better data entry error control.
+  The Excel file format has recently undergone changes involving three additional columns in the \texttt{Truth} worksheet. These are needed for generalization to other data collection paradigms and for better data entry error control.
 \item
-  \texttt{RJafroc} will work with original format Excel files provided the \texttt{NewExcelFileFormat} flag is set to \texttt{FALSE}, the default.
+  \texttt{RJafroc} will work with original format Excel files provided the \texttt{NewExcelFileFormat} flag in \texttt{DfReadDataFile} is set to \texttt{FALSE}, which is the default (see help page below).
 \item
   Going forward, one should use the new format, described below, and use \texttt{NewExcelFileFormat\ =\ TRUE} to read the file.
 \end{itemize}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"images/roc{-}data{-}format/DfReadDataFile.png"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=22in]{images/roc-data-format/DfReadDataFile}
+
 \hypertarget{quick-start-roc-excel}{%
-\section{Excel ROC file format}\label{quick-start-roc-excel}}
+\section{Three worksheets in the Excel data file}\label{quick-start-roc-excel}}
 
 \begin{itemize}
 \tightlist
 \item
-  The illustrations in this chapter correspond to Excel file \texttt{R/quick-start/rocCr.xlsx} in the project directory. See Section @ref(\#quick-start-index-how-to-access-files) for how to get this file, and all other files and code in this \texttt{bookdown} book, to your computer.
+  The illustrations in this chapter are for Excel file \texttt{R/quick-start/rocCr.xlsx} in the project directory. I assume the reader has forked the \texttt{RJafrocQuickStart} repository. See Section @ref(\#quick-start-index-how-to-access-files) for how to get this file, and all other files and code in this \texttt{bookdown} book, on your computer.
 \item
-  This is a \emph{toy file}, i.e., an artificial small dataset used to illustrate essential features of the data format.
+  This is a \emph{toy file}, i.e., a small made-up dataset used to illustrate essential features of the data format.
 \item
   The Excel file has three worksheets: \texttt{Truth}, \texttt{NL} (or \texttt{FP}) and \texttt{LL} (or \texttt{TP}). The worksheet names are case insensitive.
 \end{itemize}
@@ -283,93 +285,69 @@ To access files/code one needs to \texttt{fork} the \texttt{GitHub} repository. 
 \subsection{\texorpdfstring{The \texttt{Truth} worksheet}{The Truth worksheet}}\label{quick-start-roc-truth}}
 
 \begin{itemize}
-\tightlist
 \item
-  The \texttt{Truth} worksheet contains 6 columns: \texttt{CaseID}, \texttt{LesionID}, \texttt{Weight}, \texttt{ReaderID}, \texttt{ModalityID} and \texttt{Paradigm}.
+  The \texttt{Truth} worksheet shown above contains 6 columns: \texttt{CaseID}, \texttt{LesionID}, \texttt{Weight}, \texttt{ReaderID}, \texttt{ModalityID} and \texttt{Paradigm}. These names are case sensitive.
 \item
-  \texttt{CaseID}: \textbf{unique integers}, one per case, representing the cases in the dataset. In the current dataset, the non-diseased cases are labeled \texttt{1}, \texttt{2} and \texttt{3}, while the diseased cases are labeled \texttt{70}, \texttt{71}, \texttt{72}, \texttt{73} and \texttt{74}. The values do not have to be consecutive integers; they need not be ordered; the only requirement is that they be \textbf{unique integers}.
+  \texttt{CaseID}: \textbf{unique integers}, one per case, representing the cases in the dataset. In the current dataset, the non-diseased cases are labeled \texttt{1}, \texttt{2} and \texttt{3}, while the diseased cases are labeled \texttt{70}, \texttt{71}, \texttt{72}, \texttt{73} and \texttt{74}. The values do not have to be consecutive integers; they need not be ordered; the only requirement is that they be unique integers.
 \item
   \texttt{LesionID}: integers 0 or 1, with each 0 representing a non-diseased case and each 1 representing a diseased case.
 \item
   \texttt{Weight}: this field is not used for ROC data.
 \item
-  \texttt{ReaderID}: a \textbf{comma-separated} string containing the reader labels, each represented by a \textbf{unique integer}, that have interpreted the case. In the example shown below each cell has the value \texttt{0,\ 1,\ 2,\ 3,\ 4} meaning that each of these readers has interpreted all cases.
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \textbf{With multiple readers each cell in this column has to be text formatted as otherwise Excel will not accept it.}
-  \item
-    Select the worksheet, then \texttt{Format} - \texttt{Cells} - \texttt{Number} - \texttt{Text} - \texttt{OK}.
-  \end{itemize}
+  \texttt{ReaderID}: a \textbf{comma-separated} string containing the reader (i.e., radiologist or observer) labels, each represented by a \textbf{unique integer}, that have interpreted the case. In the example shown below each cell has the value \texttt{0,\ 1,\ 2,\ 3,\ 4} meaning each of these readers has interpreted all cases. With multiple readers each cell in this column has to be text formatted as otherwise Excel will not accept it. Select the worksheet, then \texttt{Format} - \texttt{Cells} - \texttt{Number} - \texttt{Text} - \texttt{OK}.
 \item
-  \texttt{ModalityID}: a comma-separated string containing the modality labels, each represented by a \textbf{unique integer}. In the example each cell has the value \texttt{0,\ 1}.
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \textbf{With multiple modalities each cell has to be text formatted as otherwise Excel will not accept it.}
-  \item
-    Format the cells as described above.
-  \end{itemize}
+  \texttt{ModalityID}: a comma-separated string containing the modality labels, each represented by a \textbf{unique integer}. In the example each cell has the value \texttt{0,\ 1} meaning this is a two-modality study. As above, with multiple modalities each cell has to be text formatted as otherwise Excel will not accept it.
 \item
-  \texttt{Paradigm}: this column contains two cells, \texttt{ROC} and \texttt{factorial}. It informs the software that this is an ROC dataset, and the design is factorial, meaning each reader has interpreted each case in each modality.
-\item
-  There are 5 diseased cases in the dataset (the number of 1's in the \texttt{LesionID} column of the \texttt{Truth} worksheet).
-\item
-  There are 3 non-diseased cases in the dataset (the number of 0's in the \texttt{LesionID} column).
-\item
-  There are 5 readers in the dataset (each cell in the \texttt{ReaderID} column contains the string \texttt{0,\ 1,\ 2,\ 3,\ 4}).
-\item
-  There are 2 modalities in the dataset (each cell in the \texttt{ModalityID} column contains the string \texttt{0,\ 1}).
+  \texttt{Paradigm}: this column contains two cells, \texttt{ROC} and \texttt{factorial}. It informs the software that this is an ROC dataset, and the design is factorial (or fully-crossed), meaning each reader has interpreted each case in each modality.
 \end{itemize}
 
+\hypertarget{quick-start-roc-truth-comments}{%
+\subsection{\texorpdfstring{Comments on the \texttt{Truth} worksheet}{Comments on the Truth worksheet}}\label{quick-start-roc-truth-comments}}
+
+There are 5 diseased cases in the dataset (the number of 1's in the \texttt{LesionID} column of the \texttt{Truth} worksheet). There are 3 non-diseased cases in the dataset (the number of 0's in the \texttt{LesionID} column). There are 5 readers in the dataset (each cell in the \texttt{ReaderID} column contains the string \texttt{0,\ 1,\ 2,\ 3,\ 4}). There are 2 modalities in the dataset (each cell in the \texttt{ModalityID} column contains the string \texttt{0,\ 1}).
+
 \hypertarget{quick-start-roc-fp}{%
-\subsection{The false positive (FP/NL) worksheet}\label{quick-start-roc-fp}}
+\subsection{The FP/NL worksheet}\label{quick-start-roc-fp}}
 
 \includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/rocCrFp.png}
 
+It consists of 4 columns, each of length 30 (i.e., \# of modalities x number of readers x number of non-diseased cases). The (case sensitive) column names and meanings are as follows:
+
 \begin{itemize}
-\tightlist
 \item
-  It consists of 4 columns, each of length 30 (\# of modalities x number of readers x number of non-diseased cases).
+  \texttt{ReaderID}: the reader labels: \texttt{0}, \texttt{1}, \texttt{2}, \texttt{3} and \texttt{4}. Each reader label occurs 6 times (i.e., \# of modalities x number of non-diseased cases).
 \item
-  \texttt{ReaderID}: the reader labels: \texttt{0}, \texttt{1}, \texttt{2}, \texttt{3} and \texttt{4}. Each reader label occurs 6 times (\# of modalities x number of non-diseased cases).
+  \texttt{ModalityID}: the modality or treatment labels: \texttt{0} and \texttt{1}. Each label occurs 15 times (i.e., \# of readers x number of non-diseased cases).
 \item
-  \texttt{ModalityID}: the modality or treatment labels: \texttt{0} and \texttt{1}. Each label occurs 15 times (\# of readers x number of non-diseased cases).
+  \texttt{CaseID}: the case labels for non-diseased cases: \texttt{1}, \texttt{2} and \texttt{3}. Each label occurs 10 times (i.e., \# of modalities x \# of readers). The label of a diseased case cannot occur in the FP worksheet. If it does the software generates an error.
 \item
-  \texttt{CaseID}: the case labels for non-diseased cases: \texttt{1}, \texttt{2} and \texttt{3}. Each label occurs 10 times (\# of modalities x \# of readers).
-\item
-  The label of a diseased case cannot occur in the FP worksheet. If it does the software generates an error.
-\item
-  \texttt{FP\_Rating}: the floating point ratings of non-diseased cases. Each row of this worksheet contains a rating corresponding to the values of \texttt{ReaderID}, \texttt{ModalityID} and \texttt{CaseID} for that row.
+  \texttt{FP\_Rating}: the (floating point) ratings of non-diseased cases. Each row of this worksheet contains a rating corresponding to the values of \texttt{ReaderID}, \texttt{ModalityID} and \texttt{CaseID} for that row.
 \end{itemize}
 
 \hypertarget{quick-start-roc-tp}{%
-\subsection{The true positive (TP/LL) worksheet}\label{quick-start-roc-tp}}
+\subsection{The TP/LL worksheet}\label{quick-start-roc-tp}}
 
 \includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/rocCrTp.png}
 
+It consists of 5 columns, each of length 50 (i.e., \# of modalities x number of readers x number of diseased cases). The (case sensitive) column names and meanings are as follows:
+
 \begin{itemize}
-\tightlist
 \item
-  It consists of 5 columns, each of length 50 (\# of modalities x number of readers x number of diseased cases).
+  \texttt{ReaderID}: the reader labels: \texttt{0}, \texttt{1}, \texttt{2}, \texttt{3} and \texttt{4}. Each reader label occurs 10 times (i.e., \# of modalities x number of diseased cases).
 \item
-  \texttt{ReaderID}: the reader labels: \texttt{0}, \texttt{1}, \texttt{2}, \texttt{3} and \texttt{4}. Each reader label occurs 10 times (\# of modalities x number of diseased cases).
-\item
-  \texttt{ModalityID}: the modality or treatment labels: \texttt{0} and \texttt{1}. Each label occurs 25 times (\# of readers x number of diseased cases).
+  \texttt{ModalityID}: the modality or treatment labels: \texttt{0} and \texttt{1}. Each label occurs 25 times (i.e., \# of readers x number of diseased cases).
 \item
   \texttt{LesionID}: For an ROC dataset this column contains fifty 1's (each diseased case has one lesion).
 \item
-  \texttt{CaseID}: the case labels for non-diseased cases: \texttt{70}, \texttt{71}, \texttt{72}, \texttt{73} and \texttt{74}. Each label occurs 10 times (\# of modalities x \# of readers). For an ROC dataset the label of a non-diseased case cannot occur in the TP worksheet. If it does the software generates an error.
+  \texttt{CaseID}: the case labels for non-diseased cases: \texttt{70}, \texttt{71}, \texttt{72}, \texttt{73} and \texttt{74}. Each label occurs 10 times (i.e., \# of modalities x \# of readers). For an ROC dataset the label of a non-diseased case cannot occur in the TP worksheet. If it does the software generates an error.
 \item
-  \texttt{TP\_Rating}: the floating point ratings of diseased cases. Each row of this worksheet contains a rating corresponding to the values of \texttt{ReaderID}, \texttt{ModalityID}, \texttt{LesionID} and \texttt{CaseID} for that row.
+  \texttt{TP\_Rating}: the (floating point) ratings of diseased cases. Each row of this worksheet contains a rating corresponding to the values of \texttt{ReaderID}, \texttt{ModalityID}, \texttt{LesionID} and \texttt{CaseID} for that row.
 \end{itemize}
 
 \hypertarget{quick-start-roc-read}{%
 \section{Reading the Excel file}\label{quick-start-roc-read}}
 
-The following code reads the Excel file and saves it to object \texttt{x}.
+The following code uses the function \texttt{DfReadDataFile} to read the Excel file and save it to object \texttt{x}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -390,7 +368,7 @@ The following code reads the Excel file and saves it to object \texttt{x}.
 Most users will not need to be concerned with the internal structure of the dataset object \texttt{x}. For those interested in it, for my reference, and for ease of future maintenance of the software, this is deferred to Section \ref{dataset-object-details-structure-roc-dataset}.
 
 \hypertarget{quick-start-froc-data-format}{%
-\chapter{JAFROC FROC data}\label{quick-start-froc-data-format}}
+\chapter{FROC data format}\label{quick-start-froc-data-format}}
 
 \hypertarget{quick-start-froc-how-much-finished}{%
 \section{TBA How much finished}\label{quick-start-froc-how-much-finished}}
@@ -2140,6 +2118,9 @@ Since the wAFROC effect size is about a factor of two larger than the ROC effect
 \begin{verbatim}
 ## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 ## i Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
 \end{verbatim}
 
 \begin{Shaded}
