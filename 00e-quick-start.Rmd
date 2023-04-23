@@ -1,4 +1,4 @@
-# JAFROC LROC data format {#quick-start-lroc}
+# LROC data format {#quick-start-lroc}
 
 
 

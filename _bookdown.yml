@@ -5,7 +5,7 @@ output_dir: docs
 delete_merged_file: TRUE
 rmd_files: [
   "index.Rmd",
-  "00b-quick-start.Rmd", 
+  "00-roc-data-format.Rmd", 
   "00d-quick-start.Rmd", 
   "00f-quick-start.Rmd", 
   "00g-quick-start.Rmd", 
