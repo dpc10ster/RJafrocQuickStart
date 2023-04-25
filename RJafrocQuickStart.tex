@@ -139,7 +139,7 @@
 
 \title{The RJafroc Quick Start Book}
 \author{Dev P. Chakraborty, PhD}
-\date{2023-04-23}
+\date{2023-04-25}
 
 \begin{document}
 \maketitle
@@ -249,7 +249,6 @@ In the ROC paradigm the observer assigns a rating to each image. A rating is an 
 \section{Note to existing users}\label{quick-start-roc-note}}
 
 \begin{itemize}
-\tightlist
 \item
   The Excel file format has recently undergone changes involving three additional columns in the \texttt{Truth} worksheet. These are needed for generalization to other data collection paradigms and for better data entry error control.
 \item
@@ -270,7 +269,6 @@ In the ROC paradigm the observer assigns a rating to each image. A rating is an 
 \section{Three worksheets in the Excel data file}\label{quick-start-roc-excel}}
 
 \begin{itemize}
-\tightlist
 \item
   The illustrations in this chapter are for Excel file \texttt{R/quick-start/rocCr.xlsx} in the project directory. I assume the reader has forked the \texttt{RJafrocQuickStart} repository. See Section @ref(\#quick-start-index-how-to-access-files) for how to get this file, and all other files and code in this \texttt{bookdown} book, on your computer.
 \item
@@ -284,9 +282,10 @@ In the ROC paradigm the observer assigns a rating to each image. A rating is an 
 \hypertarget{quick-start-roc-truth}{%
 \subsection{\texorpdfstring{The \texttt{Truth} worksheet}{The Truth worksheet}}\label{quick-start-roc-truth}}
 
-\begin{itemize}
-\item
-  The \texttt{Truth} worksheet shown above contains 6 columns: \texttt{CaseID}, \texttt{LesionID}, \texttt{Weight}, \texttt{ReaderID}, \texttt{ModalityID} and \texttt{Paradigm}. These names are case sensitive.
+The \texttt{Truth} worksheet shown above contains 6 columns: \texttt{CaseID}, \texttt{LesionID}, \texttt{Weight}, \texttt{ReaderID}, \texttt{ModalityID} and \texttt{Paradigm}. These names are case sensitive.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \item
   \texttt{CaseID}: \textbf{unique integers}, one per case, representing the cases in the dataset. In the current dataset, the non-diseased cases are labeled \texttt{1}, \texttt{2} and \texttt{3}, while the diseased cases are labeled \texttt{70}, \texttt{71}, \texttt{72}, \texttt{73} and \texttt{74}. The values do not have to be consecutive integers; they need not be ordered; the only requirement is that they be unique integers.
 \item
@@ -298,8 +297,8 @@ In the ROC paradigm the observer assigns a rating to each image. A rating is an 
 \item
   \texttt{ModalityID}: a comma-separated string containing the modality labels, each represented by a \textbf{unique integer}. In the example each cell has the value \texttt{0,\ 1} meaning this is a two-modality study. As above, with multiple modalities each cell has to be text formatted as otherwise Excel will not accept it.
 \item
-  \texttt{Paradigm}: this column contains two cells, \texttt{ROC} and \texttt{factorial}. It informs the software that this is an ROC dataset, and the design is factorial (or fully-crossed), meaning each reader has interpreted each case in each modality.
-\end{itemize}
+  \texttt{Paradigm}: this column contains two cells, \texttt{ROC} and \texttt{FCTRL}. It means that this is an ROC dataset and the study design is factorial (or fully-crossed), i.e., each reader interprets each case in each modality.
+\end{enumerate}
 
 \hypertarget{quick-start-roc-truth-comments}{%
 \subsection{\texorpdfstring{Comments on the \texttt{Truth} worksheet}{Comments on the Truth worksheet}}\label{quick-start-roc-truth-comments}}
@@ -313,7 +312,8 @@ There are 5 diseased cases in the dataset (the number of 1's in the \texttt{Lesi
 
 It consists of 4 columns, each of length 30 (i.e., \# of modalities x number of readers x number of non-diseased cases). The (case sensitive) column names and meanings are as follows:
 
-\begin{itemize}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \item
   \texttt{ReaderID}: the reader labels: \texttt{0}, \texttt{1}, \texttt{2}, \texttt{3} and \texttt{4}. Each reader label occurs 6 times (i.e., \# of modalities x number of non-diseased cases).
 \item
@@ -322,7 +322,7 @@ It consists of 4 columns, each of length 30 (i.e., \# of modalities x number of 
   \texttt{CaseID}: the case labels for non-diseased cases: \texttt{1}, \texttt{2} and \texttt{3}. Each label occurs 10 times (i.e., \# of modalities x \# of readers). The label of a diseased case cannot occur in the FP worksheet. If it does the software generates an error.
 \item
   \texttt{FP\_Rating}: the (floating point) ratings of non-diseased cases. Each row of this worksheet contains a rating corresponding to the values of \texttt{ReaderID}, \texttt{ModalityID} and \texttt{CaseID} for that row.
-\end{itemize}
+\end{enumerate}
 
 \hypertarget{quick-start-roc-tp}{%
 \subsection{The TP/LL worksheet}\label{quick-start-roc-tp}}
@@ -331,7 +331,8 @@ It consists of 4 columns, each of length 30 (i.e., \# of modalities x number of 
 
 It consists of 5 columns, each of length 50 (i.e., \# of modalities x number of readers x number of diseased cases). The (case sensitive) column names and meanings are as follows:
 
-\begin{itemize}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \item
   \texttt{ReaderID}: the reader labels: \texttt{0}, \texttt{1}, \texttt{2}, \texttt{3} and \texttt{4}. Each reader label occurs 10 times (i.e., \# of modalities x number of diseased cases).
 \item
@@ -342,7 +343,7 @@ It consists of 5 columns, each of length 50 (i.e., \# of modalities x number of 
   \texttt{CaseID}: the case labels for non-diseased cases: \texttt{70}, \texttt{71}, \texttt{72}, \texttt{73} and \texttt{74}. Each label occurs 10 times (i.e., \# of modalities x \# of readers). For an ROC dataset the label of a non-diseased case cannot occur in the TP worksheet. If it does the software generates an error.
 \item
   \texttt{TP\_Rating}: the (floating point) ratings of diseased cases. Each row of this worksheet contains a rating corresponding to the values of \texttt{ReaderID}, \texttt{ModalityID}, \texttt{LesionID} and \texttt{CaseID} for that row.
-\end{itemize}
+\end{enumerate}
 
 \hypertarget{quick-start-roc-read}{%
 \section{Reading the Excel file}\label{quick-start-roc-read}}
@@ -371,95 +372,108 @@ Most users will not need to be concerned with the internal structure of the data
 \chapter{FROC data format}\label{quick-start-froc-data-format}}
 
 \hypertarget{quick-start-froc-how-much-finished}{%
-\section{TBA How much finished}\label{quick-start-froc-how-much-finished}}
-
-90\%
+\section{How much finished 90\%}\label{quick-start-froc-how-much-finished}}
 
 \hypertarget{quick-start-froc-data-intro}{%
 \section{Introduction}\label{quick-start-froc-data-intro}}
 
-The chapter is illustrated with a toy data file, \texttt{R/quick-start/frocCr.xlsx} in which readers `0', `1' and `2' interpret 8 cases in two modalities, `0' and `1'. The design is `factorial', abbreviated to \texttt{FCTRL} in the software; this is also termed a `fully-crossed' design. The Excel file has three worksheets named \texttt{Truth}, \texttt{NL} (or \texttt{FP}) and \texttt{LL} (or \texttt{TP}). The names are case-insensitive.
+The purpose of this chapter is to explain the format of the FROC Excel file and how to read this file into a dataset object suitable for analysis using the \texttt{RJafroc} package.
+
+In the FROC paradigm the observer assigns a rating and a location to suspicious regions in images that exceed the reporting threshold. As an example a CAD algorithm may find tens of suspicious regions in each image but the algorithm designer only shows those regions (typically one or two) whose confidence levels exceed the chosen threshold.
+
+The chapter is illustrated with a toy data file, \texttt{R/quick-start/frocCr.xlsx} in which readers `0', `1' and `2' interpret 8 cases in two modalities, `0' and `1'. The design is `factorial', abbreviated to \texttt{FCTRL} in the software; this is also termed a `fully-crossed' design. The Excel file has three worksheets named \texttt{Truth}, \texttt{NL} (or \texttt{FP}) and \texttt{LL} (or \texttt{TP}). These names are case-insensitive.
 
 \hypertarget{quick-start-froc-data-truth}{%
 \section{\texorpdfstring{The \texttt{Truth} worksheet}{The Truth worksheet}}\label{quick-start-froc-data-truth}}
 
 \includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/frocCrTruth.png}
 
-\begin{itemize}
-\tightlist
+The \texttt{Truth} worksheet contains 6 columns: \texttt{CaseID}, \texttt{LesionID}, \texttt{Weight}, \texttt{ReaderID}, \texttt{ModalityID} and \texttt{Paradigm}. Since a diseased case may have more than one lesion, the first five columns contain \textbf{at least} as many rows as there are cases in the dataset. There are 8 cases (`1',`2',`3',`70',`71',`72',`73' and `74') in the dataset and 12 rows in the \texttt{Truth} worksheet, because some of the diseased cases contain more than one lesion.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \item
-  The \texttt{Truth} worksheet contains 6 columns: \texttt{CaseID}, \texttt{LesionID}, \texttt{Weight}, \texttt{ReaderID}, \texttt{ModalityID} and \texttt{Paradigm}.
+  \texttt{CaseID}: unique \textbf{integers} representing the individual cases in the dataset: e.g., `1', `2', `3', the 3 non-diseased cases and `70', `71', `72', `73', `74', the 5 diseased cases. The ordering of the numbers is inconsequential. \footnote{\texttt{CaseID} should not be so large that it cannot be represented in Excel by an integer; to be safe use unsigned short 8-bit integers.}
 \item
-  Since a diseased case may have more than one lesion, the first five columns contain \textbf{at least} as many rows as there are cases (images) in the dataset. There are 8 cases in the dataset and 12 rows of data, because some of the diseased cases contain more than one lesion.
-\item
-  \texttt{CaseID}: unique \textbf{integers} representing the cases in the dataset: `1', `2', `3', the 3 non-diseased cases, and `70', `71', `72', `73', `74', the 5 diseased cases. The ordering of the numbers is inconsequential. \footnote{\texttt{CaseID} should not be so large that it cannot be represented in Excel by an integer; to be safe use unsigned short 8-bit integers. For example, 108057200 or 9971103254 are too large to be a valid \texttt{caseID} and may cause errors.}
-\item
-  \texttt{LesionID}: integers 0, 1, 2, etc.,
+  \texttt{LesionID}: non-negative integers 0, 1, 2, \ldots, where:
 
   \begin{itemize}
   \tightlist
   \item
-    Each 0 represents a non-diseased case,
+    Each 0 represents a non-diseased case, e.g., this field is zero for non-diseased cases `1', `2' and `3'.
   \item
-    Each 1 represents the \emph{first} lesion on a diseased case, 2 the \emph{second} lesion, if present, and so on.
-  \item
-    This field is zero for non-diseased cases `1', `2', `3'.
-  \item
-    For the first diseased case, i.e., `70', it is 1 for the first lesion and 2 for the second lesion.
-  \item
-    For the second diseased case i.e., `71', it is 1, as this case has only one lesion.
-  \item
-    For the third diseased case, i.e., `72', it is 1 for the first lesion, 2 for the second lesion and 3 for the third lesion.
-  \item
-    For the fourth diseased case, i.e., `73', it is 1 for the first lesion and 2 for the second lesion.
-  \item
-    For the fifth diseased case i.e., `74', it is 1, as this case has only one lesion.
+    Each 1 represents the \emph{first} lesion in a diseased case, 2 represents the \emph{second} lesion, if present, and so on.
   \end{itemize}
 \item
-  There are 3 non-diseased cases in the dataset (the number of 0's in the \texttt{LesionID} column).
-\item
-  There are 5 diseased cases in the dataset (the number of 1's in the \texttt{LesionID} column).
-\item
-  \texttt{Weight} or clinical importance - e.g., mortality associated with lesion:
+  \texttt{Weight} or clinical importance associated with lesion:
 
   \begin{itemize}
   \tightlist
   \item
-    non-negative floating point values
+    It is 0 for each non-diseased case,
   \item
-    0 for each non-diseased case
-  \item
-    For each diseased case values that sum to unity.
+    For each diseased case the values must sum to unity.
   \item
     A shortcut to assigning equal weights to all lesions in a case is to fill the \texttt{Weight} column with zeroes.
   \end{itemize}
 \item
-  \texttt{LesionID}
+  \texttt{ReaderID}: see Section \ref{quick-start-roc-truth}.
+\item
+  \texttt{ModalityID}: see Section \ref{quick-start-roc-truth}.
+\item
+  \texttt{Paradigm}: see Section \ref{quick-start-roc-truth}.
+\end{enumerate}
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Diseased case \texttt{70} has two lesions, with \texttt{LesionID}s `1' and `2', and weights 0.3 and 0.7.
-  \item
-    Diseased case \texttt{71} has one lesion, with \texttt{LesionID} = 1, and \texttt{Weight} = 1.
-  \item
-    Diseased case \texttt{72} has three lesions, with \texttt{LesionID}s 1, 2 and 3 and weights 1/3 each.
-  \item
-    Diseased case \texttt{73} has two lesions, with \texttt{LesionID}s 1, and 2 and weights 0.1 and 0.9.
-  \item
-    Diseased case \texttt{74} has one lesion, with \texttt{LesionID} = 1 and \texttt{Weight} = 1.
-  \end{itemize}
+\hypertarget{quick-start-froc-truth-comments}{%
+\subsection{\texorpdfstring{Comments on the \texttt{Truth} worksheet}{Comments on the Truth worksheet}}\label{quick-start-froc-truth-comments}}
+
+There are 3 non-diseased cases in the dataset (the number of 0's in the \texttt{LesionID} column). There are 5 diseased cases in the dataset (the number of 1's in the \texttt{LesionID} column). There are 3 readers in the dataset labeled `0, 1, 2'. There are 2 modalities in the dataset labeled `0, 1'. Diseased case \texttt{70} has two lesions, with \texttt{LesionID}s `1' and `2' and weights 0.3 and 0.7, respectively. Diseased case \texttt{71} has one lesion with \texttt{LesionID} = 1 and \texttt{Weight} = 1. Diseased case \texttt{72} has three lesions with \texttt{LesionID}s 1, 2 and 3 and weights 1/3 each. Diseased case \texttt{73} has two lesions, with \texttt{LesionID}s 1, and 2 and weights 0.1 and 0.9, respectively. Diseased case \texttt{74} has one lesion, with \texttt{LesionID} = 1 and \texttt{Weight} = 1. Note that \texttt{LesionID}s \emph{identify} the lesions - for example, a lesion with high morbidity may be labeled \texttt{LesionID} = 1 and assigned weight 0.9 while a second lower morbidity lesion on the same case may be assigned \texttt{LesionID} = 2 and weight 0.1. In this example reversing the lesion IDs would lead to incorrect weight assignments.
+
+\hypertarget{quick-start-froc-data-fp}{%
+\section{The FP ratings}\label{quick-start-froc-data-fp}}
+
+These are found in the \texttt{FP} or \texttt{NL} worksheet.
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/frocCrNL.png}
+
+It consists of 4 columns of equal length. The common length is an integer random variable \(\ge 0\). It could be zero if the dataset has no NL marks (a possibility if the lesions are easy to find or the observer has perfect performance). In this example the common length is 22. The common length is a-priori unpredictable; for example if the dataset has many FPs it could be large.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \item
-  \texttt{ReaderID}: a comma-separated listing of readers, each represented by a unique \textbf{text label}, that have interpreted the case. In the example shown below each cell has the value `0, 1, 2'.
+  \texttt{ReaderID}: the reader labels: these must be one of \texttt{0}, \texttt{1}, or \texttt{2} as declared in the \texttt{Truth} worksheet.
 \item
-  There are 3 readers in the dataset, as each cell in the \texttt{ReaderID} column contains `0, 1, 2'.
+  \texttt{ModalityID}: the modality labels: must be one of \texttt{0} or \texttt{1} as declared in the \texttt{Truth} worksheet.
 \item
-  \texttt{ModalityID}: a comma-separated listing of modalities (or treatments), each represented by a unique \textbf{integer}, that apply to each case. In the example each cell has the value \texttt{0,\ 1}. \textbf{Each cell has to be text formatted.}
+  \texttt{CaseID}: the labels of cases with \texttt{NL} marks. These must be one of \texttt{1}, \texttt{2}, \texttt{3}, \texttt{70}, \texttt{71}, \texttt{72}, \texttt{73}, \texttt{74} as declared in the \texttt{Truth} worksheet. In the FROC paradigm \texttt{NL} events can occur on non-diseased \textbf{and} diseased cases.
 \item
-  There are 2 modalities in the dataset, as each cell in the \texttt{ModalityID} column contains `0, 1'.
+  \texttt{FP\_Rating}: the floating point ratings of \texttt{NL} marks. Each cell contains the rating corresponding to the values of \texttt{ReaderID}, \texttt{ModalityID} and \texttt{CaseID} for that row.
+\end{enumerate}
+
+\hypertarget{quick-start-roc-fp-comments}{%
+\subsection{\texorpdfstring{Comments on the \texttt{FP} worksheet}{Comments on the FP worksheet}}\label{quick-start-roc-fp-comments}}
+
+\begin{itemize}
 \item
-  \texttt{Paradigm}: The contents are \texttt{FROC} and \texttt{FCTRL}: this is an \texttt{FROC} dataset and the design is ``factorial''.
+  For \texttt{ModalityID} 0, \texttt{ReaderID} 0 and \texttt{CaseID} 1 (the first non-diseased case declared in the \texttt{Truth} worksheet), there is a single \texttt{NL} mark that was rated 1.02, corresponding to row 2 of the \texttt{FP} worksheet.
+\item
+  Diseased cases with \texttt{NL} marks are also recorded in the \texttt{FP} worksheet. Some examples are seen at rows 15, 16 and 21, 22, 23. Rows 21 and 22 show that \texttt{caseID} = 71 got two \texttt{NL} marks, rated 2.24, 4.01.
+\item
+  Since this is the \emph{only} case with two NL marks, it determines the length of the fourth dimension of the \texttt{x\$ratings\$NL}, which is 2 in this example. Absent this case, the length would have been one. The case with the most \texttt{NL} marks determines the length of the fourth dimension of \texttt{x\$ratings\$NL}. The reader should confirm that the ratings in \texttt{x\$ratings\$NL} reflect the contents of the \texttt{FP} worksheet.
 \end{itemize}
+
+\hypertarget{quick-start-froc-data-tp}{%
+\section{The TP ratings}\label{quick-start-froc-data-tp}}
+
+These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/frocCrLL.png}
+
+This worksheet can only have diseased cases. The presence of a non-diseased case will generate an error. The common vertical length, 31 in this example, is a-priori unpredictable (as some lesions may not be marked). The maximum possible length, assuming every lesion is marked for each modality, reader and diseased case, is 9 X 2 X 3 = 54. The 9 comes from the total number of non-zero entries in the \texttt{LesionID} column of the \texttt{Truth} worksheet, the 2 from the number of modalities and 3 from the number of readers.
+
+The fact that the actual length (31) is smaller than the maximum length (54) means that there are combinations of modality, reader and diseased cases on which some lesions were not marked.
+
+As examples, line 2 in the worksheet, the first lesion in \texttt{CaseID} equal to \texttt{70} was marked (and rated 5.28) in \texttt{ModalityID} \texttt{0} and \texttt{ReaderID} \texttt{0}. Line 3 in the worksheet, the second lesion in \texttt{CaseID} equal to \texttt{70} was also marked (and rated 4.65) in \texttt{ModalityID} \texttt{0} and \texttt{ReaderID} \texttt{0}. However, lesions 2 and 3 in \texttt{CaseID} = 72 were not marked (line 5 in the worksheet indicates that for this modality-reader-case combination only the first lesion was marked). The reader should confirm that the ratings in \texttt{x\$ratings\$LL} reflect the contents of the \texttt{TP} worksheet.
 
 \hypertarget{quick-start-froc-data-structure}{%
 \section{Reading the FROC dataset}\label{quick-start-froc-data-structure}}
@@ -496,7 +510,6 @@ The example shown above corresponds to file \texttt{R/quick-start/frocCr.xlsx} i
 This follows the general description in Chapter \ref{quick-start-roc}. The differences are described below.
 
 \begin{itemize}
-\tightlist
 \item
   The \texttt{x\$descriptions\$type} member indicates that this is an \texttt{FROC} dataset.
 \item
@@ -518,7 +531,6 @@ This follows the general description in Chapter \ref{quick-start-roc}. The diffe
 \end{Shaded}
 
 \begin{itemize}
-\tightlist
 \item
   This shows that the lesions on the first diseased case are labeled `1' and `2'. The \texttt{-Inf} is a filler used to denote a missing value. The second diseased case has one lesion labeled `1'. The third diseased case has three lesions labeled `1', `2' and `3', etc.
 \item
@@ -538,7 +550,6 @@ This follows the general description in Chapter \ref{quick-start-roc}. The diffe
 \end{Shaded}
 
 \begin{itemize}
-\tightlist
 \item
   The first diseased case has two lesions, the first has weight 0.3 and the second has weight 0.7.
 \item
@@ -547,72 +558,10 @@ This follows the general description in Chapter \ref{quick-start-roc}. The diffe
   The third diseased case has three equally weighted lesions, each with weight 1/3. Etc.
 \end{itemize}
 
-\hypertarget{quick-start-froc-data-fp}{%
-\section{The false positive (FP) ratings}\label{quick-start-froc-data-fp}}
-
-These are found in the \texttt{FP} or \texttt{NL} worksheet.
-
-\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/frocCrNL.png}
-
-\begin{itemize}
-\tightlist
-\item
-  It consists of 4 columns, of equal length. The common length is an integer random variable greater than or equal to zero. It could be zero if the dataset has no NL marks (a possibility if the lesions are very easy to find and the observer has perfect performance).\\
-\item
-  In the example dataset, the common length is 22.
-\item
-  \texttt{ReaderID}: the reader labels: these must be \texttt{0}, \texttt{1}, or \texttt{2}, as declared in the \texttt{Truth} worksheet.
-\item
-  \texttt{ModalityID}: the modality labels: must be \texttt{0} or \texttt{1}, as declared in the \texttt{Truth} worksheet.
-\item
-  \texttt{CaseID}: the labels of cases with \texttt{NL} marks. In the FROC paradigm \texttt{NL} events can occur on non-diseased \textbf{and} diseased cases.
-\item
-  \texttt{FP\_Rating}: the floating point ratings of \texttt{NL} marks. Each row of this worksheet yields a rating corresponding to the values of \texttt{ReaderID}, \texttt{ModalityID} and \texttt{CaseID} for that row.
-\item
-  For \texttt{ModalityID} 0, \texttt{ReaderID} 0 and \texttt{CaseID} 1 (the first non-diseased case declared in the \texttt{Truth} worksheet), there is a single \texttt{NL} mark that was rated 1.02, corresponding to row 2 of the \texttt{FP} worksheet.
-\item
-  Diseased cases with \texttt{NL} marks are also recorded in the \texttt{FP} worksheet. Some examples are seen at rows 15, 16 and 21, 22, 23.
-\item
-  Rows 21 and 22 show that \texttt{caseID} = 71 got two \texttt{NL} marks, rated 2.24, 4.01.
-\item
-  Since this is the \emph{only} case with two NL marks, it determines the length of the fourth dimension of the \texttt{x\$ratings\$NL} list member, 2. Absent this case, the length would have been one.
-\item
-  The case with the most \texttt{NL} marks determines the length of the fourth dimension of the \texttt{x\$ratings\$NL} list member.
-\item
-  The reader should confirm that the ratings in \texttt{x\$ratings\$NL} reflect the contents of the \texttt{FP} worksheet.
-\end{itemize}
-
-\hypertarget{quick-start-froc-data-tp}{%
-\section{The true positive (TP) ratings}\label{quick-start-froc-data-tp}}
-
-These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
-
-\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/frocCrLL.png}
-
-\begin{itemize}
-\tightlist
-\item
-  This worksheet can only have diseased cases. The presence of a non-diseased case in this worksheet will generate an error.
-\item
-  The common vertical length, 31 in this example, is a-priori unpredictable. The maximum possible length, assuming every lesion is marked for each modality, reader and diseased case, is 9 X 2 X 3 = 54. The 9 comes from the total number of non-zero entries in the \texttt{LesionID} column of the \texttt{Truth} worksheet, the 2 from the number of modalities and 3 from the number of readers.
-\item
-  The fact that the actual length (31) is smaller than the maximum length (54) means that there are combinations of modality, reader and diseased cases on which some lesions were not marked.
-\item
-  As examples, line 2 in the worksheet, the first lesion in \texttt{CaseID} equal to \texttt{70} was marked (and rated 5.28) in \texttt{ModalityID} \texttt{0} and \texttt{ReaderID} \texttt{0}. Line 3 in the worksheet, the second lesion in \texttt{CaseID} equal to \texttt{70} was also marked (and rated 4.65) in \texttt{ModalityID} \texttt{0} and \texttt{ReaderID} \texttt{0}. However, lesions 2 and 3 in \texttt{CaseID} = 72 were not marked (line 5 in the worksheet indicates that for this modality-reader-case combination only the first lesion was marked).
-\item
-  The length of the fourth dimension of the \texttt{x\$ratings\$LL} list member, 3 in the present example, is determined by the diseased case (72) with the most lesions in the \texttt{Truth} worksheet.
-\item
-  The reader should confirm that the ratings in \texttt{x\$ratings\$LL} reflect the contents of the \texttt{TP} worksheet.
-\end{itemize}
-
 \hypertarget{quick-start-froc-data-distribution-diseased-cases}{%
 \section{On the distribution of numbers of lesions in diseased cases}\label{quick-start-froc-data-distribution-diseased-cases}}
 
-\begin{itemize}
-\tightlist
-\item
-  Consider a much larger dataset, \texttt{dataset11}, with structure as shown below (for descriptions of all embedded datasets the \texttt{RJafroc} documentation):
-\end{itemize}
+Consider a much larger real dataset, \texttt{dataset11}, with structure as shown below (for descriptions of all embedded datasets see Chapter \ref{datasets}):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -640,13 +589,7 @@ These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{itemize}
-\tightlist
-\item
-  Focus for now in the 115 diseased cases.
-\item
-  The numbers of lesions in these cases is contained in \texttt{x\$lesions\$perCase}.
-\end{itemize}
+Focus for now in the 115 diseased cases. The numbers of lesions in these cases is contained in \texttt{x\$lesions\$perCase}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -659,13 +602,7 @@ These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{itemize}
-\tightlist
-\item
-  For example, the first diseased case contains 6 lesions, the second contains 4 lesions, the third contains 7 lesions, etc. and the last diseased case contains 1 lesion.
-\item
-  To get an idea of the distribution of the numbers of lesions per diseased cases, one could interrogate this vector as shown below using the \texttt{which()} function:
-\end{itemize}
+For example, the first diseased case contains 6 lesions, the second contains 4 lesions, the third contains 7 lesions, etc. and the last diseased case contains 1 lesion. To get an idea of the distribution of the numbers of lesions per diseased cases, one could use the \texttt{which()} function:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -695,29 +632,18 @@ These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{itemize}
-\tightlist
-\item
-  This tells us that 25 cases contain 1 lesion
-\item
-  Likewise, 23 cases contain 2 lesions
-\item
-  Etc.
-\end{itemize}
+This tells us that 25 cases contain 1 lesion. Likewise, 23 cases contain 2 lesions, etc.
 
 \hypertarget{quick-start-froc-data-lesion-distribution}{%
 \subsection{\texorpdfstring{Definition of \texttt{lesDistr} array}{Definition of lesDistr array}}\label{quick-start-froc-data-lesion-distribution}}
 
-\begin{itemize}
-\tightlist
-\item
-  What is the fraction of (diseased) cases with 1 lesion, 2 lesions etc.
-\end{itemize}
+The histogram of the number of lesions per case, i.e., what is the fraction of (diseased) cases with 1 lesion, 2 lesions etc, can be calculated as follows:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{for}\NormalTok{ (el }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{max}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{perCase)) }\FunctionTok{cat}\NormalTok{(}\StringTok{"fraction of diseased cases with"}\NormalTok{, el, }\StringTok{"lesions = "}\NormalTok{, }
-                                              \FunctionTok{length}\NormalTok{(}\FunctionTok{which}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{perCase }\SpecialCharTok{==}\NormalTok{ el))}\SpecialCharTok{/}\FunctionTok{length}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{LL[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,,}\DecValTok{1}\NormalTok{]), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (el }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{max}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{perCase)) }
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"fraction of diseased cases with"}\NormalTok{, el, }\StringTok{"lesions = "}\NormalTok{, }
+  \FunctionTok{length}\NormalTok{(}\FunctionTok{which}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{perCase }\SpecialCharTok{==}\NormalTok{ el))}\SpecialCharTok{/}\FunctionTok{length}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{LL[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,,}\DecValTok{1}\NormalTok{]), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
 \CommentTok{\#\textgreater{} fraction of diseased cases with 1 lesions =  0.2173913 }
 \CommentTok{\#\textgreater{} fraction of diseased cases with 2 lesions =  0.2 }
 \CommentTok{\#\textgreater{} fraction of diseased cases with 3 lesions =  0.1130435 }
@@ -741,17 +667,9 @@ These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{itemize}
-\tightlist
-\item
-  This tells us that fraction 0.217 of (diseased) cases contain 1 lesion
-\item
-  And fraction 0.2 of (diseased) cases contain 2 lesions
-\item
-  Etc.
-\item
-  This information is obtained using the function \texttt{UtilLesionDistrVector()}
-\end{itemize}
+Fraction 0.217 of (diseased) cases contain 1 lesion, fraction 0.2 of (diseased) cases contain 2 lesions, etc.
+
+This information is more readily obtained using the \texttt{RJafroc} function \texttt{UtilLesionDistrVector()} as shown next:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -876,6 +794,266 @@ These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
 \item
   This is because some configurations of lesions per case (e.g., cases with 13 lesions per case) do not occur in this dataset.
 \end{itemize}
+
+\hypertarget{quick-start-lroc}{%
+\chapter{LROC data format}\label{quick-start-lroc}}
+
+\hypertarget{quick-start-lroc-data-how-much-finished}{%
+\section{TBA How much finished}\label{quick-start-lroc-data-how-much-finished}}
+
+70\%
+
+\hypertarget{quick-start-lroc-data-intro}{%
+\section{Introduction}\label{quick-start-lroc-data-intro}}
+
+In the Localization Receiver Operating Characteristic (LROC) paradigm \citep{starr1977comments, starr1975visual, swensson1996unified} the observer is restricted to at most one mark-rating pair per case. Additionally, each diseased case has \emph{exactly} one lesion. On a diseased case and if the mark is close to the real lesion the investigator classifies the mark as a correct-localization (\texttt{CL}). Otherwise it is classified as an incorrect-localization (\texttt{IL}). On a non-diseased case the mark is always classified as a false-positive (\texttt{FP}).
+
+The paradigm is illustrated with a few toy data files, \texttt{R/quick-start/lroc?.xlsx}, where \texttt{?} is \texttt{1} or \texttt{2}. These files illustrate two-modality three-reader LROC datasets with 3 non-diseased and 5 diseased cases.
+
+File \texttt{lroc1.xlsx} illustrates the classic (i.e., as originally introduced) LROC paradigm where \emph{one mark per case is forced}.
+
+File \texttt{lroc2.xlsx} illustrates the paradigm when one mark-rating pair per case is not forced. There is some history behind this: the basic issue was what was the observer supposed to do when there there was nothing to report? Swensson initially thought that even if there was nothing to report, there must be a region, selected from the set of very low confidence regions, which was most likely to be a lesion. Most radiologists had difficulty with the forced localization requirement - if they saw nothing suspicious, why should they be forced to indicate a location. The paradigm was subsequently altered so that if the confidence level was below a certain value, say 12 percent on a 0 to 100 scale, the radiologist did not have to report a location. LROCFIT software was modified accordingly, and internal to the software the mark was assigned a random location - which ended up being classified as an incorrect-localization in most cases. The fact that there are cases with nothing to report is accounted for in the radiological search model.
+
+\hypertarget{quick-start-lroc-truth}{%
+\section{\texorpdfstring{\texttt{Truth} worksheet}{Truth worksheet}}\label{quick-start-lroc-truth}}
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/lroc1Truth.png}
+
+\begin{itemize}
+\tightlist
+\item
+  The \texttt{Truth} worksheet is similar to that described previously for the ROC and LROC paradigms. The only difference is the first entry in the Paradigm column, which is \texttt{LROC}.
+\item
+  Since a diseased case has one lesion, the first five columns contain as many rows as there are cases in the dataset. There being 8 cases in the dataset, there are 8 rows of data.
+\item
+  \texttt{CaseID}: unique \textbf{integers} representing the cases in the dataset: `1', `2', `3', the 3 non-diseased cases, and `70', `71', `72', `73', `74', the 5 diseased cases.\\
+\item
+  \texttt{LesionID}: integers 0 or 1.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Each 0 represents a non-diseased case,
+  \item
+    Each 1 represents the solitary lesion in the diseased case.
+  \end{itemize}
+\item
+  There are 3 non-diseased cases in the dataset (the number of 0's in the \texttt{LesionID} column).
+\item
+  There are 5 diseased cases in the dataset (the number of 1's in the \texttt{LesionID} column).
+\item
+  \texttt{Weight}: this column is filled with zeroes. With one lesion per case, the weights are irrelevant.
+\item
+  \texttt{ReaderID}: In the example shown each cell has the value `0, 1, 2'. There are 3 readers in the dataset, labeled \texttt{0}, \texttt{1} and \texttt{2}.
+\item
+  \texttt{ModalityID}: In the example each cell has the value \texttt{0,\ 1}. There are 2 modalities in the dataset, labeled \texttt{0} and \texttt{1}.
+\item
+  \texttt{Paradigm}: The contents are \texttt{LROC} and \texttt{FCTRL}: this is an \texttt{LROC} dataset and the design is ``factorial''.
+\end{itemize}
+
+\hypertarget{quick-start-lroc-tp1}{%
+\section{\texorpdfstring{\texttt{TP} worksheet, forced localization true}{TP worksheet, forced localization true}}\label{quick-start-lroc-tp1}}
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/lroc1TP.png}
+
+\begin{itemize}
+\tightlist
+\item
+  The \texttt{TP} worksheet is similar to that described previously for the ROC and FROC paradigms.
+\item
+  This worksheet can only have diseased cases. The presence of a non-diseased case in this worksheet will generate an error.
+\item
+  The key difference is that for each modality-reader and diseased-case combination there can be at most one entry. Also, if a particular combination is missing in the TP worksheet then it must appear in the FP worksheet. This is because this is a forced-mark-per-case dataset.
+\item
+  There can be at most 30 rows of data in this worksheet: 2 modalities times 3 readers times 5 diseased cases. Since there in fact only 17 rows of data, the missing 13 rows must occur in the FP worksheet.
+\item
+  Recall that each entry in the TP worksheet represents a correct localization while each missing entry represents an incorrect localization. The incorrect localizations are recorded in the FP worksheet.
+\end{itemize}
+
+\hypertarget{quick-start-lroc-fp1}{%
+\section{\texorpdfstring{\texttt{FP} worksheet, forced localization true}{FP worksheet, forced localization true}}\label{quick-start-lroc-fp1}}
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/lroc1FP1.png}
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/lroc1FP2.png}
+
+\begin{itemize}
+\tightlist
+\item
+  The \texttt{FP} worksheet is similar to that described previously for the ROC and FROC paradigms.
+\item
+  Because of the forced mark requirement, there are 18 rows of data corresponding to non-diseased cases: 2 modalities times 3 readers times 3 non-diseased cases. The missing 13 rows from the TP worksheet are listed next; these correspond to the incorrect localizations on diseased cases. Therefore, the total number of rows in this worksheet is 18 + 13 = 31.
+\item
+  As an example, it is seen that for \texttt{modalityID} = 0 and \texttt{readerID} = 0, \texttt{caseID} = 70 does not appear in the TP worksheet. The lesion on this case was not localized; therefore it must appear in the FP worksheet as an incorrect localization, which is seen to be true in the FP worksheet.
+\item
+  As another example, for \texttt{modalityID} = 0 and \texttt{readerID} = 1, \texttt{caseID} = 71 does not appear in the TP worksheet; instead it appears in the FP worksheet.
+\item
+  As a final example, for \texttt{modalityID} = 1 and \texttt{readerID} = 2, none of the diseased cases appears in the TP worksheet; instead they all appear in the FP worksheet.
+\end{itemize}
+
+\hypertarget{quick-start-lroc-data-1}{%
+\section{Reading forced localization true LROC dataset}\label{quick-start-lroc-data-1}}
+
+The images shown above correspond to file \texttt{R/quick-start/lroc1.xlsx}. The next code reads this file into an \texttt{R} object \texttt{x1}. Note the usage of the \texttt{lrocForcedMark} flag, which is set to \texttt{TRUE}, because this is a forced localization LROC dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lroc1 }\OtherTok{\textless{}{-}} \StringTok{"R/quick{-}start/lroc1.xlsx"}
+\NormalTok{x1 }\OtherTok{\textless{}{-}} \FunctionTok{DfReadDataFile}\NormalTok{(lroc1, }\AttributeTok{newExcelFileFormat =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{lrocForcedMark =}\NormalTok{ T)}
+\FunctionTok{str}\NormalTok{(x1)}
+\CommentTok{\#\textgreater{} List of 3}
+\CommentTok{\#\textgreater{}  $ ratings     :List of 3}
+\CommentTok{\#\textgreater{}   ..$ NL   : num [1:2, 1:3, 1:8, 1] 1.02 2.89 2.21 3.01 2.14 3.01 2.22 2.89 3.1 1.96 ...}
+\CommentTok{\#\textgreater{}   ..$ LL   : num [1:2, 1:3, 1:5, 1] {-}Inf 5.2 5.14 {-}Inf 4.66 ...}
+\CommentTok{\#\textgreater{}   ..$ LL\_IL: num [1:2, 1:3, 1:5, 1] 5.28 {-}Inf {-}Inf 4.77 {-}Inf ...}
+\CommentTok{\#\textgreater{}  $ lesions     :List of 3}
+\CommentTok{\#\textgreater{}   ..$ perCase: int [1:5] 1 1 1 1 1}
+\CommentTok{\#\textgreater{}   ..$ IDs    : num [1:5, 1] 1 1 1 1 1}
+\CommentTok{\#\textgreater{}   ..$ weights: num [1:5, 1] 1 1 1 1 1}
+\CommentTok{\#\textgreater{}  $ descriptions:List of 7}
+\CommentTok{\#\textgreater{}   ..$ fileName     : chr "lroc1"}
+\CommentTok{\#\textgreater{}   ..$ type         : chr "LROC"}
+\CommentTok{\#\textgreater{}   ..$ name         : logi NA}
+\CommentTok{\#\textgreater{}   ..$ truthTableStr: num [1:2, 1:3, 1:8, 1:2] 1 1 1 1 1 1 1 1 1 1 ...}
+\CommentTok{\#\textgreater{}   ..$ design       : chr "FCTRL"}
+\CommentTok{\#\textgreater{}   ..$ modalityID   : Named chr [1:2] "0" "1"}
+\CommentTok{\#\textgreater{}   .. ..{-} attr(*, "names")= chr [1:2] "0" "1"}
+\CommentTok{\#\textgreater{}   ..$ readerID     : Named chr [1:3] "0" "1" "2"}
+\CommentTok{\#\textgreater{}   .. ..{-} attr(*, "names")= chr [1:3] "0" "1" "2"}
+\end{Highlighting}
+\end{Shaded}
+
+This follows the general description in Chapter \ref{quick-start-roc}. The differences are described below.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{x1\$ratings\$NL} is a {[}2,3,8,1{]} dimension vector. For each modality and reader, only the first three elements, corresponding to the three non-diseased cases, are finite, the rest are \texttt{-Inf}.
+\end{itemize}
+
+For example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x1}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{NL[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,,}\DecValTok{1}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] 1.02 2.22 1.90 {-}Inf {-}Inf {-}Inf {-}Inf {-}Inf}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  x1\(ratings\)LL\texttt{is\ a\ {[}2,3,5,1{]}\ dimension\ vector.\ For\ each\ modality\ and\ reader,\ only\ the\ first\ three\ elements,\ corresponding\ to\ the\ three\ non-diseased\ cases,\ are\ finite,\ the\ rest\ are}-Inf`.
+\end{itemize}
+
+For example, since none of the lesions are localized for \texttt{modalityID} = 1 (second modality) and \texttt{readerID} = 2 (third reader), the following code yields a vector consisting of five \texttt{-Inf} values:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x1}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{LL[}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,,}\DecValTok{1}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] {-}Inf {-}Inf {-}Inf {-}Inf {-}Inf}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{x1\$ratings\$LL\_IL} is a {[}2,3,5,1{]} dimension vector. These contain the ratings of incorrect localizations on diseased cases. For the just preceding modality-reader combination, this yields a vector with 5 finite values, the ratings of incorrect localizations for \texttt{modalityID} = 1 and \texttt{readerID} = 2.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x1}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{LL\_IL[}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,,}\DecValTok{1}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] 4.87 1.94 5.39 5.01 5.01}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{quick-start-lroc-tp2}{%
+\section{\texorpdfstring{\texttt{TP} worksheet, forced localization false}{TP worksheet, forced localization false}}\label{quick-start-lroc-tp2}}
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/lroc2TP.png}
+
+\hypertarget{quick-start-lroc-fp2}{%
+\section{\texorpdfstring{\texttt{FP} worksheet, forced localization false}{FP worksheet, forced localization false}}\label{quick-start-lroc-fp2}}
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/lroc2FP1.png}
+
+\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/lroc2FP2.png}
+
+\begin{itemize}
+\tightlist
+\item
+  If a particular modality-reader-case combination is missing in the TP worksheet then it need not appear in the FP worksheet. This is because this is not a forced-mark-per-case dataset.
+\item
+  As an example, \texttt{modalityID} = 1, \texttt{readerID} = 2 and \texttt{caseID} = 74 does not appear in either TP or FP worksheets.
+\end{itemize}
+
+\hypertarget{quick-start-lroc-data-2}{%
+\section{Reading forced localization false LROC dataset}\label{quick-start-lroc-data-2}}
+
+The next example is for file \texttt{R/quick-start/lroc2.xlsx}. The following code reads this file into an \texttt{R} object \texttt{x2}. Note that for this dataset one must set the \texttt{lrocForcedMark} flag to \texttt{FALSE}, because this is \emph{not} a forced localization LROC dataset. Setting \texttt{lrocForcedMark} flag to \texttt{TRUE} will generate an error.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lroc2 }\OtherTok{\textless{}{-}} \StringTok{"R/quick{-}start/lroc2.xlsx"}
+\NormalTok{x2 }\OtherTok{\textless{}{-}} \FunctionTok{DfReadDataFile}\NormalTok{(lroc2, }\AttributeTok{newExcelFileFormat =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{lrocForcedMark =}\NormalTok{ F)}
+\FunctionTok{str}\NormalTok{(x2)}
+\CommentTok{\#\textgreater{} List of 3}
+\CommentTok{\#\textgreater{}  $ ratings     :List of 3}
+\CommentTok{\#\textgreater{}   ..$ NL   : num [1:2, 1:3, 1:8, 1] 1.02 2.89 2.21 3.01 2.14 3.01 2.22 2.89 3.1 1.96 ...}
+\CommentTok{\#\textgreater{}   ..$ LL   : num [1:2, 1:3, 1:5, 1] {-}Inf 5.2 5.14 {-}Inf 4.66 ...}
+\CommentTok{\#\textgreater{}   ..$ LL\_IL: num [1:2, 1:3, 1:5, 1] 5.28 {-}Inf {-}Inf 4.77 {-}Inf ...}
+\CommentTok{\#\textgreater{}  $ lesions     :List of 3}
+\CommentTok{\#\textgreater{}   ..$ perCase: int [1:5] 1 1 1 1 1}
+\CommentTok{\#\textgreater{}   ..$ IDs    : num [1:5, 1] 1 1 1 1 1}
+\CommentTok{\#\textgreater{}   ..$ weights: num [1:5, 1] 1 1 1 1 1}
+\CommentTok{\#\textgreater{}  $ descriptions:List of 7}
+\CommentTok{\#\textgreater{}   ..$ fileName     : chr "lroc2"}
+\CommentTok{\#\textgreater{}   ..$ type         : chr "LROC"}
+\CommentTok{\#\textgreater{}   ..$ name         : logi NA}
+\CommentTok{\#\textgreater{}   ..$ truthTableStr: num [1:2, 1:3, 1:8, 1:2] 1 1 1 1 1 1 1 1 1 1 ...}
+\CommentTok{\#\textgreater{}   ..$ design       : chr "FCTRL"}
+\CommentTok{\#\textgreater{}   ..$ modalityID   : Named chr [1:2] "0" "1"}
+\CommentTok{\#\textgreater{}   .. ..{-} attr(*, "names")= chr [1:2] "0" "1"}
+\CommentTok{\#\textgreater{}   ..$ readerID     : Named chr [1:3] "0" "1" "2"}
+\CommentTok{\#\textgreater{}   .. ..{-} attr(*, "names")= chr [1:3] "0" "1" "2"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  The \texttt{x2\$ratings\$LL} array is a {[}2,3,5,1{]} dimension vector. For each modality and reader, only the first three elements, corresponding to the three non-diseased cases, are finite, the rest are \texttt{-Inf}.
+\end{itemize}
+
+For example, since none of the lesions are localized for \texttt{modalityID} = 1 (second modality) and \texttt{readerID} = 2 (third reader), the following code yields a vector consisting of five \texttt{-Inf} values:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x2}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{LL[}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,,}\DecValTok{1}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] {-}Inf {-}Inf {-}Inf {-}Inf {-}Inf}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  The \texttt{x2\$ratings\$LL\_IL} is a {[}2,3,5,1{]} dimension vector. These contain the ratings of incorrect localizations on diseased cases. For the just preceding modality-reader combination, this yields a vector with 4 finite values, the ratings of incorrect localizations for \texttt{modalityID} = 1 and \texttt{readerID} = 2.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x2}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{LL\_IL[}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,,}\DecValTok{1}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] 4.87 1.94 5.39 5.01 {-}Inf}
+\end{Highlighting}
+\end{Shaded}
+
+For this modality-reader combination case 74 (i.e., the fifth diseased case) was unmarked. It does not appear in either the TP or the FP worksheet.
+
+\hypertarget{quick-start-lroc-data-summary}{%
+\section{Summary}\label{quick-start-lroc-data-summary}}
+
+The difference from the previous data structures is the existence of \texttt{LL\_IL} in the \texttt{ratings} list, which contains the ratings of incorrect localizations. Recall that for ROC and FROC paradigms this member was \texttt{NA}. When the data obeys forced localization, the corresponding flag should be set to \texttt{TRUE}, otherwise it should be set to \texttt{FALSE}. The default value of this flag is \texttt{NA}, which will work for ROC or FROC datasets. For LROC datasets it should be set to \texttt{T/F}.
 
 \hypertarget{quick-start-dbm-text}{%
 \chapter{DBM analysis text output}\label{quick-start-dbm-text}}
@@ -1990,7 +2168,7 @@ Here is a plot of wAFROC effect size (y-axis) vs.~ROC effect size.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{18b-froc-sample-size_files/figure-latex/unnamed-chunk-7-1} \end{center}
+\begin{center}\includegraphics{19-froc-sample-size_files/figure-latex/unnamed-chunk-7-1} \end{center}
 
 The plot is very close to linear. This makes it easy to design an interpolation function. In the following code block the first line fits \texttt{eswAfroc} vs.~\texttt{esRoc} using the linear model \texttt{lm()} function constrained to pass through the origin (the minus one): \texttt{scaleFactor\ \textless{}-\ lm(eswAfroc\ \textasciitilde{}\ -1\ +\ esRoc)}. One expects this constraint since for \texttt{deltaMu\ =\ 0} the effect size must be zero no matter how it is measured.
 
@@ -2129,7 +2307,7 @@ Since the wAFROC effect size is about a factor of two larger than the ROC effect
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{18b-froc-sample-size_files/figure-latex/unnamed-chunk-12-1} \end{center}
+\begin{center}\includegraphics{19-froc-sample-size_files/figure-latex/unnamed-chunk-12-1} \end{center}
 
 \hypertarget{part-2}{%
 \section{Part 2}\label{part-2}}
@@ -2725,6 +2903,217 @@ These are found in the \texttt{TP} or \texttt{LL} worksheet, see below.
 \item
   \texttt{LL\_Rating}: the ratings of diseased cases.
 \end{itemize}
+
+\hypertarget{part-datasets}{%
+\part*{DATASETS}\label{part-datasets}}
+\addcontentsline{toc}{part}{DATASETS}
+
+\hypertarget{datasets}{%
+\chapter{Datasets}\label{datasets}}
+
+\hypertarget{datasets-datasetsdd}{%
+\section{\texorpdfstring{Datasets embedded in \texttt{RJafroc}}{Datasets embedded in RJafroc}}\label{datasets-datasetsdd}}
+
+They are identified in the code by dataset\texttt{dd} (where \texttt{dd} is an integer in the range \texttt{01} to \texttt{14}). As an example, \texttt{dataset01} can be viewed \href{https://dpc10ster.github.io/RJafroc/reference/dataset01.html}{here}.
+
+\hypertarget{datasets-dataset01}{%
+\subsection{Dataset01}\label{datasets-dataset01}}
+
+\texttt{dataset01} ``TONY'' FROC dataset \citep{chakraborty2011estimating}
+
+\begin{verbatim}
+## List of 3
+##  $ NL   : num [1:2, 1:5, 1:185, 1:3] 3 -Inf 3 -Inf 4 ...
+##  $ LL   : num [1:2, 1:5, 1:89, 1:2] 4 4 3 -Inf 3.5 ...
+##  $ LL_IL: logi NA
+\end{verbatim}
+
+\hypertarget{datasets-dataset02}{%
+\subsection{Dataset02}\label{datasets-dataset02}}
+
+\texttt{dataset02} ``VAN-DYKE'' (Van Dyke) ROC dataset \citep{RN1993}
+
+\begin{verbatim}
+## List of 3
+##  $ NL   : num [1:2, 1:5, 1:114, 1] 1 3 2 3 2 2 1 2 3 2 ...
+##  $ LL   : num [1:2, 1:5, 1:45, 1] 5 5 5 5 5 5 5 5 5 5 ...
+##  $ LL_IL: logi NA
+\end{verbatim}
+
+\hypertarget{datasets-dataset03}{%
+\subsection{Dataset03}\label{datasets-dataset03}}
+
+\texttt{dataset03} ``FRANKEN'' (Franken) ROC dataset \citep{RN1995}
+
+\begin{verbatim}
+## List of 3
+##  $ NL   : num [1:2, 1:4, 1:100, 1] 3 3 4 3 3 3 4 1 1 3 ...
+##  $ LL   : num [1:2, 1:4, 1:67, 1] 5 5 4 4 5 4 4 5 2 2 ...
+##  $ LL_IL: logi NA
+\end{verbatim}
+
+\hypertarget{datasets-dataset04}{%
+\subsection{Dataset04}\label{datasets-dataset04}}
+
+\texttt{dataset04} ``FEDERICA'' (Federica Zanca) FROC dataset \citep{zanca2009evaluation}
+
+\begin{verbatim}
+## List of 3
+##  $ NL   : num [1:5, 1:4, 1:200, 1:7] -Inf -Inf 1 -Inf -Inf ...
+##  $ LL   : num [1:5, 1:4, 1:100, 1:3] 4 5 4 5 4 3 5 4 4 3 ...
+##  $ LL_IL: logi NA
+\end{verbatim}
+
+\hypertarget{datasets-dataset05}{%
+\subsection{Dataset05}\label{datasets-dataset05}}
+
+\texttt{dataset05} ``THOMPSON'' (John Thompson) FROC dataset \citep{RN2368}
+
+\begin{verbatim}
+## List of 3
+##  $ NL   : num [1:2, 1:9, 1:92, 1:7] 4 5 -Inf -Inf 8 ...
+##  $ LL   : num [1:2, 1:9, 1:47, 1:3] 5 9 -Inf 10 8 ...
+##  $ LL_IL: logi NA
+\end{verbatim}
+
+\hypertarget{datasets-dataset06}{%
+\subsection{Dataset06}\label{datasets-dataset06}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{dataset06} ``MAGNUS'' (Magnus Bath) FROC dataset \citep{RN1929}
+\end{itemize}
+
+\begin{verbatim}
+## List of 3
+##  $ NL   : num [1:2, 1:4, 1:89, 1:17] 1 -Inf -Inf -Inf 1 ...
+##  $ LL   : num [1:2, 1:4, 1:42, 1:15] -Inf -Inf -Inf -Inf -Inf ...
+##  $ LL_IL: logi NA
+\end{verbatim}
+
+\hypertarget{datasets-dataset07}{%
+\subsection{Dataset07}\label{datasets-dataset07}}
+
+\texttt{dataset07} ``LUCY-WARREN'' (Lucy Warren) FROC dataset \citep{RN2507}
+
+\begin{verbatim}
+## List of 3
+##  $ NL   : num [1:5, 1:7, 1:162, 1:4] 1 2 1 2 -Inf ...
+##  $ LL   : num [1:5, 1:7, 1:81, 1:3] 2 -Inf 2 -Inf 1 ...
+##  $ LL_IL: logi NA
+\end{verbatim}
+
+\hypertarget{datasets-dataset08}{%
+\subsection{Dataset08}\label{datasets-dataset08}}
+
+\texttt{dataset08} ``PENEDO'' (Monica Penedo) FROC dataset \citep{RN1520}
+
+\begin{verbatim}
+## List of 3
+##  $ NL   : num [1:5, 1:5, 1:112, 1] 3 2 3 2 3 0 0 4 0 2 ...
+##  $ LL   : num [1:5, 1:5, 1:64, 1] 3 2 4 3 3 3 3 4 4 3 ...
+##  $ LL_IL: logi NA
+\end{verbatim}
+
+\hypertarget{datasets-dataset09}{%
+\subsection{Dataset09}\label{datasets-dataset09}}
+
+\texttt{dataset09} ``NICO-CAD-ROC'' (Nico Karssemeijer) ROC dataset \citep{hupse2013standalone}
+
+\begin{verbatim}
+## List of 3
+##  $ NL   : num [1, 1:10, 1:200, 1] 28 0 14 0 16 0 31 0 0 0 ...
+##  $ LL   : num [1, 1:10, 1:80, 1] 29 12 13 10 41 67 61 51 67 0 ...
+##  $ LL_IL: logi NA
+\end{verbatim}
+
+\hypertarget{datasets-dataset10}{%
+\subsection{Dataset10}\label{datasets-dataset10}}
+
+\texttt{dataset10} ``RUSCHIN'' (Mark Ruschin) ROC dataset \citep{RN1646}
+
+\begin{verbatim}
+## List of 3
+##  $ NL   : num [1:3, 1:8, 1:90, 1] 1 0 0 0 0 0 1 0 0 0 ...
+##  $ LL   : num [1:3, 1:8, 1:40, 1] 2 1 1 2 0 0 0 0 0 3 ...
+##  $ LL_IL: logi NA
+\end{verbatim}
+
+\hypertarget{datasets-dataset11}{%
+\subsection{Dataset11}\label{datasets-dataset11}}
+
+\texttt{dataset11} ``DOBBINS-1'' (James Dobbins) FROC dataset \citep{Dobbins2016MultiInstitutional}
+
+\begin{verbatim}
+## List of 3
+##  $ NL   : num [1:4, 1:5, 1:158, 1:4] -Inf -Inf -Inf -Inf -Inf ...
+##  $ LL   : num [1:4, 1:5, 1:115, 1:20] -Inf -Inf -Inf -Inf -Inf ...
+##  $ LL_IL: logi NA
+\end{verbatim}
+
+\hypertarget{datasets-dataset12}{%
+\subsection{Dataset12}\label{datasets-dataset12}}
+
+\texttt{dataset12} ``DOBBINS-2'' (James Dobbins) ROC dataset \citep{Dobbins2016MultiInstitutional}
+
+\begin{verbatim}
+## List of 3
+##  $ NL   : num [1:4, 1:5, 1:152, 1] -Inf -Inf -Inf -Inf -Inf ...
+##  $ LL   : num [1:4, 1:5, 1:88, 1] 3 4 4 -Inf -Inf ...
+##  $ LL_IL: logi NA
+\end{verbatim}
+
+\hypertarget{datasets-dataset13}{%
+\subsection{Dataset13}\label{datasets-dataset13}}
+
+\texttt{dataset13} ``DOBBINS-3'' (James Dobbins) FROC dataset \citep{Dobbins2016MultiInstitutional}
+
+\begin{verbatim}
+## List of 3
+##  $ NL   : num [1:4, 1:5, 1:158, 1:4] -Inf 3 -Inf 4 5 ...
+##  $ LL   : num [1:4, 1:5, 1:106, 1:15] -Inf -Inf -Inf -Inf -Inf ...
+##  $ LL_IL: logi NA
+\end{verbatim}
+
+\hypertarget{datasets-dataset14}{%
+\subsection{Dataset14}\label{datasets-dataset14}}
+
+\texttt{dataset14} ``FEDERICA-REAL-ROC'' (Federica Zanca) \emph{real} ROC dataset \citep{zanca2012correlation}
+
+\begin{verbatim}
+## List of 3
+##  $ NL   : num [1:2, 1:4, 1:200, 1] 2 2 2 2 1 3 2 2 3 1 ...
+##  $ LL   : num [1:2, 1:4, 1:100, 1] 6 5 6 4 5 5 5 5 5 4 ...
+##  $ LL_IL: logi NA
+\end{verbatim}
+
+\hypertarget{other-datasets}{%
+\section{Other datasets}\label{other-datasets}}
+
+\hypertarget{datasets-datasetCadLroc}{%
+\subsection{DatasetCadLroc}\label{datasets-datasetCadLroc}}
+
+\texttt{datasetCadLroc} ``NICO-CAD-LROC'' (Nico Karssemeijer) standalone CAD LROC dataset
+
+\begin{verbatim}
+## List of 3
+##  $ NL   : num [1, 1:10, 1:200, 1] 28 0 14 0 16 0 31 0 0 0 ...
+##  $ LL   : num [1, 1:10, 1:80, 1] 0 0 0 0 0 0 0 0 67 0 ...
+##  $ LL_IL: num [1, 1:10, 1:80, 1] 29 12 13 10 41 67 61 51 0 0 ...
+\end{verbatim}
+
+\hypertarget{datasets-datasetCadSimuFroc}{%
+\subsection{datasetCadSimuFroc}\label{datasets-datasetCadSimuFroc}}
+
+\texttt{datasetCadSimuFroc} ``SIM-CAD-FROC'' (Nico Karssemeijer) simulated standalone CAD FROC dataset
+
+\begin{verbatim}
+## List of 3
+##  $ NL   : num [1, 1:10, 1:200, 1] 28 -Inf 14 -Inf 16 ...
+##  $ LL   : num [1, 1:10, 1:80, 1] -Inf -Inf -Inf -Inf -Inf ...
+##  $ LL_IL: logi NA
+\end{verbatim}
 
   \bibliography{packages.bib,myRefs.bib}
 

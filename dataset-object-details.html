@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 10 Excel file and dataset details | The RJafroc Quick Start Book</title>
+  <title>Chapter 11 Excel file and dataset details | The RJafroc Quick Start Book</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 10 Excel file and dataset details | The RJafroc Quick Start Book" />
+  <meta property="og:title" content="Chapter 11 Excel file and dataset details | The RJafroc Quick Start Book" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   <meta name="github-repo" content="dpc10ster/RJafrocQuickStart" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 10 Excel file and dataset details | The RJafroc Quick Start Book" />
+  <meta name="twitter:title" content="Chapter 11 Excel file and dataset details | The RJafroc Quick Start Book" />
   
   <meta name="twitter:description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2023-04-23" />
+<meta name="date" content="2023-04-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="froc-sample-size.html"/>
-
+<link rel="next" href="datasets.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -188,113 +188,159 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html"><i class="fa fa-check"></i><b>3</b> FROC data format</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-how-much-finished"><i class="fa fa-check"></i><b>3.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="3.1" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-how-much-finished"><i class="fa fa-check"></i><b>3.1</b> How much finished 90%</a></li>
 <li class="chapter" data-level="3.2" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-intro"><i class="fa fa-check"></i><b>3.2</b> Introduction</a></li>
-<li class="chapter" data-level="3.3" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-truth"><i class="fa fa-check"></i><b>3.3</b> The <code>Truth</code> worksheet</a></li>
-<li class="chapter" data-level="3.4" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-structure"><i class="fa fa-check"></i><b>3.4</b> Reading the FROC dataset</a></li>
-<li class="chapter" data-level="3.5" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-fp"><i class="fa fa-check"></i><b>3.5</b> The false positive (FP) ratings</a></li>
-<li class="chapter" data-level="3.6" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-tp"><i class="fa fa-check"></i><b>3.6</b> The true positive (TP) ratings</a></li>
+<li class="chapter" data-level="3.3" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-truth"><i class="fa fa-check"></i><b>3.3</b> The <code>Truth</code> worksheet</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-truth-comments"><i class="fa fa-check"></i><b>3.3.1</b> Comments on the <code>Truth</code> worksheet</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-fp"><i class="fa fa-check"></i><b>3.4</b> The FP ratings</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-roc-fp-comments"><i class="fa fa-check"></i><b>3.4.1</b> Comments on the <code>FP</code> worksheet</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-tp"><i class="fa fa-check"></i><b>3.5</b> The TP ratings</a></li>
+<li class="chapter" data-level="3.6" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-structure"><i class="fa fa-check"></i><b>3.6</b> Reading the FROC dataset</a></li>
 <li class="chapter" data-level="3.7" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-distribution-diseased-cases"><i class="fa fa-check"></i><b>3.7</b> On the distribution of numbers of lesions in diseased cases</a>
 <ul>
 <li class="chapter" data-level="3.7.1" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-lesion-distribution"><i class="fa fa-check"></i><b>3.7.1</b> Definition of <code>lesDistr</code> array</a></li>
 </ul></li>
 <li class="chapter" data-level="3.8" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html#quick-start-froc-data-lesion-weights"><i class="fa fa-check"></i><b>3.8</b> TBA Definition of <code>lesWghtDistr</code> array</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html"><i class="fa fa-check"></i><b>4</b> DBM analysis text output</a>
+<li class="chapter" data-level="4" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html"><i class="fa fa-check"></i><b>4</b> LROC data format</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-how-much-finished"><i class="fa fa-check"></i><b>4.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="4.2" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-intro"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
-<li class="chapter" data-level="4.3" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-analyze-dataset"><i class="fa fa-check"></i><b>4.3</b> Analyzing the ROC dataset</a></li>
-<li class="chapter" data-level="4.4" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-explanation"><i class="fa fa-check"></i><b>4.4</b> Explanation of the output</a></li>
+<li class="chapter" data-level="4.1" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-how-much-finished"><i class="fa fa-check"></i><b>4.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="4.2" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-intro"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
+<li class="chapter" data-level="4.3" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-truth"><i class="fa fa-check"></i><b>4.3</b> <code>Truth</code> worksheet</a></li>
+<li class="chapter" data-level="4.4" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-tp1"><i class="fa fa-check"></i><b>4.4</b> <code>TP</code> worksheet, forced localization true</a></li>
+<li class="chapter" data-level="4.5" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-fp1"><i class="fa fa-check"></i><b>4.5</b> <code>FP</code> worksheet, forced localization true</a></li>
+<li class="chapter" data-level="4.6" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-1"><i class="fa fa-check"></i><b>4.6</b> Reading forced localization true LROC dataset</a></li>
+<li class="chapter" data-level="4.7" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-tp2"><i class="fa fa-check"></i><b>4.7</b> <code>TP</code> worksheet, forced localization false</a></li>
+<li class="chapter" data-level="4.8" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-fp2"><i class="fa fa-check"></i><b>4.8</b> <code>FP</code> worksheet, forced localization false</a></li>
+<li class="chapter" data-level="4.9" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-2"><i class="fa fa-check"></i><b>4.9</b> Reading forced localization false LROC dataset</a></li>
+<li class="chapter" data-level="4.10" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-summary"><i class="fa fa-check"></i><b>4.10</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html"><i class="fa fa-check"></i><b>5</b> OR analysis text output</a>
+<li class="chapter" data-level="5" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html"><i class="fa fa-check"></i><b>5</b> DBM analysis text output</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-how-much-finished"><i class="fa fa-check"></i><b>5.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="5.2" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-intro"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
-<li class="chapter" data-level="5.3" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-analyze-dataset"><i class="fa fa-check"></i><b>5.3</b> Analyzing the ROC dataset</a></li>
-<li class="chapter" data-level="5.4" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-explanation"><i class="fa fa-check"></i><b>5.4</b> Explanation of the output</a></li>
+<li class="chapter" data-level="5.1" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-how-much-finished"><i class="fa fa-check"></i><b>5.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="5.2" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-intro"><i class="fa fa-check"></i><b>5.2</b> Introduction</a></li>
+<li class="chapter" data-level="5.3" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-analyze-dataset"><i class="fa fa-check"></i><b>5.3</b> Analyzing the ROC dataset</a></li>
+<li class="chapter" data-level="5.4" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-explanation"><i class="fa fa-check"></i><b>5.4</b> Explanation of the output</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html"><i class="fa fa-check"></i><b>6</b> OR analysis Excel output</a>
+<li class="chapter" data-level="6" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html"><i class="fa fa-check"></i><b>6</b> OR analysis text output</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html#quick-start-or-excel-how-much-finished"><i class="fa fa-check"></i><b>6.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="6.2" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html#quick-start-or-excel-intro"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
-<li class="chapter" data-level="6.3" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html#quick-start-or-excel-output"><i class="fa fa-check"></i><b>6.3</b> Generating the Excel output file</a></li>
+<li class="chapter" data-level="6.1" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-how-much-finished"><i class="fa fa-check"></i><b>6.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="6.2" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-intro"><i class="fa fa-check"></i><b>6.2</b> Introduction</a></li>
+<li class="chapter" data-level="6.3" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-analyze-dataset"><i class="fa fa-check"></i><b>6.3</b> Analyzing the ROC dataset</a></li>
+<li class="chapter" data-level="6.4" data-path="quick-start-or-text.html"><a href="quick-start-or-text.html#quick-start-or-text-explanation"><i class="fa fa-check"></i><b>6.4</b> Explanation of the output</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html"><i class="fa fa-check"></i><b>7</b> OR analysis Excel output</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html#quick-start-or-excel-how-much-finished"><i class="fa fa-check"></i><b>7.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="7.2" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html#quick-start-or-excel-intro"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
+<li class="chapter" data-level="7.3" data-path="quick-start-or-excel.html"><a href="quick-start-or-excel.html#quick-start-or-excel-output"><i class="fa fa-check"></i><b>7.3</b> Generating the Excel output file</a></li>
 </ul></li>
 <li class="part"><span><b>ROC sample size</b></span></li>
-<li class="chapter" data-level="7" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html"><i class="fa fa-check"></i><b>7</b> ROC-DBM sample size</a>
+<li class="chapter" data-level="8" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html"><i class="fa fa-check"></i><b>8</b> ROC-DBM sample size</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-how-much-finished"><i class="fa fa-check"></i><b>7.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="7.2" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-introduction"><i class="fa fa-check"></i><b>7.2</b> Introduction</a></li>
-<li class="chapter" data-level="7.3" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#StatPower1"><i class="fa fa-check"></i><b>7.3</b> Statistical Power</a>
+<li class="chapter" data-level="8.1" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-how-much-finished"><i class="fa fa-check"></i><b>8.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="8.2" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-introduction"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
+<li class="chapter" data-level="8.3" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#StatPower1"><i class="fa fa-check"></i><b>8.3</b> Statistical Power</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#observed-vs.-anticipated-effect-size"><i class="fa fa-check"></i><b>7.3.1</b> Observed vs. anticipated effect-size</a></li>
-<li class="chapter" data-level="7.3.2" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-dependence-of-stats-power"><i class="fa fa-check"></i><b>7.3.2</b> Dependence of statistical power on estimates of model parameters</a></li>
-<li class="chapter" data-level="7.3.3" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRRC-sample-size-estimation"><i class="fa fa-check"></i><b>7.3.3</b> Formulae for random-reader random-case (RRRC) sample size estimation</a></li>
-<li class="chapter" data-level="7.3.4" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-sig-testing"><i class="fa fa-check"></i><b>7.3.4</b> Significance testing</a></li>
-<li class="chapter" data-level="7.3.5" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-pvalue-ci"><i class="fa fa-check"></i><b>7.3.5</b> p-value and confidence interval</a></li>
-<li class="chapter" data-level="7.3.6" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-CompareDBM2OR"><i class="fa fa-check"></i><b>7.3.6</b> Comparing DBM to Obuchowski and Rockette for single-reader multiple-treatments</a></li>
+<li class="chapter" data-level="8.3.1" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#observed-vs.-anticipated-effect-size"><i class="fa fa-check"></i><b>8.3.1</b> Observed vs. anticipated effect-size</a></li>
+<li class="chapter" data-level="8.3.2" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-dependence-of-stats-power"><i class="fa fa-check"></i><b>8.3.2</b> Dependence of statistical power on estimates of model parameters</a></li>
+<li class="chapter" data-level="8.3.3" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRRC-sample-size-estimation"><i class="fa fa-check"></i><b>8.3.3</b> Formulae for random-reader random-case (RRRC) sample size estimation</a></li>
+<li class="chapter" data-level="8.3.4" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-sig-testing"><i class="fa fa-check"></i><b>8.3.4</b> Significance testing</a></li>
+<li class="chapter" data-level="8.3.5" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-pvalue-ci"><i class="fa fa-check"></i><b>8.3.5</b> p-value and confidence interval</a></li>
+<li class="chapter" data-level="8.3.6" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-CompareDBM2OR"><i class="fa fa-check"></i><b>8.3.6</b> Comparing DBM to Obuchowski and Rockette for single-reader multiple-treatments</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-FRRC-sample-size-estimation"><i class="fa fa-check"></i><b>7.4</b> Formulae for fixed-reader random-case (FRRC) sample size estimation</a>
+<li class="chapter" data-level="8.4" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-FRRC-sample-size-estimation"><i class="fa fa-check"></i><b>8.4</b> Formulae for fixed-reader random-case (FRRC) sample size estimation</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRFC-sample-size-estimation"><i class="fa fa-check"></i><b>7.4.1</b> Formulae for random-reader fixed-case (RRFC) sample size estimation</a></li>
-<li class="chapter" data-level="7.4.2" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-FRRCAnalysis"><i class="fa fa-check"></i><b>7.4.2</b> Fixed-reader random-case (FRRC) analysis TBA</a></li>
-<li class="chapter" data-level="7.4.3" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRFCAnalysis"><i class="fa fa-check"></i><b>7.4.3</b> Random-reader fixed-case (RRFC) analysis</a></li>
-<li class="chapter" data-level="7.4.4" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-STMRAnalysis"><i class="fa fa-check"></i><b>7.4.4</b> Single-treatment multiple-reader analysis</a></li>
+<li class="chapter" data-level="8.4.1" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRFC-sample-size-estimation"><i class="fa fa-check"></i><b>8.4.1</b> Formulae for random-reader fixed-case (RRFC) sample size estimation</a></li>
+<li class="chapter" data-level="8.4.2" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-FRRCAnalysis"><i class="fa fa-check"></i><b>8.4.2</b> Fixed-reader random-case (FRRC) analysis TBA</a></li>
+<li class="chapter" data-level="8.4.3" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-RRFCAnalysis"><i class="fa fa-check"></i><b>8.4.3</b> Random-reader fixed-case (RRFC) analysis</a></li>
+<li class="chapter" data-level="8.4.4" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#roc-sample-size-dbm-STMRAnalysis"><i class="fa fa-check"></i><b>8.4.4</b> Single-treatment multiple-reader analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#discussionsummary2"><i class="fa fa-check"></i><b>7.5</b> Discussion/Summary/2</a></li>
+<li class="chapter" data-level="8.5" data-path="roc-sample-size-dbm.html"><a href="roc-sample-size-dbm.html#discussionsummary2"><i class="fa fa-check"></i><b>8.5</b> Discussion/Summary/2</a></li>
 </ul></li>
 <li class="part"><span><b>FROC analysis</b></span></li>
-<li class="chapter" data-level="8" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html"><i class="fa fa-check"></i><b>8</b> Analyzing FROC data</a>
+<li class="chapter" data-level="9" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html"><i class="fa fa-check"></i><b>9</b> Analyzing FROC data</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-how-much-finished"><i class="fa fa-check"></i><b>8.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="8.2" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-intro"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
-<li class="chapter" data-level="8.3" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-example1"><i class="fa fa-check"></i><b>8.3</b> Example 1</a></li>
-<li class="chapter" data-level="8.4" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-plotting"><i class="fa fa-check"></i><b>8.4</b> TBA Plotting wAFROC and ROC curves</a></li>
-<li class="chapter" data-level="8.5" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-reporting"><i class="fa fa-check"></i><b>8.5</b> Reporting an FROC study</a></li>
-<li class="chapter" data-level="8.6" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#crossed-treatment-analysis"><i class="fa fa-check"></i><b>8.6</b> Crossed-treatment analysis</a></li>
-<li class="chapter" data-level="8.7" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-rjafroc-history"><i class="fa fa-check"></i><b>8.7</b> Discussion / Summary</a></li>
+<li class="chapter" data-level="9.1" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-how-much-finished"><i class="fa fa-check"></i><b>9.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="9.2" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-intro"><i class="fa fa-check"></i><b>9.2</b> Introduction</a></li>
+<li class="chapter" data-level="9.3" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-example1"><i class="fa fa-check"></i><b>9.3</b> Example 1</a></li>
+<li class="chapter" data-level="9.4" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-plotting"><i class="fa fa-check"></i><b>9.4</b> TBA Plotting wAFROC and ROC curves</a></li>
+<li class="chapter" data-level="9.5" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-reporting"><i class="fa fa-check"></i><b>9.5</b> Reporting an FROC study</a></li>
+<li class="chapter" data-level="9.6" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#crossed-treatment-analysis"><i class="fa fa-check"></i><b>9.6</b> Crossed-treatment analysis</a></li>
+<li class="chapter" data-level="9.7" data-path="analyzing-froc-data.html"><a href="analyzing-froc-data.html#analyzing-froc-data-rjafroc-history"><i class="fa fa-check"></i><b>9.7</b> Discussion / Summary</a></li>
 </ul></li>
 <li class="part"><span><b>FROC sample size</b></span></li>
-<li class="chapter" data-level="9" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>9</b> Sample size estimation for FROC studies</a>
+<li class="chapter" data-level="10" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>10</b> Sample size estimation for FROC studies</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-how-much-finished"><i class="fa fa-check"></i><b>9.1</b> TBA How much finished</a></li>
-<li class="chapter" data-level="9.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#overview"><i class="fa fa-check"></i><b>9.2</b> Overview</a></li>
-<li class="chapter" data-level="9.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-1"><i class="fa fa-check"></i><b>9.3</b> Part 1</a>
+<li class="chapter" data-level="10.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-how-much-finished"><i class="fa fa-check"></i><b>10.1</b> TBA How much finished</a></li>
+<li class="chapter" data-level="10.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#overview"><i class="fa fa-check"></i><b>10.2</b> Overview</a></li>
+<li class="chapter" data-level="10.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-1"><i class="fa fa-check"></i><b>10.3</b> Part 1</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>9.3.1</b> Introduction</a></li>
-<li class="chapter" data-level="9.3.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#relating-an-roc-effect-size-to-a-wafroc-effect-size"><i class="fa fa-check"></i><b>9.3.2</b> Relating an ROC effect-size to a wAFROC effect-size</a></li>
-<li class="chapter" data-level="9.3.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#computing-the-respective-variance-components"><i class="fa fa-check"></i><b>9.3.3</b> Computing the respective variance components</a></li>
-<li class="chapter" data-level="9.3.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#comparing-roc-power-to-wafroc-power-for-equivalent-effect-sizes"><i class="fa fa-check"></i><b>9.3.4</b> Comparing ROC power to wAFROC power for equivalent effect-sizes</a></li>
+<li class="chapter" data-level="10.3.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-intro"><i class="fa fa-check"></i><b>10.3.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.3.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#relating-an-roc-effect-size-to-a-wafroc-effect-size"><i class="fa fa-check"></i><b>10.3.2</b> Relating an ROC effect-size to a wAFROC effect-size</a></li>
+<li class="chapter" data-level="10.3.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#computing-the-respective-variance-components"><i class="fa fa-check"></i><b>10.3.3</b> Computing the respective variance components</a></li>
+<li class="chapter" data-level="10.3.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#comparing-roc-power-to-wafroc-power-for-equivalent-effect-sizes"><i class="fa fa-check"></i><b>10.3.4</b> Comparing ROC power to wAFROC power for equivalent effect-sizes</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-2"><i class="fa fa-check"></i><b>9.4</b> Part 2</a>
+<li class="chapter" data-level="10.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-2"><i class="fa fa-check"></i><b>10.4</b> Part 2</a>
 <ul>
-<li class="chapter" data-level="9.4.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#introduction"><i class="fa fa-check"></i><b>9.4.1</b> Introduction</a></li>
-<li class="chapter" data-level="9.4.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#constructing-the-nh-model-for-the-dataset"><i class="fa fa-check"></i><b>9.4.2</b> Constructing the NH model for the dataset</a></li>
-<li class="chapter" data-level="9.4.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#extracting-the-wafroc-variance-components"><i class="fa fa-check"></i><b>9.4.3</b> Extracting the wAFROC variance components</a></li>
-<li class="chapter" data-level="9.4.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-power-for-specified-roc-effect-size-number-of-readers-j-and-number-of-cases-k"><i class="fa fa-check"></i><b>9.4.4</b> wAFROC power for specified ROC effect size, number of readers J and number of cases K</a></li>
-<li class="chapter" data-level="9.4.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-number-of-cases-for-80-power-for-a-given-number-of-readers-j"><i class="fa fa-check"></i><b>9.4.5</b> wAFROC number of cases for 80% power for a given number of readers J</a></li>
-<li class="chapter" data-level="9.4.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k"><i class="fa fa-check"></i><b>9.4.6</b> wAFROC-FOM power for a given number of readers J and cases K</a></li>
+<li class="chapter" data-level="10.4.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#introduction"><i class="fa fa-check"></i><b>10.4.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.4.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#constructing-the-nh-model-for-the-dataset"><i class="fa fa-check"></i><b>10.4.2</b> Constructing the NH model for the dataset</a></li>
+<li class="chapter" data-level="10.4.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#extracting-the-wafroc-variance-components"><i class="fa fa-check"></i><b>10.4.3</b> Extracting the wAFROC variance components</a></li>
+<li class="chapter" data-level="10.4.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-power-for-specified-roc-effect-size-number-of-readers-j-and-number-of-cases-k"><i class="fa fa-check"></i><b>10.4.4</b> wAFROC power for specified ROC effect size, number of readers J and number of cases K</a></li>
+<li class="chapter" data-level="10.4.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-number-of-cases-for-80-power-for-a-given-number-of-readers-j"><i class="fa fa-check"></i><b>10.4.5</b> wAFROC number of cases for 80% power for a given number of readers J</a></li>
+<li class="chapter" data-level="10.4.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k"><i class="fa fa-check"></i><b>10.4.6</b> wAFROC-FOM power for a given number of readers J and cases K</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>Software details</b></span></li>
-<li class="chapter" data-level="10" data-path="dataset-object-details.html"><a href="dataset-object-details.html"><i class="fa fa-check"></i><b>10</b> Excel file and dataset details</a>
+<li class="chapter" data-level="11" data-path="dataset-object-details.html"><a href="dataset-object-details.html"><i class="fa fa-check"></i><b>11</b> Excel file and dataset details</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="dataset-object-details.html"><a href="dataset-object-details.html#introduction-1"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
-<li class="chapter" data-level="10.2" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-roc-dataset"><i class="fa fa-check"></i><b>10.2</b> ROC dataset</a>
+<li class="chapter" data-level="11.1" data-path="dataset-object-details.html"><a href="dataset-object-details.html#introduction-1"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-roc-dataset"><i class="fa fa-check"></i><b>11.2</b> ROC dataset</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-structure-roc-dataset"><i class="fa fa-check"></i><b>10.2.1</b> The structure of a factorial ROC dataset object</a></li>
-<li class="chapter" data-level="10.2.2" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-nl-fp"><i class="fa fa-check"></i><b>10.2.2</b> The <code>FP</code> worksheet</a></li>
-<li class="chapter" data-level="10.2.3" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-ll-tp"><i class="fa fa-check"></i><b>10.2.3</b> The <code>TP</code> worksheet</a></li>
-<li class="chapter" data-level="10.2.4" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-case-index-vs-case-id"><i class="fa fa-check"></i><b>10.2.4</b> caseIndex vs. caseID</a></li>
+<li class="chapter" data-level="11.2.1" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-structure-roc-dataset"><i class="fa fa-check"></i><b>11.2.1</b> The structure of a factorial ROC dataset object</a></li>
+<li class="chapter" data-level="11.2.2" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-nl-fp"><i class="fa fa-check"></i><b>11.2.2</b> The <code>FP</code> worksheet</a></li>
+<li class="chapter" data-level="11.2.3" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-ll-tp"><i class="fa fa-check"></i><b>11.2.3</b> The <code>TP</code> worksheet</a></li>
+<li class="chapter" data-level="11.2.4" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-case-index-vs-case-id"><i class="fa fa-check"></i><b>11.2.4</b> caseIndex vs. caseID</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-froc-dataset"><i class="fa fa-check"></i><b>10.3</b> FROC dataset</a>
+<li class="chapter" data-level="11.3" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-froc-dataset"><i class="fa fa-check"></i><b>11.3</b> FROC dataset</a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-structure-froc-dataset"><i class="fa fa-check"></i><b>10.3.1</b> The structure of a factorial FROC dataset</a></li>
-<li class="chapter" data-level="10.3.2" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-truth-table-str"><i class="fa fa-check"></i><b>10.3.2</b> <code>truthTableStr</code></a></li>
-<li class="chapter" data-level="10.3.3" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-fp-worksheet"><i class="fa fa-check"></i><b>10.3.3</b> The FP worksheet</a></li>
-<li class="chapter" data-level="10.3.4" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-tp-worksheet"><i class="fa fa-check"></i><b>10.3.4</b> The TP worksheet</a></li>
+<li class="chapter" data-level="11.3.1" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-details-structure-froc-dataset"><i class="fa fa-check"></i><b>11.3.1</b> The structure of a factorial FROC dataset</a></li>
+<li class="chapter" data-level="11.3.2" data-path="dataset-object-details.html"><a href="dataset-object-details.html#dataset-object-truth-table-str"><i class="fa fa-check"></i><b>11.3.2</b> <code>truthTableStr</code></a></li>
+<li class="chapter" data-level="11.3.3" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-fp-worksheet"><i class="fa fa-check"></i><b>11.3.3</b> The FP worksheet</a></li>
+<li class="chapter" data-level="11.3.4" data-path="dataset-object-details.html"><a href="dataset-object-details.html#the-tp-worksheet"><i class="fa fa-check"></i><b>11.3.4</b> The TP worksheet</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>DATASETS</b></span></li>
+<li class="chapter" data-level="12" data-path="datasets.html"><a href="datasets.html"><i class="fa fa-check"></i><b>12</b> Datasets</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="datasets.html"><a href="datasets.html#datasets-datasetsdd"><i class="fa fa-check"></i><b>12.1</b> Datasets embedded in <code>RJafroc</code></a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="datasets.html"><a href="datasets.html#datasets-dataset01"><i class="fa fa-check"></i><b>12.1.1</b> Dataset01</a></li>
+<li class="chapter" data-level="12.1.2" data-path="datasets.html"><a href="datasets.html#datasets-dataset02"><i class="fa fa-check"></i><b>12.1.2</b> Dataset02</a></li>
+<li class="chapter" data-level="12.1.3" data-path="datasets.html"><a href="datasets.html#datasets-dataset03"><i class="fa fa-check"></i><b>12.1.3</b> Dataset03</a></li>
+<li class="chapter" data-level="12.1.4" data-path="datasets.html"><a href="datasets.html#datasets-dataset04"><i class="fa fa-check"></i><b>12.1.4</b> Dataset04</a></li>
+<li class="chapter" data-level="12.1.5" data-path="datasets.html"><a href="datasets.html#datasets-dataset05"><i class="fa fa-check"></i><b>12.1.5</b> Dataset05</a></li>
+<li class="chapter" data-level="12.1.6" data-path="datasets.html"><a href="datasets.html#datasets-dataset06"><i class="fa fa-check"></i><b>12.1.6</b> Dataset06</a></li>
+<li class="chapter" data-level="12.1.7" data-path="datasets.html"><a href="datasets.html#datasets-dataset07"><i class="fa fa-check"></i><b>12.1.7</b> Dataset07</a></li>
+<li class="chapter" data-level="12.1.8" data-path="datasets.html"><a href="datasets.html#datasets-dataset08"><i class="fa fa-check"></i><b>12.1.8</b> Dataset08</a></li>
+<li class="chapter" data-level="12.1.9" data-path="datasets.html"><a href="datasets.html#datasets-dataset09"><i class="fa fa-check"></i><b>12.1.9</b> Dataset09</a></li>
+<li class="chapter" data-level="12.1.10" data-path="datasets.html"><a href="datasets.html#datasets-dataset10"><i class="fa fa-check"></i><b>12.1.10</b> Dataset10</a></li>
+<li class="chapter" data-level="12.1.11" data-path="datasets.html"><a href="datasets.html#datasets-dataset11"><i class="fa fa-check"></i><b>12.1.11</b> Dataset11</a></li>
+<li class="chapter" data-level="12.1.12" data-path="datasets.html"><a href="datasets.html#datasets-dataset12"><i class="fa fa-check"></i><b>12.1.12</b> Dataset12</a></li>
+<li class="chapter" data-level="12.1.13" data-path="datasets.html"><a href="datasets.html#datasets-dataset13"><i class="fa fa-check"></i><b>12.1.13</b> Dataset13</a></li>
+<li class="chapter" data-level="12.1.14" data-path="datasets.html"><a href="datasets.html#datasets-dataset14"><i class="fa fa-check"></i><b>12.1.14</b> Dataset14</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="datasets.html"><a href="datasets.html#other-datasets"><i class="fa fa-check"></i><b>12.2</b> Other datasets</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="datasets.html"><a href="datasets.html#datasets-datasetCadLroc"><i class="fa fa-check"></i><b>12.2.1</b> DatasetCadLroc</a></li>
+<li class="chapter" data-level="12.2.2" data-path="datasets.html"><a href="datasets.html#datasets-datasetCadSimuFroc"><i class="fa fa-check"></i><b>12.2.2</b> datasetCadSimuFroc</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>REFERENCES</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -315,76 +361,76 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="dataset-object-details" class="section level1 hasAnchor" number="10">
-<h1><span class="header-section-number">Chapter 10</span> Excel file and dataset details<a href="dataset-object-details.html#dataset-object-details" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="introduction-1" class="section level2 hasAnchor" number="10.1">
-<h2><span class="header-section-number">10.1</span> Introduction<a href="dataset-object-details.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="dataset-object-details" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Excel file and dataset details<a href="dataset-object-details.html#dataset-object-details" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-1" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Introduction<a href="dataset-object-details.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This chapter is included to document recent Excel file format changes and the new dataset structure.</p>
 </div>
-<div id="dataset-object-details-roc-dataset" class="section level2 hasAnchor" number="10.2">
-<h2><span class="header-section-number">10.2</span> ROC dataset<a href="dataset-object-details.html#dataset-object-details-roc-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="dataset-object-details.html#cb59-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">DfReadDataFile</span>(<span class="st">&quot;R/quick-start/rocCr.xlsx&quot;</span>, <span class="at">newExcelFileFormat =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<div id="dataset-object-details-structure-roc-dataset" class="section level3 hasAnchor" number="10.2.1">
-<h3><span class="header-section-number">10.2.1</span> The structure of a factorial ROC dataset object<a href="dataset-object-details.html#dataset-object-details-structure-roc-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="dataset-object-details-roc-dataset" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> ROC dataset<a href="dataset-object-details.html#dataset-object-details-roc-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="dataset-object-details.html#cb66-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">DfReadDataFile</span>(<span class="st">&quot;R/quick-start/rocCr.xlsx&quot;</span>, <span class="at">newExcelFileFormat =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div id="dataset-object-details-structure-roc-dataset" class="section level3 hasAnchor" number="11.2.1">
+<h3><span class="header-section-number">11.2.1</span> The structure of a factorial ROC dataset object<a href="dataset-object-details.html#dataset-object-details-structure-roc-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>x</code> is a <code>list</code> with 3 members: <code>ratings</code>, <code>lesions</code> and <code>descriptions</code>.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="dataset-object-details.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x, <span class="at">max.level =</span> <span class="dv">1</span>)</span>
-<span id="cb60-2"><a href="dataset-object-details.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb60-3"><a href="dataset-object-details.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ratings     :List of 3</span></span>
-<span id="cb60-4"><a href="dataset-object-details.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ lesions     :List of 3</span></span>
-<span id="cb60-5"><a href="dataset-object-details.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ descriptions:List of 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="dataset-object-details.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x, <span class="at">max.level =</span> <span class="dv">1</span>)</span>
+<span id="cb67-2"><a href="dataset-object-details.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb67-3"><a href="dataset-object-details.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ratings     :List of 3</span></span>
+<span id="cb67-4"><a href="dataset-object-details.html#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ lesions     :List of 3</span></span>
+<span id="cb67-5"><a href="dataset-object-details.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ descriptions:List of 7</span></span></code></pre></div>
 <p>The <code>x$ratings</code> member contains 3 sub-lists.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="dataset-object-details.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>ratings)</span>
-<span id="cb61-2"><a href="dataset-object-details.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb61-3"><a href="dataset-object-details.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ NL   : num [1:2, 1:5, 1:8, 1] 1 3 2 3 2 2 1 2 3 2 ...</span></span>
-<span id="cb61-4"><a href="dataset-object-details.html#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ LL   : num [1:2, 1:5, 1:5, 1] 5 5 5 5 5 5 5 5 5 5 ...</span></span>
-<span id="cb61-5"><a href="dataset-object-details.html#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ LL_IL: logi NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="dataset-object-details.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>ratings)</span>
+<span id="cb68-2"><a href="dataset-object-details.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb68-3"><a href="dataset-object-details.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ NL   : num [1:2, 1:5, 1:8, 1] 1 3 2 3 2 2 1 2 3 2 ...</span></span>
+<span id="cb68-4"><a href="dataset-object-details.html#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ LL   : num [1:2, 1:5, 1:5, 1] 5 5 5 5 5 5 5 5 5 5 ...</span></span>
+<span id="cb68-5"><a href="dataset-object-details.html#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ LL_IL: logi NA</span></span></code></pre></div>
 <ul>
 <li><p><code>x$ratings$NL</code>, with dimension [2, 5, 8, 1], contains the ratings of normal cases. The first dimension (2) is the number of treatments, the second (5) is the number of readers and the third (8) is the total number of cases. For ROC datasets the fourth dimension is always unity. The five extra values <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> in the third dimension, of <code>x$ratings$NL</code> which are filled with <code>NAs</code>, are needed for compatibility with FROC datasets.</p></li>
 <li><p><code>x$ratings$LL</code>, with dimension [2, 5, 5, 1], contains the ratings of abnormal cases. The third dimension (5) corresponds to the 5 diseased cases.</p></li>
 <li><p><code>x$ratings$LL_IL</code>, equal to NA’, is there for compatibility with LROC data, <code>IL</code> denotes incorrect-localizations.</p></li>
 </ul>
 <p>The <code>x$lesions</code> member contains 3 sub-lists.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="dataset-object-details.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>lesions)</span>
-<span id="cb62-2"><a href="dataset-object-details.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb62-3"><a href="dataset-object-details.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ perCase: int [1:5] 1 1 1 1 1</span></span>
-<span id="cb62-4"><a href="dataset-object-details.html#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ IDs    : num [1:5, 1] 1 1 1 1 1</span></span>
-<span id="cb62-5"><a href="dataset-object-details.html#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ weights: num [1:5, 1] 1 1 1 1 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="dataset-object-details.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>lesions)</span>
+<span id="cb69-2"><a href="dataset-object-details.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb69-3"><a href="dataset-object-details.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ perCase: int [1:5] 1 1 1 1 1</span></span>
+<span id="cb69-4"><a href="dataset-object-details.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ IDs    : num [1:5, 1] 1 1 1 1 1</span></span>
+<span id="cb69-5"><a href="dataset-object-details.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ weights: num [1:5, 1] 1 1 1 1 1</span></span></code></pre></div>
 <ul>
 <li><p>The <code>x$lesions$perCase</code> member is a vector with 5 ones representing the 5 diseased cases in the dataset.</p></li>
 <li><p>The <code>x$lesions$IDs</code> member is an array with 5 ones.</p></li>
 </ul>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="dataset-object-details.html#cb63-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>lesions<span class="sc">$</span>weights</span>
-<span id="cb63-2"><a href="dataset-object-details.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]</span></span>
-<span id="cb63-3"><a href="dataset-object-details.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1</span></span>
-<span id="cb63-4"><a href="dataset-object-details.html#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    1</span></span>
-<span id="cb63-5"><a href="dataset-object-details.html#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    1</span></span>
-<span id="cb63-6"><a href="dataset-object-details.html#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]    1</span></span>
-<span id="cb63-7"><a href="dataset-object-details.html#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,]    1</span></span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="dataset-object-details.html#cb70-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>lesions<span class="sc">$</span>weights</span>
+<span id="cb70-2"><a href="dataset-object-details.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]</span></span>
+<span id="cb70-3"><a href="dataset-object-details.html#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1</span></span>
+<span id="cb70-4"><a href="dataset-object-details.html#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    1</span></span>
+<span id="cb70-5"><a href="dataset-object-details.html#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    1</span></span>
+<span id="cb70-6"><a href="dataset-object-details.html#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]    1</span></span>
+<span id="cb70-7"><a href="dataset-object-details.html#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,]    1</span></span></code></pre></div>
 <p><code>x$lesions$weights</code> member is an array with 5 ones. These are irrelevant for ROC datasets. They are there for compatibility with FROC datasets.</p>
 <p><code>x$descriptions</code> contains 7 sub-lists.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="dataset-object-details.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>descriptions)</span>
-<span id="cb64-2"><a href="dataset-object-details.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 7</span></span>
-<span id="cb64-3"><a href="dataset-object-details.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ fileName     : chr &quot;rocCr&quot;</span></span>
-<span id="cb64-4"><a href="dataset-object-details.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ type         : chr &quot;ROC&quot;</span></span>
-<span id="cb64-5"><a href="dataset-object-details.html#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ name         : logi NA</span></span>
-<span id="cb64-6"><a href="dataset-object-details.html#cb64-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ truthTableStr: num [1:2, 1:5, 1:8, 1:2] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb64-7"><a href="dataset-object-details.html#cb64-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ design       : chr &quot;FCTRL&quot;</span></span>
-<span id="cb64-8"><a href="dataset-object-details.html#cb64-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ modalityID   : Named chr [1:2] &quot;0&quot; &quot;1&quot;</span></span>
-<span id="cb64-9"><a href="dataset-object-details.html#cb64-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;0&quot; &quot;1&quot;</span></span>
-<span id="cb64-10"><a href="dataset-object-details.html#cb64-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ readerID     : Named chr [1:5] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</span></span>
-<span id="cb64-11"><a href="dataset-object-details.html#cb64-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:5] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="dataset-object-details.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>descriptions)</span>
+<span id="cb71-2"><a href="dataset-object-details.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 7</span></span>
+<span id="cb71-3"><a href="dataset-object-details.html#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ fileName     : chr &quot;rocCr&quot;</span></span>
+<span id="cb71-4"><a href="dataset-object-details.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ type         : chr &quot;ROC&quot;</span></span>
+<span id="cb71-5"><a href="dataset-object-details.html#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ name         : logi NA</span></span>
+<span id="cb71-6"><a href="dataset-object-details.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ truthTableStr: num [1:2, 1:5, 1:8, 1:2] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb71-7"><a href="dataset-object-details.html#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ design       : chr &quot;FCTRL&quot;</span></span>
+<span id="cb71-8"><a href="dataset-object-details.html#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ modalityID   : Named chr [1:2] &quot;0&quot; &quot;1&quot;</span></span>
+<span id="cb71-9"><a href="dataset-object-details.html#cb71-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;0&quot; &quot;1&quot;</span></span>
+<span id="cb71-10"><a href="dataset-object-details.html#cb71-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ readerID     : Named chr [1:5] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</span></span>
+<span id="cb71-11"><a href="dataset-object-details.html#cb71-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:5] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</span></span></code></pre></div>
 <ul>
 <li><code>x$descriptions$fileName</code> is intended for internal use.</li>
 <li><code>x$descriptions$type</code> indicates that this is an <code>ROC</code> dataset.</li>
 <li><code>x$descriptions$name</code> is intended for internal use.</li>
-<li><code>x$descriptions$truthTableStr</code> is intended for internal use, see Section <a href="dataset-object-details.html#dataset-object-truth-table-str">10.3.2</a>.</li>
+<li><code>x$descriptions$truthTableStr</code> is intended for internal use, see Section <a href="dataset-object-details.html#dataset-object-truth-table-str">11.3.2</a>.</li>
 <li><code>x$descriptions$design</code> specifies the dataset design, which is “FCTRL” in the present example (“FCTRL” = a factorial dataset).</li>
 <li><code>x$descriptions$modalityID</code> is a vector with two elements <code>"0"</code> and <code>"1"</code>, the names of the two modalities.</li>
 <li><code>x$readerID</code> is a vector with five elements <code>"0"</code>, <code>"1"</code>, <code>"2"</code>, <code>"3"</code> and <code>"4"</code>, the names of the five readers.</li>
 </ul>
 </div>
-<div id="dataset-object-details-read-datafile-correspondence-nl-fp" class="section level3 hasAnchor" number="10.2.2">
-<h3><span class="header-section-number">10.2.2</span> The <code>FP</code> worksheet<a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-nl-fp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="dataset-object-details-read-datafile-correspondence-nl-fp" class="section level3 hasAnchor" number="11.2.2">
+<h3><span class="header-section-number">11.2.2</span> The <code>FP</code> worksheet<a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-nl-fp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="images/quick-start/rocCrFp.png" style="width:100.0%" /></p>
 <ul>
 <li>The list member <code>x$ratings$NL</code> is an array with <code>dim = c(2,5,8,1)</code>.
@@ -399,8 +445,8 @@ div.csl-indent {
 <li>All values for case index &gt; 3 and case index &lt;= 8 are <code>-Inf</code>. For example the value of <code>x$ratings$NL[2,3,4,1]</code> is <code>-Inf</code>. This is because there are only 3 non-diseased cases. The extra length is needed for compatibility with FROC datasets.</li>
 </ul>
 </div>
-<div id="dataset-object-details-read-datafile-correspondence-ll-tp" class="section level3 hasAnchor" number="10.2.3">
-<h3><span class="header-section-number">10.2.3</span> The <code>TP</code> worksheet<a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-ll-tp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="dataset-object-details-read-datafile-correspondence-ll-tp" class="section level3 hasAnchor" number="11.2.3">
+<h3><span class="header-section-number">11.2.3</span> The <code>TP</code> worksheet<a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-ll-tp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="images/quick-start/rocCrTp.png" style="width:100.0%" /></p>
 <ul>
 <li>The list member <code>x$ratings$LL</code> is an array with <code>dim = c(2,5,5,1)</code>.
@@ -417,8 +463,8 @@ div.csl-indent {
 <li>There are no <code>-Inf</code> values in <code>x$ratings$LL</code>: <code>any(x$ratings$LL == -Inf)</code> = FALSE. This is true for any ROC dataset.</li>
 </ul>
 </div>
-<div id="dataset-object-details-read-datafile-correspondence-case-index-vs-case-id" class="section level3 hasAnchor" number="10.2.4">
-<h3><span class="header-section-number">10.2.4</span> caseIndex vs. caseID<a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-case-index-vs-case-id" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="dataset-object-details-read-datafile-correspondence-case-index-vs-case-id" class="section level3 hasAnchor" number="11.2.4">
+<h3><span class="header-section-number">11.2.4</span> caseIndex vs. caseID<a href="dataset-object-details.html#dataset-object-details-read-datafile-correspondence-case-index-vs-case-id" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>The <code>caseIndex</code> is the array index used to access elements in the NL and LL arrays. The case-index is always an integer in the range 1, 2, …, up to the array length. Remember that unlike C++, R indexing starts from 1.</li>
 <li>The <code>caseID</code> is any integer value, including zero, used to uniquely label the cases.</li>
@@ -434,24 +480,24 @@ div.csl-indent {
 </ul>
 </div>
 </div>
-<div id="dataset-object-details-froc-dataset" class="section level2 hasAnchor" number="10.3">
-<h2><span class="header-section-number">10.3</span> FROC dataset<a href="dataset-object-details.html#dataset-object-details-froc-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="dataset-object-details-froc-dataset" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> FROC dataset<a href="dataset-object-details.html#dataset-object-details-froc-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><img src="images/software-details/FrocCrTruth.png" style="width:100.0%" /></p>
-<div id="dataset-object-details-structure-froc-dataset" class="section level3 hasAnchor" number="10.3.1">
-<h3><span class="header-section-number">10.3.1</span> The structure of a factorial FROC dataset<a href="dataset-object-details.html#dataset-object-details-structure-froc-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="dataset-object-details.html#cb65-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">DfReadDataFile</span>(<span class="st">&quot;images/software-details/frocCr.xlsx&quot;</span>, <span class="at">newExcelFileFormat =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div id="dataset-object-details-structure-froc-dataset" class="section level3 hasAnchor" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> The structure of a factorial FROC dataset<a href="dataset-object-details.html#dataset-object-details-structure-froc-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="dataset-object-details.html#cb72-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">DfReadDataFile</span>(<span class="st">&quot;images/software-details/frocCr.xlsx&quot;</span>, <span class="at">newExcelFileFormat =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>The dataset <code>x</code> is a <code>list</code> variable with 3 members: <code>x$ratings</code>, <code>x$lesions</code> and <code>x$descriptions</code>.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="dataset-object-details.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x, <span class="at">max.level =</span> <span class="dv">1</span>)</span>
-<span id="cb66-2"><a href="dataset-object-details.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb66-3"><a href="dataset-object-details.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ratings     :List of 3</span></span>
-<span id="cb66-4"><a href="dataset-object-details.html#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ lesions     :List of 3</span></span>
-<span id="cb66-5"><a href="dataset-object-details.html#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ descriptions:List of 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="dataset-object-details.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x, <span class="at">max.level =</span> <span class="dv">1</span>)</span>
+<span id="cb73-2"><a href="dataset-object-details.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb73-3"><a href="dataset-object-details.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ratings     :List of 3</span></span>
+<span id="cb73-4"><a href="dataset-object-details.html#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ lesions     :List of 3</span></span>
+<span id="cb73-5"><a href="dataset-object-details.html#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ descriptions:List of 7</span></span></code></pre></div>
 <p>The <code>x$ratings</code> member contains 3 sub-lists.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="dataset-object-details.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>ratings)</span>
-<span id="cb67-2"><a href="dataset-object-details.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb67-3"><a href="dataset-object-details.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ NL   : num [1:2, 1:3, 1:8, 1:2] 1.02 2.89 2.21 3.01 2.14 ...</span></span>
-<span id="cb67-4"><a href="dataset-object-details.html#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ LL   : num [1:2, 1:3, 1:5, 1:3] 5.28 5.2 5.14 4.77 4.66 4.87 3.01 3.27 3.31 3.19 ...</span></span>
-<span id="cb67-5"><a href="dataset-object-details.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ LL_IL: logi NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="dataset-object-details.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>ratings)</span>
+<span id="cb74-2"><a href="dataset-object-details.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb74-3"><a href="dataset-object-details.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ NL   : num [1:2, 1:3, 1:8, 1:2] 1.02 2.89 2.21 3.01 2.14 ...</span></span>
+<span id="cb74-4"><a href="dataset-object-details.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ LL   : num [1:2, 1:3, 1:5, 1:3] 5.28 5.2 5.14 4.77 4.66 4.87 3.01 3.27 3.31 3.19 ...</span></span>
+<span id="cb74-5"><a href="dataset-object-details.html#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ LL_IL: logi NA</span></span></code></pre></div>
 <ul>
 <li>There are <code>K2 = 5</code> diseased cases (the length of the third dimension of <code>x$ratings$LL</code>) and <code>K1 = 3</code> non-diseased cases (the length of the third dimension of <code>x$ratings$NL</code> minus <code>K2</code>).</li>
 <li><code>x$ratings$NL</code>, a [2, 3, 8, 2] array, contains the NL ratings on non-diseased and diseased cases.</li>
@@ -459,36 +505,36 @@ div.csl-indent {
 <li><code>x$ratings$LL_IL</code> is <code>NA</code>, this field applies to an LROC dataset (contains incorrect localizations on diseased cases).</li>
 </ul>
 <p>The <code>x$lesions</code> member contains 3 sub-lists.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="dataset-object-details.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>lesions)</span>
-<span id="cb68-2"><a href="dataset-object-details.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb68-3"><a href="dataset-object-details.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ perCase: int [1:5] 2 1 3 2 1</span></span>
-<span id="cb68-4"><a href="dataset-object-details.html#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ IDs    : num [1:5, 1:3] 1 1 1 1 1 ...</span></span>
-<span id="cb68-5"><a href="dataset-object-details.html#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ weights: num [1:5, 1:3] 0.3 1 0.333 0.1 1 ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="dataset-object-details.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>lesions)</span>
+<span id="cb75-2"><a href="dataset-object-details.html#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb75-3"><a href="dataset-object-details.html#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ perCase: int [1:5] 2 1 3 2 1</span></span>
+<span id="cb75-4"><a href="dataset-object-details.html#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ IDs    : num [1:5, 1:3] 1 1 1 1 1 ...</span></span>
+<span id="cb75-5"><a href="dataset-object-details.html#cb75-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ weights: num [1:5, 1:3] 0.3 1 0.333 0.1 1 ...</span></span></code></pre></div>
 <ul>
 <li><code>x$lesions$perCase</code> is the number of lesions per diseased case vector, i.e., 2, 1, 3, 2, 1.</li>
 <li><code>max(x$lesions$perCase)</code> is the maximum number of lesions per case, i.e., <code>r</code>max(x<span class="math inline">\(lesions\)</span>perCase)`.</li>
 <li><code>x$lesions$weights</code> is the weights of lesions.</li>
 </ul>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="dataset-object-details.html#cb69-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>lesions<span class="sc">$</span>weights</span>
-<span id="cb69-2"><a href="dataset-object-details.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           [,1]      [,2]      [,3]</span></span>
-<span id="cb69-3"><a href="dataset-object-details.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] 0.3000000 0.7000000      -Inf</span></span>
-<span id="cb69-4"><a href="dataset-object-details.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] 1.0000000      -Inf      -Inf</span></span>
-<span id="cb69-5"><a href="dataset-object-details.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,] 0.3333333 0.3333333 0.3333333</span></span>
-<span id="cb69-6"><a href="dataset-object-details.html#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,] 0.1000000 0.9000000      -Inf</span></span>
-<span id="cb69-7"><a href="dataset-object-details.html#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,] 1.0000000      -Inf      -Inf</span></span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="dataset-object-details.html#cb76-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>lesions<span class="sc">$</span>weights</span>
+<span id="cb76-2"><a href="dataset-object-details.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           [,1]      [,2]      [,3]</span></span>
+<span id="cb76-3"><a href="dataset-object-details.html#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] 0.3000000 0.7000000      -Inf</span></span>
+<span id="cb76-4"><a href="dataset-object-details.html#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] 1.0000000      -Inf      -Inf</span></span>
+<span id="cb76-5"><a href="dataset-object-details.html#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,] 0.3333333 0.3333333 0.3333333</span></span>
+<span id="cb76-6"><a href="dataset-object-details.html#cb76-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,] 0.1000000 0.9000000      -Inf</span></span>
+<span id="cb76-7"><a href="dataset-object-details.html#cb76-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,] 1.0000000      -Inf      -Inf</span></span></code></pre></div>
 <p>The weights for the first diseased case are 0.3 and 0.7. The weight for the second diseased case is 1. For the third diseased case the three weights are 1/3 each, etc. For each diseased case the finite weights sum to unity.</p>
 <p><code>x$descriptions</code> contains 7 sub-lists.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="dataset-object-details.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>descriptions)</span>
-<span id="cb70-2"><a href="dataset-object-details.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 7</span></span>
-<span id="cb70-3"><a href="dataset-object-details.html#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ fileName     : chr &quot;frocCr&quot;</span></span>
-<span id="cb70-4"><a href="dataset-object-details.html#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ type         : chr &quot;FROC&quot;</span></span>
-<span id="cb70-5"><a href="dataset-object-details.html#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ name         : logi NA</span></span>
-<span id="cb70-6"><a href="dataset-object-details.html#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ truthTableStr: num [1:2, 1:3, 1:8, 1:4] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb70-7"><a href="dataset-object-details.html#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ design       : chr &quot;FCTRL&quot;</span></span>
-<span id="cb70-8"><a href="dataset-object-details.html#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ modalityID   : Named chr [1:2] &quot;0&quot; &quot;1&quot;</span></span>
-<span id="cb70-9"><a href="dataset-object-details.html#cb70-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;0&quot; &quot;1&quot;</span></span>
-<span id="cb70-10"><a href="dataset-object-details.html#cb70-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ readerID     : Named chr [1:3] &quot;0&quot; &quot;1&quot; &quot;2&quot;</span></span>
-<span id="cb70-11"><a href="dataset-object-details.html#cb70-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3] &quot;0&quot; &quot;1&quot; &quot;2&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="dataset-object-details.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>descriptions)</span>
+<span id="cb77-2"><a href="dataset-object-details.html#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 7</span></span>
+<span id="cb77-3"><a href="dataset-object-details.html#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ fileName     : chr &quot;frocCr&quot;</span></span>
+<span id="cb77-4"><a href="dataset-object-details.html#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ type         : chr &quot;FROC&quot;</span></span>
+<span id="cb77-5"><a href="dataset-object-details.html#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ name         : logi NA</span></span>
+<span id="cb77-6"><a href="dataset-object-details.html#cb77-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ truthTableStr: num [1:2, 1:3, 1:8, 1:4] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb77-7"><a href="dataset-object-details.html#cb77-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ design       : chr &quot;FCTRL&quot;</span></span>
+<span id="cb77-8"><a href="dataset-object-details.html#cb77-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ modalityID   : Named chr [1:2] &quot;0&quot; &quot;1&quot;</span></span>
+<span id="cb77-9"><a href="dataset-object-details.html#cb77-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;0&quot; &quot;1&quot;</span></span>
+<span id="cb77-10"><a href="dataset-object-details.html#cb77-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ readerID     : Named chr [1:3] &quot;0&quot; &quot;1&quot; &quot;2&quot;</span></span>
+<span id="cb77-11"><a href="dataset-object-details.html#cb77-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3] &quot;0&quot; &quot;1&quot; &quot;2&quot;</span></span></code></pre></div>
 <ul>
 <li><code>x$descriptions$filename</code> is for internal use.</li>
 <li><code>x$descriptions$type</code> is FROC, which specifies the data collection method.</li>
@@ -499,76 +545,76 @@ div.csl-indent {
 <li><code>x$readerID</code> is a vector with three elements 0, 1, 2 naming the three readers.</li>
 </ul>
 </div>
-<div id="dataset-object-truth-table-str" class="section level3 hasAnchor" number="10.3.2">
-<h3><span class="header-section-number">10.3.2</span> <code>truthTableStr</code><a href="dataset-object-details.html#dataset-object-truth-table-str" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="dataset-object-truth-table-str" class="section level3 hasAnchor" number="11.3.2">
+<h3><span class="header-section-number">11.3.2</span> <code>truthTableStr</code><a href="dataset-object-details.html#dataset-object-truth-table-str" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>For this dataset <code>I</code> = 2, <code>J</code> = 3 and <code>K</code> = 8.</li>
 <li><code>truthTableStr</code> is a <code>2 x 3 x 8 x 4</code> array, i.e., <code>I</code> x <code>J</code> x <code>K</code> x (maximum number of lesions per case plus 1 - the <code>plus 1</code> is needed to accommodate non-diseased cases).</li>
 <li>Each entry in this array is either <code>1</code>, meaning the corresponding interpretation happened, or <code>NA</code>, meaning the corresponding interpretation did not happen.</li>
 </ul>
-<div id="explanation-for-non-diseased-cases" class="section level4 hasAnchor" number="10.3.2.1">
-<h4><span class="header-section-number">10.3.2.1</span> Explanation for non-diseased cases<a href="dataset-object-details.html#explanation-for-non-diseased-cases" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="explanation-for-non-diseased-cases" class="section level4 hasAnchor" number="11.3.2.1">
+<h4><span class="header-section-number">11.3.2.1</span> Explanation for non-diseased cases<a href="dataset-object-details.html#explanation-for-non-diseased-cases" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Since the fourth index is set to 1, in the following code only non-diseased cases yield ones and all diseased cases yield <code>NA</code>.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="dataset-object-details.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">1</span>] <span class="sc">==</span><span class="dv">1</span>)</span>
-<span id="cb71-2"><a href="dataset-object-details.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb71-3"><a href="dataset-object-details.html#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">1</span>]))</span>
-<span id="cb71-4"><a href="dataset-object-details.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="dataset-object-details.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">1</span>] <span class="sc">==</span><span class="dv">1</span>)</span>
+<span id="cb78-2"><a href="dataset-object-details.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb78-3"><a href="dataset-object-details.html#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">1</span>]))</span>
+<span id="cb78-4"><a href="dataset-object-details.html#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 </div>
-<div id="explanation-for-diseased-cases-with-one-lesion" class="section level4 hasAnchor" number="10.3.2.2">
-<h4><span class="header-section-number">10.3.2.2</span> Explanation for diseased cases with one lesion<a href="dataset-object-details.html#explanation-for-diseased-cases-with-one-lesion" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="explanation-for-diseased-cases-with-one-lesion" class="section level4 hasAnchor" number="11.3.2.2">
+<h4><span class="header-section-number">11.3.2.2</span> Explanation for diseased cases with one lesion<a href="dataset-object-details.html#explanation-for-diseased-cases-with-one-lesion" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Since the fourth index is set to 2, in the following code all non-diseased cases yield <code>NA</code> and all diseased cases yield 1 as all diseased cases have at least one lesion.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="dataset-object-details.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">2</span>]))</span>
-<span id="cb72-2"><a href="dataset-object-details.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb72-3"><a href="dataset-object-details.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">2</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb72-4"><a href="dataset-object-details.html#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="dataset-object-details.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">2</span>]))</span>
+<span id="cb79-2"><a href="dataset-object-details.html#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb79-3"><a href="dataset-object-details.html#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">2</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb79-4"><a href="dataset-object-details.html#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 </div>
-<div id="explanation-for-diseased-cases-with-two-lesions" class="section level4 hasAnchor" number="10.3.2.3">
-<h4><span class="header-section-number">10.3.2.3</span> Explanation for diseased cases with two lesions<a href="dataset-object-details.html#explanation-for-diseased-cases-with-two-lesions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="explanation-for-diseased-cases-with-two-lesions" class="section level4 hasAnchor" number="11.3.2.3">
+<h4><span class="header-section-number">11.3.2.3</span> Explanation for diseased cases with two lesions<a href="dataset-object-details.html#explanation-for-diseased-cases-with-two-lesions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Since the fourth index is set to 3, in the following code all non-diseased cases yield <code>NA</code>; the first diseased case <code>70</code> yields 1 (this case contains two lesions); the second disease case <code>71</code> yields <code>NA</code> (this case contains only one lesion); the third disease case <code>72</code> yields <code>NA</code> (this case contains only two lesions); the fourth disease case <code>73</code> yields 1 (this case contains two lesions); the fifth disease case <code>74</code> yields <code>NA</code> (this case contains one lesion).</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="dataset-object-details.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all non diseased cases</span></span>
-<span id="cb73-2"><a href="dataset-object-details.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">3</span>]))</span>
-<span id="cb73-3"><a href="dataset-object-details.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb73-4"><a href="dataset-object-details.html#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="co"># first diseased case</span></span>
-<span id="cb73-5"><a href="dataset-object-details.html#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">4</span>,<span class="dv">3</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb73-6"><a href="dataset-object-details.html#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb73-7"><a href="dataset-object-details.html#cb73-7" aria-hidden="true" tabindex="-1"></a><span class="co"># second diseased case</span></span>
-<span id="cb73-8"><a href="dataset-object-details.html#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">5</span>,<span class="dv">3</span>]))</span>
-<span id="cb73-9"><a href="dataset-object-details.html#cb73-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb73-10"><a href="dataset-object-details.html#cb73-10" aria-hidden="true" tabindex="-1"></a><span class="co"># third diseased case</span></span>
-<span id="cb73-11"><a href="dataset-object-details.html#cb73-11" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">6</span>,<span class="dv">3</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb73-12"><a href="dataset-object-details.html#cb73-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb73-13"><a href="dataset-object-details.html#cb73-13" aria-hidden="true" tabindex="-1"></a><span class="co"># fourth diseased case</span></span>
-<span id="cb73-14"><a href="dataset-object-details.html#cb73-14" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">7</span>,<span class="dv">3</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb73-15"><a href="dataset-object-details.html#cb73-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb73-16"><a href="dataset-object-details.html#cb73-16" aria-hidden="true" tabindex="-1"></a><span class="co"># fifth diseased case</span></span>
-<span id="cb73-17"><a href="dataset-object-details.html#cb73-17" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">8</span>,<span class="dv">3</span>]))</span>
-<span id="cb73-18"><a href="dataset-object-details.html#cb73-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="dataset-object-details.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all non diseased cases</span></span>
+<span id="cb80-2"><a href="dataset-object-details.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">3</span>]))</span>
+<span id="cb80-3"><a href="dataset-object-details.html#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb80-4"><a href="dataset-object-details.html#cb80-4" aria-hidden="true" tabindex="-1"></a><span class="co"># first diseased case</span></span>
+<span id="cb80-5"><a href="dataset-object-details.html#cb80-5" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">4</span>,<span class="dv">3</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb80-6"><a href="dataset-object-details.html#cb80-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb80-7"><a href="dataset-object-details.html#cb80-7" aria-hidden="true" tabindex="-1"></a><span class="co"># second diseased case</span></span>
+<span id="cb80-8"><a href="dataset-object-details.html#cb80-8" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">5</span>,<span class="dv">3</span>]))</span>
+<span id="cb80-9"><a href="dataset-object-details.html#cb80-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb80-10"><a href="dataset-object-details.html#cb80-10" aria-hidden="true" tabindex="-1"></a><span class="co"># third diseased case</span></span>
+<span id="cb80-11"><a href="dataset-object-details.html#cb80-11" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">6</span>,<span class="dv">3</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb80-12"><a href="dataset-object-details.html#cb80-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb80-13"><a href="dataset-object-details.html#cb80-13" aria-hidden="true" tabindex="-1"></a><span class="co"># fourth diseased case</span></span>
+<span id="cb80-14"><a href="dataset-object-details.html#cb80-14" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">7</span>,<span class="dv">3</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb80-15"><a href="dataset-object-details.html#cb80-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb80-16"><a href="dataset-object-details.html#cb80-16" aria-hidden="true" tabindex="-1"></a><span class="co"># fifth diseased case</span></span>
+<span id="cb80-17"><a href="dataset-object-details.html#cb80-17" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">8</span>,<span class="dv">3</span>]))</span>
+<span id="cb80-18"><a href="dataset-object-details.html#cb80-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 </div>
-<div id="explanation-for-diseased-cases-with-three-lesions" class="section level4 hasAnchor" number="10.3.2.4">
-<h4><span class="header-section-number">10.3.2.4</span> Explanation for diseased cases with three lesions<a href="dataset-object-details.html#explanation-for-diseased-cases-with-three-lesions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="explanation-for-diseased-cases-with-three-lesions" class="section level4 hasAnchor" number="11.3.2.4">
+<h4><span class="header-section-number">11.3.2.4</span> Explanation for diseased cases with three lesions<a href="dataset-object-details.html#explanation-for-diseased-cases-with-three-lesions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Since the fourth index is set to 4, in the following code all non-diseased cases yield <code>NA</code>; the first diseased case <code>70</code> yields <code>NA</code> (this case contains two lesions); the second disease case <code>71</code> yields <code>NA</code> (this case contains one lesion); the third disease case <code>72</code> yields <code>NA</code> (this case contains two lesions); the fourth disease case <code>73</code> yields 1 (this case contains three lesions); the fifth disease case <code>74</code> yields <code>NA</code> (this case contains one lesion).</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="dataset-object-details.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all non diseased cases</span></span>
-<span id="cb74-2"><a href="dataset-object-details.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">4</span>]))</span>
-<span id="cb74-3"><a href="dataset-object-details.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb74-4"><a href="dataset-object-details.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="co"># first diseased case</span></span>
-<span id="cb74-5"><a href="dataset-object-details.html#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">4</span>,<span class="dv">4</span>]))</span>
-<span id="cb74-6"><a href="dataset-object-details.html#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb74-7"><a href="dataset-object-details.html#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="co"># second diseased case</span></span>
-<span id="cb74-8"><a href="dataset-object-details.html#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">5</span>,<span class="dv">4</span>]))</span>
-<span id="cb74-9"><a href="dataset-object-details.html#cb74-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb74-10"><a href="dataset-object-details.html#cb74-10" aria-hidden="true" tabindex="-1"></a><span class="co"># third diseased case</span></span>
-<span id="cb74-11"><a href="dataset-object-details.html#cb74-11" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">6</span>,<span class="dv">4</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb74-12"><a href="dataset-object-details.html#cb74-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb74-13"><a href="dataset-object-details.html#cb74-13" aria-hidden="true" tabindex="-1"></a><span class="co"># fourth diseased case</span></span>
-<span id="cb74-14"><a href="dataset-object-details.html#cb74-14" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">7</span>,<span class="dv">4</span>]))</span>
-<span id="cb74-15"><a href="dataset-object-details.html#cb74-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb74-16"><a href="dataset-object-details.html#cb74-16" aria-hidden="true" tabindex="-1"></a><span class="co"># fifth diseased case</span></span>
-<span id="cb74-17"><a href="dataset-object-details.html#cb74-17" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">8</span>,<span class="dv">4</span>]))</span>
-<span id="cb74-18"><a href="dataset-object-details.html#cb74-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="dataset-object-details.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all non diseased cases</span></span>
+<span id="cb81-2"><a href="dataset-object-details.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">4</span>]))</span>
+<span id="cb81-3"><a href="dataset-object-details.html#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb81-4"><a href="dataset-object-details.html#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="co"># first diseased case</span></span>
+<span id="cb81-5"><a href="dataset-object-details.html#cb81-5" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">4</span>,<span class="dv">4</span>]))</span>
+<span id="cb81-6"><a href="dataset-object-details.html#cb81-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb81-7"><a href="dataset-object-details.html#cb81-7" aria-hidden="true" tabindex="-1"></a><span class="co"># second diseased case</span></span>
+<span id="cb81-8"><a href="dataset-object-details.html#cb81-8" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">5</span>,<span class="dv">4</span>]))</span>
+<span id="cb81-9"><a href="dataset-object-details.html#cb81-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb81-10"><a href="dataset-object-details.html#cb81-10" aria-hidden="true" tabindex="-1"></a><span class="co"># third diseased case</span></span>
+<span id="cb81-11"><a href="dataset-object-details.html#cb81-11" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">6</span>,<span class="dv">4</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb81-12"><a href="dataset-object-details.html#cb81-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb81-13"><a href="dataset-object-details.html#cb81-13" aria-hidden="true" tabindex="-1"></a><span class="co"># fourth diseased case</span></span>
+<span id="cb81-14"><a href="dataset-object-details.html#cb81-14" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">7</span>,<span class="dv">4</span>]))</span>
+<span id="cb81-15"><a href="dataset-object-details.html#cb81-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb81-16"><a href="dataset-object-details.html#cb81-16" aria-hidden="true" tabindex="-1"></a><span class="co"># fifth diseased case</span></span>
+<span id="cb81-17"><a href="dataset-object-details.html#cb81-17" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">8</span>,<span class="dv">4</span>]))</span>
+<span id="cb81-18"><a href="dataset-object-details.html#cb81-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 </div>
 </div>
-<div id="the-fp-worksheet" class="section level3 hasAnchor" number="10.3.3">
-<h3><span class="header-section-number">10.3.3</span> The FP worksheet<a href="dataset-object-details.html#the-fp-worksheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="the-fp-worksheet" class="section level3 hasAnchor" number="11.3.3">
+<h3><span class="header-section-number">11.3.3</span> The FP worksheet<a href="dataset-object-details.html#the-fp-worksheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>These are found in the <code>FP</code> or <code>NL</code> worksheet:</p>
 <p><img src="images/software-details/FrocCrFp.png" style="width:100.0%" /></p>
 <ul>
@@ -580,8 +626,8 @@ div.csl-indent {
 <li><code>NL_Rating</code>: the ratings of non-diseased cases.</li>
 </ul>
 </div>
-<div id="the-tp-worksheet" class="section level3 hasAnchor" number="10.3.4">
-<h3><span class="header-section-number">10.3.4</span> The TP worksheet<a href="dataset-object-details.html#the-tp-worksheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="the-tp-worksheet" class="section level3 hasAnchor" number="11.3.4">
+<h3><span class="header-section-number">11.3.4</span> The TP worksheet<a href="dataset-object-details.html#the-tp-worksheet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>These are found in the <code>TP</code> or <code>LL</code> worksheet, see below.</p>
 <p><img src="images/software-details/FrocCrTp.png" style="width:100.0%" /></p>
 <ul>
@@ -593,40 +639,9 @@ div.csl-indent {
 <li><code>LL_Rating</code>: the ratings of diseased cases.</li>
 </ul>
 
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div class="csl-entry">
-Chakraborty, Dev Prasad. 2010. <span>“Prediction Accuracy of a Sample-Size Estimation Method for <span>ROC</span> Studies.”</span> Journal Article. <em>Academic Radiology</em> 17: 628–38. <a href="https://doi.org/10.1016/j.acra.2010.01.007">https://doi.org/10.1016/j.acra.2010.01.007</a>.
-</div>
-<div class="csl-entry">
-Chakraborty, Dev, and Xuetong Zhai. 2022. <em>RJafroc: Artificial Intelligence Systems and Observer Performance</em>. <a href="https://dpc10ster.github.io/RJafroc/">https://dpc10ster.github.io/RJafroc/</a>.
-</div>
-<div class="csl-entry">
-Cohen, Jacob. 1988. <em>Statistical Power Analysis for the Behavioral Sciences</em>. 2nd ed. Lawrence Erlbaum Associates.
-</div>
-<div class="csl-entry">
-Hillis, Stephen L., and K. S. Berbaum. 2004. <span>“Power Estimation for the Dorfman-Berbaum-Metz Method.”</span> Journal Article. <em>Acad. Radiol.</em> 11 (11): 1260–73. <a href="https://doi.org/10.1016/j.acra.2004.08.009">https://doi.org/10.1016/j.acra.2004.08.009</a>.
-</div>
-<div class="csl-entry">
-Hillis, Stephen L., Nancy A. Obuchowski, and Kevin S. Berbaum. 2011. <span>“Power Estimation for Multireader <span>ROC</span> Methods: An Updated and Unified Approach.”</span> Journal Article. <em>Academic Radiology</em> 18 (2): 129–42. <a href="https://doi.org/10.1016/j.acra.2010.09.007">https://doi.org/10.1016/j.acra.2010.09.007</a>.
-</div>
-<div class="csl-entry">
-ICRU. 1996. <span>“Medical Imaging: The Assessment of Image Quality.”</span> Journal Article. <em>JOURNAL OF THE ICRU</em> 54 (1): 37–40.
-</div>
-<div class="csl-entry">
-Obuchowski, Nancy A. 1998. <span>“Sample Size Calculations in Studies of Test Accuracy.”</span> Journal Article. <em>Statistical Methods in Medical Research</em> 7 (4): 371–92. <a href="https://doi.org/10.1177/096228029800700405">https://doi.org/10.1177/096228029800700405</a>.
-</div>
-<div class="csl-entry">
-Zanca, Federica, Jurgen Jacobs, Chantal Van Ongeval, Filip Claus, Valerie Celis, Catherine Geniets, Veerle Provost, Herman Pauwels, Guy Marchal, and Hilde Bosmans. 2009. <span>“Evaluation of Clinical Image Processing Algorithms Used in Digital Mammography.”</span> Journal Article. <em>Medical Physics</em> 36 (3): 765–75. <a href="https://doi.org/10.1118/1.3077121">https://doi.org/10.1118/1.3077121</a>.
 </div>
 </div>
 </div>
-</div>
-</div>
-
-
-
-
-
 
 
 
@@ -641,8 +656,8 @@ Zanca, Federica, Jurgen Jacobs, Chantal Van Ongeval, Filip Claus, Valerie Celis,
           </div>
         </div>
       </div>
-<a href="froc-sample-size.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="froc-sample-size.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="datasets.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
