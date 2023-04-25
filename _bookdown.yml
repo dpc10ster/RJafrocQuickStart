@@ -5,15 +5,19 @@ output_dir: docs
 delete_merged_file: TRUE
 rmd_files: [
   "index.Rmd",
-  "00-roc-data-format.Rmd", 
-  "00d-quick-start.Rmd", 
-  "00f-quick-start.Rmd", 
-  "00g-quick-start.Rmd", 
-  "00h-quick-start.Rmd",
-  "11a-roc-sample-size-dbm.Rmd",
-  "18a-analyzing-froc-data.Rmd",
-  "18b-froc-sample-size.Rmd",
-  "22a-dataset-details.Rmd",
+  "01-roc-data-format.Rmd", 
+  "02-froc-data-format.Rmd", 
+  "03-lroc-data-format.Rmd", 
+  "06-dbm-analysis-text.Rmd", 
+  "07-or-analysis-text.Rmd",
+  "08-or-analysis-excel.Rmd",
+  "11-roc-sample-size-dbm.Rmd",
+  "18-analyzing-froc-data.Rmd",
+  "19-froc-sample-size.Rmd",
+  "22-dataset-structures.Rmd",
+  "90-datasets.Rmd",
+  "99-references.Rmd",
+  
 ]
 
 
