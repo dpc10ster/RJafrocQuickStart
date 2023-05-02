@@ -123,7 +123,7 @@ This follows the general description in Chapter \@ref(quick-start-roc). The diff
 
 * The `x$descriptions$type` member indicates that this is an `FROC` dataset. 
 
-* The `x$lesions$perCase` member is a vector whose contents reflect the number of lesions in each diseased case, i.e., 2, 1, 3, 2, 1 in the current example.
+* The `x$lesions$perCase` member is a vector containing the number of lesions in each diseased case, i.e., 2, 1, 3, 2, 1 in the current example.
 
 * The `x$lesions$IDs` member indicates the labeling of the lesions in each diseased case.
 
@@ -140,9 +140,9 @@ x$lesions$IDs
 ```
 
 
-* This shows that the lesions on the first diseased case are labeled '1' and '2'. The `-Inf` is a filler used to denote a missing value. The second diseased case has one lesion labeled '1'. The third diseased case has three lesions labeled '1', '2' and '3', etc.
+* This shows that the lesions on the first diseased case are labeled '1' and '2'. The `-Inf` is a filler denoting a missing value. The second diseased case has one lesion labeled '1'. The third diseased case has three lesions labeled '1', '2' and '3', etc.
 
-* The `lesionWeight` member is the clinical importance of each lesion. Lacking specific clinical reasons, the lesions should be equally weighted; this is *not* true for this toy dataset.
+* The `lesionWeight` member is the clinical importance of each lesion. Lacking specific clinical reasons, the lesions should be equally weighted; this is *not* true for this toy dataset (except for the third diseased case).
 
 
 ```r
@@ -163,7 +163,7 @@ x$lesions$weights
 
 
 
-## On the distribution of numbers of lesions in diseased cases {#quick-start-froc-data-distribution-diseased-cases} 
+## The distribution of lesions in diseased cases {#quick-start-froc-data-distribution-diseased-cases} 
 
 Consider a much larger real dataset, `dataset11`, with structure as shown below (for descriptions of all embedded datasets see Chapter \@ref(datasets)):
 
@@ -193,8 +193,9 @@ str(x)
 #>   .. ..- attr(*, "names")= chr [1:5] "1" "2" "3" "4" ...
 ```
 
+The large number of lesions is explained by the fact that this is a volumetric CT image for lung nodule detection (each nodule was verified by 3 radiologists).
 
-Focus for now in the 115 diseased cases. The numbers of lesions in these cases is contained in `x$lesions$perCase`.
+Focus on the 115 diseased cases: the numbers of lesions in individual cases is contained in `x$lesions$perCase`.
 
 
 
@@ -208,7 +209,7 @@ x$lesions$perCase
 ```
 
 
-For example, the first diseased case contains 6 lesions, the second contains 4 lesions, the third contains 7 lesions, etc. and the last diseased case contains 1 lesion. To get an idea of the distribution of the numbers of lesions per diseased cases, one could use the `which()` function:
+For example, the first diseased case contains 6 lesions, the second contains 4 lesions, the third contains 7 lesions, etc., and the last diseased case contains 1 lesion. To get an idea of the distribution of the numbers of lesions per diseased cases, one could use the `which()` function:
 
 
 
@@ -239,12 +240,12 @@ for (el in 1:max(x$lesions$perCase)) cat(
 ```
 
 
-This tells us that 25 cases contain 1 lesion. Likewise, 23 cases contain 2 lesions, etc. 
+This tells us that 25 cases contain 1 lesion. Likewise, 23 cases contain 2 lesions, etc. Note that there are no cases with 13, 14, 15, 17, 18, and 19 lesions.
 
 
 ### Definition of `lesDistr` array {#quick-start-froc-data-lesion-distribution}
 
-The histogram of the number of lesions per case, i.e., what is the fraction of (diseased) cases with 1 lesion, 2 lesions etc, can be calculated as follows:
+The fraction of (diseased) cases with 1 lesion, 2 lesions etc, can be calculated as follows:
 
 
 
@@ -277,36 +278,55 @@ for (el in 1:max(x$lesions$perCase))
 
 Fraction 0.217 of (diseased) cases contain 1 lesion, fraction 0.2 of (diseased) cases contain 2 lesions, etc. 
 
-This information is more readily obtained using the `RJafroc` function `UtilLesionDistrVector()` as shown next:
+This information is more readily obtained using the `RJafroc` function `UtilLesDistr()` as shown next (be sure to view both screens):
 
 
 
 
 ```r
-lesDistr <- UtilLesionDistrVector(x)
-lesDistr
-#>  [1] 0.217391304 0.200000000 0.113043478 0.086956522 0.043478261 0.095652174
-#>  [7] 0.052173913 0.069565217 0.017391304 0.026086957 0.026086957 0.026086957
-#> [13] 0.017391304 0.008695652
+LD <- UtilLesDistr(x)
+LD
+#>    lesID        Freq
+#> 1      1 0.217391304
+#> 2      2 0.200000000
+#> 3      3 0.113043478
+#> 4      4 0.086956522
+#> 5      5 0.043478261
+#> 6      6 0.095652174
+#> 7      7 0.052173913
+#> 8      8 0.069565217
+#> 9      9 0.017391304
+#> 10    10 0.026086957
+#> 11    11 0.026086957
+#> 12    12 0.026086957
+#> 13    13 0.000000000
+#> 14    14 0.000000000
+#> 15    15 0.000000000
+#> 16    16 0.017391304
+#> 17    17 0.000000000
+#> 18    18 0.000000000
+#> 19    19 0.000000000
+#> 20    20 0.008695652
 ```
 
-* TBA The `UtilLesionDistrVector()` function returns an array with two columns and number of rows equal to the number of *distinct non-zero* values of lesions per case.
-* The first column contains the number of distinct non-zero values of lesions per case, 14 in the current example.
-* The second column contains the fraction of diseased cases with the number of lesions indicated in the first column.
-* The second column must sum to unity
+* LD is a dataframe containing the number of lesion per case and the corresponding fractions.
+* The `UtilLesDistr()` function returns an array with two columns and number of rows equal to the number of *non-zero* values of lesions per case.
+* The first column (`lesID`) contains the number of non-zero values of lesions per case, 14 in the current example. 
+* The second column (`Freq`) contains the fraction of diseased cases with the number of lesions indicated in the first column.
+* The second column sums to unity:
 
 
 ```r
-sum(UtilLesionDistrVector(x))
+sum(UtilLesDistr(x)$Freq)
 #> [1] 1
 ```
 
-* The lesion distribution array will come in handy when it comes to predicting the operating characteristics from using the Radiological Search Model (RSM), as detailed in TBA Chapter 17.
+The lesion distribution array will be used to predict the operating characteristics using the Radiological Search Model (RSM), as detailed in TBA Chapter 17.
 
 
-## TBA Definition of `lesWghtDistr` array {#quick-start-froc-data-lesion-weights}
+## Definition of the lesion weights {#quick-start-froc-data-lesion-weights}
 
-* This is returned by `UtilLesionWeightsDistr()`.
+* This is returned by `UtilLesWghtsDS()` and `UtilLesWghtsLD()`.
 * This contains the same number of rows as `lesDistr`.
 * The number of columns is one plus the number of rows as `lesDistr`.
 * The first column contains the number of distinct non-zero values of lesions per case, 14 in the current example.
@@ -315,13 +335,7 @@ sum(UtilLesionDistrVector(x))
 
 
 ```r
-lesWghtDistr <- UtilLesionWeightsMatrixDataset(x, relWeights = 0)
-cat("dim(lesDistr) =", dim(lesDistr),"\n")
-#> dim(lesDistr) =
-cat("dim(lesWghtDistr) =", dim(lesWghtDistr),"\n")
-#> dim(lesWghtDistr) = 14 15
-cat("lesWghtDistr = \n\n")
-#> lesWghtDistr =
+lesWghtDistr <- UtilLesWghtsDS(x, relWeights = 0)
 lesWghtDistr
 #>       [,1]       [,2]       [,3]       [,4]       [,5]       [,6]       [,7]
 #>  [1,]    1 1.00000000       -Inf       -Inf       -Inf       -Inf       -Inf
@@ -338,6 +352,12 @@ lesWghtDistr
 #> [12,]   12 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333
 #> [13,]   13 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308
 #> [14,]   14 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857
+#> [15,]   15 0.06666667 0.06666667 0.06666667 0.06666667 0.06666667 0.06666667
+#> [16,]   16 0.06250000 0.06250000 0.06250000 0.06250000 0.06250000 0.06250000
+#> [17,]   17 0.05882353 0.05882353 0.05882353 0.05882353 0.05882353 0.05882353
+#> [18,]   18 0.05555556 0.05555556 0.05555556 0.05555556 0.05555556 0.05555556
+#> [19,]   19 0.05263158 0.05263158 0.05263158 0.05263158 0.05263158 0.05263158
+#> [20,]   20 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000
 #>             [,8]       [,9]      [,10]      [,11]      [,12]      [,13]
 #>  [1,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
 #>  [2,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
@@ -353,21 +373,54 @@ lesWghtDistr
 #> [12,] 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333
 #> [13,] 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308 0.07692308
 #> [14,] 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857 0.07142857
-#>            [,14]      [,15]
-#>  [1,]       -Inf       -Inf
-#>  [2,]       -Inf       -Inf
-#>  [3,]       -Inf       -Inf
-#>  [4,]       -Inf       -Inf
-#>  [5,]       -Inf       -Inf
-#>  [6,]       -Inf       -Inf
-#>  [7,]       -Inf       -Inf
-#>  [8,]       -Inf       -Inf
-#>  [9,]       -Inf       -Inf
-#> [10,]       -Inf       -Inf
-#> [11,]       -Inf       -Inf
-#> [12,]       -Inf       -Inf
-#> [13,] 0.07692308       -Inf
-#> [14,] 0.07142857 0.07142857
+#> [15,] 0.06666667 0.06666667 0.06666667 0.06666667 0.06666667 0.06666667
+#> [16,] 0.06250000 0.06250000 0.06250000 0.06250000 0.06250000 0.06250000
+#> [17,] 0.05882353 0.05882353 0.05882353 0.05882353 0.05882353 0.05882353
+#> [18,] 0.05555556 0.05555556 0.05555556 0.05555556 0.05555556 0.05555556
+#> [19,] 0.05263158 0.05263158 0.05263158 0.05263158 0.05263158 0.05263158
+#> [20,] 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000
+#>            [,14]      [,15]      [,16]      [,17]      [,18]      [,19]
+#>  [1,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#>  [2,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#>  [3,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#>  [4,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#>  [5,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#>  [6,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#>  [7,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#>  [8,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#>  [9,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#> [10,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#> [11,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#> [12,]       -Inf       -Inf       -Inf       -Inf       -Inf       -Inf
+#> [13,] 0.07692308       -Inf       -Inf       -Inf       -Inf       -Inf
+#> [14,] 0.07142857 0.07142857       -Inf       -Inf       -Inf       -Inf
+#> [15,] 0.06666667 0.06666667 0.06666667       -Inf       -Inf       -Inf
+#> [16,] 0.06250000 0.06250000 0.06250000 0.06250000       -Inf       -Inf
+#> [17,] 0.05882353 0.05882353 0.05882353 0.05882353 0.05882353       -Inf
+#> [18,] 0.05555556 0.05555556 0.05555556 0.05555556 0.05555556 0.05555556
+#> [19,] 0.05263158 0.05263158 0.05263158 0.05263158 0.05263158 0.05263158
+#> [20,] 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000 0.05000000
+#>            [,20] [,21]
+#>  [1,]       -Inf  -Inf
+#>  [2,]       -Inf  -Inf
+#>  [3,]       -Inf  -Inf
+#>  [4,]       -Inf  -Inf
+#>  [5,]       -Inf  -Inf
+#>  [6,]       -Inf  -Inf
+#>  [7,]       -Inf  -Inf
+#>  [8,]       -Inf  -Inf
+#>  [9,]       -Inf  -Inf
+#> [10,]       -Inf  -Inf
+#> [11,]       -Inf  -Inf
+#> [12,]       -Inf  -Inf
+#> [13,]       -Inf  -Inf
+#> [14,]       -Inf  -Inf
+#> [15,]       -Inf  -Inf
+#> [16,]       -Inf  -Inf
+#> [17,]       -Inf  -Inf
+#> [18,]       -Inf  -Inf
+#> [19,] 0.05263158  -Inf
+#> [20,] 0.05000000  0.05
 ```
 
 * Row 3 corresponds to 3 lesions per case and the weights are 1/3, 1/3 and 1/3.
