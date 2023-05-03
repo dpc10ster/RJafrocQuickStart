@@ -56,7 +56,7 @@ These are found in the `FP` or `NL` worksheet.
 
 ![](images/quick-start/frocCrNL.png){width=100%}
 
-It consists of 4 columns of equal length. The common length is an integer random variable $\ge 0$. It could be zero if the dataset has no NL marks (a possibility if the lesions are easy to find or the observer has perfect performance). In this example the common length is 22. The common length is a-priori unpredictable; for example if the dataset has many FPs it could be large.
+It consists of 4 columns of equal length. The common length is an integer random variable $\ge 0$. It could be zero if the dataset has no NL marks (a possibility if the lesions are easy to find or the observer has perfect performance). In this example the common length is 22, which is a-priori unpredictable: for example, if the dataset has many FPs it could be large.
 
 1. `ReaderID`: the reader labels: these must be one of `0`, `1`, or `2` as declared in the `Truth` worksheet. 
 
@@ -73,7 +73,7 @@ It consists of 4 columns of equal length. The common length is an integer random
 
 * Diseased cases with `NL` marks are also recorded in the `FP` worksheet. Some examples are seen at rows 15, 16 and 21, 22, 23. Rows 21 and 22 show that `caseID` = 71 got two `NL` marks, rated 2.24, 4.01. 
 
-* Since this is the *only* case with two NL marks, it determines the length of the fourth dimension of the `x$ratings$NL`, which is 2 in this example. Absent this case, the length would have been one. The case with the most `NL` marks determines the length of the fourth dimension of `x$ratings$NL`. The reader should confirm that the ratings in `x$ratings$NL` reflect the contents of the `FP` worksheet.
+* Since this is the *only* case with two NL marks, it determines the length of the fourth dimension of the `ds$ratings$NL`, which is 2 in this example. Absent this case, the length would have been one. The case with the most `NL` marks determines the length of the fourth dimension of `ds$ratings$NL`. The reader should confirm that the ratings in `ds$ratings$NL` reflect the contents of the `FP` worksheet.
 
 
 ## The TP ratings {#quick-start-froc-data-tp}
@@ -87,17 +87,17 @@ This worksheet can only have diseased cases. The presence of a non-diseased case
 
 The fact that the actual length (31) is smaller than the maximum length (54) means that there are combinations of modality, reader and diseased cases on which some lesions were not marked.
 
-As examples, line 2 in the worksheet, the first lesion in `CaseID` equal to `70` was marked (and rated 5.28) in `ModalityID` `0` and `ReaderID` `0`. Line 3 in the worksheet, the second lesion in `CaseID` equal to `70` was also marked (and rated 4.65) in `ModalityID` `0` and `ReaderID` `0`. However, lesions 2 and 3 in `CaseID` = 72 were not marked (line 5 in the worksheet indicates that for this modality-reader-case combination only the first lesion was marked). The reader should confirm that the ratings in `x$ratings$LL` reflect the contents of the `TP` worksheet.
+As examples, line 2 in the worksheet, the first lesion in `CaseID` equal to `70` was marked (and rated 5.28) in `ModalityID` `0` and `ReaderID` `0`. Line 3 in the worksheet, the second lesion in `CaseID` equal to `70` was also marked (and rated 4.65) in `ModalityID` `0` and `ReaderID` `0`. However, lesions 2 and 3 in `CaseID` = 72 were not marked (line 5 in the worksheet indicates that for this modality-reader-case combination only the first lesion was marked). The reader should confirm that the ratings in `ds$ratings$LL` reflect the contents of the `TP` worksheet.
 
 ## Reading the FROC dataset {#quick-start-froc-data-structure}
 
-The example shown above corresponds to file `R/quick-start/frocCr.xlsx` in the project directory. The next code reads this file into an `R` object `x`.
+The example shown above corresponds to file `R/quick-start/frocCr.xlsx` in the project directory. The next code reads this file into an `R` object `ds`.
 
 
 ```r
 frocCr <- "R/quick-start/frocCr.xlsx"
-x <- DfReadDataFile(frocCr, newExcelFileFormat = TRUE)
-str(x)
+ds <- DfReadDataFile(frocCr, newExcelFileFormat = TRUE)
+str(ds)
 #> List of 3
 #>  $ ratings     :List of 3
 #>   ..$ NL   : num [1:2, 1:3, 1:8, 1:2] 1.02 2.89 2.21 3.01 2.14 ...
@@ -121,16 +121,16 @@ str(x)
 
 This follows the general description in Chapter \@ref(quick-start-roc). The differences are described below.
 
-* The `x$descriptions$type` member indicates that this is an `FROC` dataset. 
+* The `ds$descriptions$type` member indicates that this is an `FROC` dataset. 
 
-* The `x$lesions$perCase` member is a vector containing the number of lesions in each diseased case, i.e., 2, 1, 3, 2, 1 in the current example.
+* The `ds$lesions$perCase` member is a vector containing the number of lesions in each diseased case, i.e., 2, 1, 3, 2, 1 in the current example.
 
-* The `x$lesions$IDs` member indicates the labeling of the lesions in each diseased case.
+* The `ds$lesions$IDs` member indicates the labeling of the lesions in each diseased case.
 
 
 
 ```r
-x$lesions$IDs
+ds$lesions$IDs
 #>      [,1] [,2] [,3]
 #> [1,]    1    2 -Inf
 #> [2,]    1 -Inf -Inf
@@ -146,7 +146,7 @@ x$lesions$IDs
 
 
 ```r
-x$lesions$weights
+ds$lesions$weights
 #>           [,1]      [,2]      [,3]
 #> [1,] 0.3000000 0.7000000      -Inf
 #> [2,] 1.0000000      -Inf      -Inf
@@ -170,8 +170,8 @@ Consider a much larger real dataset, `dataset11`, with structure as shown below 
 
 
 ```r
-x <- dataset11
-str(x)
+ds <- dataset11
+str(ds)
 #> List of 3
 #>  $ ratings     :List of 3
 #>   ..$ NL   : num [1:4, 1:5, 1:158, 1:4] -Inf -Inf -Inf -Inf -Inf ...
@@ -195,12 +195,12 @@ str(x)
 
 The large number of lesions is explained by the fact that this is a volumetric CT image for lung nodule detection (each nodule was verified by 3 radiologists).
 
-Focus on the 115 diseased cases: the numbers of lesions in individual cases is contained in `x$lesions$perCase`.
+Focus on the 115 diseased cases: the numbers of lesions in individual cases is contained in `ds$lesions$perCase`.
 
 
 
 ```r
-x$lesions$perCase
+ds$lesions$perCase
 #>   [1]  6  4  7  1  3  3  3  8 11  2  4  6  2 16  5  2  8  3  4  7 11  1  4  3  4
 #>  [26]  4  7  3  2  5  2  2  7  6  6  4 10 20 12  6  4  7 12  5  1  1  5  1  2  8
 #>  [51]  3  1  2  2  3  2  8 16 10  1  2  2  6  3  2  2  4  6 10 11  1  2  6  2  4
@@ -209,14 +209,14 @@ x$lesions$perCase
 ```
 
 
-For example, the first diseased case contains 6 lesions, the second contains 4 lesions, the third contains 7 lesions, etc., and the last diseased case contains 1 lesion. To get an idea of the distribution of the numbers of lesions per diseased cases, one could use the `which()` function:
+For example, the first diseased case contains 6 lesions, the second contains 4 lesions, the third contains 7 lesions, etc., and the last diseased case contains 1 lesion. To get the distribution of the numbers of lesions per diseased cases one could use the `which()` function:
 
 
 
 ```r
-for (el in 1:max(x$lesions$perCase)) cat(
+for (el in 1:max(ds$lesions$perCase)) cat(
   "number of diseased cases with", el, "lesions = ", 
-  length(which(x$lesions$perCase == el)), "\n")
+  length(which(ds$lesions$perCase == el)), "\n")
 #> number of diseased cases with 1 lesions =  25 
 #> number of diseased cases with 2 lesions =  23 
 #> number of diseased cases with 3 lesions =  13 
@@ -243,16 +243,16 @@ for (el in 1:max(x$lesions$perCase)) cat(
 This tells us that 25 cases contain 1 lesion. Likewise, 23 cases contain 2 lesions, etc. Note that there are no cases with 13, 14, 15, 17, 18, and 19 lesions.
 
 
-### Definition of `lesDistr` array {#quick-start-froc-data-lesion-distribution}
+### Definition of `lesID` array {#quick-start-froc-data-lesion-distribution}
 
-The fraction of (diseased) cases with 1 lesion, 2 lesions etc, can be calculated as follows:
+The fraction of diseased cases with 1 lesion, 2 lesions etc, can be calculated as follows:
 
 
 
 ```r
-for (el in 1:max(x$lesions$perCase)) 
+for (el in 1:max(ds$lesions$perCase)) 
   cat("fraction of diseased cases with", el, "lesions = ", 
-  length(which(x$lesions$perCase == el))/length(x$ratings$LL[1,1,,1]), "\n")
+  length(which(ds$lesions$perCase == el))/length(ds$ratings$LL[1,1,,1]), "\n")
 #> fraction of diseased cases with 1 lesions =  0.2173913 
 #> fraction of diseased cases with 2 lesions =  0.2 
 #> fraction of diseased cases with 3 lesions =  0.1130435 
@@ -276,7 +276,7 @@ for (el in 1:max(x$lesions$perCase))
 ```
 
 
-Fraction 0.217 of (diseased) cases contain 1 lesion, fraction 0.2 of (diseased) cases contain 2 lesions, etc. 
+Fraction 0.217 of diseased cases contain 1 lesion, fraction 0.2 of (diseased) cases contain 2 lesions, etc. 
 
 This information is more readily obtained using the `RJafroc` function `UtilLesDistr()` as shown next (be sure to view both screens):
 
@@ -284,8 +284,7 @@ This information is more readily obtained using the `RJafroc` function `UtilLesD
 
 
 ```r
-LD <- UtilLesDistr(x)
-LD
+UtilLesDistr(ds)
 #>    lesID        Freq
 #> 1      1 0.217391304
 #> 2      2 0.200000000
@@ -309,34 +308,30 @@ LD
 #> 20    20 0.008695652
 ```
 
-* LD is a dataframe containing the number of lesion per case and the corresponding fractions.
-* The `UtilLesDistr()` function returns an array with two columns and number of rows equal to the number of *non-zero* values of lesions per case.
-* The first column (`lesID`) contains the number of non-zero values of lesions per case, 14 in the current example. 
+* The `UtilLesDistr()` function returns a dataframe with two columns.
+* The first column (`lesID`) contains the number of lesions per case. 
 * The second column (`Freq`) contains the fraction of diseased cases with the number of lesions indicated in the first column.
 * The second column sums to unity:
 
 
 ```r
-sum(UtilLesDistr(x)$Freq)
+sum(UtilLesDistr(ds)$Freq)
 #> [1] 1
 ```
 
-The lesion distribution array will be used to predict the operating characteristics using the Radiological Search Model (RSM), as detailed in TBA Chapter 17.
 
+## Lesion weights {#quick-start-froc-data-lesion-weights}
 
-## Definition of the lesion weights {#quick-start-froc-data-lesion-weights}
-
-* This is returned by `UtilLesWghtsDS()` and `UtilLesWghtsLD()`.
-* This contains the same number of rows as `lesDistr`.
-* The number of columns is one plus the number of rows as `lesDistr`.
-* The first column contains the number of distinct non-zero values of lesions per case, 14 in the current example.
-* The second through the last columns contain the weights of cases with number of lesions per case corresponding to row 1.
+* This `dataframe` is returned by `UtilLesWghtsDS()` or `UtilLesWghtsLD()`.
+* This contains the same number of rows as `lesID`.
+* The number of columns is one plus the number of rows.
+* The first column contains the number of lesions per case.
+* The second through the last column contain the weights of cases with number of lesions per case in column 1.
 * Missing values are filled with `-Inf`.
 
 
 ```r
-lesWghtDistr <- UtilLesWghtsDS(x, relWeights = 0)
-lesWghtDistr
+UtilLesWghtsDS(ds, relWeights = 0)
 #>       [,1]       [,2]       [,3]       [,4]       [,5]       [,6]       [,7]
 #>  [1,]    1 1.00000000       -Inf       -Inf       -Inf       -Inf       -Inf
 #>  [2,]    2 0.50000000 0.50000000       -Inf       -Inf       -Inf       -Inf
@@ -421,10 +416,12 @@ lesWghtDistr
 #> [18,]       -Inf  -Inf
 #> [19,] 0.05263158  -Inf
 #> [20,] 0.05000000  0.05
+## or 
+## UtilLesWghtsLD(UtilLesDistr(ds), relWeights = 0)
+##
 ```
 
 * Row 3 corresponds to 3 lesions per case and the weights are 1/3, 1/3 and 1/3.
-* Row 13 corresponds to 16 lesions per case and the weights are 0.06250000, 0.06250000, ..., repeated 13 times.
-* Note that the number of rows is less than the maximum number of lesions per case (20).
-* This is because some configurations of lesions per case (e.g., cases with 13 lesions per case) do not occur in this dataset. 
+* Row 13 corresponds to 13 lesions per case and the weights are 0.06250000, 0.06250000, ..., repeated 13 times.
+* Note that the number of rows equals the maximum number of lesions per case (20).
 

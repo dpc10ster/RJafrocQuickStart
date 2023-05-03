@@ -139,7 +139,7 @@
 
 \title{The RJafroc Quick Start Book}
 \author{Dev P. Chakraborty, PhD}
-\date{2023-05-02}
+\date{2023-05-03}
 
 \begin{document}
 \maketitle
@@ -436,7 +436,7 @@ These are found in the \texttt{FP} or \texttt{NL} worksheet.
 
 \includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/frocCrNL.png}
 
-It consists of 4 columns of equal length. The common length is an integer random variable \(\ge 0\). It could be zero if the dataset has no NL marks (a possibility if the lesions are easy to find or the observer has perfect performance). In this example the common length is 22. The common length is a-priori unpredictable; for example if the dataset has many FPs it could be large.
+It consists of 4 columns of equal length. The common length is an integer random variable \(\ge 0\). It could be zero if the dataset has no NL marks (a possibility if the lesions are easy to find or the observer has perfect performance). In this example the common length is 22, which is a-priori unpredictable: for example, if the dataset has many FPs it could be large.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -459,7 +459,7 @@ It consists of 4 columns of equal length. The common length is an integer random
 \item
   Diseased cases with \texttt{NL} marks are also recorded in the \texttt{FP} worksheet. Some examples are seen at rows 15, 16 and 21, 22, 23. Rows 21 and 22 show that \texttt{caseID} = 71 got two \texttt{NL} marks, rated 2.24, 4.01.
 \item
-  Since this is the \emph{only} case with two NL marks, it determines the length of the fourth dimension of the \texttt{x\$ratings\$NL}, which is 2 in this example. Absent this case, the length would have been one. The case with the most \texttt{NL} marks determines the length of the fourth dimension of \texttt{x\$ratings\$NL}. The reader should confirm that the ratings in \texttt{x\$ratings\$NL} reflect the contents of the \texttt{FP} worksheet.
+  Since this is the \emph{only} case with two NL marks, it determines the length of the fourth dimension of the \texttt{ds\$ratings\$NL}, which is 2 in this example. Absent this case, the length would have been one. The case with the most \texttt{NL} marks determines the length of the fourth dimension of \texttt{ds\$ratings\$NL}. The reader should confirm that the ratings in \texttt{ds\$ratings\$NL} reflect the contents of the \texttt{FP} worksheet.
 \end{itemize}
 
 \hypertarget{quick-start-froc-data-tp}{%
@@ -473,18 +473,18 @@ This worksheet can only have diseased cases. The presence of a non-diseased case
 
 The fact that the actual length (31) is smaller than the maximum length (54) means that there are combinations of modality, reader and diseased cases on which some lesions were not marked.
 
-As examples, line 2 in the worksheet, the first lesion in \texttt{CaseID} equal to \texttt{70} was marked (and rated 5.28) in \texttt{ModalityID} \texttt{0} and \texttt{ReaderID} \texttt{0}. Line 3 in the worksheet, the second lesion in \texttt{CaseID} equal to \texttt{70} was also marked (and rated 4.65) in \texttt{ModalityID} \texttt{0} and \texttt{ReaderID} \texttt{0}. However, lesions 2 and 3 in \texttt{CaseID} = 72 were not marked (line 5 in the worksheet indicates that for this modality-reader-case combination only the first lesion was marked). The reader should confirm that the ratings in \texttt{x\$ratings\$LL} reflect the contents of the \texttt{TP} worksheet.
+As examples, line 2 in the worksheet, the first lesion in \texttt{CaseID} equal to \texttt{70} was marked (and rated 5.28) in \texttt{ModalityID} \texttt{0} and \texttt{ReaderID} \texttt{0}. Line 3 in the worksheet, the second lesion in \texttt{CaseID} equal to \texttt{70} was also marked (and rated 4.65) in \texttt{ModalityID} \texttt{0} and \texttt{ReaderID} \texttt{0}. However, lesions 2 and 3 in \texttt{CaseID} = 72 were not marked (line 5 in the worksheet indicates that for this modality-reader-case combination only the first lesion was marked). The reader should confirm that the ratings in \texttt{ds\$ratings\$LL} reflect the contents of the \texttt{TP} worksheet.
 
 \hypertarget{quick-start-froc-data-structure}{%
 \section{Reading the FROC dataset}\label{quick-start-froc-data-structure}}
 
-The example shown above corresponds to file \texttt{R/quick-start/frocCr.xlsx} in the project directory. The next code reads this file into an \texttt{R} object \texttt{x}.
+The example shown above corresponds to file \texttt{R/quick-start/frocCr.xlsx} in the project directory. The next code reads this file into an \texttt{R} object \texttt{ds}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{frocCr }\OtherTok{\textless{}{-}} \StringTok{"R/quick{-}start/frocCr.xlsx"}
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{DfReadDataFile}\NormalTok{(frocCr, }\AttributeTok{newExcelFileFormat =} \ConstantTok{TRUE}\NormalTok{)}
-\FunctionTok{str}\NormalTok{(x)}
+\NormalTok{ds }\OtherTok{\textless{}{-}} \FunctionTok{DfReadDataFile}\NormalTok{(frocCr, }\AttributeTok{newExcelFileFormat =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{str}\NormalTok{(ds)}
 \CommentTok{\#\textgreater{} List of 3}
 \CommentTok{\#\textgreater{}  $ ratings     :List of 3}
 \CommentTok{\#\textgreater{}   ..$ NL   : num [1:2, 1:3, 1:8, 1:2] 1.02 2.89 2.21 3.01 2.14 ...}
@@ -511,16 +511,16 @@ This follows the general description in Chapter \ref{quick-start-roc}. The diffe
 
 \begin{itemize}
 \item
-  The \texttt{x\$descriptions\$type} member indicates that this is an \texttt{FROC} dataset.
+  The \texttt{ds\$descriptions\$type} member indicates that this is an \texttt{FROC} dataset.
 \item
-  The \texttt{x\$lesions\$perCase} member is a vector containing the number of lesions in each diseased case, i.e., 2, 1, 3, 2, 1 in the current example.
+  The \texttt{ds\$lesions\$perCase} member is a vector containing the number of lesions in each diseased case, i.e., 2, 1, 3, 2, 1 in the current example.
 \item
-  The \texttt{x\$lesions\$IDs} member indicates the labeling of the lesions in each diseased case.
+  The \texttt{ds\$lesions\$IDs} member indicates the labeling of the lesions in each diseased case.
 \end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{IDs}
+\NormalTok{ds}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{IDs}
 \CommentTok{\#\textgreater{}      [,1] [,2] [,3]}
 \CommentTok{\#\textgreater{} [1,]    1    2 {-}Inf}
 \CommentTok{\#\textgreater{} [2,]    1 {-}Inf {-}Inf}
@@ -539,7 +539,7 @@ This follows the general description in Chapter \ref{quick-start-roc}. The diffe
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{weights}
+\NormalTok{ds}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{weights}
 \CommentTok{\#\textgreater{}           [,1]      [,2]      [,3]}
 \CommentTok{\#\textgreater{} [1,] 0.3000000 0.7000000      {-}Inf}
 \CommentTok{\#\textgreater{} [2,] 1.0000000      {-}Inf      {-}Inf}
@@ -565,8 +565,8 @@ Consider a much larger real dataset, \texttt{dataset11}, with structure as shown
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ dataset11}
-\FunctionTok{str}\NormalTok{(x)}
+\NormalTok{ds }\OtherTok{\textless{}{-}}\NormalTok{ dataset11}
+\FunctionTok{str}\NormalTok{(ds)}
 \CommentTok{\#\textgreater{} List of 3}
 \CommentTok{\#\textgreater{}  $ ratings     :List of 3}
 \CommentTok{\#\textgreater{}   ..$ NL   : num [1:4, 1:5, 1:158, 1:4] {-}Inf {-}Inf {-}Inf {-}Inf {-}Inf ...}
@@ -591,11 +591,11 @@ Consider a much larger real dataset, \texttt{dataset11}, with structure as shown
 
 The large number of lesions is explained by the fact that this is a volumetric CT image for lung nodule detection (each nodule was verified by 3 radiologists).
 
-Focus on the 115 diseased cases: the numbers of lesions in individual cases is contained in \texttt{x\$lesions\$perCase}.
+Focus on the 115 diseased cases: the numbers of lesions in individual cases is contained in \texttt{ds\$lesions\$perCase}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{perCase}
+\NormalTok{ds}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{perCase}
 \CommentTok{\#\textgreater{}   [1]  6  4  7  1  3  3  3  8 11  2  4  6  2 16  5  2  8  3  4  7 11  1  4  3  4}
 \CommentTok{\#\textgreater{}  [26]  4  7  3  2  5  2  2  7  6  6  4 10 20 12  6  4  7 12  5  1  1  5  1  2  8}
 \CommentTok{\#\textgreater{}  [51]  3  1  2  2  3  2  8 16 10  1  2  2  6  3  2  2  4  6 10 11  1  2  6  2  4}
@@ -604,13 +604,13 @@ Focus on the 115 diseased cases: the numbers of lesions in individual cases is c
 \end{Highlighting}
 \end{Shaded}
 
-For example, the first diseased case contains 6 lesions, the second contains 4 lesions, the third contains 7 lesions, etc., and the last diseased case contains 1 lesion. To get an idea of the distribution of the numbers of lesions per diseased cases, one could use the \texttt{which()} function:
+For example, the first diseased case contains 6 lesions, the second contains 4 lesions, the third contains 7 lesions, etc., and the last diseased case contains 1 lesion. To get the distribution of the numbers of lesions per diseased cases one could use the \texttt{which()} function:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{for}\NormalTok{ (el }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{max}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{perCase)) }\FunctionTok{cat}\NormalTok{(}
+\ControlFlowTok{for}\NormalTok{ (el }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{max}\NormalTok{(ds}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{perCase)) }\FunctionTok{cat}\NormalTok{(}
   \StringTok{"number of diseased cases with"}\NormalTok{, el, }\StringTok{"lesions = "}\NormalTok{, }
-  \FunctionTok{length}\NormalTok{(}\FunctionTok{which}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{perCase }\SpecialCharTok{==}\NormalTok{ el)), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+  \FunctionTok{length}\NormalTok{(}\FunctionTok{which}\NormalTok{(ds}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{perCase }\SpecialCharTok{==}\NormalTok{ el)), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
 \CommentTok{\#\textgreater{} number of diseased cases with 1 lesions =  25 }
 \CommentTok{\#\textgreater{} number of diseased cases with 2 lesions =  23 }
 \CommentTok{\#\textgreater{} number of diseased cases with 3 lesions =  13 }
@@ -637,15 +637,15 @@ For example, the first diseased case contains 6 lesions, the second contains 4 l
 This tells us that 25 cases contain 1 lesion. Likewise, 23 cases contain 2 lesions, etc. Note that there are no cases with 13, 14, 15, 17, 18, and 19 lesions.
 
 \hypertarget{quick-start-froc-data-lesion-distribution}{%
-\subsection{\texorpdfstring{Definition of \texttt{lesDistr} array}{Definition of lesDistr array}}\label{quick-start-froc-data-lesion-distribution}}
+\subsection{\texorpdfstring{Definition of \texttt{lesID} array}{Definition of lesID array}}\label{quick-start-froc-data-lesion-distribution}}
 
-The fraction of (diseased) cases with 1 lesion, 2 lesions etc, can be calculated as follows:
+The fraction of diseased cases with 1 lesion, 2 lesions etc, can be calculated as follows:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{for}\NormalTok{ (el }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{max}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{perCase)) }
+\ControlFlowTok{for}\NormalTok{ (el }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{max}\NormalTok{(ds}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{perCase)) }
   \FunctionTok{cat}\NormalTok{(}\StringTok{"fraction of diseased cases with"}\NormalTok{, el, }\StringTok{"lesions = "}\NormalTok{, }
-  \FunctionTok{length}\NormalTok{(}\FunctionTok{which}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{perCase }\SpecialCharTok{==}\NormalTok{ el))}\SpecialCharTok{/}\FunctionTok{length}\NormalTok{(x}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{LL[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,,}\DecValTok{1}\NormalTok{]), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+  \FunctionTok{length}\NormalTok{(}\FunctionTok{which}\NormalTok{(ds}\SpecialCharTok{$}\NormalTok{lesions}\SpecialCharTok{$}\NormalTok{perCase }\SpecialCharTok{==}\NormalTok{ el))}\SpecialCharTok{/}\FunctionTok{length}\NormalTok{(ds}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{LL[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,,}\DecValTok{1}\NormalTok{]), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
 \CommentTok{\#\textgreater{} fraction of diseased cases with 1 lesions =  0.2173913 }
 \CommentTok{\#\textgreater{} fraction of diseased cases with 2 lesions =  0.2 }
 \CommentTok{\#\textgreater{} fraction of diseased cases with 3 lesions =  0.1130435 }
@@ -669,14 +669,13 @@ The fraction of (diseased) cases with 1 lesion, 2 lesions etc, can be calculated
 \end{Highlighting}
 \end{Shaded}
 
-Fraction 0.217 of (diseased) cases contain 1 lesion, fraction 0.2 of (diseased) cases contain 2 lesions, etc.
+Fraction 0.217 of diseased cases contain 1 lesion, fraction 0.2 of (diseased) cases contain 2 lesions, etc.
 
 This information is more readily obtained using the \texttt{RJafroc} function \texttt{UtilLesDistr()} as shown next (be sure to view both screens):
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{LD }\OtherTok{\textless{}{-}} \FunctionTok{UtilLesDistr}\NormalTok{(x)}
-\NormalTok{LD}
+\FunctionTok{UtilLesDistr}\NormalTok{(ds)}
 \CommentTok{\#\textgreater{}    lesID        Freq}
 \CommentTok{\#\textgreater{} 1      1 0.217391304}
 \CommentTok{\#\textgreater{} 2      2 0.200000000}
@@ -704,11 +703,9 @@ This information is more readily obtained using the \texttt{RJafroc} function \t
 \begin{itemize}
 \tightlist
 \item
-  LD is a dataframe containing the number of lesion per case and the corresponding fractions.
+  The \texttt{UtilLesDistr()} function returns a dataframe with two columns.
 \item
-  The \texttt{UtilLesDistr()} function returns an array with two columns and number of rows equal to the number of \emph{non-zero} values of lesions per case.
-\item
-  The first column (\texttt{lesID}) contains the number of non-zero values of lesions per case, 14 in the current example.
+  The first column (\texttt{lesID}) contains the number of lesions per case.
 \item
   The second column (\texttt{Freq}) contains the fraction of diseased cases with the number of lesions indicated in the first column.
 \item
@@ -717,36 +714,33 @@ This information is more readily obtained using the \texttt{RJafroc} function \t
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{sum}\NormalTok{(}\FunctionTok{UtilLesDistr}\NormalTok{(x)}\SpecialCharTok{$}\NormalTok{Freq)}
+\FunctionTok{sum}\NormalTok{(}\FunctionTok{UtilLesDistr}\NormalTok{(ds)}\SpecialCharTok{$}\NormalTok{Freq)}
 \CommentTok{\#\textgreater{} [1] 1}
 \end{Highlighting}
 \end{Shaded}
 
-The lesion distribution array will be used to predict the operating characteristics using the Radiological Search Model (RSM), as detailed in TBA Chapter 17.
-
 \hypertarget{quick-start-froc-data-lesion-weights}{%
-\section{Definition of the lesion weights}\label{quick-start-froc-data-lesion-weights}}
+\section{Lesion weights}\label{quick-start-froc-data-lesion-weights}}
 
 \begin{itemize}
 \tightlist
 \item
-  This is returned by \texttt{UtilLesWghtsDS()} and \texttt{UtilLesWghtsLD()}.
+  This \texttt{dataframe} is returned by \texttt{UtilLesWghtsDS()} or \texttt{UtilLesWghtsLD()}.
 \item
-  This contains the same number of rows as \texttt{lesDistr}.
+  This contains the same number of rows as \texttt{lesID}.
 \item
-  The number of columns is one plus the number of rows as \texttt{lesDistr}.
+  The number of columns is one plus the number of rows.
 \item
-  The first column contains the number of distinct non-zero values of lesions per case, 14 in the current example.
+  The first column contains the number of lesions per case.
 \item
-  The second through the last columns contain the weights of cases with number of lesions per case corresponding to row 1.
+  The second through the last column contain the weights of cases with number of lesions per case in column 1.
 \item
   Missing values are filled with \texttt{-Inf}.
 \end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{lesWghtDistr }\OtherTok{\textless{}{-}} \FunctionTok{UtilLesWghtsDS}\NormalTok{(x, }\AttributeTok{relWeights =} \DecValTok{0}\NormalTok{)}
-\NormalTok{lesWghtDistr}
+\FunctionTok{UtilLesWghtsDS}\NormalTok{(ds, }\AttributeTok{relWeights =} \DecValTok{0}\NormalTok{)}
 \CommentTok{\#\textgreater{}       [,1]       [,2]       [,3]       [,4]       [,5]       [,6]       [,7]}
 \CommentTok{\#\textgreater{}  [1,]    1 1.00000000       {-}Inf       {-}Inf       {-}Inf       {-}Inf       {-}Inf}
 \CommentTok{\#\textgreater{}  [2,]    2 0.50000000 0.50000000       {-}Inf       {-}Inf       {-}Inf       {-}Inf}
@@ -831,6 +825,9 @@ The lesion distribution array will be used to predict the operating characterist
 \CommentTok{\#\textgreater{} [18,]       {-}Inf  {-}Inf}
 \CommentTok{\#\textgreater{} [19,] 0.05263158  {-}Inf}
 \CommentTok{\#\textgreater{} [20,] 0.05000000  0.05}
+\DocumentationTok{\#\# or }
+\DocumentationTok{\#\# UtilLesWghtsLD(UtilLesDistr(ds), relWeights = 0)}
+\DocumentationTok{\#\#}
 \end{Highlighting}
 \end{Shaded}
 
@@ -839,41 +836,47 @@ The lesion distribution array will be used to predict the operating characterist
 \item
   Row 3 corresponds to 3 lesions per case and the weights are 1/3, 1/3 and 1/3.
 \item
-  Row 13 corresponds to 16 lesions per case and the weights are 0.06250000, 0.06250000, \ldots, repeated 13 times.
+  Row 13 corresponds to 13 lesions per case and the weights are 0.06250000, 0.06250000, \ldots, repeated 13 times.
 \item
-  Note that the number of rows is less than the maximum number of lesions per case (20).
-\item
-  This is because some configurations of lesions per case (e.g., cases with 13 lesions per case) do not occur in this dataset.
+  Note that the number of rows equals the maximum number of lesions per case (20).
 \end{itemize}
 
 \hypertarget{quick-start-lroc}{%
 \chapter{LROC data format}\label{quick-start-lroc}}
 
 \hypertarget{quick-start-lroc-data-how-much-finished}{%
-\section{TBA How much finished}\label{quick-start-lroc-data-how-much-finished}}
-
-70\%
+\section{How much finished 75\%}\label{quick-start-lroc-data-how-much-finished}}
 
 \hypertarget{quick-start-lroc-data-intro}{%
 \section{Introduction}\label{quick-start-lroc-data-intro}}
 
-In the Localization Receiver Operating Characteristic (LROC) paradigm \citep{starr1977comments, starr1975visual, swensson1996unified} the observer is restricted to at most one mark-rating pair per case. Additionally, each diseased case has \emph{exactly} one lesion. On a diseased case and if the mark is close to the real lesion the investigator classifies the mark as a correct-localization (\texttt{CL}). Otherwise it is classified as an incorrect-localization (\texttt{IL}). On a non-diseased case the mark is always classified as a false-positive (\texttt{FP}).
+In the Localization Receiver Operating Characteristic (LROC) paradigm \citep{starr1977comments, starr1975visual, swensson1996unified} the observer assigns an overall ROC-rating to each case and marks the most suspicious region in each case. Additionally, each diseased case has \emph{exactly} one lesion. On a diseased case and if the mark is close to the real lesion, the mark is scored as a correct-localization (\texttt{CL}) and otherwise it is scored as an incorrect-localization (\texttt{IL}). On a non-diseased case the mark is always classified as a false-positive (\texttt{FP}).
 
-The paradigm is illustrated with a few toy data files, \texttt{R/quick-start/lroc?.xlsx}, where \texttt{?} is \texttt{1} or \texttt{2}. These files illustrate two-modality three-reader LROC datasets with 3 non-diseased and 5 diseased cases.
+The paradigm is illustrated with two toy data files, \texttt{R/quick-start/lroc1.xlsx} and \texttt{R/quick-start/lroc2.xlsx}. These files illustrate two-modality three-reader LROC datasets with 3 non-diseased and 5 diseased cases.
 
-File \texttt{lroc1.xlsx} illustrates the classic (i.e., as originally introduced) LROC paradigm where \emph{one mark per case is forced}.
-
-File \texttt{lroc2.xlsx} illustrates the paradigm when one mark-rating pair per case is not forced. There is some history behind this: the basic issue was what was the observer supposed to do when there there was nothing to report? Swensson initially thought that even if there was nothing to report, there must be a region, selected from the set of very low confidence regions, which was most likely to be a lesion. Most radiologists had difficulty with the forced localization requirement - if they saw nothing suspicious, why should they be forced to indicate a location. The paradigm was subsequently altered so that if the confidence level was below a certain value, say 12 percent on a 0 to 100 scale, the radiologist did not have to report a location. LROCFIT software was modified accordingly, and internal to the software the mark was assigned a random location - which ended up being classified as an incorrect-localization in most cases. The fact that there are cases with nothing to report is accounted for in the radiological search model.
+\begin{itemize}
+\item
+  File \texttt{R/quick-start/lroc1.xlsx} illustrates the classic (i.e., as originally introduced) LROC paradigm where \emph{one mark per case is forced/required}.
+\item
+  File \texttt{R/quick-start/lroc2.xlsx} illustrates the paradigm when one mark-rating pair per case is not forced. There is some history behind this: the basic issue was what was the observer supposed to do when there there was nothing to report. Swensson initially thought that even if there was nothing to report, there must be a region, selected from the set of very low confidence regions, which was most likely to be a lesion (like the maximum of the set of minimums). Most radiologists had difficulty with the forced localization requirement - if they see nothing suspicious, why should they be forced to mark a most suspicious location. The paradigm was subsequently altered so that if the confidence level was below a certain value, say 12 percent on a 0 to 100 scale, the radiologist did not have to report a location. LROCFIT software was modified accordingly, and internal to the software the mark was assigned a random location - which ended up being classified as an incorrect-localization in most cases.
+\end{itemize}
 
 \hypertarget{quick-start-lroc-truth}{%
 \section{\texorpdfstring{\texttt{Truth} worksheet}{Truth worksheet}}\label{quick-start-lroc-truth}}
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/lroc1Truth.png}
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/quick-start/lroc1Truth} 
+
+}
+
+\caption{The Truth worksheet for LROC Excel file `R/quick-start/lroc1.xlsx`}\label{fig:quick-start-lroc-truth}
+\end{figure}
 
 \begin{itemize}
 \tightlist
 \item
-  The \texttt{Truth} worksheet is similar to that described previously for the ROC and LROC paradigms. The only difference is the first entry in the Paradigm column, which is \texttt{LROC}.
+  The \texttt{Truth} worksheet is similar to that described previously for the ROC and FROC paradigms. The only difference is the first entry in the Paradigm column, which is \texttt{LROC}.
 \item
   Since a diseased case has one lesion, the first five columns contain as many rows as there are cases in the dataset. There being 8 cases in the dataset, there are 8 rows of data.
 \item
@@ -886,14 +889,14 @@ File \texttt{lroc2.xlsx} illustrates the paradigm when one mark-rating pair per 
   \item
     Each 0 represents a non-diseased case,
   \item
-    Each 1 represents the solitary lesion in the diseased case.
+    Each 1 represents the sole lesion in the diseased case.
   \end{itemize}
 \item
   There are 3 non-diseased cases in the dataset (the number of 0's in the \texttt{LesionID} column).
 \item
   There are 5 diseased cases in the dataset (the number of 1's in the \texttt{LesionID} column).
 \item
-  \texttt{Weight}: this column is filled with zeroes. With one lesion per case, the weights are irrelevant.
+  \texttt{Weight}: this column is filled with zeroes. As with the ROC paradigm, with one lesion per case the weights are irrelevant.
 \item
   \texttt{ReaderID}: In the example shown each cell has the value `0, 1, 2'. There are 3 readers in the dataset, labeled \texttt{0}, \texttt{1} and \texttt{2}.
 \item
@@ -905,16 +908,25 @@ File \texttt{lroc2.xlsx} illustrates the paradigm when one mark-rating pair per 
 \hypertarget{quick-start-lroc-tp1}{%
 \section{\texorpdfstring{\texttt{TP} worksheet, forced localization true}{TP worksheet, forced localization true}}\label{quick-start-lroc-tp1}}
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/lroc1TP.png}
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/quick-start/lroc1TP} 
+
+}
+
+\caption{The TP worksheet for forced localization true LROC Excel file `R/quick-start/lroc1.xlsx`}\label{fig:quick-start-lroc-tp1}
+\end{figure}
 
 \begin{itemize}
 \tightlist
 \item
   The \texttt{TP} worksheet is similar to that described previously for the ROC and FROC paradigms.
 \item
+  However, in the LROC paradigm this worksheet records correct localizations only.
+\item
   This worksheet can only have diseased cases. The presence of a non-diseased case in this worksheet will generate an error.
 \item
-  The key difference is that for each modality-reader and diseased-case combination there can be at most one entry. Also, if a particular combination is missing in the TP worksheet then it must appear in the FP worksheet. This is because this is a forced-mark-per-case dataset.
+  The key difference is that for each modality-reader-diseased-case there can be at most one entry. Also, if a particular combination is missing in the TP worksheet then it must appear in the FP worksheet. This is because this is a forced-mark-per-case dataset.
 \item
   There can be at most 30 rows of data in this worksheet: 2 modalities times 3 readers times 5 diseased cases. Since there in fact only 17 rows of data, the missing 13 rows must occur in the FP worksheet.
 \item
@@ -924,9 +936,14 @@ File \texttt{lroc2.xlsx} illustrates the paradigm when one mark-rating pair per 
 \hypertarget{quick-start-lroc-fp1}{%
 \section{\texorpdfstring{\texttt{FP} worksheet, forced localization true}{FP worksheet, forced localization true}}\label{quick-start-lroc-fp1}}
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/lroc1FP1.png}
+\begin{figure}
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/lroc1FP2.png}
+{\centering \includegraphics[width=0.5\linewidth]{images/quick-start/lroc1FP1} \includegraphics[width=0.5\linewidth]{images/quick-start/lroc1FP2} 
+
+}
+
+\caption{The FP worksheet for forced localization LROC Excel file `R/quick-start/lroc1.xlsx`}\label{fig:quick-start-lroc-fp1}
+\end{figure}
 
 \begin{itemize}
 \tightlist
@@ -935,7 +952,7 @@ File \texttt{lroc2.xlsx} illustrates the paradigm when one mark-rating pair per 
 \item
   Because of the forced mark requirement, there are 18 rows of data corresponding to non-diseased cases: 2 modalities times 3 readers times 3 non-diseased cases. The missing 13 rows from the TP worksheet are listed next; these correspond to the incorrect localizations on diseased cases. Therefore, the total number of rows in this worksheet is 18 + 13 = 31.
 \item
-  As an example, it is seen that for \texttt{modalityID} = 0 and \texttt{readerID} = 0, \texttt{caseID} = 70 does not appear in the TP worksheet. The lesion on this case was not localized; therefore it must appear in the FP worksheet as an incorrect localization, which is seen to be true in the FP worksheet.
+  As an example, it is seen that for \texttt{modalityID} = 0 and \texttt{readerID} = 0, \texttt{caseID} = 70 does not appear in the TP worksheet. The lesion on this case was not correctly localized; therefore it appears in the FP worksheet as an incorrect localization.
 \item
   As another example, for \texttt{modalityID} = 0 and \texttt{readerID} = 1, \texttt{caseID} = 71 does not appear in the TP worksheet; instead it appears in the FP worksheet.
 \item
@@ -945,13 +962,13 @@ File \texttt{lroc2.xlsx} illustrates the paradigm when one mark-rating pair per 
 \hypertarget{quick-start-lroc-data-1}{%
 \section{Reading forced localization true LROC dataset}\label{quick-start-lroc-data-1}}
 
-The images shown above correspond to file \texttt{R/quick-start/lroc1.xlsx}. The next code reads this file into an \texttt{R} object \texttt{x1}. Note the usage of the \texttt{lrocForcedMark} flag, which is set to \texttt{TRUE}, because this is a forced localization LROC dataset.
+The images shown above correspond to file \texttt{R/quick-start/lroc1.xlsx}. The next code reads this file into an \texttt{R} object \texttt{ds1}. Note the usage of the \texttt{lrocForcedMark} flag, which is set to \texttt{TRUE}, because this is a forced localization LROC dataset.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{lroc1 }\OtherTok{\textless{}{-}} \StringTok{"R/quick{-}start/lroc1.xlsx"}
-\NormalTok{x1 }\OtherTok{\textless{}{-}} \FunctionTok{DfReadDataFile}\NormalTok{(lroc1, }\AttributeTok{newExcelFileFormat =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{lrocForcedMark =}\NormalTok{ T)}
-\FunctionTok{str}\NormalTok{(x1)}
+\NormalTok{ds1 }\OtherTok{\textless{}{-}} \FunctionTok{DfReadDataFile}\NormalTok{(lroc1, }\AttributeTok{newExcelFileFormat =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{lrocForcedMark =}\NormalTok{ T)}
+\FunctionTok{str}\NormalTok{(ds1)}
 \CommentTok{\#\textgreater{} List of 3}
 \CommentTok{\#\textgreater{}  $ ratings     :List of 3}
 \CommentTok{\#\textgreater{}   ..$ NL   : num [1:2, 1:3, 1:8, 1] 1.02 2.89 2.21 3.01 2.14 3.01 2.22 2.89 3.1 1.96 ...}
@@ -979,14 +996,14 @@ This follows the general description in Chapter \ref{quick-start-roc}. The diffe
 \begin{itemize}
 \tightlist
 \item
-  \texttt{x1\$ratings\$NL} is a {[}2,3,8,1{]} dimension vector. For each modality and reader, only the first three elements, corresponding to the three non-diseased cases, are finite, the rest are \texttt{-Inf}.
+  \texttt{ds1\$ratings\$NL} is a {[}2,3,8,1{]} dimension vector. For each modality and reader, only the first three elements, corresponding to the three non-diseased cases, are finite, the rest are \texttt{-Inf}.
 \end{itemize}
 
 For example:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x1}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{NL[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,,}\DecValTok{1}\NormalTok{]}
+\NormalTok{ds1}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{NL[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,,}\DecValTok{1}\NormalTok{]}
 \CommentTok{\#\textgreater{} [1] 1.02 2.22 1.90 {-}Inf {-}Inf {-}Inf {-}Inf {-}Inf}
 \end{Highlighting}
 \end{Shaded}
@@ -994,14 +1011,14 @@ For example:
 \begin{itemize}
 \tightlist
 \item
-  x1\(ratings\)LL\texttt{is\ a\ {[}2,3,5,1{]}\ dimension\ vector.\ For\ each\ modality\ and\ reader,\ only\ the\ first\ three\ elements,\ corresponding\ to\ the\ three\ non-diseased\ cases,\ are\ finite,\ the\ rest\ are}-Inf`.
+  \texttt{ds1\$ratings\$LL} is a {[}2,3,5,1{]} dimension vector. For each modality and reader, only the first three elements, corresponding to the three non-diseased cases, are finite, the rest are \texttt{-Inf}.
 \end{itemize}
 
 For example, since none of the lesions are localized for \texttt{modalityID} = 1 (second modality) and \texttt{readerID} = 2 (third reader), the following code yields a vector consisting of five \texttt{-Inf} values:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x1}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{LL[}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,,}\DecValTok{1}\NormalTok{]}
+\NormalTok{ds1}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{LL[}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,,}\DecValTok{1}\NormalTok{]}
 \CommentTok{\#\textgreater{} [1] {-}Inf {-}Inf {-}Inf {-}Inf {-}Inf}
 \end{Highlighting}
 \end{Shaded}
@@ -1009,12 +1026,12 @@ For example, since none of the lesions are localized for \texttt{modalityID} = 1
 \begin{itemize}
 \tightlist
 \item
-  \texttt{x1\$ratings\$LL\_IL} is a {[}2,3,5,1{]} dimension vector. These contain the ratings of incorrect localizations on diseased cases. For the just preceding modality-reader combination, this yields a vector with 5 finite values, the ratings of incorrect localizations for \texttt{modalityID} = 1 and \texttt{readerID} = 2.
+  \texttt{ds1\$ratings\$LL\_IL} is a {[}2,3,5,1{]} dimension vector. These contain the ratings of incorrect localizations on diseased cases. For the just preceding modality-reader combination, this yields a vector with 5 finite values, the ratings of incorrect localizations for \texttt{modalityID} = 1 and \texttt{readerID} = 2.
 \end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x1}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{LL\_IL[}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,,}\DecValTok{1}\NormalTok{]}
+\NormalTok{ds1}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{LL\_IL[}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,,}\DecValTok{1}\NormalTok{]}
 \CommentTok{\#\textgreater{} [1] 4.87 1.94 5.39 5.01 5.01}
 \end{Highlighting}
 \end{Shaded}
@@ -1022,14 +1039,26 @@ For example, since none of the lesions are localized for \texttt{modalityID} = 1
 \hypertarget{quick-start-lroc-tp2}{%
 \section{\texorpdfstring{\texttt{TP} worksheet, forced localization false}{TP worksheet, forced localization false}}\label{quick-start-lroc-tp2}}
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/lroc2TP.png}
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/quick-start/lroc2TP} 
+
+}
+
+\caption{The TP worksheet for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`}\label{fig:quick-start-lroc-tp2}
+\end{figure}
 
 \hypertarget{quick-start-lroc-fp2}{%
 \section{\texorpdfstring{\texttt{FP} worksheet, forced localization false}{FP worksheet, forced localization false}}\label{quick-start-lroc-fp2}}
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/lroc2FP1.png}
+\begin{figure}
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/lroc2FP2.png}
+{\centering \includegraphics[width=0.5\linewidth]{images/quick-start/lroc2FP1} \includegraphics[width=0.5\linewidth]{images/quick-start/lroc2FP2} 
+
+}
+
+\caption{The FP worksheet for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`}\label{fig:quick-start-lroc-fp2}
+\end{figure}
 
 \begin{itemize}
 \tightlist

@@ -1,3 +1,8 @@
+fig:quick-start-lroc-truth
+fig:quick-start-lroc-tp1
+fig:quick-start-lroc-fp1
+fig:quick-start-lroc-tp2
+fig:quick-start-lroc-fp2
 fig:quick-start-or-xlsx1
 fig:quick-start-or-xlsx2
 fig:quick-start-or-xlsx3
