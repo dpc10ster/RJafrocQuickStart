@@ -210,14 +210,15 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.1" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-how-much-finished"><i class="fa fa-check"></i><b>4.1</b> How much finished 75%</a></li>
 <li class="chapter" data-level="4.2" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-intro"><i class="fa fa-check"></i><b>4.2</b> Introduction</a></li>
-<li class="chapter" data-level="4.3" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-truth"><i class="fa fa-check"></i><b>4.3</b> <code>Truth</code> worksheet</a></li>
-<li class="chapter" data-level="4.4" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-tp1"><i class="fa fa-check"></i><b>4.4</b> <code>TP</code> worksheet, forced localization true</a></li>
-<li class="chapter" data-level="4.5" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-fp1"><i class="fa fa-check"></i><b>4.5</b> <code>FP</code> worksheet, forced localization true</a></li>
-<li class="chapter" data-level="4.6" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-1"><i class="fa fa-check"></i><b>4.6</b> Reading forced localization true LROC dataset</a></li>
-<li class="chapter" data-level="4.7" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-tp2"><i class="fa fa-check"></i><b>4.7</b> <code>TP</code> worksheet, forced localization false</a></li>
-<li class="chapter" data-level="4.8" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-fp2"><i class="fa fa-check"></i><b>4.8</b> <code>FP</code> worksheet, forced localization false</a></li>
-<li class="chapter" data-level="4.9" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-2"><i class="fa fa-check"></i><b>4.9</b> Reading forced localization false LROC dataset</a></li>
-<li class="chapter" data-level="4.10" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-summary"><i class="fa fa-check"></i><b>4.10</b> Summary</a></li>
+<li class="chapter" data-level="4.3" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-forced-vs-not-forced"><i class="fa fa-check"></i><b>4.3</b> Forced vs. not-forced marks</a></li>
+<li class="chapter" data-level="4.4" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-truth"><i class="fa fa-check"></i><b>4.4</b> <code>Truth</code> worksheet</a></li>
+<li class="chapter" data-level="4.5" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-tp1"><i class="fa fa-check"></i><b>4.5</b> <code>TP</code> worksheet, forced localization true</a></li>
+<li class="chapter" data-level="4.6" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-fp1"><i class="fa fa-check"></i><b>4.6</b> <code>FP</code> worksheet, forced localization true</a></li>
+<li class="chapter" data-level="4.7" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-1"><i class="fa fa-check"></i><b>4.7</b> Reading forced localization true LROC dataset</a></li>
+<li class="chapter" data-level="4.8" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-tp2"><i class="fa fa-check"></i><b>4.8</b> <code>TP</code> worksheet, forced localization false</a></li>
+<li class="chapter" data-level="4.9" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-fp2"><i class="fa fa-check"></i><b>4.9</b> <code>FP</code> worksheet, forced localization false</a></li>
+<li class="chapter" data-level="4.10" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-2"><i class="fa fa-check"></i><b>4.10</b> Reading forced localization false LROC dataset</a></li>
+<li class="chapter" data-level="4.11" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-summary"><i class="fa fa-check"></i><b>4.11</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html"><i class="fa fa-check"></i><b>5</b> DBM analysis text output</a>
 <ul>
@@ -369,23 +370,27 @@ div.csl-indent {
 <div id="quick-start-lroc-data-intro" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Introduction<a href="quick-start-lroc.html#quick-start-lroc-data-intro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the Localization Receiver Operating Characteristic (LROC) paradigm <span class="citation">(<a href="#ref-starr1977comments" role="doc-biblioref">S. Starr et al. 1977</a>; <a href="#ref-starr1975visual" role="doc-biblioref">S. J. Starr et al. 1975</a>; <a href="#ref-swensson1996unified" role="doc-biblioref">Swensson 1996</a>)</span> the observer assigns an overall ROC-rating to each case and marks the most suspicious region in each case. Additionally, each diseased case has <em>exactly</em> one lesion. On a diseased case and if the mark is close to the real lesion, the mark is scored as a correct-localization (<code>CL</code>) and otherwise it is scored as an incorrect-localization (<code>IL</code>). On a non-diseased case the mark is always classified as a false-positive (<code>FP</code>).</p>
+</div>
+<div id="quick-start-lroc-data-forced-vs-not-forced" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Forced vs. not-forced marks<a href="quick-start-lroc.html#quick-start-lroc-data-forced-vs-not-forced" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The paradigm is illustrated with two toy data files, <code>R/quick-start/lroc1.xlsx</code> and <code>R/quick-start/lroc2.xlsx</code>. These files illustrate two-modality three-reader LROC datasets with 3 non-diseased and 5 diseased cases.</p>
 <ul>
+<li><p>The <code>Truth</code> worksheet is common to both files.</p></li>
 <li><p>File <code>R/quick-start/lroc1.xlsx</code> illustrates the classic (i.e., as originally introduced) LROC paradigm where <em>one mark per case is forced/required</em>.</p></li>
 <li><p>File <code>R/quick-start/lroc2.xlsx</code> illustrates the paradigm when one mark-rating pair per case is not forced. There is some history behind this: the basic issue was what was the observer supposed to do when there there was nothing to report. Swensson initially thought that even if there was nothing to report, there must be a region, selected from the set of very low confidence regions, which was most likely to be a lesion (like the maximum of the set of minimums). Most radiologists had difficulty with the forced localization requirement - if they see nothing suspicious, why should they be forced to mark a most suspicious location. The paradigm was subsequently altered so that if the confidence level was below a certain value, say 12 percent on a 0 to 100 scale, the radiologist did not have to report a location. LROCFIT software was modified accordingly, and internal to the software the mark was assigned a random location - which ended up being classified as an incorrect-localization in most cases.</p></li>
 </ul>
 </div>
-<div id="quick-start-lroc-truth" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> <code>Truth</code> worksheet<a href="quick-start-lroc.html#quick-start-lroc-truth" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quick-start-lroc-truth" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> <code>Truth</code> worksheet<a href="quick-start-lroc.html#quick-start-lroc-truth" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:quick-start-lroc-truth"></span>
-<img src="images/quick-start/lroc1Truth.png" alt="The Truth worksheet for LROC Excel file `R/quick-start/lroc1.xlsx`" width="100%" />
+<img src="images/quick-start/lroc1Truth.png" alt="The common Truth worksheet for LROC Excel files `R/quick-start/lroc1.xlsx` and `R/quick-start/lroc2.xlsx`." width="100%" />
 <p class="caption">
-FIGURE 4.1: The Truth worksheet for LROC Excel file <code>R/quick-start/lroc1.xlsx</code>
+FIGURE 4.1: The common Truth worksheet for LROC Excel files <code>R/quick-start/lroc1.xlsx</code> and <code>R/quick-start/lroc2.xlsx</code>.
 </p>
 </div>
 <ul>
-<li>The <code>Truth</code> worksheet is similar to that described previously for the ROC and FROC paradigms. The only difference is the first entry in the Paradigm column, which is <code>LROC</code>.</li>
-<li>Since a diseased case has one lesion, the first five columns contain as many rows as there are cases in the dataset. There being 8 cases in the dataset, there are 8 rows of data.</li>
+<li>The <code>Truth</code> worksheet is similar to that described previously for the ROC and FROC paradigms. The only difference is the first entry in the <code>Paradigm</code> column, which is <code>LROC</code>.</li>
+<li>Since each diseased case has one lesion, the first five columns contain as many rows as there are cases in the dataset. There being 8 cases in the dataset, there are 8 rows of data.</li>
 <li><code>CaseID</code>: unique <strong>integers</strong> representing the cases in the dataset: ‘1’, ‘2’, ‘3’, the 3 non-diseased cases, and ‘70’, ‘71’, ‘72’, ‘73’, ‘74’, the 5 diseased cases.<br />
 </li>
 <li><code>LesionID</code>: integers 0 or 1.
@@ -401,12 +406,12 @@ FIGURE 4.1: The Truth worksheet for LROC Excel file <code>R/quick-start/lroc1.xl
 <li><code>Paradigm</code>: The contents are <code>LROC</code> and <code>FCTRL</code>: this is an <code>LROC</code> dataset and the design is “factorial”.</li>
 </ul>
 </div>
-<div id="quick-start-lroc-tp1" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> <code>TP</code> worksheet, forced localization true<a href="quick-start-lroc.html#quick-start-lroc-tp1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quick-start-lroc-tp1" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> <code>TP</code> worksheet, forced localization true<a href="quick-start-lroc.html#quick-start-lroc-tp1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:quick-start-lroc-tp1"></span>
-<img src="images/quick-start/lroc1TP.png" alt="The TP worksheet for forced localization true LROC Excel file `R/quick-start/lroc1.xlsx`" width="100%" />
+<img src="images/quick-start/lroc1TP.png" alt="The TP worksheet for forced localization true LROC Excel file `R/quick-start/lroc1.xlsx`." width="100%" />
 <p class="caption">
-FIGURE 4.2: The TP worksheet for forced localization true LROC Excel file <code>R/quick-start/lroc1.xlsx</code>
+FIGURE 4.2: The TP worksheet for forced localization true LROC Excel file <code>R/quick-start/lroc1.xlsx</code>.
 </p>
 </div>
 <ul>
@@ -418,12 +423,12 @@ FIGURE 4.2: The TP worksheet for forced localization true LROC Excel file <code>
 <li>Recall that each entry in the TP worksheet represents a correct localization while each missing entry represents an incorrect localization. The incorrect localizations are recorded in the FP worksheet.</li>
 </ul>
 </div>
-<div id="quick-start-lroc-fp1" class="section level2 hasAnchor" number="4.5">
-<h2><span class="header-section-number">4.5</span> <code>FP</code> worksheet, forced localization true<a href="quick-start-lroc.html#quick-start-lroc-fp1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quick-start-lroc-fp1" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> <code>FP</code> worksheet, forced localization true<a href="quick-start-lroc.html#quick-start-lroc-fp1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:quick-start-lroc-fp1"></span>
-<img src="images/quick-start/lroc1FP1.png" alt="The FP worksheet for forced localization LROC Excel file `R/quick-start/lroc1.xlsx`" width="50%" /><img src="images/quick-start/lroc1FP2.png" alt="The FP worksheet for forced localization LROC Excel file `R/quick-start/lroc1.xlsx`" width="50%" />
+<img src="images/quick-start/lroc1FP1.png" alt="The FP worksheet (continued from left panel to right panel) for forced localization LROC Excel file `R/quick-start/lroc1.xlsx`." width="50%" /><img src="images/quick-start/lroc1FP2.png" alt="The FP worksheet (continued from left panel to right panel) for forced localization LROC Excel file `R/quick-start/lroc1.xlsx`." width="50%" />
 <p class="caption">
-FIGURE 4.3: The FP worksheet for forced localization LROC Excel file <code>R/quick-start/lroc1.xlsx</code>
+FIGURE 4.3: The FP worksheet (continued from left panel to right panel) for forced localization LROC Excel file <code>R/quick-start/lroc1.xlsx</code>.
 </p>
 </div>
 <ul>
@@ -434,8 +439,8 @@ FIGURE 4.3: The FP worksheet for forced localization LROC Excel file <code>R/qui
 <li>As a final example, for <code>modalityID</code> = 1 and <code>readerID</code> = 2, none of the diseased cases appears in the TP worksheet; instead they all appear in the FP worksheet.</li>
 </ul>
 </div>
-<div id="quick-start-lroc-data-1" class="section level2 hasAnchor" number="4.6">
-<h2><span class="header-section-number">4.6</span> Reading forced localization true LROC dataset<a href="quick-start-lroc.html#quick-start-lroc-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quick-start-lroc-data-1" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Reading forced localization true LROC dataset<a href="quick-start-lroc.html#quick-start-lroc-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The images shown above correspond to file <code>R/quick-start/lroc1.xlsx</code>. The next code reads this file into an <code>R</code> object <code>ds1</code>. Note the usage of the <code>lrocForcedMark</code> flag, which is set to <code>TRUE</code>, because this is a forced localization LROC dataset.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="quick-start-lroc.html#cb13-1" aria-hidden="true" tabindex="-1"></a>lroc1 <span class="ot">&lt;-</span> <span class="st">&quot;R/quick-start/lroc1.xlsx&quot;</span></span>
 <span id="cb13-2"><a href="quick-start-lroc.html#cb13-2" aria-hidden="true" tabindex="-1"></a>ds1 <span class="ot">&lt;-</span> <span class="fu">DfReadDataFile</span>(lroc1, <span class="at">newExcelFileFormat =</span> <span class="cn">TRUE</span>, <span class="at">lrocForcedMark =</span> T)</span>
@@ -478,21 +483,21 @@ FIGURE 4.3: The FP worksheet for forced localization LROC Excel file <code>R/qui
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="quick-start-lroc.html#cb16-1" aria-hidden="true" tabindex="-1"></a>ds1<span class="sc">$</span>ratings<span class="sc">$</span>LL_IL[<span class="dv">2</span>,<span class="dv">3</span>,,<span class="dv">1</span>]</span>
 <span id="cb16-2"><a href="quick-start-lroc.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.87 1.94 5.39 5.01 5.01</span></span></code></pre></div>
 </div>
-<div id="quick-start-lroc-tp2" class="section level2 hasAnchor" number="4.7">
-<h2><span class="header-section-number">4.7</span> <code>TP</code> worksheet, forced localization false<a href="quick-start-lroc.html#quick-start-lroc-tp2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quick-start-lroc-tp2" class="section level2 hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> <code>TP</code> worksheet, forced localization false<a href="quick-start-lroc.html#quick-start-lroc-tp2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:quick-start-lroc-tp2"></span>
-<img src="images/quick-start/lroc2TP.png" alt="The TP worksheet for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`" width="100%" />
+<img src="images/quick-start/lroc2TP.png" alt="The TP worksheet for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`." width="100%" />
 <p class="caption">
-FIGURE 4.4: The TP worksheet for forced localization false LROC Excel file <code>R/quick-start/lroc2.xlsx</code>
+FIGURE 4.4: The TP worksheet for forced localization false LROC Excel file <code>R/quick-start/lroc2.xlsx</code>.
 </p>
 </div>
 </div>
-<div id="quick-start-lroc-fp2" class="section level2 hasAnchor" number="4.8">
-<h2><span class="header-section-number">4.8</span> <code>FP</code> worksheet, forced localization false<a href="quick-start-lroc.html#quick-start-lroc-fp2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quick-start-lroc-fp2" class="section level2 hasAnchor" number="4.9">
+<h2><span class="header-section-number">4.9</span> <code>FP</code> worksheet, forced localization false<a href="quick-start-lroc.html#quick-start-lroc-fp2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:quick-start-lroc-fp2"></span>
-<img src="images/quick-start/lroc2FP1.png" alt="The FP worksheet for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`" width="50%" /><img src="images/quick-start/lroc2FP2.png" alt="The FP worksheet for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`" width="50%" />
+<img src="images/quick-start/lroc2FP1.png" alt="The FP worksheet (continued from left panel to right panel) for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`." width="50%" /><img src="images/quick-start/lroc2FP2.png" alt="The FP worksheet (continued from left panel to right panel) for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`." width="50%" />
 <p class="caption">
-FIGURE 4.5: The FP worksheet for forced localization false LROC Excel file <code>R/quick-start/lroc2.xlsx</code>
+FIGURE 4.5: The FP worksheet (continued from left panel to right panel) for forced localization false LROC Excel file <code>R/quick-start/lroc2.xlsx</code>.
 </p>
 </div>
 <ul>
@@ -500,8 +505,8 @@ FIGURE 4.5: The FP worksheet for forced localization false LROC Excel file <code
 <li>As an example, <code>modalityID</code> = 1, <code>readerID</code> = 2 and <code>caseID</code> = 74 does not appear in either TP or FP worksheets.</li>
 </ul>
 </div>
-<div id="quick-start-lroc-data-2" class="section level2 hasAnchor" number="4.9">
-<h2><span class="header-section-number">4.9</span> Reading forced localization false LROC dataset<a href="quick-start-lroc.html#quick-start-lroc-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quick-start-lroc-data-2" class="section level2 hasAnchor" number="4.10">
+<h2><span class="header-section-number">4.10</span> Reading forced localization false LROC dataset<a href="quick-start-lroc.html#quick-start-lroc-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The next example is for file <code>R/quick-start/lroc2.xlsx</code>. The following code reads this file into an <code>R</code> object <code>x2</code>. Note that for this dataset one must set the <code>lrocForcedMark</code> flag to <code>FALSE</code>, because this is <em>not</em> a forced localization LROC dataset. Setting <code>lrocForcedMark</code> flag to <code>TRUE</code> will generate an error.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="quick-start-lroc.html#cb17-1" aria-hidden="true" tabindex="-1"></a>lroc2 <span class="ot">&lt;-</span> <span class="st">&quot;R/quick-start/lroc2.xlsx&quot;</span></span>
 <span id="cb17-2"><a href="quick-start-lroc.html#cb17-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">DfReadDataFile</span>(lroc2, <span class="at">newExcelFileFormat =</span> <span class="cn">TRUE</span>, <span class="at">lrocForcedMark =</span> F)</span>
@@ -538,8 +543,8 @@ FIGURE 4.5: The FP worksheet for forced localization false LROC Excel file <code
 <span id="cb19-2"><a href="quick-start-lroc.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.87 1.94 5.39 5.01 -Inf</span></span></code></pre></div>
 <p>For this modality-reader combination case 74 (i.e., the fifth diseased case) was unmarked. It does not appear in either the TP or the FP worksheet.</p>
 </div>
-<div id="quick-start-lroc-data-summary" class="section level2 hasAnchor" number="4.10">
-<h2><span class="header-section-number">4.10</span> Summary<a href="quick-start-lroc.html#quick-start-lroc-data-summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quick-start-lroc-data-summary" class="section level2 hasAnchor" number="4.11">
+<h2><span class="header-section-number">4.11</span> Summary<a href="quick-start-lroc.html#quick-start-lroc-data-summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The difference from the previous data structures is the existence of <code>LL_IL</code> in the <code>ratings</code> list, which contains the ratings of incorrect localizations. Recall that for ROC and FROC paradigms this member was <code>NA</code>. When the data obeys forced localization, the corresponding flag should be set to <code>TRUE</code>, otherwise it should be set to <code>FALSE</code>. The default value of this flag is <code>NA</code>, which will work for ROC or FROC datasets. For LROC datasets it should be set to <code>T/F</code>.</p>
 
 </div>

@@ -852,9 +852,14 @@ This information is more readily obtained using the \texttt{RJafroc} function \t
 
 In the Localization Receiver Operating Characteristic (LROC) paradigm \citep{starr1977comments, starr1975visual, swensson1996unified} the observer assigns an overall ROC-rating to each case and marks the most suspicious region in each case. Additionally, each diseased case has \emph{exactly} one lesion. On a diseased case and if the mark is close to the real lesion, the mark is scored as a correct-localization (\texttt{CL}) and otherwise it is scored as an incorrect-localization (\texttt{IL}). On a non-diseased case the mark is always classified as a false-positive (\texttt{FP}).
 
+\hypertarget{quick-start-lroc-data-forced-vs-not-forced}{%
+\section{Forced vs.~not-forced marks}\label{quick-start-lroc-data-forced-vs-not-forced}}
+
 The paradigm is illustrated with two toy data files, \texttt{R/quick-start/lroc1.xlsx} and \texttt{R/quick-start/lroc2.xlsx}. These files illustrate two-modality three-reader LROC datasets with 3 non-diseased and 5 diseased cases.
 
 \begin{itemize}
+\item
+  The \texttt{Truth} worksheet is common to both files.
 \item
   File \texttt{R/quick-start/lroc1.xlsx} illustrates the classic (i.e., as originally introduced) LROC paradigm where \emph{one mark per case is forced/required}.
 \item
@@ -870,15 +875,15 @@ The paradigm is illustrated with two toy data files, \texttt{R/quick-start/lroc1
 
 }
 
-\caption{The Truth worksheet for LROC Excel file `R/quick-start/lroc1.xlsx`}\label{fig:quick-start-lroc-truth}
+\caption{The common Truth worksheet for LROC Excel files `R/quick-start/lroc1.xlsx` and `R/quick-start/lroc2.xlsx`.}\label{fig:quick-start-lroc-truth}
 \end{figure}
 
 \begin{itemize}
 \tightlist
 \item
-  The \texttt{Truth} worksheet is similar to that described previously for the ROC and FROC paradigms. The only difference is the first entry in the Paradigm column, which is \texttt{LROC}.
+  The \texttt{Truth} worksheet is similar to that described previously for the ROC and FROC paradigms. The only difference is the first entry in the \texttt{Paradigm} column, which is \texttt{LROC}.
 \item
-  Since a diseased case has one lesion, the first five columns contain as many rows as there are cases in the dataset. There being 8 cases in the dataset, there are 8 rows of data.
+  Since each diseased case has one lesion, the first five columns contain as many rows as there are cases in the dataset. There being 8 cases in the dataset, there are 8 rows of data.
 \item
   \texttt{CaseID}: unique \textbf{integers} representing the cases in the dataset: `1', `2', `3', the 3 non-diseased cases, and `70', `71', `72', `73', `74', the 5 diseased cases.\\
 \item
@@ -914,7 +919,7 @@ The paradigm is illustrated with two toy data files, \texttt{R/quick-start/lroc1
 
 }
 
-\caption{The TP worksheet for forced localization true LROC Excel file `R/quick-start/lroc1.xlsx`}\label{fig:quick-start-lroc-tp1}
+\caption{The TP worksheet for forced localization true LROC Excel file `R/quick-start/lroc1.xlsx`.}\label{fig:quick-start-lroc-tp1}
 \end{figure}
 
 \begin{itemize}
@@ -942,7 +947,7 @@ The paradigm is illustrated with two toy data files, \texttt{R/quick-start/lroc1
 
 }
 
-\caption{The FP worksheet for forced localization LROC Excel file `R/quick-start/lroc1.xlsx`}\label{fig:quick-start-lroc-fp1}
+\caption{The FP worksheet (continued from left panel to right panel) for forced localization LROC Excel file `R/quick-start/lroc1.xlsx`.}\label{fig:quick-start-lroc-fp1}
 \end{figure}
 
 \begin{itemize}
@@ -1045,7 +1050,7 @@ For example, since none of the lesions are localized for \texttt{modalityID} = 1
 
 }
 
-\caption{The TP worksheet for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`}\label{fig:quick-start-lroc-tp2}
+\caption{The TP worksheet for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`.}\label{fig:quick-start-lroc-tp2}
 \end{figure}
 
 \hypertarget{quick-start-lroc-fp2}{%
@@ -1057,7 +1062,7 @@ For example, since none of the lesions are localized for \texttt{modalityID} = 1
 
 }
 
-\caption{The FP worksheet for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`}\label{fig:quick-start-lroc-fp2}
+\caption{The FP worksheet (continued from left panel to right panel) for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`.}\label{fig:quick-start-lroc-fp2}
 \end{figure}
 
 \begin{itemize}

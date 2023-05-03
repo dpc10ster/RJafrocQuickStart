@@ -13,7 +13,12 @@
 
 In the Localization Receiver Operating Characteristic (LROC) paradigm [@starr1977comments; @starr1975visual; @swensson1996unified] the observer assigns an overall ROC-rating to each case and marks the most suspicious region in each case. Additionally, each diseased case has *exactly* one lesion. On a diseased case and if the mark is close to the real lesion, the mark is scored as a correct-localization (`CL`) and otherwise it is scored as an incorrect-localization (`IL`). On a non-diseased case the mark is always classified as a false-positive (`FP`). 
 
+
+## Forced vs. not-forced marks {#quick-start-lroc-data-forced-vs-not-forced}
+
 The paradigm is illustrated with two toy data files, `R/quick-start/lroc1.xlsx` and `R/quick-start/lroc2.xlsx`. These files illustrate two-modality three-reader LROC datasets with 3 non-diseased and 5 diseased cases. 
+
+* The `Truth` worksheet is common to both files.
 
 * File `R/quick-start/lroc1.xlsx` illustrates the classic (i.e., as originally introduced) LROC paradigm where *one mark per case is forced/required*. 
 
@@ -24,14 +29,14 @@ The paradigm is illustrated with two toy data files, `R/quick-start/lroc1.xlsx` 
 
 
 <div class="figure" style="text-align: center">
-<img src="images/quick-start/lroc1Truth.png" alt="The Truth worksheet for LROC Excel file `R/quick-start/lroc1.xlsx`" width="100%" />
-<p class="caption">(\#fig:quick-start-lroc-truth)The Truth worksheet for LROC Excel file `R/quick-start/lroc1.xlsx`</p>
+<img src="images/quick-start/lroc1Truth.png" alt="The common Truth worksheet for LROC Excel files `R/quick-start/lroc1.xlsx` and `R/quick-start/lroc2.xlsx`." width="100%" />
+<p class="caption">(\#fig:quick-start-lroc-truth)The common Truth worksheet for LROC Excel files `R/quick-start/lroc1.xlsx` and `R/quick-start/lroc2.xlsx`.</p>
 </div>
 
 
 
-* The `Truth` worksheet is similar to that described previously for the ROC and FROC paradigms. The only difference is the first entry in the Paradigm column, which is `LROC`.
-* Since a diseased case has one lesion, the first five columns contain as many rows as there are cases in the dataset. There being 8 cases in the dataset, there are 8 rows of data.
+* The `Truth` worksheet is similar to that described previously for the ROC and FROC paradigms. The only difference is the first entry in the `Paradigm` column, which is `LROC`.
+* Since each diseased case has one lesion, the first five columns contain as many rows as there are cases in the dataset. There being 8 cases in the dataset, there are 8 rows of data.
 * `CaseID`: unique **integers** representing the cases in the dataset: '1', '2', '3', the 3 non-diseased cases, and '70', '71', '72', '73', '74', the 5 diseased cases.   
 * `LesionID`: integers 0 or 1. 
     + Each 0 represents a non-diseased case, 
@@ -48,8 +53,8 @@ The paradigm is illustrated with two toy data files, `R/quick-start/lroc1.xlsx` 
 
 
 <div class="figure" style="text-align: center">
-<img src="images/quick-start/lroc1TP.png" alt="The TP worksheet for forced localization true LROC Excel file `R/quick-start/lroc1.xlsx`" width="100%" />
-<p class="caption">(\#fig:quick-start-lroc-tp1)The TP worksheet for forced localization true LROC Excel file `R/quick-start/lroc1.xlsx`</p>
+<img src="images/quick-start/lroc1TP.png" alt="The TP worksheet for forced localization true LROC Excel file `R/quick-start/lroc1.xlsx`." width="100%" />
+<p class="caption">(\#fig:quick-start-lroc-tp1)The TP worksheet for forced localization true LROC Excel file `R/quick-start/lroc1.xlsx`.</p>
 </div>
 
 
@@ -67,8 +72,8 @@ The paradigm is illustrated with two toy data files, `R/quick-start/lroc1.xlsx` 
 
 
 <div class="figure" style="text-align: center">
-<img src="images/quick-start/lroc1FP1.png" alt="The FP worksheet for forced localization LROC Excel file `R/quick-start/lroc1.xlsx`" width="50%" /><img src="images/quick-start/lroc1FP2.png" alt="The FP worksheet for forced localization LROC Excel file `R/quick-start/lroc1.xlsx`" width="50%" />
-<p class="caption">(\#fig:quick-start-lroc-fp1)The FP worksheet for forced localization LROC Excel file `R/quick-start/lroc1.xlsx`</p>
+<img src="images/quick-start/lroc1FP1.png" alt="The FP worksheet (continued from left panel to right panel) for forced localization LROC Excel file `R/quick-start/lroc1.xlsx`." width="50%" /><img src="images/quick-start/lroc1FP2.png" alt="The FP worksheet (continued from left panel to right panel) for forced localization LROC Excel file `R/quick-start/lroc1.xlsx`." width="50%" />
+<p class="caption">(\#fig:quick-start-lroc-fp1)The FP worksheet (continued from left panel to right panel) for forced localization LROC Excel file `R/quick-start/lroc1.xlsx`.</p>
 </div>
 
 
@@ -147,8 +152,8 @@ ds1$ratings$LL_IL[2,3,,1]
 
 
 <div class="figure" style="text-align: center">
-<img src="images/quick-start/lroc2TP.png" alt="The TP worksheet for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`" width="100%" />
-<p class="caption">(\#fig:quick-start-lroc-tp2)The TP worksheet for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`</p>
+<img src="images/quick-start/lroc2TP.png" alt="The TP worksheet for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`." width="100%" />
+<p class="caption">(\#fig:quick-start-lroc-tp2)The TP worksheet for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`.</p>
 </div>
 
 
@@ -157,8 +162,8 @@ ds1$ratings$LL_IL[2,3,,1]
 
 
 <div class="figure" style="text-align: center">
-<img src="images/quick-start/lroc2FP1.png" alt="The FP worksheet for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`" width="50%" /><img src="images/quick-start/lroc2FP2.png" alt="The FP worksheet for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`" width="50%" />
-<p class="caption">(\#fig:quick-start-lroc-fp2)The FP worksheet for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`</p>
+<img src="images/quick-start/lroc2FP1.png" alt="The FP worksheet (continued from left panel to right panel) for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`." width="50%" /><img src="images/quick-start/lroc2FP2.png" alt="The FP worksheet (continued from left panel to right panel) for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`." width="50%" />
+<p class="caption">(\#fig:quick-start-lroc-fp2)The FP worksheet (continued from left panel to right panel) for forced localization false LROC Excel file `R/quick-start/lroc2.xlsx`.</p>
 </div>
 
 
