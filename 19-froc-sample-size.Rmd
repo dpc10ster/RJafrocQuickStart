@@ -26,7 +26,7 @@ This chapter is split into two parts:
 
 * The first part details a step-by-step approach to FROC paradigm sample size estimation; 
 
-* The second part encapsulates most of the details in a function `SsFrocNhRsmModel()`.
+* The second part encapsulates some of the details in function `SsFrocNhRsmModel()`.
 
 
 
@@ -334,12 +334,11 @@ This example uses the FED dataset as a pilot FROC study and function `SsFrocNhRs
 
 ### Constructing the NH model for the dataset
 
-One starts by extracting the first two treatments from `dataset04`, which represent the NH dataset, see previous part. Next one constructs the NH model - note that the lesion distribution `lesDistr` can be specified here independently of that in the pilot dataset. This allows some control over selection of the diseased cases in the pivotal study.
+One starts by extracting the first two treatments from `dataset04`, which represent the NH dataset. Next one constructs the NH model. `lesDistr` can be specified independent of that in the pilot dataset but in this example it is simply extracted from the pilot dataset (line 2). This allows some control over selection of the diseased cases in the pivotal study. Line 3 applies the function `SsFrocNhRsmModel` to calculate the NH RSM parameters and the scale factor.
 
-```{r} 
-lesDistr <- c(0.69, 0.20, 0.11) # sic!
+```{r, attr.source = ".numberLines"} 
 frocNhData <- DfExtractDataset(dataset04, trts = c(1,2))
-lesDistr <- UtilLesDistr(lesDistr) # sic!
+lesDistr <- UtilLesDistr(frocNhData) # sic!
 ret <- SsFrocNhRsmModel(frocNhData, lesDistr = lesDistr$Freq)
 muNH <- ret$mu
 lambdaNH <- ret$lambda
@@ -348,24 +347,12 @@ scaleFactor <- ret$scaleFactor
 ```
 
 
-The fitting model is defined by `muNH` = `r muNH`,  `lambdaNH` = `r lambdaNH`  and  `nuNH` = `r nuNH` and `lesDistr$Freq` = `r lesDistr$Freq`. The effect size scale factor is `scaleFactor` = `r scaleFactor`. All of these values are consistent with the Part I values.
+The fitting model is defined by `muNH` = `r muNH`,  `lambdaNH` = `r lambdaNH`  and  `nuNH` = `r nuNH` and `lesDistr$Freq` = `r lesDistr$Freq`. The effect size scale factor is `scaleFactor` = `r scaleFactor`. All of these are identical to the Part I values.
 
 
-```{r}
-aucRocNH <- UtilAnalyticalAucsRSM(
-  muNH, lambdaNH, nuNH, 
-  lesDistr = lesDistr$Freq)$aucROC
+### Extract the wAFROC variance components
 
-aucwAfrocNH <- UtilAnalyticalAucsRSM(
-  muNH, lambdaNH, nuNH, 
-  lesDistr = lesDistr$Freq)$aucwAFROC
-```
-
-The null hypothesis ROC AUC is `r aucRocNH` and the corresponding NH wAFROC AUC is `r aucwAfrocNH`. 
-
-### Extracting the wAFROC variance components
-
-The next code block applies `StSignificanceTesting()` to `frocNhData`, using `FOM = "wAFROC"` and extracts the variance components.
+The code applies `StSignificanceTesting()` to `frocNhData`, using `FOM = "wAFROC"` and extracts the variance components.
 
 ```{r}
 varComp_afroc  <- StSignificanceTesting(
@@ -378,8 +365,10 @@ varComp_afroc  <- StSignificanceTesting(
 
 The following example is for ROC effect size = 0.05, 5 readers (`J = 5`) and 100 cases (`K = 100`) in the **pivotal study**. 
 
+The function `SsPowerGivenJK` used below returns the power for specified effect size, numbers of readers and cases, and variance components.
 
-```{r}
+
+```{r, attr.source = ".numberLines"}
 ROC_ES <- 0.05
 effectSizewAFROC <- scaleFactor * ROC_ES
 J <- 5;K <- 100
@@ -403,8 +392,10 @@ cat("ROC-ES = ", ROC_ES,
 
 ### wAFROC number of cases for 80 percent power for a given number of readers J
 
+The function `SsSampleSizeKGivenJ` used below returns the number of cases needed for 80 percent power for specified effect size and variance components.
 
-```{r}
+
+```{r, attr.source = ".numberLines"}
 VarTR_afroc <- varComp_afroc["VarTR","Estimates"] 
 VarTC_afroc <- varComp_afroc["VarTC","Estimates"]
 VarErr_afroc <- varComp_afroc["VarErr","Estimates"]
@@ -421,26 +412,13 @@ cat("ROC-ES = ", ROC_ES,
 ```
 
 
-### wAFROC-FOM power for a given number of readers J and cases K
-
-
-```{r}
-
-ret3 <- SsPowerGivenJK(
-  dataset = NULL, J = 6, 
-  K = ret2$KRRRC, 
-  effectSize = effectSizewAFROC, 
-  method = "DBM", LegacyCode = TRUE,
-  list(VarTR = VarTR_afroc, VarTC = VarTC_afroc, VarErr = VarErr_afroc))
-
-cat("ROC-ES = ", ROC_ES, 
-    ", wAFROC-ES = ", ROC_ES * scaleFactor, 
-    ", powerRRRC = ", ret3$powerRRRC, "\n")
-```
-
-
-The estimated power is close to 80 percent as the number of cases (`ret2$KRRRC = `r ret2$KRRRC``) was chosen deliberately from the previous code block.
 
 
 
 
+
+
+
+## Discussion
+
+This chapter has described the procedure for FROC sample size estimation.
