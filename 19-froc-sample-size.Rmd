@@ -106,7 +106,7 @@ rocDataBinNH <- DfBinDataset(rocDataNH, opChType = "ROC")
 ```
 
 
-Next one determines `lesDistr`, the lesion distribution (the RSM fitting algorithm needs to know how lesion-rich the dataset is as the predicted ROC-AUC depends it). One also needs the lesion weights matrix $\matrix{W}$.
+Next one determines `lesDistr`, the lesion distribution (the RSM fitting algorithm needs to know how lesion-rich the dataset is as the predicted ROC-AUC depends it). One also needs the lesion weights matrix $\textbf{W}$.
 
 
 ```{r}
@@ -115,7 +115,7 @@ W <- UtilLesWghtsDS(frocDataNH)
 ```
 
 
-Note that `lesDistr` and $\matrix{W}$ are determined from the *FROC* NH dataset as this information is lost upon conversion to an ROC dataset. 
+Note that `lesDistr` and $\textbf{W}$ are determined from the *FROC* NH dataset as this information is lost upon conversion to an ROC dataset. 
 
 
 For this dataset fraction `r lesDistr$Freq[1]` of diseased cases have one lesion, fraction `r lesDistr$Freq[2]` of diseased cases have two lesions and fraction `r lesDistr$Freq[3]` of diseased cases have three lesions.  
