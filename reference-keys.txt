@@ -11,6 +11,8 @@ eq:DeltaFRRC
 eq:SamplingFFRRC
 eq:DeltaFRRFC
 eq:SamplingFRRFC
+fig:unnamed-chunk-7
+fig:unnamed-chunk-12
 quick-start-index-preface
 quick-start-index-rationale-and-organization
 quick-start-index-getting-help
