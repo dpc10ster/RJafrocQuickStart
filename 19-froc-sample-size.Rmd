@@ -213,7 +213,7 @@ The slope of the zero-intercept constrained straight line fit is `scaleFactor` =
 effectSizewAFROC = scaleFactor * effectSizeROC
 ```
 
-**For this dataset the wAFROC effect size is 1.26 times the ROC effect size.** Again, the wAFROC effect size is expected to be larger than the ROC effect size because the intrinsic range of the former $1-0=1$ is twice that of the latter $1-0.5=0.5$.
+**For this dataset the wAFROC effect size is 1.26 times the ROC effect size.** The wAFROC effect size is expected to be larger than the ROC effect size because the range of wAFROC-AUC, $1-0=1$, is twice that of ROC-AUC, $1-0.5=0.5$.
 
 
 ### Computing variance components
@@ -467,3 +467,14 @@ cat("ROC-ES = ", effectSizeROC,
 ## Discussion
 
 This chapter has described the procedure for FROC sample size estimation.
+
+
+## TBA Appendix
+This is an application to another dataset, this time projecting from a pilot ROC dataset to a pivotal FROC study. Consider `dataset02`, the Van Dyke ROC dataset. It consists of 114 cases, 45 of which are diseased, interpreted in two treatments by five radiologists using the ROC paradigm. 
+
+
+
+
+
+
+
