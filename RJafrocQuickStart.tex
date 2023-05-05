@@ -139,7 +139,7 @@
 
 \title{The RJafroc Quick Start Book}
 \author{Dev P. Chakraborty, PhD}
-\date{2023-05-04}
+\date{2023-05-05}
 
 \begin{document}
 \maketitle
@@ -2056,7 +2056,9 @@ Since confusion still appears to exist, especially among statisticians, regardin
 \chapter{FROC sample size estimation}\label{froc-sample-size}}
 
 \hypertarget{froc-sample-size-how-much-finished}{%
-\section{How much finished 80 percent}\label{froc-sample-size-how-much-finished}}
+\section{How much finished 40 percent}\label{froc-sample-size-how-much-finished}}
+
+Need to change to OR method
 
 \hypertarget{overview}{%
 \section{Overview}\label{overview}}
@@ -2067,7 +2069,7 @@ This chapter is split into two parts:
 \item
   The first part details a step-by-step approach to FROC paradigm sample size estimation;
 \item
-  The second part encapsulates most of the details in a function \texttt{SsFrocNhRsmModel()}.
+  The second part encapsulates some of the details in function \texttt{SsFrocNhRsmModel()}.
 \end{itemize}
 
 \hypertarget{part-1}{%
@@ -2076,17 +2078,13 @@ This chapter is split into two parts:
 \hypertarget{froc-sample-size-intro}{%
 \subsection{Introduction}\label{froc-sample-size-intro}}
 
-FROC sample size estimation is not fundamentally different from the procedure outlined in Chapter \ref{roc-sample-size-dbm} for the ROC paradigm.
+FROC sample size estimation is not fundamentally different from ROC sample size estimation, Chapter \ref{roc-sample-size-dbm}.
 
 \textbf{A recapitulation of ROC sample size estimation}
 
-Based on analysis of a pilot ROC dataset and using a specified FOM, e.g., \texttt{FOM\ =\ Wilcoxon}, and either \texttt{method\ =\ "DBM"} or \texttt{method\ =\ "OR"} for significance testing, one estimates the intrinsic variability of the data expressed in terms of FOM variance components \footnote{For the DBM method these are the pseudovalue variance components while for OR method these are the FOM treatment-reader variance component and the FOM covariances.}. The second step is to specify a clinically realistic effect-size, e.g., the anticipated AUC difference between the two modalities \footnote{Resist the temptation to inflate this value, thereby guaranteeing adequate sample size even with few readers and cases and large variability}.
+Based on analysis of a pilot ROC dataset and using a specified figure of merit (FOM), e.g., \texttt{FOM\ =\ Wilcoxon}, and either \texttt{method\ =\ "DBM"} or \texttt{method\ =\ "OR"} for significance testing, one estimates the intrinsic variability of the data expressed in terms of FOM variance components. For the DBM method these are the pseudovalue-based variance components while for OR method these are the FOM-based variance and covariances. \textbf{In this chapter the OR variance components will be used.} The second step is to specify a clinically realistic effect-size, e.g., the anticipated AUC difference between the two modalities.
 
-TBA Given the variance components the sample size functions implemented in \texttt{RJafroc} (function names beginning with \texttt{Ss}) allow one to estimate the number of readers and cases necessary to detect (i.e., reject the null hypothesis) the modality AUC difference with probability no smaller than the Type II error rate \(\beta\), typically chosen to be 20 percent - corresponding to at least 80 percent statistical power - while controlling the Type I error rate to no greater than \(\alpha\), typically chosen to be 5 percent.
-
-\begin{quote}
-The preceding sentence may be confusing. One can always detect even a very small effect size by always rejecting the NH. However this would imply that almost identical treatments would always be declared different thereby increasing the NH rejection rate to 100 percent. Therefore it is important to control the NH rejection rate at a reasonably low level (e.g., 5 percent) while still maintaining the AG rejection rate at a reasonably high level (e.g., 80 percent).
-\end{quote}
+Given the variance components and the anticipated AUC difference the sample size functions (\texttt{RJafroc} function names beginning with \texttt{Ss}) allow one to estimate the number of readers and cases necessary to detect (i.e., reject the null hypothesis) the modality AUC difference with probability \(\beta\), typically chosen to be 20 percent (corresponding to 80 percent statistical power) while maintaining the NH (zero AUC difference) rejection rate probability at \(\alpha\), typically chosen to be 5 percent.
 
 \textbf{Summary of FROC sample size estimation}
 
@@ -2094,7 +2092,6 @@ In FROC analysis the only difference, indeed the critical difference, is the cho
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\tightlist
 \item
   One chooses an ROC-AUC effect-size that is realistic, one that clinicians understand and can therefore participate in, in the effect-size postulation process. Lacking such information I recommend, based on past ROC studies, 0.03 as typical of a small effect size and 0.05 as typical of a moderate effect size.
 \item
@@ -2112,82 +2109,79 @@ The next section explains the steps used to implement \#2 above.
 \hypertarget{relating-an-roc-effect-size-to-a-wafroc-effect-size}{%
 \subsection{Relating an ROC effect-size to a wAFROC effect-size}\label{relating-an-roc-effect-size-to-a-wafroc-effect-size}}
 
-This chapter uses the \emph{first two} treatments of \texttt{dataset04} as defining the NH. This is a 5 treatment, 4 radiologist and 200 case FROC dataset \citep{zanca2009evaluation} which was acquired on a 5-point scale, i.e., it is already binned. If not one needs to bin the dataset using \texttt{DfBinDataset()} before RSM fitting can be performed.
+The steps are illustrated using \texttt{dataset04}, a 5 treatment, 4 radiologist and 200 case FROC dataset \citep{zanca2009evaluation} acquired on a 5-point scale, i.e., the data is already binned. If not binned one needs to bin the dataset using \texttt{DfBinDataset()} before RSM fitting can be performed.
 
-\begin{itemize}
-\tightlist
-\item
-  If there are more than two treatments in the pilot dataset, as in \texttt{dataset04}, one extracts those treatments that represent ``almost'' null hypothesis data (in the sense of similar ROC-AUCs). For example:
-\end{itemize}
+\hypertarget{extract-nh-treatments}{%
+\subsubsection{Extract NH treatments}\label{extract-nh-treatments}}
 
-\begin{verbatim}
-datasetNH <- DfExtractDataset(dataset, trts = c(1,2)) 
-\end{verbatim}
-
-extracts treatments 1 and 2. The reason for using the first two treatments is that these were found \citep{zanca2009evaluation} to be ``almost'' equivalent (more precisely, the NH could not be rejected for the first two treatments). More than two treatments can be used if they have similar AUCs. However, the final sample size predictions are restricted to two treatments in the pivotal study.
-
-The next two steps are needed since \textbf{the RSM can only fit binned ROC data}.
-
-\begin{itemize}
-\tightlist
-\item
-  If the original data is FROC, one converts it to ROC using:
-\end{itemize}
-
-\begin{verbatim}
-
-rocDatasetNH <- DfFroc2Roc(datasetNH) 
-\end{verbatim}
-
-\begin{itemize}
-\tightlist
-\item
-  If the NH dataset uses continuous ratings one bins them as follows:
-\end{itemize}
-
-\begin{verbatim}
-rocDatasetBin <- DfBinDataset(rocDatasetNH, opChType = "ROC"). 
-\end{verbatim}
-
-The default number of bins should be used. Unlike binning using arbitrarily set thresholds the thresholds found by \texttt{DfBinDataset()} are unique as they maximize the empirical ROC-AUC.
-
-\begin{itemize}
-\tightlist
-\item
-  For each treatment and reader the ROC data is fitted by \texttt{FitRsmRoc()}, see example below, yielding estimates of the RSM \emph{physical} parameters \(\mu, \lambda, \nu\).
-\end{itemize}
-
-The following code calculates the pilot FROC dataset \texttt{frocDataNH} and the corresponding inferred ROC dataset \texttt{rocDataNH}.
+If there are more than two treatments in the pilot dataset, as in \texttt{dataset04}, one extracts those treatments that represent ``almost'' null hypothesis data (in the sense of similar ROC-AUCs):
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{frocDataNH }\OtherTok{\textless{}{-}} \FunctionTok{DfExtractDataset}\NormalTok{(dataset04, }\AttributeTok{trts =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-\NormalTok{rocDataNH }\OtherTok{\textless{}{-}} \FunctionTok{DfFroc2Roc}\NormalTok{(frocDataNH)}
-\CommentTok{\# Following line is unnecessary as thos dataset is already binned}
-\NormalTok{rocDataBinNH }\OtherTok{\textless{}{-}} \FunctionTok{DfBinDataset}\NormalTok{(rocDataNH, }\AttributeTok{opChType =} \StringTok{"ROC"}\NormalTok{)}
-\CommentTok{\# but it cant hurt}
 \end{Highlighting}
 \end{Shaded}
 
-Next one determines \texttt{lesDistr}, the lesion distribution (the RSM fitting algorithm needs to know how lesion-rich the dataset is as the predicted ROC-AUC depends it). One also needs the lesion weights matrix \(\textbf{W}\).
+extracts treatments 1 and 2. These treatments were found \citep{zanca2009evaluation} to be ``almost'' equivalent (the NH could not be rejected for the wAFROC-AUC difference between these treatments). More than two treatments can be used if they have similar AUCs, as this will improve the stability of the procedure. However, the final sample size predictions are restricted to two treatments in the pivotal study.
+
+The next two steps are needed since \textbf{the RSM can only fit binned ROC data}.
+
+\hypertarget{convert-the-froc-nh-data-to-roc}{%
+\subsubsection{Convert the FROC NH data to ROC}\label{convert-the-froc-nh-data-to-roc}}
+
+If the original data is FROC, one converts it to ROC:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{lesDistr }\OtherTok{\textless{}{-}} \FunctionTok{UtilLesDistr}\NormalTok{(frocDataNH)}
-\NormalTok{W }\OtherTok{\textless{}{-}} \FunctionTok{UtilLesWghtsDS}\NormalTok{(frocDataNH)}
+\NormalTok{rocDataNH }\OtherTok{\textless{}{-}} \FunctionTok{DfFroc2Roc}\NormalTok{(frocDataNH)}
 \end{Highlighting}
 \end{Shaded}
 
-Note that \texttt{lesDistr} and \(\textbf{W}\) are determined from the \emph{FROC} NH dataset as this information is lost upon conversion to an ROC dataset.
+\hypertarget{bin-the-data}{%
+\subsubsection{Bin the data}\label{bin-the-data}}
 
-For this dataset fraction 0.69 of diseased cases have one lesion, fraction 0.2 of diseased cases have two lesions and fraction 0.11 of diseased cases have three lesions.
+If the NH dataset uses continuous ratings one bins the ratings:
 
-In the next code block for each treatment and reader the fitting algorithm \texttt{FitRsmRoc()} is applied (lines 4 - 11). The returned values are \texttt{mu}, \texttt{lambda} and \texttt{nu}, corresponding to the physical RSM parameters \({\mu}\), \({\lambda}\) and \({\nu}\).
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# For dataset04 this is unnecessary as it is already binned but it can\textquotesingle{}t hurt}
+\NormalTok{rocDataBinNH }\OtherTok{\textless{}{-}} \FunctionTok{DfBinDataset}\NormalTok{(rocDataNH, }\AttributeTok{opChType =} \StringTok{"ROC"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The default number of bins should be used. Unlike binning using arbitrarily set thresholds the thresholds found by \texttt{DfBinDataset()} are unique as they maximize the empirical ROC-AUC.
+
+\hypertarget{determine-the-lesion-distribution-and-weights-of-the-froc-dataset}{%
+\subsubsection{Determine the lesion distribution and weights of the FROC dataset}\label{determine-the-lesion-distribution-and-weights-of-the-froc-dataset}}
+
+\texttt{lesDistr} is the lesion distribution, see Section \ref{quick-start-froc-data-lesion-distribution} and line 1 of the following code. The RSM fitting algorithm needs to know how lesion-rich the dataset is as the predicted ROC-AUC depends it. For this dataset fraction 0.69 of diseased cases have one lesion, fraction 0.2 have two lesions and fraction 0.11 have three lesions. One also needs the lesion weights matrix, \(\textbf{W}\), see Section \ref{quick-start-froc-data-lesion-weights}. The call at line 2 to \texttt{UtilLesWghtsDS} uses the default argument \texttt{relWeights\ =\ 0} which assigns equal weights to all lesions.
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\NormalTok{I }\OtherTok{\textless{}{-}} \FunctionTok{dim}\NormalTok{(frocDataNH}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{NL)[}\DecValTok{1}\NormalTok{]}
-\NormalTok{J }\OtherTok{\textless{}{-}} \FunctionTok{dim}\NormalTok{(frocDataNH}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{NL)[}\DecValTok{2}\NormalTok{]}
+\NormalTok{lesDistr }\OtherTok{\textless{}{-}} \FunctionTok{UtilLesDistr}\NormalTok{(frocDataNH)}
+\NormalTok{W }\OtherTok{\textless{}{-}} \FunctionTok{UtilLesWghtsDS}\NormalTok{(frocDataNH)}
+\NormalTok{W}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1]      [,2]      [,3]      [,4]
+## [1,]    1 1.0000000      -Inf      -Inf
+## [2,]    2 0.5000000 0.5000000      -Inf
+## [3,]    3 0.3333333 0.3333333 0.3333333
+\end{verbatim}
+
+Note that \texttt{lesDistr} and \(\textbf{W}\) are determined from the \emph{FROC} NH dataset as this information is lost upon conversion to an ROC dataset.
+
+\hypertarget{rsm-fit-the-roc-data}{%
+\subsubsection{RSM-fit the ROC data}\label{rsm-fit-the-roc-data}}
+
+For each treatment and reader the fitting algorithm \texttt{FitRsmRoc()} is applied (lines 4 - 11) to the binned NH ROC dataset. The returned values are \texttt{mu}, \texttt{lambda} and \texttt{nu}, corresponding to the physical RSM parameters \({\mu}\), \({\lambda}\) and \({\nu}\).
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{I }\OtherTok{\textless{}{-}} \FunctionTok{dim}\NormalTok{(rocDataBinNH}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{NL)[}\DecValTok{1}\NormalTok{]}
+\NormalTok{J }\OtherTok{\textless{}{-}} \FunctionTok{dim}\NormalTok{(rocDataBinNH}\SpecialCharTok{$}\NormalTok{ratings}\SpecialCharTok{$}\NormalTok{NL)[}\DecValTok{2}\NormalTok{]}
 \NormalTok{RsmParmsNH }\OtherTok{\textless{}{-}} \FunctionTok{array}\NormalTok{(}\AttributeTok{dim =} \FunctionTok{c}\NormalTok{(I,J,}\DecValTok{3}\NormalTok{))}
 \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{I) \{}
   \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{J)  \{}
@@ -2200,6 +2194,9 @@ In the next code block for each treatment and reader the fitting algorithm \text
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{compute-the-median-values-of-the-rsm-parameters}{%
+\subsubsection{Compute the median values of the RSM parameters}\label{compute-the-median-values-of-the-rsm-parameters}}
+
 I recommend taking the median (not the mean) of each of the parameters as representing the ``average'' NH dataset. The median is less sensitive to outliers than the mean.
 
 \begin{Shaded}
@@ -2210,9 +2207,10 @@ I recommend taking the median (not the mean) of each of the parameters as repres
 \end{Highlighting}
 \end{Shaded}
 
-The defining values of the fitting model are \texttt{muNH} = 3.3121519, \texttt{lambdaNH} = 1.714368 and \texttt{nuNH} = 0.7036564.
+The defining values of the NH fitting model are \texttt{muNH} = 3.3121519, \texttt{lambdaNH} = 1.714368 and \texttt{nuNH} = 0.7036564.
 
-We are now ready to calculate the expected NH FOMs using the ROC-AUC and the wAFROC-AUC.
+\hypertarget{compute-roc-and-wafroc-nh-aucs}{%
+\subsubsection{Compute ROC and wAFROC NH AUCs}\label{compute-roc-and-wafroc-nh-aucs}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2221,14 +2219,12 @@ We are now ready to calculate the expected NH FOMs using the ROC-AUC and the wAF
 \end{Highlighting}
 \end{Shaded}
 
-\begin{itemize}
-\item
-  The results are: \texttt{aucRocNH\ =\ 0.8791542} and \texttt{aucwAfrocNH\ =\ 0.7198615}. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes detection and localization performance.
-\item
-  To define the alternative hypothesis (AH) condition, one increments \(\mu_{NH}\) by \(\Delta_{\mu}\). The resulting ROC-AUC and wAFROC-AUC are calculated.
-\item
-  The next step is to calculate the effect size (AH value minus NH value) using ROC and wAFROC FOMs for a series of specified \texttt{deltaMu} values. This generates values that can be used to interpolate the wAFROC effect size for a specified ROC effect size.
-\end{itemize}
+The AUCs are: \texttt{aucRocNH\ =\ 0.8791542} and \texttt{aucwAfrocNH\ =\ 0.7198615}. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes detection and localization performance.
+
+\hypertarget{compute-roc-and-wafroc-ah-aucs-for-a-range-of-roc-auc-effect-sizes}{%
+\subsubsection{Compute ROC and wAFROC AH AUCs for a range of ROC-AUC effect sizes}\label{compute-roc-and-wafroc-ah-aucs-for-a-range-of-roc-auc-effect-sizes}}
+
+To define the alternative hypothesis (AH) condition, one increments \(\mu_{NH}\) by \(\Delta_{\mu}\). The resulting ROC-AUC and wAFROC-AUC are calculated. One calculates the effect size (AH value minus NH value) using ROC and wAFROC FOMs for a series of specified \texttt{deltaMu} values. This generates values that can be used to relate the wAFROC effect size for a specified ROC effect size.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2247,11 +2243,11 @@ Here is a plot of wAFROC effect size (y-axis) vs.~ROC effect size.
 
 \begin{figure}
 
-{\centering \includegraphics{19-froc-sample-size_files/figure-latex/unnamed-chunk-7-1} 
+{\centering \includegraphics{19-froc-sample-size_files/figure-latex/unnamed-chunk-10-1} 
 
 }
 
-\caption{Plot of wAFROC effect size vs. ROC effect size.}\label{fig:unnamed-chunk-7}
+\caption{Plot of wAFROC effect size vs. ROC effect size. The straight line fit through the origin has slope 1.2620812.}\label{fig:unnamed-chunk-10}
 \end{figure}
 
 The plot is linear and the intercept is close to zero. This makes it easy to implement an interpolation function. In the following code line 1 fits \texttt{eswAfroc} vs.~\texttt{esRoc} using a linear model \texttt{lm()} function constrained to pass through the origin (the ``-1''). One expects this constraint since for \texttt{deltaMu\ =\ 0} the effect size must be zero no matter how it is measured.
@@ -2267,41 +2263,48 @@ The plot is linear and the intercept is close to zero. This makes it easy to imp
 The slope of the zero-intercept constrained straight line fit is \texttt{scaleFactor} = 1.2617239 and the squared correlation coefficient is \texttt{R2} = 0.9999997 (the fit is very good). Therefore, the conversion from ROC to wAFROC effect size is:
 
 \begin{verbatim}
-
 effectSizewAFROC = scaleFactor * effectSizeROC
 \end{verbatim}
 
-\textbf{The wAFROC effect size is 1.26 times the ROC effect size.} It remains to calculate the variance components using the two FOMs.
+\textbf{For this dataset the wAFROC effect size is 1.26 times the ROC effect size.} Again, the wAFROC effect size is expected to be larger than the ROC effect size because the intrinsic range of the former \(1-0=1\) is twice that of the latter \(1-0.5=0.5\).
 
 \hypertarget{computing-variance-components}{%
 \subsection{Computing variance components}\label{computing-variance-components}}
 
-The code block applies \texttt{StSignificanceTesting()} to \texttt{rocDataNH} and \texttt{frocDataNH} (using the appropriate FOM) and extracts the respective variance components.
+\begin{verbatim}
+UtilORVarComponentsFactorial(
+  dataset,
+  FOM,
+  FPFValue = 0.2,
+  covEstMethod = "jackknife",
+  nBoots = 200,
+  seed = NULL
+)
+\end{verbatim}
+
+The following code applies \texttt{UtilORVarComponentsFactorial()} to \texttt{rocDataNH} and \texttt{frocDataNH} (using ``Wilcoxon'' and ``wAFROC'' FOMs respectively) and extracts the OR variance components.
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{temp1 }\OtherTok{\textless{}{-}} \FunctionTok{StSignificanceTesting}\NormalTok{(rocDataNH, }\AttributeTok{FOM =} \StringTok{"Wilcoxon"}\NormalTok{, }\AttributeTok{method =} \StringTok{"DBM"}\NormalTok{, }\AttributeTok{analysisOption =} \StringTok{"RRRC"}\NormalTok{)}
-\NormalTok{temp2 }\OtherTok{\textless{}{-}} \FunctionTok{StSignificanceTesting}\NormalTok{(frocDataNH, }\AttributeTok{FOM =} \StringTok{"wAFROC"}\NormalTok{, }\AttributeTok{method =} \StringTok{"DBM"}\NormalTok{, }\AttributeTok{analysisOption =} \StringTok{"RRRC"}\NormalTok{)}
-\NormalTok{varComp\_roc }\OtherTok{\textless{}{-}}\NormalTok{ temp1}\SpecialCharTok{$}\NormalTok{ANOVA}\SpecialCharTok{$}\NormalTok{VarCom}
-\NormalTok{varComp\_afroc }\OtherTok{\textless{}{-}}\NormalTok{ temp2}\SpecialCharTok{$}\NormalTok{ANOVA}\SpecialCharTok{$}\NormalTok{VarCom}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{varComp\_roc }\OtherTok{\textless{}{-}} \FunctionTok{UtilORVarComponentsFactorial}\NormalTok{(}
+\NormalTok{  rocDataNH, }\AttributeTok{FOM =} \StringTok{"Wilcoxon"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{VarCom[}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{]}
+\NormalTok{varComp\_wafroc }\OtherTok{\textless{}{-}} \FunctionTok{UtilORVarComponentsFactorial}\NormalTok{(}
+\NormalTok{  frocDataNH, }
+  \AttributeTok{FOM =} \StringTok{"wAFROC"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{VarCom[}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
-
-The observed wAFROC effect-size (on the pilot dataset) is -0.00685625. This is a very small effect size as it represent the ``almost'' NH condition; the corresponding ROC effect-size is also small: -0.0051. These are not surprising since the study did not find a significant difference between these two treatments.
 
 The ROC and wAFROC variance components are:
 
 \begin{verbatim}
-##                  ROC         wAFROC
-## VarR   0.00082773798  0.00185422886
-## VarC   0.03812334734  0.06117804981
-## VarTR  0.00015265067 -0.00044392794
-## VarTC  0.00964432675  0.01016518621
-## VarRC  0.00354419640  0.01355883396
-## VarErr 0.09484636574  0.09672559908
+##                ROC        wAFROC
+## VarR  0.0008277380  0.0018542289
+## VarTR 0.0001526507 -0.0004439279
+## Cov1  0.0002083377  0.0003736844
+## Cov2  0.0002388384  0.0003567162
+## Cov3  0.0001906167  0.0003058902
+## Var   0.0007307912  0.0009081383
 \end{verbatim}
-
-Only terms involving treatment (i.e., TR, TC and Err) are relevant to sample size. The wAFROC values are slightly larger than the corresponding ROC ones. This is expected because the allowed range of the wAFROC FOM is twice that of the ROC FOM.
 
 \hypertarget{comparing-roc-power-to-wafroc-power-for-equivalent-effect-sizes}{%
 \subsection{Comparing ROC power to wAFROC power for equivalent effect-sizes}\label{comparing-roc-power-to-wafroc-power-for-equivalent-effect-sizes}}
@@ -2309,17 +2312,28 @@ Only terms involving treatment (i.e., TR, TC and Err) are relevant to sample siz
 We are now ready to compare ROC and wAFROC random-reader random-case (RRRC) powers for equivalent effect sizes. The following example is for 5 readers (\texttt{JPivot}) and 100 cases (\texttt{KPivot}) in the \textbf{pivotal study}.
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{\# these are OR variance components assuming FOM = "Wilcoxon"}
+\NormalTok{varR\_roc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_roc[}\StringTok{"VarR"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
+\NormalTok{varTR\_roc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_roc[}\StringTok{"VarTR"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
+\NormalTok{Cov1\_roc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_roc[}\StringTok{"Cov1"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
+\NormalTok{Cov2\_roc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_roc[}\StringTok{"Cov2"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
+\NormalTok{Cov3\_roc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_roc[}\StringTok{"Cov3"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
+\NormalTok{Var\_roc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_roc[}\StringTok{"Var"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
+
+\CommentTok{\# these are OR variance components assuming FOM = "wAFROC"}
+\NormalTok{varR\_wafroc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_wafroc[}\StringTok{"VarR"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
+\NormalTok{varTR\_wafroc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_wafroc[}\StringTok{"VarTR"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
+\NormalTok{Cov1\_wafroc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_wafroc[}\StringTok{"Cov1"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
+\NormalTok{Cov2\_wafroc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_wafroc[}\StringTok{"Cov2"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
+\NormalTok{Cov3\_wafroc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_wafroc[}\StringTok{"Cov3"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
+\NormalTok{Var\_wafroc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_wafroc[}\StringTok{"Var"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
+
 \NormalTok{power\_roc }\OtherTok{\textless{}{-}} \FunctionTok{array}\NormalTok{(}\AttributeTok{dim =} \FunctionTok{length}\NormalTok{(effectSizeROC))}
-\NormalTok{power\_afroc }\OtherTok{\textless{}{-}} \FunctionTok{array}\NormalTok{(}\AttributeTok{dim =} \FunctionTok{length}\NormalTok{(effectSizeROC))}
+\NormalTok{power\_wafroc }\OtherTok{\textless{}{-}} \FunctionTok{array}\NormalTok{(}\AttributeTok{dim =} \FunctionTok{length}\NormalTok{(effectSizeROC))}
 
 \NormalTok{JPivot }\OtherTok{\textless{}{-}} \DecValTok{5}\NormalTok{;KPivot }\OtherTok{\textless{}{-}} \DecValTok{100}
 \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(effectSizeROC)) \{}
-  
-  \CommentTok{\# these are pseudovalue based variance components assuming FOM = "Wilcoxon"}
-\NormalTok{  varYTR\_roc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_roc[}\StringTok{"VarTR"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
-\NormalTok{  varYTC\_roc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_roc[}\StringTok{"VarTC"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
-\NormalTok{  varYEps\_roc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_roc[}\StringTok{"VarErr"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
   
   \CommentTok{\# compute ROC power}
 \NormalTok{  ret }\OtherTok{\textless{}{-}} \FunctionTok{SsPowerGivenJK}\NormalTok{(}
@@ -2327,17 +2341,14 @@ We are now ready to compare ROC and wAFROC random-reader random-case (RRRC) powe
     \AttributeTok{FOM =} \StringTok{"Wilcoxon"}\NormalTok{, }
     \AttributeTok{J =}\NormalTok{ JPivot, }
     \AttributeTok{K =}\NormalTok{ KPivot, }
-    \AttributeTok{analysisOption =} \StringTok{"RRRC"}\NormalTok{, }
     \AttributeTok{effectSize =}\NormalTok{ effectSizeROC[i], }
-    \AttributeTok{method =} \StringTok{"DBM"}\NormalTok{, }
-    \AttributeTok{LegacyCode =} \ConstantTok{TRUE}\NormalTok{, }
-    \FunctionTok{list}\NormalTok{(}\AttributeTok{VarTR =}\NormalTok{ varYTR\_roc, }\AttributeTok{VarTC =}\NormalTok{ varYTC\_roc, }\AttributeTok{VarErr =}\NormalTok{ varYEps\_roc))}
+    \FunctionTok{list}\NormalTok{(}\AttributeTok{JStar =} \DecValTok{4}\NormalTok{, }\AttributeTok{KStar =} \DecValTok{200}\NormalTok{, }
+         \AttributeTok{VarTR =}\NormalTok{ varTR\_roc,}
+         \AttributeTok{Cov1 =}\NormalTok{ Cov1\_roc,}
+         \AttributeTok{Cov2 =}\NormalTok{ Cov2\_roc,}
+         \AttributeTok{Cov3 =}\NormalTok{ Cov3\_roc,}
+         \AttributeTok{Var =}\NormalTok{ Var\_roc))}
 \NormalTok{  power\_roc[i] }\OtherTok{\textless{}{-}}\NormalTok{ ret}\SpecialCharTok{$}\NormalTok{powerRRRC}
-  
-  \CommentTok{\# these are pseudovalue based variance components assuming FOM = "wAFROC"}
-\NormalTok{  varYTR\_afroc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_afroc[}\StringTok{"VarTR"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
-\NormalTok{  varYTC\_afroc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_afroc[}\StringTok{"VarTC"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
-\NormalTok{  varYEps\_afroc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_afroc[}\StringTok{"VarErr"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
   
   \CommentTok{\# compute wAFROC power}
 \NormalTok{  ret }\OtherTok{\textless{}{-}} \FunctionTok{SsPowerGivenJK}\NormalTok{(}
@@ -2345,32 +2356,32 @@ We are now ready to compare ROC and wAFROC random-reader random-case (RRRC) powe
     \AttributeTok{FOM =} \StringTok{"Wilcoxon"}\NormalTok{, }
     \AttributeTok{J =}\NormalTok{ JPivot, }
     \AttributeTok{K =}\NormalTok{ KPivot, }
-    \AttributeTok{analysisOption =} \StringTok{"RRRC"}\NormalTok{, }
     \AttributeTok{effectSize =}\NormalTok{ effectSizewAFROC[i], }
-    \AttributeTok{method =} \StringTok{"DBM"}\NormalTok{, }
-    \AttributeTok{LegacyCode =} \ConstantTok{TRUE}\NormalTok{, }
-    \FunctionTok{list}\NormalTok{(}\AttributeTok{VarTR =}\NormalTok{ varYTR\_afroc, }\AttributeTok{VarTC =}\NormalTok{ varYTC\_afroc, }\AttributeTok{VarErr =}\NormalTok{ varYEps\_afroc))}
-\NormalTok{  power\_afroc[i] }\OtherTok{\textless{}{-}}\NormalTok{ ret}\SpecialCharTok{$}\NormalTok{powerRRRC}
+    \FunctionTok{list}\NormalTok{(}\AttributeTok{JStar =} \DecValTok{4}\NormalTok{, }\AttributeTok{KStar =} \DecValTok{200}\NormalTok{, }
+         \AttributeTok{VarTR =}\NormalTok{ varTR\_wafroc,}
+         \AttributeTok{Cov1 =}\NormalTok{ Cov1\_wafroc,}
+         \AttributeTok{Cov2 =}\NormalTok{ Cov2\_wafroc,}
+         \AttributeTok{Cov3 =}\NormalTok{ Cov3\_wafroc,}
+         \AttributeTok{Var =}\NormalTok{ Var\_wafroc))}
+\NormalTok{  power\_wafroc[i] }\OtherTok{\textless{}{-}}\NormalTok{ ret}\SpecialCharTok{$}\NormalTok{powerRRRC}
   
-  \CommentTok{\# cat("ROC{-}ES = ", effectSizeROC[i], }
-  \CommentTok{\#     ", wAFROC{-}ES = ", effectSizewAFROC[i], }
-  \CommentTok{\#     ", Power{-}ROC = ", power\_roc[i], }
-  \CommentTok{\#     ", Power{-}wAFROC = ", power\_afroc[i], "\textbackslash{}n")}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
 
-Since the wAFROC effect size is 1.26 times the ROC effect size, wAFROC power is larger than that for ROC. For example, for ROC effect size = 0.06 the wAFROC effect size is 0.075724872, the ROC power is 0.55738123 while the wAFROC power is 0.79517494. The effect size difference is magnified as it enters as the square in the formula for the power; this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC
+Lines 2-4 extract the variance components using the ROC-AUC figure of merit. Lines 7-9 extract the variance components using the wAFROC-AUC figure of merit. These are passed to \texttt{SsPowerGivenJK} at lines 27 and 30, respectively. Line 14 defines the number of readers and cases in the pivotal study. The for-loop calculates ROC power (line 28) and wAFROC power (line 31).
+
+Since the wAFROC effect size is 1.26 times the ROC effect size, wAFROC power is larger than that for ROC. For example, for ROC effect size = 0.06 the wAFROC effect size is 0.075724872, the ROC power is 0.55738123 while the wAFROC power is 0.79517494. The effect size difference is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC
 
 The following is a plot of the respective powers.
 
 \begin{figure}
 
-{\centering \includegraphics{19-froc-sample-size_files/figure-latex/unnamed-chunk-12-1} 
+{\centering \includegraphics{19-froc-sample-size_files/figure-latex/unnamed-chunk-15-1} 
 
 }
 
-\caption{Plot of wAFROC power vs. ROC power. For ROC effect size = 0.06 the wAFROC effect size is 0.075724872, the ROC power is 0.55738123 while the wAFROC power is 0.79517494.}\label{fig:unnamed-chunk-12}
+\caption{Plot of wAFROC power vs. ROC power. For ROC effect size = 0.06 the wAFROC effect size is 0.075724872, the ROC power is 0.55738123 while the wAFROC power is 0.79517494.}\label{fig:unnamed-chunk-15}
 \end{figure}
 
 \hypertarget{part-2}{%
@@ -2384,13 +2395,12 @@ This example uses the FED dataset as a pilot FROC study and function \texttt{SsF
 \hypertarget{constructing-the-nh-model-for-the-dataset}{%
 \subsection{Constructing the NH model for the dataset}\label{constructing-the-nh-model-for-the-dataset}}
 
-One starts by extracting the first two treatments from \texttt{dataset04}, which represent the NH dataset, see previous part. Next one constructs the NH model - note that the lesion distribution \texttt{lesDistr} can be specified here independently of that in the pilot dataset. This allows some control over selection of the diseased cases in the pivotal study.
+One starts by extracting the first two treatments from \texttt{dataset04}, which represent the NH dataset. Next one constructs the NH model. \texttt{lesDistr} can be specified independent of that in the pilot dataset but in this example it is simply extracted from the pilot dataset (line 2). This allows some control over selection of the diseased cases in the pivotal study. Line 3 applies the function \texttt{SsFrocNhRsmModel} to calculate the NH RSM parameters and the scale factor.
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{lesDistr }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{0.69}\NormalTok{, }\FloatTok{0.20}\NormalTok{, }\FloatTok{0.11}\NormalTok{) }\CommentTok{\# sic!}
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{frocNhData }\OtherTok{\textless{}{-}} \FunctionTok{DfExtractDataset}\NormalTok{(dataset04, }\AttributeTok{trts =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-\NormalTok{lesDistr }\OtherTok{\textless{}{-}} \FunctionTok{UtilLesDistr}\NormalTok{(lesDistr) }\CommentTok{\# sic!}
+\NormalTok{lesDistr }\OtherTok{\textless{}{-}} \FunctionTok{UtilLesDistr}\NormalTok{(frocNhData) }\CommentTok{\# sic!}
 \NormalTok{ret }\OtherTok{\textless{}{-}} \FunctionTok{SsFrocNhRsmModel}\NormalTok{(frocNhData, }\AttributeTok{lesDistr =}\NormalTok{ lesDistr}\SpecialCharTok{$}\NormalTok{Freq)}
 \NormalTok{muNH }\OtherTok{\textless{}{-}}\NormalTok{ ret}\SpecialCharTok{$}\NormalTok{mu}
 \NormalTok{lambdaNH }\OtherTok{\textless{}{-}}\NormalTok{ ret}\SpecialCharTok{$}\NormalTok{lambda}
@@ -2399,31 +2409,19 @@ One starts by extracting the first two treatments from \texttt{dataset04}, which
 \end{Highlighting}
 \end{Shaded}
 
-The fitting model is defined by \texttt{muNH} = 3.31215193, \texttt{lambdaNH} = 1.71436802 and \texttt{nuNH} = 0.70365644 and \texttt{lesDistr\$Freq} = 0.69, 0.2, 0.11. The effect size scale factor is \texttt{scaleFactor} = 1.26172392. All of these values are consistent with the Part I values.
+The fitting model is defined by \texttt{muNH} = 3.3121519, \texttt{lambdaNH} = 1.714368 and \texttt{nuNH} = 0.7036564 and \texttt{lesDistr\$Freq} = 0.69, 0.2, 0.11. The effect size scale factor is \texttt{scaleFactor} = 1.2617239. All of these are identical to the Part I values.
+
+\hypertarget{froc-sample-size-variance-components}{%
+\subsection{Extract the wAFROC variance components}\label{froc-sample-size-variance-components}}
+
+The code applies \texttt{StSignificanceTesting()} to \texttt{frocNhData}, using \texttt{FOM\ =\ "wAFROC"} and extracts the variance components.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{aucRocNH }\OtherTok{\textless{}{-}} \FunctionTok{UtilAnalyticalAucsRSM}\NormalTok{(}
-\NormalTok{  muNH, lambdaNH, nuNH, }
-  \AttributeTok{lesDistr =}\NormalTok{ lesDistr}\SpecialCharTok{$}\NormalTok{Freq)}\SpecialCharTok{$}\NormalTok{aucROC}
-
-\NormalTok{aucwAfrocNH }\OtherTok{\textless{}{-}} \FunctionTok{UtilAnalyticalAucsRSM}\NormalTok{(}
-\NormalTok{  muNH, lambdaNH, nuNH, }
-  \AttributeTok{lesDistr =}\NormalTok{ lesDistr}\SpecialCharTok{$}\NormalTok{Freq)}\SpecialCharTok{$}\NormalTok{aucwAFROC}
-\end{Highlighting}
-\end{Shaded}
-
-The null hypothesis ROC AUC is 0.87915418 and the corresponding NH wAFROC AUC is 0.71986145.
-
-\hypertarget{extracting-the-wafroc-variance-components}{%
-\subsection{Extracting the wAFROC variance components}\label{extracting-the-wafroc-variance-components}}
-
-The next code block applies \texttt{StSignificanceTesting()} to \texttt{frocNhData}, using \texttt{FOM\ =\ "wAFROC"} and extracts the variance components.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{varComp\_afroc  }\OtherTok{\textless{}{-}} \FunctionTok{StSignificanceTesting}\NormalTok{(}
-\NormalTok{  frocNhData, }\AttributeTok{FOM =} \StringTok{"wAFROC"}\NormalTok{, }\AttributeTok{method =} \StringTok{"DBM"}\NormalTok{, }
+\NormalTok{varComp\_wafroc  }\OtherTok{\textless{}{-}} \FunctionTok{StSignificanceTesting}\NormalTok{(}
+\NormalTok{  frocNhData, }
+  \AttributeTok{FOM =} \StringTok{"wAFROC"}\NormalTok{, }
+  \AttributeTok{method =} \StringTok{"OR"}\NormalTok{, }
   \AttributeTok{analysisOption =} \StringTok{"RRRC"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{ANOVA}\SpecialCharTok{$}\NormalTok{VarCom}
 \end{Highlighting}
 \end{Shaded}
@@ -2433,26 +2431,49 @@ The next code block applies \texttt{StSignificanceTesting()} to \texttt{frocNhDa
 
 The following example is for ROC effect size = 0.05, 5 readers (\texttt{J\ =\ 5}) and 100 cases (\texttt{K\ =\ 100}) in the \textbf{pivotal study}.
 
+\begin{verbatim}
+SsPowerGivenJK(
+  dataset,
+  ...,
+  FOM,
+  J,
+  K,
+  effectSize = NULL,
+  alpha = 0.05
+)
+\end{verbatim}
+
+The function \texttt{SsPowerGivenJK} used below returns the power for specified effect size, numbers of readers and cases, and variance components (supplied as a \texttt{list} via the \texttt{...} argument). The used default options are:
+
+\begin{verbatim}
+method = "OR" 
+analysisOption = "RRRC" 
+LegacyCode = FALSE
+\end{verbatim}
+
 \begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{ROC\_ES }\OtherTok{\textless{}{-}} \FloatTok{0.05}
-\NormalTok{effectSizewAFROC }\OtherTok{\textless{}{-}}\NormalTok{ scaleFactor }\SpecialCharTok{*}\NormalTok{ ROC\_ES}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{effectSizeROC }\OtherTok{\textless{}{-}} \FloatTok{0.05}
+\NormalTok{effectSizewAFROC }\OtherTok{\textless{}{-}}\NormalTok{ scaleFactor }\SpecialCharTok{*}\NormalTok{ effectSizeROC}
 \NormalTok{J }\OtherTok{\textless{}{-}} \DecValTok{5}\NormalTok{;K }\OtherTok{\textless{}{-}} \DecValTok{100}
 
-\NormalTok{varYTR\_afroc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_afroc[}\StringTok{"VarTR"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{] }
-\NormalTok{varYTC\_afroc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_afroc[}\StringTok{"VarTC"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
-\NormalTok{varYEps\_afroc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_afroc[}\StringTok{"VarErr"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
 \NormalTok{ret }\OtherTok{\textless{}{-}} \FunctionTok{SsPowerGivenJK}\NormalTok{(}
-  \AttributeTok{dataset =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{FOM =} \StringTok{"Wilcoxon"}\NormalTok{, }\AttributeTok{J =}\NormalTok{ J, }\AttributeTok{K =}\NormalTok{ K, }\AttributeTok{analysisOption =} \StringTok{"RRRC"}\NormalTok{, }
-  \AttributeTok{effectSize =}\NormalTok{ effectSizewAFROC, }\AttributeTok{method =} \StringTok{"DBM"}\NormalTok{, }\AttributeTok{LegacyCode =} \ConstantTok{TRUE}\NormalTok{, }
-  \FunctionTok{list}\NormalTok{(}\AttributeTok{VarTR =}\NormalTok{ varYTR\_afroc,}
-  \AttributeTok{VarTC =}\NormalTok{ varYTC\_afroc,}
-  \AttributeTok{VarErr =}\NormalTok{ varYEps\_afroc))}
-\NormalTok{power\_afroc }\OtherTok{\textless{}{-}}\NormalTok{ ret}\SpecialCharTok{$}\NormalTok{powerRRRC}
+  \AttributeTok{dataset =} \ConstantTok{NULL}\NormalTok{, }
+  \AttributeTok{FOM =} \StringTok{"Wilcoxon"}\NormalTok{, }
+  \AttributeTok{J =}\NormalTok{ J, }
+  \AttributeTok{K =}\NormalTok{ K, }
+  \AttributeTok{effectSize =}\NormalTok{ effectSizewAFROC, }
+    \FunctionTok{list}\NormalTok{(}\AttributeTok{JStar =} \DecValTok{4}\NormalTok{, }\AttributeTok{KStar =} \DecValTok{200}\NormalTok{, }
+         \AttributeTok{VarTR =}\NormalTok{ varTR\_wafroc,}
+         \AttributeTok{Cov1 =}\NormalTok{ Cov1\_wafroc,}
+         \AttributeTok{Cov2 =}\NormalTok{ Cov2\_wafroc,}
+         \AttributeTok{Cov3 =}\NormalTok{ Cov3\_wafroc,}
+         \AttributeTok{Var =}\NormalTok{ Var\_wafroc))}
+\NormalTok{power\_wafroc }\OtherTok{\textless{}{-}}\NormalTok{ ret}\SpecialCharTok{$}\NormalTok{powerRRRC}
 
-\FunctionTok{cat}\NormalTok{(}\StringTok{"ROC{-}ES = "}\NormalTok{, ROC\_ES, }
-    \StringTok{", wAFROC{-}ES = "}\NormalTok{, ROC\_ES }\SpecialCharTok{*}\NormalTok{ scaleFactor, }
-    \StringTok{", Power{-}wAFROC = "}\NormalTok{, power\_afroc, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"ROC{-}ES = "}\NormalTok{, effectSizeROC, }
+    \StringTok{", wAFROC{-}ES = "}\NormalTok{, effectSizeROC }\SpecialCharTok{*}\NormalTok{ scaleFactor, }
+    \StringTok{", Power{-}wAFROC = "}\NormalTok{, power\_wafroc, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2460,22 +2481,38 @@ The following example is for ROC effect size = 0.05, 5 readers (\texttt{J\ =\ 5}
 ## ROC-ES =  0.05 , wAFROC-ES =  0.063086196 , Power-wAFROC =  0.6420946
 \end{verbatim}
 
-\hypertarget{wafroc-number-of-cases-for-80-percent-power-for-a-given-number-of-readers-j}{%
-\subsection{wAFROC number of cases for 80 percent power for a given number of readers J}\label{wafroc-number-of-cases-for-80-percent-power-for-a-given-number-of-readers-j}}
+\hypertarget{number-of-cases-for-80-percent-power-for-a-given-number-of-readers}{%
+\subsection{Number of cases for 80 percent power for a given number of readers}\label{number-of-cases-for-80-percent-power-for-a-given-number-of-readers}}
+
+\begin{verbatim}
+SsSampleSizeKGivenJ(
+  dataset,
+  ...,
+  J,
+  FOM,
+  effectSize = NULL,
+  alpha = 0.05,
+  desiredPower = 0.8,
+)
+\end{verbatim}
+
+The function \texttt{SsSampleSizeKGivenJ} returns the number of cases needed for desired power = 0.8 for wAFROC effect size as just listed and wAFROC variance components computed in Section \ref{froc-sample-size-variance-components}.
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{VarTR\_afroc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_afroc[}\StringTok{"VarTR"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{] }
-\NormalTok{VarTC\_afroc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_afroc[}\StringTok{"VarTC"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
-\NormalTok{VarErr\_afroc }\OtherTok{\textless{}{-}}\NormalTok{ varComp\_afroc[}\StringTok{"VarErr"}\NormalTok{,}\StringTok{"Estimates"}\NormalTok{]}
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{ret2 }\OtherTok{\textless{}{-}} \FunctionTok{SsSampleSizeKGivenJ}\NormalTok{(}
-  \AttributeTok{dataset =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{J =} \DecValTok{6}\NormalTok{, }
+  \AttributeTok{dataset =} \ConstantTok{NULL}\NormalTok{, }
+  \AttributeTok{J =} \DecValTok{6}\NormalTok{, }
   \AttributeTok{effectSize =}\NormalTok{ effectSizewAFROC, }
-  \AttributeTok{method =} \StringTok{"DBM"}\NormalTok{, }\AttributeTok{LegacyCode =} \ConstantTok{TRUE}\NormalTok{,}
-  \FunctionTok{list}\NormalTok{(}\AttributeTok{VarTR =}\NormalTok{ VarTR\_afroc, }\AttributeTok{VarTC =}\NormalTok{ VarTC\_afroc, }\AttributeTok{VarErr =}\NormalTok{ VarErr\_afroc))}
+  \FunctionTok{list}\NormalTok{(}\AttributeTok{JStar =} \DecValTok{4}\NormalTok{, }\AttributeTok{KStar =} \DecValTok{200}\NormalTok{, }
+       \AttributeTok{VarTR =}\NormalTok{ varTR\_wafroc,}
+       \AttributeTok{Cov1 =}\NormalTok{ Cov1\_wafroc,}
+       \AttributeTok{Cov2 =}\NormalTok{ Cov2\_wafroc,}
+       \AttributeTok{Cov3 =}\NormalTok{ Cov3\_wafroc,}
+       \AttributeTok{Var =}\NormalTok{ Var\_wafroc))}
 
-\FunctionTok{cat}\NormalTok{(}\StringTok{"ROC{-}ES = "}\NormalTok{, ROC\_ES, }
-    \StringTok{", wAFROC{-}ES = "}\NormalTok{, ROC\_ES }\SpecialCharTok{*}\NormalTok{ scaleFactor, }
+\FunctionTok{cat}\NormalTok{(}\StringTok{"ROC{-}ES = "}\NormalTok{, effectSizeROC, }
+    \StringTok{", wAFROC{-}ES = "}\NormalTok{, effectSizeROC }\SpecialCharTok{*}\NormalTok{ scaleFactor, }
     \StringTok{", K80RRRC = "}\NormalTok{, ret2}\SpecialCharTok{$}\NormalTok{KRRRC, }
     \StringTok{", Power{-}wAFROC = "}\NormalTok{, ret2}\SpecialCharTok{$}\NormalTok{powerRRRC, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
 \end{Highlighting}
@@ -2485,29 +2522,10 @@ The following example is for ROC effect size = 0.05, 5 readers (\texttt{J\ =\ 5}
 ## ROC-ES =  0.05 , wAFROC-ES =  0.063086196 , K80RRRC =  121 , Power-wAFROC =  0.80022333
 \end{verbatim}
 
-\hypertarget{wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k}{%
-\subsection{wAFROC-FOM power for a given number of readers J and cases K}\label{wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k}}
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{ret3 }\OtherTok{\textless{}{-}} \FunctionTok{SsPowerGivenJK}\NormalTok{(}
-  \AttributeTok{dataset =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{J =} \DecValTok{6}\NormalTok{, }
-  \AttributeTok{K =}\NormalTok{ ret2}\SpecialCharTok{$}\NormalTok{KRRRC, }
-  \AttributeTok{effectSize =}\NormalTok{ effectSizewAFROC, }
-  \AttributeTok{method =} \StringTok{"DBM"}\NormalTok{, }\AttributeTok{LegacyCode =} \ConstantTok{TRUE}\NormalTok{,}
-  \FunctionTok{list}\NormalTok{(}\AttributeTok{VarTR =}\NormalTok{ VarTR\_afroc, }\AttributeTok{VarTC =}\NormalTok{ VarTC\_afroc, }\AttributeTok{VarErr =}\NormalTok{ VarErr\_afroc))}
-
-\FunctionTok{cat}\NormalTok{(}\StringTok{"ROC{-}ES = "}\NormalTok{, ROC\_ES, }
-    \StringTok{", wAFROC{-}ES = "}\NormalTok{, ROC\_ES }\SpecialCharTok{*}\NormalTok{ scaleFactor, }
-    \StringTok{", powerRRRC = "}\NormalTok{, ret3}\SpecialCharTok{$}\NormalTok{powerRRRC, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## ROC-ES =  0.05 , wAFROC-ES =  0.063086196 , powerRRRC =  0.80022333
-\end{verbatim}
-
-The estimated power is close to 80 percent as the number of cases (\texttt{ret2\$KRRRC\ =\ 121}) was chosen deliberately from the previous code block.
+This chapter has described the procedure for FROC sample size estimation.
 
 \hypertarget{part-software-details}{%
 \part*{Software details}\label{part-software-details}}

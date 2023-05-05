@@ -23,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2023-05-04" />
+<meta name="date" content="2023-05-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -277,7 +277,7 @@ div.csl-indent {
 <li class="part"><span><b>FROC sample size</b></span></li>
 <li class="chapter" data-level="10" data-path="froc-sample-size.html"><a href="froc-sample-size.html"><i class="fa fa-check"></i><b>10</b> FROC sample size estimation</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-how-much-finished"><i class="fa fa-check"></i><b>10.1</b> How much finished 80 percent</a></li>
+<li class="chapter" data-level="10.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-how-much-finished"><i class="fa fa-check"></i><b>10.1</b> How much finished 40 percent</a></li>
 <li class="chapter" data-level="10.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#overview"><i class="fa fa-check"></i><b>10.2</b> Overview</a></li>
 <li class="chapter" data-level="10.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-1"><i class="fa fa-check"></i><b>10.3</b> Part 1</a>
 <ul>
@@ -290,11 +290,11 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="10.4.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#introduction"><i class="fa fa-check"></i><b>10.4.1</b> Introduction</a></li>
 <li class="chapter" data-level="10.4.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#constructing-the-nh-model-for-the-dataset"><i class="fa fa-check"></i><b>10.4.2</b> Constructing the NH model for the dataset</a></li>
-<li class="chapter" data-level="10.4.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#extracting-the-wafroc-variance-components"><i class="fa fa-check"></i><b>10.4.3</b> Extracting the wAFROC variance components</a></li>
+<li class="chapter" data-level="10.4.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#froc-sample-size-variance-components"><i class="fa fa-check"></i><b>10.4.3</b> Extract the wAFROC variance components</a></li>
 <li class="chapter" data-level="10.4.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-power-for-specified-roc-effect-size-number-of-readers-j-and-number-of-cases-k"><i class="fa fa-check"></i><b>10.4.4</b> wAFROC power for specified ROC effect size, number of readers J and number of cases K</a></li>
-<li class="chapter" data-level="10.4.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-number-of-cases-for-80-percent-power-for-a-given-number-of-readers-j"><i class="fa fa-check"></i><b>10.4.5</b> wAFROC number of cases for 80 percent power for a given number of readers J</a></li>
-<li class="chapter" data-level="10.4.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k"><i class="fa fa-check"></i><b>10.4.6</b> wAFROC-FOM power for a given number of readers J and cases K</a></li>
+<li class="chapter" data-level="10.4.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#number-of-cases-for-80-percent-power-for-a-given-number-of-readers"><i class="fa fa-check"></i><b>10.4.5</b> Number of cases for 80 percent power for a given number of readers</a></li>
 </ul></li>
+<li class="chapter" data-level="10.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#discussion"><i class="fa fa-check"></i><b>10.5</b> Discussion</a></li>
 </ul></li>
 <li class="part"><span><b>Software details</b></span></li>
 <li class="chapter" data-level="11" data-path="dataset-object-details.html"><a href="dataset-object-details.html"><i class="fa fa-check"></i><b>11</b> Excel file and dataset details</a>
@@ -365,33 +365,31 @@ div.csl-indent {
 <div id="froc-sample-size" class="section level1 hasAnchor" number="10">
 <h1><span class="header-section-number">Chapter 10</span> FROC sample size estimation<a href="froc-sample-size.html#froc-sample-size" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="froc-sample-size-how-much-finished" class="section level2 hasAnchor" number="10.1">
-<h2><span class="header-section-number">10.1</span> How much finished 80 percent<a href="froc-sample-size.html#froc-sample-size-how-much-finished" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">10.1</span> How much finished 40 percent<a href="froc-sample-size.html#froc-sample-size-how-much-finished" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Need to change to OR method</p>
 </div>
 <div id="overview" class="section level2 hasAnchor" number="10.2">
 <h2><span class="header-section-number">10.2</span> Overview<a href="froc-sample-size.html#overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This chapter is split into two parts:</p>
 <ul>
 <li><p>The first part details a step-by-step approach to FROC paradigm sample size estimation;</p></li>
-<li><p>The second part encapsulates most of the details in a function <code>SsFrocNhRsmModel()</code>.</p></li>
+<li><p>The second part encapsulates some of the details in function <code>SsFrocNhRsmModel()</code>.</p></li>
 </ul>
 </div>
 <div id="part-1" class="section level2 hasAnchor" number="10.3">
 <h2><span class="header-section-number">10.3</span> Part 1<a href="froc-sample-size.html#part-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="froc-sample-size-intro" class="section level3 hasAnchor" number="10.3.1">
 <h3><span class="header-section-number">10.3.1</span> Introduction<a href="froc-sample-size.html#froc-sample-size-intro" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>FROC sample size estimation is not fundamentally different from the procedure outlined in Chapter <a href="roc-sample-size-dbm.html#roc-sample-size-dbm">8</a> for the ROC paradigm.</p>
+<p>FROC sample size estimation is not fundamentally different from ROC sample size estimation, Chapter <a href="roc-sample-size-dbm.html#roc-sample-size-dbm">8</a>.</p>
 <p><strong>A recapitulation of ROC sample size estimation</strong></p>
-<p>Based on analysis of a pilot ROC dataset and using a specified FOM, e.g., <code>FOM = Wilcoxon</code>, and either <code>method = "DBM"</code> or <code>method = "OR"</code> for significance testing, one estimates the intrinsic variability of the data expressed in terms of FOM variance components <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. The second step is to specify a clinically realistic effect-size, e.g., the anticipated AUC difference between the two modalities <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
-<p>TBA Given the variance components the sample size functions implemented in <code>RJafroc</code> (function names beginning with <code>Ss</code>) allow one to estimate the number of readers and cases necessary to detect (i.e., reject the null hypothesis) the modality AUC difference with probability no smaller than the Type II error rate <span class="math inline">\(\beta\)</span>, typically chosen to be 20 percent - corresponding to at least 80 percent statistical power - while controlling the Type I error rate to no greater than <span class="math inline">\(\alpha\)</span>, typically chosen to be 5 percent.</p>
-<blockquote>
-<p>The preceding sentence may be confusing. One can always detect even a very small effect size by always rejecting the NH. However this would imply that almost identical treatments would always be declared different thereby increasing the NH rejection rate to 100 percent. Therefore it is important to control the NH rejection rate at a reasonably low level (e.g., 5 percent) while still maintaining the AG rejection rate at a reasonably high level (e.g., 80 percent).</p>
-</blockquote>
+<p>Based on analysis of a pilot ROC dataset and using a specified figure of merit (FOM), e.g., <code>FOM = Wilcoxon</code>, and either <code>method = "DBM"</code> or <code>method = "OR"</code> for significance testing, one estimates the intrinsic variability of the data expressed in terms of FOM variance components. For the DBM method these are the pseudovalue-based variance components while for OR method these are the FOM-based variance and covariances. <strong>In this chapter the OR variance components will be used.</strong> The second step is to specify a clinically realistic effect-size, e.g., the anticipated AUC difference between the two modalities.</p>
+<p>Given the variance components and the anticipated AUC difference the sample size functions (<code>RJafroc</code> function names beginning with <code>Ss</code>) allow one to estimate the number of readers and cases necessary to detect (i.e., reject the null hypothesis) the modality AUC difference with probability <span class="math inline">\(\beta\)</span>, typically chosen to be 20 percent (corresponding to 80 percent statistical power) while maintaining the NH (zero AUC difference) rejection rate probability at <span class="math inline">\(\alpha\)</span>, typically chosen to be 5 percent.</p>
 <p><strong>Summary of FROC sample size estimation</strong></p>
 <p>In FROC analysis the only difference, indeed the critical difference, is the choice of FOM; e.g., <code>FOM = "wAFROC"</code> instead of the inferred ROC-AUC, <code>FOM = "HrAuc"</code>. The FROC dataset is analyzed using the DBM (or the OR) method. This yields the necessary variance components (or the covariance matrix) of the wAFROC-AUC. Next one specifies the effect-size <strong>in wAFROC-AUC units</strong> and this requires care. The ROC-AUC has a historically well-known interpretation, namely it is the classification ability at separating diseased patients from non-diseased patients, while the wAFROC-AUC does not. Needed is a way of relating the effect-size in easily understood ROC-AUC units to one in wAFROC-AUC units. This requires a physical model, e.g., the RSM, that predicts both ROC and wAFROC curves and their corresponding AUCs.</p>
 <ol style="list-style-type: decimal">
-<li>One chooses an ROC-AUC effect-size that is realistic, one that clinicians understand and can therefore participate in, in the effect-size postulation process. Lacking such information I recommend, based on past ROC studies, 0.03 as typical of a small effect size and 0.05 as typical of a moderate effect size.</li>
-<li>One converts the ROC effect-size to a wAFROC-AUC effect-size using the method described in the next section.</li>
-<li>One uses the sample size tools in <code>RJafroc</code> to determine sample size for a desired statistical power.</li>
+<li><p>One chooses an ROC-AUC effect-size that is realistic, one that clinicians understand and can therefore participate in, in the effect-size postulation process. Lacking such information I recommend, based on past ROC studies, 0.03 as typical of a small effect size and 0.05 as typical of a moderate effect size.</p></li>
+<li><p>One converts the ROC effect-size to a wAFROC-AUC effect-size using the method described in the next section.</p></li>
+<li><p>One uses the sample size tools in <code>RJafroc</code> to determine sample size for a desired statistical power.</p></li>
 </ol>
 <blockquote>
 <p><strong>It is important to recognize is that all quantities have to be in the same units</strong>. When performing ROC analysis, everything (variance components and effect-size) has to be in units of the selected FOM, e.g., <code>FOM = "Wilcoxon"</code>. When doing wAFROC analysis, everything has to be in units of the wAFROC-AUC, i.e., <code>FOM = "wAFROC"</code>. The variance components and effect-size in wAFROC-AUC units will be different from their corresponding ROC counterparts. In particular, as shown next, an ROC-AUC effect-size of 0.05 generally corresponds to a larger effect-size in wAFROC-AUC units. The reason for this is that the range over which wAFROC-AUC can vary, namely 0 to 1, is twice the corresponding ROC-AUC range (0.5 to 1). For the same reason the wAFROC variance components also tend to be larger than the ROC variance components.</p>
@@ -400,41 +398,43 @@ div.csl-indent {
 </div>
 <div id="relating-an-roc-effect-size-to-a-wafroc-effect-size" class="section level3 hasAnchor" number="10.3.2">
 <h3><span class="header-section-number">10.3.2</span> Relating an ROC effect-size to a wAFROC effect-size<a href="froc-sample-size.html#relating-an-roc-effect-size-to-a-wafroc-effect-size" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>This chapter uses the <em>first two</em> treatments of <code>dataset04</code> as defining the NH. This is a 5 treatment, 4 radiologist and 200 case FROC dataset <span class="citation">(<a href="#ref-zanca2009evaluation" role="doc-biblioref">Zanca et al. 2009</a>)</span> which was acquired on a 5-point scale, i.e., it is already binned. If not one needs to bin the dataset using <code>DfBinDataset()</code> before RSM fitting can be performed.</p>
-<ul>
-<li>If there are more than two treatments in the pilot dataset, as in <code>dataset04</code>, one extracts those treatments that represent “almost” null hypothesis data (in the sense of similar ROC-AUCs). For example:</li>
-</ul>
-<pre><code>datasetNH &lt;- DfExtractDataset(dataset, trts = c(1,2)) </code></pre>
-<p>extracts treatments 1 and 2. The reason for using the first two treatments is that these were found <span class="citation">(<a href="#ref-zanca2009evaluation" role="doc-biblioref">Zanca et al. 2009</a>)</span> to be “almost” equivalent (more precisely, the NH could not be rejected for the first two treatments). More than two treatments can be used if they have similar AUCs. However, the final sample size predictions are restricted to two treatments in the pivotal study.</p>
+<p>The steps are illustrated using <code>dataset04</code>, a 5 treatment, 4 radiologist and 200 case FROC dataset <span class="citation">(<a href="#ref-zanca2009evaluation" role="doc-biblioref">Zanca et al. 2009</a>)</span> acquired on a 5-point scale, i.e., the data is already binned. If not binned one needs to bin the dataset using <code>DfBinDataset()</code> before RSM fitting can be performed.</p>
+<div id="extract-nh-treatments" class="section level4 hasAnchor" number="10.3.2.1">
+<h4><span class="header-section-number">10.3.2.1</span> Extract NH treatments<a href="froc-sample-size.html#extract-nh-treatments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>If there are more than two treatments in the pilot dataset, as in <code>dataset04</code>, one extracts those treatments that represent “almost” null hypothesis data (in the sense of similar ROC-AUCs):</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="froc-sample-size.html#cb37-1" aria-hidden="true" tabindex="-1"></a>frocDataNH <span class="ot">&lt;-</span> <span class="fu">DfExtractDataset</span>(dataset04, <span class="at">trts =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span></code></pre></div>
+<p>extracts treatments 1 and 2. These treatments were found <span class="citation">(<a href="#ref-zanca2009evaluation" role="doc-biblioref">Zanca et al. 2009</a>)</span> to be “almost” equivalent (the NH could not be rejected for the wAFROC-AUC difference between these treatments). More than two treatments can be used if they have similar AUCs, as this will improve the stability of the procedure. However, the final sample size predictions are restricted to two treatments in the pivotal study.</p>
 <p>The next two steps are needed since <strong>the RSM can only fit binned ROC data</strong>.</p>
-<ul>
-<li>If the original data is FROC, one converts it to ROC using:</li>
-</ul>
-<pre><code>
-rocDatasetNH &lt;- DfFroc2Roc(datasetNH) 
-</code></pre>
-<ul>
-<li>If the NH dataset uses continuous ratings one bins them as follows:</li>
-</ul>
-<pre><code>rocDatasetBin &lt;- DfBinDataset(rocDatasetNH, opChType = &quot;ROC&quot;). </code></pre>
+</div>
+<div id="convert-the-froc-nh-data-to-roc" class="section level4 hasAnchor" number="10.3.2.2">
+<h4><span class="header-section-number">10.3.2.2</span> Convert the FROC NH data to ROC<a href="froc-sample-size.html#convert-the-froc-nh-data-to-roc" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>If the original data is FROC, one converts it to ROC:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="froc-sample-size.html#cb38-1" aria-hidden="true" tabindex="-1"></a>rocDataNH <span class="ot">&lt;-</span> <span class="fu">DfFroc2Roc</span>(frocDataNH)</span></code></pre></div>
+</div>
+<div id="bin-the-data" class="section level4 hasAnchor" number="10.3.2.3">
+<h4><span class="header-section-number">10.3.2.3</span> Bin the data<a href="froc-sample-size.html#bin-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>If the NH dataset uses continuous ratings one bins the ratings:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="froc-sample-size.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For dataset04 this is unnecessary as it is already binned but it can&#39;t hurt</span></span>
+<span id="cb39-2"><a href="froc-sample-size.html#cb39-2" aria-hidden="true" tabindex="-1"></a>rocDataBinNH <span class="ot">&lt;-</span> <span class="fu">DfBinDataset</span>(rocDataNH, <span class="at">opChType =</span> <span class="st">&quot;ROC&quot;</span>)</span></code></pre></div>
 <p>The default number of bins should be used. Unlike binning using arbitrarily set thresholds the thresholds found by <code>DfBinDataset()</code> are unique as they maximize the empirical ROC-AUC.</p>
-<ul>
-<li>For each treatment and reader the ROC data is fitted by <code>FitRsmRoc()</code>, see example below, yielding estimates of the RSM <em>physical</em> parameters <span class="math inline">\(\mu, \lambda, \nu\)</span>.</li>
-</ul>
-<p>The following code calculates the pilot FROC dataset <code>frocDataNH</code> and the corresponding inferred ROC dataset <code>rocDataNH</code>.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="froc-sample-size.html#cb40-1" aria-hidden="true" tabindex="-1"></a>frocDataNH <span class="ot">&lt;-</span> <span class="fu">DfExtractDataset</span>(dataset04, <span class="at">trts =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb40-2"><a href="froc-sample-size.html#cb40-2" aria-hidden="true" tabindex="-1"></a>rocDataNH <span class="ot">&lt;-</span> <span class="fu">DfFroc2Roc</span>(frocDataNH)</span>
-<span id="cb40-3"><a href="froc-sample-size.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Following line is unnecessary as thos dataset is already binned</span></span>
-<span id="cb40-4"><a href="froc-sample-size.html#cb40-4" aria-hidden="true" tabindex="-1"></a>rocDataBinNH <span class="ot">&lt;-</span> <span class="fu">DfBinDataset</span>(rocDataNH, <span class="at">opChType =</span> <span class="st">&quot;ROC&quot;</span>)</span>
-<span id="cb40-5"><a href="froc-sample-size.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co"># but it cant hurt</span></span></code></pre></div>
-<p>Next one determines <code>lesDistr</code>, the lesion distribution (the RSM fitting algorithm needs to know how lesion-rich the dataset is as the predicted ROC-AUC depends it). One also needs the lesion weights matrix <span class="math inline">\(\textbf{W}\)</span>.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="froc-sample-size.html#cb41-1" aria-hidden="true" tabindex="-1"></a>lesDistr <span class="ot">&lt;-</span> <span class="fu">UtilLesDistr</span>(frocDataNH)</span>
-<span id="cb41-2"><a href="froc-sample-size.html#cb41-2" aria-hidden="true" tabindex="-1"></a>W <span class="ot">&lt;-</span> <span class="fu">UtilLesWghtsDS</span>(frocDataNH)</span></code></pre></div>
+</div>
+<div id="determine-the-lesion-distribution-and-weights-of-the-froc-dataset" class="section level4 hasAnchor" number="10.3.2.4">
+<h4><span class="header-section-number">10.3.2.4</span> Determine the lesion distribution and weights of the FROC dataset<a href="froc-sample-size.html#determine-the-lesion-distribution-and-weights-of-the-froc-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><code>lesDistr</code> is the lesion distribution, see Section <a href="quick-start-froc-data-format.html#quick-start-froc-data-lesion-distribution">3.7.1</a> and line 1 of the following code. The RSM fitting algorithm needs to know how lesion-rich the dataset is as the predicted ROC-AUC depends it. For this dataset fraction 0.69 of diseased cases have one lesion, fraction 0.2 have two lesions and fraction 0.11 have three lesions. One also needs the lesion weights matrix, <span class="math inline">\(\textbf{W}\)</span>, see Section <a href="quick-start-froc-data-format.html#quick-start-froc-data-lesion-weights">3.8</a>. The call at line 2 to <code>UtilLesWghtsDS</code> uses the default argument <code>relWeights = 0</code> which assigns equal weights to all lesions.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb40-1"><a href="froc-sample-size.html#cb40-1"></a>lesDistr <span class="ot">&lt;-</span> <span class="fu">UtilLesDistr</span>(frocDataNH)</span>
+<span id="cb40-2"><a href="froc-sample-size.html#cb40-2"></a>W <span class="ot">&lt;-</span> <span class="fu">UtilLesWghtsDS</span>(frocDataNH)</span>
+<span id="cb40-3"><a href="froc-sample-size.html#cb40-3"></a>W</span></code></pre></div>
+<pre><code>##      [,1]      [,2]      [,3]      [,4]
+## [1,]    1 1.0000000      -Inf      -Inf
+## [2,]    2 0.5000000 0.5000000      -Inf
+## [3,]    3 0.3333333 0.3333333 0.3333333</code></pre>
 <p>Note that <code>lesDistr</code> and <span class="math inline">\(\textbf{W}\)</span> are determined from the <em>FROC</em> NH dataset as this information is lost upon conversion to an ROC dataset.</p>
-<p>For this dataset fraction 0.69 of diseased cases have one lesion, fraction 0.2 of diseased cases have two lesions and fraction 0.11 of diseased cases have three lesions.</p>
-<p>In the next code block for each treatment and reader the fitting algorithm <code>FitRsmRoc()</code> is applied (lines 4 - 11). The returned values are <code>mu</code>, <code>lambda</code> and <code>nu</code>, corresponding to the physical RSM parameters <span class="math inline">\({\mu}\)</span>, <span class="math inline">\({\lambda}\)</span> and <span class="math inline">\({\nu}\)</span>.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb42-1"><a href="froc-sample-size.html#cb42-1"></a>I <span class="ot">&lt;-</span> <span class="fu">dim</span>(frocDataNH<span class="sc">$</span>ratings<span class="sc">$</span>NL)[<span class="dv">1</span>]</span>
-<span id="cb42-2"><a href="froc-sample-size.html#cb42-2"></a>J <span class="ot">&lt;-</span> <span class="fu">dim</span>(frocDataNH<span class="sc">$</span>ratings<span class="sc">$</span>NL)[<span class="dv">2</span>]</span>
+</div>
+<div id="rsm-fit-the-roc-data" class="section level4 hasAnchor" number="10.3.2.5">
+<h4><span class="header-section-number">10.3.2.5</span> RSM-fit the ROC data<a href="froc-sample-size.html#rsm-fit-the-roc-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>For each treatment and reader the fitting algorithm <code>FitRsmRoc()</code> is applied (lines 4 - 11) to the binned NH ROC dataset. The returned values are <code>mu</code>, <code>lambda</code> and <code>nu</code>, corresponding to the physical RSM parameters <span class="math inline">\({\mu}\)</span>, <span class="math inline">\({\lambda}\)</span> and <span class="math inline">\({\nu}\)</span>.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb42-1"><a href="froc-sample-size.html#cb42-1"></a>I <span class="ot">&lt;-</span> <span class="fu">dim</span>(rocDataBinNH<span class="sc">$</span>ratings<span class="sc">$</span>NL)[<span class="dv">1</span>]</span>
+<span id="cb42-2"><a href="froc-sample-size.html#cb42-2"></a>J <span class="ot">&lt;-</span> <span class="fu">dim</span>(rocDataBinNH<span class="sc">$</span>ratings<span class="sc">$</span>NL)[<span class="dv">2</span>]</span>
 <span id="cb42-3"><a href="froc-sample-size.html#cb42-3"></a>RsmParmsNH <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">dim =</span> <span class="fu">c</span>(I,J,<span class="dv">3</span>))</span>
 <span id="cb42-4"><a href="froc-sample-size.html#cb42-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>I) {</span>
 <span id="cb42-5"><a href="froc-sample-size.html#cb42-5"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>J)  {</span>
@@ -444,19 +444,24 @@ rocDatasetNH &lt;- DfFroc2Roc(datasetNH)
 <span id="cb42-9"><a href="froc-sample-size.html#cb42-9"></a>    RsmParmsNH[i,j,<span class="dv">3</span>] <span class="ot">&lt;-</span> fit[[<span class="dv">3</span>]] <span class="co"># nu</span></span>
 <span id="cb42-10"><a href="froc-sample-size.html#cb42-10"></a>  }</span>
 <span id="cb42-11"><a href="froc-sample-size.html#cb42-11"></a>}</span></code></pre></div>
+</div>
+<div id="compute-the-median-values-of-the-rsm-parameters" class="section level4 hasAnchor" number="10.3.2.6">
+<h4><span class="header-section-number">10.3.2.6</span> Compute the median values of the RSM parameters<a href="froc-sample-size.html#compute-the-median-values-of-the-rsm-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>I recommend taking the median (not the mean) of each of the parameters as representing the “average” NH dataset. The median is less sensitive to outliers than the mean.</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="froc-sample-size.html#cb43-1" aria-hidden="true" tabindex="-1"></a>muNH <span class="ot">&lt;-</span> <span class="fu">median</span>(RsmParmsNH[,,<span class="dv">1</span>]) </span>
 <span id="cb43-2"><a href="froc-sample-size.html#cb43-2" aria-hidden="true" tabindex="-1"></a>lambdaNH <span class="ot">&lt;-</span> <span class="fu">median</span>(RsmParmsNH[,,<span class="dv">2</span>])</span>
 <span id="cb43-3"><a href="froc-sample-size.html#cb43-3" aria-hidden="true" tabindex="-1"></a>nuNH <span class="ot">&lt;-</span> <span class="fu">median</span>(RsmParmsNH[,,<span class="dv">3</span>])</span></code></pre></div>
-<p>The defining values of the fitting model are <code>muNH</code> = 3.3121519, <code>lambdaNH</code> = 1.714368 and <code>nuNH</code> = 0.7036564.</p>
-<p>We are now ready to calculate the expected NH FOMs using the ROC-AUC and the wAFROC-AUC.</p>
+<p>The defining values of the NH fitting model are <code>muNH</code> = 3.3121519, <code>lambdaNH</code> = 1.714368 and <code>nuNH</code> = 0.7036564.</p>
+</div>
+<div id="compute-roc-and-wafroc-nh-aucs" class="section level4 hasAnchor" number="10.3.2.7">
+<h4><span class="header-section-number">10.3.2.7</span> Compute ROC and wAFROC NH AUCs<a href="froc-sample-size.html#compute-roc-and-wafroc-nh-aucs" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="froc-sample-size.html#cb44-1" aria-hidden="true" tabindex="-1"></a>aucRocNH <span class="ot">&lt;-</span> <span class="fu">UtilAnalyticalAucsRSM</span>(muNH, lambdaNH, nuNH, <span class="at">lesDistr =</span> lesDistr<span class="sc">$</span>Freq)<span class="sc">$</span>aucROC</span>
 <span id="cb44-2"><a href="froc-sample-size.html#cb44-2" aria-hidden="true" tabindex="-1"></a>aucwAfrocNH <span class="ot">&lt;-</span> <span class="fu">UtilAnalyticalAucsRSM</span>(muNH, lambdaNH, nuNH, <span class="at">lesDistr =</span> lesDistr<span class="sc">$</span>Freq)<span class="sc">$</span>aucwAFROC</span></code></pre></div>
-<ul>
-<li><p>The results are: <code>aucRocNH = 0.8791542</code> and <code>aucwAfrocNH = 0.7198615</code>. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes detection and localization performance.</p></li>
-<li><p>To define the alternative hypothesis (AH) condition, one increments <span class="math inline">\(\mu_{NH}\)</span> by <span class="math inline">\(\Delta_{\mu}\)</span>. The resulting ROC-AUC and wAFROC-AUC are calculated.</p></li>
-<li><p>The next step is to calculate the effect size (AH value minus NH value) using ROC and wAFROC FOMs for a series of specified <code>deltaMu</code> values. This generates values that can be used to interpolate the wAFROC effect size for a specified ROC effect size.</p></li>
-</ul>
+<p>The AUCs are: <code>aucRocNH = 0.8791542</code> and <code>aucwAfrocNH = 0.7198615</code>. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes detection and localization performance.</p>
+</div>
+<div id="compute-roc-and-wafroc-ah-aucs-for-a-range-of-roc-auc-effect-sizes" class="section level4 hasAnchor" number="10.3.2.8">
+<h4><span class="header-section-number">10.3.2.8</span> Compute ROC and wAFROC AH AUCs for a range of ROC-AUC effect sizes<a href="froc-sample-size.html#compute-roc-and-wafroc-ah-aucs-for-a-range-of-roc-auc-effect-sizes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To define the alternative hypothesis (AH) condition, one increments <span class="math inline">\(\mu_{NH}\)</span> by <span class="math inline">\(\Delta_{\mu}\)</span>. The resulting ROC-AUC and wAFROC-AUC are calculated. One calculates the effect size (AH value minus NH value) using ROC and wAFROC FOMs for a series of specified <code>deltaMu</code> values. This generates values that can be used to relate the wAFROC effect size for a specified ROC effect size.</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="froc-sample-size.html#cb45-1" aria-hidden="true" tabindex="-1"></a>deltaMu <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="fl">0.2</span>, <span class="fl">0.01</span>) <span class="co"># values of deltaMu to scan below</span></span>
 <span id="cb45-2"><a href="froc-sample-size.html#cb45-2" aria-hidden="true" tabindex="-1"></a>esRoc <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">dim =</span> <span class="fu">length</span>(deltaMu));eswAfroc <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">dim =</span> <span class="fu">length</span>(deltaMu))</span>
 <span id="cb45-3"><a href="froc-sample-size.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(deltaMu)) {</span>
@@ -466,10 +471,10 @@ rocDatasetNH &lt;- DfFroc2Roc(datasetNH)
 <span id="cb45-7"><a href="froc-sample-size.html#cb45-7" aria-hidden="true" tabindex="-1"></a>    muNH<span class="sc">+</span> deltaMu[i], lambdaNH, nuNH, <span class="at">lesDistr =</span> lesDistr<span class="sc">$</span>Freq)<span class="sc">$</span>aucwAFROC <span class="sc">-</span> aucwAfrocNH</span>
 <span id="cb45-8"><a href="froc-sample-size.html#cb45-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Here is a plot of wAFROC effect size (y-axis) vs. ROC effect size.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
-<img src="19-froc-sample-size_files/figure-html/unnamed-chunk-7-1.png" alt="Plot of wAFROC effect size vs. ROC effect size." width="672" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-10"></span>
+<img src="19-froc-sample-size_files/figure-html/unnamed-chunk-10-1.png" alt="Plot of wAFROC effect size vs. ROC effect size. The straight line fit through the origin has slope 1.2620812." width="672" />
 <p class="caption">
-FIGURE 10.1: Plot of wAFROC effect size vs. ROC effect size.
+FIGURE 10.1: Plot of wAFROC effect size vs. ROC effect size. The straight line fit through the origin has slope 1.2620812.
 </p>
 </div>
 <p>The plot is linear and the intercept is close to zero. This makes it easy to implement an interpolation function. In the following code line 1 fits <code>eswAfroc</code> vs. <code>esRoc</code> using a linear model <code>lm()</code> function constrained to pass through the origin (the “-1”). One expects this constraint since for <code>deltaMu = 0</code> the effect size must be zero no matter how it is measured.</p>
@@ -477,83 +482,96 @@ FIGURE 10.1: Plot of wAFROC effect size vs. ROC effect size.
 <span id="cb46-2"><a href="froc-sample-size.html#cb46-2"></a>effectSizeROC <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="fl">0.005</span>)</span>
 <span id="cb46-3"><a href="froc-sample-size.html#cb46-3"></a>effectSizewAFROC <span class="ot">&lt;-</span> effectSizeROC<span class="sc">*</span>scaleFactor<span class="sc">$</span>coefficients[<span class="dv">1</span>]</span></code></pre></div>
 <p>The slope of the zero-intercept constrained straight line fit is <code>scaleFactor</code> = 1.2617239 and the squared correlation coefficient is <code>R2</code> = 0.9999997 (the fit is very good). Therefore, the conversion from ROC to wAFROC effect size is:</p>
-<pre><code>
-effectSizewAFROC = scaleFactor * effectSizeROC
-</code></pre>
-<p><strong>The wAFROC effect size is 1.26 times the ROC effect size.</strong> It remains to calculate the variance components using the two FOMs.</p>
+<pre><code>effectSizewAFROC = scaleFactor * effectSizeROC</code></pre>
+<p><strong>For this dataset the wAFROC effect size is 1.26 times the ROC effect size.</strong> Again, the wAFROC effect size is expected to be larger than the ROC effect size because the intrinsic range of the former <span class="math inline">\(1-0=1\)</span> is twice that of the latter <span class="math inline">\(1-0.5=0.5\)</span>.</p>
+</div>
 </div>
 <div id="computing-variance-components" class="section level3 hasAnchor" number="10.3.3">
 <h3><span class="header-section-number">10.3.3</span> Computing variance components<a href="froc-sample-size.html#computing-variance-components" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The code block applies <code>StSignificanceTesting()</code> to <code>rocDataNH</code> and <code>frocDataNH</code> (using the appropriate FOM) and extracts the respective variance components.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="froc-sample-size.html#cb48-1" aria-hidden="true" tabindex="-1"></a>temp1 <span class="ot">&lt;-</span> <span class="fu">StSignificanceTesting</span>(rocDataNH, <span class="at">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, <span class="at">method =</span> <span class="st">&quot;DBM&quot;</span>, <span class="at">analysisOption =</span> <span class="st">&quot;RRRC&quot;</span>)</span>
-<span id="cb48-2"><a href="froc-sample-size.html#cb48-2" aria-hidden="true" tabindex="-1"></a>temp2 <span class="ot">&lt;-</span> <span class="fu">StSignificanceTesting</span>(frocDataNH, <span class="at">FOM =</span> <span class="st">&quot;wAFROC&quot;</span>, <span class="at">method =</span> <span class="st">&quot;DBM&quot;</span>, <span class="at">analysisOption =</span> <span class="st">&quot;RRRC&quot;</span>)</span>
-<span id="cb48-3"><a href="froc-sample-size.html#cb48-3" aria-hidden="true" tabindex="-1"></a>varComp_roc <span class="ot">&lt;-</span> temp1<span class="sc">$</span>ANOVA<span class="sc">$</span>VarCom</span>
-<span id="cb48-4"><a href="froc-sample-size.html#cb48-4" aria-hidden="true" tabindex="-1"></a>varComp_afroc <span class="ot">&lt;-</span> temp2<span class="sc">$</span>ANOVA<span class="sc">$</span>VarCom</span></code></pre></div>
-<p>The observed wAFROC effect-size (on the pilot dataset) is -0.00685625. This is a very small effect size as it represent the “almost” NH condition; the corresponding ROC effect-size is also small: -0.0051. These are not surprising since the study did not find a significant difference between these two treatments.</p>
+<pre><code>UtilORVarComponentsFactorial(
+  dataset,
+  FOM,
+  FPFValue = 0.2,
+  covEstMethod = &quot;jackknife&quot;,
+  nBoots = 200,
+  seed = NULL
+)</code></pre>
+<p>The following code applies <code>UtilORVarComponentsFactorial()</code> to <code>rocDataNH</code> and <code>frocDataNH</code> (using “Wilcoxon” and “wAFROC” FOMs respectively) and extracts the OR variance components.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb49-1"><a href="froc-sample-size.html#cb49-1"></a>varComp_roc <span class="ot">&lt;-</span> <span class="fu">UtilORVarComponentsFactorial</span>(</span>
+<span id="cb49-2"><a href="froc-sample-size.html#cb49-2"></a>  rocDataNH, <span class="at">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>)<span class="sc">$</span>VarCom[<span class="sc">-</span><span class="dv">2</span>]</span>
+<span id="cb49-3"><a href="froc-sample-size.html#cb49-3"></a>varComp_wafroc <span class="ot">&lt;-</span> <span class="fu">UtilORVarComponentsFactorial</span>(</span>
+<span id="cb49-4"><a href="froc-sample-size.html#cb49-4"></a>  frocDataNH, </span>
+<span id="cb49-5"><a href="froc-sample-size.html#cb49-5"></a>  <span class="at">FOM =</span> <span class="st">&quot;wAFROC&quot;</span>)<span class="sc">$</span>VarCom[<span class="sc">-</span><span class="dv">2</span>]</span></code></pre></div>
 <p>The ROC and wAFROC variance components are:</p>
-<pre><code>##                  ROC         wAFROC
-## VarR   0.00082773798  0.00185422886
-## VarC   0.03812334734  0.06117804981
-## VarTR  0.00015265067 -0.00044392794
-## VarTC  0.00964432675  0.01016518621
-## VarRC  0.00354419640  0.01355883396
-## VarErr 0.09484636574  0.09672559908</code></pre>
-<p>Only terms involving treatment (i.e., TR, TC and Err) are relevant to sample size. The wAFROC values are slightly larger than the corresponding ROC ones. This is expected because the allowed range of the wAFROC FOM is twice that of the ROC FOM.</p>
+<pre><code>##                ROC        wAFROC
+## VarR  0.0008277380  0.0018542289
+## VarTR 0.0001526507 -0.0004439279
+## Cov1  0.0002083377  0.0003736844
+## Cov2  0.0002388384  0.0003567162
+## Cov3  0.0001906167  0.0003058902
+## Var   0.0007307912  0.0009081383</code></pre>
 </div>
 <div id="comparing-roc-power-to-wafroc-power-for-equivalent-effect-sizes" class="section level3 hasAnchor" number="10.3.4">
 <h3><span class="header-section-number">10.3.4</span> Comparing ROC power to wAFROC power for equivalent effect-sizes<a href="froc-sample-size.html#comparing-roc-power-to-wafroc-power-for-equivalent-effect-sizes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We are now ready to compare ROC and wAFROC random-reader random-case (RRRC) powers for equivalent effect sizes. The following example is for 5 readers (<code>JPivot</code>) and 100 cases (<code>KPivot</code>) in the <strong>pivotal study</strong>.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="froc-sample-size.html#cb50-1" aria-hidden="true" tabindex="-1"></a>power_roc <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">dim =</span> <span class="fu">length</span>(effectSizeROC))</span>
-<span id="cb50-2"><a href="froc-sample-size.html#cb50-2" aria-hidden="true" tabindex="-1"></a>power_afroc <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">dim =</span> <span class="fu">length</span>(effectSizeROC))</span>
-<span id="cb50-3"><a href="froc-sample-size.html#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-4"><a href="froc-sample-size.html#cb50-4" aria-hidden="true" tabindex="-1"></a>JPivot <span class="ot">&lt;-</span> <span class="dv">5</span>;KPivot <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb50-5"><a href="froc-sample-size.html#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(effectSizeROC)) {</span>
-<span id="cb50-6"><a href="froc-sample-size.html#cb50-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb50-7"><a href="froc-sample-size.html#cb50-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># these are pseudovalue based variance components assuming FOM = &quot;Wilcoxon&quot;</span></span>
-<span id="cb50-8"><a href="froc-sample-size.html#cb50-8" aria-hidden="true" tabindex="-1"></a>  varYTR_roc <span class="ot">&lt;-</span> varComp_roc[<span class="st">&quot;VarTR&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
-<span id="cb50-9"><a href="froc-sample-size.html#cb50-9" aria-hidden="true" tabindex="-1"></a>  varYTC_roc <span class="ot">&lt;-</span> varComp_roc[<span class="st">&quot;VarTC&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
-<span id="cb50-10"><a href="froc-sample-size.html#cb50-10" aria-hidden="true" tabindex="-1"></a>  varYEps_roc <span class="ot">&lt;-</span> varComp_roc[<span class="st">&quot;VarErr&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
-<span id="cb50-11"><a href="froc-sample-size.html#cb50-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb50-12"><a href="froc-sample-size.html#cb50-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute ROC power</span></span>
-<span id="cb50-13"><a href="froc-sample-size.html#cb50-13" aria-hidden="true" tabindex="-1"></a>  ret <span class="ot">&lt;-</span> <span class="fu">SsPowerGivenJK</span>(</span>
-<span id="cb50-14"><a href="froc-sample-size.html#cb50-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">dataset =</span> <span class="cn">NULL</span>, </span>
-<span id="cb50-15"><a href="froc-sample-size.html#cb50-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, </span>
-<span id="cb50-16"><a href="froc-sample-size.html#cb50-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">J =</span> JPivot, </span>
-<span id="cb50-17"><a href="froc-sample-size.html#cb50-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">K =</span> KPivot, </span>
-<span id="cb50-18"><a href="froc-sample-size.html#cb50-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">analysisOption =</span> <span class="st">&quot;RRRC&quot;</span>, </span>
-<span id="cb50-19"><a href="froc-sample-size.html#cb50-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">effectSize =</span> effectSizeROC[i], </span>
-<span id="cb50-20"><a href="froc-sample-size.html#cb50-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;DBM&quot;</span>, </span>
-<span id="cb50-21"><a href="froc-sample-size.html#cb50-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">LegacyCode =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb50-22"><a href="froc-sample-size.html#cb50-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(<span class="at">VarTR =</span> varYTR_roc, <span class="at">VarTC =</span> varYTC_roc, <span class="at">VarErr =</span> varYEps_roc))</span>
-<span id="cb50-23"><a href="froc-sample-size.html#cb50-23" aria-hidden="true" tabindex="-1"></a>  power_roc[i] <span class="ot">&lt;-</span> ret<span class="sc">$</span>powerRRRC</span>
-<span id="cb50-24"><a href="froc-sample-size.html#cb50-24" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb50-25"><a href="froc-sample-size.html#cb50-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># these are pseudovalue based variance components assuming FOM = &quot;wAFROC&quot;</span></span>
-<span id="cb50-26"><a href="froc-sample-size.html#cb50-26" aria-hidden="true" tabindex="-1"></a>  varYTR_afroc <span class="ot">&lt;-</span> varComp_afroc[<span class="st">&quot;VarTR&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
-<span id="cb50-27"><a href="froc-sample-size.html#cb50-27" aria-hidden="true" tabindex="-1"></a>  varYTC_afroc <span class="ot">&lt;-</span> varComp_afroc[<span class="st">&quot;VarTC&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
-<span id="cb50-28"><a href="froc-sample-size.html#cb50-28" aria-hidden="true" tabindex="-1"></a>  varYEps_afroc <span class="ot">&lt;-</span> varComp_afroc[<span class="st">&quot;VarErr&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
-<span id="cb50-29"><a href="froc-sample-size.html#cb50-29" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb50-30"><a href="froc-sample-size.html#cb50-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute wAFROC power</span></span>
-<span id="cb50-31"><a href="froc-sample-size.html#cb50-31" aria-hidden="true" tabindex="-1"></a>  ret <span class="ot">&lt;-</span> <span class="fu">SsPowerGivenJK</span>(</span>
-<span id="cb50-32"><a href="froc-sample-size.html#cb50-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">dataset =</span> <span class="cn">NULL</span>, </span>
-<span id="cb50-33"><a href="froc-sample-size.html#cb50-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, </span>
-<span id="cb50-34"><a href="froc-sample-size.html#cb50-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">J =</span> JPivot, </span>
-<span id="cb50-35"><a href="froc-sample-size.html#cb50-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">K =</span> KPivot, </span>
-<span id="cb50-36"><a href="froc-sample-size.html#cb50-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">analysisOption =</span> <span class="st">&quot;RRRC&quot;</span>, </span>
-<span id="cb50-37"><a href="froc-sample-size.html#cb50-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">effectSize =</span> effectSizewAFROC[i], </span>
-<span id="cb50-38"><a href="froc-sample-size.html#cb50-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;DBM&quot;</span>, </span>
-<span id="cb50-39"><a href="froc-sample-size.html#cb50-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">LegacyCode =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb50-40"><a href="froc-sample-size.html#cb50-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(<span class="at">VarTR =</span> varYTR_afroc, <span class="at">VarTC =</span> varYTC_afroc, <span class="at">VarErr =</span> varYEps_afroc))</span>
-<span id="cb50-41"><a href="froc-sample-size.html#cb50-41" aria-hidden="true" tabindex="-1"></a>  power_afroc[i] <span class="ot">&lt;-</span> ret<span class="sc">$</span>powerRRRC</span>
-<span id="cb50-42"><a href="froc-sample-size.html#cb50-42" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb50-43"><a href="froc-sample-size.html#cb50-43" aria-hidden="true" tabindex="-1"></a>  <span class="co"># cat(&quot;ROC-ES = &quot;, effectSizeROC[i], </span></span>
-<span id="cb50-44"><a href="froc-sample-size.html#cb50-44" aria-hidden="true" tabindex="-1"></a>  <span class="co">#     &quot;, wAFROC-ES = &quot;, effectSizewAFROC[i], </span></span>
-<span id="cb50-45"><a href="froc-sample-size.html#cb50-45" aria-hidden="true" tabindex="-1"></a>  <span class="co">#     &quot;, Power-ROC = &quot;, power_roc[i], </span></span>
-<span id="cb50-46"><a href="froc-sample-size.html#cb50-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">#     &quot;, Power-wAFROC = &quot;, power_afroc[i], &quot;\n&quot;)</span></span>
-<span id="cb50-47"><a href="froc-sample-size.html#cb50-47" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Since the wAFROC effect size is 1.26 times the ROC effect size, wAFROC power is larger than that for ROC. For example, for ROC effect size = 0.06 the wAFROC effect size is 0.075724872, the ROC power is 0.55738123 while the wAFROC power is 0.79517494. The effect size difference is magnified as it enters as the square in the formula for the power; this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb51-1"><a href="froc-sample-size.html#cb51-1"></a><span class="co"># these are OR variance components assuming FOM = &quot;Wilcoxon&quot;</span></span>
+<span id="cb51-2"><a href="froc-sample-size.html#cb51-2"></a>varR_roc <span class="ot">&lt;-</span> varComp_roc[<span class="st">&quot;VarR&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
+<span id="cb51-3"><a href="froc-sample-size.html#cb51-3"></a>varTR_roc <span class="ot">&lt;-</span> varComp_roc[<span class="st">&quot;VarTR&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
+<span id="cb51-4"><a href="froc-sample-size.html#cb51-4"></a>Cov1_roc <span class="ot">&lt;-</span> varComp_roc[<span class="st">&quot;Cov1&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
+<span id="cb51-5"><a href="froc-sample-size.html#cb51-5"></a>Cov2_roc <span class="ot">&lt;-</span> varComp_roc[<span class="st">&quot;Cov2&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
+<span id="cb51-6"><a href="froc-sample-size.html#cb51-6"></a>Cov3_roc <span class="ot">&lt;-</span> varComp_roc[<span class="st">&quot;Cov3&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
+<span id="cb51-7"><a href="froc-sample-size.html#cb51-7"></a>Var_roc <span class="ot">&lt;-</span> varComp_roc[<span class="st">&quot;Var&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
+<span id="cb51-8"><a href="froc-sample-size.html#cb51-8"></a></span>
+<span id="cb51-9"><a href="froc-sample-size.html#cb51-9"></a><span class="co"># these are OR variance components assuming FOM = &quot;wAFROC&quot;</span></span>
+<span id="cb51-10"><a href="froc-sample-size.html#cb51-10"></a>varR_wafroc <span class="ot">&lt;-</span> varComp_wafroc[<span class="st">&quot;VarR&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
+<span id="cb51-11"><a href="froc-sample-size.html#cb51-11"></a>varTR_wafroc <span class="ot">&lt;-</span> varComp_wafroc[<span class="st">&quot;VarTR&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
+<span id="cb51-12"><a href="froc-sample-size.html#cb51-12"></a>Cov1_wafroc <span class="ot">&lt;-</span> varComp_wafroc[<span class="st">&quot;Cov1&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
+<span id="cb51-13"><a href="froc-sample-size.html#cb51-13"></a>Cov2_wafroc <span class="ot">&lt;-</span> varComp_wafroc[<span class="st">&quot;Cov2&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
+<span id="cb51-14"><a href="froc-sample-size.html#cb51-14"></a>Cov3_wafroc <span class="ot">&lt;-</span> varComp_wafroc[<span class="st">&quot;Cov3&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
+<span id="cb51-15"><a href="froc-sample-size.html#cb51-15"></a>Var_wafroc <span class="ot">&lt;-</span> varComp_wafroc[<span class="st">&quot;Var&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
+<span id="cb51-16"><a href="froc-sample-size.html#cb51-16"></a></span>
+<span id="cb51-17"><a href="froc-sample-size.html#cb51-17"></a>power_roc <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">dim =</span> <span class="fu">length</span>(effectSizeROC))</span>
+<span id="cb51-18"><a href="froc-sample-size.html#cb51-18"></a>power_wafroc <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">dim =</span> <span class="fu">length</span>(effectSizeROC))</span>
+<span id="cb51-19"><a href="froc-sample-size.html#cb51-19"></a></span>
+<span id="cb51-20"><a href="froc-sample-size.html#cb51-20"></a>JPivot <span class="ot">&lt;-</span> <span class="dv">5</span>;KPivot <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb51-21"><a href="froc-sample-size.html#cb51-21"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(effectSizeROC)) {</span>
+<span id="cb51-22"><a href="froc-sample-size.html#cb51-22"></a>  </span>
+<span id="cb51-23"><a href="froc-sample-size.html#cb51-23"></a>  <span class="co"># compute ROC power</span></span>
+<span id="cb51-24"><a href="froc-sample-size.html#cb51-24"></a>  ret <span class="ot">&lt;-</span> <span class="fu">SsPowerGivenJK</span>(</span>
+<span id="cb51-25"><a href="froc-sample-size.html#cb51-25"></a>    <span class="at">dataset =</span> <span class="cn">NULL</span>, </span>
+<span id="cb51-26"><a href="froc-sample-size.html#cb51-26"></a>    <span class="at">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, </span>
+<span id="cb51-27"><a href="froc-sample-size.html#cb51-27"></a>    <span class="at">J =</span> JPivot, </span>
+<span id="cb51-28"><a href="froc-sample-size.html#cb51-28"></a>    <span class="at">K =</span> KPivot, </span>
+<span id="cb51-29"><a href="froc-sample-size.html#cb51-29"></a>    <span class="at">effectSize =</span> effectSizeROC[i], </span>
+<span id="cb51-30"><a href="froc-sample-size.html#cb51-30"></a>    <span class="fu">list</span>(<span class="at">JStar =</span> <span class="dv">4</span>, <span class="at">KStar =</span> <span class="dv">200</span>, </span>
+<span id="cb51-31"><a href="froc-sample-size.html#cb51-31"></a>         <span class="at">VarTR =</span> varTR_roc,</span>
+<span id="cb51-32"><a href="froc-sample-size.html#cb51-32"></a>         <span class="at">Cov1 =</span> Cov1_roc,</span>
+<span id="cb51-33"><a href="froc-sample-size.html#cb51-33"></a>         <span class="at">Cov2 =</span> Cov2_roc,</span>
+<span id="cb51-34"><a href="froc-sample-size.html#cb51-34"></a>         <span class="at">Cov3 =</span> Cov3_roc,</span>
+<span id="cb51-35"><a href="froc-sample-size.html#cb51-35"></a>         <span class="at">Var =</span> Var_roc))</span>
+<span id="cb51-36"><a href="froc-sample-size.html#cb51-36"></a>  power_roc[i] <span class="ot">&lt;-</span> ret<span class="sc">$</span>powerRRRC</span>
+<span id="cb51-37"><a href="froc-sample-size.html#cb51-37"></a>  </span>
+<span id="cb51-38"><a href="froc-sample-size.html#cb51-38"></a>  <span class="co"># compute wAFROC power</span></span>
+<span id="cb51-39"><a href="froc-sample-size.html#cb51-39"></a>  ret <span class="ot">&lt;-</span> <span class="fu">SsPowerGivenJK</span>(</span>
+<span id="cb51-40"><a href="froc-sample-size.html#cb51-40"></a>    <span class="at">dataset =</span> <span class="cn">NULL</span>, </span>
+<span id="cb51-41"><a href="froc-sample-size.html#cb51-41"></a>    <span class="at">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, </span>
+<span id="cb51-42"><a href="froc-sample-size.html#cb51-42"></a>    <span class="at">J =</span> JPivot, </span>
+<span id="cb51-43"><a href="froc-sample-size.html#cb51-43"></a>    <span class="at">K =</span> KPivot, </span>
+<span id="cb51-44"><a href="froc-sample-size.html#cb51-44"></a>    <span class="at">effectSize =</span> effectSizewAFROC[i], </span>
+<span id="cb51-45"><a href="froc-sample-size.html#cb51-45"></a>    <span class="fu">list</span>(<span class="at">JStar =</span> <span class="dv">4</span>, <span class="at">KStar =</span> <span class="dv">200</span>, </span>
+<span id="cb51-46"><a href="froc-sample-size.html#cb51-46"></a>         <span class="at">VarTR =</span> varTR_wafroc,</span>
+<span id="cb51-47"><a href="froc-sample-size.html#cb51-47"></a>         <span class="at">Cov1 =</span> Cov1_wafroc,</span>
+<span id="cb51-48"><a href="froc-sample-size.html#cb51-48"></a>         <span class="at">Cov2 =</span> Cov2_wafroc,</span>
+<span id="cb51-49"><a href="froc-sample-size.html#cb51-49"></a>         <span class="at">Cov3 =</span> Cov3_wafroc,</span>
+<span id="cb51-50"><a href="froc-sample-size.html#cb51-50"></a>         <span class="at">Var =</span> Var_wafroc))</span>
+<span id="cb51-51"><a href="froc-sample-size.html#cb51-51"></a>  power_wafroc[i] <span class="ot">&lt;-</span> ret<span class="sc">$</span>powerRRRC</span>
+<span id="cb51-52"><a href="froc-sample-size.html#cb51-52"></a>  </span>
+<span id="cb51-53"><a href="froc-sample-size.html#cb51-53"></a>}</span></code></pre></div>
+<p>Lines 2-4 extract the variance components using the ROC-AUC figure of merit. Lines 7-9 extract the variance components using the wAFROC-AUC figure of merit. These are passed to <code>SsPowerGivenJK</code> at lines 27 and 30, respectively. Line 14 defines the number of readers and cases in the pivotal study. The for-loop calculates ROC power (line 28) and wAFROC power (line 31).</p>
+<p>Since the wAFROC effect size is 1.26 times the ROC effect size, wAFROC power is larger than that for ROC. For example, for ROC effect size = 0.06 the wAFROC effect size is 0.075724872, the ROC power is 0.55738123 while the wAFROC power is 0.79517494. The effect size difference is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC</p>
 <p>The following is a plot of the respective powers.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-12"></span>
-<img src="19-froc-sample-size_files/figure-html/unnamed-chunk-12-1.png" alt="Plot of wAFROC power vs. ROC power. For ROC effect size = 0.06 the wAFROC effect size is 0.075724872, the ROC power is 0.55738123 while the wAFROC power is 0.79517494." width="672" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-15"></span>
+<img src="19-froc-sample-size_files/figure-html/unnamed-chunk-15-1.png" alt="Plot of wAFROC power vs. ROC power. For ROC effect size = 0.06 the wAFROC effect size is 0.075724872, the ROC power is 0.55738123 while the wAFROC power is 0.79517494." width="672" />
 <p class="caption">
 FIGURE 10.2: Plot of wAFROC power vs. ROC power. For ROC effect size = 0.06 the wAFROC effect size is 0.075724872, the ROC power is 0.55738123 while the wAFROC power is 0.79517494.
 </p>
@@ -568,88 +586,98 @@ FIGURE 10.2: Plot of wAFROC power vs. ROC power. For ROC effect size = 0.06 the
 </div>
 <div id="constructing-the-nh-model-for-the-dataset" class="section level3 hasAnchor" number="10.4.2">
 <h3><span class="header-section-number">10.4.2</span> Constructing the NH model for the dataset<a href="froc-sample-size.html#constructing-the-nh-model-for-the-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>One starts by extracting the first two treatments from <code>dataset04</code>, which represent the NH dataset, see previous part. Next one constructs the NH model - note that the lesion distribution <code>lesDistr</code> can be specified here independently of that in the pilot dataset. This allows some control over selection of the diseased cases in the pivotal study.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="froc-sample-size.html#cb51-1" aria-hidden="true" tabindex="-1"></a>lesDistr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.69</span>, <span class="fl">0.20</span>, <span class="fl">0.11</span>) <span class="co"># sic!</span></span>
-<span id="cb51-2"><a href="froc-sample-size.html#cb51-2" aria-hidden="true" tabindex="-1"></a>frocNhData <span class="ot">&lt;-</span> <span class="fu">DfExtractDataset</span>(dataset04, <span class="at">trts =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb51-3"><a href="froc-sample-size.html#cb51-3" aria-hidden="true" tabindex="-1"></a>lesDistr <span class="ot">&lt;-</span> <span class="fu">UtilLesDistr</span>(lesDistr) <span class="co"># sic!</span></span>
-<span id="cb51-4"><a href="froc-sample-size.html#cb51-4" aria-hidden="true" tabindex="-1"></a>ret <span class="ot">&lt;-</span> <span class="fu">SsFrocNhRsmModel</span>(frocNhData, <span class="at">lesDistr =</span> lesDistr<span class="sc">$</span>Freq)</span>
-<span id="cb51-5"><a href="froc-sample-size.html#cb51-5" aria-hidden="true" tabindex="-1"></a>muNH <span class="ot">&lt;-</span> ret<span class="sc">$</span>mu</span>
-<span id="cb51-6"><a href="froc-sample-size.html#cb51-6" aria-hidden="true" tabindex="-1"></a>lambdaNH <span class="ot">&lt;-</span> ret<span class="sc">$</span>lambda</span>
-<span id="cb51-7"><a href="froc-sample-size.html#cb51-7" aria-hidden="true" tabindex="-1"></a>nuNH <span class="ot">&lt;-</span> ret<span class="sc">$</span>nu</span>
-<span id="cb51-8"><a href="froc-sample-size.html#cb51-8" aria-hidden="true" tabindex="-1"></a>scaleFactor <span class="ot">&lt;-</span> ret<span class="sc">$</span>scaleFactor</span></code></pre></div>
-<p>The fitting model is defined by <code>muNH</code> = 3.31215193, <code>lambdaNH</code> = 1.71436802 and <code>nuNH</code> = 0.70365644 and <code>lesDistr$Freq</code> = 0.69, 0.2, 0.11. The effect size scale factor is <code>scaleFactor</code> = 1.26172392. All of these values are consistent with the Part I values.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="froc-sample-size.html#cb52-1" aria-hidden="true" tabindex="-1"></a>aucRocNH <span class="ot">&lt;-</span> <span class="fu">UtilAnalyticalAucsRSM</span>(</span>
-<span id="cb52-2"><a href="froc-sample-size.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  muNH, lambdaNH, nuNH, </span>
-<span id="cb52-3"><a href="froc-sample-size.html#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">lesDistr =</span> lesDistr<span class="sc">$</span>Freq)<span class="sc">$</span>aucROC</span>
-<span id="cb52-4"><a href="froc-sample-size.html#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-5"><a href="froc-sample-size.html#cb52-5" aria-hidden="true" tabindex="-1"></a>aucwAfrocNH <span class="ot">&lt;-</span> <span class="fu">UtilAnalyticalAucsRSM</span>(</span>
-<span id="cb52-6"><a href="froc-sample-size.html#cb52-6" aria-hidden="true" tabindex="-1"></a>  muNH, lambdaNH, nuNH, </span>
-<span id="cb52-7"><a href="froc-sample-size.html#cb52-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">lesDistr =</span> lesDistr<span class="sc">$</span>Freq)<span class="sc">$</span>aucwAFROC</span></code></pre></div>
-<p>The null hypothesis ROC AUC is 0.87915418 and the corresponding NH wAFROC AUC is 0.71986145.</p>
+<p>One starts by extracting the first two treatments from <code>dataset04</code>, which represent the NH dataset. Next one constructs the NH model. <code>lesDistr</code> can be specified independent of that in the pilot dataset but in this example it is simply extracted from the pilot dataset (line 2). This allows some control over selection of the diseased cases in the pivotal study. Line 3 applies the function <code>SsFrocNhRsmModel</code> to calculate the NH RSM parameters and the scale factor.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb52-1"><a href="froc-sample-size.html#cb52-1"></a>frocNhData <span class="ot">&lt;-</span> <span class="fu">DfExtractDataset</span>(dataset04, <span class="at">trts =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb52-2"><a href="froc-sample-size.html#cb52-2"></a>lesDistr <span class="ot">&lt;-</span> <span class="fu">UtilLesDistr</span>(frocNhData) <span class="co"># sic!</span></span>
+<span id="cb52-3"><a href="froc-sample-size.html#cb52-3"></a>ret <span class="ot">&lt;-</span> <span class="fu">SsFrocNhRsmModel</span>(frocNhData, <span class="at">lesDistr =</span> lesDistr<span class="sc">$</span>Freq)</span>
+<span id="cb52-4"><a href="froc-sample-size.html#cb52-4"></a>muNH <span class="ot">&lt;-</span> ret<span class="sc">$</span>mu</span>
+<span id="cb52-5"><a href="froc-sample-size.html#cb52-5"></a>lambdaNH <span class="ot">&lt;-</span> ret<span class="sc">$</span>lambda</span>
+<span id="cb52-6"><a href="froc-sample-size.html#cb52-6"></a>nuNH <span class="ot">&lt;-</span> ret<span class="sc">$</span>nu</span>
+<span id="cb52-7"><a href="froc-sample-size.html#cb52-7"></a>scaleFactor <span class="ot">&lt;-</span> ret<span class="sc">$</span>scaleFactor</span></code></pre></div>
+<p>The fitting model is defined by <code>muNH</code> = 3.3121519, <code>lambdaNH</code> = 1.714368 and <code>nuNH</code> = 0.7036564 and <code>lesDistr$Freq</code> = 0.69, 0.2, 0.11. The effect size scale factor is <code>scaleFactor</code> = 1.2617239. All of these are identical to the Part I values.</p>
 </div>
-<div id="extracting-the-wafroc-variance-components" class="section level3 hasAnchor" number="10.4.3">
-<h3><span class="header-section-number">10.4.3</span> Extracting the wAFROC variance components<a href="froc-sample-size.html#extracting-the-wafroc-variance-components" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The next code block applies <code>StSignificanceTesting()</code> to <code>frocNhData</code>, using <code>FOM = "wAFROC"</code> and extracts the variance components.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="froc-sample-size.html#cb53-1" aria-hidden="true" tabindex="-1"></a>varComp_afroc  <span class="ot">&lt;-</span> <span class="fu">StSignificanceTesting</span>(</span>
-<span id="cb53-2"><a href="froc-sample-size.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  frocNhData, <span class="at">FOM =</span> <span class="st">&quot;wAFROC&quot;</span>, <span class="at">method =</span> <span class="st">&quot;DBM&quot;</span>, </span>
-<span id="cb53-3"><a href="froc-sample-size.html#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">analysisOption =</span> <span class="st">&quot;RRRC&quot;</span>)<span class="sc">$</span>ANOVA<span class="sc">$</span>VarCom</span></code></pre></div>
+<div id="froc-sample-size-variance-components" class="section level3 hasAnchor" number="10.4.3">
+<h3><span class="header-section-number">10.4.3</span> Extract the wAFROC variance components<a href="froc-sample-size.html#froc-sample-size-variance-components" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The code applies <code>StSignificanceTesting()</code> to <code>frocNhData</code>, using <code>FOM = "wAFROC"</code> and extracts the variance components.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="froc-sample-size.html#cb53-1" aria-hidden="true" tabindex="-1"></a>varComp_wafroc  <span class="ot">&lt;-</span> <span class="fu">StSignificanceTesting</span>(</span>
+<span id="cb53-2"><a href="froc-sample-size.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  frocNhData, </span>
+<span id="cb53-3"><a href="froc-sample-size.html#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">FOM =</span> <span class="st">&quot;wAFROC&quot;</span>, </span>
+<span id="cb53-4"><a href="froc-sample-size.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;OR&quot;</span>, </span>
+<span id="cb53-5"><a href="froc-sample-size.html#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">analysisOption =</span> <span class="st">&quot;RRRC&quot;</span>)<span class="sc">$</span>ANOVA<span class="sc">$</span>VarCom</span></code></pre></div>
 </div>
 <div id="wafroc-power-for-specified-roc-effect-size-number-of-readers-j-and-number-of-cases-k" class="section level3 hasAnchor" number="10.4.4">
 <h3><span class="header-section-number">10.4.4</span> wAFROC power for specified ROC effect size, number of readers J and number of cases K<a href="froc-sample-size.html#wafroc-power-for-specified-roc-effect-size-number-of-readers-j-and-number-of-cases-k" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The following example is for ROC effect size = 0.05, 5 readers (<code>J = 5</code>) and 100 cases (<code>K = 100</code>) in the <strong>pivotal study</strong>.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="froc-sample-size.html#cb54-1" aria-hidden="true" tabindex="-1"></a>ROC_ES <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb54-2"><a href="froc-sample-size.html#cb54-2" aria-hidden="true" tabindex="-1"></a>effectSizewAFROC <span class="ot">&lt;-</span> scaleFactor <span class="sc">*</span> ROC_ES</span>
-<span id="cb54-3"><a href="froc-sample-size.html#cb54-3" aria-hidden="true" tabindex="-1"></a>J <span class="ot">&lt;-</span> <span class="dv">5</span>;K <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb54-4"><a href="froc-sample-size.html#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-5"><a href="froc-sample-size.html#cb54-5" aria-hidden="true" tabindex="-1"></a>varYTR_afroc <span class="ot">&lt;-</span> varComp_afroc[<span class="st">&quot;VarTR&quot;</span>,<span class="st">&quot;Estimates&quot;</span>] </span>
-<span id="cb54-6"><a href="froc-sample-size.html#cb54-6" aria-hidden="true" tabindex="-1"></a>varYTC_afroc <span class="ot">&lt;-</span> varComp_afroc[<span class="st">&quot;VarTC&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
-<span id="cb54-7"><a href="froc-sample-size.html#cb54-7" aria-hidden="true" tabindex="-1"></a>varYEps_afroc <span class="ot">&lt;-</span> varComp_afroc[<span class="st">&quot;VarErr&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
-<span id="cb54-8"><a href="froc-sample-size.html#cb54-8" aria-hidden="true" tabindex="-1"></a>ret <span class="ot">&lt;-</span> <span class="fu">SsPowerGivenJK</span>(</span>
-<span id="cb54-9"><a href="froc-sample-size.html#cb54-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">dataset =</span> <span class="cn">NULL</span>, <span class="at">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, <span class="at">J =</span> J, <span class="at">K =</span> K, <span class="at">analysisOption =</span> <span class="st">&quot;RRRC&quot;</span>, </span>
-<span id="cb54-10"><a href="froc-sample-size.html#cb54-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">effectSize =</span> effectSizewAFROC, <span class="at">method =</span> <span class="st">&quot;DBM&quot;</span>, <span class="at">LegacyCode =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb54-11"><a href="froc-sample-size.html#cb54-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">VarTR =</span> varYTR_afroc,</span>
-<span id="cb54-12"><a href="froc-sample-size.html#cb54-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">VarTC =</span> varYTC_afroc,</span>
-<span id="cb54-13"><a href="froc-sample-size.html#cb54-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">VarErr =</span> varYEps_afroc))</span>
-<span id="cb54-14"><a href="froc-sample-size.html#cb54-14" aria-hidden="true" tabindex="-1"></a>power_afroc <span class="ot">&lt;-</span> ret<span class="sc">$</span>powerRRRC</span>
-<span id="cb54-15"><a href="froc-sample-size.html#cb54-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-16"><a href="froc-sample-size.html#cb54-16" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;ROC-ES = &quot;</span>, ROC_ES, </span>
-<span id="cb54-17"><a href="froc-sample-size.html#cb54-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;, wAFROC-ES = &quot;</span>, ROC_ES <span class="sc">*</span> scaleFactor, </span>
-<span id="cb54-18"><a href="froc-sample-size.html#cb54-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;, Power-wAFROC = &quot;</span>, power_afroc, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>SsPowerGivenJK(
+  dataset,
+  ...,
+  FOM,
+  J,
+  K,
+  effectSize = NULL,
+  alpha = 0.05
+)</code></pre>
+<p>The function <code>SsPowerGivenJK</code> used below returns the power for specified effect size, numbers of readers and cases, and variance components (supplied as a <code>list</code> via the <code>...</code> argument). The used default options are:</p>
+<pre><code>method = &quot;OR&quot; 
+analysisOption = &quot;RRRC&quot; 
+LegacyCode = FALSE</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb56-1"><a href="froc-sample-size.html#cb56-1"></a>effectSizeROC <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb56-2"><a href="froc-sample-size.html#cb56-2"></a>effectSizewAFROC <span class="ot">&lt;-</span> scaleFactor <span class="sc">*</span> effectSizeROC</span>
+<span id="cb56-3"><a href="froc-sample-size.html#cb56-3"></a>J <span class="ot">&lt;-</span> <span class="dv">5</span>;K <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb56-4"><a href="froc-sample-size.html#cb56-4"></a></span>
+<span id="cb56-5"><a href="froc-sample-size.html#cb56-5"></a>ret <span class="ot">&lt;-</span> <span class="fu">SsPowerGivenJK</span>(</span>
+<span id="cb56-6"><a href="froc-sample-size.html#cb56-6"></a>  <span class="at">dataset =</span> <span class="cn">NULL</span>, </span>
+<span id="cb56-7"><a href="froc-sample-size.html#cb56-7"></a>  <span class="at">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, </span>
+<span id="cb56-8"><a href="froc-sample-size.html#cb56-8"></a>  <span class="at">J =</span> J, </span>
+<span id="cb56-9"><a href="froc-sample-size.html#cb56-9"></a>  <span class="at">K =</span> K, </span>
+<span id="cb56-10"><a href="froc-sample-size.html#cb56-10"></a>  <span class="at">effectSize =</span> effectSizewAFROC, </span>
+<span id="cb56-11"><a href="froc-sample-size.html#cb56-11"></a>    <span class="fu">list</span>(<span class="at">JStar =</span> <span class="dv">4</span>, <span class="at">KStar =</span> <span class="dv">200</span>, </span>
+<span id="cb56-12"><a href="froc-sample-size.html#cb56-12"></a>         <span class="at">VarTR =</span> varTR_wafroc,</span>
+<span id="cb56-13"><a href="froc-sample-size.html#cb56-13"></a>         <span class="at">Cov1 =</span> Cov1_wafroc,</span>
+<span id="cb56-14"><a href="froc-sample-size.html#cb56-14"></a>         <span class="at">Cov2 =</span> Cov2_wafroc,</span>
+<span id="cb56-15"><a href="froc-sample-size.html#cb56-15"></a>         <span class="at">Cov3 =</span> Cov3_wafroc,</span>
+<span id="cb56-16"><a href="froc-sample-size.html#cb56-16"></a>         <span class="at">Var =</span> Var_wafroc))</span>
+<span id="cb56-17"><a href="froc-sample-size.html#cb56-17"></a>power_wafroc <span class="ot">&lt;-</span> ret<span class="sc">$</span>powerRRRC</span>
+<span id="cb56-18"><a href="froc-sample-size.html#cb56-18"></a></span>
+<span id="cb56-19"><a href="froc-sample-size.html#cb56-19"></a><span class="fu">cat</span>(<span class="st">&quot;ROC-ES = &quot;</span>, effectSizeROC, </span>
+<span id="cb56-20"><a href="froc-sample-size.html#cb56-20"></a>    <span class="st">&quot;, wAFROC-ES = &quot;</span>, effectSizeROC <span class="sc">*</span> scaleFactor, </span>
+<span id="cb56-21"><a href="froc-sample-size.html#cb56-21"></a>    <span class="st">&quot;, Power-wAFROC = &quot;</span>, power_wafroc, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## ROC-ES =  0.05 , wAFROC-ES =  0.063086196 , Power-wAFROC =  0.6420946</code></pre>
 </div>
-<div id="wafroc-number-of-cases-for-80-percent-power-for-a-given-number-of-readers-j" class="section level3 hasAnchor" number="10.4.5">
-<h3><span class="header-section-number">10.4.5</span> wAFROC number of cases for 80 percent power for a given number of readers J<a href="froc-sample-size.html#wafroc-number-of-cases-for-80-percent-power-for-a-given-number-of-readers-j" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="froc-sample-size.html#cb56-1" aria-hidden="true" tabindex="-1"></a>VarTR_afroc <span class="ot">&lt;-</span> varComp_afroc[<span class="st">&quot;VarTR&quot;</span>,<span class="st">&quot;Estimates&quot;</span>] </span>
-<span id="cb56-2"><a href="froc-sample-size.html#cb56-2" aria-hidden="true" tabindex="-1"></a>VarTC_afroc <span class="ot">&lt;-</span> varComp_afroc[<span class="st">&quot;VarTC&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
-<span id="cb56-3"><a href="froc-sample-size.html#cb56-3" aria-hidden="true" tabindex="-1"></a>VarErr_afroc <span class="ot">&lt;-</span> varComp_afroc[<span class="st">&quot;VarErr&quot;</span>,<span class="st">&quot;Estimates&quot;</span>]</span>
-<span id="cb56-4"><a href="froc-sample-size.html#cb56-4" aria-hidden="true" tabindex="-1"></a>ret2 <span class="ot">&lt;-</span> <span class="fu">SsSampleSizeKGivenJ</span>(</span>
-<span id="cb56-5"><a href="froc-sample-size.html#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">dataset =</span> <span class="cn">NULL</span>, <span class="at">J =</span> <span class="dv">6</span>, </span>
-<span id="cb56-6"><a href="froc-sample-size.html#cb56-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">effectSize =</span> effectSizewAFROC, </span>
-<span id="cb56-7"><a href="froc-sample-size.html#cb56-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;DBM&quot;</span>, <span class="at">LegacyCode =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb56-8"><a href="froc-sample-size.html#cb56-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">VarTR =</span> VarTR_afroc, <span class="at">VarTC =</span> VarTC_afroc, <span class="at">VarErr =</span> VarErr_afroc))</span>
-<span id="cb56-9"><a href="froc-sample-size.html#cb56-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-10"><a href="froc-sample-size.html#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;ROC-ES = &quot;</span>, ROC_ES, </span>
-<span id="cb56-11"><a href="froc-sample-size.html#cb56-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;, wAFROC-ES = &quot;</span>, ROC_ES <span class="sc">*</span> scaleFactor, </span>
-<span id="cb56-12"><a href="froc-sample-size.html#cb56-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;, K80RRRC = &quot;</span>, ret2<span class="sc">$</span>KRRRC, </span>
-<span id="cb56-13"><a href="froc-sample-size.html#cb56-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;, Power-wAFROC = &quot;</span>, ret2<span class="sc">$</span>powerRRRC, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div id="number-of-cases-for-80-percent-power-for-a-given-number-of-readers" class="section level3 hasAnchor" number="10.4.5">
+<h3><span class="header-section-number">10.4.5</span> Number of cases for 80 percent power for a given number of readers<a href="froc-sample-size.html#number-of-cases-for-80-percent-power-for-a-given-number-of-readers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>SsSampleSizeKGivenJ(
+  dataset,
+  ...,
+  J,
+  FOM,
+  effectSize = NULL,
+  alpha = 0.05,
+  desiredPower = 0.8,
+)</code></pre>
+<p>The function <code>SsSampleSizeKGivenJ</code> returns the number of cases needed for desired power = 0.8 for wAFROC effect size as just listed and wAFROC variance components computed in Section <a href="froc-sample-size.html#froc-sample-size-variance-components">10.4.3</a>.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb59-1"><a href="froc-sample-size.html#cb59-1"></a>ret2 <span class="ot">&lt;-</span> <span class="fu">SsSampleSizeKGivenJ</span>(</span>
+<span id="cb59-2"><a href="froc-sample-size.html#cb59-2"></a>  <span class="at">dataset =</span> <span class="cn">NULL</span>, </span>
+<span id="cb59-3"><a href="froc-sample-size.html#cb59-3"></a>  <span class="at">J =</span> <span class="dv">6</span>, </span>
+<span id="cb59-4"><a href="froc-sample-size.html#cb59-4"></a>  <span class="at">effectSize =</span> effectSizewAFROC, </span>
+<span id="cb59-5"><a href="froc-sample-size.html#cb59-5"></a>  <span class="fu">list</span>(<span class="at">JStar =</span> <span class="dv">4</span>, <span class="at">KStar =</span> <span class="dv">200</span>, </span>
+<span id="cb59-6"><a href="froc-sample-size.html#cb59-6"></a>       <span class="at">VarTR =</span> varTR_wafroc,</span>
+<span id="cb59-7"><a href="froc-sample-size.html#cb59-7"></a>       <span class="at">Cov1 =</span> Cov1_wafroc,</span>
+<span id="cb59-8"><a href="froc-sample-size.html#cb59-8"></a>       <span class="at">Cov2 =</span> Cov2_wafroc,</span>
+<span id="cb59-9"><a href="froc-sample-size.html#cb59-9"></a>       <span class="at">Cov3 =</span> Cov3_wafroc,</span>
+<span id="cb59-10"><a href="froc-sample-size.html#cb59-10"></a>       <span class="at">Var =</span> Var_wafroc))</span>
+<span id="cb59-11"><a href="froc-sample-size.html#cb59-11"></a></span>
+<span id="cb59-12"><a href="froc-sample-size.html#cb59-12"></a><span class="fu">cat</span>(<span class="st">&quot;ROC-ES = &quot;</span>, effectSizeROC, </span>
+<span id="cb59-13"><a href="froc-sample-size.html#cb59-13"></a>    <span class="st">&quot;, wAFROC-ES = &quot;</span>, effectSizeROC <span class="sc">*</span> scaleFactor, </span>
+<span id="cb59-14"><a href="froc-sample-size.html#cb59-14"></a>    <span class="st">&quot;, K80RRRC = &quot;</span>, ret2<span class="sc">$</span>KRRRC, </span>
+<span id="cb59-15"><a href="froc-sample-size.html#cb59-15"></a>    <span class="st">&quot;, Power-wAFROC = &quot;</span>, ret2<span class="sc">$</span>powerRRRC, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## ROC-ES =  0.05 , wAFROC-ES =  0.063086196 , K80RRRC =  121 , Power-wAFROC =  0.80022333</code></pre>
 </div>
-<div id="wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k" class="section level3 hasAnchor" number="10.4.6">
-<h3><span class="header-section-number">10.4.6</span> wAFROC-FOM power for a given number of readers J and cases K<a href="froc-sample-size.html#wafroc-fom-power-for-a-given-number-of-readers-j-and-cases-k" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="froc-sample-size.html#cb58-1" aria-hidden="true" tabindex="-1"></a>ret3 <span class="ot">&lt;-</span> <span class="fu">SsPowerGivenJK</span>(</span>
-<span id="cb58-2"><a href="froc-sample-size.html#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">dataset =</span> <span class="cn">NULL</span>, <span class="at">J =</span> <span class="dv">6</span>, </span>
-<span id="cb58-3"><a href="froc-sample-size.html#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">K =</span> ret2<span class="sc">$</span>KRRRC, </span>
-<span id="cb58-4"><a href="froc-sample-size.html#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">effectSize =</span> effectSizewAFROC, </span>
-<span id="cb58-5"><a href="froc-sample-size.html#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;DBM&quot;</span>, <span class="at">LegacyCode =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb58-6"><a href="froc-sample-size.html#cb58-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">VarTR =</span> VarTR_afroc, <span class="at">VarTC =</span> VarTC_afroc, <span class="at">VarErr =</span> VarErr_afroc))</span>
-<span id="cb58-7"><a href="froc-sample-size.html#cb58-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-8"><a href="froc-sample-size.html#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;ROC-ES = &quot;</span>, ROC_ES, </span>
-<span id="cb58-9"><a href="froc-sample-size.html#cb58-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;, wAFROC-ES = &quot;</span>, ROC_ES <span class="sc">*</span> scaleFactor, </span>
-<span id="cb58-10"><a href="froc-sample-size.html#cb58-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;, powerRRRC = &quot;</span>, ret3<span class="sc">$</span>powerRRRC, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
-<pre><code>## ROC-ES =  0.05 , wAFROC-ES =  0.063086196 , powerRRRC =  0.80022333</code></pre>
-<p>The estimated power is close to 80 percent as the number of cases (<code>ret2$KRRRC = 121</code>) was chosen deliberately from the previous code block.</p>
-
 </div>
+<div id="discussion" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> Discussion<a href="froc-sample-size.html#discussion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This chapter has described the procedure for FROC sample size estimation.</p>
+
 </div>
 </div>
 
@@ -660,13 +688,6 @@ FIGURE 10.2: Plot of wAFROC power vs. ROC power. For ROC effect size = 0.06 the
 <div id="ref-zanca2009evaluation" class="csl-entry">
 Zanca, Federica, Jurgen Jacobs, Chantal Van Ongeval, Filip Claus, Valerie Celis, Catherine Geniets, Veerle Provost, Herman Pauwels, Guy Marchal, and Hilde Bosmans. 2009. <span>“Evaluation of Clinical Image Processing Algorithms Used in Digital Mammography.”</span> <em>Medical Physics</em> 36 (3): 765–75.
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="3">
-<li id="fn3"><p>For the DBM method these are the pseudovalue variance components while for OR method these are the FOM treatment-reader variance component and the FOM covariances.<a href="froc-sample-size.html#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>Resist the temptation to inflate this value, thereby guaranteeing adequate sample size even with few readers and cases and large variability<a href="froc-sample-size.html#fnref4" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
             </section>
 
