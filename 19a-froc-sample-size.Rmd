@@ -16,9 +16,9 @@ library(here)
 ```
 
 
-## How much finished 40 percent {#froc-sample-size-how-much-finished}
+## How much finished 80 percent {#froc-sample-size-how-much-finished}
 
-Need to change to OR method
+
 
 ## Overview
 
@@ -38,7 +38,7 @@ FROC sample size estimation is not fundamentally different from ROC sample size 
 
 **A recapitulation of ROC sample size estimation** 
 
-Based on analysis of a pilot ROC dataset and using a specified figure of merit (FOM), e.g., `FOM = Wilcoxon`, and either `method = "DBM"` or `method = "OR"` for significance testing, one estimates the intrinsic variability of the data expressed in terms of FOM variance components. For the DBM method these are the pseudovalue-based variance components while for OR method these are the FOM-based variance and covariances. **In this chapter the OR variance components will be used.** The second step is to specify a clinically realistic effect-size, e.g., the anticipated AUC difference between the two modalities. 
+Based on analysis of a pilot ROC dataset and using a specified figure of merit (FOM), e.g., `FOM = Wilcoxon`, and either `method = "DBM"` or `method = "OR"` for significance testing, one estimates the intrinsic variability of the data expressed in terms of FOM variance components ^[For the DBM method these are the pseudovalue variance components while for OR method these are the FOM treatment-reader variance and the FOM covariances.]. The second step is to specify a clinically realistic effect-size, e.g., the anticipated AUC difference between the two modalities. 
 
 Given the variance components and the anticipated AUC difference the sample size functions (`RJafroc` function names beginning with `Ss`) allow one to estimate the number of readers and cases necessary to detect (i.e., reject the null hypothesis) the modality AUC difference with probability $\beta$, typically chosen to be 20 percent (corresponding to 80 percent statistical power) while maintaining the NH (zero AUC difference) rejection rate probability at $\alpha$, typically chosen to be 5 percent. 
 
@@ -210,45 +210,42 @@ effectSizewAFROC <- effectSizeROC*scaleFactor$coefficients[1]
 The slope of the zero-intercept constrained straight line fit is `scaleFactor` = `r scaleFactor$coefficients[1]` and the squared correlation coefficient is `R2` = `r summary(scaleFactor)$r.squared` (the fit is very good). Therefore, the conversion from ROC to wAFROC effect size is: 
 
 ```
+
 effectSizewAFROC = scaleFactor * effectSizeROC
+
 ```
 
-**For this dataset the wAFROC effect size is 1.26 times the ROC effect size.** Again, the wAFROC effect size is expected to be larger than the ROC effect size because the intrinsic range of the former $1-0=1$ is twice that of the latter $1-0.5=0.5$.
+**For this dataset the wAFROC effect size is 1.26 times the ROC effect size.** Again, the wAFROC effect size is expected to be larger than the ROC effect size because the intrinsic range of the former ($1-0=1$) is twice that of the latter ($1-0.5=0.5$).
 
 
 ### Computing variance components
 
-```
-UtilORVarComponentsFactorial(
-  dataset,
-  FOM,
-  FPFValue = 0.2,
-  covEstMethod = "jackknife",
-  nBoots = 200,
-  seed = NULL
-)
-```
-
-The following code applies `UtilORVarComponentsFactorial()` to `rocDataNH` and `frocDataNH` (using "Wilcoxon" and "wAFROC" FOMs respectively) and extracts the OR variance components.
+The code applies `StSignificanceTesting()` to `rocDataNH` and `frocDataNH` (using the appropriate FOM) and extracts the variance components.
 
 ```{r, attr.source = ".numberLines"}
-varComp_roc <- UtilORVarComponentsFactorial(
-  rocDataNH, FOM = "Wilcoxon")$VarCom[-2]
-varComp_wafroc <- UtilORVarComponentsFactorial(
-  frocDataNH, 
-  FOM = "wAFROC")$VarCom[-2]
+temp1 <- StSignificanceTesting(rocDataNH, 
+           FOM = "Wilcoxon", method = "DBM", analysisOption = "RRRC")
+temp2 <- StSignificanceTesting(frocDataNH, 
+           FOM = "wAFROC", method = "DBM", analysisOption = "RRRC")
+varComp_roc <- temp1$ANOVA$VarCom
+varComp_afroc <- temp2$ANOVA$VarCom
 ```
 
+
+The wAFROC effect-size on the pilot dataset is `r temp2$RRRC$ciDiffTrt$Estimate`. This is a very small effect size as it represent the "almost" NH condition; the corresponding ROC effect-size is also small: `r temp1$RRRC$ciDiffTrt$Estimate`.
 
 The ROC and wAFROC variance components are:
 
 
 ```{r, echo=FALSE}
-varComp_both <- cbind(varComp_roc, varComp_wafroc)
+varComp_both <- cbind(varComp_roc, varComp_afroc)
 colnames(varComp_both) <-  c("ROC", "wAFROC")
 varComp_both
 ```
 
+
+
+Only terms involving treatment (i.e., `VarTR`, `VarTC` and `VarErr`) are relevant to sample size. The wAFROC values are larger than the corresponding ROC ones. This is expected because the allowed range of the wAFROC FOM is twice that of the ROC FOM. 
 
 
 ### Comparing ROC power to wAFROC power for equivalent effect-sizes
@@ -258,24 +255,18 @@ We are now ready to compare ROC and wAFROC random-reader random-case (RRRC) powe
 
 ```{r, attr.source = ".numberLines"}
 
-# these are OR variance components assuming FOM = "Wilcoxon"
-varR_roc <- varComp_roc["VarR","Estimates"]
-varTR_roc <- varComp_roc["VarTR","Estimates"]
-Cov1_roc <- varComp_roc["Cov1","Estimates"]
-Cov2_roc <- varComp_roc["Cov2","Estimates"]
-Cov3_roc <- varComp_roc["Cov3","Estimates"]
-Var_roc <- varComp_roc["Var","Estimates"]
+# these are pseudovalue based variance components assuming FOM = "Wilcoxon"
+varYTR_roc <- varComp_roc["VarTR","Estimates"]
+varYTC_roc <- varComp_roc["VarTC","Estimates"]
+varYEps_roc <- varComp_roc["VarErr","Estimates"]
 
-# these are OR variance components assuming FOM = "wAFROC"
-varR_wafroc <- varComp_wafroc["VarR","Estimates"]
-varTR_wafroc <- varComp_wafroc["VarTR","Estimates"]
-Cov1_wafroc <- varComp_wafroc["Cov1","Estimates"]
-Cov2_wafroc <- varComp_wafroc["Cov2","Estimates"]
-Cov3_wafroc <- varComp_wafroc["Cov3","Estimates"]
-Var_wafroc <- varComp_wafroc["Var","Estimates"]
+# these are pseudovalue based variance components assuming FOM = "wAFROC"
+varYTR_afroc <- varComp_afroc["VarTR","Estimates"]
+varYTC_afroc <- varComp_afroc["VarTC","Estimates"]
+varYEps_afroc <- varComp_afroc["VarErr","Estimates"]
 
 power_roc <- array(dim = length(effectSizeROC))
-power_wafroc <- array(dim = length(effectSizeROC))
+power_afroc <- array(dim = length(effectSizeROC))
 
 JPivot <- 5;KPivot <- 100
 for (i in 1:length(effectSizeROC)) {
@@ -286,13 +277,11 @@ for (i in 1:length(effectSizeROC)) {
     FOM = "Wilcoxon", 
     J = JPivot, 
     K = KPivot, 
+    analysisOption = "RRRC", 
     effectSize = effectSizeROC[i], 
-    list(JStar = 4, KStar = 200, 
-         VarTR = varTR_roc,
-         Cov1 = Cov1_roc,
-         Cov2 = Cov2_roc,
-         Cov3 = Cov3_roc,
-         Var = Var_roc))
+    method = "DBM", 
+    LegacyCode = TRUE, 
+    list(VarTR = varYTR_roc, VarTC = varYTC_roc, VarErr = varYEps_roc))
   power_roc[i] <- ret$powerRRRC
   
   # compute wAFROC power
@@ -301,14 +290,12 @@ for (i in 1:length(effectSizeROC)) {
     FOM = "Wilcoxon", 
     J = JPivot, 
     K = KPivot, 
+    analysisOption = "RRRC", 
     effectSize = effectSizewAFROC[i], 
-    list(JStar = 4, KStar = 200, 
-         VarTR = varTR_wafroc,
-         Cov1 = Cov1_wafroc,
-         Cov2 = Cov2_wafroc,
-         Cov3 = Cov3_wafroc,
-         Var = Var_wafroc))
-  power_wafroc[i] <- ret$powerRRRC
+    method = "DBM", 
+    LegacyCode = TRUE, 
+    list(VarTR = varYTR_afroc, VarTC = varYTC_afroc, VarErr = varYEps_afroc))
+  power_afroc[i] <- ret$powerRRRC
   
 }
 ```
@@ -322,7 +309,7 @@ The following is a plot of the respective powers.
 
 
 ```{r, echo=FALSE, fig.show='hold', fig.align='center', fig.cap="Plot of wAFROC power vs. ROC power. For ROC effect size = 0.06 the wAFROC effect size is 0.075724872, the ROC power is 0.55738123 while the wAFROC power is 0.79517494."}
-df <- data.frame(power_ROC = power_roc, power_wAFROC = power_wafroc)
+df <- data.frame(power_ROC = power_roc, power_wAFROC = power_afroc)
 p <- ggplot(mapping = aes(x = power_ROC, y = power_wAFROC)) +
   geom_line(data = df, linewidth = 2)+
   scale_color_manual(values = "black") + 
@@ -368,10 +355,8 @@ The fitting model is defined by `muNH` = `r muNH`,  `lambdaNH` = `r lambdaNH`  a
 The code applies `StSignificanceTesting()` to `frocNhData`, using `FOM = "wAFROC"` and extracts the variance components.
 
 ```{r}
-varComp_wafroc  <- StSignificanceTesting(
-  frocNhData, 
-  FOM = "wAFROC", 
-  method = "OR", 
+varComp_afroc  <- StSignificanceTesting(
+  frocNhData, FOM = "wAFROC", method = "DBM", 
   analysisOption = "RRRC")$ANOVA$VarCom
 ```
 
@@ -388,17 +373,14 @@ SsPowerGivenJK(
   J,
   K,
   effectSize = NULL,
+  method = "OR",
+  analysisOption = "RRRC",
+  LegacyCode = FALSE,
   alpha = 0.05
 )
 ```
 
-The function `SsPowerGivenJK` used below returns the power for specified effect size, numbers of readers and cases, and variance components (supplied as a `list` via the `...` argument). The used default options are: 
-
-```
-method = "OR" 
-analysisOption = "RRRC" 
-LegacyCode = FALSE
-```
+The function `SsPowerGivenJK` used below returns the power for specified effect size, numbers of readers and cases, and variance components (supplied as a `list` via the `...` argument).
 
 
 ```{r, attr.source = ".numberLines"}
@@ -406,23 +388,20 @@ effectSizeROC <- 0.05
 effectSizewAFROC <- scaleFactor * effectSizeROC
 J <- 5;K <- 100
 
+varYTR_afroc <- varComp_afroc["VarTR","Estimates"] 
+varYTC_afroc <- varComp_afroc["VarTC","Estimates"]
+varYEps_afroc <- varComp_afroc["VarErr","Estimates"]
 ret <- SsPowerGivenJK(
-  dataset = NULL, 
-  FOM = "Wilcoxon", 
-  J = J, 
-  K = K, 
-  effectSize = effectSizewAFROC, 
-    list(JStar = 4, KStar = 200, 
-         VarTR = varTR_wafroc,
-         Cov1 = Cov1_wafroc,
-         Cov2 = Cov2_wafroc,
-         Cov3 = Cov3_wafroc,
-         Var = Var_wafroc))
-power_wafroc <- ret$powerRRRC
+  dataset = NULL, FOM = "Wilcoxon", J = J, K = K, analysisOption = "RRRC", 
+  effectSize = effectSizewAFROC, method = "DBM", LegacyCode = TRUE, 
+  list(VarTR = varYTR_afroc,
+  VarTC = varYTC_afroc,
+  VarErr = varYEps_afroc))
+power_afroc <- ret$powerRRRC
 
 cat("ROC-ES = ", effectSizeROC, 
     ", wAFROC-ES = ", effectSizeROC * scaleFactor, 
-    ", Power-wAFROC = ", power_wafroc, "\n")
+    ", Power-wAFROC = ", power_afroc, "\n")
 ```
 
 
@@ -435,8 +414,11 @@ SsSampleSizeKGivenJ(
   J,
   FOM,
   effectSize = NULL,
+  method = "OR",
   alpha = 0.05,
   desiredPower = 0.8,
+  analysisOption = "RRRC",
+  LegacyCode = FALSE
 )
 ```
 
@@ -444,16 +426,14 @@ The function `SsSampleSizeKGivenJ` returns the number of cases needed for desire
 
 
 ```{r, attr.source = ".numberLines"}
+VarTR_afroc <- varComp_afroc["VarTR","Estimates"] 
+VarTC_afroc <- varComp_afroc["VarTC","Estimates"]
+VarErr_afroc <- varComp_afroc["VarErr","Estimates"]
 ret2 <- SsSampleSizeKGivenJ(
-  dataset = NULL, 
-  J = 6, 
+  dataset = NULL, J = 6, 
   effectSize = effectSizewAFROC, 
-  list(JStar = 4, KStar = 200, 
-       VarTR = varTR_wafroc,
-       Cov1 = Cov1_wafroc,
-       Cov2 = Cov2_wafroc,
-       Cov3 = Cov3_wafroc,
-       Var = Var_wafroc))
+  method = "DBM", LegacyCode = TRUE,
+  list(VarTR = VarTR_afroc, VarTC = VarTC_afroc, VarErr = VarErr_afroc))
 
 cat("ROC-ES = ", effectSizeROC, 
     ", wAFROC-ES = ", effectSizeROC * scaleFactor, 
