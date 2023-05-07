@@ -1,18 +1,29 @@
 frocSampleSize <- function (NHdataset, J, K, lesDistr, effectSizeROC) {
-
+  
+  ret1 <- StSignificanceTesting(DfFroc2Roc(NHdataset), FOM = "Wilcoxon")
+  ret2 <- StSignificanceTesting(NHdataset, FOM = "wAFROC")
+  # if (x$RRRC$FTests$p[1] < 0.05) cat("This is not a NH dataset")
+  
   JStar <- length(NHdataset$ratings$NL[1,,1,1])
   KStar <- length(NHdataset$ratings$NL[1,1,,1])
 
   if (missing(lesDistr)) {
     lesDistr <- UtilLesDistr(NHdataset)
+  } else {
+    lesDistr1 <- UtilLesDistr(NHdataset)
+    if (is.vector(lesDistr)) {
+      lesDistr <- UtilLesDistr(lesDistr)
+    }
+    if(length(lesDistr1$Freq) != length(lesDistr$Freq))
+      stop("lesDistr length must match that of dataset")
   }
   
-  ret <- SsFrocNhRsmModel(NHdataset, lesDistr = lesDistr$Freq)
+  ret <- SsFrocNhRsmModel(DfFroc2Roc(NHdataset), lesDistr = lesDistr$Freq)
   muNH <- ret$mu
   lambdaNH <- ret$lambda
   nuNH <- ret$nu
   scaleFactor <- ret$scaleFactor
-  effectSizewAFROC <- effectSizeROC*scaleFactor$coefficients[1]
+  effectSizewAFROC <- effectSizeROC*scaleFactor
   
   RocDatasetBin <- DfBinDataset(DfFroc2Roc(NHdataset), opChType = "ROC")
   varComp_roc <- UtilVarComponentsOR(
@@ -45,7 +56,7 @@ frocSampleSize <- function (NHdataset, J, K, lesDistr, effectSizeROC) {
     FOM = "Wilcoxon", 
     J = JPivot, 
     K = KPivot, 
-    effectSize = effectSizeROC[i], 
+    effectSize = effectSizeROC, 
     list(JStar = JStar, KStar = KStar, 
          VarTR = varTR_roc,
          Cov1 = Cov1_roc,
@@ -60,7 +71,7 @@ frocSampleSize <- function (NHdataset, J, K, lesDistr, effectSizeROC) {
     FOM = "wAFROC", 
     J = JPivot, 
     K = KPivot, 
-    effectSize = effectSizewAFROC[i], 
+    effectSize = effectSizewAFROC, 
     list(JStar = JStar, KStar = KStar, 
          VarTR = varTR_wafroc,
          Cov1 = Cov1_wafroc,
@@ -70,6 +81,7 @@ frocSampleSize <- function (NHdataset, J, K, lesDistr, effectSizeROC) {
   power_wafroc <- ret$powerRRRC
   
   return(list(
+    scaleFactor = scaleFactor,
     powerRoc = power_roc,
     powerFroc = power_wafroc
   ))
