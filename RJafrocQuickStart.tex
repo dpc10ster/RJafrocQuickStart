@@ -139,7 +139,7 @@
 
 \title{The RJafroc Quick Start Book}
 \author{Dev P. Chakraborty, PhD}
-\date{2023-05-06}
+\date{2023-05-07}
 
 \begin{document}
 \maketitle
@@ -2551,6 +2551,13 @@ This chapter has described the procedure for FROC sample size estimation.
 \section{TBA Appendix}\label{tba-appendix}}
 
 This is an application to another dataset, this time projecting from a pilot ROC dataset to a pivotal FROC study. Consider \texttt{dataset02}, the Van Dyke ROC dataset. It consists of 114 cases, 45 of which are diseased, interpreted in two treatments by five radiologists using the ROC paradigm.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#frocSampleSize(dataset06, J = 5, K = 100, lesDistr = UtilLesDistr(dataset06), effectSizeROC = 0.05)}
+\CommentTok{\#frocSampleSize(dataset01, J = 5, K = 100, effectSizeROC = 0.05)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{part-software-details}{%
 \part*{Software details}\label{part-software-details}}

@@ -500,6 +500,12 @@ This chapter has described the procedure for FROC sample size estimation.
 This is an application to another dataset, this time projecting from a pilot ROC dataset to a pivotal FROC study. Consider `dataset02`, the Van Dyke ROC dataset. It consists of 114 cases, 45 of which are diseased, interpreted in two treatments by five radiologists using the ROC paradigm. 
 
 
+```r
+#frocSampleSize(dataset06, J = 5, K = 100, lesDistr = UtilLesDistr(dataset06), effectSizeROC = 0.05)
+#frocSampleSize(dataset01, J = 5, K = 100, effectSizeROC = 0.05)
+```
+
+
 
 
 
