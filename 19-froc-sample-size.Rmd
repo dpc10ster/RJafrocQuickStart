@@ -493,6 +493,7 @@ cat("ROC-ES = ", effectSizeROC,
 ```
 
 
+Here `K80RRRC` is the number of cases needed for 80 percent power under RRRC analysis.
 
 
 ## Discussion
@@ -500,16 +501,121 @@ cat("ROC-ES = ", effectSizeROC,
 This chapter has described the procedure for FROC sample size estimation.
 
 
-## TBA Appendix
+## Application to all available FROC datasets
 
-This is an application to another dataset, this time projecting from a pilot ROC dataset to a pivotal FROC study. Consider `dataset02`, the Van Dyke ROC dataset. It consists of 114 cases, 45 of which are diseased, interpreted in two treatments by five radiologists using the ROC paradigm. 
+This is an application of the method to all my available FROC datasets. 
 
-```{r}
-#frocSampleSize(dataset06, J = 5, K = 100, effectSizeROC = 0.05)
-#frocSampleSize(dataset01, J = 5, K = 100, effectSizeROC = 0.05)
-#frocSampleSize(dataset05, J = 5, K = 100, effectSizeROC = 0.05)
-#frocSampleSize(DfExtractDataset(dataset07, trts = c(1,5)), J = 5, K = 100, effectSizeROC = 0.05)
-#frocSampleSize(DfExtractDataset(dataset11, trts = c(3,4)), J = 5, K = 100, effectSizeROC = 0.05)
+
+### TONY dataset
+
+
+```{r, echo=FALSE, cache=TRUE}
+ds <- dataset01
+cat("ds = dataset01", 
+", Name = ", ds$descriptions$name, 
+", I = ", length(ds$ratings$NL[,1,1,1]), 
+", J = ", length(ds$ratings$NL[1,,1,1]), 
+"\n\n")
+
+frocSampleSize(ds, J = 5, K = 100, effectSizeROC = 0.07)
+```
+
+### FED dataset, all data and NH treatments only
+
+```{r, echo=FALSE, cache=TRUE}
+ds <- dataset04
+cat("ds = dataset04", 
+", Name = ", ds$descriptions$name, 
+", I = ", length(ds$ratings$NL[,1,1,1]), 
+", J = ", length(ds$ratings$NL[1,,1,1]), 
+"\n\n")
+
+cat("All data", "\n\n")
+frocSampleSize(ds, J = 5, K = 100, effectSizeROC = 0.05)
+
+cat("NH treatments only", "\n\n")
+frocSampleSize(DfExtractDataset(ds, trts = c(1,2)), J = 5, K = 100, effectSizeROC = 0.05)
+```
+
+
+### THOMPSON dataset
+
+```{r, echo=FALSE, cache=TRUE}
+ds <- dataset05
+cat("ds = dataset05", 
+", Name = ", ds$descriptions$name, 
+", I = ", length(ds$ratings$NL[,1,1,1]), 
+", J = ", length(ds$ratings$NL[1,,1,1]), 
+"\n\n")
+
+frocSampleSize(ds, J = 5, K = 100, effectSizeROC = 0.05)
+```
+
+
+### MAGNUS dataset
+
+```{r, echo=FALSE, cache=TRUE}
+ds <- dataset06
+cat("ds = dataset06", 
+", Name = ", ds$descriptions$name, 
+", I = ", length(ds$ratings$NL[,1,1,1]), 
+", J = ", length(ds$ratings$NL[1,,1,1]), 
+"\n\n")
+
+frocSampleSize(ds, J = 5, K = 100, effectSizeROC = 0.05)
+```
+
+### LUCY dataset
+
+```{r, echo=FALSE, cache=TRUE}
+ds <- dataset07
+cat("ds = dataset07", 
+", Name = ", ds$descriptions$name, 
+", I = ", length(ds$ratings$NL[,1,1,1]), 
+", J = ", length(ds$ratings$NL[1,,1,1]), 
+"\n\n")
+
+cat("All data", "\n")
+frocSampleSize(ds, J = 5, K = 100, effectSizeROC = 0.06)
+
+cat("NH treatments only", "\n")
+frocSampleSize(DfExtractDataset(ds, trts = c(1,5)), J = 5, K = 100, effectSizeROC = 0.06)
+```
+
+### DOBBINS I dataset
+
+```{r, echo=FALSE, cache=TRUE}
+
+ds <- dataset11
+cat("ds = dataset11", 
+", Name = ", ds$descriptions$name, 
+", I = ", length(ds$ratings$NL[,1,1,1]), 
+", J = ", length(ds$ratings$NL[1,,1,1]), 
+"\n\n")
+
+cat("All data", "\n")
+frocSampleSize(ds, J = 5, K = 100, effectSizeROC = 0.03)
+
+cat("NH treatments only", "\n")
+frocSampleSize(DfExtractDataset(ds, trts = c(3,4)), J = 5, K = 100, effectSizeROC = 0.03)
+```
+
+### DOBBINS III dataset
+
+
+```{r, echo=FALSE, cache=TRUE}
+ds <- dataset13
+cat("ds = dataset13", 
+", Name = ", ds$descriptions$name, 
+", I = ", length(ds$ratings$NL[,1,1,1]), 
+", J = ", length(ds$ratings$NL[1,,1,1]), 
+"\n\n")
+
+cat("All data", "\n")
+frocSampleSize(ds, J = 5, K = 100, effectSizeROC = 0.05)
+
+cat("NH treatments only", "\n")
+frocSampleSize(DfExtractDataset(ds, trts = c(3,4)), J = 5, K = 100, effectSizeROC = 0.05)
 ```
 
 

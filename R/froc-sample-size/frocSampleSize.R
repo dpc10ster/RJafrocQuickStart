@@ -1,4 +1,4 @@
-frocSampleSize <- function (NHdataset, JPivot, KPivot, lesDistr, effectSizeROC) {
+frocSampleSize <- function (NHdataset, effectSizeROC, JPivot, KPivot, lesDistr) {
   
   # ret1 <- StSignificanceTesting(DfFroc2Roc(NHdataset), FOM = "Wilcoxon")
   # ret2 <- StSignificanceTesting(NHdataset, FOM = "wAFROC")
@@ -82,6 +82,7 @@ frocSampleSize <- function (NHdataset, JPivot, KPivot, lesDistr, effectSizeROC) 
   power_wafroc <- ret$powerRRRC
   
   return(list(
+    effectSizeROC = effectSizeROC,
     scaleFactor = scaleFactor,
     powerRoc = power_roc,
     powerFroc = power_wafroc
