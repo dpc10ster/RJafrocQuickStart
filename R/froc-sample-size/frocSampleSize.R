@@ -1,8 +1,9 @@
-frocSampleSize <- function (NHdataset, J, K, lesDistr, effectSizeROC) {
+frocSampleSize <- function (NHdataset, JPivot, KPivot, lesDistr, effectSizeROC) {
   
-  ret1 <- StSignificanceTesting(DfFroc2Roc(NHdataset), FOM = "Wilcoxon")
-  ret2 <- StSignificanceTesting(NHdataset, FOM = "wAFROC")
-  # if (x$RRRC$FTests$p[1] < 0.05) cat("This is not a NH dataset")
+  # ret1 <- StSignificanceTesting(DfFroc2Roc(NHdataset), FOM = "Wilcoxon")
+  # ret2 <- StSignificanceTesting(NHdataset, FOM = "wAFROC")
+  # if (ret1$RRRC$FTests$p[1] < 0.05) cat("This is not a NH dataset")
+  # if (ret2$RRRC$FTests$p[1] < 0.05) cat("This is not a NH dataset")
   
   JStar <- length(NHdataset$ratings$NL[1,,1,1])
   KStar <- length(NHdataset$ratings$NL[1,1,,1])
