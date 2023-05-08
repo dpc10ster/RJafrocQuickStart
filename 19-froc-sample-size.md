@@ -8,9 +8,6 @@
 
 
 
-```r
-source(here("R/froc-sample-size/frocSampleSize.R"))
-```
 
 ## How much finished 40 percent {#froc-sample-size-how-much-finished}
 
@@ -182,18 +179,27 @@ The AUCs are: `aucRocNH = 0.8791542` and `aucwAfrocNH = 0.7198615`. Note that th
 
 #### Compute ROC and wAFROC AH AUCs for a range of ROC-AUC effect sizes
 
-To define the alternative hypothesis (AH) condition, one increments $\mu_{NH}$ by $\Delta_{\mu}$. The resulting ROC-AUC and wAFROC-AUC are calculated. One calculates the effect size (AH value minus NH value) using ROC and wAFROC FOMs for a series of specified `deltaMu` values. This generates values that can be used to relate the wAFROC effect size for a specified ROC effect size. 
+To define the alternative hypothesis (AH) condition, one increments $\mu_{NH}$ by $\Delta_{\mu}$. It is not enough to simply increase the $\mu$ parameter as increasing it simultaneously decreases $\lambda$ and increase $\nu$. To account for this one extracts the intrinsic parameters $\lambda_i, \nu_i$ at line 7 and then converts back to the physical parameters at line 9 using the incremented $\mu$. Note the usage of the functions The resulting ROC-AUC and wAFROC-AUC are calculated. One calculates the effect size (AH value minus NH value) using ROC and wAFROC FOMs for a series of specified `deltaMu` values. This generates values that can be used to relate the wAFROC effect size for a specified ROC effect size. 
 
 
 
-```r
-deltaMu <- seq(0.01, 0.2, 0.01) # values of deltaMu to scan below
-esRoc <- array(dim = length(deltaMu));eswAfroc <- array(dim = length(deltaMu))
+```{.r .numberLines}
+deltaMu <- seq(0.01, 0.2, 0.01)
+esROC <- array(dim = length(deltaMu))
+eswAFROC <- array(dim = length(deltaMu))
 for (i in 1:length(deltaMu)) {
-  esRoc[i] <- UtilAnalyticalAucsRSM(
-    muNH + deltaMu[i], lambdaNH, nuNH, lesDistr = lesDistr$Freq)$aucROC - aucRocNH
-  eswAfroc[i] <- UtilAnalyticalAucsRSM(
-    muNH+ deltaMu[i], lambdaNH, nuNH, lesDistr = lesDistr$Freq)$aucwAFROC - aucwAfrocNH
+  
+  # get intrinsic parameters
+  par_i <- Util2Intrinsic(muNH, lambdaNH, nuNH) # intrinsic
+  # find physical parameters for increased muNH accounting for combined change
+  par_p <- Util2Physical(muNH + deltaMu[i], par_i$lambda_i, par_i$nu_i)  # physical
+  
+  esROC[i] <- UtilAnalyticalAucsRSM(
+    muNH + deltaMu[i], par_p$lambda, par_p$nu, lesDistr = lesDistr$Freq)$aucROC - aucRocNH
+  
+  eswAFROC[i] <- UtilAnalyticalAucsRSM(
+    muNH + deltaMu[i], par_p$lambda, par_p$nu, lesDistr = lesDistr$Freq)$aucwAFROC - aucwAfrocNH
+  
 }
 ```
 
@@ -202,28 +208,28 @@ Here is a plot of wAFROC effect size (y-axis) vs. ROC effect size.
 
 
 <div class="figure" style="text-align: center">
-<img src="19-froc-sample-size_files/figure-html/unnamed-chunk-12-1.png" alt="Plot of wAFROC effect size vs. ROC effect size. The straight line fit through the origin has slope 1.2620812." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-12)Plot of wAFROC effect size vs. ROC effect size. The straight line fit through the origin has slope 1.2620812.</p>
+<img src="19-froc-sample-size_files/figure-html/unnamed-chunk-12-1.png" alt="Plot of wAFROC effect size vs. ROC effect size. The straight line fit through the origin has slope 2.169." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-12)Plot of wAFROC effect size vs. ROC effect size. The straight line fit through the origin has slope 2.169.</p>
 </div>
 
 
-The plot is linear and the intercept is close to zero. This makes it easy to implement an interpolation function. In the following code line 1 fits `eswAfroc` vs. `esRoc` using a linear model `lm()` function constrained to pass through the origin (the "-1"). One expects this constraint since for `deltaMu = 0` the effect size must be zero no matter how it is measured. 
+The plot is linear and the intercept is close to zero. This makes it easy to implement an interpolation function. In the following code line 1 fits `eswAFROC` vs. `esROC` using a linear model `lm()` function constrained to pass through the origin (the "-1"). One expects this constraint since for `deltaMu = 0` the effect size must be zero no matter how it is measured. 
 
 
 ```{.r .numberLines}
-scaleFactor<-lm(eswAfroc ~ -1 + esRoc) # the "-1" fits to straight line through the origin
-effectSizeROC <- seq(0.01, 0.105, 0.005) # length 20 vector
+scaleFactor <- lm(eswAFROC ~ -1 + esROC) # the "-1" fits to straight line through the origin
+effectSizeROC <- seq(0.01, 0.0525, 0.0025) 
 effectSizewAFROC <- effectSizeROC*scaleFactor$coefficients[1]
 ```
 
 
-The slope of the zero-intercept constrained straight line fit is `scaleFactor` = 1.262 and the squared correlation coefficient is `R2` = 0.9999997 (the fit is very good). Therefore, the conversion from ROC to wAFROC effect size is: 
+The slope of the zero-intercept constrained straight line fit is `scaleFactor` = 2.169 and the squared correlation coefficient is `R2` = 0.9999904 (the fit is very good). Therefore, the conversion from ROC to wAFROC effect size is: 
 
 ```
 effectSizewAFROC = scaleFactor * effectSizeROC
 ```
 
-**For this dataset the wAFROC effect size is 1.262 times the ROC effect size.** The wAFROC effect size is expected to be larger than the ROC effect size because the range of wAFROC-AUC, $1-0=1$, is twice that of ROC-AUC, $1-0.5=0.5$.
+**For this dataset the wAFROC effect size is 2.169 times the ROC effect size.** The wAFROC effect size is expected to be larger than the ROC effect size because the range of wAFROC-AUC, $1-0=1$, is twice that of ROC-AUC, $1-0.5=0.5$.
 
 
 ### ROC and wAFROC variance components
@@ -331,20 +337,32 @@ for (i in 1:length(effectSizeROC)) {
          Var = Var_wafroc))
   power_wafroc[i] <- ret$powerRRRC
   
+  if (i == 11)
+  cat("effectSizeROC[i] = ", effectSizeROC[i],
+      "\neffectSizewAFROC[i] = ", effectSizewAFROC[i],
+      "\npower_roc[i] = ", power_roc[i],
+      "\npower_wafroc[i] = ", power_wafroc[i], "\n")  
 }
+```
+
+```
+## effectSizeROC[i] =  0.035 
+## effectSizewAFROC[i] =  0.07592683 
+## power_roc[i] =  0.2342887 
+## power_wafroc[i] =  0.7972542
 ```
 
 
 Lines 2-4 extract the variance components using the ROC-AUC figure of merit. Lines 7-9 extract the variance components using the wAFROC-AUC figure of merit. These are passed to `SsPowerGivenJK` at lines 27 and 30, respectively. Line 14 defines the number of readers and cases in the pivotal study. The for-loop calculates ROC power (line 28) and wAFROC power (line 31).
 
-Since the wAFROC effect size is 1.26 times the ROC effect size, wAFROC power is larger than that for ROC. For example, for ROC effect size = 0.06 the wAFROC effect size is 0.075724872, the ROC power is 0.55738123 while the wAFROC power is 0.79517494. The effect size difference is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC 
+Since the wAFROC effect size is 2.169 times the ROC effect size, wAFROC power is larger than that for ROC. For example, for ROC effect size = 0.035 the wAFROC effect size is 0.076, the ROC power is 0.234 while the wAFROC power is 0.797. The influence of the increased wAFROC effect size is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC 
 
 The following is a plot of the respective powers.
 
 
 <div class="figure" style="text-align: center">
-<img src="19-froc-sample-size_files/figure-html/unnamed-chunk-17-1.png" alt="Plot of wAFROC power vs. ROC power. For ROC effect size = 0.06 the wAFROC effect size is 0.075724872, the ROC power is 0.55738123 while the wAFROC power is 0.79517494." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-17)Plot of wAFROC power vs. ROC power. For ROC effect size = 0.06 the wAFROC effect size is 0.075724872, the ROC power is 0.55738123 while the wAFROC power is 0.79517494.</p>
+<img src="19-froc-sample-size_files/figure-html/unnamed-chunk-17-1.png" alt="Plot of wAFROC power vs. ROC power. For ROC effect size = 0.035 the wAFROC effect size is 0.0759, the ROC power is 0.234 while the wAFROC power is 0.797" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-17)Plot of wAFROC power vs. ROC power. For ROC effect size = 0.035 the wAFROC effect size is 0.0759, the ROC power is 0.234 while the wAFROC power is 0.797</p>
 </div>
 
 
@@ -374,7 +392,7 @@ scaleFactor <- ret$scaleFactor
 ```
 
 
-The fitting model is defined by `muNH` = 3.3121519,  `lambdaNH` = 1.714368  and  `nuNH` = 0.7036564 and `lesDistr$Freq` = 0.69, 0.2, 0.11. The effect size scale factor is `scaleFactor` = 1.2617239. All of these are identical to the Part I values.
+The fitting model is defined by `muNH` = 3.3121519,  `lambdaNH` = 1.714368  and  `nuNH` = 0.7036564 and `lesDistr$Freq` = 0.69, 0.2, 0.11. The effect size scale factor is `scaleFactor` = 2.1693379. All of these are identical to the Part I values.
 
 
 ### Extract the wAFROC variance components  {#froc-sample-size-variance-components}
@@ -443,7 +461,7 @@ cat("ROC-ES = ", effectSizeROC,
 ```
 
 ```
-## ROC-ES =  0.05 , wAFROC-ES =  0.063086196 , Power-wAFROC =  0.6420946
+## ROC-ES =  0.05 , wAFROC-ES =  0.10846689 , Power-wAFROC =  0.97777633
 ```
 
 
@@ -484,7 +502,7 @@ cat("ROC-ES = ", effectSizeROC,
 ```
 
 ```
-## ROC-ES =  0.05 , wAFROC-ES =  0.063086196 , K80RRRC =  121 , Power-wAFROC =  0.80022333
+## ROC-ES =  0.05 , wAFROC-ES =  0.10846689 , K80RRRC =  41 , Power-wAFROC =  0.80087319
 ```
 
 
@@ -501,8 +519,11 @@ This is an application to another dataset, this time projecting from a pilot ROC
 
 
 ```r
-#frocSampleSize(dataset06, J = 5, K = 100, lesDistr = UtilLesDistr(dataset06), effectSizeROC = 0.05)
+#frocSampleSize(dataset06, J = 5, K = 100, effectSizeROC = 0.05)
 #frocSampleSize(dataset01, J = 5, K = 100, effectSizeROC = 0.05)
+#frocSampleSize(dataset05, J = 5, K = 100, effectSizeROC = 0.05)
+#frocSampleSize(DfExtractDataset(dataset07, trts = c(1,5)), J = 5, K = 100, effectSizeROC = 0.05)
+#frocSampleSize(DfExtractDataset(dataset11, trts = c(3,4)), J = 5, K = 100, effectSizeROC = 0.05)
 ```
 
 
