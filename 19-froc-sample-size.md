@@ -506,6 +506,7 @@ cat("ROC-ES = ", effectSizeROC,
 ```
 
 
+Here `K80RRRC` is the number of cases needed for 80 percent power under RRRC analysis.
 
 
 ## Discussion
@@ -513,17 +514,248 @@ cat("ROC-ES = ", effectSizeROC,
 This chapter has described the procedure for FROC sample size estimation.
 
 
-## TBA Appendix
+## Application to all available FROC datasets
 
-This is an application to another dataset, this time projecting from a pilot ROC dataset to a pivotal FROC study. Consider `dataset02`, the Van Dyke ROC dataset. It consists of 114 cases, 45 of which are diseased, interpreted in two treatments by five radiologists using the ROC paradigm. 
+This is an application of the method to all my available FROC datasets. 
 
 
-```r
-#frocSampleSize(dataset06, J = 5, K = 100, effectSizeROC = 0.05)
-#frocSampleSize(dataset01, J = 5, K = 100, effectSizeROC = 0.05)
-#frocSampleSize(dataset05, J = 5, K = 100, effectSizeROC = 0.05)
-#frocSampleSize(DfExtractDataset(dataset07, trts = c(1,5)), J = 5, K = 100, effectSizeROC = 0.05)
-#frocSampleSize(DfExtractDataset(dataset11, trts = c(3,4)), J = 5, K = 100, effectSizeROC = 0.05)
+### TONY dataset
+
+
+
+```
+## ds = dataset01 , Name =  TONY , I =  2 , J =  5
+```
+
+```
+## $effectSizeROC
+## [1] 0.07
+## 
+## $scaleFactor
+## [1] 1.6123687
+## 
+## $powerRoc
+## [1] 0.36353662
+## 
+## $powerFroc
+## [1] 0.7648341
+```
+
+### FED dataset, all data and NH treatments only
+
+
+```
+## ds = dataset04 , Name =  FEDERICA , I =  5 , J =  4
+```
+
+```
+## All data
+```
+
+```
+## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 1.8536914
+## 
+## $powerRoc
+## [1] 0.49574243
+## 
+## $powerFroc
+## [1] 0.94085909
+```
+
+```
+## NH treatments only
+```
+
+```
+## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 2.1693379
+## 
+## $powerRoc
+## [1] 0.41954431
+## 
+## $powerFroc
+## [1] 0.97777633
+```
+
+
+### THOMPSON dataset
+
+
+```
+## ds = dataset05 , Name =  THOMPSON , I =  2 , J =  9
+```
+
+```
+## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 1.7822813
+## 
+## $powerRoc
+## [1] 0.36427919
+## 
+## $powerFroc
+## [1] 0.77624968
+```
+
+
+### MAGNUS dataset
+
+
+```
+## ds = dataset06 , Name =  MAGNUS , I =  2 , J =  4
+```
+
+```
+## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 2.2393454
+## 
+## $powerRoc
+## [1] 0.26755435
+## 
+## $powerFroc
+## [1] 0.86438847
+```
+
+### LUCY dataset
+
+
+```
+## ds = dataset07 , Name =  LUCY-WARREN , I =  5 , J =  7
+```
+
+```
+## All data
+```
+
+```
+## $effectSizeROC
+## [1] 0.06
+## 
+## $scaleFactor
+## [1] 1.6842733
+## 
+## $powerRoc
+## [1] 0.56994854
+## 
+## $powerFroc
+## [1] 0.73874483
+```
+
+```
+## NH treatments only
+```
+
+```
+## $effectSizeROC
+## [1] 0.06
+## 
+## $scaleFactor
+## [1] 1.5780687
+## 
+## $powerRoc
+## [1] 0.84058158
+## 
+## $powerFroc
+## [1] 0.98603209
+```
+
+### DOBBINS I dataset
+
+
+```
+## ds = dataset11 , Name =  DOBBINS-1 , I =  4 , J =  5
+```
+
+```
+## All data
+```
+
+```
+## $effectSizeROC
+## [1] 0.03
+## 
+## $scaleFactor
+## [1] 1.2364946
+## 
+## $powerRoc
+## [1] 0.15086992
+## 
+## $powerFroc
+## [1] 0.23808322
+```
+
+```
+## NH treatments only
+```
+
+```
+## $effectSizeROC
+## [1] 0.03
+## 
+## $scaleFactor
+## [1] 1.516033
+## 
+## $powerRoc
+## [1] 0.40402887
+## 
+## $powerFroc
+## [1] 0.84606715
+```
+
+### DOBBINS III dataset
+
+
+
+```
+## ds = dataset13 , Name =  DOBBINS-3 , I =  4 , J =  5
+```
+
+```
+## All data
+```
+
+```
+## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 1.5820231
+## 
+## $powerRoc
+## [1] 0.31655822
+## 
+## $powerFroc
+## [1] 0.56921093
+```
+
+```
+## NH treatments only
+```
+
+```
+## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 1.5437708
+## 
+## $powerRoc
+## [1] 0.82381447
+## 
+## $powerFroc
+## [1] 0.9987996
 ```
 
 

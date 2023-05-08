@@ -295,7 +295,16 @@ div.csl-indent {
 <li class="chapter" data-level="10.4.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#number-of-cases-for-80-percent-power-for-a-given-number-of-readers"><i class="fa fa-check"></i><b>10.4.5</b> Number of cases for 80 percent power for a given number of readers</a></li>
 </ul></li>
 <li class="chapter" data-level="10.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#discussion"><i class="fa fa-check"></i><b>10.5</b> Discussion</a></li>
-<li class="chapter" data-level="10.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#tba-appendix"><i class="fa fa-check"></i><b>10.6</b> TBA Appendix</a></li>
+<li class="chapter" data-level="10.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#application-to-all-available-froc-datasets"><i class="fa fa-check"></i><b>10.6</b> Application to all available FROC datasets</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#tony-dataset"><i class="fa fa-check"></i><b>10.6.1</b> TONY dataset</a></li>
+<li class="chapter" data-level="10.6.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#fed-dataset-all-data-and-nh-treatments-only"><i class="fa fa-check"></i><b>10.6.2</b> FED dataset, all data and NH treatments only</a></li>
+<li class="chapter" data-level="10.6.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#thompson-dataset"><i class="fa fa-check"></i><b>10.6.3</b> THOMPSON dataset</a></li>
+<li class="chapter" data-level="10.6.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#magnus-dataset"><i class="fa fa-check"></i><b>10.6.4</b> MAGNUS dataset</a></li>
+<li class="chapter" data-level="10.6.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#lucy-dataset"><i class="fa fa-check"></i><b>10.6.5</b> LUCY dataset</a></li>
+<li class="chapter" data-level="10.6.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#dobbins-i-dataset"><i class="fa fa-check"></i><b>10.6.6</b> DOBBINS I dataset</a></li>
+<li class="chapter" data-level="10.6.7" data-path="froc-sample-size.html"><a href="froc-sample-size.html#dobbins-iii-dataset"><i class="fa fa-check"></i><b>10.6.7</b> DOBBINS III dataset</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>Software details</b></span></li>
 <li class="chapter" data-level="11" data-path="dataset-object-details.html"><a href="dataset-object-details.html"><i class="fa fa-check"></i><b>11</b> Excel file and dataset details</a>
@@ -698,21 +707,174 @@ LegacyCode = FALSE</code></pre>
 <span id="cb61-14"><a href="froc-sample-size.html#cb61-14"></a>    <span class="st">&quot;, K80RRRC = &quot;</span>, ret2<span class="sc">$</span>KRRRC, </span>
 <span id="cb61-15"><a href="froc-sample-size.html#cb61-15"></a>    <span class="st">&quot;, Power-wAFROC = &quot;</span>, ret2<span class="sc">$</span>powerRRRC, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## ROC-ES =  0.05 , wAFROC-ES =  0.10846689 , K80RRRC =  41 , Power-wAFROC =  0.80087319</code></pre>
+<p>Here <code>K80RRRC</code> is the number of cases needed for 80 percent power under RRRC analysis.</p>
 </div>
 </div>
 <div id="discussion" class="section level2 hasAnchor" number="10.5">
 <h2><span class="header-section-number">10.5</span> Discussion<a href="froc-sample-size.html#discussion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This chapter has described the procedure for FROC sample size estimation.</p>
 </div>
-<div id="tba-appendix" class="section level2 hasAnchor" number="10.6">
-<h2><span class="header-section-number">10.6</span> TBA Appendix<a href="froc-sample-size.html#tba-appendix" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This is an application to another dataset, this time projecting from a pilot ROC dataset to a pivotal FROC study. Consider <code>dataset02</code>, the Van Dyke ROC dataset. It consists of 114 cases, 45 of which are diseased, interpreted in two treatments by five radiologists using the ROC paradigm.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="froc-sample-size.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co">#frocSampleSize(dataset06, J = 5, K = 100, effectSizeROC = 0.05)</span></span>
-<span id="cb63-2"><a href="froc-sample-size.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="co">#frocSampleSize(dataset01, J = 5, K = 100, effectSizeROC = 0.05)</span></span>
-<span id="cb63-3"><a href="froc-sample-size.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co">#frocSampleSize(dataset05, J = 5, K = 100, effectSizeROC = 0.05)</span></span>
-<span id="cb63-4"><a href="froc-sample-size.html#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="co">#frocSampleSize(DfExtractDataset(dataset07, trts = c(1,5)), J = 5, K = 100, effectSizeROC = 0.05)</span></span>
-<span id="cb63-5"><a href="froc-sample-size.html#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co">#frocSampleSize(DfExtractDataset(dataset11, trts = c(3,4)), J = 5, K = 100, effectSizeROC = 0.05)</span></span></code></pre></div>
+<div id="application-to-all-available-froc-datasets" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> Application to all available FROC datasets<a href="froc-sample-size.html#application-to-all-available-froc-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This is an application of the method to all my available FROC datasets.</p>
+<div id="tony-dataset" class="section level3 hasAnchor" number="10.6.1">
+<h3><span class="header-section-number">10.6.1</span> TONY dataset<a href="froc-sample-size.html#tony-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>## ds = dataset01 , Name =  TONY , I =  2 , J =  5</code></pre>
+<pre><code>## $effectSizeROC
+## [1] 0.07
+## 
+## $scaleFactor
+## [1] 1.6123687
+## 
+## $powerRoc
+## [1] 0.36353662
+## 
+## $powerFroc
+## [1] 0.7648341</code></pre>
+</div>
+<div id="fed-dataset-all-data-and-nh-treatments-only" class="section level3 hasAnchor" number="10.6.2">
+<h3><span class="header-section-number">10.6.2</span> FED dataset, all data and NH treatments only<a href="froc-sample-size.html#fed-dataset-all-data-and-nh-treatments-only" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>## ds = dataset04 , Name =  FEDERICA , I =  5 , J =  4</code></pre>
+<pre><code>## All data</code></pre>
+<pre><code>## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 1.8536914
+## 
+## $powerRoc
+## [1] 0.49574243
+## 
+## $powerFroc
+## [1] 0.94085909</code></pre>
+<pre><code>## NH treatments only</code></pre>
+<pre><code>## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 2.1693379
+## 
+## $powerRoc
+## [1] 0.41954431
+## 
+## $powerFroc
+## [1] 0.97777633</code></pre>
+</div>
+<div id="thompson-dataset" class="section level3 hasAnchor" number="10.6.3">
+<h3><span class="header-section-number">10.6.3</span> THOMPSON dataset<a href="froc-sample-size.html#thompson-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>## ds = dataset05 , Name =  THOMPSON , I =  2 , J =  9</code></pre>
+<pre><code>## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 1.7822813
+## 
+## $powerRoc
+## [1] 0.36427919
+## 
+## $powerFroc
+## [1] 0.77624968</code></pre>
+</div>
+<div id="magnus-dataset" class="section level3 hasAnchor" number="10.6.4">
+<h3><span class="header-section-number">10.6.4</span> MAGNUS dataset<a href="froc-sample-size.html#magnus-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>## ds = dataset06 , Name =  MAGNUS , I =  2 , J =  4</code></pre>
+<pre><code>## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 2.2393454
+## 
+## $powerRoc
+## [1] 0.26755435
+## 
+## $powerFroc
+## [1] 0.86438847</code></pre>
+</div>
+<div id="lucy-dataset" class="section level3 hasAnchor" number="10.6.5">
+<h3><span class="header-section-number">10.6.5</span> LUCY dataset<a href="froc-sample-size.html#lucy-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>## ds = dataset07 , Name =  LUCY-WARREN , I =  5 , J =  7</code></pre>
+<pre><code>## All data</code></pre>
+<pre><code>## $effectSizeROC
+## [1] 0.06
+## 
+## $scaleFactor
+## [1] 1.6842733
+## 
+## $powerRoc
+## [1] 0.56994854
+## 
+## $powerFroc
+## [1] 0.73874483</code></pre>
+<pre><code>## NH treatments only</code></pre>
+<pre><code>## $effectSizeROC
+## [1] 0.06
+## 
+## $scaleFactor
+## [1] 1.5780687
+## 
+## $powerRoc
+## [1] 0.84058158
+## 
+## $powerFroc
+## [1] 0.98603209</code></pre>
+</div>
+<div id="dobbins-i-dataset" class="section level3 hasAnchor" number="10.6.6">
+<h3><span class="header-section-number">10.6.6</span> DOBBINS I dataset<a href="froc-sample-size.html#dobbins-i-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>## ds = dataset11 , Name =  DOBBINS-1 , I =  4 , J =  5</code></pre>
+<pre><code>## All data</code></pre>
+<pre><code>## $effectSizeROC
+## [1] 0.03
+## 
+## $scaleFactor
+## [1] 1.2364946
+## 
+## $powerRoc
+## [1] 0.15086992
+## 
+## $powerFroc
+## [1] 0.23808322</code></pre>
+<pre><code>## NH treatments only</code></pre>
+<pre><code>## $effectSizeROC
+## [1] 0.03
+## 
+## $scaleFactor
+## [1] 1.516033
+## 
+## $powerRoc
+## [1] 0.40402887
+## 
+## $powerFroc
+## [1] 0.84606715</code></pre>
+</div>
+<div id="dobbins-iii-dataset" class="section level3 hasAnchor" number="10.6.7">
+<h3><span class="header-section-number">10.6.7</span> DOBBINS III dataset<a href="froc-sample-size.html#dobbins-iii-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>## ds = dataset13 , Name =  DOBBINS-3 , I =  4 , J =  5</code></pre>
+<pre><code>## All data</code></pre>
+<pre><code>## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 1.5820231
+## 
+## $powerRoc
+## [1] 0.31655822
+## 
+## $powerFroc
+## [1] 0.56921093</code></pre>
+<pre><code>## NH treatments only</code></pre>
+<pre><code>## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 1.5437708
+## 
+## $powerRoc
+## [1] 0.82381447
+## 
+## $powerFroc
+## [1] 0.9987996</code></pre>
 
+</div>
 </div>
 </div>
 

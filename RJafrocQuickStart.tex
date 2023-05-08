@@ -2557,25 +2557,252 @@ The function \texttt{SsSampleSizeKGivenJ} returns the number of cases needed for
 ## ROC-ES =  0.05 , wAFROC-ES =  0.10846689 , K80RRRC =  41 , Power-wAFROC =  0.80087319
 \end{verbatim}
 
+Here \texttt{K80RRRC} is the number of cases needed for 80 percent power under RRRC analysis.
+
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
 
 This chapter has described the procedure for FROC sample size estimation.
 
-\hypertarget{tba-appendix}{%
-\section{TBA Appendix}\label{tba-appendix}}
+\hypertarget{application-to-all-available-froc-datasets}{%
+\section{Application to all available FROC datasets}\label{application-to-all-available-froc-datasets}}
 
-This is an application to another dataset, this time projecting from a pilot ROC dataset to a pivotal FROC study. Consider \texttt{dataset02}, the Van Dyke ROC dataset. It consists of 114 cases, 45 of which are diseased, interpreted in two treatments by five radiologists using the ROC paradigm.
+This is an application of the method to all my available FROC datasets.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#frocSampleSize(dataset06, J = 5, K = 100, effectSizeROC = 0.05)}
-\CommentTok{\#frocSampleSize(dataset01, J = 5, K = 100, effectSizeROC = 0.05)}
-\CommentTok{\#frocSampleSize(dataset05, J = 5, K = 100, effectSizeROC = 0.05)}
-\CommentTok{\#frocSampleSize(DfExtractDataset(dataset07, trts = c(1,5)), J = 5, K = 100, effectSizeROC = 0.05)}
-\CommentTok{\#frocSampleSize(DfExtractDataset(dataset11, trts = c(3,4)), J = 5, K = 100, effectSizeROC = 0.05)}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{tony-dataset}{%
+\subsection{TONY dataset}\label{tony-dataset}}
+
+\begin{verbatim}
+## ds = dataset01 , Name =  TONY , I =  2 , J =  5
+\end{verbatim}
+
+\begin{verbatim}
+## $effectSizeROC
+## [1] 0.07
+## 
+## $scaleFactor
+## [1] 1.6123687
+## 
+## $powerRoc
+## [1] 0.36353662
+## 
+## $powerFroc
+## [1] 0.7648341
+\end{verbatim}
+
+\hypertarget{fed-dataset-all-data-and-nh-treatments-only}{%
+\subsection{FED dataset, all data and NH treatments only}\label{fed-dataset-all-data-and-nh-treatments-only}}
+
+\begin{verbatim}
+## ds = dataset04 , Name =  FEDERICA , I =  5 , J =  4
+\end{verbatim}
+
+\begin{verbatim}
+## All data
+\end{verbatim}
+
+\begin{verbatim}
+## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 1.8536914
+## 
+## $powerRoc
+## [1] 0.49574243
+## 
+## $powerFroc
+## [1] 0.94085909
+\end{verbatim}
+
+\begin{verbatim}
+## NH treatments only
+\end{verbatim}
+
+\begin{verbatim}
+## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 2.1693379
+## 
+## $powerRoc
+## [1] 0.41954431
+## 
+## $powerFroc
+## [1] 0.97777633
+\end{verbatim}
+
+\hypertarget{thompson-dataset}{%
+\subsection{THOMPSON dataset}\label{thompson-dataset}}
+
+\begin{verbatim}
+## ds = dataset05 , Name =  THOMPSON , I =  2 , J =  9
+\end{verbatim}
+
+\begin{verbatim}
+## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 1.7822813
+## 
+## $powerRoc
+## [1] 0.36427919
+## 
+## $powerFroc
+## [1] 0.77624968
+\end{verbatim}
+
+\hypertarget{magnus-dataset}{%
+\subsection{MAGNUS dataset}\label{magnus-dataset}}
+
+\begin{verbatim}
+## ds = dataset06 , Name =  MAGNUS , I =  2 , J =  4
+\end{verbatim}
+
+\begin{verbatim}
+## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 2.2393454
+## 
+## $powerRoc
+## [1] 0.26755435
+## 
+## $powerFroc
+## [1] 0.86438847
+\end{verbatim}
+
+\hypertarget{lucy-dataset}{%
+\subsection{LUCY dataset}\label{lucy-dataset}}
+
+\begin{verbatim}
+## ds = dataset07 , Name =  LUCY-WARREN , I =  5 , J =  7
+\end{verbatim}
+
+\begin{verbatim}
+## All data
+\end{verbatim}
+
+\begin{verbatim}
+## $effectSizeROC
+## [1] 0.06
+## 
+## $scaleFactor
+## [1] 1.6842733
+## 
+## $powerRoc
+## [1] 0.56994854
+## 
+## $powerFroc
+## [1] 0.73874483
+\end{verbatim}
+
+\begin{verbatim}
+## NH treatments only
+\end{verbatim}
+
+\begin{verbatim}
+## $effectSizeROC
+## [1] 0.06
+## 
+## $scaleFactor
+## [1] 1.5780687
+## 
+## $powerRoc
+## [1] 0.84058158
+## 
+## $powerFroc
+## [1] 0.98603209
+\end{verbatim}
+
+\hypertarget{dobbins-i-dataset}{%
+\subsection{DOBBINS I dataset}\label{dobbins-i-dataset}}
+
+\begin{verbatim}
+## ds = dataset11 , Name =  DOBBINS-1 , I =  4 , J =  5
+\end{verbatim}
+
+\begin{verbatim}
+## All data
+\end{verbatim}
+
+\begin{verbatim}
+## $effectSizeROC
+## [1] 0.03
+## 
+## $scaleFactor
+## [1] 1.2364946
+## 
+## $powerRoc
+## [1] 0.15086992
+## 
+## $powerFroc
+## [1] 0.23808322
+\end{verbatim}
+
+\begin{verbatim}
+## NH treatments only
+\end{verbatim}
+
+\begin{verbatim}
+## $effectSizeROC
+## [1] 0.03
+## 
+## $scaleFactor
+## [1] 1.516033
+## 
+## $powerRoc
+## [1] 0.40402887
+## 
+## $powerFroc
+## [1] 0.84606715
+\end{verbatim}
+
+\hypertarget{dobbins-iii-dataset}{%
+\subsection{DOBBINS III dataset}\label{dobbins-iii-dataset}}
+
+\begin{verbatim}
+## ds = dataset13 , Name =  DOBBINS-3 , I =  4 , J =  5
+\end{verbatim}
+
+\begin{verbatim}
+## All data
+\end{verbatim}
+
+\begin{verbatim}
+## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 1.5820231
+## 
+## $powerRoc
+## [1] 0.31655822
+## 
+## $powerFroc
+## [1] 0.56921093
+\end{verbatim}
+
+\begin{verbatim}
+## NH treatments only
+\end{verbatim}
+
+\begin{verbatim}
+## $effectSizeROC
+## [1] 0.05
+## 
+## $scaleFactor
+## [1] 1.5437708
+## 
+## $powerRoc
+## [1] 0.82381447
+## 
+## $powerFroc
+## [1] 0.9987996
+\end{verbatim}
 
 \hypertarget{part-software-details}{%
 \part*{Software details}\label{part-software-details}}
