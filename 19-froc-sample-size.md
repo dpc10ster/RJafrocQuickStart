@@ -509,11 +509,6 @@ cat("ROC-ES = ", effectSizeROC,
 Here `K80RRRC` is the number of cases needed for 80 percent power under RRRC analysis.
 
 
-## Discussion
-
-This chapter has described the procedure for FROC sample size estimation.
-
-
 ## Application to all available FROC datasets
 
 This is an application of the method to all my available FROC datasets. 
@@ -524,7 +519,7 @@ This is an application of the method to all my available FROC datasets.
 
 
 ```
-## ds = dataset01 , Name =  TONY , I =  2 , J =  5
+## dataset =  dataset01 , Name =  TONY , I =  2 , J =  5
 ```
 
 ```
@@ -545,7 +540,7 @@ This is an application of the method to all my available FROC datasets.
 
 
 ```
-## ds = dataset04 , Name =  FEDERICA , I =  5 , J =  4
+## dataset =  dataset04 , Name =  FEDERICA , I =  5 , J =  4
 ```
 
 ```
@@ -589,7 +584,7 @@ This is an application of the method to all my available FROC datasets.
 
 
 ```
-## ds = dataset05 , Name =  THOMPSON , I =  2 , J =  9
+## dataset =  dataset05 , Name =  THOMPSON , I =  2 , J =  9
 ```
 
 ```
@@ -611,7 +606,7 @@ This is an application of the method to all my available FROC datasets.
 
 
 ```
-## ds = dataset06 , Name =  MAGNUS , I =  2 , J =  4
+## dataset =  dataset06 , Name =  MAGNUS , I =  2 , J =  4
 ```
 
 ```
@@ -628,11 +623,11 @@ This is an application of the method to all my available FROC datasets.
 ## [1] 0.86438847
 ```
 
-### LUCY dataset
+### LUCY dataset, all data and NH treatments only
 
 
 ```
-## ds = dataset07 , Name =  LUCY-WARREN , I =  5 , J =  7
+## dataset =  dataset07 , Name =  LUCY-WARREN , I =  5 , J =  7
 ```
 
 ```
@@ -671,11 +666,11 @@ This is an application of the method to all my available FROC datasets.
 ## [1] 0.98603209
 ```
 
-### DOBBINS I dataset
+### DOBBINS-I dataset, all data and NH treatments only
 
 
 ```
-## ds = dataset11 , Name =  DOBBINS-1 , I =  4 , J =  5
+## dataset =  dataset11 , Name =  DOBBINS-1 , I =  4 , J =  5
 ```
 
 ```
@@ -714,12 +709,12 @@ This is an application of the method to all my available FROC datasets.
 ## [1] 0.84606715
 ```
 
-### DOBBINS III dataset
+### DOBBINS-III dataset, all data and NH treatments only
 
 
 
 ```
-## ds = dataset13 , Name =  DOBBINS-3 , I =  4 , J =  5
+## dataset =  dataset13 , Name =  DOBBINS-3 , I =  4 , J =  5
 ```
 
 ```
@@ -763,4 +758,10 @@ This is an application of the method to all my available FROC datasets.
 
 
 
+
+
+
+## Discussion
+
+This chapter has described the procedure for FROC sample size estimation.
 
