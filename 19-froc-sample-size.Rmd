@@ -20,18 +20,19 @@ library(here)
 #source(here("R/froc-sample-size/frocSampleSize.R"))
 ```
 
-## How much finished 40 percent {#froc-sample-size-how-much-finished}
+## How much finished 90 percent {#froc-sample-size-how-much-finished}
 
-Need to change to OR method
+Comments on reason for increased FROC power; discuss idea about separating treatments and using lower half in terms of AUC to compute the NH parameters; does this improve DOBBINS-1 performance - solve the unusually low scale factor for this dataset?
 
 ## Overview
 
-This chapter is split into two parts: 
+This chapter is split into three parts: 
 
-* The first part details a step-by-step approach to FROC paradigm sample size estimation; 
+* Part 1 is a step-by-step approach to FROC paradigm sample size estimation; 
 
-* The second part encapsulates some of the details in function `SsFrocNhRsmModel()`.
+* Part 2 encapsulates some of the details in `SsFrocNhRsmModel()`.
 
+* Part 3 uses `SsFrocSampleSize()` which simplifies the procedure to a single function call and applies it to 7 FROC datasets.
 
 
 ## Part 1
@@ -495,13 +496,14 @@ cat("ROC-ES = ", effectSizeROC,
 
 Here `K80RRRC` is the number of cases needed for 80 percent power under RRRC analysis.
 
+## Part 3
 
-## Application to all available FROC datasets
+### Application to all available FROC datasets
 
 This is an application of the method to all my available FROC datasets. 
 
 
-### TONY dataset
+#### TONY dataset
 
 
 ```{r, echo=FALSE, cache=TRUE}
@@ -511,11 +513,11 @@ cat("dataset = ", ds$descriptions$fileName,
 ", I = ", length(ds$ratings$NL[,1,1,1]), 
 ", J = ", length(ds$ratings$NL[1,,1,1]), 
 "\n\n")
-
-SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = 0.07)
+effectSizeROC <- 0.07
+SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = effectSizeROC)
 ```
 
-### FED dataset, all data and NH treatments only
+#### FED dataset, all data and NH treatments only
 
 ```{r, echo=FALSE, cache=TRUE}
 ds <- dataset04
@@ -526,14 +528,15 @@ cat("dataset = ", ds$descriptions$fileName,
 "\n\n")
 
 cat("All data", "\n\n")
-SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = 0.05)
+effectSizeROC <- 0.05
+SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = effectSizeROC)
 
 cat("NH treatments only", "\n\n")
-SsFrocSampleSize(DfExtractDataset(ds, trts = c(1,2)), J = 5, K = 100, effectSizeROC = 0.05)
+SsFrocSampleSize(DfExtractDataset(ds, trts = c(1,2)), J = 5, K = 100, effectSizeROC = effectSizeROC)
 ```
 
 
-### THOMPSON dataset
+#### THOMPSON dataset
 
 ```{r, echo=FALSE, cache=TRUE}
 ds <- dataset05
@@ -542,12 +545,12 @@ cat("dataset = ", ds$descriptions$fileName,
 ", I = ", length(ds$ratings$NL[,1,1,1]), 
 ", J = ", length(ds$ratings$NL[1,,1,1]), 
 "\n\n")
-
-SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = 0.05)
+effectSizeROC <- 0.05
+SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = effectSizeROC)
 ```
 
 
-### MAGNUS dataset
+#### MAGNUS dataset
 
 ```{r, echo=FALSE, cache=TRUE}
 ds <- dataset06
@@ -556,11 +559,11 @@ cat("dataset = ", ds$descriptions$fileName,
 ", I = ", length(ds$ratings$NL[,1,1,1]), 
 ", J = ", length(ds$ratings$NL[1,,1,1]), 
 "\n\n")
-
-SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = 0.05)
+effectSizeROC <- 0.05
+SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = effectSizeROC)
 ```
 
-### LUCY dataset, all data and NH treatments only
+#### LUCY dataset, all data and NH treatments only
 
 ```{r, echo=FALSE, cache=TRUE}
 ds <- dataset07
@@ -571,13 +574,14 @@ cat("dataset = ", ds$descriptions$fileName,
 "\n\n")
 
 cat("All data", "\n")
-SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = 0.06)
+effectSizeROC <- 0.06
+SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = effectSizeROC)
 
 cat("NH treatments only", "\n")
-SsFrocSampleSize(DfExtractDataset(ds, trts = c(1,5)), J = 5, K = 100, effectSizeROC = 0.06)
+SsFrocSampleSize(DfExtractDataset(ds, trts = c(1,5)), J = 5, K = 100, effectSizeROC = effectSizeROC)
 ```
 
-### DOBBINS-1 dataset, all data and NH treatments only
+#### DOBBINS-1 dataset, all data and NH treatments only
 
 ```{r, echo=FALSE, cache=TRUE}
 
@@ -589,13 +593,14 @@ cat("dataset = ", ds$descriptions$fileName,
 "\n\n")
 
 cat("All data", "\n")
-SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = 0.03)
+effectSizeROC <- 0.03
+SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = effectSizeROC)
 
 cat("NH treatments only", "\n")
-SsFrocSampleSize(DfExtractDataset(ds, trts = c(3,4)), J = 5, K = 100, effectSizeROC = 0.03)
+SsFrocSampleSize(DfExtractDataset(ds, trts = c(3,4)), J = 5, K = 100, effectSizeROC = effectSizeROC)
 ```
 
-### DOBBINS-3 dataset, all data and NH treatments only
+#### DOBBINS-3 dataset, all data and NH treatments only
 
 
 ```{r, echo=FALSE, cache=TRUE}
@@ -607,10 +612,11 @@ cat("dataset = ", ds$descriptions$fileName,
 "\n\n")
 
 cat("All data", "\n")
-SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = 0.05)
+effectSizeROC <- 0.03
+SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = effectSizeROC)
 
 cat("NH treatments only", "\n")
-SsFrocSampleSize(DfExtractDataset(ds, trts = c(3,4)), J = 5, K = 100, effectSizeROC = 0.05)
+SsFrocSampleSize(DfExtractDataset(ds, trts = c(3,4)), J = 5, K = 100, effectSizeROC = effectSizeROC)
 ```
 
 
