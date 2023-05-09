@@ -666,7 +666,7 @@ This is an application of the method to all my available FROC datasets.
 ## [1] 0.98603209
 ```
 
-### DOBBINS-I dataset, all data and NH treatments only
+### DOBBINS-1 dataset, all data and NH treatments only
 
 
 ```
@@ -709,7 +709,7 @@ This is an application of the method to all my available FROC datasets.
 ## [1] 0.84606715
 ```
 
-### DOBBINS-III dataset, all data and NH treatments only
+### DOBBINS-3 dataset, all data and NH treatments only
 
 
 

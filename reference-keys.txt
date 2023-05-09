@@ -122,8 +122,8 @@ fed-dataset-all-data-and-nh-treatments-only
 thompson-dataset
 magnus-dataset
 lucy-dataset-all-data-and-nh-treatments-only
-dobbins-i-dataset-all-data-and-nh-treatments-only
-dobbins-iii-dataset-all-data-and-nh-treatments-only
+dobbins-1-dataset-all-data-and-nh-treatments-only
+dobbins-3-dataset-all-data-and-nh-treatments-only
 discussion
 dataset-object-details
 introduction-1

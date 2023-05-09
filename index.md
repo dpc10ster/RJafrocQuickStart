@@ -2,7 +2,7 @@
 title: "The RJafroc Quick Start Book"
 author: "Dev P. Chakraborty, PhD"
 geometry: margin=2cm
-date: "2023-05-08"
+date: "2023-05-09"
 site: bookdown::bookdown_site
 output: html_document
 documentclass: book
