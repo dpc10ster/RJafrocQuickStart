@@ -597,7 +597,8 @@ effectSizeROC <- 0.03
 SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = effectSizeROC)
 
 cat("NH treatments only", "\n")
-SsFrocSampleSize(DfExtractDataset(ds, trts = c(3,4)), J = 5, K = 100, effectSizeROC = effectSizeROC)
+#SsFrocSampleSize(DfExtractDataset(ds, trts = c(3,4)), J = 5, K = 100, effectSizeROC = #effectSizeROC)
+SsFrocSampleSize(DfExtractDataset(ds, trts = c(1,3,4)), J = 5, K = 100, effectSizeROC = effectSizeROC)
 ```
 
 #### DOBBINS-3 dataset, all data and NH treatments only
