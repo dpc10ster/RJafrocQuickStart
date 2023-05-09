@@ -2056,20 +2056,22 @@ Since confusion still appears to exist, especially among statisticians, regardin
 \chapter{FROC sample size estimation}\label{froc-sample-size}}
 
 \hypertarget{froc-sample-size-how-much-finished}{%
-\section{How much finished 40 percent}\label{froc-sample-size-how-much-finished}}
+\section{How much finished 90 percent}\label{froc-sample-size-how-much-finished}}
 
-Need to change to OR method
+Comments on reason for increased FROC power; discuss idea about separating treatments and using lower half in terms of AUC to compute the NH parameters; does this improve DOBBINS-1 performance - solve the unusually low scale factor for this dataset?
 
 \hypertarget{overview}{%
 \section{Overview}\label{overview}}
 
-This chapter is split into two parts:
+This chapter is split into three parts:
 
 \begin{itemize}
 \item
-  The first part details a step-by-step approach to FROC paradigm sample size estimation;
+  Part 1 is a step-by-step approach to FROC paradigm sample size estimation;
 \item
-  The second part encapsulates some of the details in function \texttt{SsFrocNhRsmModel()}.
+  Part 2 encapsulates some of the details in \texttt{SsFrocNhRsmModel()}.
+\item
+  Part 3 uses \texttt{SsFrocSampleSize()} which simplifies the procedure to a single function call and applies it to 7 FROC datasets.
 \end{itemize}
 
 \hypertarget{part-1}{%
@@ -2559,13 +2561,16 @@ The function \texttt{SsSampleSizeKGivenJ} returns the number of cases needed for
 
 Here \texttt{K80RRRC} is the number of cases needed for 80 percent power under RRRC analysis.
 
+\hypertarget{part-3}{%
+\section{Part 3}\label{part-3}}
+
 \hypertarget{application-to-all-available-froc-datasets}{%
-\section{Application to all available FROC datasets}\label{application-to-all-available-froc-datasets}}
+\subsection{Application to all available FROC datasets}\label{application-to-all-available-froc-datasets}}
 
 This is an application of the method to all my available FROC datasets.
 
 \hypertarget{tony-dataset}{%
-\subsection{TONY dataset}\label{tony-dataset}}
+\subsubsection{TONY dataset}\label{tony-dataset}}
 
 \begin{verbatim}
 ## dataset =  dataset01 , Name =  TONY , I =  2 , J =  5
@@ -2586,7 +2591,7 @@ This is an application of the method to all my available FROC datasets.
 \end{verbatim}
 
 \hypertarget{fed-dataset-all-data-and-nh-treatments-only}{%
-\subsection{FED dataset, all data and NH treatments only}\label{fed-dataset-all-data-and-nh-treatments-only}}
+\subsubsection{FED dataset, all data and NH treatments only}\label{fed-dataset-all-data-and-nh-treatments-only}}
 
 \begin{verbatim}
 ## dataset =  dataset04 , Name =  FEDERICA , I =  5 , J =  4
@@ -2629,7 +2634,7 @@ This is an application of the method to all my available FROC datasets.
 \end{verbatim}
 
 \hypertarget{thompson-dataset}{%
-\subsection{THOMPSON dataset}\label{thompson-dataset}}
+\subsubsection{THOMPSON dataset}\label{thompson-dataset}}
 
 \begin{verbatim}
 ## dataset =  dataset05 , Name =  THOMPSON , I =  2 , J =  9
@@ -2650,7 +2655,7 @@ This is an application of the method to all my available FROC datasets.
 \end{verbatim}
 
 \hypertarget{magnus-dataset}{%
-\subsection{MAGNUS dataset}\label{magnus-dataset}}
+\subsubsection{MAGNUS dataset}\label{magnus-dataset}}
 
 \begin{verbatim}
 ## dataset =  dataset06 , Name =  MAGNUS , I =  2 , J =  4
@@ -2671,7 +2676,7 @@ This is an application of the method to all my available FROC datasets.
 \end{verbatim}
 
 \hypertarget{lucy-dataset-all-data-and-nh-treatments-only}{%
-\subsection{LUCY dataset, all data and NH treatments only}\label{lucy-dataset-all-data-and-nh-treatments-only}}
+\subsubsection{LUCY dataset, all data and NH treatments only}\label{lucy-dataset-all-data-and-nh-treatments-only}}
 
 \begin{verbatim}
 ## dataset =  dataset07 , Name =  LUCY-WARREN , I =  5 , J =  7
@@ -2714,7 +2719,7 @@ This is an application of the method to all my available FROC datasets.
 \end{verbatim}
 
 \hypertarget{dobbins-1-dataset-all-data-and-nh-treatments-only}{%
-\subsection{DOBBINS-1 dataset, all data and NH treatments only}\label{dobbins-1-dataset-all-data-and-nh-treatments-only}}
+\subsubsection{DOBBINS-1 dataset, all data and NH treatments only}\label{dobbins-1-dataset-all-data-and-nh-treatments-only}}
 
 \begin{verbatim}
 ## dataset =  dataset11 , Name =  DOBBINS-1 , I =  4 , J =  5
@@ -2757,7 +2762,7 @@ This is an application of the method to all my available FROC datasets.
 \end{verbatim}
 
 \hypertarget{dobbins-3-dataset-all-data-and-nh-treatments-only}{%
-\subsection{DOBBINS-3 dataset, all data and NH treatments only}\label{dobbins-3-dataset-all-data-and-nh-treatments-only}}
+\subsubsection{DOBBINS-3 dataset, all data and NH treatments only}\label{dobbins-3-dataset-all-data-and-nh-treatments-only}}
 
 \begin{verbatim}
 ## dataset =  dataset13 , Name =  DOBBINS-3 , I =  4 , J =  5
@@ -2769,16 +2774,16 @@ This is an application of the method to all my available FROC datasets.
 
 \begin{verbatim}
 ## $effectSizeROC
-## [1] 0.05
+## [1] 0.03
 ## 
 ## $scaleFactor
 ## [1] 1.5820231
 ## 
 ## $powerRoc
-## [1] 0.31655822
+## [1] 0.14448552
 ## 
 ## $powerFroc
-## [1] 0.56921093
+## [1] 0.25203758
 \end{verbatim}
 
 \begin{verbatim}
@@ -2787,16 +2792,16 @@ This is an application of the method to all my available FROC datasets.
 
 \begin{verbatim}
 ## $effectSizeROC
-## [1] 0.05
+## [1] 0.03
 ## 
 ## $scaleFactor
 ## [1] 1.5437708
 ## 
 ## $powerRoc
-## [1] 0.82381447
+## [1] 0.41346102
 ## 
 ## $powerFroc
-## [1] 0.9987996
+## [1] 0.86247586
 \end{verbatim}
 
 \hypertarget{discussion}{%

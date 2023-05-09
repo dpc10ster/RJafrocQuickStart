@@ -9,18 +9,19 @@
 
 
 
-## How much finished 40 percent {#froc-sample-size-how-much-finished}
+## How much finished 90 percent {#froc-sample-size-how-much-finished}
 
-Need to change to OR method
+Comments on reason for increased FROC power; discuss idea about separating treatments and using lower half in terms of AUC to compute the NH parameters; does this improve DOBBINS-1 performance - solve the unusually low scale factor for this dataset?
 
 ## Overview
 
-This chapter is split into two parts: 
+This chapter is split into three parts: 
 
-* The first part details a step-by-step approach to FROC paradigm sample size estimation; 
+* Part 1 is a step-by-step approach to FROC paradigm sample size estimation; 
 
-* The second part encapsulates some of the details in function `SsFrocNhRsmModel()`.
+* Part 2 encapsulates some of the details in `SsFrocNhRsmModel()`.
 
+* Part 3 uses `SsFrocSampleSize()` which simplifies the procedure to a single function call and applies it to 7 FROC datasets.
 
 
 ## Part 1
@@ -508,13 +509,14 @@ cat("ROC-ES = ", effectSizeROC,
 
 Here `K80RRRC` is the number of cases needed for 80 percent power under RRRC analysis.
 
+## Part 3
 
-## Application to all available FROC datasets
+### Application to all available FROC datasets
 
 This is an application of the method to all my available FROC datasets. 
 
 
-### TONY dataset
+#### TONY dataset
 
 
 
@@ -536,7 +538,7 @@ This is an application of the method to all my available FROC datasets.
 ## [1] 0.7648341
 ```
 
-### FED dataset, all data and NH treatments only
+#### FED dataset, all data and NH treatments only
 
 
 ```
@@ -580,7 +582,7 @@ This is an application of the method to all my available FROC datasets.
 ```
 
 
-### THOMPSON dataset
+#### THOMPSON dataset
 
 
 ```
@@ -602,7 +604,7 @@ This is an application of the method to all my available FROC datasets.
 ```
 
 
-### MAGNUS dataset
+#### MAGNUS dataset
 
 
 ```
@@ -623,7 +625,7 @@ This is an application of the method to all my available FROC datasets.
 ## [1] 0.86438847
 ```
 
-### LUCY dataset, all data and NH treatments only
+#### LUCY dataset, all data and NH treatments only
 
 
 ```
@@ -666,7 +668,7 @@ This is an application of the method to all my available FROC datasets.
 ## [1] 0.98603209
 ```
 
-### DOBBINS-1 dataset, all data and NH treatments only
+#### DOBBINS-1 dataset, all data and NH treatments only
 
 
 ```
@@ -709,7 +711,7 @@ This is an application of the method to all my available FROC datasets.
 ## [1] 0.84606715
 ```
 
-### DOBBINS-3 dataset, all data and NH treatments only
+#### DOBBINS-3 dataset, all data and NH treatments only
 
 
 
@@ -723,16 +725,16 @@ This is an application of the method to all my available FROC datasets.
 
 ```
 ## $effectSizeROC
-## [1] 0.05
+## [1] 0.03
 ## 
 ## $scaleFactor
 ## [1] 1.5820231
 ## 
 ## $powerRoc
-## [1] 0.31655822
+## [1] 0.14448552
 ## 
 ## $powerFroc
-## [1] 0.56921093
+## [1] 0.25203758
 ```
 
 ```
@@ -741,16 +743,16 @@ This is an application of the method to all my available FROC datasets.
 
 ```
 ## $effectSizeROC
-## [1] 0.05
+## [1] 0.03
 ## 
 ## $scaleFactor
 ## [1] 1.5437708
 ## 
 ## $powerRoc
-## [1] 0.82381447
+## [1] 0.41346102
 ## 
 ## $powerFroc
-## [1] 0.9987996
+## [1] 0.86247586
 ```
 
 

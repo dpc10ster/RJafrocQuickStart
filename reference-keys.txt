@@ -116,6 +116,7 @@ constructing-the-nh-model-for-the-dataset
 froc-sample-size-variance-components
 wafroc-power-for-specified-roc-effect-size-number-of-readers-and-number-of-cases
 number-of-cases-for-80-percent-power-for-a-given-number-of-readers
+part-3
 application-to-all-available-froc-datasets
 tony-dataset
 fed-dataset-all-data-and-nh-treatments-only
