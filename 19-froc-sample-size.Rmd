@@ -577,7 +577,7 @@ cat("NH treatments only", "\n")
 frocSampleSize(DfExtractDataset(ds, trts = c(1,5)), J = 5, K = 100, effectSizeROC = 0.06)
 ```
 
-### DOBBINS-I dataset, all data and NH treatments only
+### DOBBINS-1 dataset, all data and NH treatments only
 
 ```{r, echo=FALSE, cache=TRUE}
 
@@ -595,7 +595,7 @@ cat("NH treatments only", "\n")
 frocSampleSize(DfExtractDataset(ds, trts = c(3,4)), J = 5, K = 100, effectSizeROC = 0.03)
 ```
 
-### DOBBINS-III dataset, all data and NH treatments only
+### DOBBINS-3 dataset, all data and NH treatments only
 
 
 ```{r, echo=FALSE, cache=TRUE}
