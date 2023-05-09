@@ -702,13 +702,13 @@ This is an application of the method to all my available FROC datasets.
 ## [1] 0.03
 ## 
 ## $scaleFactor
-## [1] 1.516033
+## [1] 1.4194065
 ## 
 ## $powerRoc
-## [1] 0.40402887
+## [1] 0.1572418
 ## 
 ## $powerFroc
-## [1] 0.84606715
+## [1] 0.29602651
 ```
 
 #### DOBBINS-3 dataset, all data and NH treatments only
