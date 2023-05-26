@@ -13,6 +13,7 @@ eq:DeltaFRRFC
 eq:SamplingFRRFC
 fig:unnamed-chunk-12
 fig:unnamed-chunk-17
+fig:froc-sample-size-dataset11
 quick-start-index-preface
 quick-start-index-rationale-and-organization
 quick-start-index-getting-help
@@ -117,14 +118,13 @@ froc-sample-size-variance-components
 wafroc-power-for-specified-roc-effect-size-number-of-readers-and-number-of-cases
 number-of-cases-for-80-percent-power-for-a-given-number-of-readers
 part-3
-application-to-all-available-froc-datasets
 tony-dataset
-fed-dataset-all-data-and-nh-treatments-only
+fed-dataset-all-data-and-nh-nr-treatments-only
 thompson-dataset
 magnus-dataset
-lucy-dataset-all-data-and-nh-treatments-only
-dobbins-1-dataset-all-data-and-nh-treatments-only
-dobbins-3-dataset-all-data-and-nh-treatments-only
+lucy-dataset-all-data-and-nh-nr-treatments-only
+dobbins-1-dataset-all-data-and-nh-nr-treatments-only
+dobbins-3-dataset-all-data-and-nh-nr-treatments-only
 discussion
 dataset-object-details
 introduction-1

@@ -21,7 +21,7 @@ This chapter is split into three parts:
 
 * Part 2 encapsulates some of the details in `SsFrocNhRsmModel()`.
 
-* Part 3 uses `SsFrocSampleSize()` which simplifies the procedure to a single function call and applies it to 7 FROC datasets.
+* Part 3 uses `SsFrocSampleSize()` which encapsulates the procedure into a single function call which is applied to 7 FROC datasets.
 
 
 ## Part 1
@@ -386,6 +386,28 @@ One starts by extracting the first two treatments from `dataset04`, which repres
 frocNhData <- DfExtractDataset(dataset04, trts = c(1,2))
 lesDistr <- UtilLesDistr(frocNhData) # this can be replaced by the anticipated lesion distribution
 ret <- SsFrocNhRsmModel(frocNhData, lesDistr = lesDistr$Freq)
+```
+
+```
+## i =  1 , j =  1 , auc_fit =  0.9064227 
+## i =  1 , j =  2 , auc_fit =  0.8020747 
+## i =  1 , j =  3 , auc_fit =  0.8218974 
+## i =  1 , j =  4 , auc_fit =  0.918135 
+## i =  2 , j =  1 , auc_fit =  0.8614774 
+## i =  2 , j =  2 , auc_fit =  0.8572513 
+## i =  2 , j =  3 , auc_fit =  0.8180308 
+## i =  2 , j =  4 , auc_fit =  0.8756009 
+## i =  1 , j =  1 , auc_emp =  0.90425 
+## i =  1 , j =  2 , auc_emp =  0.7982 
+## i =  1 , j =  3 , auc_emp =  0.81175 
+## i =  1 , j =  4 , auc_emp =  0.86645 
+## i =  2 , j =  1 , auc_emp =  0.86425 
+## i =  2 , j =  2 , auc_emp =  0.8447 
+## i =  2 , j =  3 , auc_emp =  0.8205 
+## i =  2 , j =  4 , auc_emp =  0.8716
+```
+
+```{.r .numberLines}
 muNH <- ret$mu
 lambdaNH <- ret$lambda
 nuNH <- ret$nu
@@ -511,17 +533,42 @@ Here `K80RRRC` is the number of cases needed for 80 percent power under RRRC ana
 
 ## Part 3
 
-### Application to all available FROC datasets
 
-This is an application of the method to all my available FROC datasets. 
+What follows is an application of the method to all my available FROC datasets. If more than two treatments are present two analyses were conducted: one using all treatments and one using NH not-rejecting treatments only (abbreviated to NH-NR). Note that ROC effect sizes were varied between the two analyses to keep the FROC power close to 80 percent. In all reported analyses J = 5 readers and K = 100 cases are assumed in the pivotal study.
 
 
-#### TONY dataset
+
+### TONY dataset
+
+This dataset has only two treatments; therefore a single analyses using both treatments is reported.
 
 
 
 ```
 ## dataset =  dataset01 , Name =  TONY , I =  2 , J =  5
+```
+
+```
+## i =  1 , j =  1 , auc_fit =  0.81320811 
+## i =  1 , j =  2 , auc_fit =  0.89297244 
+## i =  1 , j =  3 , auc_fit =  0.85216738 
+## i =  1 , j =  4 , auc_fit =  0.86366416 
+## i =  1 , j =  5 , auc_fit =  0.85254301 
+## i =  2 , j =  1 , auc_fit =  0.67851336 
+## i =  2 , j =  2 , auc_fit =  0.75783952 
+## i =  2 , j =  3 , auc_fit =  0.79264791 
+## i =  2 , j =  4 , auc_fit =  0.88450139 
+## i =  2 , j =  5 , auc_fit =  0.74064002 
+## i =  1 , j =  1 , auc_emp =  0.79599719 
+## i =  1 , j =  2 , auc_emp =  0.86522706 
+## i =  1 , j =  3 , auc_emp =  0.84117509 
+## i =  1 , j =  4 , auc_emp =  0.83110955 
+## i =  1 , j =  5 , auc_emp =  0.84655899 
+## i =  2 , j =  1 , auc_emp =  0.66894897 
+## i =  2 , j =  2 , auc_emp =  0.72144195 
+## i =  2 , j =  3 , auc_emp =  0.78411751 
+## i =  2 , j =  4 , auc_emp =  0.79792837 
+## i =  2 , j =  5 , auc_emp =  0.70610955
 ```
 
 ```
@@ -538,7 +585,9 @@ This is an application of the method to all my available FROC datasets.
 ## [1] 0.7648341
 ```
 
-#### FED dataset, all data and NH treatments only
+### FED dataset, all data and NH-NR treatments only
+
+This dataset has five treatments; therefore two results are reported: one using all treatments and one using NH not-rejecting treatments only, i.e., `DfExtractDataset(ds, trts = c(1,2))`. 
 
 
 ```
@@ -550,43 +599,151 @@ This is an application of the method to all my available FROC datasets.
 ```
 
 ```
+## i =  1 , j =  1 , auc_fit =  0.90642269 
+## i =  1 , j =  2 , auc_fit =  0.80207475 
+## i =  1 , j =  3 , auc_fit =  0.8218974 
+## i =  1 , j =  4 , auc_fit =  0.91813497 
+## i =  2 , j =  1 , auc_fit =  0.86147739 
+## i =  2 , j =  2 , auc_fit =  0.85725131 
+## i =  2 , j =  3 , auc_fit =  0.81803076 
+## i =  2 , j =  4 , auc_fit =  0.87560092 
+## i =  3 , j =  1 , auc_fit =  0.833631 
+## i =  3 , j =  2 , auc_fit =  0.81916445 
+## i =  3 , j =  3 , auc_fit =  0.76576686 
+## i =  3 , j =  4 , auc_fit =  0.88054732 
+## i =  4 , j =  1 , auc_fit =  0.90974249 
+## i =  4 , j =  2 , auc_fit =  0.84345538 
+## i =  4 , j =  3 , auc_fit =  0.81205624 
+## i =  4 , j =  4 , auc_fit =  0.88691319 
+## i =  5 , j =  1 , auc_fit =  0.85339208 
+## i =  5 , j =  2 , auc_fit =  0.78998846 
+## i =  5 , j =  3 , auc_fit =  0.78020812 
+## i =  5 , j =  4 , auc_fit =  0.88621727 
+## i =  1 , j =  1 , auc_emp =  0.90425 
+## i =  1 , j =  2 , auc_emp =  0.7982 
+## i =  1 , j =  3 , auc_emp =  0.81175 
+## i =  1 , j =  4 , auc_emp =  0.86645 
+## i =  2 , j =  1 , auc_emp =  0.86425 
+## i =  2 , j =  2 , auc_emp =  0.8447 
+## i =  2 , j =  3 , auc_emp =  0.8205 
+## i =  2 , j =  4 , auc_emp =  0.8716 
+## i =  3 , j =  1 , auc_emp =  0.81295 
+## i =  3 , j =  2 , auc_emp =  0.81635 
+## i =  3 , j =  3 , auc_emp =  0.75275 
+## i =  3 , j =  4 , auc_emp =  0.8573 
+## i =  4 , j =  1 , auc_emp =  0.90235 
+## i =  4 , j =  2 , auc_emp =  0.8315 
+## i =  4 , j =  3 , auc_emp =  0.78865 
+## i =  4 , j =  4 , auc_emp =  0.8798 
+## i =  5 , j =  1 , auc_emp =  0.8414 
+## i =  5 , j =  2 , auc_emp =  0.773 
+## i =  5 , j =  3 , auc_emp =  0.77115 
+## i =  5 , j =  4 , auc_emp =  0.848
+```
+
+```
 ## $effectSizeROC
-## [1] 0.05
+## [1] 0.04
 ## 
 ## $scaleFactor
 ## [1] 1.8536914
 ## 
 ## $powerRoc
-## [1] 0.49574243
+## [1] 0.34678954
 ## 
 ## $powerFroc
-## [1] 0.94085909
+## [1] 0.80813385
 ```
 
 ```
-## NH treatments only
+## Note change in effect size in next analysis
+```
+
+```
+## NH-NR treatments only: trts = c(1,2)
+```
+
+```
+## i =  1 , j =  1 , auc_fit =  0.90642269 
+## i =  1 , j =  2 , auc_fit =  0.80207475 
+## i =  1 , j =  3 , auc_fit =  0.8218974 
+## i =  1 , j =  4 , auc_fit =  0.91813497 
+## i =  2 , j =  1 , auc_fit =  0.86147739 
+## i =  2 , j =  2 , auc_fit =  0.85725131 
+## i =  2 , j =  3 , auc_fit =  0.81803076 
+## i =  2 , j =  4 , auc_fit =  0.87560092 
+## i =  1 , j =  1 , auc_emp =  0.90425 
+## i =  1 , j =  2 , auc_emp =  0.7982 
+## i =  1 , j =  3 , auc_emp =  0.81175 
+## i =  1 , j =  4 , auc_emp =  0.86645 
+## i =  2 , j =  1 , auc_emp =  0.86425 
+## i =  2 , j =  2 , auc_emp =  0.8447 
+## i =  2 , j =  3 , auc_emp =  0.8205 
+## i =  2 , j =  4 , auc_emp =  0.8716
 ```
 
 ```
 ## $effectSizeROC
-## [1] 0.05
+## [1] 0.035
 ## 
 ## $scaleFactor
 ## [1] 2.1693379
 ## 
 ## $powerRoc
-## [1] 0.41954431
+## [1] 0.23428872
 ## 
 ## $powerFroc
-## [1] 0.97777633
+## [1] 0.79725425
 ```
 
 
-#### THOMPSON dataset
+### THOMPSON dataset
+
+This dataset has only two treatments; therefore a single analyses using both treatments is reported.
+
 
 
 ```
 ## dataset =  dataset05 , Name =  THOMPSON , I =  2 , J =  9
+```
+
+```
+## i =  1 , j =  1 , auc_fit =  0.88272773 
+## i =  1 , j =  2 , auc_fit =  0.9062648 
+## i =  1 , j =  3 , auc_fit =  0.9037888 
+## i =  1 , j =  4 , auc_fit =  0.71060357 
+## i =  1 , j =  5 , auc_fit =  0.73045109 
+## i =  1 , j =  6 , auc_fit =  0.9470677 
+## i =  1 , j =  7 , auc_fit =  0.92420887 
+## i =  1 , j =  8 , auc_fit =  0.89485093 
+## i =  1 , j =  9 , auc_fit =  0.85862397 
+## i =  2 , j =  1 , auc_fit =  0.86139429 
+## i =  2 , j =  2 , auc_fit =  0.96800376 
+## i =  2 , j =  3 , auc_fit =  0.91156383 
+## i =  2 , j =  4 , auc_fit =  0.87547532 
+## i =  2 , j =  5 , auc_fit =  0.89362437 
+## i =  2 , j =  6 , auc_fit =  0.94049993 
+## i =  2 , j =  7 , auc_fit =  0.96654775 
+## i =  2 , j =  8 , auc_fit =  0.94004632 
+## i =  2 , j =  9 , auc_fit =  0.88440213 
+## i =  1 , j =  1 , auc_emp =  0.87777778 
+## i =  1 , j =  2 , auc_emp =  0.89361702 
+## i =  1 , j =  3 , auc_emp =  0.89101655 
+## i =  1 , j =  4 , auc_emp =  0.73900709 
+## i =  1 , j =  5 , auc_emp =  0.71678487 
+## i =  1 , j =  6 , auc_emp =  0.93427896 
+## i =  1 , j =  7 , auc_emp =  0.91985816 
+## i =  1 , j =  8 , auc_emp =  0.88345154 
+## i =  1 , j =  9 , auc_emp =  0.821513 
+## i =  2 , j =  1 , auc_emp =  0.89787234 
+## i =  2 , j =  2 , auc_emp =  0.97612293 
+## i =  2 , j =  3 , auc_emp =  0.88321513 
+## i =  2 , j =  4 , auc_emp =  0.85130024 
+## i =  2 , j =  5 , auc_emp =  0.86004728 
+## i =  2 , j =  6 , auc_emp =  0.91040189 
+## i =  2 , j =  7 , auc_emp =  0.95413712 
+## i =  2 , j =  8 , auc_emp =  0.93522459 
+## i =  2 , j =  9 , auc_emp =  0.86122931
 ```
 
 ```
@@ -604,11 +761,33 @@ This is an application of the method to all my available FROC datasets.
 ```
 
 
-#### MAGNUS dataset
+### MAGNUS dataset
+
+This dataset has only two treatments; therefore a single analyses using both treatments is reported.
+
 
 
 ```
 ## dataset =  dataset06 , Name =  MAGNUS , I =  2 , J =  4
+```
+
+```
+## i =  1 , j =  1 , auc_fit =  0.77715868 
+## i =  1 , j =  2 , auc_fit =  0.77206487 
+## i =  1 , j =  3 , auc_fit =  0.69167096 
+## i =  1 , j =  4 , auc_fit =  0.77898683 
+## i =  2 , j =  1 , auc_fit =  0.64293651 
+## i =  2 , j =  2 , auc_fit =  0.60213318 
+## i =  2 , j =  3 , auc_fit =  0.66496703 
+## i =  2 , j =  4 , auc_fit =  0.66434528 
+## i =  1 , j =  1 , auc_emp =  0.76089159 
+## i =  1 , j =  2 , auc_emp =  0.76646403 
+## i =  1 , j =  3 , auc_emp =  0.69528875 
+## i =  1 , j =  4 , auc_emp =  0.77330294 
+## i =  2 , j =  1 , auc_emp =  0.64387031 
+## i =  2 , j =  2 , auc_emp =  0.63779129 
+## i =  2 , j =  3 , auc_emp =  0.66109422 
+## i =  2 , j =  4 , auc_emp =  0.65450861
 ```
 
 ```
@@ -625,7 +804,9 @@ This is an application of the method to all my available FROC datasets.
 ## [1] 0.86438847
 ```
 
-#### LUCY dataset, all data and NH treatments only
+### LUCY dataset, all data and NH-NR treatments only
+
+This dataset has five treatments; therefore two results are reported: one using all treatments and one using NH not-rejecting treatments only, i.e., `DfExtractDataset(ds, trts = c(1,5))`. 
 
 
 ```
@@ -634,6 +815,79 @@ This is an application of the method to all my available FROC datasets.
 
 ```
 ## All data
+```
+
+```
+## i =  1 , j =  1 , auc_fit =  0.92443077 
+## i =  1 , j =  2 , auc_fit =  0.92662846 
+## i =  1 , j =  3 , auc_fit =  0.93035909 
+## i =  1 , j =  4 , auc_fit =  0.92240506 
+## i =  1 , j =  5 , auc_fit =  0.94115783 
+## i =  1 , j =  6 , auc_fit =  0.89202726 
+## i =  1 , j =  7 , auc_fit =  0.92725059 
+## i =  2 , j =  1 , auc_fit =  0.83222824 
+## i =  2 , j =  2 , auc_fit =  0.77120537 
+## i =  2 , j =  3 , auc_fit =  0.80143356 
+## i =  2 , j =  4 , auc_fit =  0.81258682 
+## i =  2 , j =  5 , auc_fit =  0.79528951 
+## i =  2 , j =  6 , auc_fit =  0.76957212 
+## i =  2 , j =  7 , auc_fit =  0.8380247 
+## i =  3 , j =  1 , auc_fit =  0.83956951 
+## i =  3 , j =  2 , auc_fit =  0.86330632 
+## i =  3 , j =  3 , auc_fit =  0.83736256 
+## i =  3 , j =  4 , auc_fit =  0.84918654 
+## i =  3 , j =  5 , auc_fit =  0.78596289 
+## i =  3 , j =  6 , auc_fit =  0.80997033 
+## i =  3 , j =  7 , auc_fit =  0.84255768 
+## i =  4 , j =  1 , auc_fit =  0.69665333 
+## i =  4 , j =  2 , auc_fit =  0.74881025 
+## i =  4 , j =  3 , auc_fit =  0.79628601 
+## i =  4 , j =  4 , auc_fit =  0.70853506 
+## i =  4 , j =  5 , auc_fit =  0.68957035 
+## i =  4 , j =  6 , auc_fit =  0.72654471 
+## i =  4 , j =  7 , auc_fit =  0.73037997 
+## i =  5 , j =  1 , auc_fit =  0.9275249 
+## i =  5 , j =  2 , auc_fit =  0.85723107 
+## i =  5 , j =  3 , auc_fit =  0.9136363 
+## i =  5 , j =  4 , auc_fit =  0.92429948 
+## i =  5 , j =  5 , auc_fit =  0.9313687 
+## i =  5 , j =  6 , auc_fit =  0.88742146 
+## i =  5 , j =  7 , auc_fit =  0.95761787 
+## i =  1 , j =  1 , auc_emp =  0.91327542 
+## i =  1 , j =  2 , auc_emp =  0.90230148 
+## i =  1 , j =  3 , auc_emp =  0.92363969 
+## i =  1 , j =  4 , auc_emp =  0.91327542 
+## i =  1 , j =  5 , auc_emp =  0.92546868 
+## i =  1 , j =  6 , auc_emp =  0.87806737 
+## i =  1 , j =  7 , auc_emp =  0.91243713 
+## i =  2 , j =  1 , auc_emp =  0.81153788 
+## i =  2 , j =  2 , auc_emp =  0.75247676 
+## i =  2 , j =  3 , auc_emp =  0.79279073 
+## i =  2 , j =  4 , auc_emp =  0.80262155 
+## i =  2 , j =  5 , auc_emp =  0.78875171 
+## i =  2 , j =  6 , auc_emp =  0.75765889 
+## i =  2 , j =  7 , auc_emp =  0.83180918 
+## i =  3 , j =  1 , auc_emp =  0.82708429 
+## i =  3 , j =  2 , auc_emp =  0.80140223 
+## i =  3 , j =  3 , auc_emp =  0.82616979 
+## i =  3 , j =  4 , auc_emp =  0.84484073 
+## i =  3 , j =  5 , auc_emp =  0.77922573 
+## i =  3 , j =  6 , auc_emp =  0.80483158 
+## i =  3 , j =  7 , auc_emp =  0.83737235 
+## i =  4 , j =  1 , auc_emp =  0.67390642 
+## i =  4 , j =  2 , auc_emp =  0.66468526 
+## i =  4 , j =  3 , auc_emp =  0.75605853 
+## i =  4 , j =  4 , auc_emp =  0.70583752 
+## i =  4 , j =  5 , auc_emp =  0.68602347 
+## i =  4 , j =  6 , auc_emp =  0.71574455 
+## i =  4 , j =  7 , auc_emp =  0.71848804 
+## i =  5 , j =  1 , auc_emp =  0.91624752 
+## i =  5 , j =  2 , auc_emp =  0.85322359 
+## i =  5 , j =  3 , auc_emp =  0.90900777 
+## i =  5 , j =  4 , auc_emp =  0.92386831 
+## i =  5 , j =  5 , auc_emp =  0.92691663 
+## i =  5 , j =  6 , auc_emp =  0.87882945 
+## i =  5 , j =  7 , auc_emp =  0.95534217
 ```
 
 ```
@@ -651,24 +905,69 @@ This is an application of the method to all my available FROC datasets.
 ```
 
 ```
-## NH treatments only
+## Note change in effect size in next analysis
+```
+
+```
+## NH-NR treatments only: trts = c(1,5)
+```
+
+```
+## i =  1 , j =  1 , auc_fit =  0.92443077 
+## i =  1 , j =  2 , auc_fit =  0.92662846 
+## i =  1 , j =  3 , auc_fit =  0.93035909 
+## i =  1 , j =  4 , auc_fit =  0.92240506 
+## i =  1 , j =  5 , auc_fit =  0.94115783 
+## i =  1 , j =  6 , auc_fit =  0.89202726 
+## i =  1 , j =  7 , auc_fit =  0.92725059 
+## i =  2 , j =  1 , auc_fit =  0.9275249 
+## i =  2 , j =  2 , auc_fit =  0.85723107 
+## i =  2 , j =  3 , auc_fit =  0.9136363 
+## i =  2 , j =  4 , auc_fit =  0.92429948 
+## i =  2 , j =  5 , auc_fit =  0.9313687 
+## i =  2 , j =  6 , auc_fit =  0.88742146 
+## i =  2 , j =  7 , auc_fit =  0.95761787 
+## i =  1 , j =  1 , auc_emp =  0.91327542 
+## i =  1 , j =  2 , auc_emp =  0.90230148 
+## i =  1 , j =  3 , auc_emp =  0.92363969 
+## i =  1 , j =  4 , auc_emp =  0.91327542 
+## i =  1 , j =  5 , auc_emp =  0.92546868 
+## i =  1 , j =  6 , auc_emp =  0.87806737 
+## i =  1 , j =  7 , auc_emp =  0.91243713 
+## i =  2 , j =  1 , auc_emp =  0.91624752 
+## i =  2 , j =  2 , auc_emp =  0.85322359 
+## i =  2 , j =  3 , auc_emp =  0.90900777 
+## i =  2 , j =  4 , auc_emp =  0.92386831 
+## i =  2 , j =  5 , auc_emp =  0.92691663 
+## i =  2 , j =  6 , auc_emp =  0.87882945 
+## i =  2 , j =  7 , auc_emp =  0.95534217
 ```
 
 ```
 ## $effectSizeROC
-## [1] 0.06
+## [1] 0.04
 ## 
 ## $scaleFactor
 ## [1] 1.5780687
 ## 
 ## $powerRoc
-## [1] 0.84058158
+## [1] 0.50730142
 ## 
 ## $powerFroc
-## [1] 0.98603209
+## [1] 0.79668794
 ```
 
-#### DOBBINS-1 dataset, all data and NH treatments only
+### DOBBINS-1 dataset, all data and NH-NR treatments only
+
+Note: this dataset revealed issues with the RSM fitting program, namely the number of ROC operating points sometimes falls below 3, the minimum required. 
+
+<div class="figure" style="text-align: center">
+<img src="images/froc-sample-size/ds11trt1rdr3.png" alt="RSM fitted ROC plot for dataset11, treatment 1 and reader 3. Note the two defining operating points near the origin. " width="50%" height="20%" />
+<p class="caption">(\#fig:froc-sample-size-dataset11)RSM fitted ROC plot for dataset11, treatment 1 and reader 3. Note the two defining operating points near the origin. </p>
+</div>
+
+
+This dataset has four treatments; therefore two results are reported: one using all treatments and one using NH not-rejecting treatments only, i.e., `DfExtractDataset(ds, trts = c(1,3,4))`. 
 
 
 ```
@@ -680,38 +979,117 @@ This is an application of the method to all my available FROC datasets.
 ```
 
 ```
+## i =  1 , j =  1 , auc_fit =  0.67439464 
+## i =  1 , j =  2 , auc_fit =  0.57216533 
+## i =  1 , j =  3 , auc_fit =  0.76551521 
+## i =  1 , j =  4 , auc_fit =  0.62336712 
+## i =  1 , j =  5 , auc_fit =  0.63074583 
+## i =  2 , j =  1 , auc_fit =  0.65292326 
+## i =  2 , j =  2 , auc_fit =  0.5839868 
+## i =  2 , j =  3 , auc_fit =  0.72767107 
+## i =  2 , j =  4 , auc_fit =  0.6267011 
+## i =  2 , j =  5 , auc_fit =  0.65878672 
+## i =  3 , j =  1 , auc_fit =  0.76377503 
+## i =  3 , j =  2 , auc_fit =  0.72222439 
+## i =  3 , j =  3 , auc_fit =  0.81858627 
+## i =  3 , j =  4 , auc_fit =  0.74488181 
+## i =  3 , j =  5 , auc_fit =  0.88485947 
+## i =  4 , j =  1 , auc_fit =  0.72950846 
+## i =  4 , j =  2 , auc_fit =  0.72674767 
+## i =  4 , j =  3 , auc_fit =  0.81921867 
+## i =  4 , j =  4 , auc_fit =  0.69733661 
+## i =  4 , j =  5 , auc_fit =  0.88512912 
+## i =  1 , j =  1 , auc_emp =  0.65267947 
+## i =  1 , j =  2 , auc_emp =  0.56744186 
+## i =  1 , j =  3 , auc_emp =  0.6008089 
+## i =  1 , j =  4 , auc_emp =  0.57633974 
+## i =  1 , j =  5 , auc_emp =  0.63185035 
+## i =  2 , j =  1 , auc_emp =  0.64944388 
+## i =  2 , j =  2 , auc_emp =  0.58078868 
+## i =  2 , j =  3 , auc_emp =  0.63043478 
+## i =  2 , j =  4 , auc_emp =  0.59373104 
+## i =  2 , j =  5 , auc_emp =  0.67623862 
+## i =  3 , j =  1 , auc_emp =  0.73892821 
+## i =  3 , j =  2 , auc_emp =  0.72072801 
+## i =  3 , j =  3 , auc_emp =  0.74368049 
+## i =  3 , j =  4 , auc_emp =  0.72750253 
+## i =  3 , j =  5 , auc_emp =  0.73993933 
+## i =  4 , j =  1 , auc_emp =  0.71466127 
+## i =  4 , j =  2 , auc_emp =  0.72659252 
+## i =  4 , j =  3 , auc_emp =  0.75642063 
+## i =  4 , j =  4 , auc_emp =  0.68058645 
+## i =  4 , j =  5 , auc_emp =  0.73973711
+```
+
+```
 ## $effectSizeROC
-## [1] 0.03
+## [1] 0.07
 ## 
 ## $scaleFactor
 ## [1] 1.2364946
 ## 
 ## $powerRoc
-## [1] 0.15086992
+## [1] 0.57062501
 ## 
 ## $powerFroc
-## [1] 0.23808322
+## [1] 0.82193932
 ```
 
 ```
-## NH treatments only
+## NH-NR treatments only: trts = c(1,3,4)
+```
+
+```
+## i =  1 , j =  1 , auc_fit =  0.67439464 
+## i =  1 , j =  2 , auc_fit =  0.57216533 
+## i =  1 , j =  3 , auc_fit =  0.76551521 
+## i =  1 , j =  4 , auc_fit =  0.62336712 
+## i =  1 , j =  5 , auc_fit =  0.63074583 
+## i =  2 , j =  1 , auc_fit =  0.76377503 
+## i =  2 , j =  2 , auc_fit =  0.72222439 
+## i =  2 , j =  3 , auc_fit =  0.81858627 
+## i =  2 , j =  4 , auc_fit =  0.74488181 
+## i =  2 , j =  5 , auc_fit =  0.88485947 
+## i =  3 , j =  1 , auc_fit =  0.72950846 
+## i =  3 , j =  2 , auc_fit =  0.72674767 
+## i =  3 , j =  3 , auc_fit =  0.81921867 
+## i =  3 , j =  4 , auc_fit =  0.69733661 
+## i =  3 , j =  5 , auc_fit =  0.88512912 
+## i =  1 , j =  1 , auc_emp =  0.65267947 
+## i =  1 , j =  2 , auc_emp =  0.56744186 
+## i =  1 , j =  3 , auc_emp =  0.6008089 
+## i =  1 , j =  4 , auc_emp =  0.57633974 
+## i =  1 , j =  5 , auc_emp =  0.63185035 
+## i =  2 , j =  1 , auc_emp =  0.73892821 
+## i =  2 , j =  2 , auc_emp =  0.72072801 
+## i =  2 , j =  3 , auc_emp =  0.74368049 
+## i =  2 , j =  4 , auc_emp =  0.72750253 
+## i =  2 , j =  5 , auc_emp =  0.73993933 
+## i =  3 , j =  1 , auc_emp =  0.71466127 
+## i =  3 , j =  2 , auc_emp =  0.72659252 
+## i =  3 , j =  3 , auc_emp =  0.75642063 
+## i =  3 , j =  4 , auc_emp =  0.68058645 
+## i =  3 , j =  5 , auc_emp =  0.73973711
 ```
 
 ```
 ## $effectSizeROC
-## [1] 0.03
+## [1] 0.07
 ## 
 ## $scaleFactor
 ## [1] 1.4194065
 ## 
 ## $powerRoc
-## [1] 0.1572418
+## [1] 0.59643607
 ## 
 ## $powerFroc
-## [1] 0.29602651
+## [1] 0.90850449
 ```
 
-#### DOBBINS-3 dataset, all data and NH treatments only
+### DOBBINS-3 dataset, all data and NH-NR treatments only
+
+
+This dataset has four treatments; therefore two results are reported: one using all treatments and one using NH not-rejecting treatments only, i.e., `DfExtractDataset(ds, trts = c(3,4))`. 
 
 
 
@@ -724,21 +1102,91 @@ This is an application of the method to all my available FROC datasets.
 ```
 
 ```
+## i =  1 , j =  1 , auc_fit =  0.6286507 
+## i =  1 , j =  2 , auc_fit =  0.50151767 
+## i =  1 , j =  3 , auc_fit =  0.65441117 
+## i =  1 , j =  4 , auc_fit =  0.58280829 
+## i =  1 , j =  5 , auc_fit =  0.55034173 
+## i =  2 , j =  1 , auc_fit =  0.5412335 
+## i =  2 , j =  2 , auc_fit =  0.51912707 
+## i =  2 , j =  3 , auc_fit =  0.60167519 
+## i =  2 , j =  4 , auc_fit =  0.55377877 
+## i =  2 , j =  5 , auc_fit =  0.5945155 
+## i =  3 , j =  1 , auc_fit =  0.72457545 
+## i =  3 , j =  2 , auc_fit =  0.63958975 
+## i =  3 , j =  3 , auc_fit =  0.67463262 
+## i =  3 , j =  4 , auc_fit =  0.65551867 
+## i =  3 , j =  5 , auc_fit =  0.81562973 
+## i =  4 , j =  1 , auc_fit =  0.62871077 
+## i =  4 , j =  2 , auc_fit =  0.65208483 
+## i =  4 , j =  3 , auc_fit =  0.7144378 
+## i =  4 , j =  4 , auc_fit =  0.5999756 
+## i =  4 , j =  5 , auc_fit =  0.67920293 
+## i =  1 , j =  1 , auc_emp =  0.57011974 
+## i =  1 , j =  2 , auc_emp =  0.49619013 
+## i =  1 , j =  3 , auc_emp =  0.54653483 
+## i =  1 , j =  4 , auc_emp =  0.54889332 
+## i =  1 , j =  5 , auc_emp =  0.55478955 
+## i =  2 , j =  1 , auc_emp =  0.53120464 
+## i =  2 , j =  2 , auc_emp =  0.49718795 
+## i =  2 , j =  3 , auc_emp =  0.56685414 
+## i =  2 , j =  4 , auc_emp =  0.53782656 
+## i =  2 , j =  5 , auc_emp =  0.57148041 
+## i =  3 , j =  1 , auc_emp =  0.63588534 
+## i =  3 , j =  2 , auc_emp =  0.63724601 
+## i =  3 , j =  3 , auc_emp =  0.67035559 
+## i =  3 , j =  4 , auc_emp =  0.64350508 
+## i =  3 , j =  5 , auc_emp =  0.64214441 
+## i =  4 , j =  1 , auc_emp =  0.62490929 
+## i =  4 , j =  2 , auc_emp =  0.62799347 
+## i =  4 , j =  3 , auc_emp =  0.66736212 
+## i =  4 , j =  4 , auc_emp =  0.58653846 
+## i =  4 , j =  5 , auc_emp =  0.62626996
+```
+
+```
 ## $effectSizeROC
-## [1] 0.03
+## [1] 0.07
 ## 
 ## $scaleFactor
 ## [1] 1.5820231
 ## 
 ## $powerRoc
-## [1] 0.14448552
+## [1] 0.54481091
 ## 
 ## $powerFroc
-## [1] 0.25203758
+## [1] 0.84284099
 ```
 
 ```
-## NH treatments only
+## Note change in effect size in next analysis
+```
+
+```
+## NH-NR treatments only: trts = c(3,4)
+```
+
+```
+## i =  1 , j =  1 , auc_fit =  0.72457545 
+## i =  1 , j =  2 , auc_fit =  0.63958975 
+## i =  1 , j =  3 , auc_fit =  0.67463262 
+## i =  1 , j =  4 , auc_fit =  0.65551867 
+## i =  1 , j =  5 , auc_fit =  0.81562973 
+## i =  2 , j =  1 , auc_fit =  0.62871077 
+## i =  2 , j =  2 , auc_fit =  0.65208483 
+## i =  2 , j =  3 , auc_fit =  0.7144378 
+## i =  2 , j =  4 , auc_fit =  0.5999756 
+## i =  2 , j =  5 , auc_fit =  0.67920293 
+## i =  1 , j =  1 , auc_emp =  0.63588534 
+## i =  1 , j =  2 , auc_emp =  0.63724601 
+## i =  1 , j =  3 , auc_emp =  0.67035559 
+## i =  1 , j =  4 , auc_emp =  0.64350508 
+## i =  1 , j =  5 , auc_emp =  0.64214441 
+## i =  2 , j =  1 , auc_emp =  0.62490929 
+## i =  2 , j =  2 , auc_emp =  0.62799347 
+## i =  2 , j =  3 , auc_emp =  0.66736212 
+## i =  2 , j =  4 , auc_emp =  0.58653846 
+## i =  2 , j =  5 , auc_emp =  0.62626996
 ```
 
 ```
@@ -754,12 +1202,6 @@ This is an application of the method to all my available FROC datasets.
 ## $powerFroc
 ## [1] 0.86247586
 ```
-
-
-
-
-
-
 
 
 

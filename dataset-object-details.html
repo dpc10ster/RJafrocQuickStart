@@ -23,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2023-05-09" />
+<meta name="date" content="2023-05-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -300,7 +300,13 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="10.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-3"><i class="fa fa-check"></i><b>10.5</b> Part 3</a>
 <ul>
-<li class="chapter" data-level="10.5.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#application-to-all-available-froc-datasets"><i class="fa fa-check"></i><b>10.5.1</b> Application to all available FROC datasets</a></li>
+<li class="chapter" data-level="10.5.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#tony-dataset"><i class="fa fa-check"></i><b>10.5.1</b> TONY dataset</a></li>
+<li class="chapter" data-level="10.5.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#fed-dataset-all-data-and-nh-nr-treatments-only"><i class="fa fa-check"></i><b>10.5.2</b> FED dataset, all data and NH-NR treatments only</a></li>
+<li class="chapter" data-level="10.5.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#thompson-dataset"><i class="fa fa-check"></i><b>10.5.3</b> THOMPSON dataset</a></li>
+<li class="chapter" data-level="10.5.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#magnus-dataset"><i class="fa fa-check"></i><b>10.5.4</b> MAGNUS dataset</a></li>
+<li class="chapter" data-level="10.5.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#lucy-dataset-all-data-and-nh-nr-treatments-only"><i class="fa fa-check"></i><b>10.5.5</b> LUCY dataset, all data and NH-NR treatments only</a></li>
+<li class="chapter" data-level="10.5.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#dobbins-1-dataset-all-data-and-nh-nr-treatments-only"><i class="fa fa-check"></i><b>10.5.6</b> DOBBINS-1 dataset, all data and NH-NR treatments only</a></li>
+<li class="chapter" data-level="10.5.7" data-path="froc-sample-size.html"><a href="froc-sample-size.html#dobbins-3-dataset-all-data-and-nh-nr-treatments-only"><i class="fa fa-check"></i><b>10.5.7</b> DOBBINS-3 dataset, all data and NH-NR treatments only</a></li>
 </ul></li>
 <li class="chapter" data-level="10.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#discussion"><i class="fa fa-check"></i><b>10.6</b> Discussion</a></li>
 </ul></li>
@@ -378,56 +384,56 @@ div.csl-indent {
 </div>
 <div id="dataset-object-details-roc-dataset" class="section level2 hasAnchor" number="11.2">
 <h2><span class="header-section-number">11.2</span> ROC dataset<a href="dataset-object-details.html#dataset-object-details-roc-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="dataset-object-details.html#cb89-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">DfReadDataFile</span>(<span class="st">&quot;R/quick-start/rocCr.xlsx&quot;</span>, <span class="at">newExcelFileFormat =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="dataset-object-details.html#cb105-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">DfReadDataFile</span>(<span class="st">&quot;R/quick-start/rocCr.xlsx&quot;</span>, <span class="at">newExcelFileFormat =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div id="dataset-object-details-structure-roc-dataset" class="section level3 hasAnchor" number="11.2.1">
 <h3><span class="header-section-number">11.2.1</span> The structure of a factorial ROC dataset object<a href="dataset-object-details.html#dataset-object-details-structure-roc-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>x</code> is a <code>list</code> with 3 members: <code>ratings</code>, <code>lesions</code> and <code>descriptions</code>.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="dataset-object-details.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x, <span class="at">max.level =</span> <span class="dv">1</span>)</span>
-<span id="cb90-2"><a href="dataset-object-details.html#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb90-3"><a href="dataset-object-details.html#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ratings     :List of 3</span></span>
-<span id="cb90-4"><a href="dataset-object-details.html#cb90-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ lesions     :List of 3</span></span>
-<span id="cb90-5"><a href="dataset-object-details.html#cb90-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ descriptions:List of 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="dataset-object-details.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x, <span class="at">max.level =</span> <span class="dv">1</span>)</span>
+<span id="cb106-2"><a href="dataset-object-details.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb106-3"><a href="dataset-object-details.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ratings     :List of 3</span></span>
+<span id="cb106-4"><a href="dataset-object-details.html#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ lesions     :List of 3</span></span>
+<span id="cb106-5"><a href="dataset-object-details.html#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ descriptions:List of 7</span></span></code></pre></div>
 <p>The <code>x$ratings</code> member contains 3 sub-lists.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="dataset-object-details.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>ratings)</span>
-<span id="cb91-2"><a href="dataset-object-details.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb91-3"><a href="dataset-object-details.html#cb91-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ NL   : num [1:2, 1:5, 1:8, 1] 1 3 2 3 2 2 1 2 3 2 ...</span></span>
-<span id="cb91-4"><a href="dataset-object-details.html#cb91-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ LL   : num [1:2, 1:5, 1:5, 1] 5 5 5 5 5 5 5 5 5 5 ...</span></span>
-<span id="cb91-5"><a href="dataset-object-details.html#cb91-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ LL_IL: logi NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="dataset-object-details.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>ratings)</span>
+<span id="cb107-2"><a href="dataset-object-details.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb107-3"><a href="dataset-object-details.html#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ NL   : num [1:2, 1:5, 1:8, 1] 1 3 2 3 2 2 1 2 3 2 ...</span></span>
+<span id="cb107-4"><a href="dataset-object-details.html#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ LL   : num [1:2, 1:5, 1:5, 1] 5 5 5 5 5 5 5 5 5 5 ...</span></span>
+<span id="cb107-5"><a href="dataset-object-details.html#cb107-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ LL_IL: logi NA</span></span></code></pre></div>
 <ul>
 <li><p><code>x$ratings$NL</code>, with dimension [2, 5, 8, 1], contains the ratings of normal cases. The first dimension (2) is the number of treatments, the second (5) is the number of readers and the third (8) is the total number of cases. For ROC datasets the fourth dimension is always unity. The five extra values <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> in the third dimension, of <code>x$ratings$NL</code> which are filled with <code>NAs</code>, are needed for compatibility with FROC datasets.</p></li>
 <li><p><code>x$ratings$LL</code>, with dimension [2, 5, 5, 1], contains the ratings of abnormal cases. The third dimension (5) corresponds to the 5 diseased cases.</p></li>
 <li><p><code>x$ratings$LL_IL</code>, equal to NA’, is there for compatibility with LROC data, <code>IL</code> denotes incorrect-localizations.</p></li>
 </ul>
 <p>The <code>x$lesions</code> member contains 3 sub-lists.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="dataset-object-details.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>lesions)</span>
-<span id="cb92-2"><a href="dataset-object-details.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb92-3"><a href="dataset-object-details.html#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ perCase: int [1:5] 1 1 1 1 1</span></span>
-<span id="cb92-4"><a href="dataset-object-details.html#cb92-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ IDs    : num [1:5, 1] 1 1 1 1 1</span></span>
-<span id="cb92-5"><a href="dataset-object-details.html#cb92-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ weights: num [1:5, 1] 1 1 1 1 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="dataset-object-details.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>lesions)</span>
+<span id="cb108-2"><a href="dataset-object-details.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb108-3"><a href="dataset-object-details.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ perCase: int [1:5] 1 1 1 1 1</span></span>
+<span id="cb108-4"><a href="dataset-object-details.html#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ IDs    : num [1:5, 1] 1 1 1 1 1</span></span>
+<span id="cb108-5"><a href="dataset-object-details.html#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ weights: num [1:5, 1] 1 1 1 1 1</span></span></code></pre></div>
 <ul>
 <li><p>The <code>x$lesions$perCase</code> member is a vector with 5 ones representing the 5 diseased cases in the dataset.</p></li>
 <li><p>The <code>x$lesions$IDs</code> member is an array with 5 ones.</p></li>
 </ul>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="dataset-object-details.html#cb93-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>lesions<span class="sc">$</span>weights</span>
-<span id="cb93-2"><a href="dataset-object-details.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]</span></span>
-<span id="cb93-3"><a href="dataset-object-details.html#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1</span></span>
-<span id="cb93-4"><a href="dataset-object-details.html#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    1</span></span>
-<span id="cb93-5"><a href="dataset-object-details.html#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    1</span></span>
-<span id="cb93-6"><a href="dataset-object-details.html#cb93-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]    1</span></span>
-<span id="cb93-7"><a href="dataset-object-details.html#cb93-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,]    1</span></span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="dataset-object-details.html#cb109-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>lesions<span class="sc">$</span>weights</span>
+<span id="cb109-2"><a href="dataset-object-details.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]</span></span>
+<span id="cb109-3"><a href="dataset-object-details.html#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]    1</span></span>
+<span id="cb109-4"><a href="dataset-object-details.html#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]    1</span></span>
+<span id="cb109-5"><a href="dataset-object-details.html#cb109-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]    1</span></span>
+<span id="cb109-6"><a href="dataset-object-details.html#cb109-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]    1</span></span>
+<span id="cb109-7"><a href="dataset-object-details.html#cb109-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,]    1</span></span></code></pre></div>
 <p><code>x$lesions$weights</code> member is an array with 5 ones. These are irrelevant for ROC datasets. They are there for compatibility with FROC datasets.</p>
 <p><code>x$descriptions</code> contains 7 sub-lists.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="dataset-object-details.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>descriptions)</span>
-<span id="cb94-2"><a href="dataset-object-details.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 7</span></span>
-<span id="cb94-3"><a href="dataset-object-details.html#cb94-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ fileName     : chr &quot;rocCr&quot;</span></span>
-<span id="cb94-4"><a href="dataset-object-details.html#cb94-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ type         : chr &quot;ROC&quot;</span></span>
-<span id="cb94-5"><a href="dataset-object-details.html#cb94-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ name         : logi NA</span></span>
-<span id="cb94-6"><a href="dataset-object-details.html#cb94-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ truthTableStr: num [1:2, 1:5, 1:8, 1:2] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb94-7"><a href="dataset-object-details.html#cb94-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ design       : chr &quot;FCTRL&quot;</span></span>
-<span id="cb94-8"><a href="dataset-object-details.html#cb94-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ modalityID   : Named chr [1:2] &quot;0&quot; &quot;1&quot;</span></span>
-<span id="cb94-9"><a href="dataset-object-details.html#cb94-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;0&quot; &quot;1&quot;</span></span>
-<span id="cb94-10"><a href="dataset-object-details.html#cb94-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ readerID     : Named chr [1:5] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</span></span>
-<span id="cb94-11"><a href="dataset-object-details.html#cb94-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:5] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="dataset-object-details.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>descriptions)</span>
+<span id="cb110-2"><a href="dataset-object-details.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 7</span></span>
+<span id="cb110-3"><a href="dataset-object-details.html#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ fileName     : chr &quot;rocCr&quot;</span></span>
+<span id="cb110-4"><a href="dataset-object-details.html#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ type         : chr &quot;ROC&quot;</span></span>
+<span id="cb110-5"><a href="dataset-object-details.html#cb110-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ name         : logi NA</span></span>
+<span id="cb110-6"><a href="dataset-object-details.html#cb110-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ truthTableStr: num [1:2, 1:5, 1:8, 1:2] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb110-7"><a href="dataset-object-details.html#cb110-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ design       : chr &quot;FCTRL&quot;</span></span>
+<span id="cb110-8"><a href="dataset-object-details.html#cb110-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ modalityID   : Named chr [1:2] &quot;0&quot; &quot;1&quot;</span></span>
+<span id="cb110-9"><a href="dataset-object-details.html#cb110-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;0&quot; &quot;1&quot;</span></span>
+<span id="cb110-10"><a href="dataset-object-details.html#cb110-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ readerID     : Named chr [1:5] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</span></span>
+<span id="cb110-11"><a href="dataset-object-details.html#cb110-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:5] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</span></span></code></pre></div>
 <ul>
 <li><code>x$descriptions$fileName</code> is intended for internal use.</li>
 <li><code>x$descriptions$type</code> indicates that this is an <code>ROC</code> dataset.</li>
@@ -494,19 +500,19 @@ div.csl-indent {
 <p><img src="images/software-details/FrocCrTruth.png" style="width:100.0%" /></p>
 <div id="dataset-object-details-structure-froc-dataset" class="section level3 hasAnchor" number="11.3.1">
 <h3><span class="header-section-number">11.3.1</span> The structure of a factorial FROC dataset<a href="dataset-object-details.html#dataset-object-details-structure-froc-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="dataset-object-details.html#cb95-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">DfReadDataFile</span>(<span class="st">&quot;images/software-details/frocCr.xlsx&quot;</span>, <span class="at">newExcelFileFormat =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="dataset-object-details.html#cb111-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">DfReadDataFile</span>(<span class="st">&quot;images/software-details/frocCr.xlsx&quot;</span>, <span class="at">newExcelFileFormat =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>The dataset <code>x</code> is a <code>list</code> variable with 3 members: <code>x$ratings</code>, <code>x$lesions</code> and <code>x$descriptions</code>.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="dataset-object-details.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x, <span class="at">max.level =</span> <span class="dv">1</span>)</span>
-<span id="cb96-2"><a href="dataset-object-details.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb96-3"><a href="dataset-object-details.html#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ratings     :List of 3</span></span>
-<span id="cb96-4"><a href="dataset-object-details.html#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ lesions     :List of 3</span></span>
-<span id="cb96-5"><a href="dataset-object-details.html#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ descriptions:List of 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="dataset-object-details.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x, <span class="at">max.level =</span> <span class="dv">1</span>)</span>
+<span id="cb112-2"><a href="dataset-object-details.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb112-3"><a href="dataset-object-details.html#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ratings     :List of 3</span></span>
+<span id="cb112-4"><a href="dataset-object-details.html#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ lesions     :List of 3</span></span>
+<span id="cb112-5"><a href="dataset-object-details.html#cb112-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ descriptions:List of 7</span></span></code></pre></div>
 <p>The <code>x$ratings</code> member contains 3 sub-lists.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="dataset-object-details.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>ratings)</span>
-<span id="cb97-2"><a href="dataset-object-details.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb97-3"><a href="dataset-object-details.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ NL   : num [1:2, 1:3, 1:8, 1:2] 1.02 2.89 2.21 3.01 2.14 ...</span></span>
-<span id="cb97-4"><a href="dataset-object-details.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ LL   : num [1:2, 1:3, 1:5, 1:3] 5.28 5.2 5.14 4.77 4.66 4.87 3.01 3.27 3.31 3.19 ...</span></span>
-<span id="cb97-5"><a href="dataset-object-details.html#cb97-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ LL_IL: logi NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="dataset-object-details.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>ratings)</span>
+<span id="cb113-2"><a href="dataset-object-details.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb113-3"><a href="dataset-object-details.html#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ NL   : num [1:2, 1:3, 1:8, 1:2] 1.02 2.89 2.21 3.01 2.14 ...</span></span>
+<span id="cb113-4"><a href="dataset-object-details.html#cb113-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ LL   : num [1:2, 1:3, 1:5, 1:3] 5.28 5.2 5.14 4.77 4.66 4.87 3.01 3.27 3.31 3.19 ...</span></span>
+<span id="cb113-5"><a href="dataset-object-details.html#cb113-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ LL_IL: logi NA</span></span></code></pre></div>
 <ul>
 <li>There are <code>K2 = 5</code> diseased cases (the length of the third dimension of <code>x$ratings$LL</code>) and <code>K1 = 3</code> non-diseased cases (the length of the third dimension of <code>x$ratings$NL</code> minus <code>K2</code>).</li>
 <li><code>x$ratings$NL</code>, a [2, 3, 8, 2] array, contains the NL ratings on non-diseased and diseased cases.</li>
@@ -514,36 +520,36 @@ div.csl-indent {
 <li><code>x$ratings$LL_IL</code> is <code>NA</code>, this field applies to an LROC dataset (contains incorrect localizations on diseased cases).</li>
 </ul>
 <p>The <code>x$lesions</code> member contains 3 sub-lists.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="dataset-object-details.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>lesions)</span>
-<span id="cb98-2"><a href="dataset-object-details.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb98-3"><a href="dataset-object-details.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ perCase: int [1:5] 2 1 3 2 1</span></span>
-<span id="cb98-4"><a href="dataset-object-details.html#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ IDs    : num [1:5, 1:3] 1 1 1 1 1 ...</span></span>
-<span id="cb98-5"><a href="dataset-object-details.html#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ weights: num [1:5, 1:3] 0.3 1 0.333 0.1 1 ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="dataset-object-details.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>lesions)</span>
+<span id="cb114-2"><a href="dataset-object-details.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb114-3"><a href="dataset-object-details.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ perCase: int [1:5] 2 1 3 2 1</span></span>
+<span id="cb114-4"><a href="dataset-object-details.html#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ IDs    : num [1:5, 1:3] 1 1 1 1 1 ...</span></span>
+<span id="cb114-5"><a href="dataset-object-details.html#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ weights: num [1:5, 1:3] 0.3 1 0.333 0.1 1 ...</span></span></code></pre></div>
 <ul>
 <li><code>x$lesions$perCase</code> is the number of lesions per diseased case vector, i.e., 2, 1, 3, 2, 1.</li>
 <li><code>max(x$lesions$perCase)</code> is the maximum number of lesions per case, i.e., <code>r</code>max(x<span class="math inline">\(lesions\)</span>perCase)`.</li>
 <li><code>x$lesions$weights</code> is the weights of lesions.</li>
 </ul>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="dataset-object-details.html#cb99-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>lesions<span class="sc">$</span>weights</span>
-<span id="cb99-2"><a href="dataset-object-details.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           [,1]      [,2]      [,3]</span></span>
-<span id="cb99-3"><a href="dataset-object-details.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] 0.3000000 0.7000000      -Inf</span></span>
-<span id="cb99-4"><a href="dataset-object-details.html#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] 1.0000000      -Inf      -Inf</span></span>
-<span id="cb99-5"><a href="dataset-object-details.html#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,] 0.3333333 0.3333333 0.3333333</span></span>
-<span id="cb99-6"><a href="dataset-object-details.html#cb99-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,] 0.1000000 0.9000000      -Inf</span></span>
-<span id="cb99-7"><a href="dataset-object-details.html#cb99-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,] 1.0000000      -Inf      -Inf</span></span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="dataset-object-details.html#cb115-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>lesions<span class="sc">$</span>weights</span>
+<span id="cb115-2"><a href="dataset-object-details.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           [,1]      [,2]      [,3]</span></span>
+<span id="cb115-3"><a href="dataset-object-details.html#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] 0.3000000 0.7000000      -Inf</span></span>
+<span id="cb115-4"><a href="dataset-object-details.html#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] 1.0000000      -Inf      -Inf</span></span>
+<span id="cb115-5"><a href="dataset-object-details.html#cb115-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,] 0.3333333 0.3333333 0.3333333</span></span>
+<span id="cb115-6"><a href="dataset-object-details.html#cb115-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,] 0.1000000 0.9000000      -Inf</span></span>
+<span id="cb115-7"><a href="dataset-object-details.html#cb115-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,] 1.0000000      -Inf      -Inf</span></span></code></pre></div>
 <p>The weights for the first diseased case are 0.3 and 0.7. The weight for the second diseased case is 1. For the third diseased case the three weights are 1/3 each, etc. For each diseased case the finite weights sum to unity.</p>
 <p><code>x$descriptions</code> contains 7 sub-lists.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="dataset-object-details.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>descriptions)</span>
-<span id="cb100-2"><a href="dataset-object-details.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 7</span></span>
-<span id="cb100-3"><a href="dataset-object-details.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ fileName     : chr &quot;frocCr&quot;</span></span>
-<span id="cb100-4"><a href="dataset-object-details.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ type         : chr &quot;FROC&quot;</span></span>
-<span id="cb100-5"><a href="dataset-object-details.html#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ name         : logi NA</span></span>
-<span id="cb100-6"><a href="dataset-object-details.html#cb100-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ truthTableStr: num [1:2, 1:3, 1:8, 1:4] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb100-7"><a href="dataset-object-details.html#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ design       : chr &quot;FCTRL&quot;</span></span>
-<span id="cb100-8"><a href="dataset-object-details.html#cb100-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ modalityID   : Named chr [1:2] &quot;0&quot; &quot;1&quot;</span></span>
-<span id="cb100-9"><a href="dataset-object-details.html#cb100-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;0&quot; &quot;1&quot;</span></span>
-<span id="cb100-10"><a href="dataset-object-details.html#cb100-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ readerID     : Named chr [1:3] &quot;0&quot; &quot;1&quot; &quot;2&quot;</span></span>
-<span id="cb100-11"><a href="dataset-object-details.html#cb100-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3] &quot;0&quot; &quot;1&quot; &quot;2&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="dataset-object-details.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x<span class="sc">$</span>descriptions)</span>
+<span id="cb116-2"><a href="dataset-object-details.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 7</span></span>
+<span id="cb116-3"><a href="dataset-object-details.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ fileName     : chr &quot;frocCr&quot;</span></span>
+<span id="cb116-4"><a href="dataset-object-details.html#cb116-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ type         : chr &quot;FROC&quot;</span></span>
+<span id="cb116-5"><a href="dataset-object-details.html#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ name         : logi NA</span></span>
+<span id="cb116-6"><a href="dataset-object-details.html#cb116-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ truthTableStr: num [1:2, 1:3, 1:8, 1:4] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb116-7"><a href="dataset-object-details.html#cb116-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ design       : chr &quot;FCTRL&quot;</span></span>
+<span id="cb116-8"><a href="dataset-object-details.html#cb116-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ modalityID   : Named chr [1:2] &quot;0&quot; &quot;1&quot;</span></span>
+<span id="cb116-9"><a href="dataset-object-details.html#cb116-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;0&quot; &quot;1&quot;</span></span>
+<span id="cb116-10"><a href="dataset-object-details.html#cb116-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ readerID     : Named chr [1:3] &quot;0&quot; &quot;1&quot; &quot;2&quot;</span></span>
+<span id="cb116-11"><a href="dataset-object-details.html#cb116-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:3] &quot;0&quot; &quot;1&quot; &quot;2&quot;</span></span></code></pre></div>
 <ul>
 <li><code>x$descriptions$filename</code> is for internal use.</li>
 <li><code>x$descriptions$type</code> is FROC, which specifies the data collection method.</li>
@@ -564,62 +570,62 @@ div.csl-indent {
 <div id="explanation-for-non-diseased-cases" class="section level4 hasAnchor" number="11.3.2.1">
 <h4><span class="header-section-number">11.3.2.1</span> Explanation for non-diseased cases<a href="dataset-object-details.html#explanation-for-non-diseased-cases" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Since the fourth index is set to 1, in the following code only non-diseased cases yield ones and all diseased cases yield <code>NA</code>.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="dataset-object-details.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">1</span>] <span class="sc">==</span><span class="dv">1</span>)</span>
-<span id="cb101-2"><a href="dataset-object-details.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb101-3"><a href="dataset-object-details.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">1</span>]))</span>
-<span id="cb101-4"><a href="dataset-object-details.html#cb101-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="dataset-object-details.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">1</span>] <span class="sc">==</span><span class="dv">1</span>)</span>
+<span id="cb117-2"><a href="dataset-object-details.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb117-3"><a href="dataset-object-details.html#cb117-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">1</span>]))</span>
+<span id="cb117-4"><a href="dataset-object-details.html#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 </div>
 <div id="explanation-for-diseased-cases-with-one-lesion" class="section level4 hasAnchor" number="11.3.2.2">
 <h4><span class="header-section-number">11.3.2.2</span> Explanation for diseased cases with one lesion<a href="dataset-object-details.html#explanation-for-diseased-cases-with-one-lesion" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Since the fourth index is set to 2, in the following code all non-diseased cases yield <code>NA</code> and all diseased cases yield 1 as all diseased cases have at least one lesion.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="dataset-object-details.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">2</span>]))</span>
-<span id="cb102-2"><a href="dataset-object-details.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb102-3"><a href="dataset-object-details.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">2</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb102-4"><a href="dataset-object-details.html#cb102-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="dataset-object-details.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">2</span>]))</span>
+<span id="cb118-2"><a href="dataset-object-details.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb118-3"><a href="dataset-object-details.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">2</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb118-4"><a href="dataset-object-details.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 </div>
 <div id="explanation-for-diseased-cases-with-two-lesions" class="section level4 hasAnchor" number="11.3.2.3">
 <h4><span class="header-section-number">11.3.2.3</span> Explanation for diseased cases with two lesions<a href="dataset-object-details.html#explanation-for-diseased-cases-with-two-lesions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Since the fourth index is set to 3, in the following code all non-diseased cases yield <code>NA</code>; the first diseased case <code>70</code> yields 1 (this case contains two lesions); the second disease case <code>71</code> yields <code>NA</code> (this case contains only one lesion); the third disease case <code>72</code> yields <code>NA</code> (this case contains only two lesions); the fourth disease case <code>73</code> yields 1 (this case contains two lesions); the fifth disease case <code>74</code> yields <code>NA</code> (this case contains one lesion).</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="dataset-object-details.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all non diseased cases</span></span>
-<span id="cb103-2"><a href="dataset-object-details.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">3</span>]))</span>
-<span id="cb103-3"><a href="dataset-object-details.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb103-4"><a href="dataset-object-details.html#cb103-4" aria-hidden="true" tabindex="-1"></a><span class="co"># first diseased case</span></span>
-<span id="cb103-5"><a href="dataset-object-details.html#cb103-5" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">4</span>,<span class="dv">3</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb103-6"><a href="dataset-object-details.html#cb103-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb103-7"><a href="dataset-object-details.html#cb103-7" aria-hidden="true" tabindex="-1"></a><span class="co"># second diseased case</span></span>
-<span id="cb103-8"><a href="dataset-object-details.html#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">5</span>,<span class="dv">3</span>]))</span>
-<span id="cb103-9"><a href="dataset-object-details.html#cb103-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb103-10"><a href="dataset-object-details.html#cb103-10" aria-hidden="true" tabindex="-1"></a><span class="co"># third diseased case</span></span>
-<span id="cb103-11"><a href="dataset-object-details.html#cb103-11" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">6</span>,<span class="dv">3</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb103-12"><a href="dataset-object-details.html#cb103-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb103-13"><a href="dataset-object-details.html#cb103-13" aria-hidden="true" tabindex="-1"></a><span class="co"># fourth diseased case</span></span>
-<span id="cb103-14"><a href="dataset-object-details.html#cb103-14" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">7</span>,<span class="dv">3</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb103-15"><a href="dataset-object-details.html#cb103-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb103-16"><a href="dataset-object-details.html#cb103-16" aria-hidden="true" tabindex="-1"></a><span class="co"># fifth diseased case</span></span>
-<span id="cb103-17"><a href="dataset-object-details.html#cb103-17" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">8</span>,<span class="dv">3</span>]))</span>
-<span id="cb103-18"><a href="dataset-object-details.html#cb103-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="dataset-object-details.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all non diseased cases</span></span>
+<span id="cb119-2"><a href="dataset-object-details.html#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">3</span>]))</span>
+<span id="cb119-3"><a href="dataset-object-details.html#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb119-4"><a href="dataset-object-details.html#cb119-4" aria-hidden="true" tabindex="-1"></a><span class="co"># first diseased case</span></span>
+<span id="cb119-5"><a href="dataset-object-details.html#cb119-5" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">4</span>,<span class="dv">3</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb119-6"><a href="dataset-object-details.html#cb119-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb119-7"><a href="dataset-object-details.html#cb119-7" aria-hidden="true" tabindex="-1"></a><span class="co"># second diseased case</span></span>
+<span id="cb119-8"><a href="dataset-object-details.html#cb119-8" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">5</span>,<span class="dv">3</span>]))</span>
+<span id="cb119-9"><a href="dataset-object-details.html#cb119-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb119-10"><a href="dataset-object-details.html#cb119-10" aria-hidden="true" tabindex="-1"></a><span class="co"># third diseased case</span></span>
+<span id="cb119-11"><a href="dataset-object-details.html#cb119-11" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">6</span>,<span class="dv">3</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb119-12"><a href="dataset-object-details.html#cb119-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb119-13"><a href="dataset-object-details.html#cb119-13" aria-hidden="true" tabindex="-1"></a><span class="co"># fourth diseased case</span></span>
+<span id="cb119-14"><a href="dataset-object-details.html#cb119-14" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">7</span>,<span class="dv">3</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb119-15"><a href="dataset-object-details.html#cb119-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb119-16"><a href="dataset-object-details.html#cb119-16" aria-hidden="true" tabindex="-1"></a><span class="co"># fifth diseased case</span></span>
+<span id="cb119-17"><a href="dataset-object-details.html#cb119-17" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">8</span>,<span class="dv">3</span>]))</span>
+<span id="cb119-18"><a href="dataset-object-details.html#cb119-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 </div>
 <div id="explanation-for-diseased-cases-with-three-lesions" class="section level4 hasAnchor" number="11.3.2.4">
 <h4><span class="header-section-number">11.3.2.4</span> Explanation for diseased cases with three lesions<a href="dataset-object-details.html#explanation-for-diseased-cases-with-three-lesions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Since the fourth index is set to 4, in the following code all non-diseased cases yield <code>NA</code>; the first diseased case <code>70</code> yields <code>NA</code> (this case contains two lesions); the second disease case <code>71</code> yields <code>NA</code> (this case contains one lesion); the third disease case <code>72</code> yields <code>NA</code> (this case contains two lesions); the fourth disease case <code>73</code> yields 1 (this case contains three lesions); the fifth disease case <code>74</code> yields <code>NA</code> (this case contains one lesion).</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="dataset-object-details.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all non diseased cases</span></span>
-<span id="cb104-2"><a href="dataset-object-details.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">4</span>]))</span>
-<span id="cb104-3"><a href="dataset-object-details.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb104-4"><a href="dataset-object-details.html#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="co"># first diseased case</span></span>
-<span id="cb104-5"><a href="dataset-object-details.html#cb104-5" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">4</span>,<span class="dv">4</span>]))</span>
-<span id="cb104-6"><a href="dataset-object-details.html#cb104-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb104-7"><a href="dataset-object-details.html#cb104-7" aria-hidden="true" tabindex="-1"></a><span class="co"># second diseased case</span></span>
-<span id="cb104-8"><a href="dataset-object-details.html#cb104-8" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">5</span>,<span class="dv">4</span>]))</span>
-<span id="cb104-9"><a href="dataset-object-details.html#cb104-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb104-10"><a href="dataset-object-details.html#cb104-10" aria-hidden="true" tabindex="-1"></a><span class="co"># third diseased case</span></span>
-<span id="cb104-11"><a href="dataset-object-details.html#cb104-11" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">6</span>,<span class="dv">4</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb104-12"><a href="dataset-object-details.html#cb104-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb104-13"><a href="dataset-object-details.html#cb104-13" aria-hidden="true" tabindex="-1"></a><span class="co"># fourth diseased case</span></span>
-<span id="cb104-14"><a href="dataset-object-details.html#cb104-14" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">7</span>,<span class="dv">4</span>]))</span>
-<span id="cb104-15"><a href="dataset-object-details.html#cb104-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb104-16"><a href="dataset-object-details.html#cb104-16" aria-hidden="true" tabindex="-1"></a><span class="co"># fifth diseased case</span></span>
-<span id="cb104-17"><a href="dataset-object-details.html#cb104-17" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">8</span>,<span class="dv">4</span>]))</span>
-<span id="cb104-18"><a href="dataset-object-details.html#cb104-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="dataset-object-details.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all non diseased cases</span></span>
+<span id="cb120-2"><a href="dataset-object-details.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">4</span>]))</span>
+<span id="cb120-3"><a href="dataset-object-details.html#cb120-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb120-4"><a href="dataset-object-details.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="co"># first diseased case</span></span>
+<span id="cb120-5"><a href="dataset-object-details.html#cb120-5" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">4</span>,<span class="dv">4</span>]))</span>
+<span id="cb120-6"><a href="dataset-object-details.html#cb120-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb120-7"><a href="dataset-object-details.html#cb120-7" aria-hidden="true" tabindex="-1"></a><span class="co"># second diseased case</span></span>
+<span id="cb120-8"><a href="dataset-object-details.html#cb120-8" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">5</span>,<span class="dv">4</span>]))</span>
+<span id="cb120-9"><a href="dataset-object-details.html#cb120-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb120-10"><a href="dataset-object-details.html#cb120-10" aria-hidden="true" tabindex="-1"></a><span class="co"># third diseased case</span></span>
+<span id="cb120-11"><a href="dataset-object-details.html#cb120-11" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">6</span>,<span class="dv">4</span>] <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb120-12"><a href="dataset-object-details.html#cb120-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb120-13"><a href="dataset-object-details.html#cb120-13" aria-hidden="true" tabindex="-1"></a><span class="co"># fourth diseased case</span></span>
+<span id="cb120-14"><a href="dataset-object-details.html#cb120-14" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">7</span>,<span class="dv">4</span>]))</span>
+<span id="cb120-15"><a href="dataset-object-details.html#cb120-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb120-16"><a href="dataset-object-details.html#cb120-16" aria-hidden="true" tabindex="-1"></a><span class="co"># fifth diseased case</span></span>
+<span id="cb120-17"><a href="dataset-object-details.html#cb120-17" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">is.na</span>(x<span class="sc">$</span>descriptions<span class="sc">$</span>truthTableStr[,,<span class="dv">8</span>,<span class="dv">4</span>]))</span>
+<span id="cb120-18"><a href="dataset-object-details.html#cb120-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 </div>
 </div>
 <div id="the-fp-worksheet" class="section level3 hasAnchor" number="11.3.3">
