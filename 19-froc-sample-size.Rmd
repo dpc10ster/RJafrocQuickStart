@@ -32,7 +32,7 @@ This chapter is split into three parts:
 
 * Part 2 encapsulates some of the details in `SsFrocNhRsmModel()`.
 
-* Part 3 uses `SsFrocSampleSize()` which simplifies the procedure to a single function call and applies it to 7 FROC datasets.
+* Part 3 uses `SsFrocSampleSize()` which encapsulates the procedure into a single function call which is applied to 7 FROC datasets.
 
 
 ## Part 1
@@ -498,15 +498,17 @@ Here `K80RRRC` is the number of cases needed for 80 percent power under RRRC ana
 
 ## Part 3
 
-### Application to all available FROC datasets
 
-This is an application of the method to all my available FROC datasets. 
-
-
-#### TONY dataset
+What follows is an application of the method to all my available FROC datasets. If more than two treatments are present two analyses were conducted: one using all treatments and one using NH not-rejecting treatments only (abbreviated to NH-NR). Note that ROC effect sizes were varied between the two analyses to keep the FROC power close to 80 percent. In all reported analyses J = 5 readers and K = 100 cases are assumed in the pivotal study.
 
 
-```{r, echo=FALSE, cache=TRUE}
+
+### TONY dataset
+
+This dataset has only two treatments; therefore a single analyses using both treatments is reported.
+
+
+```{r, echo=FALSE, cache=FALSE}
 ds <- dataset01
 cat("dataset = ", ds$descriptions$fileName, 
 ", Name = ", ds$descriptions$name, 
@@ -517,9 +519,11 @@ effectSizeROC <- 0.07
 SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = effectSizeROC)
 ```
 
-#### FED dataset, all data and NH treatments only
+### FED dataset, all data and NH-NR treatments only
 
-```{r, echo=FALSE, cache=TRUE}
+This dataset has five treatments; therefore two results are reported: one using all treatments and one using NH not-rejecting treatments only, i.e., `DfExtractDataset(ds, trts = c(1,2))`. 
+
+```{r, echo=FALSE, cache=FALSE}
 ds <- dataset04
 cat("dataset = ", ds$descriptions$fileName, 
 ", Name = ", ds$descriptions$name, 
@@ -528,17 +532,22 @@ cat("dataset = ", ds$descriptions$fileName,
 "\n\n")
 
 cat("All data", "\n\n")
-effectSizeROC <- 0.05
+effectSizeROC <- 0.04
 SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = effectSizeROC)
 
-cat("NH treatments only", "\n\n")
+cat("Note change in effect size in next analysis\n")
+effectSizeROC <- 0.035
+cat("NH-NR treatments only: trts = c(1,2)", "\n\n")
 SsFrocSampleSize(DfExtractDataset(ds, trts = c(1,2)), J = 5, K = 100, effectSizeROC = effectSizeROC)
 ```
 
 
-#### THOMPSON dataset
+### THOMPSON dataset
 
-```{r, echo=FALSE, cache=TRUE}
+This dataset has only two treatments; therefore a single analyses using both treatments is reported.
+
+
+```{r, echo=FALSE, cache=FALSE}
 ds <- dataset05
 cat("dataset = ", ds$descriptions$fileName, 
 ", Name = ", ds$descriptions$name, 
@@ -550,9 +559,12 @@ SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = effectSizeROC)
 ```
 
 
-#### MAGNUS dataset
+### MAGNUS dataset
 
-```{r, echo=FALSE, cache=TRUE}
+This dataset has only two treatments; therefore a single analyses using both treatments is reported.
+
+
+```{r, echo=FALSE, cache=FALSE}
 ds <- dataset06
 cat("dataset = ", ds$descriptions$fileName, 
 ", Name = ", ds$descriptions$name, 
@@ -563,9 +575,11 @@ effectSizeROC <- 0.05
 SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = effectSizeROC)
 ```
 
-#### LUCY dataset, all data and NH treatments only
+### LUCY dataset, all data and NH-NR treatments only
 
-```{r, echo=FALSE, cache=TRUE}
+This dataset has five treatments; therefore two results are reported: one using all treatments and one using NH not-rejecting treatments only, i.e., `DfExtractDataset(ds, trts = c(1,5))`. 
+
+```{r, echo=FALSE, cache=FALSE}
 ds <- dataset07
 cat("dataset = ", ds$descriptions$fileName, 
 ", Name = ", ds$descriptions$name, 
@@ -577,13 +591,24 @@ cat("All data", "\n")
 effectSizeROC <- 0.06
 SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = effectSizeROC)
 
-cat("NH treatments only", "\n")
+cat("Note change in effect size in next analysis\n")
+effectSizeROC <- 0.04
+cat("NH-NR treatments only: trts = c(1,5)", "\n")
 SsFrocSampleSize(DfExtractDataset(ds, trts = c(1,5)), J = 5, K = 100, effectSizeROC = effectSizeROC)
 ```
 
-#### DOBBINS-1 dataset, all data and NH treatments only
+### DOBBINS-1 dataset, all data and NH-NR treatments only
 
-```{r, echo=FALSE, cache=TRUE}
+Note: this dataset revealed issues with the RSM fitting program, namely the number of ROC operating points sometimes falls below 3, the minimum required. 
+
+```{r froc-sample-size-dataset11, echo=FALSE,out.width="50%",out.height="20%",fig.cap="RSM fitted ROC plot for dataset11, treatment 1 and reader 3. Note the two defining operating points near the origin. ",fig.show='hold',fig.align='center'}
+knitr::include_graphics("images/froc-sample-size/ds11trt1rdr3.png")
+```
+
+
+This dataset has four treatments; therefore two results are reported: one using all treatments and one using NH not-rejecting treatments only, i.e., `DfExtractDataset(ds, trts = c(1,3,4))`. 
+
+```{r, echo=FALSE, cache=FALSE}
 
 ds <- dataset11
 cat("dataset = ", ds$descriptions$fileName, 
@@ -593,18 +618,20 @@ cat("dataset = ", ds$descriptions$fileName,
 "\n\n")
 
 cat("All data", "\n")
-effectSizeROC <- 0.03
+effectSizeROC <- 0.07
 SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = effectSizeROC)
 
-cat("NH treatments only", "\n")
-#SsFrocSampleSize(DfExtractDataset(ds, trts = c(3,4)), J = 5, K = 100, effectSizeROC = #effectSizeROC)
+cat("NH-NR treatments only: trts = c(1,3,4)", "\n")
 SsFrocSampleSize(DfExtractDataset(ds, trts = c(1,3,4)), J = 5, K = 100, effectSizeROC = effectSizeROC)
 ```
 
-#### DOBBINS-3 dataset, all data and NH treatments only
+### DOBBINS-3 dataset, all data and NH-NR treatments only
 
 
-```{r, echo=FALSE, cache=TRUE}
+This dataset has four treatments; therefore two results are reported: one using all treatments and one using NH not-rejecting treatments only, i.e., `DfExtractDataset(ds, trts = c(3,4))`. 
+
+
+```{r, echo=FALSE, cache=FALSE}
 ds <- dataset13
 cat("dataset = ", ds$descriptions$fileName, 
 ", Name = ", ds$descriptions$name, 
@@ -613,18 +640,14 @@ cat("dataset = ", ds$descriptions$fileName,
 "\n\n")
 
 cat("All data", "\n")
-effectSizeROC <- 0.03
+effectSizeROC <- 0.07
 SsFrocSampleSize(ds, J = 5, K = 100, effectSizeROC = effectSizeROC)
 
-cat("NH treatments only", "\n")
+cat("Note change in effect size in next analysis\n")
+effectSizeROC <- 0.03
+cat("NH-NR treatments only: trts = c(3,4)", "\n")
 SsFrocSampleSize(DfExtractDataset(ds, trts = c(3,4)), J = 5, K = 100, effectSizeROC = effectSizeROC)
 ```
-
-
-
-
-
-
 
 
 
