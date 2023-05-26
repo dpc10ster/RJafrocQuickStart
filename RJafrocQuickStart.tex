@@ -2082,7 +2082,7 @@ This chapter is split into three parts:
 
 FROC sample size estimation is not fundamentally different from ROC sample size estimation, Chapter \ref{roc-sample-size-dbm}.
 
-\textbf{A recapitulation of ROC sample size estimation}
+\textbf{Summary of ROC sample size estimation}
 
 Based on analysis of a pilot ROC dataset and using a specified figure of merit (FOM), e.g., \texttt{FOM\ =\ Wilcoxon}, and either \texttt{method\ =\ "DBM"} or \texttt{method\ =\ "OR"} for significance testing, one estimates the intrinsic variability of the data expressed in terms of FOM variance components. For the DBM method these are the pseudovalue-based variance components while for OR method these are the FOM-based variance and covariances. \textbf{In this chapter the OR variance components will be used.} The second step is to specify a clinically realistic effect-size, e.g., the anticipated AUC difference between the two modalities.
 
@@ -2090,7 +2090,7 @@ Given the variance components and the anticipated AUC difference the sample size
 
 \textbf{Summary of FROC sample size estimation}
 
-In FROC analysis the only difference, indeed the critical difference, is the choice of FOM; e.g., \texttt{FOM\ =\ "wAFROC"} instead of the ROC-AUC, \texttt{FOM\ =\ "Wilcoxon"}. The FROC dataset is analyzed using the DBM (or the OR) method. This yields the necessary variance components (or the covariance matrix) of the wAFROC-AUC. Next one specifies the effect-size \textbf{in wAFROC-AUC units} and this requires care. The ROC-AUC has a historically well-known interpretation, namely it is the classification ability at separating diseased patients from non-diseased patients, while the wAFROC-AUC does not. Needed is a way of relating the effect-size in easily understood ROC-AUC units to one in wAFROC-AUC units. This requires a physical model, e.g., the RSM, that predicts both ROC and wAFROC curves and their corresponding AUCs.
+In FROC analysis the only difference, indeed the critical difference, is the choice of FOM; e.g., \texttt{FOM\ =\ "wAFROC"} instead of the ROC-AUC, \texttt{FOM\ =\ "Wilcoxon"}. The FROC dataset is analyzed using the OR (or the DBM) method. This yields the covariance matrix of the wAFROC-AUC. Next one specifies the effect-size \textbf{in wAFROC-AUC units} and this requires care. The ROC-AUC has a historically well-known interpretation, namely it is the classification ability at separating diseased patients from non-diseased patients, while the wAFROC-AUC does not. Needed is a way of relating the effect-size in the easily understood ROC-AUC unit to one in wAFROC-AUC unit. This requires a physical model, e.g., the RSM, that predicts both ROC and wAFROC curves and their corresponding AUCs.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2103,7 +2103,7 @@ In FROC analysis the only difference, indeed the critical difference, is the cho
 \end{enumerate}
 
 \begin{quote}
-\textbf{It is important to recognize is that all quantities have to be in the same units}. When performing ROC analysis, everything (variance components and effect-size) has to be in units of the selected FOM, e.g., \texttt{FOM\ =\ "Wilcoxon"}. When doing wAFROC analysis, everything has to be in units of the wAFROC-AUC, i.e., \texttt{FOM\ =\ "wAFROC"}. The variance components and effect-size in wAFROC-AUC units will be different from their corresponding ROC counterparts. In particular, as shown next, an ROC-AUC effect-size of 0.05 generally corresponds to a larger effect-size in wAFROC-AUC units. The reason for this is that the range over which wAFROC-AUC can vary, namely 0 to 1, is twice the corresponding ROC-AUC range (0.5 to 1). For the same reason the wAFROC variance components also tend to be larger than the ROC variance components.
+\textbf{It is important to recognize is that all quantities have to be in the same units}. When performing ROC analysis, everything (variance components and effect-size) has to be in units of the selected FOM, e.g., \texttt{FOM\ =\ "Wilcoxon"}. When performing wAFROC analysis, everything has to be in units of the wAFROC-AUC, i.e., \texttt{FOM\ =\ "wAFROC"}. The variance components and effect-size in wAFROC-AUC units will be different from their corresponding ROC counterparts. In particular, as shown next, a given ROC-AUC effect-size generally corresponds to a larger effect-size in wAFROC-AUC units. The reason for this is that the range over which wAFROC-AUC can vary, namely 0 to 1, which is twice the corresponding ROC-AUC range (0.5 to 1). For the same reason the wAFROC variance components also tend to be larger than the ROC variance components.
 \end{quote}
 
 The next section explains the steps used to implement \#2 above.
@@ -2113,7 +2113,7 @@ The next section explains the steps used to implement \#2 above.
 
 The steps are illustrated using \texttt{dataset04}, a 5 treatment, 4 radiologist and 200 case FROC dataset \citep{zanca2009evaluation} acquired on a 5-point scale, i.e., the data is already binned. If not binned one needs to bin the dataset using \texttt{DfBinDataset()} before RSM fitting can be performed.
 
-The following code computes \texttt{JStar} and \texttt{KStar}, the numbers of readers and cases in the pilot dataset. These are needed below for correct scaling of the OR variance components.
+The following code computes \texttt{JStar} and \texttt{KStar}, the numbers of readers and cases in the \textbf{pilot} dataset. These are needed below for correct scaling of the OR variance components.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2135,7 +2135,7 @@ If there are more than two treatments in the pilot dataset, as in \texttt{datase
 
 extracts treatments 1 and 2. These treatments were found \citep{zanca2009evaluation} to be ``almost'' equivalent (the NH could not be rejected for the wAFROC-AUC difference between these treatments). More than two treatments can be used if they have similar AUCs, as this will improve the stability of the procedure. However, the final sample size predictions are restricted to two treatments in the pivotal study.
 
-The next two steps are needed since \textbf{the RSM can only fit binned ROC data}.
+The next two steps are needed since \textbf{the RSM fits binned ROC data}.
 
 \hypertarget{convert-the-froc-nh-data-to-roc}{%
 \subsubsection{Convert the FROC NH data to ROC}\label{convert-the-froc-nh-data-to-roc}}
@@ -2160,7 +2160,7 @@ If the NH dataset uses continuous ratings one bins the ratings:
 \end{Highlighting}
 \end{Shaded}
 
-The default number of bins should be used. Unlike binning using arbitrarily set thresholds the thresholds found by \texttt{DfBinDataset()} are unique as they maximize the empirical ROC-AUC.
+The default number of bins should be used. Unlike binning using arbitrarily set thresholds the thresholds found by \texttt{DfBinDataset()} are unique as they are chosen to maximize the empirical ROC-AUC.
 
 \hypertarget{determine-the-lesion-distribution-and-weights-of-the-froc-dataset}{%
 \subsubsection{Determine the lesion distribution and weights of the FROC dataset}\label{determine-the-lesion-distribution-and-weights-of-the-froc-dataset}}
@@ -2588,7 +2588,7 @@ Here \texttt{K80RRRC} is the number of cases needed for 80 percent power under R
 \hypertarget{part-3}{%
 \section{Part 3}\label{part-3}}
 
-What follows is an application of the method to all my available FROC datasets. If more than two treatments are present two analyses were conducted: one using all treatments and one using NH not-rejecting treatments only (abbreviated to NH-NR). Note that ROC effect sizes were varied between the two analyses to keep the FROC power close to 80 percent. In all reported analyses J = 5 readers and K = 100 cases are assumed in the pivotal study.
+What follows is an application of the method to all my available FROC datasets. If more than two treatments are present two analyses are reported: one using all treatments and one using NH not-rejecting (NH-NR) treatments only. Note that ROC effect sizes were sometimes varied between the two analyses to keep the FROC power close to 80 percent. In all reported analyses J = 5 readers and K = 100 cases are assumed in the pivotal study.
 
 \hypertarget{tony-dataset}{%
 \subsection{TONY dataset}\label{tony-dataset}}
@@ -3254,7 +3254,7 @@ This dataset has four treatments; therefore two results are reported: one using 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
 
-This chapter has described the procedure for FROC sample size estimation.
+With one exception, namely \texttt{dataset11}, each analyses demonstrates the considerable power advantage of FROC over ROC analysis. This is due to the increased predicted wAFROC-AUC effect size relative to the postulated ROC-AUC effect size.
 
 \hypertarget{part-software-details}{%
 \part*{Software details}\label{part-software-details}}
