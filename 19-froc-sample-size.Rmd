@@ -499,7 +499,7 @@ Here `K80RRRC` is the number of cases needed for 80 percent power under RRRC ana
 ## Part 3
 
 
-What follows is an application of the method to all my available FROC datasets. If more than two treatments are present two analyses were conducted: one using all treatments and one using NH not-rejecting treatments only (abbreviated to NH-NR). Note that ROC effect sizes were varied between the two analyses to keep the FROC power close to 80 percent. In all reported analyses J = 5 readers and K = 100 cases are assumed in the pivotal study.
+What follows is an application of the method to all my available FROC datasets. If more than two treatments are present two analyses are reported: one using all treatments and one using NH not-rejecting (NH-NR) treatments only. Note that ROC effect sizes were sometimes varied between the two analyses to keep the FROC power close to 80 percent. In all reported analyses J = 5 readers and K = 100 cases are assumed in the pivotal study. 
 
 
 
@@ -653,5 +653,7 @@ SsFrocSampleSize(DfExtractDataset(ds, trts = c(3,4)), J = 5, K = 100, effectSize
 
 ## Discussion
 
-This chapter has described the procedure for FROC sample size estimation.
+With one exception, namely `dataset11`, each analyses demonstrates the considerable power advantage of FROC over ROC analysis. This is due to the increased predicted wAFROC-AUC effect size relative to the postulated ROC-AUC effect size.
+
+
 
