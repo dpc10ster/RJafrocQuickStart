@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | The RJafroc Quick Start Book</title>
+  <title>Choosing an appropriate figure of merit | The RJafroc Quick Start Book</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | The RJafroc Quick Start Book" />
+  <meta property="og:title" content="Choosing an appropriate figure of merit | The RJafroc Quick Start Book" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   <meta name="github-repo" content="dpc10ster/RJafrocQuickStart" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | The RJafroc Quick Start Book" />
+  <meta name="twitter:title" content="Choosing an appropriate figure of merit | The RJafroc Quick Start Book" />
   
   <meta name="twitter:description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="quick-start-lroc.html"/>
+<link rel="next" href="quick-start-dbm-text.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -387,19 +387,109 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="choosing-an-appropriate-figure-of-merit" class="section level1 unnumbered hasAnchor">
+<h1>Choosing an appropriate figure of merit<a href="choosing-an-appropriate-figure-of-merit.html#choosing-an-appropriate-figure-of-merit" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="choice-of-fom-hmf" class="section level2 hasAnchor" number="4.12">
+<h2><span class="header-section-number">4.12</span> How much finished 0 percent<a href="choosing-an-appropriate-figure-of-merit.html#choice-of-fom-hmf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>WARNING: Usage of FOM = HrSe or FOM = HrSp is strongly discouraged. Consider comparing two readers or two treatments using either of these FOMs. The rating is a <em>subjective ordered label</em>. It need not be used consistently between readers and treatments. A reader using a strict reporting criteria, who only marks a lesion when he is very confident, will have smaller HrSe and larger HrSp than a reader who adopts a laxer criteria, even though true performance, as measured by ROC AUC or percentage correct in 2AFC task, are identical. This is ROC-101: ROC AUC was recommended by Metz, ca. 1978 instead of sensitivity or specificity.</p>
+</div>
+<div id="choice-of-fom-introduction" class="section level2 hasAnchor" number="4.13">
+<h2><span class="header-section-number">4.13</span> Introduction<a href="choosing-an-appropriate-figure-of-merit.html#choice-of-fom-introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Assuming the study has been properly conducted, e.g., ROC or FROC, probably the most important step before beginning to analyze the dataset is to choose an apprpriate figure of merit (i.e., performance metric).</p>
+</div>
+<div id="choice-of-fom-roc" class="section level2 hasAnchor" number="4.14">
+<h2><span class="header-section-number">4.14</span> ROC dataset<a href="choosing-an-appropriate-figure-of-merit.html#choice-of-fom-roc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the ROC paradigm every modality-reader-case combination yields a single rating. The appropriate FOM is the Wilcoxon statistic, which is identical to the AUC under the empirical ROC curve.</p>
+</div>
+<div id="choice-of-fom-froc" class="section level2 hasAnchor" number="4.15">
+<h2><span class="header-section-number">4.15</span> FROC dataset<a href="choosing-an-appropriate-figure-of-merit.html#choice-of-fom-froc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the FROC paradigm every modality-reader-case combination yields a random number (zero or more) of mark-rating pairs.</p>
+<div id="choice-of-fom-froc-wafroc" class="section level3 hasAnchor" number="4.15.1">
+<h3><span class="header-section-number">4.15.1</span> FOM = wAFROC<a href="choosing-an-appropriate-figure-of-merit.html#choice-of-fom-froc-wafroc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For most FROC datasets the appropriate FOM is the AUC under the weighted AFROC plot, as illustrated next for <code>daset05</code> which has two modalities and 9 readers.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb20-1" aria-hidden="true" tabindex="-1"></a>fom_wAFROC <span class="ot">&lt;-</span> <span class="fu">UtilFigureOfMerit</span>(<span class="at">dataset =</span> dataset05, <span class="at">FOM =</span> <span class="st">&quot;wAFROC&quot;</span>)</span>
+<span id="cb20-2"><a href="choosing-an-appropriate-figure-of-merit.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">lapply</span>(fom_wAFROC, format, <span class="at">decimal.mark =</span> <span class="st">&quot;.&quot;</span>, <span class="at">digits =</span> <span class="dv">4</span>))</span></code></pre></div>
+<pre><code>##     rdr1   rdr2   rdr3   rdr4   rdr5   rdr6   rdr7   rdr8  rdr9
+## 1 0.7245 0.8810 0.8096 0.6133 0.5773 0.8493 0.8928 0.8026 0.764
+## 2 0.8024 0.9686 0.8460 0.7514 0.7209 0.8719 0.9370 0.8995 0.819</code></pre>
+</div>
+<div id="choice-of-fom-froc-hrse" class="section level3 hasAnchor" number="4.15.2">
+<h3><span class="header-section-number">4.15.2</span> FOM = HrSe<a href="choosing-an-appropriate-figure-of-merit.html#choice-of-fom-froc-hrse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recall that the concepts of sensitivity and specificity are reserved for ROC data - i.e., one rating per case. To compute these from FROC data one needs a method for inferring a single rating from the possibly multiple (zero or more) ratings ocurring on each case (if the case has no marks one assings a rating that is smaller than any the ratings of explicitly marked locations, e.g., minus infinity). The recommended procedure is to assign the rating of the highest rated mark on each case, of <span class="math inline">\(-\infty\)</span> if the case has no marks, as its inferred ROC rating. This has the has the effect of converting the FROC dataset to an inferred ROC dataset. The function <code>DfFroc2Roc</code> does exactly this:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb22-1" aria-hidden="true" tabindex="-1"></a>dataset05<span class="sc">$</span>descriptions<span class="sc">$</span>type</span></code></pre></div>
+<pre><code>## [1] &quot;FROC&quot;</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb24-1" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> <span class="fu">DfFroc2Roc</span>(dataset05)</span>
+<span id="cb24-2"><a href="choosing-an-appropriate-figure-of-merit.html#cb24-2" aria-hidden="true" tabindex="-1"></a>ds<span class="sc">$</span>descriptions<span class="sc">$</span>type</span></code></pre></div>
+<pre><code>## [1] &quot;ROC&quot;</code></pre>
+<p><code>HrSe</code> is the abbreviation for “highest rating sensitivity”, sensitivity derived from the rating of the highest rated mark on each case. Replacing the possibly multiple ratings occurring on each case with the highest rating amounts to an assumption, a very good one in my opinion. Since the ratings are ordered labels (i.e., non-numeric vaues) any numerical computation, such as the average, would be invalid. It is also common sense: if a case has 3 marks rated 80, 30 and 15, why would the ROC rating be anything but 80. Finally, there is historical precedence for this assumption: <span class="citation">(<a href="#ref-bunch1977free" role="doc-biblioref">Bunch et al. 1977</a>; <a href="#ref-swensson1996unified" role="doc-biblioref">Swensson 1996</a>)</span>.</p>
+<p>Usage of <code>FOM = HrSe</code> is illustrated next for <code>dataset05</code>.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb26-1" aria-hidden="true" tabindex="-1"></a>fom_HrSe <span class="ot">&lt;-</span> <span class="fu">UtilFigureOfMerit</span>(<span class="at">dataset =</span> dataset05, <span class="at">FOM =</span> <span class="st">&quot;HrSe&quot;</span>)</span>
+<span id="cb26-2"><a href="choosing-an-appropriate-figure-of-merit.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">lapply</span>(fom_HrSe, format, <span class="at">decimal.mark =</span> <span class="st">&quot;.&quot;</span>, <span class="at">digits =</span> <span class="dv">4</span>))</span></code></pre></div>
+<pre><code>##     rdr1   rdr2   rdr3   rdr4   rdr5   rdr6   rdr7   rdr8   rdr9
+## 1 0.9362 0.8298 0.8936 0.7021 0.8298 0.9574 0.8723 0.8936 0.8936
+## 2 1.0000 0.9574 0.9574 0.8511 0.8511 1.0000 0.9362 0.9149 0.9787</code></pre>
+<p>Notice that each listed value is greater TBA?? than the corresponding value when using <code>FOM = "wAFROC"</code>. This should not come as a surprise as</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
+<span id="cb28-2"><a href="choosing-an-appropriate-figure-of-merit.html#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) {</span>
+<span id="cb28-3"><a href="choosing-an-appropriate-figure-of-merit.html#cb28-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">cat</span>(<span class="st">&quot;i = &quot;</span>, i, <span class="st">&quot;, j = &quot;</span>, j, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb28-4"><a href="choosing-an-appropriate-figure-of-merit.html#cb28-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (fom_HrSe[i,j] <span class="sc">&gt;</span> fom_wAFROC[i,j]) <span class="fu">cat</span> (<span class="st">&quot;TRUE </span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="cf">else</span> <span class="fu">cat</span>(<span class="st">&quot;FALSE </span><span class="sc">\n</span><span class="st">&quot;</span>) </span>
+<span id="cb28-5"><a href="choosing-an-appropriate-figure-of-merit.html#cb28-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## i =  1 , j =  1 
+## TRUE 
+## i =  1 , j =  2 
+## FALSE 
+## i =  1 , j =  3 
+## TRUE 
+## i =  1 , j =  4 
+## TRUE 
+## i =  1 , j =  5 
+## TRUE 
+## i =  1 , j =  6 
+## TRUE 
+## i =  1 , j =  7 
+## FALSE 
+## i =  1 , j =  8 
+## TRUE 
+## i =  1 , j =  9 
+## TRUE 
+## i =  2 , j =  1 
+## TRUE 
+## i =  2 , j =  2 
+## FALSE 
+## i =  2 , j =  3 
+## TRUE 
+## i =  2 , j =  4 
+## TRUE 
+## i =  2 , j =  5 
+## TRUE 
+## i =  2 , j =  6 
+## TRUE 
+## i =  2 , j =  7 
+## FALSE 
+## i =  2 , j =  8 
+## TRUE 
+## i =  2 , j =  9 
+## TRUE</code></pre>
+
+</div>
+</div>
+</div>
+<h3>REFERENCES<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-bunch1977free" class="csl-entry">
+Bunch, Philip C, John F Hamilton, Gary K Sanderson, and Arthur H Simmons. 1977. <span>“A Free Response Approach to the Measurement and Characterization of Radiographic Observer Performance.”</span> In <em>Application of Optical Instrumentation in Medicine VI</em>, 127:124–35. International Society for Optics; Photonics.
+</div>
+<div id="ref-swensson1996unified" class="csl-entry">
+Swensson, Richard G. 1996. <span>“Unified Measurement of Observer Performance in Detecting and Localizing Target Objects on Images.”</span> <em>Medical Physics</em> 23 (10): 1709–25.
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="quick-start-lroc.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="quick-start-dbm-text.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

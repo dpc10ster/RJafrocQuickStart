@@ -23,14 +23,14 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2023-05-26" />
+<meta name="date" content="2023-08-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="quick-start-lroc.html"/>
+<link rel="prev" href="choosing-an-appropriate-figure-of-merit.html"/>
 <link rel="next" href="quick-start-or-text.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -224,6 +224,17 @@ div.csl-indent {
 <li class="chapter" data-level="4.10" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-2"><i class="fa fa-check"></i><b>4.10</b> Reading forced localization false LROC dataset</a></li>
 <li class="chapter" data-level="4.11" data-path="quick-start-lroc.html"><a href="quick-start-lroc.html#quick-start-lroc-data-summary"><i class="fa fa-check"></i><b>4.11</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="choosing-an-appropriate-figure-of-merit.html"><a href="choosing-an-appropriate-figure-of-merit.html"><i class="fa fa-check"></i>Choosing an appropriate figure of merit</a>
+<ul>
+<li class="chapter" data-level="4.12" data-path="choosing-an-appropriate-figure-of-merit.html"><a href="choosing-an-appropriate-figure-of-merit.html#choice-of-fom-hmf"><i class="fa fa-check"></i><b>4.12</b> How much finished 0 percent</a></li>
+<li class="chapter" data-level="4.13" data-path="choosing-an-appropriate-figure-of-merit.html"><a href="choosing-an-appropriate-figure-of-merit.html#choice-of-fom-introduction"><i class="fa fa-check"></i><b>4.13</b> Introduction</a></li>
+<li class="chapter" data-level="4.14" data-path="choosing-an-appropriate-figure-of-merit.html"><a href="choosing-an-appropriate-figure-of-merit.html#choice-of-fom-roc"><i class="fa fa-check"></i><b>4.14</b> ROC dataset</a></li>
+<li class="chapter" data-level="4.15" data-path="choosing-an-appropriate-figure-of-merit.html"><a href="choosing-an-appropriate-figure-of-merit.html#choice-of-fom-froc"><i class="fa fa-check"></i><b>4.15</b> FROC dataset</a>
+<ul>
+<li class="chapter" data-level="4.15.1" data-path="choosing-an-appropriate-figure-of-merit.html"><a href="choosing-an-appropriate-figure-of-merit.html#choice-of-fom-froc-wafroc"><i class="fa fa-check"></i><b>4.15.1</b> FOM = wAFROC</a></li>
+<li class="chapter" data-level="4.15.2" data-path="choosing-an-appropriate-figure-of-merit.html"><a href="choosing-an-appropriate-figure-of-merit.html#choice-of-fom-froc-hrse"><i class="fa fa-check"></i><b>4.15.2</b> FOM = HrSe</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html"><i class="fa fa-check"></i><b>5</b> DBM analysis text output</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="quick-start-dbm-text.html"><a href="quick-start-dbm-text.html#quick-start-dbm-text-how-much-finished"><i class="fa fa-check"></i><b>5.1</b> TBA How much finished</a></li>
@@ -389,7 +400,7 @@ div.csl-indent {
 <div id="quick-start-dbm-text-analyze-dataset" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Analyzing the ROC dataset<a href="quick-start-dbm-text.html#quick-start-dbm-text-analyze-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This illustrates the <code>StSignificanceTesting()</code> function. The significance testing method is specified as <code>"DBM"</code> and the figure of merit <code>FOM</code> is specified as “Wilcoxon”. The embedded dataset <code>dataset03</code> is used.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="quick-start-dbm-text.html#cb20-1" aria-hidden="true" tabindex="-1"></a>ret <span class="ot">&lt;-</span> <span class="fu">StSignificanceTesting</span>(dataset03, <span class="at">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, <span class="at">method =</span> <span class="st">&quot;DBM&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="quick-start-dbm-text.html#cb30-1" aria-hidden="true" tabindex="-1"></a>ret <span class="ot">&lt;-</span> <span class="fu">StSignificanceTesting</span>(dataset03, <span class="at">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, <span class="at">method =</span> <span class="st">&quot;DBM&quot;</span>)</span></code></pre></div>
 </div>
 <div id="quick-start-dbm-text-explanation" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> Explanation of the output<a href="quick-start-dbm-text.html#quick-start-dbm-text-explanation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -402,17 +413,17 @@ div.csl-indent {
 <li><code>RRFC</code>” random-reader fixed-case analyses results.</li>
 </ul>
 <p>Let us consider them individually.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="quick-start-dbm-text.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ret<span class="sc">$</span>FOMs)</span>
-<span id="cb21-2"><a href="quick-start-dbm-text.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb21-3"><a href="quick-start-dbm-text.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ foms        :&#39;data.frame&#39;:    2 obs. of  4 variables:</span></span>
-<span id="cb21-4"><a href="quick-start-dbm-text.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ rdrREADER_1: num [1:2] 0.853 0.85</span></span>
-<span id="cb21-5"><a href="quick-start-dbm-text.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ rdrREADER_2: num [1:2] 0.865 0.844</span></span>
-<span id="cb21-6"><a href="quick-start-dbm-text.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ rdrREADER_3: num [1:2] 0.857 0.84</span></span>
-<span id="cb21-7"><a href="quick-start-dbm-text.html#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ rdrREADER_4: num [1:2] 0.815 0.814</span></span>
-<span id="cb21-8"><a href="quick-start-dbm-text.html#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ trtMeans    :&#39;data.frame&#39;:    2 obs. of  1 variable:</span></span>
-<span id="cb21-9"><a href="quick-start-dbm-text.html#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num [1:2] 0.848 0.837</span></span>
-<span id="cb21-10"><a href="quick-start-dbm-text.html#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ trtMeanDiffs:&#39;data.frame&#39;:    1 obs. of  1 variable:</span></span>
-<span id="cb21-11"><a href="quick-start-dbm-text.html#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num 0.0109</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="quick-start-dbm-text.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ret<span class="sc">$</span>FOMs)</span>
+<span id="cb31-2"><a href="quick-start-dbm-text.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb31-3"><a href="quick-start-dbm-text.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ foms        :&#39;data.frame&#39;:    2 obs. of  4 variables:</span></span>
+<span id="cb31-4"><a href="quick-start-dbm-text.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ rdrREADER_1: num [1:2] 0.853 0.85</span></span>
+<span id="cb31-5"><a href="quick-start-dbm-text.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ rdrREADER_2: num [1:2] 0.865 0.844</span></span>
+<span id="cb31-6"><a href="quick-start-dbm-text.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ rdrREADER_3: num [1:2] 0.857 0.84</span></span>
+<span id="cb31-7"><a href="quick-start-dbm-text.html#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ rdrREADER_4: num [1:2] 0.815 0.814</span></span>
+<span id="cb31-8"><a href="quick-start-dbm-text.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ trtMeans    :&#39;data.frame&#39;:    2 obs. of  1 variable:</span></span>
+<span id="cb31-9"><a href="quick-start-dbm-text.html#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num [1:2] 0.848 0.837</span></span>
+<span id="cb31-10"><a href="quick-start-dbm-text.html#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ trtMeanDiffs:&#39;data.frame&#39;:    1 obs. of  1 variable:</span></span>
+<span id="cb31-11"><a href="quick-start-dbm-text.html#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num 0.0109</span></span></code></pre></div>
 <ul>
 <li><code>FOMs</code> is a list of 3
 <ul>
@@ -421,35 +432,35 @@ div.csl-indent {
 <li><code>trtMeanDiffs</code> a [1x1] dataframe: the difference(s) of the reader-averaged figures of merit for all different-treatment pairings. In this example, with only two treatments, there is only one different-treatment pairing.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="quick-start-dbm-text.html#cb22-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FOMs<span class="sc">$</span>foms</span>
-<span id="cb22-2"><a href="quick-start-dbm-text.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           rdrREADER_1 rdrREADER_2 rdrREADER_3 rdrREADER_4</span></span>
-<span id="cb22-3"><a href="quick-start-dbm-text.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1  0.85345997  0.86499322  0.85730439  0.81524197</span></span>
-<span id="cb22-4"><a href="quick-start-dbm-text.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2  0.84961556  0.84350972  0.84011759  0.81433740</span></span>
-<span id="cb22-5"><a href="quick-start-dbm-text.html#cb22-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FOMs<span class="sc">$</span>trtMeans</span>
-<span id="cb22-6"><a href="quick-start-dbm-text.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate</span></span>
-<span id="cb22-7"><a href="quick-start-dbm-text.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1 0.84774989</span></span>
-<span id="cb22-8"><a href="quick-start-dbm-text.html#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2 0.83689507</span></span>
-<span id="cb22-9"><a href="quick-start-dbm-text.html#cb22-9" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FOMs<span class="sc">$</span>trtMeanDiffs</span>
-<span id="cb22-10"><a href="quick-start-dbm-text.html#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate</span></span>
-<span id="cb22-11"><a href="quick-start-dbm-text.html#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.010854817</span></span></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="quick-start-dbm-text.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ret<span class="sc">$</span>ANOVA)</span>
-<span id="cb23-2"><a href="quick-start-dbm-text.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 4</span></span>
-<span id="cb23-3"><a href="quick-start-dbm-text.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ TRCanova     :&#39;data.frame&#39;:   8 obs. of  3 variables:</span></span>
-<span id="cb23-4"><a href="quick-start-dbm-text.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ SS: num [1:8] 0.0236 0.2052 52.5284 0.0151 6.41 ...</span></span>
-<span id="cb23-5"><a href="quick-start-dbm-text.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF: num [1:8] 1 3 99 3 99 297 297 799</span></span>
-<span id="cb23-6"><a href="quick-start-dbm-text.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MS: num [1:8] 0.02357 0.06841 0.53059 0.00502 0.06475 ...</span></span>
-<span id="cb23-7"><a href="quick-start-dbm-text.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ VarCom       :&#39;data.frame&#39;:   6 obs. of  1 variable:</span></span>
-<span id="cb23-8"><a href="quick-start-dbm-text.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimates: num [1:6] 3.78e-05 5.13e-02 -7.13e-04 -2.89e-03 2.79e-02 ...</span></span>
-<span id="cb23-9"><a href="quick-start-dbm-text.html#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ IndividualTrt:&#39;data.frame&#39;:   3 obs. of  3 variables:</span></span>
-<span id="cb23-10"><a href="quick-start-dbm-text.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF       : num [1:3] 3 99 297</span></span>
-<span id="cb23-11"><a href="quick-start-dbm-text.html#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ TrtTREAT1: num [1:3] 0.0493 0.294 0.105</span></span>
-<span id="cb23-12"><a href="quick-start-dbm-text.html#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ TrtTREAT2: num [1:3] 0.0242 0.3014 0.1034</span></span>
-<span id="cb23-13"><a href="quick-start-dbm-text.html#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ IndividualRdr:&#39;data.frame&#39;:   3 obs. of  5 variables:</span></span>
-<span id="cb23-14"><a href="quick-start-dbm-text.html#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF         : num [1:3] 1 99 99</span></span>
-<span id="cb23-15"><a href="quick-start-dbm-text.html#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ rdrREADER_1: num [1:3] 0.000739 0.203875 0.091559</span></span>
-<span id="cb23-16"><a href="quick-start-dbm-text.html#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ rdrREADER_2: num [1:3] 0.0231 0.2234 0.0803</span></span>
-<span id="cb23-17"><a href="quick-start-dbm-text.html#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ rdrREADER_3: num [1:3] 0.0148 0.2142 0.0612</span></span>
-<span id="cb23-18"><a href="quick-start-dbm-text.html#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ rdrREADER_4: num [1:3] 4.09e-05 2.85e-01 6.06e-02</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="quick-start-dbm-text.html#cb32-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FOMs<span class="sc">$</span>foms</span>
+<span id="cb32-2"><a href="quick-start-dbm-text.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           rdrREADER_1 rdrREADER_2 rdrREADER_3 rdrREADER_4</span></span>
+<span id="cb32-3"><a href="quick-start-dbm-text.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1  0.85345997  0.86499322  0.85730439  0.81524197</span></span>
+<span id="cb32-4"><a href="quick-start-dbm-text.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2  0.84961556  0.84350972  0.84011759  0.81433740</span></span>
+<span id="cb32-5"><a href="quick-start-dbm-text.html#cb32-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FOMs<span class="sc">$</span>trtMeans</span>
+<span id="cb32-6"><a href="quick-start-dbm-text.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate</span></span>
+<span id="cb32-7"><a href="quick-start-dbm-text.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1 0.84774989</span></span>
+<span id="cb32-8"><a href="quick-start-dbm-text.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2 0.83689507</span></span>
+<span id="cb32-9"><a href="quick-start-dbm-text.html#cb32-9" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FOMs<span class="sc">$</span>trtMeanDiffs</span>
+<span id="cb32-10"><a href="quick-start-dbm-text.html#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate</span></span>
+<span id="cb32-11"><a href="quick-start-dbm-text.html#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.010854817</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="quick-start-dbm-text.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ret<span class="sc">$</span>ANOVA)</span>
+<span id="cb33-2"><a href="quick-start-dbm-text.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 4</span></span>
+<span id="cb33-3"><a href="quick-start-dbm-text.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ TRCanova     :&#39;data.frame&#39;:   8 obs. of  3 variables:</span></span>
+<span id="cb33-4"><a href="quick-start-dbm-text.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ SS: num [1:8] 0.0236 0.2052 52.5284 0.0151 6.41 ...</span></span>
+<span id="cb33-5"><a href="quick-start-dbm-text.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF: num [1:8] 1 3 99 3 99 297 297 799</span></span>
+<span id="cb33-6"><a href="quick-start-dbm-text.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MS: num [1:8] 0.02357 0.06841 0.53059 0.00502 0.06475 ...</span></span>
+<span id="cb33-7"><a href="quick-start-dbm-text.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ VarCom       :&#39;data.frame&#39;:   6 obs. of  1 variable:</span></span>
+<span id="cb33-8"><a href="quick-start-dbm-text.html#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimates: num [1:6] 3.78e-05 5.13e-02 -7.13e-04 -2.89e-03 2.79e-02 ...</span></span>
+<span id="cb33-9"><a href="quick-start-dbm-text.html#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ IndividualTrt:&#39;data.frame&#39;:   3 obs. of  3 variables:</span></span>
+<span id="cb33-10"><a href="quick-start-dbm-text.html#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF       : num [1:3] 3 99 297</span></span>
+<span id="cb33-11"><a href="quick-start-dbm-text.html#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ TrtTREAT1: num [1:3] 0.0493 0.294 0.105</span></span>
+<span id="cb33-12"><a href="quick-start-dbm-text.html#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ TrtTREAT2: num [1:3] 0.0242 0.3014 0.1034</span></span>
+<span id="cb33-13"><a href="quick-start-dbm-text.html#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ IndividualRdr:&#39;data.frame&#39;:   3 obs. of  5 variables:</span></span>
+<span id="cb33-14"><a href="quick-start-dbm-text.html#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF         : num [1:3] 1 99 99</span></span>
+<span id="cb33-15"><a href="quick-start-dbm-text.html#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ rdrREADER_1: num [1:3] 0.000739 0.203875 0.091559</span></span>
+<span id="cb33-16"><a href="quick-start-dbm-text.html#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ rdrREADER_2: num [1:3] 0.0231 0.2234 0.0803</span></span>
+<span id="cb33-17"><a href="quick-start-dbm-text.html#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ rdrREADER_3: num [1:3] 0.0148 0.2142 0.0612</span></span>
+<span id="cb33-18"><a href="quick-start-dbm-text.html#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ rdrREADER_4: num [1:3] 4.09e-05 2.85e-01 6.06e-02</span></span></code></pre></div>
 <ul>
 <li>ANOVA is a list of 4
 <ul>
@@ -460,55 +471,55 @@ div.csl-indent {
 <li><code>IndividualRdr</code> is a [3x5] dataframe: the individual reader variance components averaged over treatments, see below, where <code>msT</code> is the mean square treatment, <code>msC</code> is the mean square case and <code>msTC</code> is the mean square treatment-case.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="quick-start-dbm-text.html#cb24-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>TRCanova</span>
-<span id="cb24-2"><a href="quick-start-dbm-text.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  SS  DF           MS</span></span>
-<span id="cb24-3"><a href="quick-start-dbm-text.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; T       0.023565410   1 0.0235654097</span></span>
-<span id="cb24-4"><a href="quick-start-dbm-text.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R       0.205217999   3 0.0684059998</span></span>
-<span id="cb24-5"><a href="quick-start-dbm-text.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C      52.528398680  99 0.5305898857</span></span>
-<span id="cb24-6"><a href="quick-start-dbm-text.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TR      0.015060792   3 0.0050202641</span></span>
-<span id="cb24-7"><a href="quick-start-dbm-text.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TC      6.410048814  99 0.0647479678</span></span>
-<span id="cb24-8"><a href="quick-start-dbm-text.html#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; RC     39.242953812 297 0.1321311576</span></span>
-<span id="cb24-9"><a href="quick-start-dbm-text.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TRC    22.660077641 297 0.0762965577</span></span>
-<span id="cb24-10"><a href="quick-start-dbm-text.html#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Total 121.085323149 799           NA</span></span>
-<span id="cb24-11"><a href="quick-start-dbm-text.html#cb24-11" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>VarCom</span>
-<span id="cb24-12"><a href="quick-start-dbm-text.html#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimates</span></span>
-<span id="cb24-13"><a href="quick-start-dbm-text.html#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarR    3.7755679e-05</span></span>
-<span id="cb24-14"><a href="quick-start-dbm-text.html#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarC    5.1250915e-02</span></span>
-<span id="cb24-15"><a href="quick-start-dbm-text.html#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarTR  -7.1276294e-04</span></span>
-<span id="cb24-16"><a href="quick-start-dbm-text.html#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarTC  -2.8871475e-03</span></span>
-<span id="cb24-17"><a href="quick-start-dbm-text.html#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarRC   2.7917300e-02</span></span>
-<span id="cb24-18"><a href="quick-start-dbm-text.html#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarErr  7.6296558e-02</span></span>
-<span id="cb24-19"><a href="quick-start-dbm-text.html#cb24-19" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>IndividualTrt</span>
-<span id="cb24-20"><a href="quick-start-dbm-text.html#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       DF   TrtTREAT1   TrtTREAT2</span></span>
-<span id="cb24-21"><a href="quick-start-dbm-text.html#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; msR    3 0.049266349 0.024159915</span></span>
-<span id="cb24-22"><a href="quick-start-dbm-text.html#cb24-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; msC   99 0.293967531 0.301370323</span></span>
-<span id="cb24-23"><a href="quick-start-dbm-text.html#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; msRC 297 0.105047872 0.103379843</span></span>
-<span id="cb24-24"><a href="quick-start-dbm-text.html#cb24-24" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>IndividualRdr</span>
-<span id="cb24-25"><a href="quick-start-dbm-text.html#cb24-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      DF   rdrREADER_1 rdrREADER_2 rdrREADER_3   rdrREADER_4</span></span>
-<span id="cb24-26"><a href="quick-start-dbm-text.html#cb24-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; msT   1 0.00073897606 0.023077021 0.014769293 0.00004091217</span></span>
-<span id="cb24-27"><a href="quick-start-dbm-text.html#cb24-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; msC  99 0.20387477465 0.223441908 0.214246773 0.28541990211</span></span>
-<span id="cb24-28"><a href="quick-start-dbm-text.html#cb24-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; msTC 99 0.09155873437 0.080279256 0.061228980 0.06057067104</span></span></code></pre></div>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="quick-start-dbm-text.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ret<span class="sc">$</span>RRRC)</span>
-<span id="cb25-2"><a href="quick-start-dbm-text.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb25-3"><a href="quick-start-dbm-text.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ FTests         :&#39;data.frame&#39;: 2 obs. of  4 variables:</span></span>
-<span id="cb25-4"><a href="quick-start-dbm-text.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF   : num [1:2] 1 3</span></span>
-<span id="cb25-5"><a href="quick-start-dbm-text.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MS   : num [1:2] 0.02357 0.00502</span></span>
-<span id="cb25-6"><a href="quick-start-dbm-text.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ FStat: num [1:2] 4.69 NA</span></span>
-<span id="cb25-7"><a href="quick-start-dbm-text.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ p    : num [1:2] 0.119 NA</span></span>
-<span id="cb25-8"><a href="quick-start-dbm-text.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ciDiffTrt      :&#39;data.frame&#39;: 1 obs. of  7 variables:</span></span>
-<span id="cb25-9"><a href="quick-start-dbm-text.html#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num 0.0109</span></span>
-<span id="cb25-10"><a href="quick-start-dbm-text.html#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ StdErr  : num 0.00501</span></span>
-<span id="cb25-11"><a href="quick-start-dbm-text.html#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF      : num 3</span></span>
-<span id="cb25-12"><a href="quick-start-dbm-text.html#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ t       : num 2.17</span></span>
-<span id="cb25-13"><a href="quick-start-dbm-text.html#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ PrGTt   : num 0.119</span></span>
-<span id="cb25-14"><a href="quick-start-dbm-text.html#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CILower : num -0.00509</span></span>
-<span id="cb25-15"><a href="quick-start-dbm-text.html#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CIUpper : num 0.0268</span></span>
-<span id="cb25-16"><a href="quick-start-dbm-text.html#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ciAvgRdrEachTrt:&#39;data.frame&#39;: 2 obs. of  5 variables:</span></span>
-<span id="cb25-17"><a href="quick-start-dbm-text.html#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num [1:2] 0.848 0.837</span></span>
-<span id="cb25-18"><a href="quick-start-dbm-text.html#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ StdErr  : num [1:2] 0.0244 0.0236</span></span>
-<span id="cb25-19"><a href="quick-start-dbm-text.html#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF      : num [1:2] 70.1 253.6</span></span>
-<span id="cb25-20"><a href="quick-start-dbm-text.html#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CILower : num [1:2] 0.799 0.79</span></span>
-<span id="cb25-21"><a href="quick-start-dbm-text.html#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CIUpper : num [1:2] 0.896 0.883</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="quick-start-dbm-text.html#cb34-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>TRCanova</span>
+<span id="cb34-2"><a href="quick-start-dbm-text.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  SS  DF           MS</span></span>
+<span id="cb34-3"><a href="quick-start-dbm-text.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; T       0.023565410   1 0.0235654097</span></span>
+<span id="cb34-4"><a href="quick-start-dbm-text.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R       0.205217999   3 0.0684059998</span></span>
+<span id="cb34-5"><a href="quick-start-dbm-text.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C      52.528398680  99 0.5305898857</span></span>
+<span id="cb34-6"><a href="quick-start-dbm-text.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TR      0.015060792   3 0.0050202641</span></span>
+<span id="cb34-7"><a href="quick-start-dbm-text.html#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TC      6.410048814  99 0.0647479678</span></span>
+<span id="cb34-8"><a href="quick-start-dbm-text.html#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; RC     39.242953812 297 0.1321311576</span></span>
+<span id="cb34-9"><a href="quick-start-dbm-text.html#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TRC    22.660077641 297 0.0762965577</span></span>
+<span id="cb34-10"><a href="quick-start-dbm-text.html#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Total 121.085323149 799           NA</span></span>
+<span id="cb34-11"><a href="quick-start-dbm-text.html#cb34-11" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>VarCom</span>
+<span id="cb34-12"><a href="quick-start-dbm-text.html#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimates</span></span>
+<span id="cb34-13"><a href="quick-start-dbm-text.html#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarR    3.7755679e-05</span></span>
+<span id="cb34-14"><a href="quick-start-dbm-text.html#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarC    5.1250915e-02</span></span>
+<span id="cb34-15"><a href="quick-start-dbm-text.html#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarTR  -7.1276294e-04</span></span>
+<span id="cb34-16"><a href="quick-start-dbm-text.html#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarTC  -2.8871475e-03</span></span>
+<span id="cb34-17"><a href="quick-start-dbm-text.html#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarRC   2.7917300e-02</span></span>
+<span id="cb34-18"><a href="quick-start-dbm-text.html#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarErr  7.6296558e-02</span></span>
+<span id="cb34-19"><a href="quick-start-dbm-text.html#cb34-19" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>IndividualTrt</span>
+<span id="cb34-20"><a href="quick-start-dbm-text.html#cb34-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       DF   TrtTREAT1   TrtTREAT2</span></span>
+<span id="cb34-21"><a href="quick-start-dbm-text.html#cb34-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; msR    3 0.049266349 0.024159915</span></span>
+<span id="cb34-22"><a href="quick-start-dbm-text.html#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; msC   99 0.293967531 0.301370323</span></span>
+<span id="cb34-23"><a href="quick-start-dbm-text.html#cb34-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; msRC 297 0.105047872 0.103379843</span></span>
+<span id="cb34-24"><a href="quick-start-dbm-text.html#cb34-24" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>IndividualRdr</span>
+<span id="cb34-25"><a href="quick-start-dbm-text.html#cb34-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      DF   rdrREADER_1 rdrREADER_2 rdrREADER_3   rdrREADER_4</span></span>
+<span id="cb34-26"><a href="quick-start-dbm-text.html#cb34-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; msT   1 0.00073897606 0.023077021 0.014769293 0.00004091217</span></span>
+<span id="cb34-27"><a href="quick-start-dbm-text.html#cb34-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; msC  99 0.20387477465 0.223441908 0.214246773 0.28541990211</span></span>
+<span id="cb34-28"><a href="quick-start-dbm-text.html#cb34-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; msTC 99 0.09155873437 0.080279256 0.061228980 0.06057067104</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="quick-start-dbm-text.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ret<span class="sc">$</span>RRRC)</span>
+<span id="cb35-2"><a href="quick-start-dbm-text.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb35-3"><a href="quick-start-dbm-text.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ FTests         :&#39;data.frame&#39;: 2 obs. of  4 variables:</span></span>
+<span id="cb35-4"><a href="quick-start-dbm-text.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF   : num [1:2] 1 3</span></span>
+<span id="cb35-5"><a href="quick-start-dbm-text.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MS   : num [1:2] 0.02357 0.00502</span></span>
+<span id="cb35-6"><a href="quick-start-dbm-text.html#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ FStat: num [1:2] 4.69 NA</span></span>
+<span id="cb35-7"><a href="quick-start-dbm-text.html#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ p    : num [1:2] 0.119 NA</span></span>
+<span id="cb35-8"><a href="quick-start-dbm-text.html#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ciDiffTrt      :&#39;data.frame&#39;: 1 obs. of  7 variables:</span></span>
+<span id="cb35-9"><a href="quick-start-dbm-text.html#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num 0.0109</span></span>
+<span id="cb35-10"><a href="quick-start-dbm-text.html#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ StdErr  : num 0.00501</span></span>
+<span id="cb35-11"><a href="quick-start-dbm-text.html#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF      : num 3</span></span>
+<span id="cb35-12"><a href="quick-start-dbm-text.html#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ t       : num 2.17</span></span>
+<span id="cb35-13"><a href="quick-start-dbm-text.html#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ PrGTt   : num 0.119</span></span>
+<span id="cb35-14"><a href="quick-start-dbm-text.html#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CILower : num -0.00509</span></span>
+<span id="cb35-15"><a href="quick-start-dbm-text.html#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CIUpper : num 0.0268</span></span>
+<span id="cb35-16"><a href="quick-start-dbm-text.html#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ciAvgRdrEachTrt:&#39;data.frame&#39;: 2 obs. of  5 variables:</span></span>
+<span id="cb35-17"><a href="quick-start-dbm-text.html#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num [1:2] 0.848 0.837</span></span>
+<span id="cb35-18"><a href="quick-start-dbm-text.html#cb35-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ StdErr  : num [1:2] 0.0244 0.0236</span></span>
+<span id="cb35-19"><a href="quick-start-dbm-text.html#cb35-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF      : num [1:2] 70.1 253.6</span></span>
+<span id="cb35-20"><a href="quick-start-dbm-text.html#cb35-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CILower : num [1:2] 0.799 0.79</span></span>
+<span id="cb35-21"><a href="quick-start-dbm-text.html#cb35-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CIUpper : num [1:2] 0.896 0.883</span></span></code></pre></div>
 <ul>
 <li>RRRC, a list of 3 containing results of random-reader random-case analyses
 <ul>
@@ -517,48 +528,48 @@ div.csl-indent {
 <li><code>ciAvgRdrEachTrt</code>: is a [2x5] dataframe: the confidence intervals for each treatment, averaged over all readers in the treatment, see below, where <code>CILower</code> is the lower 95% confidence interval and <code>CIUpper</code> is the upper 95% confidence interval.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="quick-start-dbm-text.html#cb26-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>FTests</span>
-<span id="cb26-2"><a href="quick-start-dbm-text.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           DF           MS     FStat          p</span></span>
-<span id="cb26-3"><a href="quick-start-dbm-text.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Treatment  1 0.0235654097 4.6940577 0.11883786</span></span>
-<span id="cb26-4"><a href="quick-start-dbm-text.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error      3 0.0050202641        NA         NA</span></span>
-<span id="cb26-5"><a href="quick-start-dbm-text.html#cb26-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>ciDiffTrt</span>
-<span id="cb26-6"><a href="quick-start-dbm-text.html#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate       StdErr DF         t      PrGTt</span></span>
-<span id="cb26-7"><a href="quick-start-dbm-text.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.010854817 0.0050101218  3 2.1665774 0.11883786</span></span>
-<span id="cb26-8"><a href="quick-start-dbm-text.html#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                           CILower     CIUpper</span></span>
-<span id="cb26-9"><a href="quick-start-dbm-text.html#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 -0.0050896269 0.026799261</span></span>
-<span id="cb26-10"><a href="quick-start-dbm-text.html#cb26-10" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>ciAvgRdrEachTrt</span>
-<span id="cb26-11"><a href="quick-start-dbm-text.html#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate      StdErr         DF    CILower    CIUpper</span></span>
-<span id="cb26-12"><a href="quick-start-dbm-text.html#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1 0.84774989 0.024402152  70.121788 0.79908282 0.89641696</span></span>
-<span id="cb26-13"><a href="quick-start-dbm-text.html#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2 0.83689507 0.023566416 253.644028 0.79048429 0.88330585</span></span></code></pre></div>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="quick-start-dbm-text.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ret<span class="sc">$</span>FRRC)</span>
-<span id="cb27-2"><a href="quick-start-dbm-text.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 4</span></span>
-<span id="cb27-3"><a href="quick-start-dbm-text.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ FTests          :&#39;data.frame&#39;:    2 obs. of  4 variables:</span></span>
-<span id="cb27-4"><a href="quick-start-dbm-text.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF   : num [1:2] 1 99</span></span>
-<span id="cb27-5"><a href="quick-start-dbm-text.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MS   : num [1:2] 0.0236 0.0647</span></span>
-<span id="cb27-6"><a href="quick-start-dbm-text.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ FStat: num [1:2] 0.364 NA</span></span>
-<span id="cb27-7"><a href="quick-start-dbm-text.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ p    : num [1:2] 0.548 NA</span></span>
-<span id="cb27-8"><a href="quick-start-dbm-text.html#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ciDiffTrt       :&#39;data.frame&#39;:    1 obs. of  7 variables:</span></span>
-<span id="cb27-9"><a href="quick-start-dbm-text.html#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num 0.0109</span></span>
-<span id="cb27-10"><a href="quick-start-dbm-text.html#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ StdErr  : num 0.018</span></span>
-<span id="cb27-11"><a href="quick-start-dbm-text.html#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF      : num 99</span></span>
-<span id="cb27-12"><a href="quick-start-dbm-text.html#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ t       : num 0.603</span></span>
-<span id="cb27-13"><a href="quick-start-dbm-text.html#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ PrGTt   : num 0.548</span></span>
-<span id="cb27-14"><a href="quick-start-dbm-text.html#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CILower : num -0.0248</span></span>
-<span id="cb27-15"><a href="quick-start-dbm-text.html#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CIUpper : num 0.0466</span></span>
-<span id="cb27-16"><a href="quick-start-dbm-text.html#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ciAvgRdrEachTrt :&#39;data.frame&#39;:    2 obs. of  5 variables:</span></span>
-<span id="cb27-17"><a href="quick-start-dbm-text.html#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num [1:2] 0.848 0.837</span></span>
-<span id="cb27-18"><a href="quick-start-dbm-text.html#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ StdErr  : num [1:2] 0.0271 0.0274</span></span>
-<span id="cb27-19"><a href="quick-start-dbm-text.html#cb27-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF      : num [1:2] 99 99</span></span>
-<span id="cb27-20"><a href="quick-start-dbm-text.html#cb27-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CILower : num [1:2] 0.794 0.782</span></span>
-<span id="cb27-21"><a href="quick-start-dbm-text.html#cb27-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CIUpper : num [1:2] 0.902 0.891</span></span>
-<span id="cb27-22"><a href="quick-start-dbm-text.html#cb27-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ciDiffTrtEachRdr:&#39;data.frame&#39;:    4 obs. of  7 variables:</span></span>
-<span id="cb27-23"><a href="quick-start-dbm-text.html#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num [1:4] 0.003844 0.021483 0.017187 0.000905</span></span>
-<span id="cb27-24"><a href="quick-start-dbm-text.html#cb27-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ StdErr  : num [1:4] 0.0428 0.0401 0.035 0.0348</span></span>
-<span id="cb27-25"><a href="quick-start-dbm-text.html#cb27-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF      : num [1:4] 99 99 99 99</span></span>
-<span id="cb27-26"><a href="quick-start-dbm-text.html#cb27-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ t       : num [1:4] 0.0898 0.5362 0.4911 0.026</span></span>
-<span id="cb27-27"><a href="quick-start-dbm-text.html#cb27-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ PrGTt   : num [1:4] 0.929 0.593 0.624 0.979</span></span>
-<span id="cb27-28"><a href="quick-start-dbm-text.html#cb27-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CILower : num [1:4] -0.0811 -0.058 -0.0522 -0.0682</span></span>
-<span id="cb27-29"><a href="quick-start-dbm-text.html#cb27-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CIUpper : num [1:4] 0.0888 0.101 0.0866 0.07</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="quick-start-dbm-text.html#cb36-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>FTests</span>
+<span id="cb36-2"><a href="quick-start-dbm-text.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           DF           MS     FStat          p</span></span>
+<span id="cb36-3"><a href="quick-start-dbm-text.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Treatment  1 0.0235654097 4.6940577 0.11883786</span></span>
+<span id="cb36-4"><a href="quick-start-dbm-text.html#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error      3 0.0050202641        NA         NA</span></span>
+<span id="cb36-5"><a href="quick-start-dbm-text.html#cb36-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>ciDiffTrt</span>
+<span id="cb36-6"><a href="quick-start-dbm-text.html#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate       StdErr DF         t      PrGTt</span></span>
+<span id="cb36-7"><a href="quick-start-dbm-text.html#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.010854817 0.0050101218  3 2.1665774 0.11883786</span></span>
+<span id="cb36-8"><a href="quick-start-dbm-text.html#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                           CILower     CIUpper</span></span>
+<span id="cb36-9"><a href="quick-start-dbm-text.html#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 -0.0050896269 0.026799261</span></span>
+<span id="cb36-10"><a href="quick-start-dbm-text.html#cb36-10" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>ciAvgRdrEachTrt</span>
+<span id="cb36-11"><a href="quick-start-dbm-text.html#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate      StdErr         DF    CILower    CIUpper</span></span>
+<span id="cb36-12"><a href="quick-start-dbm-text.html#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1 0.84774989 0.024402152  70.121788 0.79908282 0.89641696</span></span>
+<span id="cb36-13"><a href="quick-start-dbm-text.html#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2 0.83689507 0.023566416 253.644028 0.79048429 0.88330585</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="quick-start-dbm-text.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ret<span class="sc">$</span>FRRC)</span>
+<span id="cb37-2"><a href="quick-start-dbm-text.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 4</span></span>
+<span id="cb37-3"><a href="quick-start-dbm-text.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ FTests          :&#39;data.frame&#39;:    2 obs. of  4 variables:</span></span>
+<span id="cb37-4"><a href="quick-start-dbm-text.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF   : num [1:2] 1 99</span></span>
+<span id="cb37-5"><a href="quick-start-dbm-text.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MS   : num [1:2] 0.0236 0.0647</span></span>
+<span id="cb37-6"><a href="quick-start-dbm-text.html#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ FStat: num [1:2] 0.364 NA</span></span>
+<span id="cb37-7"><a href="quick-start-dbm-text.html#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ p    : num [1:2] 0.548 NA</span></span>
+<span id="cb37-8"><a href="quick-start-dbm-text.html#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ciDiffTrt       :&#39;data.frame&#39;:    1 obs. of  7 variables:</span></span>
+<span id="cb37-9"><a href="quick-start-dbm-text.html#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num 0.0109</span></span>
+<span id="cb37-10"><a href="quick-start-dbm-text.html#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ StdErr  : num 0.018</span></span>
+<span id="cb37-11"><a href="quick-start-dbm-text.html#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF      : num 99</span></span>
+<span id="cb37-12"><a href="quick-start-dbm-text.html#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ t       : num 0.603</span></span>
+<span id="cb37-13"><a href="quick-start-dbm-text.html#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ PrGTt   : num 0.548</span></span>
+<span id="cb37-14"><a href="quick-start-dbm-text.html#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CILower : num -0.0248</span></span>
+<span id="cb37-15"><a href="quick-start-dbm-text.html#cb37-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CIUpper : num 0.0466</span></span>
+<span id="cb37-16"><a href="quick-start-dbm-text.html#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ciAvgRdrEachTrt :&#39;data.frame&#39;:    2 obs. of  5 variables:</span></span>
+<span id="cb37-17"><a href="quick-start-dbm-text.html#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num [1:2] 0.848 0.837</span></span>
+<span id="cb37-18"><a href="quick-start-dbm-text.html#cb37-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ StdErr  : num [1:2] 0.0271 0.0274</span></span>
+<span id="cb37-19"><a href="quick-start-dbm-text.html#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF      : num [1:2] 99 99</span></span>
+<span id="cb37-20"><a href="quick-start-dbm-text.html#cb37-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CILower : num [1:2] 0.794 0.782</span></span>
+<span id="cb37-21"><a href="quick-start-dbm-text.html#cb37-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CIUpper : num [1:2] 0.902 0.891</span></span>
+<span id="cb37-22"><a href="quick-start-dbm-text.html#cb37-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ciDiffTrtEachRdr:&#39;data.frame&#39;:    4 obs. of  7 variables:</span></span>
+<span id="cb37-23"><a href="quick-start-dbm-text.html#cb37-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num [1:4] 0.003844 0.021483 0.017187 0.000905</span></span>
+<span id="cb37-24"><a href="quick-start-dbm-text.html#cb37-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ StdErr  : num [1:4] 0.0428 0.0401 0.035 0.0348</span></span>
+<span id="cb37-25"><a href="quick-start-dbm-text.html#cb37-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF      : num [1:4] 99 99 99 99</span></span>
+<span id="cb37-26"><a href="quick-start-dbm-text.html#cb37-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ t       : num [1:4] 0.0898 0.5362 0.4911 0.026</span></span>
+<span id="cb37-27"><a href="quick-start-dbm-text.html#cb37-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ PrGTt   : num [1:4] 0.929 0.593 0.624 0.979</span></span>
+<span id="cb37-28"><a href="quick-start-dbm-text.html#cb37-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CILower : num [1:4] -0.0811 -0.058 -0.0522 -0.0682</span></span>
+<span id="cb37-29"><a href="quick-start-dbm-text.html#cb37-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CIUpper : num [1:4] 0.0888 0.101 0.0866 0.07</span></span></code></pre></div>
 <ul>
 <li>FRRC, a list of 4 containing results of fixed-reader random-case analyses
 <ul>
@@ -568,51 +579,51 @@ div.csl-indent {
 <li><code>ciDiffTrtEachRdr</code>: is a [4x7] dataframe: the confidence intervals for each different-treatment pairing for each reader.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="quick-start-dbm-text.html#cb28-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>FTests</span>
-<span id="cb28-2"><a href="quick-start-dbm-text.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           DF          MS      FStat          p</span></span>
-<span id="cb28-3"><a href="quick-start-dbm-text.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Treatment  1 0.023565410 0.36395597 0.54769704</span></span>
-<span id="cb28-4"><a href="quick-start-dbm-text.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error     99 0.064747968         NA         NA</span></span>
-<span id="cb28-5"><a href="quick-start-dbm-text.html#cb28-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciDiffTrt</span>
-<span id="cb28-6"><a href="quick-start-dbm-text.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate      StdErr DF          t      PrGTt</span></span>
-<span id="cb28-7"><a href="quick-start-dbm-text.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.010854817 0.017992772 99 0.60328764 0.54769704</span></span>
-<span id="cb28-8"><a href="quick-start-dbm-text.html#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                          CILower    CIUpper</span></span>
-<span id="cb28-9"><a href="quick-start-dbm-text.html#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 -0.024846746 0.04655638</span></span>
-<span id="cb28-10"><a href="quick-start-dbm-text.html#cb28-10" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciAvgRdrEachTrt</span>
-<span id="cb28-11"><a href="quick-start-dbm-text.html#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate      StdErr DF    CILower    CIUpper</span></span>
-<span id="cb28-12"><a href="quick-start-dbm-text.html#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1 0.84774989 0.027109386 99 0.79395898 0.90154079</span></span>
-<span id="cb28-13"><a href="quick-start-dbm-text.html#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2 0.83689507 0.027448603 99 0.78243109 0.89135905</span></span>
-<span id="cb28-14"><a href="quick-start-dbm-text.html#cb28-14" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciDiffTrtEachRdr</span>
-<span id="cb28-15"><a href="quick-start-dbm-text.html#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                       Estimate      StdErr DF           t</span></span>
-<span id="cb28-16"><a href="quick-start-dbm-text.html#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_1::trtTREAT1-trtTREAT2 0.00384441429 0.042792227 99 0.089839080</span></span>
-<span id="cb28-17"><a href="quick-start-dbm-text.html#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_2::trtTREAT1-trtTREAT2 0.02148349163 0.040069753 99 0.536152334</span></span>
-<span id="cb28-18"><a href="quick-start-dbm-text.html#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_3::trtTREAT1-trtTREAT2 0.01718679331 0.034993994 99 0.491135520</span></span>
-<span id="cb28-19"><a href="quick-start-dbm-text.html#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_4::trtTREAT1-trtTREAT2 0.00090456807 0.034805365 99 0.025989329</span></span>
-<span id="cb28-20"><a href="quick-start-dbm-text.html#cb28-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                       PrGTt      CILower     CIUpper</span></span>
-<span id="cb28-21"><a href="quick-start-dbm-text.html#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_1::trtTREAT1-trtTREAT2 0.92859660 -0.081064648 0.088753476</span></span>
-<span id="cb28-22"><a href="quick-start-dbm-text.html#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_2::trtTREAT1-trtTREAT2 0.59305592 -0.058023592 0.100990575</span></span>
-<span id="cb28-23"><a href="quick-start-dbm-text.html#cb28-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_3::trtTREAT1-trtTREAT2 0.62441761 -0.052248882 0.086622469</span></span>
-<span id="cb28-24"><a href="quick-start-dbm-text.html#cb28-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_4::trtTREAT1-trtTREAT2 0.97931817 -0.068156827 0.069965963</span></span></code></pre></div>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="quick-start-dbm-text.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ret<span class="sc">$</span>RRFC)</span>
-<span id="cb29-2"><a href="quick-start-dbm-text.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb29-3"><a href="quick-start-dbm-text.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ FTests         :&#39;data.frame&#39;: 2 obs. of  4 variables:</span></span>
-<span id="cb29-4"><a href="quick-start-dbm-text.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF   : num [1:2] 1 3</span></span>
-<span id="cb29-5"><a href="quick-start-dbm-text.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MS   : num [1:2] 0.02357 0.00502</span></span>
-<span id="cb29-6"><a href="quick-start-dbm-text.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ FStat: num [1:2] 4.69 NA</span></span>
-<span id="cb29-7"><a href="quick-start-dbm-text.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ p    : num [1:2] 0.119 NA</span></span>
-<span id="cb29-8"><a href="quick-start-dbm-text.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ciDiffTrt      :&#39;data.frame&#39;: 1 obs. of  7 variables:</span></span>
-<span id="cb29-9"><a href="quick-start-dbm-text.html#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num 0.0109</span></span>
-<span id="cb29-10"><a href="quick-start-dbm-text.html#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ StdErr  : num 0.00501</span></span>
-<span id="cb29-11"><a href="quick-start-dbm-text.html#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF      : num 3</span></span>
-<span id="cb29-12"><a href="quick-start-dbm-text.html#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ t       : num 2.17</span></span>
-<span id="cb29-13"><a href="quick-start-dbm-text.html#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ PrGTt   : num 0.119</span></span>
-<span id="cb29-14"><a href="quick-start-dbm-text.html#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CILower : num -0.00509</span></span>
-<span id="cb29-15"><a href="quick-start-dbm-text.html#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CIUpper : num 0.0268</span></span>
-<span id="cb29-16"><a href="quick-start-dbm-text.html#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ciAvgRdrEachTrt:&#39;data.frame&#39;: 2 obs. of  5 variables:</span></span>
-<span id="cb29-17"><a href="quick-start-dbm-text.html#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num [1:2] 0.848 0.837</span></span>
-<span id="cb29-18"><a href="quick-start-dbm-text.html#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ StdErr  : num [1:2] 0.0111 0.00777</span></span>
-<span id="cb29-19"><a href="quick-start-dbm-text.html#cb29-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF      : num [1:2] 3 3</span></span>
-<span id="cb29-20"><a href="quick-start-dbm-text.html#cb29-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CILower : num [1:2] 0.812 0.812</span></span>
-<span id="cb29-21"><a href="quick-start-dbm-text.html#cb29-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CIUpper : num [1:2] 0.883 0.862</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="quick-start-dbm-text.html#cb38-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>FTests</span>
+<span id="cb38-2"><a href="quick-start-dbm-text.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           DF          MS      FStat          p</span></span>
+<span id="cb38-3"><a href="quick-start-dbm-text.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Treatment  1 0.023565410 0.36395597 0.54769704</span></span>
+<span id="cb38-4"><a href="quick-start-dbm-text.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error     99 0.064747968         NA         NA</span></span>
+<span id="cb38-5"><a href="quick-start-dbm-text.html#cb38-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciDiffTrt</span>
+<span id="cb38-6"><a href="quick-start-dbm-text.html#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate      StdErr DF          t      PrGTt</span></span>
+<span id="cb38-7"><a href="quick-start-dbm-text.html#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.010854817 0.017992772 99 0.60328764 0.54769704</span></span>
+<span id="cb38-8"><a href="quick-start-dbm-text.html#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                          CILower    CIUpper</span></span>
+<span id="cb38-9"><a href="quick-start-dbm-text.html#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 -0.024846746 0.04655638</span></span>
+<span id="cb38-10"><a href="quick-start-dbm-text.html#cb38-10" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciAvgRdrEachTrt</span>
+<span id="cb38-11"><a href="quick-start-dbm-text.html#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate      StdErr DF    CILower    CIUpper</span></span>
+<span id="cb38-12"><a href="quick-start-dbm-text.html#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1 0.84774989 0.027109386 99 0.79395898 0.90154079</span></span>
+<span id="cb38-13"><a href="quick-start-dbm-text.html#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2 0.83689507 0.027448603 99 0.78243109 0.89135905</span></span>
+<span id="cb38-14"><a href="quick-start-dbm-text.html#cb38-14" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciDiffTrtEachRdr</span>
+<span id="cb38-15"><a href="quick-start-dbm-text.html#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                       Estimate      StdErr DF           t</span></span>
+<span id="cb38-16"><a href="quick-start-dbm-text.html#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_1::trtTREAT1-trtTREAT2 0.00384441429 0.042792227 99 0.089839080</span></span>
+<span id="cb38-17"><a href="quick-start-dbm-text.html#cb38-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_2::trtTREAT1-trtTREAT2 0.02148349163 0.040069753 99 0.536152334</span></span>
+<span id="cb38-18"><a href="quick-start-dbm-text.html#cb38-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_3::trtTREAT1-trtTREAT2 0.01718679331 0.034993994 99 0.491135520</span></span>
+<span id="cb38-19"><a href="quick-start-dbm-text.html#cb38-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_4::trtTREAT1-trtTREAT2 0.00090456807 0.034805365 99 0.025989329</span></span>
+<span id="cb38-20"><a href="quick-start-dbm-text.html#cb38-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                       PrGTt      CILower     CIUpper</span></span>
+<span id="cb38-21"><a href="quick-start-dbm-text.html#cb38-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_1::trtTREAT1-trtTREAT2 0.92859660 -0.081064648 0.088753476</span></span>
+<span id="cb38-22"><a href="quick-start-dbm-text.html#cb38-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_2::trtTREAT1-trtTREAT2 0.59305592 -0.058023592 0.100990575</span></span>
+<span id="cb38-23"><a href="quick-start-dbm-text.html#cb38-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_3::trtTREAT1-trtTREAT2 0.62441761 -0.052248882 0.086622469</span></span>
+<span id="cb38-24"><a href="quick-start-dbm-text.html#cb38-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_4::trtTREAT1-trtTREAT2 0.97931817 -0.068156827 0.069965963</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="quick-start-dbm-text.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ret<span class="sc">$</span>RRFC)</span>
+<span id="cb39-2"><a href="quick-start-dbm-text.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb39-3"><a href="quick-start-dbm-text.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ FTests         :&#39;data.frame&#39;: 2 obs. of  4 variables:</span></span>
+<span id="cb39-4"><a href="quick-start-dbm-text.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF   : num [1:2] 1 3</span></span>
+<span id="cb39-5"><a href="quick-start-dbm-text.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ MS   : num [1:2] 0.02357 0.00502</span></span>
+<span id="cb39-6"><a href="quick-start-dbm-text.html#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ FStat: num [1:2] 4.69 NA</span></span>
+<span id="cb39-7"><a href="quick-start-dbm-text.html#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ p    : num [1:2] 0.119 NA</span></span>
+<span id="cb39-8"><a href="quick-start-dbm-text.html#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ciDiffTrt      :&#39;data.frame&#39;: 1 obs. of  7 variables:</span></span>
+<span id="cb39-9"><a href="quick-start-dbm-text.html#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num 0.0109</span></span>
+<span id="cb39-10"><a href="quick-start-dbm-text.html#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ StdErr  : num 0.00501</span></span>
+<span id="cb39-11"><a href="quick-start-dbm-text.html#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF      : num 3</span></span>
+<span id="cb39-12"><a href="quick-start-dbm-text.html#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ t       : num 2.17</span></span>
+<span id="cb39-13"><a href="quick-start-dbm-text.html#cb39-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ PrGTt   : num 0.119</span></span>
+<span id="cb39-14"><a href="quick-start-dbm-text.html#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CILower : num -0.00509</span></span>
+<span id="cb39-15"><a href="quick-start-dbm-text.html#cb39-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CIUpper : num 0.0268</span></span>
+<span id="cb39-16"><a href="quick-start-dbm-text.html#cb39-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ ciAvgRdrEachTrt:&#39;data.frame&#39;: 2 obs. of  5 variables:</span></span>
+<span id="cb39-17"><a href="quick-start-dbm-text.html#cb39-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ Estimate: num [1:2] 0.848 0.837</span></span>
+<span id="cb39-18"><a href="quick-start-dbm-text.html#cb39-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ StdErr  : num [1:2] 0.0111 0.00777</span></span>
+<span id="cb39-19"><a href="quick-start-dbm-text.html#cb39-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ DF      : num [1:2] 3 3</span></span>
+<span id="cb39-20"><a href="quick-start-dbm-text.html#cb39-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CILower : num [1:2] 0.812 0.812</span></span>
+<span id="cb39-21"><a href="quick-start-dbm-text.html#cb39-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ CIUpper : num [1:2] 0.883 0.862</span></span></code></pre></div>
 <ul>
 <li>RRFC, a list of 3 containing results of random-reader fixed-case analyses
 <ul>
@@ -621,19 +632,19 @@ div.csl-indent {
 <li><code>ciAvgRdrEachTrt</code>: is a [2x5] dataframe: the confidence intervals for the average reader over each over each treatment.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="quick-start-dbm-text.html#cb30-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>FTests</span>
-<span id="cb30-2"><a href="quick-start-dbm-text.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           DF           MS     FStat          p</span></span>
-<span id="cb30-3"><a href="quick-start-dbm-text.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Treatment  1 0.0235654097 4.6940577 0.11883786</span></span>
-<span id="cb30-4"><a href="quick-start-dbm-text.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error      3 0.0050202641        NA         NA</span></span>
-<span id="cb30-5"><a href="quick-start-dbm-text.html#cb30-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>ciDiffTrt</span>
-<span id="cb30-6"><a href="quick-start-dbm-text.html#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate       StdErr DF         t      PrGTt</span></span>
-<span id="cb30-7"><a href="quick-start-dbm-text.html#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.010854817 0.0050101218  3 2.1665774 0.11883786</span></span>
-<span id="cb30-8"><a href="quick-start-dbm-text.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                           CILower     CIUpper</span></span>
-<span id="cb30-9"><a href="quick-start-dbm-text.html#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 -0.0050896269 0.026799261</span></span>
-<span id="cb30-10"><a href="quick-start-dbm-text.html#cb30-10" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>ciAvgRdrEachTrt</span>
-<span id="cb30-11"><a href="quick-start-dbm-text.html#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate      StdErr DF    CILower    CIUpper</span></span>
-<span id="cb30-12"><a href="quick-start-dbm-text.html#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1 0.84774989 0.011098012  3 0.81243106 0.88306871</span></span>
-<span id="cb30-13"><a href="quick-start-dbm-text.html#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2 0.83689507 0.007771730  3 0.81216196 0.86162818</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="quick-start-dbm-text.html#cb40-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>FTests</span>
+<span id="cb40-2"><a href="quick-start-dbm-text.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           DF           MS     FStat          p</span></span>
+<span id="cb40-3"><a href="quick-start-dbm-text.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Treatment  1 0.0235654097 4.6940577 0.11883786</span></span>
+<span id="cb40-4"><a href="quick-start-dbm-text.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error      3 0.0050202641        NA         NA</span></span>
+<span id="cb40-5"><a href="quick-start-dbm-text.html#cb40-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>ciDiffTrt</span>
+<span id="cb40-6"><a href="quick-start-dbm-text.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        Estimate       StdErr DF         t      PrGTt</span></span>
+<span id="cb40-7"><a href="quick-start-dbm-text.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.010854817 0.0050101218  3 2.1665774 0.11883786</span></span>
+<span id="cb40-8"><a href="quick-start-dbm-text.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                           CILower     CIUpper</span></span>
+<span id="cb40-9"><a href="quick-start-dbm-text.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 -0.0050896269 0.026799261</span></span>
+<span id="cb40-10"><a href="quick-start-dbm-text.html#cb40-10" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>ciAvgRdrEachTrt</span>
+<span id="cb40-11"><a href="quick-start-dbm-text.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Estimate      StdErr DF    CILower    CIUpper</span></span>
+<span id="cb40-12"><a href="quick-start-dbm-text.html#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1 0.84774989 0.011098012  3 0.81243106 0.88306871</span></span>
+<span id="cb40-13"><a href="quick-start-dbm-text.html#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2 0.83689507 0.007771730  3 0.81216196 0.86162818</span></span></code></pre></div>
 
 </div>
 </div>
@@ -642,7 +653,7 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="quick-start-lroc.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="choosing-an-appropriate-figure-of-merit.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="quick-start-or-text.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

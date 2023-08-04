@@ -139,7 +139,7 @@
 
 \title{The RJafroc Quick Start Book}
 \author{Dev P. Chakraborty, PhD}
-\date{2023-05-26}
+\date{2023-08-04}
 
 \begin{document}
 \maketitle
@@ -1139,6 +1139,142 @@ For this modality-reader combination case 74 (i.e., the fifth diseased case) was
 \section{Summary}\label{quick-start-lroc-data-summary}}
 
 The difference from the previous data structures is the existence of \texttt{LL\_IL} in the \texttt{ratings} list, which contains the ratings of incorrect localizations. Recall that for ROC and FROC paradigms this member was \texttt{NA}. When the data obeys forced localization, the corresponding flag should be set to \texttt{TRUE}, otherwise it should be set to \texttt{FALSE}. The default value of this flag is \texttt{NA}, which will work for ROC or FROC datasets. For LROC datasets it should be set to \texttt{T/F}.
+
+\hypertarget{choosing-an-appropriate-figure-of-merit}{%
+\chapter*{Choosing an appropriate figure of merit}\label{choosing-an-appropriate-figure-of-merit}}
+\addcontentsline{toc}{chapter}{Choosing an appropriate figure of merit}
+
+\hypertarget{choice-of-fom-hmf}{%
+\section{How much finished 0 percent}\label{choice-of-fom-hmf}}
+
+WARNING: Usage of FOM = HrSe or FOM = HrSp is strongly discouraged. Consider comparing two readers or two treatments using either of these FOMs. The rating is a \emph{subjective ordered label}. It need not be used consistently between readers and treatments. A reader using a strict reporting criteria, who only marks a lesion when he is very confident, will have smaller HrSe and larger HrSp than a reader who adopts a laxer criteria, even though true performance, as measured by ROC AUC or percentage correct in 2AFC task, are identical. This is ROC-101: ROC AUC was recommended by Metz, ca. 1978 instead of sensitivity or specificity.
+
+\hypertarget{choice-of-fom-introduction}{%
+\section{Introduction}\label{choice-of-fom-introduction}}
+
+Assuming the study has been properly conducted, e.g., ROC or FROC, probably the most important step before beginning to analyze the dataset is to choose an apprpriate figure of merit (i.e., performance metric).
+
+\hypertarget{choice-of-fom-roc}{%
+\section{ROC dataset}\label{choice-of-fom-roc}}
+
+In the ROC paradigm every modality-reader-case combination yields a single rating. The appropriate FOM is the Wilcoxon statistic, which is identical to the AUC under the empirical ROC curve.
+
+\hypertarget{choice-of-fom-froc}{%
+\section{FROC dataset}\label{choice-of-fom-froc}}
+
+In the FROC paradigm every modality-reader-case combination yields a random number (zero or more) of mark-rating pairs.
+
+\hypertarget{choice-of-fom-froc-wafroc}{%
+\subsection{FOM = wAFROC}\label{choice-of-fom-froc-wafroc}}
+
+For most FROC datasets the appropriate FOM is the AUC under the weighted AFROC plot, as illustrated next for \texttt{daset05} which has two modalities and 9 readers.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fom\_wAFROC }\OtherTok{\textless{}{-}} \FunctionTok{UtilFigureOfMerit}\NormalTok{(}\AttributeTok{dataset =}\NormalTok{ dataset05, }\AttributeTok{FOM =} \StringTok{"wAFROC"}\NormalTok{)}
+\FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{lapply}\NormalTok{(fom\_wAFROC, format, }\AttributeTok{decimal.mark =} \StringTok{"."}\NormalTok{, }\AttributeTok{digits =} \DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     rdr1   rdr2   rdr3   rdr4   rdr5   rdr6   rdr7   rdr8  rdr9
+## 1 0.7245 0.8810 0.8096 0.6133 0.5773 0.8493 0.8928 0.8026 0.764
+## 2 0.8024 0.9686 0.8460 0.7514 0.7209 0.8719 0.9370 0.8995 0.819
+\end{verbatim}
+
+\hypertarget{choice-of-fom-froc-hrse}{%
+\subsection{FOM = HrSe}\label{choice-of-fom-froc-hrse}}
+
+Recall that the concepts of sensitivity and specificity are reserved for ROC data - i.e., one rating per case. To compute these from FROC data one needs a method for inferring a single rating from the possibly multiple (zero or more) ratings ocurring on each case (if the case has no marks one assings a rating that is smaller than any the ratings of explicitly marked locations, e.g., minus infinity). The recommended procedure is to assign the rating of the highest rated mark on each case, of \(-\infty\) if the case has no marks, as its inferred ROC rating. This has the has the effect of converting the FROC dataset to an inferred ROC dataset. The function \texttt{DfFroc2Roc} does exactly this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataset05}\SpecialCharTok{$}\NormalTok{descriptions}\SpecialCharTok{$}\NormalTok{type}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "FROC"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ds }\OtherTok{\textless{}{-}} \FunctionTok{DfFroc2Roc}\NormalTok{(dataset05)}
+\NormalTok{ds}\SpecialCharTok{$}\NormalTok{descriptions}\SpecialCharTok{$}\NormalTok{type}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "ROC"
+\end{verbatim}
+
+\texttt{HrSe} is the abbreviation for ``highest rating sensitivity'', sensitivity derived from the rating of the highest rated mark on each case. Replacing the possibly multiple ratings occurring on each case with the highest rating amounts to an assumption, a very good one in my opinion. Since the ratings are ordered labels (i.e., non-numeric vaues) any numerical computation, such as the average, would be invalid. It is also common sense: if a case has 3 marks rated 80, 30 and 15, why would the ROC rating be anything but 80. Finally, there is historical precedence for this assumption: \citep{bunch1977free, swensson1996unified}.
+
+Usage of \texttt{FOM\ =\ HrSe} is illustrated next for \texttt{dataset05}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fom\_HrSe }\OtherTok{\textless{}{-}} \FunctionTok{UtilFigureOfMerit}\NormalTok{(}\AttributeTok{dataset =}\NormalTok{ dataset05, }\AttributeTok{FOM =} \StringTok{"HrSe"}\NormalTok{)}
+\FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{lapply}\NormalTok{(fom\_HrSe, format, }\AttributeTok{decimal.mark =} \StringTok{"."}\NormalTok{, }\AttributeTok{digits =} \DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     rdr1   rdr2   rdr3   rdr4   rdr5   rdr6   rdr7   rdr8   rdr9
+## 1 0.9362 0.8298 0.8936 0.7021 0.8298 0.9574 0.8723 0.8936 0.8936
+## 2 1.0000 0.9574 0.9574 0.8511 0.8511 1.0000 0.9362 0.9149 0.9787
+\end{verbatim}
+
+Notice that each listed value is greater TBA?? than the corresponding value when using \texttt{FOM\ =\ "wAFROC"}. This should not come as a surprise as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{)}
+    \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{9}\NormalTok{) \{}
+        \FunctionTok{cat}\NormalTok{(}\StringTok{"i = "}\NormalTok{, i, }\StringTok{", j = "}\NormalTok{, j, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+        \ControlFlowTok{if}\NormalTok{ (fom\_HrSe[i,j] }\SpecialCharTok{\textgreater{}}\NormalTok{ fom\_wAFROC[i,j]) }\FunctionTok{cat}\NormalTok{ (}\StringTok{"TRUE }\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{) }\ControlFlowTok{else} \FunctionTok{cat}\NormalTok{(}\StringTok{"FALSE }\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{) }
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## i =  1 , j =  1 
+## TRUE 
+## i =  1 , j =  2 
+## FALSE 
+## i =  1 , j =  3 
+## TRUE 
+## i =  1 , j =  4 
+## TRUE 
+## i =  1 , j =  5 
+## TRUE 
+## i =  1 , j =  6 
+## TRUE 
+## i =  1 , j =  7 
+## FALSE 
+## i =  1 , j =  8 
+## TRUE 
+## i =  1 , j =  9 
+## TRUE 
+## i =  2 , j =  1 
+## TRUE 
+## i =  2 , j =  2 
+## FALSE 
+## i =  2 , j =  3 
+## TRUE 
+## i =  2 , j =  4 
+## TRUE 
+## i =  2 , j =  5 
+## TRUE 
+## i =  2 , j =  6 
+## TRUE 
+## i =  2 , j =  7 
+## FALSE 
+## i =  2 , j =  8 
+## TRUE 
+## i =  2 , j =  9 
+## TRUE
+\end{verbatim}
 
 \hypertarget{quick-start-dbm-text}{%
 \chapter{DBM analysis text output}\label{quick-start-dbm-text}}
@@ -2438,30 +2574,6 @@ One starts by extracting the first two treatments from \texttt{dataset04}, which
 \NormalTok{frocNhData }\OtherTok{\textless{}{-}} \FunctionTok{DfExtractDataset}\NormalTok{(dataset04, }\AttributeTok{trts =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \NormalTok{lesDistr }\OtherTok{\textless{}{-}} \FunctionTok{UtilLesDistr}\NormalTok{(frocNhData) }\CommentTok{\# this can be replaced by the anticipated lesion distribution}
 \NormalTok{ret }\OtherTok{\textless{}{-}} \FunctionTok{SsFrocNhRsmModel}\NormalTok{(frocNhData, }\AttributeTok{lesDistr =}\NormalTok{ lesDistr}\SpecialCharTok{$}\NormalTok{Freq)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## i =  1 , j =  1 , auc_fit =  0.9064227 
-## i =  1 , j =  2 , auc_fit =  0.8020747 
-## i =  1 , j =  3 , auc_fit =  0.8218974 
-## i =  1 , j =  4 , auc_fit =  0.918135 
-## i =  2 , j =  1 , auc_fit =  0.8614774 
-## i =  2 , j =  2 , auc_fit =  0.8572513 
-## i =  2 , j =  3 , auc_fit =  0.8180308 
-## i =  2 , j =  4 , auc_fit =  0.8756009 
-## i =  1 , j =  1 , auc_emp =  0.90425 
-## i =  1 , j =  2 , auc_emp =  0.7982 
-## i =  1 , j =  3 , auc_emp =  0.81175 
-## i =  1 , j =  4 , auc_emp =  0.86645 
-## i =  2 , j =  1 , auc_emp =  0.86425 
-## i =  2 , j =  2 , auc_emp =  0.8447 
-## i =  2 , j =  3 , auc_emp =  0.8205 
-## i =  2 , j =  4 , auc_emp =  0.8716
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
 \NormalTok{muNH }\OtherTok{\textless{}{-}}\NormalTok{ ret}\SpecialCharTok{$}\NormalTok{mu}
 \NormalTok{lambdaNH }\OtherTok{\textless{}{-}}\NormalTok{ ret}\SpecialCharTok{$}\NormalTok{lambda}
 \NormalTok{nuNH }\OtherTok{\textless{}{-}}\NormalTok{ ret}\SpecialCharTok{$}\NormalTok{nu}
@@ -2600,29 +2712,6 @@ This dataset has only two treatments; therefore a single analyses using both tre
 \end{verbatim}
 
 \begin{verbatim}
-## i =  1 , j =  1 , auc_fit =  0.81320811 
-## i =  1 , j =  2 , auc_fit =  0.89297244 
-## i =  1 , j =  3 , auc_fit =  0.85216738 
-## i =  1 , j =  4 , auc_fit =  0.86366416 
-## i =  1 , j =  5 , auc_fit =  0.85254301 
-## i =  2 , j =  1 , auc_fit =  0.67851336 
-## i =  2 , j =  2 , auc_fit =  0.75783952 
-## i =  2 , j =  3 , auc_fit =  0.79264791 
-## i =  2 , j =  4 , auc_fit =  0.88450139 
-## i =  2 , j =  5 , auc_fit =  0.74064002 
-## i =  1 , j =  1 , auc_emp =  0.79599719 
-## i =  1 , j =  2 , auc_emp =  0.86522706 
-## i =  1 , j =  3 , auc_emp =  0.84117509 
-## i =  1 , j =  4 , auc_emp =  0.83110955 
-## i =  1 , j =  5 , auc_emp =  0.84655899 
-## i =  2 , j =  1 , auc_emp =  0.66894897 
-## i =  2 , j =  2 , auc_emp =  0.72144195 
-## i =  2 , j =  3 , auc_emp =  0.78411751 
-## i =  2 , j =  4 , auc_emp =  0.79792837 
-## i =  2 , j =  5 , auc_emp =  0.70610955
-\end{verbatim}
-
-\begin{verbatim}
 ## $effectSizeROC
 ## [1] 0.07
 ## 
@@ -2650,49 +2739,6 @@ This dataset has five treatments; therefore two results are reported: one using 
 \end{verbatim}
 
 \begin{verbatim}
-## i =  1 , j =  1 , auc_fit =  0.90642269 
-## i =  1 , j =  2 , auc_fit =  0.80207475 
-## i =  1 , j =  3 , auc_fit =  0.8218974 
-## i =  1 , j =  4 , auc_fit =  0.91813497 
-## i =  2 , j =  1 , auc_fit =  0.86147739 
-## i =  2 , j =  2 , auc_fit =  0.85725131 
-## i =  2 , j =  3 , auc_fit =  0.81803076 
-## i =  2 , j =  4 , auc_fit =  0.87560092 
-## i =  3 , j =  1 , auc_fit =  0.833631 
-## i =  3 , j =  2 , auc_fit =  0.81916445 
-## i =  3 , j =  3 , auc_fit =  0.76576686 
-## i =  3 , j =  4 , auc_fit =  0.88054732 
-## i =  4 , j =  1 , auc_fit =  0.90974249 
-## i =  4 , j =  2 , auc_fit =  0.84345538 
-## i =  4 , j =  3 , auc_fit =  0.81205624 
-## i =  4 , j =  4 , auc_fit =  0.88691319 
-## i =  5 , j =  1 , auc_fit =  0.85339208 
-## i =  5 , j =  2 , auc_fit =  0.78998846 
-## i =  5 , j =  3 , auc_fit =  0.78020812 
-## i =  5 , j =  4 , auc_fit =  0.88621727 
-## i =  1 , j =  1 , auc_emp =  0.90425 
-## i =  1 , j =  2 , auc_emp =  0.7982 
-## i =  1 , j =  3 , auc_emp =  0.81175 
-## i =  1 , j =  4 , auc_emp =  0.86645 
-## i =  2 , j =  1 , auc_emp =  0.86425 
-## i =  2 , j =  2 , auc_emp =  0.8447 
-## i =  2 , j =  3 , auc_emp =  0.8205 
-## i =  2 , j =  4 , auc_emp =  0.8716 
-## i =  3 , j =  1 , auc_emp =  0.81295 
-## i =  3 , j =  2 , auc_emp =  0.81635 
-## i =  3 , j =  3 , auc_emp =  0.75275 
-## i =  3 , j =  4 , auc_emp =  0.8573 
-## i =  4 , j =  1 , auc_emp =  0.90235 
-## i =  4 , j =  2 , auc_emp =  0.8315 
-## i =  4 , j =  3 , auc_emp =  0.78865 
-## i =  4 , j =  4 , auc_emp =  0.8798 
-## i =  5 , j =  1 , auc_emp =  0.8414 
-## i =  5 , j =  2 , auc_emp =  0.773 
-## i =  5 , j =  3 , auc_emp =  0.77115 
-## i =  5 , j =  4 , auc_emp =  0.848
-\end{verbatim}
-
-\begin{verbatim}
 ## $effectSizeROC
 ## [1] 0.04
 ## 
@@ -2712,25 +2758,6 @@ This dataset has five treatments; therefore two results are reported: one using 
 
 \begin{verbatim}
 ## NH-NR treatments only: trts = c(1,2)
-\end{verbatim}
-
-\begin{verbatim}
-## i =  1 , j =  1 , auc_fit =  0.90642269 
-## i =  1 , j =  2 , auc_fit =  0.80207475 
-## i =  1 , j =  3 , auc_fit =  0.8218974 
-## i =  1 , j =  4 , auc_fit =  0.91813497 
-## i =  2 , j =  1 , auc_fit =  0.86147739 
-## i =  2 , j =  2 , auc_fit =  0.85725131 
-## i =  2 , j =  3 , auc_fit =  0.81803076 
-## i =  2 , j =  4 , auc_fit =  0.87560092 
-## i =  1 , j =  1 , auc_emp =  0.90425 
-## i =  1 , j =  2 , auc_emp =  0.7982 
-## i =  1 , j =  3 , auc_emp =  0.81175 
-## i =  1 , j =  4 , auc_emp =  0.86645 
-## i =  2 , j =  1 , auc_emp =  0.86425 
-## i =  2 , j =  2 , auc_emp =  0.8447 
-## i =  2 , j =  3 , auc_emp =  0.8205 
-## i =  2 , j =  4 , auc_emp =  0.8716
 \end{verbatim}
 
 \begin{verbatim}
@@ -2757,45 +2784,6 @@ This dataset has only two treatments; therefore a single analyses using both tre
 \end{verbatim}
 
 \begin{verbatim}
-## i =  1 , j =  1 , auc_fit =  0.88272773 
-## i =  1 , j =  2 , auc_fit =  0.9062648 
-## i =  1 , j =  3 , auc_fit =  0.9037888 
-## i =  1 , j =  4 , auc_fit =  0.71060357 
-## i =  1 , j =  5 , auc_fit =  0.73045109 
-## i =  1 , j =  6 , auc_fit =  0.9470677 
-## i =  1 , j =  7 , auc_fit =  0.92420887 
-## i =  1 , j =  8 , auc_fit =  0.89485093 
-## i =  1 , j =  9 , auc_fit =  0.85862397 
-## i =  2 , j =  1 , auc_fit =  0.86139429 
-## i =  2 , j =  2 , auc_fit =  0.96800376 
-## i =  2 , j =  3 , auc_fit =  0.91156383 
-## i =  2 , j =  4 , auc_fit =  0.87547532 
-## i =  2 , j =  5 , auc_fit =  0.89362437 
-## i =  2 , j =  6 , auc_fit =  0.94049993 
-## i =  2 , j =  7 , auc_fit =  0.96654775 
-## i =  2 , j =  8 , auc_fit =  0.94004632 
-## i =  2 , j =  9 , auc_fit =  0.88440213 
-## i =  1 , j =  1 , auc_emp =  0.87777778 
-## i =  1 , j =  2 , auc_emp =  0.89361702 
-## i =  1 , j =  3 , auc_emp =  0.89101655 
-## i =  1 , j =  4 , auc_emp =  0.73900709 
-## i =  1 , j =  5 , auc_emp =  0.71678487 
-## i =  1 , j =  6 , auc_emp =  0.93427896 
-## i =  1 , j =  7 , auc_emp =  0.91985816 
-## i =  1 , j =  8 , auc_emp =  0.88345154 
-## i =  1 , j =  9 , auc_emp =  0.821513 
-## i =  2 , j =  1 , auc_emp =  0.89787234 
-## i =  2 , j =  2 , auc_emp =  0.97612293 
-## i =  2 , j =  3 , auc_emp =  0.88321513 
-## i =  2 , j =  4 , auc_emp =  0.85130024 
-## i =  2 , j =  5 , auc_emp =  0.86004728 
-## i =  2 , j =  6 , auc_emp =  0.91040189 
-## i =  2 , j =  7 , auc_emp =  0.95413712 
-## i =  2 , j =  8 , auc_emp =  0.93522459 
-## i =  2 , j =  9 , auc_emp =  0.86122931
-\end{verbatim}
-
-\begin{verbatim}
 ## $effectSizeROC
 ## [1] 0.05
 ## 
@@ -2816,25 +2804,6 @@ This dataset has only two treatments; therefore a single analyses using both tre
 
 \begin{verbatim}
 ## dataset =  dataset06 , Name =  MAGNUS , I =  2 , J =  4
-\end{verbatim}
-
-\begin{verbatim}
-## i =  1 , j =  1 , auc_fit =  0.77715868 
-## i =  1 , j =  2 , auc_fit =  0.77206487 
-## i =  1 , j =  3 , auc_fit =  0.69167096 
-## i =  1 , j =  4 , auc_fit =  0.77898683 
-## i =  2 , j =  1 , auc_fit =  0.64293651 
-## i =  2 , j =  2 , auc_fit =  0.60213318 
-## i =  2 , j =  3 , auc_fit =  0.66496703 
-## i =  2 , j =  4 , auc_fit =  0.66434528 
-## i =  1 , j =  1 , auc_emp =  0.76089159 
-## i =  1 , j =  2 , auc_emp =  0.76646403 
-## i =  1 , j =  3 , auc_emp =  0.69528875 
-## i =  1 , j =  4 , auc_emp =  0.77330294 
-## i =  2 , j =  1 , auc_emp =  0.64387031 
-## i =  2 , j =  2 , auc_emp =  0.63779129 
-## i =  2 , j =  3 , auc_emp =  0.66109422 
-## i =  2 , j =  4 , auc_emp =  0.65450861
 \end{verbatim}
 
 \begin{verbatim}
@@ -2865,90 +2834,17 @@ This dataset has five treatments; therefore two results are reported: one using 
 \end{verbatim}
 
 \begin{verbatim}
-## i =  1 , j =  1 , auc_fit =  0.92443077 
-## i =  1 , j =  2 , auc_fit =  0.92662846 
-## i =  1 , j =  3 , auc_fit =  0.93035909 
-## i =  1 , j =  4 , auc_fit =  0.92240506 
-## i =  1 , j =  5 , auc_fit =  0.94115783 
-## i =  1 , j =  6 , auc_fit =  0.89202726 
-## i =  1 , j =  7 , auc_fit =  0.92725059 
-## i =  2 , j =  1 , auc_fit =  0.83222824 
-## i =  2 , j =  2 , auc_fit =  0.77120537 
-## i =  2 , j =  3 , auc_fit =  0.80143356 
-## i =  2 , j =  4 , auc_fit =  0.81258682 
-## i =  2 , j =  5 , auc_fit =  0.79528951 
-## i =  2 , j =  6 , auc_fit =  0.76957212 
-## i =  2 , j =  7 , auc_fit =  0.8380247 
-## i =  3 , j =  1 , auc_fit =  0.83956951 
-## i =  3 , j =  2 , auc_fit =  0.86330632 
-## i =  3 , j =  3 , auc_fit =  0.83736256 
-## i =  3 , j =  4 , auc_fit =  0.84918654 
-## i =  3 , j =  5 , auc_fit =  0.78596289 
-## i =  3 , j =  6 , auc_fit =  0.80997033 
-## i =  3 , j =  7 , auc_fit =  0.84255768 
-## i =  4 , j =  1 , auc_fit =  0.69665333 
-## i =  4 , j =  2 , auc_fit =  0.74881025 
-## i =  4 , j =  3 , auc_fit =  0.79628601 
-## i =  4 , j =  4 , auc_fit =  0.70853506 
-## i =  4 , j =  5 , auc_fit =  0.68957035 
-## i =  4 , j =  6 , auc_fit =  0.72654471 
-## i =  4 , j =  7 , auc_fit =  0.73037997 
-## i =  5 , j =  1 , auc_fit =  0.9275249 
-## i =  5 , j =  2 , auc_fit =  0.85723107 
-## i =  5 , j =  3 , auc_fit =  0.9136363 
-## i =  5 , j =  4 , auc_fit =  0.92429948 
-## i =  5 , j =  5 , auc_fit =  0.9313687 
-## i =  5 , j =  6 , auc_fit =  0.88742146 
-## i =  5 , j =  7 , auc_fit =  0.95761787 
-## i =  1 , j =  1 , auc_emp =  0.91327542 
-## i =  1 , j =  2 , auc_emp =  0.90230148 
-## i =  1 , j =  3 , auc_emp =  0.92363969 
-## i =  1 , j =  4 , auc_emp =  0.91327542 
-## i =  1 , j =  5 , auc_emp =  0.92546868 
-## i =  1 , j =  6 , auc_emp =  0.87806737 
-## i =  1 , j =  7 , auc_emp =  0.91243713 
-## i =  2 , j =  1 , auc_emp =  0.81153788 
-## i =  2 , j =  2 , auc_emp =  0.75247676 
-## i =  2 , j =  3 , auc_emp =  0.79279073 
-## i =  2 , j =  4 , auc_emp =  0.80262155 
-## i =  2 , j =  5 , auc_emp =  0.78875171 
-## i =  2 , j =  6 , auc_emp =  0.75765889 
-## i =  2 , j =  7 , auc_emp =  0.83180918 
-## i =  3 , j =  1 , auc_emp =  0.82708429 
-## i =  3 , j =  2 , auc_emp =  0.80140223 
-## i =  3 , j =  3 , auc_emp =  0.82616979 
-## i =  3 , j =  4 , auc_emp =  0.84484073 
-## i =  3 , j =  5 , auc_emp =  0.77922573 
-## i =  3 , j =  6 , auc_emp =  0.80483158 
-## i =  3 , j =  7 , auc_emp =  0.83737235 
-## i =  4 , j =  1 , auc_emp =  0.67390642 
-## i =  4 , j =  2 , auc_emp =  0.66468526 
-## i =  4 , j =  3 , auc_emp =  0.75605853 
-## i =  4 , j =  4 , auc_emp =  0.70583752 
-## i =  4 , j =  5 , auc_emp =  0.68602347 
-## i =  4 , j =  6 , auc_emp =  0.71574455 
-## i =  4 , j =  7 , auc_emp =  0.71848804 
-## i =  5 , j =  1 , auc_emp =  0.91624752 
-## i =  5 , j =  2 , auc_emp =  0.85322359 
-## i =  5 , j =  3 , auc_emp =  0.90900777 
-## i =  5 , j =  4 , auc_emp =  0.92386831 
-## i =  5 , j =  5 , auc_emp =  0.92691663 
-## i =  5 , j =  6 , auc_emp =  0.87882945 
-## i =  5 , j =  7 , auc_emp =  0.95534217
-\end{verbatim}
-
-\begin{verbatim}
 ## $effectSizeROC
 ## [1] 0.06
 ## 
 ## $scaleFactor
-## [1] 1.6842733
+## [1] 1.6585341
 ## 
 ## $powerRoc
 ## [1] 0.56994854
 ## 
 ## $powerFroc
-## [1] 0.73874483
+## [1] 0.72577542
 \end{verbatim}
 
 \begin{verbatim}
@@ -2957,37 +2853,6 @@ This dataset has five treatments; therefore two results are reported: one using 
 
 \begin{verbatim}
 ## NH-NR treatments only: trts = c(1,5)
-\end{verbatim}
-
-\begin{verbatim}
-## i =  1 , j =  1 , auc_fit =  0.92443077 
-## i =  1 , j =  2 , auc_fit =  0.92662846 
-## i =  1 , j =  3 , auc_fit =  0.93035909 
-## i =  1 , j =  4 , auc_fit =  0.92240506 
-## i =  1 , j =  5 , auc_fit =  0.94115783 
-## i =  1 , j =  6 , auc_fit =  0.89202726 
-## i =  1 , j =  7 , auc_fit =  0.92725059 
-## i =  2 , j =  1 , auc_fit =  0.9275249 
-## i =  2 , j =  2 , auc_fit =  0.85723107 
-## i =  2 , j =  3 , auc_fit =  0.9136363 
-## i =  2 , j =  4 , auc_fit =  0.92429948 
-## i =  2 , j =  5 , auc_fit =  0.9313687 
-## i =  2 , j =  6 , auc_fit =  0.88742146 
-## i =  2 , j =  7 , auc_fit =  0.95761787 
-## i =  1 , j =  1 , auc_emp =  0.91327542 
-## i =  1 , j =  2 , auc_emp =  0.90230148 
-## i =  1 , j =  3 , auc_emp =  0.92363969 
-## i =  1 , j =  4 , auc_emp =  0.91327542 
-## i =  1 , j =  5 , auc_emp =  0.92546868 
-## i =  1 , j =  6 , auc_emp =  0.87806737 
-## i =  1 , j =  7 , auc_emp =  0.91243713 
-## i =  2 , j =  1 , auc_emp =  0.91624752 
-## i =  2 , j =  2 , auc_emp =  0.85322359 
-## i =  2 , j =  3 , auc_emp =  0.90900777 
-## i =  2 , j =  4 , auc_emp =  0.92386831 
-## i =  2 , j =  5 , auc_emp =  0.92691663 
-## i =  2 , j =  6 , auc_emp =  0.87882945 
-## i =  2 , j =  7 , auc_emp =  0.95534217
 \end{verbatim}
 
 \begin{verbatim}
@@ -3029,46 +2894,7 @@ This dataset has four treatments; therefore two results are reported: one using 
 \end{verbatim}
 
 \begin{verbatim}
-## i =  1 , j =  1 , auc_fit =  0.67439464 
-## i =  1 , j =  2 , auc_fit =  0.57216533 
-## i =  1 , j =  3 , auc_fit =  0.76551521 
-## i =  1 , j =  4 , auc_fit =  0.62336712 
-## i =  1 , j =  5 , auc_fit =  0.63074583 
-## i =  2 , j =  1 , auc_fit =  0.65292326 
-## i =  2 , j =  2 , auc_fit =  0.5839868 
-## i =  2 , j =  3 , auc_fit =  0.72767107 
-## i =  2 , j =  4 , auc_fit =  0.6267011 
-## i =  2 , j =  5 , auc_fit =  0.65878672 
-## i =  3 , j =  1 , auc_fit =  0.76377503 
-## i =  3 , j =  2 , auc_fit =  0.72222439 
-## i =  3 , j =  3 , auc_fit =  0.81858627 
-## i =  3 , j =  4 , auc_fit =  0.74488181 
-## i =  3 , j =  5 , auc_fit =  0.88485947 
-## i =  4 , j =  1 , auc_fit =  0.72950846 
-## i =  4 , j =  2 , auc_fit =  0.72674767 
-## i =  4 , j =  3 , auc_fit =  0.81921867 
-## i =  4 , j =  4 , auc_fit =  0.69733661 
-## i =  4 , j =  5 , auc_fit =  0.88512912 
-## i =  1 , j =  1 , auc_emp =  0.65267947 
-## i =  1 , j =  2 , auc_emp =  0.56744186 
-## i =  1 , j =  3 , auc_emp =  0.6008089 
-## i =  1 , j =  4 , auc_emp =  0.57633974 
-## i =  1 , j =  5 , auc_emp =  0.63185035 
-## i =  2 , j =  1 , auc_emp =  0.64944388 
-## i =  2 , j =  2 , auc_emp =  0.58078868 
-## i =  2 , j =  3 , auc_emp =  0.63043478 
-## i =  2 , j =  4 , auc_emp =  0.59373104 
-## i =  2 , j =  5 , auc_emp =  0.67623862 
-## i =  3 , j =  1 , auc_emp =  0.73892821 
-## i =  3 , j =  2 , auc_emp =  0.72072801 
-## i =  3 , j =  3 , auc_emp =  0.74368049 
-## i =  3 , j =  4 , auc_emp =  0.72750253 
-## i =  3 , j =  5 , auc_emp =  0.73993933 
-## i =  4 , j =  1 , auc_emp =  0.71466127 
-## i =  4 , j =  2 , auc_emp =  0.72659252 
-## i =  4 , j =  3 , auc_emp =  0.75642063 
-## i =  4 , j =  4 , auc_emp =  0.68058645 
-## i =  4 , j =  5 , auc_emp =  0.73973711
+## dropped  3 estimates with large deviations from empirical auc
 \end{verbatim}
 
 \begin{verbatim}
@@ -3076,13 +2902,13 @@ This dataset has four treatments; therefore two results are reported: one using 
 ## [1] 0.07
 ## 
 ## $scaleFactor
-## [1] 1.2364946
+## [1] 1.0055152
 ## 
 ## $powerRoc
 ## [1] 0.57062501
 ## 
 ## $powerFroc
-## [1] 0.82193932
+## [1] 0.65187772
 \end{verbatim}
 
 \begin{verbatim}
@@ -3090,36 +2916,7 @@ This dataset has four treatments; therefore two results are reported: one using 
 \end{verbatim}
 
 \begin{verbatim}
-## i =  1 , j =  1 , auc_fit =  0.67439464 
-## i =  1 , j =  2 , auc_fit =  0.57216533 
-## i =  1 , j =  3 , auc_fit =  0.76551521 
-## i =  1 , j =  4 , auc_fit =  0.62336712 
-## i =  1 , j =  5 , auc_fit =  0.63074583 
-## i =  2 , j =  1 , auc_fit =  0.76377503 
-## i =  2 , j =  2 , auc_fit =  0.72222439 
-## i =  2 , j =  3 , auc_fit =  0.81858627 
-## i =  2 , j =  4 , auc_fit =  0.74488181 
-## i =  2 , j =  5 , auc_fit =  0.88485947 
-## i =  3 , j =  1 , auc_fit =  0.72950846 
-## i =  3 , j =  2 , auc_fit =  0.72674767 
-## i =  3 , j =  3 , auc_fit =  0.81921867 
-## i =  3 , j =  4 , auc_fit =  0.69733661 
-## i =  3 , j =  5 , auc_fit =  0.88512912 
-## i =  1 , j =  1 , auc_emp =  0.65267947 
-## i =  1 , j =  2 , auc_emp =  0.56744186 
-## i =  1 , j =  3 , auc_emp =  0.6008089 
-## i =  1 , j =  4 , auc_emp =  0.57633974 
-## i =  1 , j =  5 , auc_emp =  0.63185035 
-## i =  2 , j =  1 , auc_emp =  0.73892821 
-## i =  2 , j =  2 , auc_emp =  0.72072801 
-## i =  2 , j =  3 , auc_emp =  0.74368049 
-## i =  2 , j =  4 , auc_emp =  0.72750253 
-## i =  2 , j =  5 , auc_emp =  0.73993933 
-## i =  3 , j =  1 , auc_emp =  0.71466127 
-## i =  3 , j =  2 , auc_emp =  0.72659252 
-## i =  3 , j =  3 , auc_emp =  0.75642063 
-## i =  3 , j =  4 , auc_emp =  0.68058645 
-## i =  3 , j =  5 , auc_emp =  0.73973711
+## dropped  3 estimates with large deviations from empirical auc
 \end{verbatim}
 
 \begin{verbatim}
@@ -3127,13 +2924,13 @@ This dataset has four treatments; therefore two results are reported: one using 
 ## [1] 0.07
 ## 
 ## $scaleFactor
-## [1] 1.4194065
+## [1] 1.162575
 ## 
 ## $powerRoc
 ## [1] 0.59643607
 ## 
 ## $powerFroc
-## [1] 0.90850449
+## [1] 0.77139331
 \end{verbatim}
 
 \hypertarget{dobbins-3-dataset-all-data-and-nh-nr-treatments-only}{%
@@ -3150,46 +2947,7 @@ This dataset has four treatments; therefore two results are reported: one using 
 \end{verbatim}
 
 \begin{verbatim}
-## i =  1 , j =  1 , auc_fit =  0.6286507 
-## i =  1 , j =  2 , auc_fit =  0.50151767 
-## i =  1 , j =  3 , auc_fit =  0.65441117 
-## i =  1 , j =  4 , auc_fit =  0.58280829 
-## i =  1 , j =  5 , auc_fit =  0.55034173 
-## i =  2 , j =  1 , auc_fit =  0.5412335 
-## i =  2 , j =  2 , auc_fit =  0.51912707 
-## i =  2 , j =  3 , auc_fit =  0.60167519 
-## i =  2 , j =  4 , auc_fit =  0.55377877 
-## i =  2 , j =  5 , auc_fit =  0.5945155 
-## i =  3 , j =  1 , auc_fit =  0.72457545 
-## i =  3 , j =  2 , auc_fit =  0.63958975 
-## i =  3 , j =  3 , auc_fit =  0.67463262 
-## i =  3 , j =  4 , auc_fit =  0.65551867 
-## i =  3 , j =  5 , auc_fit =  0.81562973 
-## i =  4 , j =  1 , auc_fit =  0.62871077 
-## i =  4 , j =  2 , auc_fit =  0.65208483 
-## i =  4 , j =  3 , auc_fit =  0.7144378 
-## i =  4 , j =  4 , auc_fit =  0.5999756 
-## i =  4 , j =  5 , auc_fit =  0.67920293 
-## i =  1 , j =  1 , auc_emp =  0.57011974 
-## i =  1 , j =  2 , auc_emp =  0.49619013 
-## i =  1 , j =  3 , auc_emp =  0.54653483 
-## i =  1 , j =  4 , auc_emp =  0.54889332 
-## i =  1 , j =  5 , auc_emp =  0.55478955 
-## i =  2 , j =  1 , auc_emp =  0.53120464 
-## i =  2 , j =  2 , auc_emp =  0.49718795 
-## i =  2 , j =  3 , auc_emp =  0.56685414 
-## i =  2 , j =  4 , auc_emp =  0.53782656 
-## i =  2 , j =  5 , auc_emp =  0.57148041 
-## i =  3 , j =  1 , auc_emp =  0.63588534 
-## i =  3 , j =  2 , auc_emp =  0.63724601 
-## i =  3 , j =  3 , auc_emp =  0.67035559 
-## i =  3 , j =  4 , auc_emp =  0.64350508 
-## i =  3 , j =  5 , auc_emp =  0.64214441 
-## i =  4 , j =  1 , auc_emp =  0.62490929 
-## i =  4 , j =  2 , auc_emp =  0.62799347 
-## i =  4 , j =  3 , auc_emp =  0.66736212 
-## i =  4 , j =  4 , auc_emp =  0.58653846 
-## i =  4 , j =  5 , auc_emp =  0.62626996
+## dropped  3 estimates with large deviations from empirical auc
 \end{verbatim}
 
 \begin{verbatim}
@@ -3197,13 +2955,13 @@ This dataset has four treatments; therefore two results are reported: one using 
 ## [1] 0.07
 ## 
 ## $scaleFactor
-## [1] 1.5820231
+## [1] 1.5694529
 ## 
 ## $powerRoc
 ## [1] 0.54481091
 ## 
 ## $powerFroc
-## [1] 0.84284099
+## [1] 0.83725167
 \end{verbatim}
 
 \begin{verbatim}
@@ -3215,26 +2973,7 @@ This dataset has four treatments; therefore two results are reported: one using 
 \end{verbatim}
 
 \begin{verbatim}
-## i =  1 , j =  1 , auc_fit =  0.72457545 
-## i =  1 , j =  2 , auc_fit =  0.63958975 
-## i =  1 , j =  3 , auc_fit =  0.67463262 
-## i =  1 , j =  4 , auc_fit =  0.65551867 
-## i =  1 , j =  5 , auc_fit =  0.81562973 
-## i =  2 , j =  1 , auc_fit =  0.62871077 
-## i =  2 , j =  2 , auc_fit =  0.65208483 
-## i =  2 , j =  3 , auc_fit =  0.7144378 
-## i =  2 , j =  4 , auc_fit =  0.5999756 
-## i =  2 , j =  5 , auc_fit =  0.67920293 
-## i =  1 , j =  1 , auc_emp =  0.63588534 
-## i =  1 , j =  2 , auc_emp =  0.63724601 
-## i =  1 , j =  3 , auc_emp =  0.67035559 
-## i =  1 , j =  4 , auc_emp =  0.64350508 
-## i =  1 , j =  5 , auc_emp =  0.64214441 
-## i =  2 , j =  1 , auc_emp =  0.62490929 
-## i =  2 , j =  2 , auc_emp =  0.62799347 
-## i =  2 , j =  3 , auc_emp =  0.66736212 
-## i =  2 , j =  4 , auc_emp =  0.58653846 
-## i =  2 , j =  5 , auc_emp =  0.62626996
+## dropped  2 estimates with large deviations from empirical auc
 \end{verbatim}
 
 \begin{verbatim}
@@ -3242,13 +2981,13 @@ This dataset has four treatments; therefore two results are reported: one using 
 ## [1] 0.03
 ## 
 ## $scaleFactor
-## [1] 1.5437708
+## [1] 1.5019205
 ## 
 ## $powerRoc
 ## [1] 0.41346102
 ## 
 ## $powerFroc
-## [1] 0.86247586
+## [1] 0.84401625
 \end{verbatim}
 
 \hypertarget{discussion}{%

@@ -57,6 +57,12 @@ quick-start-lroc-tp2
 quick-start-lroc-fp2
 quick-start-lroc-data-2
 quick-start-lroc-data-summary
+choice-of-fom-hmf
+choice-of-fom-introduction
+choice-of-fom-roc
+choice-of-fom-froc
+choice-of-fom-froc-wafroc
+choice-of-fom-froc-hrse
 quick-start-dbm-text
 quick-start-dbm-text-how-much-finished
 quick-start-dbm-text-intro
