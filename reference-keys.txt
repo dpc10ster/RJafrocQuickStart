@@ -3,9 +3,6 @@ fig:quick-start-lroc-tp1
 fig:quick-start-lroc-fp1
 fig:quick-start-lroc-tp2
 fig:quick-start-lroc-fp2
-fig:quick-start-or-xlsx1
-fig:quick-start-or-xlsx2
-fig:quick-start-or-xlsx3
 eq:DefinitionStatPower
 eq:DeltaFRRC
 eq:SamplingFFRRC
@@ -13,7 +10,6 @@ eq:DeltaFRRFC
 eq:SamplingFRRFC
 fig:unnamed-chunk-12
 fig:unnamed-chunk-17
-fig:froc-sample-size-dataset11
 quick-start-index-preface
 quick-start-index-rationale-and-organization
 quick-start-index-getting-help
@@ -114,7 +110,7 @@ determine-the-lesion-distribution-and-weights-of-the-froc-dataset
 fit-the-rsm-to-the-roc-data
 compute-the-median-values-of-the-rsm-parameters
 compute-roc-and-wafroc-nh-aucs
-compute-roc-and-wafroc-ah-aucs-for-a-range-of-roc-auc-effect-sizes
+compute-roc-and-wafroc-alternative-hypotheses-aucs-for-a-range-of-roc-auc-effect-sizes
 roc-and-wafroc-variance-components
 roc-and-wafroc-power-for-equivalent-effect-sizes
 part-2
@@ -123,14 +119,6 @@ constructing-the-nh-model-for-the-dataset
 froc-sample-size-variance-components
 wafroc-power-for-specified-roc-effect-size-number-of-readers-and-number-of-cases
 number-of-cases-for-80-percent-power-for-a-given-number-of-readers
-part-3
-tony-dataset
-fed-dataset-all-data-and-nh-nr-treatments-only
-thompson-dataset
-magnus-dataset
-lucy-dataset-all-data-and-nh-nr-treatments-only
-dobbins-1-dataset-all-data-and-nh-nr-treatments-only
-dobbins-3-dataset-all-data-and-nh-nr-treatments-only
 discussion
 dataset-object-details
 introduction-1

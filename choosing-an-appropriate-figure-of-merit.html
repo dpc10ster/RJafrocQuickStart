@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Choosing an appropriate figure of merit | The RJafroc Quick Start Book</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Choosing an appropriate figure of merit | The RJafroc Quick Start Book" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2023-08-04" />
+<meta name="date" content="2023-12-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -309,17 +309,7 @@ div.csl-indent {
 <li class="chapter" data-level="10.4.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-power-for-specified-roc-effect-size-number-of-readers-and-number-of-cases"><i class="fa fa-check"></i><b>10.4.4</b> wAFROC power for specified ROC effect size, number of readers and number of cases</a></li>
 <li class="chapter" data-level="10.4.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#number-of-cases-for-80-percent-power-for-a-given-number-of-readers"><i class="fa fa-check"></i><b>10.4.5</b> Number of cases for 80 percent power for a given number of readers</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-3"><i class="fa fa-check"></i><b>10.5</b> Part 3</a>
-<ul>
-<li class="chapter" data-level="10.5.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#tony-dataset"><i class="fa fa-check"></i><b>10.5.1</b> TONY dataset</a></li>
-<li class="chapter" data-level="10.5.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#fed-dataset-all-data-and-nh-nr-treatments-only"><i class="fa fa-check"></i><b>10.5.2</b> FED dataset, all data and NH-NR treatments only</a></li>
-<li class="chapter" data-level="10.5.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#thompson-dataset"><i class="fa fa-check"></i><b>10.5.3</b> THOMPSON dataset</a></li>
-<li class="chapter" data-level="10.5.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#magnus-dataset"><i class="fa fa-check"></i><b>10.5.4</b> MAGNUS dataset</a></li>
-<li class="chapter" data-level="10.5.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#lucy-dataset-all-data-and-nh-nr-treatments-only"><i class="fa fa-check"></i><b>10.5.5</b> LUCY dataset, all data and NH-NR treatments only</a></li>
-<li class="chapter" data-level="10.5.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#dobbins-1-dataset-all-data-and-nh-nr-treatments-only"><i class="fa fa-check"></i><b>10.5.6</b> DOBBINS-1 dataset, all data and NH-NR treatments only</a></li>
-<li class="chapter" data-level="10.5.7" data-path="froc-sample-size.html"><a href="froc-sample-size.html#dobbins-3-dataset-all-data-and-nh-nr-treatments-only"><i class="fa fa-check"></i><b>10.5.7</b> DOBBINS-3 dataset, all data and NH-NR treatments only</a></li>
-</ul></li>
-<li class="chapter" data-level="10.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#discussion"><i class="fa fa-check"></i><b>10.6</b> Discussion</a></li>
+<li class="chapter" data-level="10.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#discussion"><i class="fa fa-check"></i><b>10.5</b> Discussion</a></li>
 </ul></li>
 <li class="part"><span><b>Software details</b></span></li>
 <li class="chapter" data-level="11" data-path="dataset-object-details.html"><a href="dataset-object-details.html"><i class="fa fa-check"></i><b>11</b> Excel file and dataset details</a>
@@ -409,9 +399,12 @@ div.csl-indent {
 <p>For most FROC datasets the appropriate FOM is the AUC under the weighted AFROC plot, as illustrated next for <code>daset05</code> which has two modalities and 9 readers.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb20-1" aria-hidden="true" tabindex="-1"></a>fom_wAFROC <span class="ot">&lt;-</span> <span class="fu">UtilFigureOfMerit</span>(<span class="at">dataset =</span> dataset05, <span class="at">FOM =</span> <span class="st">&quot;wAFROC&quot;</span>)</span>
 <span id="cb20-2"><a href="choosing-an-appropriate-figure-of-merit.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">lapply</span>(fom_wAFROC, format, <span class="at">decimal.mark =</span> <span class="st">&quot;.&quot;</span>, <span class="at">digits =</span> <span class="dv">4</span>))</span></code></pre></div>
-<pre><code>##     rdr1   rdr2   rdr3   rdr4   rdr5   rdr6   rdr7   rdr8  rdr9
-## 1 0.7245 0.8810 0.8096 0.6133 0.5773 0.8493 0.8928 0.8026 0.764
-## 2 0.8024 0.9686 0.8460 0.7514 0.7209 0.8719 0.9370 0.8995 0.819</code></pre>
+<pre><code>##   X.0.7245. X.0.8024. X.0.881. X.0.9686. X.0.8096. X.0.846. X.0.6133. X.0.7514.
+## 1    0.7245    0.8024    0.881    0.9686    0.8096    0.846    0.6133    0.7514
+##   X.0.5773. X.0.7209. X.0.8493. X.0.8719. X.0.8928. X.0.937. X.0.8026.
+## 1    0.5773    0.7209    0.8493    0.8719    0.8928    0.937    0.8026
+##   X.0.8995. X.0.764. X.0.819.
+## 1    0.8995    0.764    0.819</code></pre>
 </div>
 <div id="choice-of-fom-froc-hrse" class="section level3 hasAnchor" number="4.15.2">
 <h3><span class="header-section-number">4.15.2</span> FOM = HrSe<a href="choosing-an-appropriate-figure-of-merit.html#choice-of-fom-froc-hrse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -425,9 +418,12 @@ div.csl-indent {
 <p>Usage of <code>FOM = HrSe</code> is illustrated next for <code>dataset05</code>.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb26-1" aria-hidden="true" tabindex="-1"></a>fom_HrSe <span class="ot">&lt;-</span> <span class="fu">UtilFigureOfMerit</span>(<span class="at">dataset =</span> dataset05, <span class="at">FOM =</span> <span class="st">&quot;HrSe&quot;</span>)</span>
 <span id="cb26-2"><a href="choosing-an-appropriate-figure-of-merit.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">lapply</span>(fom_HrSe, format, <span class="at">decimal.mark =</span> <span class="st">&quot;.&quot;</span>, <span class="at">digits =</span> <span class="dv">4</span>))</span></code></pre></div>
-<pre><code>##     rdr1   rdr2   rdr3   rdr4   rdr5   rdr6   rdr7   rdr8   rdr9
-## 1 0.9362 0.8298 0.8936 0.7021 0.8298 0.9574 0.8723 0.8936 0.8936
-## 2 1.0000 0.9574 0.9574 0.8511 0.8511 1.0000 0.9362 0.9149 0.9787</code></pre>
+<pre><code>##   X.0.9362. X.1. X.0.8298. X.0.9574. X.0.8936. X.0.9574..1 X.0.7021. X.0.8511.
+## 1    0.9362    1    0.8298    0.9574    0.8936      0.9574    0.7021    0.8511
+##   X.0.8298..1 X.0.8511..1 X.0.9574..2 X.1..1 X.0.8723. X.0.9362..1 X.0.8936..1
+## 1      0.8298      0.8511      0.9574      1    0.8723      0.9362      0.8936
+##   X.0.9149. X.0.8936..2 X.0.9787.
+## 1    0.9149      0.8936    0.9787</code></pre>
 <p>Notice that each listed value is greater TBA?? than the corresponding value when using <code>FOM = "wAFROC"</code>. This should not come as a surprise as</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
 <span id="cb28-2"><a href="choosing-an-appropriate-figure-of-merit.html#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) {</span>

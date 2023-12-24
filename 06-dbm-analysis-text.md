@@ -14,11 +14,11 @@ This chapter illustrates significance testing using the DBM method.
 
 ## Analyzing the ROC dataset {#quick-start-dbm-text-analyze-dataset}
 
-This illustrates the `StSignificanceTesting()` function. The significance testing method is specified as `"DBM"` and the figure of merit `FOM` is specified as "Wilcoxon". The embedded dataset `dataset03` is used.
+This illustrates the `St()` function. The significance testing method is specified as `"DBM"` and the figure of merit `FOM` is specified as "Wilcoxon". The embedded dataset `dataset03` is used.
 
 
 ```r
-ret <- StSignificanceTesting(dataset03, FOM = "Wilcoxon", method = "DBM")
+ret <- St(dataset03, FOM = "Wilcoxon", method = "DBM")
 ```
 
 ## Explanation of the output {#quick-start-dbm-text-explanation}
@@ -36,11 +36,10 @@ Let us consider them individually.
 ```r
 str(ret$FOMs)
 #> List of 3
-#>  $ foms        :'data.frame':	2 obs. of  4 variables:
-#>   ..$ rdrREADER_1: num [1:2] 0.853 0.85
-#>   ..$ rdrREADER_2: num [1:2] 0.865 0.844
-#>   ..$ rdrREADER_3: num [1:2] 0.857 0.84
-#>   ..$ rdrREADER_4: num [1:2] 0.815 0.814
+#>  $ foms        : num [1:2, 1:4] 0.853 0.85 0.865 0.844 0.857 ...
+#>   ..- attr(*, "dimnames")=List of 2
+#>   .. ..$ : chr [1:2] "trtTREAT1" "trtTREAT2"
+#>   .. ..$ : chr [1:4] "rdrREADER_1" "rdrREADER_2" "rdrREADER_3" "rdrREADER_4"
 #>  $ trtMeans    :'data.frame':	2 obs. of  1 variable:
 #>   ..$ Estimate: num [1:2] 0.848 0.837
 #>  $ trtMeanDiffs:'data.frame':	1 obs. of  1 variable:
@@ -56,15 +55,15 @@ str(ret$FOMs)
 ```r
 ret$FOMs$foms
 #>           rdrREADER_1 rdrREADER_2 rdrREADER_3 rdrREADER_4
-#> trtTREAT1  0.85345997  0.86499322  0.85730439  0.81524197
-#> trtTREAT2  0.84961556  0.84350972  0.84011759  0.81433740
+#> trtTREAT1   0.8534600   0.8649932   0.8573044   0.8152420
+#> trtTREAT2   0.8496156   0.8435097   0.8401176   0.8143374
 ret$FOMs$trtMeans
-#>             Estimate
-#> trtTREAT1 0.84774989
-#> trtTREAT2 0.83689507
+#>            Estimate
+#> trtTREAT1 0.8477499
+#> trtTREAT2 0.8368951
 ret$FOMs$trtMeanDiffs
-#>                        Estimate
-#> trtTREAT1-trtTREAT2 0.010854817
+#>                       Estimate
+#> trtTREAT1-trtTREAT2 0.01085482
 ```
 
 
@@ -80,8 +79,8 @@ str(ret$ANOVA)
 #>   ..$ Estimates: num [1:6] 3.78e-05 5.13e-02 -7.13e-04 -2.89e-03 2.79e-02 ...
 #>  $ IndividualTrt:'data.frame':	3 obs. of  3 variables:
 #>   ..$ DF       : num [1:3] 3 99 297
-#>   ..$ TrtTREAT1: num [1:3] 0.0493 0.294 0.105
-#>   ..$ TrtTREAT2: num [1:3] 0.0242 0.3014 0.1034
+#>   ..$ trtTREAT1: num [1:3] 0.0493 0.294 0.105
+#>   ..$ trtTREAT2: num [1:3] 0.0242 0.3014 0.1034
 #>  $ IndividualRdr:'data.frame':	3 obs. of  5 variables:
 #>   ..$ DF         : num [1:3] 1 99 99
 #>   ..$ rdrREADER_1: num [1:3] 0.000739 0.203875 0.091559
@@ -99,33 +98,33 @@ str(ret$ANOVA)
 
 ```r
 ret$ANOVA$TRCanova
-#>                  SS  DF           MS
-#> T       0.023565410   1 0.0235654097
-#> R       0.205217999   3 0.0684059998
-#> C      52.528398680  99 0.5305898857
-#> TR      0.015060792   3 0.0050202641
-#> TC      6.410048814  99 0.0647479678
-#> RC     39.242953812 297 0.1321311576
-#> TRC    22.660077641 297 0.0762965577
-#> Total 121.085323149 799           NA
+#>                 SS  DF          MS
+#> T       0.02356541   1 0.023565410
+#> R       0.20521800   3 0.068406000
+#> C      52.52839868  99 0.530589886
+#> TR      0.01506079   3 0.005020264
+#> TC      6.41004881  99 0.064747968
+#> RC     39.24295381 297 0.132131158
+#> TRC    22.66007764 297 0.076296558
+#> Total 121.08532315 799          NA
 ret$ANOVA$VarCom
-#>             Estimates
-#> VarR    3.7755679e-05
-#> VarC    5.1250915e-02
-#> VarTR  -7.1276294e-04
-#> VarTC  -2.8871475e-03
-#> VarRC   2.7917300e-02
-#> VarErr  7.6296558e-02
+#>            Estimates
+#> VarR    3.775568e-05
+#> VarC    5.125091e-02
+#> VarTR  -7.127629e-04
+#> VarTC  -2.887147e-03
+#> VarRC   2.791730e-02
+#> VarErr  7.629656e-02
 ret$ANOVA$IndividualTrt
-#>       DF   TrtTREAT1   TrtTREAT2
-#> msR    3 0.049266349 0.024159915
-#> msC   99 0.293967531 0.301370323
-#> msRC 297 0.105047872 0.103379843
+#>       DF  trtTREAT1  trtTREAT2
+#> msR    3 0.04926635 0.02415991
+#> msC   99 0.29396753 0.30137032
+#> msRC 297 0.10504787 0.10337984
 ret$ANOVA$IndividualRdr
-#>      DF   rdrREADER_1 rdrREADER_2 rdrREADER_3   rdrREADER_4
-#> msT   1 0.00073897606 0.023077021 0.014769293 0.00004091217
-#> msC  99 0.20387477465 0.223441908 0.214246773 0.28541990211
-#> msTC 99 0.09155873437 0.080279256 0.061228980 0.06057067104
+#>      DF  rdrREADER_1 rdrREADER_2 rdrREADER_3  rdrREADER_4
+#> msT   1 0.0007389761  0.02307702  0.01476929 4.091217e-05
+#> msC  99 0.2038747746  0.22344191  0.21424677 2.854199e-01
+#> msTC 99 0.0915587344  0.08027926  0.06122898 6.057067e-02
 ```
 
 
@@ -161,52 +160,25 @@ str(ret$RRRC)
 
 ```r
 ret$RRRC$FTests
-#>           DF           MS     FStat          p
-#> Treatment  1 0.0235654097 4.6940577 0.11883786
-#> Error      3 0.0050202641        NA         NA
+#>           DF          MS    FStat         p
+#> Treatment  1 0.023565410 4.694058 0.1188379
+#> Error      3 0.005020264       NA        NA
 ret$RRRC$ciDiffTrt
-#>                        Estimate       StdErr DF         t      PrGTt
-#> trtTREAT1-trtTREAT2 0.010854817 0.0050101218  3 2.1665774 0.11883786
-#>                           CILower     CIUpper
-#> trtTREAT1-trtTREAT2 -0.0050896269 0.026799261
+#>                       Estimate      StdErr DF        t     PrGTt      CILower
+#> trtTREAT1-trtTREAT2 0.01085482 0.005010122  3 2.166577 0.1188379 -0.005089627
+#>                        CIUpper
+#> trtTREAT1-trtTREAT2 0.02679926
 ret$RRRC$ciAvgRdrEachTrt
-#>             Estimate      StdErr         DF    CILower    CIUpper
-#> trtTREAT1 0.84774989 0.024402152  70.121788 0.79908282 0.89641696
-#> trtTREAT2 0.83689507 0.023566416 253.644028 0.79048429 0.88330585
+#>            Estimate     StdErr        DF   CILower   CIUpper
+#> trtTREAT1 0.8477499 0.02440215  70.12179 0.7990828 0.8964170
+#> trtTREAT2 0.8368951 0.02356642 253.64403 0.7904843 0.8833058
 ```
 
 
 
 ```r
 str(ret$FRRC)
-#> List of 4
-#>  $ FTests          :'data.frame':	2 obs. of  4 variables:
-#>   ..$ DF   : num [1:2] 1 99
-#>   ..$ MS   : num [1:2] 0.0236 0.0647
-#>   ..$ FStat: num [1:2] 0.364 NA
-#>   ..$ p    : num [1:2] 0.548 NA
-#>  $ ciDiffTrt       :'data.frame':	1 obs. of  7 variables:
-#>   ..$ Estimate: num 0.0109
-#>   ..$ StdErr  : num 0.018
-#>   ..$ DF      : num 99
-#>   ..$ t       : num 0.603
-#>   ..$ PrGTt   : num 0.548
-#>   ..$ CILower : num -0.0248
-#>   ..$ CIUpper : num 0.0466
-#>  $ ciAvgRdrEachTrt :'data.frame':	2 obs. of  5 variables:
-#>   ..$ Estimate: num [1:2] 0.848 0.837
-#>   ..$ StdErr  : num [1:2] 0.0271 0.0274
-#>   ..$ DF      : num [1:2] 99 99
-#>   ..$ CILower : num [1:2] 0.794 0.782
-#>   ..$ CIUpper : num [1:2] 0.902 0.891
-#>  $ ciDiffTrtEachRdr:'data.frame':	4 obs. of  7 variables:
-#>   ..$ Estimate: num [1:4] 0.003844 0.021483 0.017187 0.000905
-#>   ..$ StdErr  : num [1:4] 0.0428 0.0401 0.035 0.0348
-#>   ..$ DF      : num [1:4] 99 99 99 99
-#>   ..$ t       : num [1:4] 0.0898 0.5362 0.4911 0.026
-#>   ..$ PrGTt   : num [1:4] 0.929 0.593 0.624 0.979
-#>   ..$ CILower : num [1:4] -0.0811 -0.058 -0.0522 -0.0682
-#>   ..$ CIUpper : num [1:4] 0.0888 0.101 0.0866 0.07
+#>  NULL
 ```
 
 * FRRC, a list of 4 containing results of fixed-reader random-case analyses
@@ -218,54 +190,19 @@ str(ret$FRRC)
 
 ```r
 ret$FRRC$FTests
-#>           DF          MS      FStat          p
-#> Treatment  1 0.023565410 0.36395597 0.54769704
-#> Error     99 0.064747968         NA         NA
+#> NULL
 ret$FRRC$ciDiffTrt
-#>                        Estimate      StdErr DF          t      PrGTt
-#> trtTREAT1-trtTREAT2 0.010854817 0.017992772 99 0.60328764 0.54769704
-#>                          CILower    CIUpper
-#> trtTREAT1-trtTREAT2 -0.024846746 0.04655638
+#> NULL
 ret$FRRC$ciAvgRdrEachTrt
-#>             Estimate      StdErr DF    CILower    CIUpper
-#> trtTREAT1 0.84774989 0.027109386 99 0.79395898 0.90154079
-#> trtTREAT2 0.83689507 0.027448603 99 0.78243109 0.89135905
+#> NULL
 ret$FRRC$ciDiffTrtEachRdr
-#>                                       Estimate      StdErr DF           t
-#> rdrREADER_1::trtTREAT1-trtTREAT2 0.00384441429 0.042792227 99 0.089839080
-#> rdrREADER_2::trtTREAT1-trtTREAT2 0.02148349163 0.040069753 99 0.536152334
-#> rdrREADER_3::trtTREAT1-trtTREAT2 0.01718679331 0.034993994 99 0.491135520
-#> rdrREADER_4::trtTREAT1-trtTREAT2 0.00090456807 0.034805365 99 0.025989329
-#>                                       PrGTt      CILower     CIUpper
-#> rdrREADER_1::trtTREAT1-trtTREAT2 0.92859660 -0.081064648 0.088753476
-#> rdrREADER_2::trtTREAT1-trtTREAT2 0.59305592 -0.058023592 0.100990575
-#> rdrREADER_3::trtTREAT1-trtTREAT2 0.62441761 -0.052248882 0.086622469
-#> rdrREADER_4::trtTREAT1-trtTREAT2 0.97931817 -0.068156827 0.069965963
+#> NULL
 ```
 
 
 ```r
 str(ret$RRFC)
-#> List of 3
-#>  $ FTests         :'data.frame':	2 obs. of  4 variables:
-#>   ..$ DF   : num [1:2] 1 3
-#>   ..$ MS   : num [1:2] 0.02357 0.00502
-#>   ..$ FStat: num [1:2] 4.69 NA
-#>   ..$ p    : num [1:2] 0.119 NA
-#>  $ ciDiffTrt      :'data.frame':	1 obs. of  7 variables:
-#>   ..$ Estimate: num 0.0109
-#>   ..$ StdErr  : num 0.00501
-#>   ..$ DF      : num 3
-#>   ..$ t       : num 2.17
-#>   ..$ PrGTt   : num 0.119
-#>   ..$ CILower : num -0.00509
-#>   ..$ CIUpper : num 0.0268
-#>  $ ciAvgRdrEachTrt:'data.frame':	2 obs. of  5 variables:
-#>   ..$ Estimate: num [1:2] 0.848 0.837
-#>   ..$ StdErr  : num [1:2] 0.0111 0.00777
-#>   ..$ DF      : num [1:2] 3 3
-#>   ..$ CILower : num [1:2] 0.812 0.812
-#>   ..$ CIUpper : num [1:2] 0.883 0.862
+#>  NULL
 ```
 
 * RRFC, a list of 3 containing results of random-reader fixed-case analyses
@@ -277,18 +214,11 @@ str(ret$RRFC)
 
 ```r
 ret$RRFC$FTests
-#>           DF           MS     FStat          p
-#> Treatment  1 0.0235654097 4.6940577 0.11883786
-#> Error      3 0.0050202641        NA         NA
+#> NULL
 ret$RRFC$ciDiffTrt
-#>                        Estimate       StdErr DF         t      PrGTt
-#> trtTREAT1-trtTREAT2 0.010854817 0.0050101218  3 2.1665774 0.11883786
-#>                           CILower     CIUpper
-#> trtTREAT1-trtTREAT2 -0.0050896269 0.026799261
+#> NULL
 ret$RRFC$ciAvgRdrEachTrt
-#>             Estimate      StdErr DF    CILower    CIUpper
-#> trtTREAT1 0.84774989 0.011098012  3 0.81243106 0.88306871
-#> trtTREAT2 0.83689507 0.007771730  3 0.81216196 0.86162818
+#> NULL
 ```
 
 

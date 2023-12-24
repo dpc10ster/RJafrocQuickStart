@@ -139,7 +139,7 @@
 
 \title{The RJafroc Quick Start Book}
 \author{Dev P. Chakraborty, PhD}
-\date{2023-08-04}
+\date{2023-12-24}
 
 \begin{document}
 \maketitle
@@ -1177,9 +1177,12 @@ For most FROC datasets the appropriate FOM is the AUC under the weighted AFROC p
 \end{Shaded}
 
 \begin{verbatim}
-##     rdr1   rdr2   rdr3   rdr4   rdr5   rdr6   rdr7   rdr8  rdr9
-## 1 0.7245 0.8810 0.8096 0.6133 0.5773 0.8493 0.8928 0.8026 0.764
-## 2 0.8024 0.9686 0.8460 0.7514 0.7209 0.8719 0.9370 0.8995 0.819
+##   X.0.7245. X.0.8024. X.0.881. X.0.9686. X.0.8096. X.0.846. X.0.6133. X.0.7514.
+## 1    0.7245    0.8024    0.881    0.9686    0.8096    0.846    0.6133    0.7514
+##   X.0.5773. X.0.7209. X.0.8493. X.0.8719. X.0.8928. X.0.937. X.0.8026.
+## 1    0.5773    0.7209    0.8493    0.8719    0.8928    0.937    0.8026
+##   X.0.8995. X.0.764. X.0.819.
+## 1    0.8995    0.764    0.819
 \end{verbatim}
 
 \hypertarget{choice-of-fom-froc-hrse}{%
@@ -1220,9 +1223,12 @@ Usage of \texttt{FOM\ =\ HrSe} is illustrated next for \texttt{dataset05}.
 \end{Shaded}
 
 \begin{verbatim}
-##     rdr1   rdr2   rdr3   rdr4   rdr5   rdr6   rdr7   rdr8   rdr9
-## 1 0.9362 0.8298 0.8936 0.7021 0.8298 0.9574 0.8723 0.8936 0.8936
-## 2 1.0000 0.9574 0.9574 0.8511 0.8511 1.0000 0.9362 0.9149 0.9787
+##   X.0.9362. X.1. X.0.8298. X.0.9574. X.0.8936. X.0.9574..1 X.0.7021. X.0.8511.
+## 1    0.9362    1    0.8298    0.9574    0.8936      0.9574    0.7021    0.8511
+##   X.0.8298..1 X.0.8511..1 X.0.9574..2 X.1..1 X.0.8723. X.0.9362..1 X.0.8936..1
+## 1      0.8298      0.8511      0.9574      1    0.8723      0.9362      0.8936
+##   X.0.9149. X.0.8936..2 X.0.9787.
+## 1    0.9149      0.8936    0.9787
 \end{verbatim}
 
 Notice that each listed value is greater TBA?? than the corresponding value when using \texttt{FOM\ =\ "wAFROC"}. This should not come as a surprise as
@@ -1292,11 +1298,11 @@ This chapter illustrates significance testing using the DBM method.
 \hypertarget{quick-start-dbm-text-analyze-dataset}{%
 \section{Analyzing the ROC dataset}\label{quick-start-dbm-text-analyze-dataset}}
 
-This illustrates the \texttt{StSignificanceTesting()} function. The significance testing method is specified as \texttt{"DBM"} and the figure of merit \texttt{FOM} is specified as ``Wilcoxon''. The embedded dataset \texttt{dataset03} is used.
+This illustrates the \texttt{St()} function. The significance testing method is specified as \texttt{"DBM"} and the figure of merit \texttt{FOM} is specified as ``Wilcoxon''. The embedded dataset \texttt{dataset03} is used.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{ret }\OtherTok{\textless{}{-}} \FunctionTok{StSignificanceTesting}\NormalTok{(dataset03, }\AttributeTok{FOM =} \StringTok{"Wilcoxon"}\NormalTok{, }\AttributeTok{method =} \StringTok{"DBM"}\NormalTok{)}
+\NormalTok{ret }\OtherTok{\textless{}{-}} \FunctionTok{St}\NormalTok{(dataset03, }\AttributeTok{FOM =} \StringTok{"Wilcoxon"}\NormalTok{, }\AttributeTok{method =} \StringTok{"DBM"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1325,11 +1331,10 @@ Let us consider them individually.
 \begin{Highlighting}[]
 \FunctionTok{str}\NormalTok{(ret}\SpecialCharTok{$}\NormalTok{FOMs)}
 \CommentTok{\#\textgreater{} List of 3}
-\CommentTok{\#\textgreater{}  $ foms        :\textquotesingle{}data.frame\textquotesingle{}:    2 obs. of  4 variables:}
-\CommentTok{\#\textgreater{}   ..$ rdrREADER\_1: num [1:2] 0.853 0.85}
-\CommentTok{\#\textgreater{}   ..$ rdrREADER\_2: num [1:2] 0.865 0.844}
-\CommentTok{\#\textgreater{}   ..$ rdrREADER\_3: num [1:2] 0.857 0.84}
-\CommentTok{\#\textgreater{}   ..$ rdrREADER\_4: num [1:2] 0.815 0.814}
+\CommentTok{\#\textgreater{}  $ foms        : num [1:2, 1:4] 0.853 0.85 0.865 0.844 0.857 ...}
+\CommentTok{\#\textgreater{}   ..{-} attr(*, "dimnames")=List of 2}
+\CommentTok{\#\textgreater{}   .. ..$ : chr [1:2] "trtTREAT1" "trtTREAT2"}
+\CommentTok{\#\textgreater{}   .. ..$ : chr [1:4] "rdrREADER\_1" "rdrREADER\_2" "rdrREADER\_3" "rdrREADER\_4"}
 \CommentTok{\#\textgreater{}  $ trtMeans    :\textquotesingle{}data.frame\textquotesingle{}:    2 obs. of  1 variable:}
 \CommentTok{\#\textgreater{}   ..$ Estimate: num [1:2] 0.848 0.837}
 \CommentTok{\#\textgreater{}  $ trtMeanDiffs:\textquotesingle{}data.frame\textquotesingle{}:    1 obs. of  1 variable:}
@@ -1357,15 +1362,15 @@ Let us consider them individually.
 \begin{Highlighting}[]
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{FOMs}\SpecialCharTok{$}\NormalTok{foms}
 \CommentTok{\#\textgreater{}           rdrREADER\_1 rdrREADER\_2 rdrREADER\_3 rdrREADER\_4}
-\CommentTok{\#\textgreater{} trtTREAT1  0.85345997  0.86499322  0.85730439  0.81524197}
-\CommentTok{\#\textgreater{} trtTREAT2  0.84961556  0.84350972  0.84011759  0.81433740}
+\CommentTok{\#\textgreater{} trtTREAT1   0.8534600   0.8649932   0.8573044   0.8152420}
+\CommentTok{\#\textgreater{} trtTREAT2   0.8496156   0.8435097   0.8401176   0.8143374}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{FOMs}\SpecialCharTok{$}\NormalTok{trtMeans}
-\CommentTok{\#\textgreater{}             Estimate}
-\CommentTok{\#\textgreater{} trtTREAT1 0.84774989}
-\CommentTok{\#\textgreater{} trtTREAT2 0.83689507}
+\CommentTok{\#\textgreater{}            Estimate}
+\CommentTok{\#\textgreater{} trtTREAT1 0.8477499}
+\CommentTok{\#\textgreater{} trtTREAT2 0.8368951}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{FOMs}\SpecialCharTok{$}\NormalTok{trtMeanDiffs}
-\CommentTok{\#\textgreater{}                        Estimate}
-\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 0.010854817}
+\CommentTok{\#\textgreater{}                       Estimate}
+\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 0.01085482}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1381,8 +1386,8 @@ Let us consider them individually.
 \CommentTok{\#\textgreater{}   ..$ Estimates: num [1:6] 3.78e{-}05 5.13e{-}02 {-}7.13e{-}04 {-}2.89e{-}03 2.79e{-}02 ...}
 \CommentTok{\#\textgreater{}  $ IndividualTrt:\textquotesingle{}data.frame\textquotesingle{}:   3 obs. of  3 variables:}
 \CommentTok{\#\textgreater{}   ..$ DF       : num [1:3] 3 99 297}
-\CommentTok{\#\textgreater{}   ..$ TrtTREAT1: num [1:3] 0.0493 0.294 0.105}
-\CommentTok{\#\textgreater{}   ..$ TrtTREAT2: num [1:3] 0.0242 0.3014 0.1034}
+\CommentTok{\#\textgreater{}   ..$ trtTREAT1: num [1:3] 0.0493 0.294 0.105}
+\CommentTok{\#\textgreater{}   ..$ trtTREAT2: num [1:3] 0.0242 0.3014 0.1034}
 \CommentTok{\#\textgreater{}  $ IndividualRdr:\textquotesingle{}data.frame\textquotesingle{}:   3 obs. of  5 variables:}
 \CommentTok{\#\textgreater{}   ..$ DF         : num [1:3] 1 99 99}
 \CommentTok{\#\textgreater{}   ..$ rdrREADER\_1: num [1:3] 0.000739 0.203875 0.091559}
@@ -1413,33 +1418,33 @@ Let us consider them individually.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{ANOVA}\SpecialCharTok{$}\NormalTok{TRCanova}
-\CommentTok{\#\textgreater{}                  SS  DF           MS}
-\CommentTok{\#\textgreater{} T       0.023565410   1 0.0235654097}
-\CommentTok{\#\textgreater{} R       0.205217999   3 0.0684059998}
-\CommentTok{\#\textgreater{} C      52.528398680  99 0.5305898857}
-\CommentTok{\#\textgreater{} TR      0.015060792   3 0.0050202641}
-\CommentTok{\#\textgreater{} TC      6.410048814  99 0.0647479678}
-\CommentTok{\#\textgreater{} RC     39.242953812 297 0.1321311576}
-\CommentTok{\#\textgreater{} TRC    22.660077641 297 0.0762965577}
-\CommentTok{\#\textgreater{} Total 121.085323149 799           NA}
+\CommentTok{\#\textgreater{}                 SS  DF          MS}
+\CommentTok{\#\textgreater{} T       0.02356541   1 0.023565410}
+\CommentTok{\#\textgreater{} R       0.20521800   3 0.068406000}
+\CommentTok{\#\textgreater{} C      52.52839868  99 0.530589886}
+\CommentTok{\#\textgreater{} TR      0.01506079   3 0.005020264}
+\CommentTok{\#\textgreater{} TC      6.41004881  99 0.064747968}
+\CommentTok{\#\textgreater{} RC     39.24295381 297 0.132131158}
+\CommentTok{\#\textgreater{} TRC    22.66007764 297 0.076296558}
+\CommentTok{\#\textgreater{} Total 121.08532315 799          NA}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{ANOVA}\SpecialCharTok{$}\NormalTok{VarCom}
-\CommentTok{\#\textgreater{}             Estimates}
-\CommentTok{\#\textgreater{} VarR    3.7755679e{-}05}
-\CommentTok{\#\textgreater{} VarC    5.1250915e{-}02}
-\CommentTok{\#\textgreater{} VarTR  {-}7.1276294e{-}04}
-\CommentTok{\#\textgreater{} VarTC  {-}2.8871475e{-}03}
-\CommentTok{\#\textgreater{} VarRC   2.7917300e{-}02}
-\CommentTok{\#\textgreater{} VarErr  7.6296558e{-}02}
+\CommentTok{\#\textgreater{}            Estimates}
+\CommentTok{\#\textgreater{} VarR    3.775568e{-}05}
+\CommentTok{\#\textgreater{} VarC    5.125091e{-}02}
+\CommentTok{\#\textgreater{} VarTR  {-}7.127629e{-}04}
+\CommentTok{\#\textgreater{} VarTC  {-}2.887147e{-}03}
+\CommentTok{\#\textgreater{} VarRC   2.791730e{-}02}
+\CommentTok{\#\textgreater{} VarErr  7.629656e{-}02}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{ANOVA}\SpecialCharTok{$}\NormalTok{IndividualTrt}
-\CommentTok{\#\textgreater{}       DF   TrtTREAT1   TrtTREAT2}
-\CommentTok{\#\textgreater{} msR    3 0.049266349 0.024159915}
-\CommentTok{\#\textgreater{} msC   99 0.293967531 0.301370323}
-\CommentTok{\#\textgreater{} msRC 297 0.105047872 0.103379843}
+\CommentTok{\#\textgreater{}       DF  trtTREAT1  trtTREAT2}
+\CommentTok{\#\textgreater{} msR    3 0.04926635 0.02415991}
+\CommentTok{\#\textgreater{} msC   99 0.29396753 0.30137032}
+\CommentTok{\#\textgreater{} msRC 297 0.10504787 0.10337984}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{ANOVA}\SpecialCharTok{$}\NormalTok{IndividualRdr}
-\CommentTok{\#\textgreater{}      DF   rdrREADER\_1 rdrREADER\_2 rdrREADER\_3   rdrREADER\_4}
-\CommentTok{\#\textgreater{} msT   1 0.00073897606 0.023077021 0.014769293 0.00004091217}
-\CommentTok{\#\textgreater{} msC  99 0.20387477465 0.223441908 0.214246773 0.28541990211}
-\CommentTok{\#\textgreater{} msTC 99 0.09155873437 0.080279256 0.061228980 0.06057067104}
+\CommentTok{\#\textgreater{}      DF  rdrREADER\_1 rdrREADER\_2 rdrREADER\_3  rdrREADER\_4}
+\CommentTok{\#\textgreater{} msT   1 0.0007389761  0.02307702  0.01476929 4.091217e{-}05}
+\CommentTok{\#\textgreater{} msC  99 0.2038747746  0.22344191  0.21424677 2.854199e{-}01}
+\CommentTok{\#\textgreater{} msTC 99 0.0915587344  0.08027926  0.06122898 6.057067e{-}02}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1488,52 +1493,25 @@ Let us consider them individually.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{RRRC}\SpecialCharTok{$}\NormalTok{FTests}
-\CommentTok{\#\textgreater{}           DF           MS     FStat          p}
-\CommentTok{\#\textgreater{} Treatment  1 0.0235654097 4.6940577 0.11883786}
-\CommentTok{\#\textgreater{} Error      3 0.0050202641        NA         NA}
+\CommentTok{\#\textgreater{}           DF          MS    FStat         p}
+\CommentTok{\#\textgreater{} Treatment  1 0.023565410 4.694058 0.1188379}
+\CommentTok{\#\textgreater{} Error      3 0.005020264       NA        NA}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{RRRC}\SpecialCharTok{$}\NormalTok{ciDiffTrt}
-\CommentTok{\#\textgreater{}                        Estimate       StdErr DF         t      PrGTt}
-\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 0.010854817 0.0050101218  3 2.1665774 0.11883786}
-\CommentTok{\#\textgreater{}                           CILower     CIUpper}
-\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 {-}0.0050896269 0.026799261}
+\CommentTok{\#\textgreater{}                       Estimate      StdErr DF        t     PrGTt      CILower}
+\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 0.01085482 0.005010122  3 2.166577 0.1188379 {-}0.005089627}
+\CommentTok{\#\textgreater{}                        CIUpper}
+\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 0.02679926}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{RRRC}\SpecialCharTok{$}\NormalTok{ciAvgRdrEachTrt}
-\CommentTok{\#\textgreater{}             Estimate      StdErr         DF    CILower    CIUpper}
-\CommentTok{\#\textgreater{} trtTREAT1 0.84774989 0.024402152  70.121788 0.79908282 0.89641696}
-\CommentTok{\#\textgreater{} trtTREAT2 0.83689507 0.023566416 253.644028 0.79048429 0.88330585}
+\CommentTok{\#\textgreater{}            Estimate     StdErr        DF   CILower   CIUpper}
+\CommentTok{\#\textgreater{} trtTREAT1 0.8477499 0.02440215  70.12179 0.7990828 0.8964170}
+\CommentTok{\#\textgreater{} trtTREAT2 0.8368951 0.02356642 253.64403 0.7904843 0.8833058}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{str}\NormalTok{(ret}\SpecialCharTok{$}\NormalTok{FRRC)}
-\CommentTok{\#\textgreater{} List of 4}
-\CommentTok{\#\textgreater{}  $ FTests          :\textquotesingle{}data.frame\textquotesingle{}:    2 obs. of  4 variables:}
-\CommentTok{\#\textgreater{}   ..$ DF   : num [1:2] 1 99}
-\CommentTok{\#\textgreater{}   ..$ MS   : num [1:2] 0.0236 0.0647}
-\CommentTok{\#\textgreater{}   ..$ FStat: num [1:2] 0.364 NA}
-\CommentTok{\#\textgreater{}   ..$ p    : num [1:2] 0.548 NA}
-\CommentTok{\#\textgreater{}  $ ciDiffTrt       :\textquotesingle{}data.frame\textquotesingle{}:    1 obs. of  7 variables:}
-\CommentTok{\#\textgreater{}   ..$ Estimate: num 0.0109}
-\CommentTok{\#\textgreater{}   ..$ StdErr  : num 0.018}
-\CommentTok{\#\textgreater{}   ..$ DF      : num 99}
-\CommentTok{\#\textgreater{}   ..$ t       : num 0.603}
-\CommentTok{\#\textgreater{}   ..$ PrGTt   : num 0.548}
-\CommentTok{\#\textgreater{}   ..$ CILower : num {-}0.0248}
-\CommentTok{\#\textgreater{}   ..$ CIUpper : num 0.0466}
-\CommentTok{\#\textgreater{}  $ ciAvgRdrEachTrt :\textquotesingle{}data.frame\textquotesingle{}:    2 obs. of  5 variables:}
-\CommentTok{\#\textgreater{}   ..$ Estimate: num [1:2] 0.848 0.837}
-\CommentTok{\#\textgreater{}   ..$ StdErr  : num [1:2] 0.0271 0.0274}
-\CommentTok{\#\textgreater{}   ..$ DF      : num [1:2] 99 99}
-\CommentTok{\#\textgreater{}   ..$ CILower : num [1:2] 0.794 0.782}
-\CommentTok{\#\textgreater{}   ..$ CIUpper : num [1:2] 0.902 0.891}
-\CommentTok{\#\textgreater{}  $ ciDiffTrtEachRdr:\textquotesingle{}data.frame\textquotesingle{}:    4 obs. of  7 variables:}
-\CommentTok{\#\textgreater{}   ..$ Estimate: num [1:4] 0.003844 0.021483 0.017187 0.000905}
-\CommentTok{\#\textgreater{}   ..$ StdErr  : num [1:4] 0.0428 0.0401 0.035 0.0348}
-\CommentTok{\#\textgreater{}   ..$ DF      : num [1:4] 99 99 99 99}
-\CommentTok{\#\textgreater{}   ..$ t       : num [1:4] 0.0898 0.5362 0.4911 0.026}
-\CommentTok{\#\textgreater{}   ..$ PrGTt   : num [1:4] 0.929 0.593 0.624 0.979}
-\CommentTok{\#\textgreater{}   ..$ CILower : num [1:4] {-}0.0811 {-}0.058 {-}0.0522 {-}0.0682}
-\CommentTok{\#\textgreater{}   ..$ CIUpper : num [1:4] 0.0888 0.101 0.0866 0.07}
+\CommentTok{\#\textgreater{}  NULL}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1558,55 +1536,20 @@ Let us consider them individually.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{FRRC}\SpecialCharTok{$}\NormalTok{FTests}
-\CommentTok{\#\textgreater{}           DF          MS      FStat          p}
-\CommentTok{\#\textgreater{} Treatment  1 0.023565410 0.36395597 0.54769704}
-\CommentTok{\#\textgreater{} Error     99 0.064747968         NA         NA}
+\CommentTok{\#\textgreater{} NULL}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{FRRC}\SpecialCharTok{$}\NormalTok{ciDiffTrt}
-\CommentTok{\#\textgreater{}                        Estimate      StdErr DF          t      PrGTt}
-\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 0.010854817 0.017992772 99 0.60328764 0.54769704}
-\CommentTok{\#\textgreater{}                          CILower    CIUpper}
-\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 {-}0.024846746 0.04655638}
+\CommentTok{\#\textgreater{} NULL}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{FRRC}\SpecialCharTok{$}\NormalTok{ciAvgRdrEachTrt}
-\CommentTok{\#\textgreater{}             Estimate      StdErr DF    CILower    CIUpper}
-\CommentTok{\#\textgreater{} trtTREAT1 0.84774989 0.027109386 99 0.79395898 0.90154079}
-\CommentTok{\#\textgreater{} trtTREAT2 0.83689507 0.027448603 99 0.78243109 0.89135905}
+\CommentTok{\#\textgreater{} NULL}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{FRRC}\SpecialCharTok{$}\NormalTok{ciDiffTrtEachRdr}
-\CommentTok{\#\textgreater{}                                       Estimate      StdErr DF           t}
-\CommentTok{\#\textgreater{} rdrREADER\_1::trtTREAT1{-}trtTREAT2 0.00384441429 0.042792227 99 0.089839080}
-\CommentTok{\#\textgreater{} rdrREADER\_2::trtTREAT1{-}trtTREAT2 0.02148349163 0.040069753 99 0.536152334}
-\CommentTok{\#\textgreater{} rdrREADER\_3::trtTREAT1{-}trtTREAT2 0.01718679331 0.034993994 99 0.491135520}
-\CommentTok{\#\textgreater{} rdrREADER\_4::trtTREAT1{-}trtTREAT2 0.00090456807 0.034805365 99 0.025989329}
-\CommentTok{\#\textgreater{}                                       PrGTt      CILower     CIUpper}
-\CommentTok{\#\textgreater{} rdrREADER\_1::trtTREAT1{-}trtTREAT2 0.92859660 {-}0.081064648 0.088753476}
-\CommentTok{\#\textgreater{} rdrREADER\_2::trtTREAT1{-}trtTREAT2 0.59305592 {-}0.058023592 0.100990575}
-\CommentTok{\#\textgreater{} rdrREADER\_3::trtTREAT1{-}trtTREAT2 0.62441761 {-}0.052248882 0.086622469}
-\CommentTok{\#\textgreater{} rdrREADER\_4::trtTREAT1{-}trtTREAT2 0.97931817 {-}0.068156827 0.069965963}
+\CommentTok{\#\textgreater{} NULL}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{str}\NormalTok{(ret}\SpecialCharTok{$}\NormalTok{RRFC)}
-\CommentTok{\#\textgreater{} List of 3}
-\CommentTok{\#\textgreater{}  $ FTests         :\textquotesingle{}data.frame\textquotesingle{}: 2 obs. of  4 variables:}
-\CommentTok{\#\textgreater{}   ..$ DF   : num [1:2] 1 3}
-\CommentTok{\#\textgreater{}   ..$ MS   : num [1:2] 0.02357 0.00502}
-\CommentTok{\#\textgreater{}   ..$ FStat: num [1:2] 4.69 NA}
-\CommentTok{\#\textgreater{}   ..$ p    : num [1:2] 0.119 NA}
-\CommentTok{\#\textgreater{}  $ ciDiffTrt      :\textquotesingle{}data.frame\textquotesingle{}: 1 obs. of  7 variables:}
-\CommentTok{\#\textgreater{}   ..$ Estimate: num 0.0109}
-\CommentTok{\#\textgreater{}   ..$ StdErr  : num 0.00501}
-\CommentTok{\#\textgreater{}   ..$ DF      : num 3}
-\CommentTok{\#\textgreater{}   ..$ t       : num 2.17}
-\CommentTok{\#\textgreater{}   ..$ PrGTt   : num 0.119}
-\CommentTok{\#\textgreater{}   ..$ CILower : num {-}0.00509}
-\CommentTok{\#\textgreater{}   ..$ CIUpper : num 0.0268}
-\CommentTok{\#\textgreater{}  $ ciAvgRdrEachTrt:\textquotesingle{}data.frame\textquotesingle{}: 2 obs. of  5 variables:}
-\CommentTok{\#\textgreater{}   ..$ Estimate: num [1:2] 0.848 0.837}
-\CommentTok{\#\textgreater{}   ..$ StdErr  : num [1:2] 0.0111 0.00777}
-\CommentTok{\#\textgreater{}   ..$ DF      : num [1:2] 3 3}
-\CommentTok{\#\textgreater{}   ..$ CILower : num [1:2] 0.812 0.812}
-\CommentTok{\#\textgreater{}   ..$ CIUpper : num [1:2] 0.883 0.862}
+\CommentTok{\#\textgreater{}  NULL}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1629,18 +1572,11 @@ Let us consider them individually.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{RRFC}\SpecialCharTok{$}\NormalTok{FTests}
-\CommentTok{\#\textgreater{}           DF           MS     FStat          p}
-\CommentTok{\#\textgreater{} Treatment  1 0.0235654097 4.6940577 0.11883786}
-\CommentTok{\#\textgreater{} Error      3 0.0050202641        NA         NA}
+\CommentTok{\#\textgreater{} NULL}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{RRFC}\SpecialCharTok{$}\NormalTok{ciDiffTrt}
-\CommentTok{\#\textgreater{}                        Estimate       StdErr DF         t      PrGTt}
-\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 0.010854817 0.0050101218  3 2.1665774 0.11883786}
-\CommentTok{\#\textgreater{}                           CILower     CIUpper}
-\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 {-}0.0050896269 0.026799261}
+\CommentTok{\#\textgreater{} NULL}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{RRFC}\SpecialCharTok{$}\NormalTok{ciAvgRdrEachTrt}
-\CommentTok{\#\textgreater{}             Estimate      StdErr DF    CILower    CIUpper}
-\CommentTok{\#\textgreater{} trtTREAT1 0.84774989 0.011098012  3 0.81243106 0.88306871}
-\CommentTok{\#\textgreater{} trtTREAT2 0.83689507 0.007771730  3 0.81216196 0.86162818}
+\CommentTok{\#\textgreater{} NULL}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1664,7 +1600,7 @@ The only change is to specify \texttt{method\ =\ "OR"} in the significance testi
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{ret }\OtherTok{\textless{}{-}} \FunctionTok{StSignificanceTesting}\NormalTok{(dataset03, }\AttributeTok{FOM =} \StringTok{"Wilcoxon"}\NormalTok{, }\AttributeTok{method =} \StringTok{"OR"}\NormalTok{)}
+\NormalTok{ret }\OtherTok{\textless{}{-}} \FunctionTok{St}\NormalTok{(dataset03, }\AttributeTok{FOM =} \StringTok{"Wilcoxon"}\NormalTok{, }\AttributeTok{method =} \StringTok{"OR"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1710,28 +1646,28 @@ Let us consider the ones that are different from the DBM method.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{ANOVA}\SpecialCharTok{$}\NormalTok{TRanova}
-\CommentTok{\#\textgreater{}               SS DF            MS}
-\CommentTok{\#\textgreater{} T  0.00023565410  1 2.3565410e{-}04}
-\CommentTok{\#\textgreater{} R  0.00205217999  3 6.8406000e{-}04}
-\CommentTok{\#\textgreater{} TR 0.00015060792  3 5.0202641e{-}05}
+\CommentTok{\#\textgreater{}              SS DF           MS}
+\CommentTok{\#\textgreater{} T  0.0002356541  1 2.356541e{-}04}
+\CommentTok{\#\textgreater{} R  0.0020521800  3 6.840600e{-}04}
+\CommentTok{\#\textgreater{} TR 0.0001506079  3 5.020264e{-}05}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{ANOVA}\SpecialCharTok{$}\NormalTok{VarCom}
-\CommentTok{\#\textgreater{}            Estimates       Rhos}
-\CommentTok{\#\textgreater{} VarR   2.3319942e{-}05         NA}
-\CommentTok{\#\textgreater{} VarTR {-}6.8389146e{-}04         NA}
-\CommentTok{\#\textgreater{} Cov1   7.9168215e{-}04 0.51887172}
-\CommentTok{\#\textgreater{} Cov2   4.8363767e{-}04 0.31697811}
-\CommentTok{\#\textgreater{} Cov3   5.1250915e{-}04 0.33590059}
-\CommentTok{\#\textgreater{} Var    1.5257762e{-}03         NA}
+\CommentTok{\#\textgreater{}           Estimates      Rhos}
+\CommentTok{\#\textgreater{} VarR   2.331994e{-}05        NA}
+\CommentTok{\#\textgreater{} VarTR {-}6.838915e{-}04        NA}
+\CommentTok{\#\textgreater{} Cov1   7.916821e{-}04 0.5188717}
+\CommentTok{\#\textgreater{} Cov2   4.836377e{-}04 0.3169781}
+\CommentTok{\#\textgreater{} Cov3   5.125091e{-}04 0.3359006}
+\CommentTok{\#\textgreater{} Var    1.525776e{-}03        NA}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{ANOVA}\SpecialCharTok{$}\NormalTok{IndividualTrt}
-\CommentTok{\#\textgreater{}           DF    msREachTrt   varEachTrt   cov2EachTrt}
-\CommentTok{\#\textgreater{} trtTREAT1  3 0.00049266349 0.0015227779 0.00047229915}
-\CommentTok{\#\textgreater{} trtTREAT2  3 0.00024159915 0.0015287746 0.00049497620}
+\CommentTok{\#\textgreater{}           DF   msREachTrt  varEachTrt  cov2EachTrt}
+\CommentTok{\#\textgreater{} trtTREAT1  3 0.0004926635 0.001522778 0.0004722991}
+\CommentTok{\#\textgreater{} trtTREAT2  3 0.0002415991 0.001528775 0.0004949762}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{ANOVA}\SpecialCharTok{$}\NormalTok{IndividualRdr}
-\CommentTok{\#\textgreater{}             DF    msTEachRdr   varEachRdr   cov1EachRdr}
-\CommentTok{\#\textgreater{} rdrREADER\_1  1 7.3897606e{-}06 0.0014771675 0.00056158020}
-\CommentTok{\#\textgreater{} rdrREADER\_2  1 2.3077021e{-}04 0.0015186058 0.00071581326}
-\CommentTok{\#\textgreater{} rdrREADER\_3  1 1.4769293e{-}04 0.0013773788 0.00076508897}
-\CommentTok{\#\textgreater{} rdrREADER\_4  1 4.0912170e{-}07 0.0017299529 0.00112424616}
+\CommentTok{\#\textgreater{}             DF   msTEachRdr  varEachRdr  cov1EachRdr}
+\CommentTok{\#\textgreater{} rdrREADER\_1  1 7.389761e{-}06 0.001477168 0.0005615802}
+\CommentTok{\#\textgreater{} rdrREADER\_2  1 2.307702e{-}04 0.001518606 0.0007158133}
+\CommentTok{\#\textgreater{} rdrREADER\_3  1 1.476929e{-}04 0.001377379 0.0007650890}
+\CommentTok{\#\textgreater{} rdrREADER\_4  1 4.091217e{-}07 0.001729953 0.0011242462}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1754,18 +1690,18 @@ Let us consider the ones that are different from the DBM method.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{RRRC}\SpecialCharTok{$}\NormalTok{FTests}
-\CommentTok{\#\textgreater{}           DF            MS     FStat          p}
-\CommentTok{\#\textgreater{} Treatment  1 2.3565410e{-}04 4.6940577 0.11883786}
-\CommentTok{\#\textgreater{} Error      3 5.0202641e{-}05        NA         NA}
+\CommentTok{\#\textgreater{}           DF           MS    FStat         p}
+\CommentTok{\#\textgreater{} Treatment  1 2.356541e{-}04 4.694058 0.1188379}
+\CommentTok{\#\textgreater{} Error      3 5.020264e{-}05       NA        NA}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{RRRC}\SpecialCharTok{$}\NormalTok{ciDiffTrt}
-\CommentTok{\#\textgreater{}                        Estimate       StdErr DF         t      PrGTt}
-\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 0.010854817 0.0050101218  3 2.1665774 0.11883786}
-\CommentTok{\#\textgreater{}                           CILower     CIUpper}
-\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 {-}0.0050896269 0.026799261}
+\CommentTok{\#\textgreater{}                       Estimate      StdErr DF        t     PrGTt      CILower}
+\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 0.01085482 0.005010122  3 2.166577 0.1188379 {-}0.005089627}
+\CommentTok{\#\textgreater{}                        CIUpper}
+\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 0.02679926}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{RRRC}\SpecialCharTok{$}\NormalTok{ciAvgRdrEachTrt}
-\CommentTok{\#\textgreater{}             Estimate      StdErr         DF    CILower    CIUpper          Cov2}
-\CommentTok{\#\textgreater{} trtTREAT1 0.84774989 0.024402152  70.121788 0.79908282 0.89641696 0.00047229915}
-\CommentTok{\#\textgreater{} trtTREAT2 0.83689507 0.023566416 253.644028 0.79048429 0.88330585 0.00049497620}
+\CommentTok{\#\textgreater{}            Estimate     StdErr        DF   CILower   CIUpper         Cov2}
+\CommentTok{\#\textgreater{} trtTREAT1 0.8477499 0.02440215  70.12179 0.7990828 0.8964170 0.0004722991}
+\CommentTok{\#\textgreater{} trtTREAT2 0.8368951 0.02356642 253.64403 0.7904843 0.8833058 0.0004949762}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1792,35 +1728,15 @@ Let us consider the ones that are different from the DBM method.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{FRRC}\SpecialCharTok{$}\NormalTok{FTests}
-\CommentTok{\#\textgreater{}                     MS      Chisq DF          p}
-\CommentTok{\#\textgreater{} Treatment 0.0002356541 0.32101347  1 0.57099922}
-\CommentTok{\#\textgreater{} Error     0.0007340941         NA NA         NA}
+\CommentTok{\#\textgreater{} NULL}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{FRRC}\SpecialCharTok{$}\NormalTok{ciDiffTrt}
-\CommentTok{\#\textgreater{}                        Estimate      StdErr          z      PrGTz      CILower}
-\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 0.010854817 0.019158472 0.56658051 0.57099922 {-}0.026695098}
-\CommentTok{\#\textgreater{}                         CIUpper}
-\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 0.048404732}
+\CommentTok{\#\textgreater{} NULL}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{FRRC}\SpecialCharTok{$}\NormalTok{ciAvgRdrEachTrt}
-\CommentTok{\#\textgreater{}             Estimate      StdErr DF    CILower    CIUpper}
-\CommentTok{\#\textgreater{} trtTREAT1 0.84774989 0.027109386 99 0.79461647 0.90088331}
-\CommentTok{\#\textgreater{} trtTREAT2 0.83689507 0.027448603 99 0.78309680 0.89069334}
+\CommentTok{\#\textgreater{} NULL}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{FRRC}\SpecialCharTok{$}\NormalTok{ciDiffTrtEachRdr}
-\CommentTok{\#\textgreater{}                                       Estimate      StdErr           z}
-\CommentTok{\#\textgreater{} rdrREADER\_1::trtTREAT1{-}trtTREAT2 0.00384441429 0.042792227 0.089839080}
-\CommentTok{\#\textgreater{} rdrREADER\_2::trtTREAT1{-}trtTREAT2 0.02148349163 0.040069753 0.536152334}
-\CommentTok{\#\textgreater{} rdrREADER\_3::trtTREAT1{-}trtTREAT2 0.01718679331 0.034993994 0.491135520}
-\CommentTok{\#\textgreater{} rdrREADER\_4::trtTREAT1{-}trtTREAT2 0.00090456807 0.034805365 0.025989329}
-\CommentTok{\#\textgreater{}                                       PrGTz      CILower     CIUpper}
-\CommentTok{\#\textgreater{} rdrREADER\_1::trtTREAT1{-}trtTREAT2 0.92841509 {-}0.080026809 0.087715638}
-\CommentTok{\#\textgreater{} rdrREADER\_2::trtTREAT1{-}trtTREAT2 0.59185327 {-}0.057051781 0.100018765}
-\CommentTok{\#\textgreater{} rdrREADER\_3::trtTREAT1{-}trtTREAT2 0.62333060 {-}0.051400174 0.085773761}
-\CommentTok{\#\textgreater{} rdrREADER\_4::trtTREAT1{-}trtTREAT2 0.97926585 {-}0.067312693 0.069121830}
+\CommentTok{\#\textgreater{} NULL}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{FRRC}\SpecialCharTok{$}\NormalTok{IndividualRdrVarCov1}
-\CommentTok{\#\textgreater{}               varEachRdr   cov1EachRdr}
-\CommentTok{\#\textgreater{} rdrREADER\_1 0.0014771675 0.00056158020}
-\CommentTok{\#\textgreater{} rdrREADER\_2 0.0015186058 0.00071581326}
-\CommentTok{\#\textgreater{} rdrREADER\_3 0.0013773788 0.00076508897}
-\CommentTok{\#\textgreater{} rdrREADER\_4 0.0017299529 0.00112424616}
+\CommentTok{\#\textgreater{} NULL}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1843,18 +1759,11 @@ Let us consider the ones that are different from the DBM method.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{RRFC}\SpecialCharTok{$}\NormalTok{FTests}
-\CommentTok{\#\textgreater{}    DF            MS         F          p}
-\CommentTok{\#\textgreater{} T   1 2.3565410e{-}04 4.6940577 0.11883786}
-\CommentTok{\#\textgreater{} TR  3 5.0202641e{-}05        NA         NA}
+\CommentTok{\#\textgreater{} NULL}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{RRFC}\SpecialCharTok{$}\NormalTok{ciDiffTrt}
-\CommentTok{\#\textgreater{}                        Estimate       StdErr DF         t      PrGTt}
-\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 0.010854817 0.0050101218  3 2.1665774 0.11883786}
-\CommentTok{\#\textgreater{}                           CILower     CIUpper}
-\CommentTok{\#\textgreater{} trtTREAT1{-}trtTREAT2 {-}0.0050896269 0.026799261}
+\CommentTok{\#\textgreater{} NULL}
 \NormalTok{ret}\SpecialCharTok{$}\NormalTok{RRFC}\SpecialCharTok{$}\NormalTok{ciAvgRdrEachTrt}
-\CommentTok{\#\textgreater{}             Estimate      StdErr DF    CILower    CIUpper}
-\CommentTok{\#\textgreater{} TrtTREAT1 0.84774989 0.011098012  3 0.81243106 0.88306871}
-\CommentTok{\#\textgreater{} TrtTREAT2 0.83689507 0.007771730  3 0.81216196 0.86162818}
+\CommentTok{\#\textgreater{} NULL}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1891,46 +1800,6 @@ This chapter illustrates significance testing using the OR method. But, instead 
 \section{Generating the Excel output file}\label{quick-start-or-excel-output}}
 
 This illustrates the \texttt{UtilOutputReport()} function. The arguments are the embedded dataset, \texttt{dataset03}, the same dataset as in the previous two chapters, the report file base name \texttt{ReportFileBaseName} is set to \texttt{R/quick-start/MyResults}, the report file extension \texttt{ReportFileExt} is set to \texttt{xlsx}, the \texttt{FOM} is set to ``Wilcoxon'', the \texttt{method} of analysis is set to ``OR'', and the flag \texttt{overWrite\ =\ TRUE} overwrites any existing file with the same name, as otherwise the program will pause for user input.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{ret }\OtherTok{\textless{}{-}} \FunctionTok{UtilOutputReport}\NormalTok{(}\FunctionTok{get}\NormalTok{(}\StringTok{"dataset03"}\NormalTok{), }
-                        \AttributeTok{ReportFileBaseName =} \StringTok{"R/quick{-}start/MyResults"}\NormalTok{, }
-                        \AttributeTok{ReportFileExt =} \StringTok{"xlsx"}\NormalTok{,  }
-                        \AttributeTok{FOM =} \StringTok{"Wilcoxon"}\NormalTok{, }
-                        \AttributeTok{method =} \StringTok{"OR"}\NormalTok{, }
-                        \AttributeTok{overWrite =} \ConstantTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-The following screen shots display the contents of the created file \texttt{"R/quick-start/MyResults.xlsx"}.
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.2\textheight]{R/quick-start/MyResultsSummary} \includegraphics[width=0.5\linewidth,height=0.2\textheight]{R/quick-start/MyResultsFOMs} 
-
-}
-
-\caption{`Summary` and `FOMs` worksheets of Excel file `R/quick-start/MyResults.xlsx`}\label{fig:quick-start-or-xlsx1}
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.2\textheight]{R/quick-start/MyResultsANOVA1} \includegraphics[width=0.5\linewidth,height=0.2\textheight]{R/quick-start/MyResultsANOVA2} 
-
-}
-
-\caption{`ANOVA` worksheet of Excel file `R/quick-start/MyResults.xlsx`}\label{fig:quick-start-or-xlsx2}
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.2\textheight]{R/quick-start/MyResultsRRRC} \includegraphics[width=0.5\linewidth,height=0.2\textheight]{R/quick-start/MyResultsFRRC} \includegraphics[width=0.5\linewidth,height=0.2\textheight]{R/quick-start/MyResultsRRFC} 
-
-}
-
-\caption{`RRRC`, `FRRC` and `RRFC` worksheets of Excel file `R/quick-start/MyResults.xlsx`}\label{fig:quick-start-or-xlsx3}
-\end{figure}
 
 \hypertarget{part-roc-sample-size}{%
 \part*{ROC sample size}\label{part-roc-sample-size}}
@@ -2194,20 +2063,18 @@ Since confusion still appears to exist, especially among statisticians, regardin
 \hypertarget{froc-sample-size-how-much-finished}{%
 \section{How much finished 90 percent}\label{froc-sample-size-how-much-finished}}
 
-Comments on reason for increased FROC power; discuss idea about separating treatments and using lower half in terms of AUC to compute the NH parameters; does this improve DOBBINS-1 performance - solve the unusually low scale factor for this dataset?
+TBA
 
 \hypertarget{overview}{%
 \section{Overview}\label{overview}}
 
-This chapter is split into three parts:
+This chapter is split into two parts:
 
 \begin{itemize}
 \item
-  Part 1 is a step-by-step approach to FROC paradigm sample size estimation;
+  Part 1 is a step-by-step approach to FROC paradigm sample size estimation.
 \item
-  Part 2 encapsulates some of the details in \texttt{SsFrocNhRsmModel()}.
-\item
-  Part 3 uses \texttt{SsFrocSampleSize()} which encapsulates the procedure into a single function call which is applied to 7 FROC datasets.
+  Part 2 encapsulates some of the details in \texttt{SsFrocNhRsmModel()} which makes it easier to use the sample size estimation method.
 \end{itemize}
 
 \hypertarget{part-1}{%
@@ -2216,17 +2083,17 @@ This chapter is split into three parts:
 \hypertarget{froc-sample-size-intro}{%
 \subsection{Introduction}\label{froc-sample-size-intro}}
 
-FROC sample size estimation is not fundamentally different from ROC sample size estimation, Chapter \ref{roc-sample-size-dbm}.
+FROC sample size estimation is not fundamentally different from ROC sample size estimation detailed in Chapter \ref{roc-sample-size-dbm} and summarized next.
 
 \textbf{Summary of ROC sample size estimation}
 
-Based on analysis of a pilot ROC dataset and using a specified figure of merit (FOM), e.g., \texttt{FOM\ =\ Wilcoxon}, and either \texttt{method\ =\ "DBM"} or \texttt{method\ =\ "OR"} for significance testing, one estimates the intrinsic variability of the data expressed in terms of FOM variance components. For the DBM method these are the pseudovalue-based variance components while for OR method these are the FOM-based variance and covariances. \textbf{In this chapter the OR variance components will be used.} The second step is to specify a clinically realistic effect-size, e.g., the anticipated AUC difference between the two modalities.
+Based on analysis of a pilot ROC dataset and using a specified figure of merit (FOM), e.g., \texttt{FOM\ =\ Wilcoxon}, and either \texttt{method\ =\ "DBM"} or \texttt{method\ =\ "OR"} for significance testing, one estimates the intrinsic variability of the data expressed in terms of FOM variance components. For the DBM method these are the pseudovalue-based variance components while for OR method these are the FOM-based variance and covariances. \textbf{In this chapter the OR method will be used.} The second step is to specify a clinically realistic effect-size, e.g., the anticipated AUC difference between the two modalities.
 
 Given the variance components and the anticipated AUC difference the sample size functions (\texttt{RJafroc} function names beginning with \texttt{Ss}) allow one to estimate the number of readers and cases necessary to detect (i.e., reject the null hypothesis) the modality AUC difference with probability \(\beta\), typically chosen to be 20 percent (corresponding to 80 percent statistical power) while maintaining the NH (zero AUC difference) rejection rate probability at \(\alpha\), typically chosen to be 5 percent.
 
 \textbf{Summary of FROC sample size estimation}
 
-In FROC analysis the only difference, indeed the critical difference, is the choice of FOM; e.g., \texttt{FOM\ =\ "wAFROC"} instead of the ROC-AUC, \texttt{FOM\ =\ "Wilcoxon"}. The FROC dataset is analyzed using the OR (or the DBM) method. This yields the covariance matrix of the wAFROC-AUC. Next one specifies the effect-size \textbf{in wAFROC-AUC units} and this requires care. The ROC-AUC has a historically well-known interpretation, namely it is the classification ability at separating diseased patients from non-diseased patients, while the wAFROC-AUC does not. Needed is a way of relating the effect-size in the easily understood ROC-AUC unit to one in wAFROC-AUC unit. This requires a physical model, e.g., the RSM, that predicts both ROC and wAFROC curves and their corresponding AUCs.
+In FROC analysis the only difference, indeed the critical difference, is the choice of FOM; e.g., \texttt{FOM\ =\ "wAFROC"} instead of the ROC-AUC, \texttt{FOM\ =\ "Wilcoxon"}. The FROC dataset is analyzed using the OR method. This yields the covariance matrix corresponding to wAFROC-AUC FOM. Next one specifies the effect-size \textbf{in wAFROC-AUC units} and this step requires care. The ROC-AUC has a historically well-known interpretation, namely it is the classification ability at separating diseased patients from non-diseased patients, while the wAFROC-AUC does not. Needed is a way of relating the effect-size in the easily understood ROC-AUC unit to one in wAFROC-AUC unit. This requires a physical model, e.g., the RSM, that predicts both ROC and wAFROC curves and their corresponding AUCs.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2291,7 +2158,7 @@ If the NH dataset uses continuous ratings one bins the ratings:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# For dataset04 this is unnecessary as it is already binned but it can\textquotesingle{}t hurt}
+\CommentTok{\# For dataset04 this is unnecessary as it is already binned, but it can\textquotesingle{}t hurt}
 \NormalTok{rocDataBinNH }\OtherTok{\textless{}{-}} \FunctionTok{DfBinDataset}\NormalTok{(rocDataNH, }\AttributeTok{opChType =} \StringTok{"ROC"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -2307,16 +2174,8 @@ The default number of bins should be used. Unlike binning using arbitrarily set 
 \begin{Highlighting}[numbers=left,,]
 \NormalTok{lesDistr }\OtherTok{\textless{}{-}} \FunctionTok{UtilLesDistr}\NormalTok{(frocDataNH)}
 \NormalTok{W }\OtherTok{\textless{}{-}} \FunctionTok{UtilLesWghtsDS}\NormalTok{(frocDataNH)}
-\NormalTok{W}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-##      [,1]      [,2]      [,3]      [,4]
-## [1,]    1 1.0000000      -Inf      -Inf
-## [2,]    2 0.5000000 0.5000000      -Inf
-## [3,]    3 0.3333333 0.3333333 0.3333333
-\end{verbatim}
 
 Note that \texttt{lesDistr} and \(\textbf{W}\) are determined from the \emph{FROC} NH dataset as this information is lost upon conversion to an ROC dataset.
 
@@ -2354,10 +2213,12 @@ I recommend taking the median (not the mean) of each of the parameters as repres
 \end{Highlighting}
 \end{Shaded}
 
-The defining values of the NH fitting model are \texttt{muNH} = 3.3121519, \texttt{lambdaNH} = 1.714368 and \texttt{nuNH} = 0.7036564.
+The defining values of the RSM-based NH fitting model are \texttt{muNH} = 3.3121519, \texttt{lambdaNH} = 1.714368 and \texttt{nuNH} = 0.7036564.
 
 \hypertarget{compute-roc-and-wafroc-nh-aucs}{%
 \subsubsection{Compute ROC and wAFROC NH AUCs}\label{compute-roc-and-wafroc-nh-aucs}}
+
+The next step is the compute the RSM-based AUCs under the respective ROC and the wAFROC curves:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2366,12 +2227,12 @@ The defining values of the NH fitting model are \texttt{muNH} = 3.3121519, \text
 \end{Highlighting}
 \end{Shaded}
 
-The AUCs are: \texttt{aucRocNH\ =\ 0.8791542} and \texttt{aucwAfrocNH\ =\ 0.7198615}. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes detection and localization performance.
+The AUCs are: \texttt{aucRocNH\ =\ 0.8791542} and \texttt{aucwAfrocNH\ =\ 0.7198615}. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes both detection and localization performance (the ROC-AUC only measures detection performance).
 
-\hypertarget{compute-roc-and-wafroc-ah-aucs-for-a-range-of-roc-auc-effect-sizes}{%
-\subsubsection{Compute ROC and wAFROC AH AUCs for a range of ROC-AUC effect sizes}\label{compute-roc-and-wafroc-ah-aucs-for-a-range-of-roc-auc-effect-sizes}}
+\hypertarget{compute-roc-and-wafroc-alternative-hypotheses-aucs-for-a-range-of-roc-auc-effect-sizes}{%
+\subsubsection{Compute ROC and wAFROC Alternative Hypotheses AUCs for a range of ROC-AUC effect sizes}\label{compute-roc-and-wafroc-alternative-hypotheses-aucs-for-a-range-of-roc-auc-effect-sizes}}
 
-To define the alternative hypothesis (AH) condition, one increments \(\mu_{NH}\) by \(\Delta_{\mu}\). It is not enough to simply increase the \(\mu\) parameter as increasing it simultaneously decreases \(\lambda\) and increase \(\nu\). To account for this one extracts the intrinsic parameters \(\lambda_i, \nu_i\) at line 7 and then converts back to the physical parameters at line 9 using the incremented \(\mu\). Note the usage of the functions The resulting ROC-AUC and wAFROC-AUC are calculated. One calculates the effect size (AH value minus NH value) using ROC and wAFROC FOMs for a series of specified \texttt{deltaMu} values. This generates values that can be used to relate the wAFROC effect size for a specified ROC effect size.
+To define the alternative hypothesis (AH) condition, one increments \(\mu_{NH}\) by \(\Delta\mu\). Tempting as it may be, it is not enough to simply increase the \(\mu\) parameter as increasing \(\mu\) will simultaneously decrease \(\lambda\) and increase \(\nu\) (see the Astronomical Analogy in the \href{https://dpc10ster.github.io/RJafrocFrocBook/froc-paradigm.html\#froc-paradigm-solar-analogy}{RJafrocFrocBook}). To account for this tandem effect one extracts the \textbf{intrinsic} parameters \(\lambda_i, \nu_i\) at line 7 and then converts back to the physical parameters at line 9 using the incremented \(\mu\). Note the usage of the functions \texttt{Util2Intrinsic} and \texttt{Util2Physical}. The resulting ROC-AUC and wAFROC-AUC are then calculated. This yields the effect size (AH value minus NH value) using ROC and wAFROC FOMs for a series of specified \(\Delta\mu\) values. This generates values that can be used to relate the wAFROC effect size for a specified ROC effect size.
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -2381,9 +2242,9 @@ To define the alternative hypothesis (AH) condition, one increments \(\mu_{NH}\)
 \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(deltaMu)) \{}
   
   \CommentTok{\# get intrinsic parameters}
-\NormalTok{  par\_i }\OtherTok{\textless{}{-}} \FunctionTok{Util2Intrinsic}\NormalTok{(muNH, lambdaNH, nuNH) }\CommentTok{\# intrinsic}
-  \CommentTok{\# find physical parameters for increased muNH accounting for combined change}
-\NormalTok{  par\_p }\OtherTok{\textless{}{-}} \FunctionTok{Util2Physical}\NormalTok{(muNH }\SpecialCharTok{+}\NormalTok{ deltaMu[i], par\_i}\SpecialCharTok{$}\NormalTok{lambda\_i, par\_i}\SpecialCharTok{$}\NormalTok{nu\_i)  }\CommentTok{\# physical}
+\NormalTok{  par\_i }\OtherTok{\textless{}{-}} \FunctionTok{Util2Intrinsic}\NormalTok{(muNH, lambdaNH, nuNH) }\CommentTok{\# convert physical to intrinsic}
+  \CommentTok{\# find physical parameters for the increased muNH (accounting for the tandem effects)}
+\NormalTok{  par\_p }\OtherTok{\textless{}{-}} \FunctionTok{Util2Physical}\NormalTok{(muNH }\SpecialCharTok{+}\NormalTok{ deltaMu[i], par\_i}\SpecialCharTok{$}\NormalTok{lambda\_i, par\_i}\SpecialCharTok{$}\NormalTok{nu\_i)  }\CommentTok{\# convert intrinsic to physical}
   
 \NormalTok{  esROC[i] }\OtherTok{\textless{}{-}} \FunctionTok{UtilAnalyticalAucsRSM}\NormalTok{(}
 \NormalTok{    muNH }\SpecialCharTok{+}\NormalTok{ deltaMu[i], par\_p}\SpecialCharTok{$}\NormalTok{lambda, par\_p}\SpecialCharTok{$}\NormalTok{nu, }\AttributeTok{lesDistr =}\NormalTok{ lesDistr}\SpecialCharTok{$}\NormalTok{Freq)}\SpecialCharTok{$}\NormalTok{aucROC }\SpecialCharTok{{-}}\NormalTok{ aucRocNH}
@@ -2410,9 +2271,10 @@ The plot is linear and the intercept is close to zero. This makes it easy to imp
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\NormalTok{scaleFactor }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(eswAFROC }\SpecialCharTok{\textasciitilde{}} \SpecialCharTok{{-}}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ esROC) }\CommentTok{\# the "{-}1" fits to straight line through the origin}
+\NormalTok{lmFit }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(eswAFROC }\SpecialCharTok{\textasciitilde{}} \SpecialCharTok{{-}}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ esROC) }\CommentTok{\# the "{-}1" fits to straight line through the origin}
+\NormalTok{scaleFactor }\OtherTok{\textless{}{-}}\NormalTok{ lmFit}\SpecialCharTok{$}\NormalTok{coefficients}
 \NormalTok{effectSizeROC }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\FloatTok{0.01}\NormalTok{, }\FloatTok{0.0525}\NormalTok{, }\FloatTok{0.0025}\NormalTok{) }
-\NormalTok{effectSizewAFROC }\OtherTok{\textless{}{-}}\NormalTok{ effectSizeROC}\SpecialCharTok{*}\NormalTok{scaleFactor}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{1}\NormalTok{]}
+\NormalTok{effectSizewAFROC }\OtherTok{\textless{}{-}}\NormalTok{ effectSizeROC}\SpecialCharTok{*}\NormalTok{scaleFactor}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2427,28 +2289,24 @@ effectSizewAFROC = scaleFactor * effectSizeROC
 \hypertarget{roc-and-wafroc-variance-components}{%
 \subsection{ROC and wAFROC variance components}\label{roc-and-wafroc-variance-components}}
 
-The following skeleton code shows the arguments of the function \texttt{UtilVarComponentsOR} used to calculate the OR variance components.
+The following skeleton code shows the arguments of the function \texttt{UtilORVarComp} used to calculate the OR variance components (other arguments are at their default values).
 
 \begin{verbatim}
-UtilVarComponentsOR(
+UtilORVarComp(
   dataset,
-  FOM,
-  FPFValue = 0.2,
-  covEstMethod = "jackknife",
-  nBoots = 200,
-  seed = NULL
+  FOM
 )
 \end{verbatim}
 
-\texttt{UtilVarComponentsOR()} is applied to \texttt{rocDataNH} and \texttt{frocDataNH} (using ``Wilcoxon'' and ``wAFROC'' FOMs respectively) followed by the extraction of the two OR variance components.
+\texttt{UtilORVarComp()} is applied to \texttt{rocDataNH} and \texttt{frocDataNH} (using ``Wilcoxon'' and ``wAFROC'' FOMs as appropriate) followed by the extraction of the ROC and wAFROC variance components.
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\NormalTok{varComp\_roc }\OtherTok{\textless{}{-}} \FunctionTok{UtilVarComponentsOR}\NormalTok{(}
+\NormalTok{varComp\_roc }\OtherTok{\textless{}{-}} \FunctionTok{UtilORVarComp}\NormalTok{(}
 \NormalTok{  rocDataNH, }
   \AttributeTok{FOM =} \StringTok{"Wilcoxon"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{VarCom[}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{]}
 
-\NormalTok{varComp\_wafroc }\OtherTok{\textless{}{-}} \FunctionTok{UtilVarComponentsOR}\NormalTok{(}
+\NormalTok{varComp\_wafroc }\OtherTok{\textless{}{-}} \FunctionTok{UtilORVarComp}\NormalTok{(}
 \NormalTok{  frocDataNH, }
   \AttributeTok{FOM =} \StringTok{"wAFROC"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{VarCom[}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{]}
 \end{Highlighting}
@@ -2496,6 +2354,7 @@ We compare ROC and wAFROC random-reader random-case (RRRC) powers for equivalent
 \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(effectSizeROC)) \{}
   
   \CommentTok{\# compute ROC power}
+  \CommentTok{\# dataset = NULL means use the variance components from those supplied}
 \NormalTok{  ret }\OtherTok{\textless{}{-}} \FunctionTok{SsPowerGivenJK}\NormalTok{(}
     \AttributeTok{dataset =} \ConstantTok{NULL}\NormalTok{, }
     \AttributeTok{FOM =} \StringTok{"Wilcoxon"}\NormalTok{, }
@@ -2511,6 +2370,7 @@ We compare ROC and wAFROC random-reader random-case (RRRC) powers for equivalent
 \NormalTok{  power\_roc[i] }\OtherTok{\textless{}{-}}\NormalTok{ ret}\SpecialCharTok{$}\NormalTok{powerRRRC}
   
   \CommentTok{\# compute wAFROC power}
+  \CommentTok{\# dataset = NULL means use the variance components from those supplied}
 \NormalTok{  ret }\OtherTok{\textless{}{-}} \FunctionTok{SsPowerGivenJK}\NormalTok{(}
     \AttributeTok{dataset =} \ConstantTok{NULL}\NormalTok{, }
     \AttributeTok{FOM =} \StringTok{"wAFROC"}\NormalTok{, }
@@ -2525,25 +2385,13 @@ We compare ROC and wAFROC random-reader random-case (RRRC) powers for equivalent
          \AttributeTok{Var =}\NormalTok{ Var\_wafroc))}
 \NormalTok{  power\_wafroc[i] }\OtherTok{\textless{}{-}}\NormalTok{ ret}\SpecialCharTok{$}\NormalTok{powerRRRC}
   
-  \ControlFlowTok{if}\NormalTok{ (i }\SpecialCharTok{==} \DecValTok{11}\NormalTok{)}
-  \FunctionTok{cat}\NormalTok{(}\StringTok{"effectSizeROC[i] = "}\NormalTok{, effectSizeROC[i],}
-      \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{effectSizewAFROC[i] = "}\NormalTok{, effectSizewAFROC[i],}
-      \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{power\_roc[i] = "}\NormalTok{, power\_roc[i],}
-      \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{power\_wafroc[i] = "}\NormalTok{, power\_wafroc[i], }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)  }
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## effectSizeROC[i] =  0.035 
-## effectSizewAFROC[i] =  0.07592683 
-## power_roc[i] =  0.2342887 
-## power_wafroc[i] =  0.7972542
-\end{verbatim}
+Lines 2-7 extract the variance components using the ROC-AUC figure of merit. Lines 10-15 extract the variance components using the wAFROC-AUC figure of merit. These are passed to \texttt{SsPowerGivenJK} at lines 29 and 32, respectively. Line 20 defines the number of readers and cases in the pivotal study. The for-loop calculates ROC power (line 25) and wAFROC power (line 31).
 
-Lines 2-4 extract the variance components using the ROC-AUC figure of merit. Lines 7-9 extract the variance components using the wAFROC-AUC figure of merit. These are passed to \texttt{SsPowerGivenJK} at lines 27 and 30, respectively. Line 14 defines the number of readers and cases in the pivotal study. The for-loop calculates ROC power (line 28) and wAFROC power (line 31).
-
-Since the wAFROC effect size is 2.169 times the ROC effect size, wAFROC power is larger than that for ROC. For example, for ROC effect size = 0.035 the wAFROC effect size is 0.076, the ROC power is 0.234 while the wAFROC power is 0.797. The influence of the increased wAFROC effect size is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC
+Since the wAFROC effect size is 2.1693379 times the ROC effect size, wAFROC power is larger than that for ROC. For example, for ROC effect size = 0.035 the wAFROC effect size is 0.076, the ROC power is 0.234 while the wAFROC power is 0.797. The influence of the increased wAFROC effect size is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC
 
 The following is a plot of the respective powers.
 
@@ -2581,16 +2429,16 @@ One starts by extracting the first two treatments from \texttt{dataset04}, which
 \end{Highlighting}
 \end{Shaded}
 
-The fitting model is defined by \texttt{muNH} = 3.3121519, \texttt{lambdaNH} = 1.714368 and \texttt{nuNH} = 0.7036564 and \texttt{lesDistr\$Freq} = 0.69, 0.2, 0.11. The effect size scale factor is \texttt{scaleFactor} = 2.1693379. All of these are identical to the Part I values.
+The fitting model is defined by \texttt{muNH} = 3.3121519, \texttt{lambdaNH} = 1.714368 and \texttt{nuNH} = 0.7036564 and \texttt{lesDistr\$Freq} = 0.69, 0.2, 0.11. The effect size scale factor is \texttt{scaleFactor} = 2.1693379. These are identical to the Part I values.
 
 \hypertarget{froc-sample-size-variance-components}{%
 \subsection{Extract the wAFROC variance components}\label{froc-sample-size-variance-components}}
 
-The code applies \texttt{StSignificanceTesting()} to \texttt{frocNhData}, using \texttt{FOM\ =\ "wAFROC"} and extracts the variance components.
+The code applies the significance testing function \texttt{St()} to \texttt{frocNhData}, using \texttt{FOM\ =\ "wAFROC"} and extracts the variance components.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{varComp\_wafroc  }\OtherTok{\textless{}{-}} \FunctionTok{StSignificanceTesting}\NormalTok{(}
+\NormalTok{varComp\_wafroc  }\OtherTok{\textless{}{-}} \FunctionTok{St}\NormalTok{(}
 \NormalTok{  frocNhData, }
   \AttributeTok{FOM =} \StringTok{"wAFROC"}\NormalTok{, }
   \AttributeTok{method =} \StringTok{"OR"}\NormalTok{, }
@@ -2615,13 +2463,7 @@ SsPowerGivenJK(
 )
 \end{verbatim}
 
-The function \texttt{SsPowerGivenJK} used below returns the power for specified effect size, numbers of readers and cases, and variance components (supplied as a \texttt{list} via the \texttt{...} argument - see TBA lines xx and yy of following code). The default arguments of this function are:
-
-\begin{verbatim}
-method = "OR" 
-analysisOption = "RRRC" 
-LegacyCode = FALSE
-\end{verbatim}
+The function \texttt{SsPowerGivenJK} used below returns the power for specified effect size, numbers of readers and cases, and variance components (supplied as a \texttt{list} via the \texttt{...} argument - see following code).
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -2651,7 +2493,7 @@ LegacyCode = FALSE
 \end{Shaded}
 
 \begin{verbatim}
-## ROC-ES =  0.05 , wAFROC-ES =  0.10846689 , Power-wAFROC =  0.97777633
+## ROC-ES =  0.05 , wAFROC-ES =  0.1084669 , Power-wAFROC =  0.9777763
 \end{verbatim}
 
 \hypertarget{number-of-cases-for-80-percent-power-for-a-given-number-of-readers}{%
@@ -2692,308 +2534,15 @@ The function \texttt{SsSampleSizeKGivenJ} returns the number of cases needed for
 \end{Shaded}
 
 \begin{verbatim}
-## ROC-ES =  0.05 , wAFROC-ES =  0.10846689 , K80RRRC =  41 , Power-wAFROC =  0.80087319
+## ROC-ES =  0.05 , wAFROC-ES =  0.1084669 , K80RRRC =  41 , Power-wAFROC =  0.8008732
 \end{verbatim}
 
 Here \texttt{K80RRRC} is the number of cases needed for 80 percent power under RRRC analysis.
 
-\hypertarget{part-3}{%
-\section{Part 3}\label{part-3}}
-
-What follows is an application of the method to all my available FROC datasets. If more than two treatments are present two analyses are reported: one using all treatments and one using NH not-rejecting (NH-NR) treatments only. Note that ROC effect sizes were sometimes varied between the two analyses to keep the FROC power close to 80 percent. In all reported analyses J = 5 readers and K = 100 cases are assumed in the pivotal study.
-
-\hypertarget{tony-dataset}{%
-\subsection{TONY dataset}\label{tony-dataset}}
-
-This dataset has only two treatments; therefore a single analyses using both treatments is reported.
-
-\begin{verbatim}
-## dataset =  dataset01 , Name =  TONY , I =  2 , J =  5
-\end{verbatim}
-
-\begin{verbatim}
-## $effectSizeROC
-## [1] 0.07
-## 
-## $scaleFactor
-## [1] 1.6123687
-## 
-## $powerRoc
-## [1] 0.36353662
-## 
-## $powerFroc
-## [1] 0.7648341
-\end{verbatim}
-
-\hypertarget{fed-dataset-all-data-and-nh-nr-treatments-only}{%
-\subsection{FED dataset, all data and NH-NR treatments only}\label{fed-dataset-all-data-and-nh-nr-treatments-only}}
-
-This dataset has five treatments; therefore two results are reported: one using all treatments and one using NH not-rejecting treatments only, i.e., \texttt{DfExtractDataset(ds,\ trts\ =\ c(1,2))}.
-
-\begin{verbatim}
-## dataset =  dataset04 , Name =  FEDERICA , I =  5 , J =  4
-\end{verbatim}
-
-\begin{verbatim}
-## All data
-\end{verbatim}
-
-\begin{verbatim}
-## $effectSizeROC
-## [1] 0.04
-## 
-## $scaleFactor
-## [1] 1.8536914
-## 
-## $powerRoc
-## [1] 0.34678954
-## 
-## $powerFroc
-## [1] 0.80813385
-\end{verbatim}
-
-\begin{verbatim}
-## Note change in effect size in next analysis
-\end{verbatim}
-
-\begin{verbatim}
-## NH-NR treatments only: trts = c(1,2)
-\end{verbatim}
-
-\begin{verbatim}
-## $effectSizeROC
-## [1] 0.035
-## 
-## $scaleFactor
-## [1] 2.1693379
-## 
-## $powerRoc
-## [1] 0.23428872
-## 
-## $powerFroc
-## [1] 0.79725425
-\end{verbatim}
-
-\hypertarget{thompson-dataset}{%
-\subsection{THOMPSON dataset}\label{thompson-dataset}}
-
-This dataset has only two treatments; therefore a single analyses using both treatments is reported.
-
-\begin{verbatim}
-## dataset =  dataset05 , Name =  THOMPSON , I =  2 , J =  9
-\end{verbatim}
-
-\begin{verbatim}
-## $effectSizeROC
-## [1] 0.05
-## 
-## $scaleFactor
-## [1] 1.7822813
-## 
-## $powerRoc
-## [1] 0.36427919
-## 
-## $powerFroc
-## [1] 0.77624968
-\end{verbatim}
-
-\hypertarget{magnus-dataset}{%
-\subsection{MAGNUS dataset}\label{magnus-dataset}}
-
-This dataset has only two treatments; therefore a single analyses using both treatments is reported.
-
-\begin{verbatim}
-## dataset =  dataset06 , Name =  MAGNUS , I =  2 , J =  4
-\end{verbatim}
-
-\begin{verbatim}
-## $effectSizeROC
-## [1] 0.05
-## 
-## $scaleFactor
-## [1] 2.2393454
-## 
-## $powerRoc
-## [1] 0.26755435
-## 
-## $powerFroc
-## [1] 0.86438847
-\end{verbatim}
-
-\hypertarget{lucy-dataset-all-data-and-nh-nr-treatments-only}{%
-\subsection{LUCY dataset, all data and NH-NR treatments only}\label{lucy-dataset-all-data-and-nh-nr-treatments-only}}
-
-This dataset has five treatments; therefore two results are reported: one using all treatments and one using NH not-rejecting treatments only, i.e., \texttt{DfExtractDataset(ds,\ trts\ =\ c(1,5))}.
-
-\begin{verbatim}
-## dataset =  dataset07 , Name =  LUCY-WARREN , I =  5 , J =  7
-\end{verbatim}
-
-\begin{verbatim}
-## All data
-\end{verbatim}
-
-\begin{verbatim}
-## $effectSizeROC
-## [1] 0.06
-## 
-## $scaleFactor
-## [1] 1.6585341
-## 
-## $powerRoc
-## [1] 0.56994854
-## 
-## $powerFroc
-## [1] 0.72577542
-\end{verbatim}
-
-\begin{verbatim}
-## Note change in effect size in next analysis
-\end{verbatim}
-
-\begin{verbatim}
-## NH-NR treatments only: trts = c(1,5)
-\end{verbatim}
-
-\begin{verbatim}
-## $effectSizeROC
-## [1] 0.04
-## 
-## $scaleFactor
-## [1] 1.5780687
-## 
-## $powerRoc
-## [1] 0.50730142
-## 
-## $powerFroc
-## [1] 0.79668794
-\end{verbatim}
-
-\hypertarget{dobbins-1-dataset-all-data-and-nh-nr-treatments-only}{%
-\subsection{DOBBINS-1 dataset, all data and NH-NR treatments only}\label{dobbins-1-dataset-all-data-and-nh-nr-treatments-only}}
-
-Note: this dataset revealed issues with the RSM fitting program, namely the number of ROC operating points sometimes falls below 3, the minimum required.
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=0.2\textheight]{images/froc-sample-size/ds11trt1rdr3} 
-
-}
-
-\caption{RSM fitted ROC plot for dataset11, treatment 1 and reader 3. Note the two defining operating points near the origin. }\label{fig:froc-sample-size-dataset11}
-\end{figure}
-
-This dataset has four treatments; therefore two results are reported: one using all treatments and one using NH not-rejecting treatments only, i.e., \texttt{DfExtractDataset(ds,\ trts\ =\ c(1,3,4))}.
-
-\begin{verbatim}
-## dataset =  dataset11 , Name =  DOBBINS-1 , I =  4 , J =  5
-\end{verbatim}
-
-\begin{verbatim}
-## All data
-\end{verbatim}
-
-\begin{verbatim}
-## dropped  3 estimates with large deviations from empirical auc
-\end{verbatim}
-
-\begin{verbatim}
-## $effectSizeROC
-## [1] 0.07
-## 
-## $scaleFactor
-## [1] 1.0055152
-## 
-## $powerRoc
-## [1] 0.57062501
-## 
-## $powerFroc
-## [1] 0.65187772
-\end{verbatim}
-
-\begin{verbatim}
-## NH-NR treatments only: trts = c(1,3,4)
-\end{verbatim}
-
-\begin{verbatim}
-## dropped  3 estimates with large deviations from empirical auc
-\end{verbatim}
-
-\begin{verbatim}
-## $effectSizeROC
-## [1] 0.07
-## 
-## $scaleFactor
-## [1] 1.162575
-## 
-## $powerRoc
-## [1] 0.59643607
-## 
-## $powerFroc
-## [1] 0.77139331
-\end{verbatim}
-
-\hypertarget{dobbins-3-dataset-all-data-and-nh-nr-treatments-only}{%
-\subsection{DOBBINS-3 dataset, all data and NH-NR treatments only}\label{dobbins-3-dataset-all-data-and-nh-nr-treatments-only}}
-
-This dataset has four treatments; therefore two results are reported: one using all treatments and one using NH not-rejecting treatments only, i.e., \texttt{DfExtractDataset(ds,\ trts\ =\ c(3,4))}.
-
-\begin{verbatim}
-## dataset =  dataset13 , Name =  DOBBINS-3 , I =  4 , J =  5
-\end{verbatim}
-
-\begin{verbatim}
-## All data
-\end{verbatim}
-
-\begin{verbatim}
-## dropped  3 estimates with large deviations from empirical auc
-\end{verbatim}
-
-\begin{verbatim}
-## $effectSizeROC
-## [1] 0.07
-## 
-## $scaleFactor
-## [1] 1.5694529
-## 
-## $powerRoc
-## [1] 0.54481091
-## 
-## $powerFroc
-## [1] 0.83725167
-\end{verbatim}
-
-\begin{verbatim}
-## Note change in effect size in next analysis
-\end{verbatim}
-
-\begin{verbatim}
-## NH-NR treatments only: trts = c(3,4)
-\end{verbatim}
-
-\begin{verbatim}
-## dropped  2 estimates with large deviations from empirical auc
-\end{verbatim}
-
-\begin{verbatim}
-## $effectSizeROC
-## [1] 0.03
-## 
-## $scaleFactor
-## [1] 1.5019205
-## 
-## $powerRoc
-## [1] 0.41346102
-## 
-## $powerFroc
-## [1] 0.84401625
-\end{verbatim}
-
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
 
-With one exception, namely \texttt{dataset11}, each analyses demonstrates the considerable power advantage of FROC over ROC analysis. This is due to the increased predicted wAFROC-AUC effect size relative to the postulated ROC-AUC effect size.
+TBA
 
 \hypertarget{part-software-details}{%
 \part*{Software details}\label{part-software-details}}

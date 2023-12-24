@@ -18,7 +18,7 @@ The only change is to specify `method = "OR"` in the significance testing functi
 
 
 ```r
-ret <- StSignificanceTesting(dataset03, FOM = "Wilcoxon", method = "OR")
+ret <- St(dataset03, FOM = "Wilcoxon", method = "OR")
 ```
 
 ## Explanation of the output {#quick-start-or-text-explanation}
@@ -42,28 +42,28 @@ Let us consider the ones that are different from the DBM method.
 
 ```r
 ret$ANOVA$TRanova
-#>               SS DF            MS
-#> T  0.00023565410  1 2.3565410e-04
-#> R  0.00205217999  3 6.8406000e-04
-#> TR 0.00015060792  3 5.0202641e-05
+#>              SS DF           MS
+#> T  0.0002356541  1 2.356541e-04
+#> R  0.0020521800  3 6.840600e-04
+#> TR 0.0001506079  3 5.020264e-05
 ret$ANOVA$VarCom
-#>            Estimates       Rhos
-#> VarR   2.3319942e-05         NA
-#> VarTR -6.8389146e-04         NA
-#> Cov1   7.9168215e-04 0.51887172
-#> Cov2   4.8363767e-04 0.31697811
-#> Cov3   5.1250915e-04 0.33590059
-#> Var    1.5257762e-03         NA
+#>           Estimates      Rhos
+#> VarR   2.331994e-05        NA
+#> VarTR -6.838915e-04        NA
+#> Cov1   7.916821e-04 0.5188717
+#> Cov2   4.836377e-04 0.3169781
+#> Cov3   5.125091e-04 0.3359006
+#> Var    1.525776e-03        NA
 ret$ANOVA$IndividualTrt
-#>           DF    msREachTrt   varEachTrt   cov2EachTrt
-#> trtTREAT1  3 0.00049266349 0.0015227779 0.00047229915
-#> trtTREAT2  3 0.00024159915 0.0015287746 0.00049497620
+#>           DF   msREachTrt  varEachTrt  cov2EachTrt
+#> trtTREAT1  3 0.0004926635 0.001522778 0.0004722991
+#> trtTREAT2  3 0.0002415991 0.001528775 0.0004949762
 ret$ANOVA$IndividualRdr
-#>             DF    msTEachRdr   varEachRdr   cov1EachRdr
-#> rdrREADER_1  1 7.3897606e-06 0.0014771675 0.00056158020
-#> rdrREADER_2  1 2.3077021e-04 0.0015186058 0.00071581326
-#> rdrREADER_3  1 1.4769293e-04 0.0013773788 0.00076508897
-#> rdrREADER_4  1 4.0912170e-07 0.0017299529 0.00112424616
+#>             DF   msTEachRdr  varEachRdr  cov1EachRdr
+#> rdrREADER_1  1 7.389761e-06 0.001477168 0.0005615802
+#> rdrREADER_2  1 2.307702e-04 0.001518606 0.0007158133
+#> rdrREADER_3  1 1.476929e-04 0.001377379 0.0007650890
+#> rdrREADER_4  1 4.091217e-07 0.001729953 0.0011242462
 ```
 
 * RRRC, a list of 3 containing results of random-reader random-case analyses
@@ -74,18 +74,18 @@ ret$ANOVA$IndividualRdr
 
 ```r
 ret$RRRC$FTests
-#>           DF            MS     FStat          p
-#> Treatment  1 2.3565410e-04 4.6940577 0.11883786
-#> Error      3 5.0202641e-05        NA         NA
+#>           DF           MS    FStat         p
+#> Treatment  1 2.356541e-04 4.694058 0.1188379
+#> Error      3 5.020264e-05       NA        NA
 ret$RRRC$ciDiffTrt
-#>                        Estimate       StdErr DF         t      PrGTt
-#> trtTREAT1-trtTREAT2 0.010854817 0.0050101218  3 2.1665774 0.11883786
-#>                           CILower     CIUpper
-#> trtTREAT1-trtTREAT2 -0.0050896269 0.026799261
+#>                       Estimate      StdErr DF        t     PrGTt      CILower
+#> trtTREAT1-trtTREAT2 0.01085482 0.005010122  3 2.166577 0.1188379 -0.005089627
+#>                        CIUpper
+#> trtTREAT1-trtTREAT2 0.02679926
 ret$RRRC$ciAvgRdrEachTrt
-#>             Estimate      StdErr         DF    CILower    CIUpper          Cov2
-#> trtTREAT1 0.84774989 0.024402152  70.121788 0.79908282 0.89641696 0.00047229915
-#> trtTREAT2 0.83689507 0.023566416 253.644028 0.79048429 0.88330585 0.00049497620
+#>            Estimate     StdErr        DF   CILower   CIUpper         Cov2
+#> trtTREAT1 0.8477499 0.02440215  70.12179 0.7990828 0.8964170 0.0004722991
+#> trtTREAT2 0.8368951 0.02356642 253.64403 0.7904843 0.8833058 0.0004949762
 ```
 
 * FRRC, a list of 5 containing results of fixed-reader random-case analyses
@@ -98,35 +98,15 @@ ret$RRRC$ciAvgRdrEachTrt
 
 ```r
 ret$FRRC$FTests
-#>                     MS      Chisq DF          p
-#> Treatment 0.0002356541 0.32101347  1 0.57099922
-#> Error     0.0007340941         NA NA         NA
+#> NULL
 ret$FRRC$ciDiffTrt
-#>                        Estimate      StdErr          z      PrGTz      CILower
-#> trtTREAT1-trtTREAT2 0.010854817 0.019158472 0.56658051 0.57099922 -0.026695098
-#>                         CIUpper
-#> trtTREAT1-trtTREAT2 0.048404732
+#> NULL
 ret$FRRC$ciAvgRdrEachTrt
-#>             Estimate      StdErr DF    CILower    CIUpper
-#> trtTREAT1 0.84774989 0.027109386 99 0.79461647 0.90088331
-#> trtTREAT2 0.83689507 0.027448603 99 0.78309680 0.89069334
+#> NULL
 ret$FRRC$ciDiffTrtEachRdr
-#>                                       Estimate      StdErr           z
-#> rdrREADER_1::trtTREAT1-trtTREAT2 0.00384441429 0.042792227 0.089839080
-#> rdrREADER_2::trtTREAT1-trtTREAT2 0.02148349163 0.040069753 0.536152334
-#> rdrREADER_3::trtTREAT1-trtTREAT2 0.01718679331 0.034993994 0.491135520
-#> rdrREADER_4::trtTREAT1-trtTREAT2 0.00090456807 0.034805365 0.025989329
-#>                                       PrGTz      CILower     CIUpper
-#> rdrREADER_1::trtTREAT1-trtTREAT2 0.92841509 -0.080026809 0.087715638
-#> rdrREADER_2::trtTREAT1-trtTREAT2 0.59185327 -0.057051781 0.100018765
-#> rdrREADER_3::trtTREAT1-trtTREAT2 0.62333060 -0.051400174 0.085773761
-#> rdrREADER_4::trtTREAT1-trtTREAT2 0.97926585 -0.067312693 0.069121830
+#> NULL
 ret$FRRC$IndividualRdrVarCov1
-#>               varEachRdr   cov1EachRdr
-#> rdrREADER_1 0.0014771675 0.00056158020
-#> rdrREADER_2 0.0015186058 0.00071581326
-#> rdrREADER_3 0.0013773788 0.00076508897
-#> rdrREADER_4 0.0017299529 0.00112424616
+#> NULL
 ```
 
     
@@ -139,18 +119,11 @@ ret$FRRC$IndividualRdrVarCov1
 
 ```r
 ret$RRFC$FTests
-#>    DF            MS         F          p
-#> T   1 2.3565410e-04 4.6940577 0.11883786
-#> TR  3 5.0202641e-05        NA         NA
+#> NULL
 ret$RRFC$ciDiffTrt
-#>                        Estimate       StdErr DF         t      PrGTt
-#> trtTREAT1-trtTREAT2 0.010854817 0.0050101218  3 2.1665774 0.11883786
-#>                           CILower     CIUpper
-#> trtTREAT1-trtTREAT2 -0.0050896269 0.026799261
+#> NULL
 ret$RRFC$ciAvgRdrEachTrt
-#>             Estimate      StdErr DF    CILower    CIUpper
-#> TrtTREAT1 0.84774989 0.011098012  3 0.81243106 0.88306871
-#> TrtTREAT2 0.83689507 0.007771730  3 0.81216196 0.86162818
+#> NULL
 ```
 
 

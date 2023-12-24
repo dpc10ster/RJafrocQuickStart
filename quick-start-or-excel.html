@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 OR analysis Excel output | The RJafroc Quick Start Book</title>
   <meta name="description" content="This book is for those already somewhat familiar running Windows JAFROC to analyze data. The Windows program has been replaced by RJafroc. This book dives into how to use RJafroc to analyze ROC/FROC data." />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 OR analysis Excel output | The RJafroc Quick Start Book" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2023-08-04" />
+<meta name="date" content="2023-12-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -309,17 +309,7 @@ div.csl-indent {
 <li class="chapter" data-level="10.4.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#wafroc-power-for-specified-roc-effect-size-number-of-readers-and-number-of-cases"><i class="fa fa-check"></i><b>10.4.4</b> wAFROC power for specified ROC effect size, number of readers and number of cases</a></li>
 <li class="chapter" data-level="10.4.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#number-of-cases-for-80-percent-power-for-a-given-number-of-readers"><i class="fa fa-check"></i><b>10.4.5</b> Number of cases for 80 percent power for a given number of readers</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#part-3"><i class="fa fa-check"></i><b>10.5</b> Part 3</a>
-<ul>
-<li class="chapter" data-level="10.5.1" data-path="froc-sample-size.html"><a href="froc-sample-size.html#tony-dataset"><i class="fa fa-check"></i><b>10.5.1</b> TONY dataset</a></li>
-<li class="chapter" data-level="10.5.2" data-path="froc-sample-size.html"><a href="froc-sample-size.html#fed-dataset-all-data-and-nh-nr-treatments-only"><i class="fa fa-check"></i><b>10.5.2</b> FED dataset, all data and NH-NR treatments only</a></li>
-<li class="chapter" data-level="10.5.3" data-path="froc-sample-size.html"><a href="froc-sample-size.html#thompson-dataset"><i class="fa fa-check"></i><b>10.5.3</b> THOMPSON dataset</a></li>
-<li class="chapter" data-level="10.5.4" data-path="froc-sample-size.html"><a href="froc-sample-size.html#magnus-dataset"><i class="fa fa-check"></i><b>10.5.4</b> MAGNUS dataset</a></li>
-<li class="chapter" data-level="10.5.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#lucy-dataset-all-data-and-nh-nr-treatments-only"><i class="fa fa-check"></i><b>10.5.5</b> LUCY dataset, all data and NH-NR treatments only</a></li>
-<li class="chapter" data-level="10.5.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#dobbins-1-dataset-all-data-and-nh-nr-treatments-only"><i class="fa fa-check"></i><b>10.5.6</b> DOBBINS-1 dataset, all data and NH-NR treatments only</a></li>
-<li class="chapter" data-level="10.5.7" data-path="froc-sample-size.html"><a href="froc-sample-size.html#dobbins-3-dataset-all-data-and-nh-nr-treatments-only"><i class="fa fa-check"></i><b>10.5.7</b> DOBBINS-3 dataset, all data and NH-NR treatments only</a></li>
-</ul></li>
-<li class="chapter" data-level="10.6" data-path="froc-sample-size.html"><a href="froc-sample-size.html#discussion"><i class="fa fa-check"></i><b>10.6</b> Discussion</a></li>
+<li class="chapter" data-level="10.5" data-path="froc-sample-size.html"><a href="froc-sample-size.html#discussion"><i class="fa fa-check"></i><b>10.5</b> Discussion</a></li>
 </ul></li>
 <li class="part"><span><b>Software details</b></span></li>
 <li class="chapter" data-level="11" data-path="dataset-object-details.html"><a href="dataset-object-details.html"><i class="fa fa-check"></i><b>11</b> Excel file and dataset details</a>
@@ -408,31 +398,24 @@ div.csl-indent {
 <div id="quick-start-or-excel-output" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">7.3</span> Generating the Excel output file<a href="quick-start-or-excel.html#quick-start-or-excel-output" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This illustrates the <code>UtilOutputReport()</code> function. The arguments are the embedded dataset, <code>dataset03</code>, the same dataset as in the previous two chapters, the report file base name <code>ReportFileBaseName</code> is set to <code>R/quick-start/MyResults</code>, the report file extension <code>ReportFileExt</code> is set to <code>xlsx</code>, the <code>FOM</code> is set to “Wilcoxon”, the <code>method</code> of analysis is set to “OR”, and the flag <code>overWrite = TRUE</code> overwrites any existing file with the same name, as otherwise the program will pause for user input.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="quick-start-or-excel.html#cb46-1" aria-hidden="true" tabindex="-1"></a>ret <span class="ot">&lt;-</span> <span class="fu">UtilOutputReport</span>(<span class="fu">get</span>(<span class="st">&quot;dataset03&quot;</span>), </span>
-<span id="cb46-2"><a href="quick-start-or-excel.html#cb46-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">ReportFileBaseName =</span> <span class="st">&quot;R/quick-start/MyResults&quot;</span>, </span>
-<span id="cb46-3"><a href="quick-start-or-excel.html#cb46-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">ReportFileExt =</span> <span class="st">&quot;xlsx&quot;</span>,  </span>
-<span id="cb46-4"><a href="quick-start-or-excel.html#cb46-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, </span>
-<span id="cb46-5"><a href="quick-start-or-excel.html#cb46-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">method =</span> <span class="st">&quot;OR&quot;</span>, </span>
-<span id="cb46-6"><a href="quick-start-or-excel.html#cb46-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">overWrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p>The following screen shots display the contents of the created file <code>"R/quick-start/MyResults.xlsx"</code>.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:quick-start-or-xlsx1"></span>
-<img src="R/quick-start/MyResultsSummary.png" alt="`Summary` and `FOMs` worksheets of Excel file `R/quick-start/MyResults.xlsx`" width="50%" height="20%" /><img src="R/quick-start/MyResultsFOMs.png" alt="`Summary` and `FOMs` worksheets of Excel file `R/quick-start/MyResults.xlsx`" width="50%" height="20%" />
-<p class="caption">
-FIGURE 7.1: <code>Summary</code> and <code>FOMs</code> worksheets of Excel file <code>R/quick-start/MyResults.xlsx</code>
-</p>
-</div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:quick-start-or-xlsx2"></span>
-<img src="R/quick-start/MyResultsANOVA1.png" alt="`ANOVA` worksheet of Excel file `R/quick-start/MyResults.xlsx`" width="50%" height="20%" /><img src="R/quick-start/MyResultsANOVA2.png" alt="`ANOVA` worksheet of Excel file `R/quick-start/MyResults.xlsx`" width="50%" height="20%" />
-<p class="caption">
-FIGURE 7.2: <code>ANOVA</code> worksheet of Excel file <code>R/quick-start/MyResults.xlsx</code>
-</p>
-</div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:quick-start-or-xlsx3"></span>
-<img src="R/quick-start/MyResultsRRRC.png" alt="`RRRC`, `FRRC` and `RRFC` worksheets of Excel file `R/quick-start/MyResults.xlsx`" width="50%" height="20%" /><img src="R/quick-start/MyResultsFRRC.png" alt="`RRRC`, `FRRC` and `RRFC` worksheets of Excel file `R/quick-start/MyResults.xlsx`" width="50%" height="20%" /><img src="R/quick-start/MyResultsRRFC.png" alt="`RRRC`, `FRRC` and `RRFC` worksheets of Excel file `R/quick-start/MyResults.xlsx`" width="50%" height="20%" />
-<p class="caption">
-FIGURE 7.3: <code>RRRC</code>, <code>FRRC</code> and <code>RRFC</code> worksheets of Excel file <code>R/quick-start/MyResults.xlsx</code>
-</p>
-</div>
+<!-- ```{r quick-start-or-excel-output-code, cache=TRUE} -->
+<!-- ret <- UtilOutputReport(get("dataset03"),  -->
+<!--                         ReportFileBaseName = "R/quick-start/MyResults",  -->
+<!--                         ReportFileExt = "xlsx",   -->
+<!--                         FOM = "Wilcoxon",  -->
+<!--                         method = "OR",  -->
+<!--                         overWrite = TRUE) -->
+<!-- ```              -->
+<!-- The following screen shots display the contents of the created file `"R/quick-start/MyResults.xlsx"`. -->
+<!-- ```{r quick-start-or-xlsx1, echo=FALSE,out.width="50%",out.height="20%",fig.cap="`Summary` and `FOMs` worksheets of Excel file `R/quick-start/MyResults.xlsx`",fig.show='hold',fig.align='center'} -->
+<!-- knitr::include_graphics(c("R/quick-start/MyResultsSummary.png", "R/quick-start/MyResultsFOMs.png")) -->
+<!-- ```  -->
+<!-- ```{r quick-start-or-xlsx2, echo=FALSE,out.width="50%",out.height="20%",fig.cap="`ANOVA` worksheet of Excel file `R/quick-start/MyResults.xlsx`",fig.show='hold',fig.align='center'} -->
+<!-- knitr::include_graphics(c("R/quick-start/MyResultsANOVA1.png", "R/quick-start/MyResultsANOVA2.png")) -->
+<!-- ```  -->
+<!-- ```{r quick-start-or-xlsx3, echo=FALSE,out.width="50%",out.height="20%",fig.cap="`RRRC`, `FRRC` and `RRFC` worksheets of Excel file `R/quick-start/MyResults.xlsx`",fig.show='hold',fig.align='center'} -->
+<!-- knitr::include_graphics(c("R/quick-start/MyResultsRRRC.png", "R/quick-start/MyResultsFRRC.png", "R/quick-start/MyResultsRRFC.png")) -->
+<!-- ```  -->
 
 </div>
 </div>
