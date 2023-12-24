@@ -155,7 +155,7 @@ nuNH <- median(RsmParmsNH[,,3])
 ```
 
 
-The defining values of the RSM-based NH fitting model are `muNH` = 3.3121519, `lambdaNH` = 1.714368 and `nuNH` = 0.7036564. 
+The defining values of the RSM-based NH fitting model are `muNH` = 3.3121491, `lambdaNH` = 1.714368 and `nuNH` = 0.7036564. 
 
 
 #### Compute ROC and wAFROC NH AUCs
@@ -169,7 +169,7 @@ aucwAfrocNH <- UtilAnalyticalAucsRSM(muNH, lambdaNH, nuNH, lesDistr = lesDistr$F
 ```
 
 
-The AUCs are: `aucRocNH = 0.8791542` and `aucwAfrocNH = 0.7198615`. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes both detection and localization performance (the ROC-AUC only measures detection performance). 
+The AUCs are: `aucRocNH = 0.8791541` and `aucwAfrocNH = 0.7198614`. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes both detection and localization performance (the ROC-AUC only measures detection performance). 
 
 #### Compute ROC and wAFROC Alternative Hypotheses AUCs for a range of ROC-AUC effect sizes
 
@@ -299,7 +299,7 @@ JPivot <- 5;KPivot <- 100
 for (i in 1:length(effectSizeROC)) {
   
   # compute ROC power
-  # dataset = NULL means use the variance components from those supplied
+  # dataset = NULL means use the supplied variance components instead of dataset
   ret <- SsPowerGivenJK(
     dataset = NULL, 
     FOM = "Wilcoxon", 
@@ -315,7 +315,7 @@ for (i in 1:length(effectSizeROC)) {
   power_roc[i] <- ret$powerRRRC
   
   # compute wAFROC power
-  # dataset = NULL means use the variance components from those supplied
+  # dataset = NULL means use the supplied variance components instead of dataset
   ret <- SsPowerGivenJK(
     dataset = NULL, 
     FOM = "wAFROC", 
@@ -336,7 +336,7 @@ for (i in 1:length(effectSizeROC)) {
 
 Lines 2-7 extract the variance components using the ROC-AUC figure of merit. Lines 10-15 extract the variance components using the wAFROC-AUC figure of merit. These are passed to `SsPowerGivenJK` at lines 29 and 32, respectively. Line 20 defines the number of readers and cases in the pivotal study. The for-loop calculates ROC power (line 25) and wAFROC power (line 31).
 
-Since the wAFROC effect size is 2.1693379 times the ROC effect size, wAFROC power is larger than that for ROC. For example, for ROC effect size = 0.035 the wAFROC effect size is 0.076, the ROC power is 0.234 while the wAFROC power is 0.797. The influence of the increased wAFROC effect size is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC 
+Since the wAFROC effect size is 2.169337 times the ROC effect size, wAFROC power is larger than that for ROC. For example, for ROC effect size = 0.035 the wAFROC effect size is 0.076, the ROC power is 0.234 while the wAFROC power is 0.797. The influence of the increased wAFROC effect size is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC 
 
 The following is a plot of the respective powers.
 
@@ -373,7 +373,7 @@ scaleFactor <- ret$scaleFactor
 ```
 
 
-The fitting model is defined by `muNH` = 3.3121519,  `lambdaNH` = 1.714368  and  `nuNH` = 0.7036564 and `lesDistr$Freq` = 0.69, 0.2, 0.11. The effect size scale factor is `scaleFactor` = 2.1693379. These are identical to the Part I values.
+The fitting model is defined by `muNH` = 3.3121491,  `lambdaNH` = 1.714368  and  `nuNH` = 0.7036564 and `lesDistr$Freq` = 0.69, 0.2, 0.11. The effect size scale factor is `scaleFactor` = 2.169337. These are identical to the Part I values.
 
 
 ### Extract the wAFROC variance components  {#froc-sample-size-variance-components}
@@ -435,7 +435,7 @@ cat("ROC-ES = ", effectSizeROC,
 ```
 
 ```
-## ROC-ES =  0.05 , wAFROC-ES =  0.1084669 , Power-wAFROC =  0.9777763
+## ROC-ES =  0.05 , wAFROC-ES =  0.1084669 , Power-wAFROC =  0.9777762
 ```
 
 
@@ -476,7 +476,7 @@ cat("ROC-ES = ", effectSizeROC,
 ```
 
 ```
-## ROC-ES =  0.05 , wAFROC-ES =  0.1084669 , K80RRRC =  41 , Power-wAFROC =  0.8008732
+## ROC-ES =  0.05 , wAFROC-ES =  0.1084669 , K80RRRC =  41 , Power-wAFROC =  0.8008729
 ```
 
 

@@ -2213,7 +2213,7 @@ I recommend taking the median (not the mean) of each of the parameters as repres
 \end{Highlighting}
 \end{Shaded}
 
-The defining values of the RSM-based NH fitting model are \texttt{muNH} = 3.3121519, \texttt{lambdaNH} = 1.714368 and \texttt{nuNH} = 0.7036564.
+The defining values of the RSM-based NH fitting model are \texttt{muNH} = 3.3121491, \texttt{lambdaNH} = 1.714368 and \texttt{nuNH} = 0.7036564.
 
 \hypertarget{compute-roc-and-wafroc-nh-aucs}{%
 \subsubsection{Compute ROC and wAFROC NH AUCs}\label{compute-roc-and-wafroc-nh-aucs}}
@@ -2227,7 +2227,7 @@ The next step is the compute the RSM-based AUCs under the respective ROC and the
 \end{Highlighting}
 \end{Shaded}
 
-The AUCs are: \texttt{aucRocNH\ =\ 0.8791542} and \texttt{aucwAfrocNH\ =\ 0.7198615}. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes both detection and localization performance (the ROC-AUC only measures detection performance).
+The AUCs are: \texttt{aucRocNH\ =\ 0.8791541} and \texttt{aucwAfrocNH\ =\ 0.7198614}. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes both detection and localization performance (the ROC-AUC only measures detection performance).
 
 \hypertarget{compute-roc-and-wafroc-alternative-hypotheses-aucs-for-a-range-of-roc-auc-effect-sizes}{%
 \subsubsection{Compute ROC and wAFROC Alternative Hypotheses AUCs for a range of ROC-AUC effect sizes}\label{compute-roc-and-wafroc-alternative-hypotheses-aucs-for-a-range-of-roc-auc-effect-sizes}}
@@ -2354,7 +2354,7 @@ We compare ROC and wAFROC random-reader random-case (RRRC) powers for equivalent
 \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(effectSizeROC)) \{}
   
   \CommentTok{\# compute ROC power}
-  \CommentTok{\# dataset = NULL means use the variance components from those supplied}
+  \CommentTok{\# dataset = NULL means use the supplied variance components instead of dataset}
 \NormalTok{  ret }\OtherTok{\textless{}{-}} \FunctionTok{SsPowerGivenJK}\NormalTok{(}
     \AttributeTok{dataset =} \ConstantTok{NULL}\NormalTok{, }
     \AttributeTok{FOM =} \StringTok{"Wilcoxon"}\NormalTok{, }
@@ -2370,7 +2370,7 @@ We compare ROC and wAFROC random-reader random-case (RRRC) powers for equivalent
 \NormalTok{  power\_roc[i] }\OtherTok{\textless{}{-}}\NormalTok{ ret}\SpecialCharTok{$}\NormalTok{powerRRRC}
   
   \CommentTok{\# compute wAFROC power}
-  \CommentTok{\# dataset = NULL means use the variance components from those supplied}
+  \CommentTok{\# dataset = NULL means use the supplied variance components instead of dataset}
 \NormalTok{  ret }\OtherTok{\textless{}{-}} \FunctionTok{SsPowerGivenJK}\NormalTok{(}
     \AttributeTok{dataset =} \ConstantTok{NULL}\NormalTok{, }
     \AttributeTok{FOM =} \StringTok{"wAFROC"}\NormalTok{, }
@@ -2391,7 +2391,7 @@ We compare ROC and wAFROC random-reader random-case (RRRC) powers for equivalent
 
 Lines 2-7 extract the variance components using the ROC-AUC figure of merit. Lines 10-15 extract the variance components using the wAFROC-AUC figure of merit. These are passed to \texttt{SsPowerGivenJK} at lines 29 and 32, respectively. Line 20 defines the number of readers and cases in the pivotal study. The for-loop calculates ROC power (line 25) and wAFROC power (line 31).
 
-Since the wAFROC effect size is 2.1693379 times the ROC effect size, wAFROC power is larger than that for ROC. For example, for ROC effect size = 0.035 the wAFROC effect size is 0.076, the ROC power is 0.234 while the wAFROC power is 0.797. The influence of the increased wAFROC effect size is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC
+Since the wAFROC effect size is 2.169337 times the ROC effect size, wAFROC power is larger than that for ROC. For example, for ROC effect size = 0.035 the wAFROC effect size is 0.076, the ROC power is 0.234 while the wAFROC power is 0.797. The influence of the increased wAFROC effect size is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC
 
 The following is a plot of the respective powers.
 
@@ -2429,7 +2429,7 @@ One starts by extracting the first two treatments from \texttt{dataset04}, which
 \end{Highlighting}
 \end{Shaded}
 
-The fitting model is defined by \texttt{muNH} = 3.3121519, \texttt{lambdaNH} = 1.714368 and \texttt{nuNH} = 0.7036564 and \texttt{lesDistr\$Freq} = 0.69, 0.2, 0.11. The effect size scale factor is \texttt{scaleFactor} = 2.1693379. These are identical to the Part I values.
+The fitting model is defined by \texttt{muNH} = 3.3121491, \texttt{lambdaNH} = 1.714368 and \texttt{nuNH} = 0.7036564 and \texttt{lesDistr\$Freq} = 0.69, 0.2, 0.11. The effect size scale factor is \texttt{scaleFactor} = 2.169337. These are identical to the Part I values.
 
 \hypertarget{froc-sample-size-variance-components}{%
 \subsection{Extract the wAFROC variance components}\label{froc-sample-size-variance-components}}
@@ -2493,7 +2493,7 @@ The function \texttt{SsPowerGivenJK} used below returns the power for specified 
 \end{Shaded}
 
 \begin{verbatim}
-## ROC-ES =  0.05 , wAFROC-ES =  0.1084669 , Power-wAFROC =  0.9777763
+## ROC-ES =  0.05 , wAFROC-ES =  0.1084669 , Power-wAFROC =  0.9777762
 \end{verbatim}
 
 \hypertarget{number-of-cases-for-80-percent-power-for-a-given-number-of-readers}{%
@@ -2534,7 +2534,7 @@ The function \texttt{SsSampleSizeKGivenJ} returns the number of cases needed for
 \end{Shaded}
 
 \begin{verbatim}
-## ROC-ES =  0.05 , wAFROC-ES =  0.1084669 , K80RRRC =  41 , Power-wAFROC =  0.8008732
+## ROC-ES =  0.05 , wAFROC-ES =  0.1084669 , K80RRRC =  41 , Power-wAFROC =  0.8008729
 \end{verbatim}
 
 Here \texttt{K80RRRC} is the number of cases needed for 80 percent power under RRRC analysis.
