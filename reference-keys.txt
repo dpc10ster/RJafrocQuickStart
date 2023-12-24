@@ -8,8 +8,8 @@ eq:DeltaFRRC
 eq:SamplingFFRRC
 eq:DeltaFRRFC
 eq:SamplingFRRFC
-fig:unnamed-chunk-12
-fig:unnamed-chunk-17
+fig:unnamed-chunk-10
+fig:unnamed-chunk-18
 quick-start-index-preface
 quick-start-index-rationale-and-organization
 quick-start-index-getting-help
@@ -115,11 +115,10 @@ roc-and-wafroc-variance-components
 roc-and-wafroc-power-for-equivalent-effect-sizes
 part-2
 introduction
-constructing-the-nh-model-for-the-dataset
+constructing-the-nh-model
 froc-sample-size-variance-components
 wafroc-power-for-specified-roc-effect-size-number-of-readers-and-number-of-cases
 number-of-cases-for-80-percent-power-for-a-given-number-of-readers
-discussion
 dataset-object-details
 introduction-1
 dataset-object-details-roc-dataset

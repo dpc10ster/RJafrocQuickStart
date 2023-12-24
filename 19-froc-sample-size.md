@@ -7,11 +7,7 @@
 
 
 
-
-
-## How much finished 90 percent {#froc-sample-size-how-much-finished}
-
-TBA
+## How much finished 99 percent {#froc-sample-size-how-much-finished}
 
 <!-- Comments on reason for increased FROC power; discuss idea about separating treatments and using lower half in terms of AUC to compute the NH parameters; does this improve DOBBINS-1 performance - solve the unusually low scale factor for this dataset? -->
 
@@ -19,9 +15,9 @@ TBA
 
 This chapter is split into two parts: 
 
-* Part 1 is a step-by-step approach to FROC paradigm sample size estimation. 
+* Part 1 is a step-by-step (or first-principles) approach to FROC paradigm sample size estimation. 
 
-* Part 2 encapsulates some of the details in `SsFrocNhRsmModel()` which makes it easier to use the sample size estimation method.
+* Part 2 encapsulates some of the details in function `SsFrocNhRsmModel()` which makes it easier to use the sample size estimation method.
 
 
 ## Part 1
@@ -42,7 +38,7 @@ Given the variance components and the anticipated AUC difference the sample size
 In FROC analysis the only difference, indeed the critical difference, is the choice of FOM; e.g., `FOM = "wAFROC"` instead of the ROC-AUC, `FOM = "Wilcoxon"`. The FROC dataset is analyzed using the OR method. This yields the covariance matrix corresponding to wAFROC-AUC FOM. Next one specifies the effect-size **in wAFROC-AUC units** and this step requires care. The ROC-AUC has a historically well-known interpretation, namely it is the classification ability at separating diseased patients from non-diseased patients, while the wAFROC-AUC does not. Needed is a way of relating the effect-size in the easily understood ROC-AUC unit to one in wAFROC-AUC unit. This requires a physical model, e.g., the RSM, that predicts both ROC and wAFROC curves and their corresponding AUCs.
 
 
-1.	One chooses an ROC-AUC effect-size that is realistic, one that clinicians understand and can therefore participate in, in the effect-size postulation process. Lacking such information I recommend, based on past ROC studies, 0.03 as typical of a small effect size and 0.05 as typical of a moderate effect size.
+1.	One chooses an ROC-AUC effect-size that is realistic and one that clinicians understand and can therefore participate in the effect-size postulation process. Lacking such information I recommend, based on past ROC studies, 0.03 as typical of a small effect size and 0.05 as typical of a moderate effect size.
 
 2.	One converts the ROC effect-size to a wAFROC-AUC effect-size using the method described in the next section.
 
@@ -56,36 +52,24 @@ The next section explains the steps used to implement #2 above.
 
 ### Relating ROC and wAFROC effect-sizes
 
-The steps are illustrated using `dataset04`, a 5 treatment, 4 radiologist and 200 case FROC dataset [@zanca2009evaluation] acquired on a 5-point scale, i.e., the data is already binned. If not binned one needs to bin the dataset using `DfBinDataset()` before RSM fitting can be performed. 
-
-The following code computes `JStar` and `KStar`, the numbers of readers and cases in the **pilot** dataset. These are needed below for correct scaling of the OR variance components.
-
-
-
-```r
-JStar <- length(dataset04$ratings$NL[1,,1,1])
-KStar <- length(dataset04$ratings$NL[1,1,,1])
-```
+The steps are illustrated using `dataset04`, a 5 treatment, 4 radiologist and 200 case FROC dataset [@zanca2009evaluation] acquired on a 5-point scale.
 
 #### Extract NH treatments
 
-If there are more than two treatments in the pilot dataset, as in `dataset04`, one extracts those treatments that represent "almost" null hypothesis data (in the sense of similar ROC-AUCs): 
+If there are more than two treatments in the pilot dataset, as in `dataset04`, one extracts those treatments that represent "almost" null hypothesis data (in the sense of similar AUCs): 
 
 
 ```r
 frocDataNH <- DfExtractDataset(dataset04, trts = c(1,2))
 ```
 
-extracts treatments 1 and 2. These treatments were found [@zanca2009evaluation] to be "almost" equivalent (the NH could not be rejected for the wAFROC-AUC difference between these treatments). More than two treatments can be used if they have similar AUCs, as this will improve the stability of the procedure. However, the final sample size predictions are restricted to two treatments in the pivotal study. 
-
+The preceding code extracts treatments 1 and 2 which were found [@zanca2009evaluation] to be "almost" equivalent (i.e., the NH could not be rejected for the wAFROC-AUC difference between these treatments). More than two almost NH treatments can be used if they have similar AUCs, as this will improve the stability of the procedure. However, the final sample size predictions are restricted to two treatments in the pivotal study. 
 
 The next two steps are needed since **the RSM fits binned ROC data**. 
 
-
 #### Convert the FROC NH data to ROC
 
-If the original data is FROC, one converts it to ROC:
-
+If the original data is FROC one converts it to ROC:
 
 
 ```r
@@ -109,9 +93,7 @@ The default number of bins should be used. Unlike binning using arbitrarily set 
 
 
 
-`lesDistr` is the lesion distribution, see Section \@ref(quick-start-froc-data-lesion-distribution) and line 1 of the following code. The RSM fitting algorithm needs to know how lesion-rich the dataset is as the predicted ROC-AUC depends it. For this dataset fraction 0.69 of diseased cases have one lesion, fraction 0.2 have two lesions and fraction 0.11 have three lesions. One also needs the lesion weights matrix, $\textbf{W}$, see Section \@ref(quick-start-froc-data-lesion-weights). The call at line 2 to `UtilLesWghtsDS` uses the default argument `relWeights = 0` which assigns equal weights to all lesions.
-
-
+`lesDistr` is the lesion distribution, see Section \@ref(quick-start-froc-data-lesion-distribution) and line 1 of the following code. The RSM fitting algorithm needs to know how lesion-rich the dataset is as the predicted ROC-AUC depends on it. For this dataset fraction 0.69 of diseased cases have one lesion, fraction 0.2 have two lesions and fraction 0.11 have three lesions. One also needs the lesion weights matrix, $\textbf{W}$, see Section \@ref(quick-start-froc-data-lesion-weights). The call at line 2 to `UtilLesWghtsDS` uses the default argument `relWeights = 0` which assigns equal weights to all lesions.
 
 
 ```{.r .numberLines}
@@ -119,18 +101,17 @@ lesDistr <- UtilLesDistr(frocDataNH)
 W <- UtilLesWghtsDS(frocDataNH)
 ```
 
-
-Note that `lesDistr` and $\textbf{W}$ are determined from the *FROC* NH dataset as this information is lost upon conversion to an ROC dataset. 
+Note that `lesDistr` and $\textbf{W}$ are determined from the **FROC** NH dataset as this information is lost upon conversion to an ROC dataset. 
 
 #### Fit the RSM to the ROC data
 
-For each treatment and reader the fitting algorithm `FitRsmRoc()` is applied (lines 4 - 11) to the binned NH ROC dataset. The returned values are `mu`, `lambda` and `nu`, corresponding to the physical RSM parameters ${\mu}$, ${\lambda}$ and ${\nu}$.
+For each treatment and reader the fitting algorithm `FitRsmRoc()` is applied (see below, lines 4 - 11) to the binned NH ROC dataset. The returned values are `mu`, `lambda` and `nu`, corresponding to the physical RSM parameters $\mu$, $\lambda$ and $\nu$.
 
 
 ```{.r .numberLines}
-I <- dim(rocDataBinNH$ratings$NL)[1]
-J <- dim(rocDataBinNH$ratings$NL)[2]
-RsmParmsNH <- array(dim = c(I,J,3))
+I <- dim(rocDataBinNH$ratings$NL)[1] # number of levels of treatment factor
+J <- dim(rocDataBinNH$ratings$NL)[2] # number of levels of reader factor
+RsmParmsNH <- array(dim = c(I,J,3)) # 3 corresponds to the three RSM parameters
 for (i in 1:I) {
   for (j in 1:J)  {
     fit <- FitRsmRoc(rocDataBinNH, trt = i, rdr = j, lesDistr$Freq)
@@ -144,7 +125,7 @@ for (i in 1:I) {
 
 #### Compute the median values of the RSM parameters
 
-I recommend taking the median (not the mean) of each of the parameters as representing the "average" NH dataset. The median is less sensitive to outliers than the mean.  
+I recommend taking the median (not the mean) of the $I \times J$ values of each parameter as representing the average NH dataset (he median is less sensitive to outliers than the mean).  
 
 
 
@@ -160,7 +141,7 @@ The defining values of the RSM-based NH fitting model are `muNH` = 3.3121491, `l
 
 #### Compute ROC and wAFROC NH AUCs
 
-The next step is the compute the RSM-based AUCs under the respective ROC and the wAFROC curves:
+The next step is the compute the analytical (i.e., RSM-based) AUCs under the respective ROC and the wAFROC curves:
 
 
 ```r
@@ -173,7 +154,7 @@ The AUCs are: `aucRocNH = 0.8791541` and `aucwAfrocNH = 0.7198614`. Note that th
 
 #### Compute ROC and wAFROC Alternative Hypotheses AUCs for a range of ROC-AUC effect sizes
 
-To define the alternative hypothesis (AH) condition, one increments $\mu_{NH}$ by $\Delta\mu$. Tempting as it may be, it is not enough to simply increase the $\mu$ parameter as increasing $\mu$ will simultaneously decrease $\lambda$ and increase $\nu$ (see the Astronomical Analogy in the [RJafrocFrocBook](https://dpc10ster.github.io/RJafrocFrocBook/froc-paradigm.html#froc-paradigm-solar-analogy)). To account for this tandem effect one extracts the **intrinsic** parameters $\lambda_i, \nu_i$ at line 7 and then converts back to the physical parameters at line 9 using the incremented $\mu$. Note the usage of the functions `Util2Intrinsic` and `Util2Physical`. The resulting ROC-AUC and wAFROC-AUC are then calculated. This yields the effect size (AH value minus NH value) using ROC and wAFROC FOMs for a series of specified $\Delta\mu$ values. This generates values that can be used to relate the wAFROC effect size for a specified ROC effect size. 
+To create the alternative hypothesis (AH) condition, one increments $\mu_{NH}$ by $\Delta\mu$. Tempting as it may be, it is not enough to simply increase the $\mu$ parameter as increasing $\mu$ will simultaneously decrease $\lambda$ and increase $\nu$ (see the Astronomical Analogy in the [RJafrocFrocBook](https://dpc10ster.github.io/RJafrocFrocBook/froc-paradigm.html#froc-paradigm-solar-analogy)). To account for this tandem effect one extracts the **intrinsic** parameters $\lambda_i, \nu_i$, at line 7 of the following code, and then converts back to the physical parameters at line 9 using the incremented $\mu$. Note the usage of the functions `Util2Intrinsic` (convert physical to intrinsic) and `Util2Physical` (convert intrinsic to physical) . The resulting ROC-AUC and wAFROC-AUC are then calculated. This yields the effect size (AH value minus NH value) using ROC and wAFROC FOMs for a series of specified $\Delta\mu$ values. These are used to relate the wAFROC effect size for a specified ROC effect size. 
 
 
 
@@ -188,11 +169,13 @@ for (i in 1:length(deltaMu)) {
   # find physical parameters for the increased muNH (accounting for the tandem effects)
   par_p <- Util2Physical(muNH + deltaMu[i], par_i$lambda_i, par_i$nu_i)  # convert intrinsic to physical
   
+  # AH ROC value minus NH ROC value
   esROC[i] <- UtilAnalyticalAucsRSM(
-    muNH + deltaMu[i], par_p$lambda, par_p$nu, lesDistr = lesDistr$Freq)$aucROC - aucRocNH
+    muNH + deltaMu[i], par_p$lambda, par_p$nu, lesDistr = lesDistr$Freq)$aucROC - aucRocNH 
   
+  # AH wAFROC value minus NH wAFROC value
   eswAFROC[i] <- UtilAnalyticalAucsRSM(
-    muNH + deltaMu[i], par_p$lambda, par_p$nu, lesDistr = lesDistr$Freq)$aucwAFROC - aucwAfrocNH
+    muNH + deltaMu[i], par_p$lambda, par_p$nu, lesDistr = lesDistr$Freq)$aucwAFROC - aucwAfrocNH 
   
 }
 ```
@@ -202,8 +185,8 @@ Here is a plot of wAFROC effect size (y-axis) vs. ROC effect size.
 
 
 <div class="figure" style="text-align: center">
-<img src="19-froc-sample-size_files/figure-html/unnamed-chunk-12-1.png" alt="Plot of wAFROC effect size vs. ROC effect size. The straight line fit through the origin has slope 2.169." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-12)Plot of wAFROC effect size vs. ROC effect size. The straight line fit through the origin has slope 2.169.</p>
+<img src="19-froc-sample-size_files/figure-html/unnamed-chunk-10-1.png" alt="Plot of wAFROC effect size vs. ROC effect size. The straight line fit through the origin has slope 2.169." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-10)Plot of wAFROC effect size vs. ROC effect size. The straight line fit through the origin has slope 2.169.</p>
 </div>
 
 
@@ -229,7 +212,7 @@ effectSizewAFROC = scaleFactor * effectSizeROC
 
 ### ROC and wAFROC variance components
 
-The following skeleton code shows the arguments of the function `UtilORVarComp` used to calculate the OR variance components (other arguments are at their default values).
+The following skeleton code shows the arguments of the function `UtilORVarComp` used to calculate the OR variance components (other arguments are left at their default values).
 
 ```
 UtilORVarComp(
@@ -271,8 +254,18 @@ VarCom[-2] removes the second column of each dataframe containing the correlatio
 
 ### ROC and wAFROC power for equivalent effect-sizes
 
-We compare ROC and wAFROC random-reader random-case (RRRC) powers for equivalent effect sizes.  
+The following code compares ROC and wAFROC random-reader random-case (RRRC) powers for equivalent effect sizes.  
 
+First, one needs the numbers of readers `JStar` and cases `KStar` in the pilot dataset (lines 1 - 2 in following code) and those in the pivotal study, `JPivot` and `KPivot` (line 3). The values for the pivotal study have been arbitrarily set at 5 readers and 100 cases. 
+
+
+```{.r .numberLines}
+JStar <- length(dataset04$ratings$NL[1,,1,1])
+KStar <- length(dataset04$ratings$NL[1,1,,1])
+JPivot <- 5;KPivot <- 100
+```
+
+Next one extracts the OR ROC variance components from the previously computed list `varComp_roc`.
 
 
 ```{.r .numberLines}
@@ -283,7 +276,12 @@ Cov1_roc <- varComp_roc["Cov1","Estimates"]
 Cov2_roc <- varComp_roc["Cov2","Estimates"]
 Cov3_roc <- varComp_roc["Cov3","Estimates"]
 Var_roc <- varComp_roc["Var","Estimates"]
+```
 
+The procedure is repeated for the OR wAFROC variance components using the previously computed list `varComp_wafroc`.
+
+
+```{.r .numberLines}
 # these are OR variance components assuming FOM = "wAFROC"
 varR_wafroc <- varComp_wafroc["VarR","Estimates"]
 varTR_wafroc <- varComp_wafroc["VarTR","Estimates"]
@@ -291,13 +289,31 @@ Cov1_wafroc <- varComp_wafroc["Cov1","Estimates"]
 Cov2_wafroc <- varComp_wafroc["Cov2","Estimates"]
 Cov3_wafroc <- varComp_wafroc["Cov3","Estimates"]
 Var_wafroc <- varComp_wafroc["Var","Estimates"]
+```
 
+We are now ready for the power calculations. The needed function is `SsPowerGivenJK` (for "sample size for given number of readers J and cases K"):
+
+```
+SsPowerGivenJK(
+  dataset,
+  FOM,
+  J,
+  K,
+  effectSize,
+  ...
+)
+```
+
+In the following code the OR ROC variance components are passed to `SsPowerGivenJK` at lines 12-18. The OR wAFROC variance components are passed to `SsPowerGivenJK` at lines 29-34. Setting `dataset = NULL` means that the function does not need a dataset as the variance components are supplied instead using the `...` argument.
+
+The for-loop (lines 3 - 36) calculates ROC power (line 19) and wAFROC power (line 35) for a number of ROC (line 11) and corresponding wAFROC (line 28) effect sizes.
+
+
+
+```{.r .numberLines}
 power_roc <- array(dim = length(effectSizeROC))
 power_wafroc <- array(dim = length(effectSizeROC))
-
-JPivot <- 5;KPivot <- 100
 for (i in 1:length(effectSizeROC)) {
-  
   # compute ROC power
   # dataset = NULL means use the supplied variance components instead of dataset
   ret <- SsPowerGivenJK(
@@ -306,7 +322,8 @@ for (i in 1:length(effectSizeROC)) {
     J = JPivot, 
     K = KPivot, 
     effectSize = effectSizeROC[i], 
-    list(JStar = JStar, KStar = KStar, 
+    list(JStar = JStar, 
+         KStar = KStar, 
          VarTR = varTR_roc,
          Cov1 = Cov1_roc,
          Cov2 = Cov2_roc,
@@ -322,28 +339,26 @@ for (i in 1:length(effectSizeROC)) {
     J = JPivot, 
     K = KPivot, 
     effectSize = effectSizewAFROC[i], 
-    list(JStar = JStar, KStar = KStar, 
+    list(JStar = JStar, 
+         KStar = KStar, 
          VarTR = varTR_wafroc,
          Cov1 = Cov1_wafroc,
          Cov2 = Cov2_wafroc,
          Cov3 = Cov3_wafroc,
          Var = Var_wafroc))
   power_wafroc[i] <- ret$powerRRRC
-  
 }
 ```
 
 
-Lines 2-7 extract the variance components using the ROC-AUC figure of merit. Lines 10-15 extract the variance components using the wAFROC-AUC figure of merit. These are passed to `SsPowerGivenJK` at lines 29 and 32, respectively. Line 20 defines the number of readers and cases in the pivotal study. The for-loop calculates ROC power (line 25) and wAFROC power (line 31).
+Since the wAFROC effect size is 2.169337 times the ROC effect size, wAFROC power is larger than ROC power. For example, for ROC effect size = 0.035 the wAFROC effect size is 0.076, the ROC power is 0.234 while the wAFROC power is 0.797. The influence of the increased wAFROC effect size is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC 
 
-Since the wAFROC effect size is 2.169337 times the ROC effect size, wAFROC power is larger than that for ROC. For example, for ROC effect size = 0.035 the wAFROC effect size is 0.076, the ROC power is 0.234 while the wAFROC power is 0.797. The influence of the increased wAFROC effect size is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC 
-
-The following is a plot of the respective powers.
+The following is a plot of wAFROC power vs. ROC power for the specified effect sizes.
 
 
 <div class="figure" style="text-align: center">
-<img src="19-froc-sample-size_files/figure-html/unnamed-chunk-17-1.png" alt="Plot of wAFROC power vs. ROC power. For ROC effect size = 0.035 the wAFROC effect size is 0.0759, the ROC power is 0.234 while the wAFROC power is 0.797" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-17)Plot of wAFROC power vs. ROC power. For ROC effect size = 0.035 the wAFROC effect size is 0.0759, the ROC power is 0.234 while the wAFROC power is 0.797</p>
+<img src="19-froc-sample-size_files/figure-html/unnamed-chunk-18-1.png" alt="Plot of wAFROC power vs. ROC power. For ROC effect size = 0.035 the wAFROC effect size is 0.0759, the ROC power is 0.234 while the wAFROC power is 0.796." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-18)Plot of wAFROC power vs. ROC power. For ROC effect size = 0.035 the wAFROC effect size is 0.0759, the ROC power is 0.234 while the wAFROC power is 0.796.</p>
 </div>
 
 
@@ -354,12 +369,12 @@ The following is a plot of the respective powers.
 
 ### Introduction
 
-This example uses the FED dataset as a pilot FROC study and function `SsFrocNhRsmModel()` to construct the NH model (encapsulating some of the code in the first part).
+This example uses the FED dataset as a pilot FROC study and function `SsFrocNhRsmModel()` (for "sample size FROC RSM-based NH model") to construct the NH model (thereby encapsulating some of the code in the first part).
 
 
-### Constructing the NH model for the dataset
+### Constructing the NH model
 
-One starts by extracting the first two treatments from `dataset04`, which represent the NH dataset. Next one constructs the NH model. `lesDistr` can be specified independent of that in the pilot dataset. This allows some control over selection of the diseased cases in the pivotal study. However, in this example it is simply extracted from the pilot dataset (line 2). Line 3 applies the function `SsFrocNhRsmModel` to calculate the NH RSM parameters and the scale factor.
+One starts by extracting the first two treatments from `dataset04`, which represent the NH dataset. Next one constructs the NH model. `lesDistr` can be specified independent of that in the pilot dataset. This allows some control over selection of the diseased cases in the pivotal study. However, in this example it is simply extracted from the pilot dataset (line 2). Line 3 applies the function `SsFrocNhRsmModel` to calculate the NH RSM parameters (lines 4 - 6) and the scale factor (line 7).
 
 
 ```{.r .numberLines}
@@ -392,41 +407,28 @@ varComp_wafroc  <- St(
 
 ### wAFROC power for specified ROC effect size, number of readers and number of cases
 
-The following example is for ROC effect size = 0.05, 5 readers (`J = 5`) and 100 cases (`K = 100`) in the **pivotal study**. 
-
-```
-SsPowerGivenJK(
-  dataset,
-  ...,
-  FOM,
-  J,
-  K,
-  effectSize = NULL,
-  alpha = 0.05
-)
-```
-
-The function `SsPowerGivenJK` used below returns the power for specified effect size, numbers of readers and cases, and variance components (supplied as a `list` via the `...` argument   - see following code).  
+The following example is for ROC effect size = 0.035 (line 1), 5 readers and 100 cases (line 4) in the **pivotal study**. The function `SsPowerGivenJK` returns the power for specified effect size, numbers of readers J, cases K and the just computed variance components (supplied as a `list` variable, lines 12 - 18).  
 
 
 ```{.r .numberLines}
-effectSizeROC <- 0.05
+effectSizeROC <- 0.035
 effectSizewAFROC <- scaleFactor * effectSizeROC
 
 J <- 5;K <- 100 # define pivotal study sample size
 
 ret <- SsPowerGivenJK(
-  dataset = NULL, 
+  dataset = NULL, # must set 
   FOM = "wAFROC", 
   J = J, 
   K = K, 
   effectSize = effectSizewAFROC, 
-    list(JStar = JStar, KStar = KStar, 
-         VarTR = varTR_wafroc,
-         Cov1 = Cov1_wafroc,
-         Cov2 = Cov2_wafroc,
-         Cov3 = Cov3_wafroc,
-         Var = Var_wafroc))
+  list(JStar = JStar, 
+       KStar = KStar, 
+       VarTR = varTR_wafroc,
+       Cov1 = Cov1_wafroc,
+       Cov2 = Cov2_wafroc,
+       Cov3 = Cov3_wafroc,
+       Var = Var_wafroc))
 power_wafroc <- ret$powerRRRC
 
 cat("ROC-ES = ", effectSizeROC, 
@@ -435,11 +437,13 @@ cat("ROC-ES = ", effectSizeROC,
 ```
 
 ```
-## ROC-ES =  0.05 , wAFROC-ES =  0.1084669 , Power-wAFROC =  0.9777762
+## ROC-ES =  0.035 , wAFROC-ES =  0.0759268 , Power-wAFROC =  0.7972539
 ```
 
 
 ### Number of cases for 80 percent power for a given number of readers
+
+The needed function `SsSampleSizeKGivenJ` (for number of cases K for desired power for given number of readers J) is shown below. If `dataset` is set to `NULL` then the effect size must be specified.
 
 ```
 SsSampleSizeKGivenJ(
@@ -453,7 +457,7 @@ SsSampleSizeKGivenJ(
 )
 ```
 
-The function `SsSampleSizeKGivenJ` returns the number of cases needed for desired power = 0.8 for wAFROC effect size as just listed and wAFROC variance components computed in Section \@ref(froc-sample-size-variance-components).
+In the following code the function `SsSampleSizeKGivenJ` returns the number of cases needed for 80 percent power for the wAFROC effect size = 0.076 and wAFROC variance components as just computed above.
 
 
 
@@ -462,7 +466,8 @@ ret2 <- SsSampleSizeKGivenJ(
   dataset = NULL, 
   J = 6, 
   effectSize = effectSizewAFROC, 
-  list(JStar = JStar, KStar = KStar, 
+  list(JStar = JStar, 
+       KStar = KStar, 
        VarTR = varTR_wafroc,
        Cov1 = Cov1_wafroc,
        Cov2 = Cov2_wafroc,
@@ -476,11 +481,11 @@ cat("ROC-ES = ", effectSizeROC,
 ```
 
 ```
-## ROC-ES =  0.05 , wAFROC-ES =  0.1084669 , K80RRRC =  41 , Power-wAFROC =  0.8008729
+## ROC-ES =  0.035 , wAFROC-ES =  0.0759268 , K80RRRC =  84 , Power-wAFROC =  0.8023879
 ```
 
 
-Here `K80RRRC` is the number of cases needed for 80 percent power under RRRC analysis.
+Here `K80RRRC` is the number of cases needed for 80 percent power when using RRRC analysis.
 
 <!-- ## Part 3 -->
 
@@ -636,9 +641,6 @@ Here `K80RRRC` is the number of cases needed for 80 percent power under RRRC ana
 
 
 
-## Discussion
-
-TBA
 <!-- With one exception, namely `dataset11`, each analyses demonstrates the considerable power advantage of FROC over ROC analysis. This is due to the increased predicted wAFROC-AUC effect size relative to the postulated ROC-AUC effect size. -->
 
 
