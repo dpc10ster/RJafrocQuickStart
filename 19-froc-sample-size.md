@@ -136,7 +136,7 @@ nuNH <- median(RsmParmsNH[,,3])
 ```
 
 
-The defining values of the RSM-based NH fitting model are `muNH` = 3.3121491, `lambdaNH` = 1.714368 and `nuNH` = 0.7036564. 
+The defining values of the RSM-based NH fitting model are `muNH` = 3.3121519, `lambdaNH` = 1.714368 and `nuNH` = 0.7036564. 
 
 
 #### Compute ROC and wAFROC NH AUCs
@@ -150,7 +150,7 @@ aucwAfrocNH <- UtilAnalyticalAucsRSM(muNH, lambdaNH, nuNH, lesDistr = lesDistr$F
 ```
 
 
-The AUCs are: `aucRocNH = 0.8791541` and `aucwAfrocNH = 0.7198614`. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes both detection and localization performance (the ROC-AUC only measures detection performance). 
+The AUCs are: `aucRocNH = 0.8791542` and `aucwAfrocNH = 0.7198615`. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes both detection and localization performance (the ROC-AUC only measures detection performance). 
 
 #### Compute ROC and wAFROC Alternative Hypotheses AUCs for a range of ROC-AUC effect sizes
 
@@ -291,7 +291,7 @@ Cov3_wafroc <- varComp_wafroc["Cov3","Estimates"]
 Var_wafroc <- varComp_wafroc["Var","Estimates"]
 ```
 
-We are now ready for the power calculations. The needed function is `SsPowerGivenJK` (for "sample size for given number of readers J and cases K"):
+We are now ready for the power calculations. The needed function is `SsPowerGivenJK` ("sample size for given number of readers J and cases K"):
 
 ```
 SsPowerGivenJK(
@@ -351,7 +351,7 @@ for (i in 1:length(effectSizeROC)) {
 ```
 
 
-Since the wAFROC effect size is 2.169337 times the ROC effect size, wAFROC power is larger than ROC power. For example, for ROC effect size = 0.035 the wAFROC effect size is 0.076, the ROC power is 0.234 while the wAFROC power is 0.797. The influence of the increased wAFROC effect size is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC 
+Since the wAFROC effect size is 2.1693379 times the ROC effect size, wAFROC power is larger than ROC power. For example, for ROC effect size = 0.035 the wAFROC effect size is 0.076, the ROC power is 0.234 while the wAFROC power is 0.797. The influence of the increased wAFROC effect size is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC 
 
 The following is a plot of wAFROC power vs. ROC power for the specified effect sizes.
 
@@ -369,12 +369,12 @@ The following is a plot of wAFROC power vs. ROC power for the specified effect s
 
 ### Introduction
 
-This example uses the FED dataset as a pilot FROC study and function `SsFrocNhRsmModel()` (for "sample size FROC RSM-based NH model") to construct the NH model (thereby encapsulating some of the code in the first part).
+This example uses the FED dataset as a pilot FROC study and function `SsFrocNhRsmModel()` (RSM-based FROC NH model) to construct the NH model (thereby encapsulating some of the code in the first part).
 
 
 ### Constructing the NH model
 
-One starts by extracting the first two treatments from `dataset04`, which represent the NH dataset. Next one constructs the NH model. `lesDistr` can be specified independent of that in the pilot dataset. This allows some control over selection of the diseased cases in the pivotal study. However, in this example it is simply extracted from the pilot dataset (line 2). Line 3 applies the function `SsFrocNhRsmModel` to calculate the NH RSM parameters (lines 4 - 6) and the scale factor (line 7).
+The first two treatments are extracted from `dataset04` thereby yielding the NH dataset (line 1). The lesion distribution is specified in line 2. `lesDistr` can be specified independent of that in the pilot dataset. This allows some control over selection of the diseased cases in the pivotal study. However, in this example it is simply extracted from the pilot dataset. Line 3 constructs the NH model using function `SsFrocNhRsmModel` to calculate the NH RSM parameters (lines 4 - 6) and the scale factor (line 7).
 
 
 ```{.r .numberLines}
@@ -388,7 +388,7 @@ scaleFactor <- ret$scaleFactor
 ```
 
 
-The fitting model is defined by `muNH` = 3.3121491,  `lambdaNH` = 1.714368  and  `nuNH` = 0.7036564 and `lesDistr$Freq` = 0.69, 0.2, 0.11. The effect size scale factor is `scaleFactor` = 2.169337. These are identical to the Part I values.
+The fitting model is defined by `muNH` = 3.3121519,  `lambdaNH` = 1.714368  and  `nuNH` = 0.7036564 and `lesDistr$Freq` = 0.69, 0.2, 0.11. The effect size scale factor is `scaleFactor` = 2.1693379. All of these are identical to the Part I values.
 
 
 ### Extract the wAFROC variance components  {#froc-sample-size-variance-components}
@@ -407,7 +407,7 @@ varComp_wafroc  <- St(
 
 ### wAFROC power for specified ROC effect size, number of readers and number of cases
 
-The following example is for ROC effect size = 0.035 (line 1), 5 readers and 100 cases (line 4) in the **pivotal study**. The function `SsPowerGivenJK` returns the power for specified effect size, numbers of readers J, cases K and the just computed variance components (supplied as a `list` variable, lines 12 - 18).  
+The following example is for ROC effect size = 0.035 (line 1), 5 readers and 100 cases (line 4) in the **pivotal study**. The function `SsPowerGivenJK` returns the power for the specified number of readers J (line 9), cases K (line 10) and wAFROC effect size (line 11). Since `dataset` is set to `NULL` JStar and KStar (corresponding to the pilot study) and the variance components are supplied as a `list` variable, lines 12 - 18. If dataset is specified then these are calculated from the pilot study dataset.  
 
 
 ```{.r .numberLines}
@@ -430,20 +430,16 @@ ret <- SsPowerGivenJK(
        Cov3 = Cov3_wafroc,
        Var = Var_wafroc))
 power_wafroc <- ret$powerRRRC
-
-cat("ROC-ES = ", effectSizeROC, 
-    ", wAFROC-ES = ", effectSizeROC * scaleFactor, 
-    ", Power-wAFROC = ", power_wafroc, "\n")
 ```
 
-```
-## ROC-ES =  0.035 , wAFROC-ES =  0.0759268 , Power-wAFROC =  0.7972539
-```
 
+```
+## ROC-ES =  0.035 , wAFROC-ES =  0.07592683 , Power-wAFROC =  0.7972542
+```
 
 ### Number of cases for 80 percent power for a given number of readers
 
-The needed function `SsSampleSizeKGivenJ` (for number of cases K for desired power for given number of readers J) is shown below. If `dataset` is set to `NULL` then the effect size must be specified.
+Function `SsSampleSizeKGivenJ` (number of cases K for desired power for given number of readers J) is shown below. If `dataset` is set to `NULL` then JStar and KStar and the variance components must be specified as a `list` variable, otherwise these are computed from `dataset`.
 
 ```
 SsSampleSizeKGivenJ(
@@ -457,7 +453,7 @@ SsSampleSizeKGivenJ(
 )
 ```
 
-In the following code the function `SsSampleSizeKGivenJ` returns the number of cases needed for 80 percent power for the wAFROC effect size = 0.076 and wAFROC variance components as just computed above.
+The following code returns the number of cases needed for 80 percent power for 6 readers (line 3), wAFROC effect size (line 4) = 0.076 and JStar and KStar and wAFROC variance components (lines 5 -11). 
 
 
 
@@ -473,15 +469,12 @@ ret2 <- SsSampleSizeKGivenJ(
        Cov2 = Cov2_wafroc,
        Cov3 = Cov3_wafroc,
        Var = Var_wafroc))
-
-cat("ROC-ES = ", effectSizeROC, 
-    ", wAFROC-ES = ", effectSizeROC * scaleFactor, 
-    ", K80RRRC = ", ret2$KRRRC, 
-    ", Power-wAFROC = ", ret2$powerRRRC, "\n")
 ```
 
+
+
 ```
-## ROC-ES =  0.035 , wAFROC-ES =  0.0759268 , K80RRRC =  84 , Power-wAFROC =  0.8023879
+## ROC-ES =  0.035 , wAFROC-ES =  0.07592683 , K80RRRC =  84 , Power-wAFROC =  0.8023882
 ```
 
 
