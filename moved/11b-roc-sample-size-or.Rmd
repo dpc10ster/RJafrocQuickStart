@@ -158,7 +158,7 @@ Shown first is the "open" implementation.
 ```{r}
 alpha <- 0.05;cat("alpha = ", alpha, "\n")
 rocData <- dataset02 # select Van Dyke dataset
-retDbm <- StSignificanceTesting(dataset = rocData, FOM = "Wilcoxon", method = "DBM") 
+retDbm <- St(dataset = rocData, FOM = "Wilcoxon", method = "DBM") 
 varYTR <- retDbm$ANOVA$VarCom["VarTR","Estimates"]
 varYTC <- retDbm$ANOVA$VarCom["VarTC","Estimates"]
 varYEps <- retDbm$ANOVA$VarCom["VarErr","Estimates"]

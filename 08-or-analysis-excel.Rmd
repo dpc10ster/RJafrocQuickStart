@@ -32,33 +32,33 @@ This chapter illustrates significance testing using the OR method. But, instead 
 This illustrates the `UtilOutputReport()` function. The arguments are the embedded dataset, `dataset03`, the same dataset as in the previous two chapters, the report file base name `ReportFileBaseName` is set to `R/quick-start/MyResults`, the report file extension `ReportFileExt` is set to `xlsx`, the `FOM` is set to "Wilcoxon", the `method` of analysis is set to "OR", and the flag `overWrite = TRUE` overwrites any existing file with the same name, as otherwise the program will pause for user input.
 
 
-```{r quick-start-or-excel-output-code, cache=TRUE}
-ret <- UtilOutputReport(get("dataset03"), 
-                        ReportFileBaseName = "R/quick-start/MyResults", 
-                        ReportFileExt = "xlsx",  
-                        FOM = "Wilcoxon", 
-                        method = "OR", 
-                        overWrite = TRUE)
-```             
+<!-- ```{r quick-start-or-excel-output-code, cache=TRUE} -->
+<!-- ret <- UtilOutputReport(get("dataset03"),  -->
+<!--                         ReportFileBaseName = "R/quick-start/MyResults",  -->
+<!--                         ReportFileExt = "xlsx",   -->
+<!--                         FOM = "Wilcoxon",  -->
+<!--                         method = "OR",  -->
+<!--                         overWrite = TRUE) -->
+<!-- ```              -->
 
-The following screen shots display the contents of the created file `"R/quick-start/MyResults.xlsx"`.
-
-
-```{r quick-start-or-xlsx1, echo=FALSE,out.width="50%",out.height="20%",fig.cap="`Summary` and `FOMs` worksheets of Excel file `R/quick-start/MyResults.xlsx`",fig.show='hold',fig.align='center'}
-knitr::include_graphics(c("R/quick-start/MyResultsSummary.png", "R/quick-start/MyResultsFOMs.png"))
-``` 
+<!-- The following screen shots display the contents of the created file `"R/quick-start/MyResults.xlsx"`. -->
 
 
-
-```{r quick-start-or-xlsx2, echo=FALSE,out.width="50%",out.height="20%",fig.cap="`ANOVA` worksheet of Excel file `R/quick-start/MyResults.xlsx`",fig.show='hold',fig.align='center'}
-knitr::include_graphics(c("R/quick-start/MyResultsANOVA1.png", "R/quick-start/MyResultsANOVA2.png"))
-``` 
+<!-- ```{r quick-start-or-xlsx1, echo=FALSE,out.width="50%",out.height="20%",fig.cap="`Summary` and `FOMs` worksheets of Excel file `R/quick-start/MyResults.xlsx`",fig.show='hold',fig.align='center'} -->
+<!-- knitr::include_graphics(c("R/quick-start/MyResultsSummary.png", "R/quick-start/MyResultsFOMs.png")) -->
+<!-- ```  -->
 
 
 
-```{r quick-start-or-xlsx3, echo=FALSE,out.width="50%",out.height="20%",fig.cap="`RRRC`, `FRRC` and `RRFC` worksheets of Excel file `R/quick-start/MyResults.xlsx`",fig.show='hold',fig.align='center'}
-knitr::include_graphics(c("R/quick-start/MyResultsRRRC.png", "R/quick-start/MyResultsFRRC.png", "R/quick-start/MyResultsRRFC.png"))
-``` 
+<!-- ```{r quick-start-or-xlsx2, echo=FALSE,out.width="50%",out.height="20%",fig.cap="`ANOVA` worksheet of Excel file `R/quick-start/MyResults.xlsx`",fig.show='hold',fig.align='center'} -->
+<!-- knitr::include_graphics(c("R/quick-start/MyResultsANOVA1.png", "R/quick-start/MyResultsANOVA2.png")) -->
+<!-- ```  -->
+
+
+
+<!-- ```{r quick-start-or-xlsx3, echo=FALSE,out.width="50%",out.height="20%",fig.cap="`RRRC`, `FRRC` and `RRFC` worksheets of Excel file `R/quick-start/MyResults.xlsx`",fig.show='hold',fig.align='center'} -->
+<!-- knitr::include_graphics(c("R/quick-start/MyResultsRRRC.png", "R/quick-start/MyResultsFRRC.png", "R/quick-start/MyResultsRRFC.png")) -->
+<!-- ```  -->
 
 
 

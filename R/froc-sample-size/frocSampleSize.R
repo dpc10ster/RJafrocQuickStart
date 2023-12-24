@@ -1,7 +1,7 @@
 frocSampleSize <- function (NHdataset, effectSizeROC, JPivot, KPivot, lesDistr) {
   
-  # ret1 <- StSignificanceTesting(DfFroc2Roc(NHdataset), FOM = "Wilcoxon")
-  # ret2 <- StSignificanceTesting(NHdataset, FOM = "wAFROC")
+  # ret1 <- St(DfFroc2Roc(NHdataset), FOM = "Wilcoxon")
+  # ret2 <- St(NHdataset, FOM = "wAFROC")
   # if (ret1$RRRC$FTests$p[1] < 0.05) cat("This is not a NH dataset")
   # if (ret2$RRRC$FTests$p[1] < 0.05) cat("This is not a NH dataset")
   
@@ -27,11 +27,11 @@ frocSampleSize <- function (NHdataset, effectSizeROC, JPivot, KPivot, lesDistr) 
   effectSizewAFROC <- effectSizeROC*scaleFactor
   
   RocDatasetBin <- DfBinDataset(DfFroc2Roc(NHdataset), opChType = "ROC")
-  varComp_roc <- UtilVarComponentsOR(
+  varComp_roc <- UtilORVarComp(
     DfFroc2Roc(NHdataset), 
     FOM = "Wilcoxon")$VarCom[-2]
   
-  varComp_wafroc <- UtilVarComponentsOR(
+  varComp_wafroc <- UtilORVarComp(
     NHdataset, 
     FOM = "wAFROC")$VarCom[-2]
   

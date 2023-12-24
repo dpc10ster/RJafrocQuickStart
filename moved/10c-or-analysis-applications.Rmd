@@ -20,7 +20,7 @@ library(RJafroc)
 
 ## Introduction {#or-applications-introduction}  
 
-This chapter illustrates Obuchowski-Rockette analysis with several examples. The first example is a full-blown "hand-calculation" for `dataset02`, showing explicit implementations of formulae presented in the previous chapter. The second example shows application of the `RJafroc` package function `StSignificanceTesting()` to the same dataset: this function encapsulates all formulae and accomplishes all analyses with one function call. The third example shows application of the `StSignificanceTesting()` function to an ROC dataset derived from the Federica Zanca dataset [@zanca2009evaluation], which has five modalities and four readers. This illustrates multiple treatment pairings (in contrast, `dataset02` has only one treatment pairing). The fourth example shows application of `StSignificanceTesting()` to `dataset04`, which is an **FROC** dataset (in contrast to the previous examples, which employed **ROC** datasets). It illustrates the key difference involved in FROC analysis, namely the choice of figure of merit. The final example again uses `dataset04`, i.e., FROC data, *but this time we use DBM analysis*. Since DBM analysis is pseudovalue based, and the figure of merit is not the empirical AUC under the ROC, one may expect to see differences from the previously presented OR analysis on the same dataset.
+This chapter illustrates Obuchowski-Rockette analysis with several examples. The first example is a full-blown "hand-calculation" for `dataset02`, showing explicit implementations of formulae presented in the previous chapter. The second example shows application of the `RJafroc` package function `St()` to the same dataset: this function encapsulates all formulae and accomplishes all analyses with one function call. The third example shows application of the `St()` function to an ROC dataset derived from the Federica Zanca dataset [@zanca2009evaluation], which has five modalities and four readers. This illustrates multiple treatment pairings (in contrast, `dataset02` has only one treatment pairing). The fourth example shows application of `St()` to `dataset04`, which is an **FROC** dataset (in contrast to the previous examples, which employed **ROC** datasets). It illustrates the key difference involved in FROC analysis, namely the choice of figure of merit. The final example again uses `dataset04`, i.e., FROC data, *but this time we use DBM analysis*. Since DBM analysis is pseudovalue based, and the figure of merit is not the empirical AUC under the ROC, one may expect to see differences from the previously presented OR analysis on the same dataset.
 
 Each analysis involves the following steps: 
 
@@ -361,7 +361,7 @@ print(ciDiffTrt_RRFC, digits = 4)
 
 ## RJafroc: dataset02 {#or-applications-dataset02-RJafroc}
 
-The second example shows application of the `RJafroc` package function `StSignificanceTesting()` to `dataset02`. This function encapsulates all formulae discussed previously and accomplishes the analyses with a single function call. It returns an object, denoted `st1` below, that contains all results of the analysis. It is a `list` with the following components:
+The second example shows application of the `RJafroc` package function `St()` to `dataset02`. This function encapsulates all formulae discussed previously and accomplishes the analyses with a single function call. It returns an object, denoted `st1` below, that contains all results of the analysis. It is a `list` with the following components:
 
 * `FOMs`, this in turn is a `list` containing the following data frames: 
     + `foms`, the individual treatment-reader figures of merit, i.e., $\theta_{i j}$, 
@@ -393,18 +393,18 @@ The second example shows application of the `RJafroc` package function `StSignif
 
 In the interest of clarity, in the first example using the `RJafroc` package the components of the returned object `st1` are listed separately and described explicitly. In the interest of brevity, in subsequent examples the object is listed in its entirety.
 
-Online help on the `StSignificanceTesting()` function is available:
+Online help on the `St()` function is available:
 
 ```{r eval=FALSE}
-?`StSignificanceTesting`
+?`St`
 ```
 
 The lower right `RStudio` panel contains the online description. Click on the small up-and-right pointing arrow icon to expand this to a new window. 
 
 ### Random-Reader Random-Case (RRRC) analysis {#or-applications-RRRC-dataset02-RJafroc}
-* Since `analysisOption` is not explicitly specified in the following code, the function `StSignificanceTesting` performs all three analyses: `RRRC`, `FRRC` and `RRFC`.
+* Since `analysisOption` is not explicitly specified in the following code, the function `St` performs all three analyses: `RRRC`, `FRRC` and `RRFC`.
 * Likewise, the significance level of the test, also an argument, `alpha`, defaults to 0.05. 
-* The code below applies `StSignificanceTesting()` and saves the returned object to `st1`. 
+* The code below applies `St()` and saves the returned object to `st1`. 
 * The first member of this object, a  `list` named `FOMs`, is then displayed. 
 * `FOMs` contains three data frames: 
     + `FOMS$foms`, the figures of merit for each treatment and reader, 
@@ -412,7 +412,7 @@ The lower right `RStudio` panel contains the online description. Click on the sm
     + `FOMS$trtMeanDiffs`, the inter-treatment difference figures of merit averaged over readers. The difference is always the first treatment minus the second, etc., in this example, `trt0` minus `trt1`.
 
 ```{r}
-st1 <- StSignificanceTesting(dataset02, FOM = "Wilcoxon", method = "OR")
+st1 <- St(dataset02, FOM = "Wilcoxon", method = "OR")
 print(st1$FOMs, digits = 4)
 ```
 
@@ -517,7 +517,7 @@ ds <- DfFroc2Roc(dataset04) # convert to ROC
 I <- length(ds$ratings$NL[,1,1,1])
 J <- length(ds$ratings$NL[1,,1,1])
 cat("I = ", I, ", J = ", J, "\n")
-st2 <- StSignificanceTesting(ds, FOM = "Wilcoxon", method = "OR")
+st2 <- St(ds, FOM = "Wilcoxon", method = "OR")
 print(st2, digits = 3)
 ```
 
@@ -568,7 +568,7 @@ print(st2, digits = 3)
 ```{r}
 ds <- dataset04 # do NOT convert to ROC
 FOM <- "wAFROC" 
-st3 <- StSignificanceTesting(ds, FOM = FOM, method = "OR")
+st3 <- St(ds, FOM = FOM, method = "OR")
 print(st3, digits = 3)
 ```
 
@@ -613,11 +613,11 @@ print(st3, digits = 3)
 
 ## RJafroc: dataset04, FROC/DBM {#or-applications-dataset04-FROC-DBM-RJafroc}
 * The fourth example again uses `dataset04`, i.e., FROC data, *but this time using DBM analysis*.
-* The key difference below is in the call to `StSignificanceTesting()` function, where we set `method = "DBM"`.
+* The key difference below is in the call to `St()` function, where we set `method = "DBM"`.
 * Since DBM analysis is pseudovalue based, and the figure of merit is not the empirical AUC under the ROC, one expects to see differences from the previously presented OR analysis, contained in `st3`.
 
 ```{r}
-st4 <- StSignificanceTesting(ds, FOM = FOM, method = "DBM") 
+st4 <- St(ds, FOM = FOM, method = "DBM") 
 # Note: using DBM analysis
 print(st4, digits = 3)
 ```
@@ -673,7 +673,7 @@ ds1 <- dataset04 # do NOT convert to ROC
 # ds1$lesions$weights <- weights
 ds <- ds1
 FOM <- "wAFROC" # also try wAFROC1, MaxLLF and MaxNLF
-st5 <- StSignificanceTesting(ds, FOM = FOM, method = "OR")
+st5 <- St(ds, FOM = FOM, method = "OR")
 print(st5, digits = 4)
 ```
 

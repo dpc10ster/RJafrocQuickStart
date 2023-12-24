@@ -23,7 +23,7 @@ This chapter illustrates significance testing using the DBM and OR methods.
 The only change is to specify `method = "OR"` in the significance testing function. The same dataset is used as was used in the previous chapter. 
 
 ```{r quick-start-or-text-significance-testing}
-ret <- StSignificanceTesting(dataset03, FOM = "Wilcoxon", method = "OR")
+ret <- St(dataset03, FOM = "Wilcoxon", method = "OR")
 ```             
 
 ## Explanation of the output {#quick-start-or-text-explanation}

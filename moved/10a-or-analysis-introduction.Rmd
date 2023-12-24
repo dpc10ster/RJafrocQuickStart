@@ -830,29 +830,29 @@ Note that the two estimates are identical and that the DeLong estimate are close
 
 We have shown two methods for analyzing a single reader in multiple treatments: the DBM method, involving jackknife derived pseudovalues and the Obuchowski and Rockette method that does not have to use the jackknife, since it could use the bootstrap, or the DeLong method, if one restricts to the Wilcoxon statistic for the figure of merit, to get the covariance matrix. Since one is dealing with a single reader in multiple treatments, for DBM one needs the fixed-reader random-case analysis described in TBA §9.8 of the previous chapter (it should be obvious that with one reader the conclusions apply to the specific reader only, so reader must be regarded as a fixed factor).
 
-Shown below are results obtained using `RJafroc` function `StSignificanceTesting` with `analysisOption = "FRRC"` for `method` = "DBM" (which uses the jackknife), and for OR using 3 different ways of estimating the covariance matrix for the one-reader analysis (i.e., $\text{Cov1}$ and $\text{Var}$).
+Shown below are results obtained using `RJafroc` function `St` with `analysisOption = "FRRC"` for `method` = "DBM" (which uses the jackknife), and for OR using 3 different ways of estimating the covariance matrix for the one-reader analysis (i.e., $\text{Cov1}$ and $\text{Var}$).
 
 ```{r}
-ret1 <- StSignificanceTesting(
+ret1 <- St(
   rocData1R,FOM = "Wilcoxon", method = "DBM", analysisOption = "FRRC")
 data.frame("DBM:F" = ret1$FRRC$FTests["Treatment", "FStat"], 
            "DBM:ddf" = ret1$FRRC$FTests["Treatment", "DF"], 
            "DBM:P-val" = ret1$FRRC$FTests["Treatment", "p"])
 
-ret2 <- StSignificanceTesting(
+ret2 <- St(
   rocData1R,FOM = "Wilcoxon", method = "OR", analysisOption = "FRRC")
 data.frame("ORJack:Chisq" = ret2$FRRC$FTests["Treatment", "Chisq"], 
            "ORJack:ddf" = ret2$FRRC$FTests["Treatment", "DF"], 
            "ORJack:P-val" = ret2$FRRC$FTests["Treatment", "p"])
 
-ret3 <- StSignificanceTesting(
+ret3 <- St(
   rocData1R,FOM = "Wilcoxon", method = "OR", analysisOption = "FRRC", 
                               covEstMethod = "DeLong")
 data.frame("ORDeLong:Chisq" = ret3$FRRC$FTests["Treatment", "Chisq"], 
            "ORDeLong:ddf" = ret3$FRRC$FTests["Treatment", "DF"], 
            "ORDeLong:P-val" = ret3$FRRC$FTests["Treatment", "p"])
 
-ret4 <- StSignificanceTesting(
+ret4 <- St(
   rocData1R,FOM = "Wilcoxon", method = "OR", analysisOption = "FRRC", 
                               covEstMethod = "bootstrap")
 data.frame("ORBoot:Chisq" = ret4$FRRC$FTests["Treatment", "Chisq"], 
@@ -906,7 +906,7 @@ for (i in 1 : nDiffs) {
 The following shows the corresponding output of `RJafroc`.
 
 ```{r}
-ret_rj <- StSignificanceTesting(
+ret_rj <- St(
   rocData1R, FOM = "Wilcoxon", method = "OR", analysisOption = "FRRC")
 print(data.frame("theta_1" = ret_rj$FOMs$foms[1,1],
                  "theta_2" = ret_rj$FOMs$foms[2,1],

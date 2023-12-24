@@ -435,7 +435,7 @@ For two treatments any of the following equivalent rules could be adopted to rej
 For more than two treatments the first two rules are equivalent and if a significant difference is found using either of them, then one can use the confidence intervals to determine which treatment pair differences are significantly different from zero. The first F-test is called the *overall F-test* and the subsequent tests the *treatment-pair t-tests*. One only conducts treatment pair t-tests if the overall F-test yields a significant result.
 
 #### Code illustrating the F-statistic, ddf and p-value for RRRC analysis, Van Dyke data
-Line 1 defines $\alpha$. Line 2 forms a data frame from previously calculated mean-squares. Line 3 calculates the denominator appearing in Equation \@ref(eq:FStatHillis). Line 4 computes the observed value of $F_{DBM}$, namely the ratio of the numerator and denominator in Equation \@ref(eq:FStatHillis). Line 5 sets $\text{ndf}$ to $I - 1$. Line 6 computes $\text{ddf}_H$. Line 7 computes the critical value of the F-distribution $F_{crit}\equiv F_{\text{ndf},\text{ddf}_H}$. Line 8 calculates the p-value, using the definition Equation \@ref(eq:pValueRRRC). Line 9 prints out the just calculated quantities. The next line uses the `RJafroc` function `StSignificanceTesting()` and the 2nd last line prints out corresponding `RJafroc`-computed quantities. Note the correspondences between the values just computed and those provide by `RJafroc`. Note that the FOM difference is not significant at the 5% level of significance as $p > \alpha$. The last line shows that $F_{DBM}$ does not exceed $F_{crit}$. The two rules are equivalent.
+Line 1 defines $\alpha$. Line 2 forms a data frame from previously calculated mean-squares. Line 3 calculates the denominator appearing in Equation \@ref(eq:FStatHillis). Line 4 computes the observed value of $F_{DBM}$, namely the ratio of the numerator and denominator in Equation \@ref(eq:FStatHillis). Line 5 sets $\text{ndf}$ to $I - 1$. Line 6 computes $\text{ddf}_H$. Line 7 computes the critical value of the F-distribution $F_{crit}\equiv F_{\text{ndf},\text{ddf}_H}$. Line 8 calculates the p-value, using the definition Equation \@ref(eq:pValueRRRC). Line 9 prints out the just calculated quantities. The next line uses the `RJafroc` function `St()` and the 2nd last line prints out corresponding `RJafroc`-computed quantities. Note the correspondences between the values just computed and those provide by `RJafroc`. Note that the FOM difference is not significant at the 5% level of significance as $p > \alpha$. The last line shows that $F_{DBM}$ does not exceed $F_{crit}$. The two rules are equivalent.
 
 ```{r}
 alpha <- 0.05
@@ -449,7 +449,7 @@ ddf_H <- (F_DBM_den^2/retMS$msTR^2)*(I-1)*(J-1)
 FCrit <- qf(1 - alpha, ndf, ddf_H)
 pValueH <- 1 - pf(F_DBM, ndf, ddf_H)
 data.frame("F_DBM" = F_DBM, "ddf_H"= ddf_H, "pValueH" = pValueH) # Line 9
-retRJafroc <- StSignificanceTesting(dataset02, 
+retRJafroc <- St(dataset02, 
                                     FOM = "Wilcoxon",
                                     method = "DBM")
 data.frame("F_DBM" = retRJafroc$RRRC$FTests$FStat[1], 
@@ -567,11 +567,11 @@ df_2 = \frac{(\max(\sigma_{\tau R}^2,0)+(\max(J\sigma_{\tau C}^2,0)+\sigma_{\eps
 \end{equation}
 
 ### Example of sample size estimation, RRRC generalization
-The Van Dyke dataset is regarded as a pilot study. In the first block of code function `StSignificanceTesting()` is used to get the DBM variances (i.e., `VarTR` = $\sigma_{\tau R}^2$, etc.) and the effect size $d$. 
+The Van Dyke dataset is regarded as a pilot study. In the first block of code function `St()` is used to get the DBM variances (i.e., `VarTR` = $\sigma_{\tau R}^2$, etc.) and the effect size $d$. 
 
 ```{r}
 rocData <- dataset02 # select Van Dyke dataset
-retDbm <- StSignificanceTesting(dataset = rocData,
+retDbm <- St(dataset = rocData,
                                 FOM = "Wilcoxon",
                                 method = "DBM") 
 VarTR <- retDbm$ANOVA$VarCom["VarTR","Estimates"]

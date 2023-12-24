@@ -20,10 +20,10 @@ This chapter illustrates significance testing using the DBM method.
 
 ## Analyzing the ROC dataset {#quick-start-dbm-text-analyze-dataset}
 
-This illustrates the `StSignificanceTesting()` function. The significance testing method is specified as `"DBM"` and the figure of merit `FOM` is specified as "Wilcoxon". The embedded dataset `dataset03` is used.
+This illustrates the `St()` function. The significance testing method is specified as `"DBM"` and the figure of merit `FOM` is specified as "Wilcoxon". The embedded dataset `dataset03` is used.
 
 ```{r quick-start-dbm-text-significance-testing}
-ret <- StSignificanceTesting(dataset03, FOM = "Wilcoxon", method = "DBM")
+ret <- St(dataset03, FOM = "Wilcoxon", method = "DBM")
 ```             
 
 ## Explanation of the output {#quick-start-dbm-text-explanation}

@@ -106,7 +106,7 @@ for (i in 1 : nDiffs) {
                    "Upper" = CI_DIFF_FOM_FRRC[i,3]))
 }
 
-retRJafroc <- StSignificanceTesting(dataset02, FOM = "Wilcoxon", method = "DBM")
+retRJafroc <- St(dataset02, FOM = "Wilcoxon", method = "DBM")
 
 data.frame("pValue" = retRJafroc$FRRC$FTests$p[1],
            "Lower" = retRJafroc$FRRC$ciDiffTrt[1,"CILower"], 
