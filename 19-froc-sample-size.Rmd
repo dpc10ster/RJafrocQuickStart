@@ -305,7 +305,7 @@ JPivot <- 5;KPivot <- 100
 for (i in 1:length(effectSizeROC)) {
   
   # compute ROC power
-  # dataset = NULL means use the variance components from those supplied
+  # dataset = NULL means use the supplied variance components instead of dataset
   ret <- SsPowerGivenJK(
     dataset = NULL, 
     FOM = "Wilcoxon", 
@@ -321,7 +321,7 @@ for (i in 1:length(effectSizeROC)) {
   power_roc[i] <- ret$powerRRRC
   
   # compute wAFROC power
-  # dataset = NULL means use the variance components from those supplied
+  # dataset = NULL means use the supplied variance components instead of dataset
   ret <- SsPowerGivenJK(
     dataset = NULL, 
     FOM = "wAFROC", 
