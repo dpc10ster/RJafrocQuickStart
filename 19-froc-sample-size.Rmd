@@ -161,10 +161,12 @@ To create the alternative hypothesis (AH) condition, one increments $\mu_{NH}$ b
 deltaMu <- seq(0.01, 0.2, 0.01)
 esROC <- array(dim = length(deltaMu))
 eswAFROC <- array(dim = length(deltaMu))
+
+# get intrinsic parameters
+par_i <- Util2Intrinsic(muNH, lambdaNH, nuNH) # convert physical to intrinsic
+
 for (i in 1:length(deltaMu)) {
   
-  # get intrinsic parameters
-  par_i <- Util2Intrinsic(muNH, lambdaNH, nuNH) # convert physical to intrinsic
   # find physical parameters for the increased muNH (accounting for the tandem effects)
   par_p <- Util2Physical(muNH + deltaMu[i], par_i$lambda_i, par_i$nu_i)  # convert intrinsic to physical
   
