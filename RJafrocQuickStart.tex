@@ -139,7 +139,7 @@
 
 \title{The RJafroc Quick Start Book}
 \author{Dev P. Chakraborty, PhD}
-\date{2023-12-24}
+\date{2023-12-25}
 
 \begin{document}
 \maketitle
@@ -2228,10 +2228,12 @@ To create the alternative hypothesis (AH) condition, one increments \(\mu_{NH}\)
 \NormalTok{deltaMu }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\FloatTok{0.01}\NormalTok{, }\FloatTok{0.2}\NormalTok{, }\FloatTok{0.01}\NormalTok{)}
 \NormalTok{esROC }\OtherTok{\textless{}{-}} \FunctionTok{array}\NormalTok{(}\AttributeTok{dim =} \FunctionTok{length}\NormalTok{(deltaMu))}
 \NormalTok{eswAFROC }\OtherTok{\textless{}{-}} \FunctionTok{array}\NormalTok{(}\AttributeTok{dim =} \FunctionTok{length}\NormalTok{(deltaMu))}
+
+\CommentTok{\# get intrinsic parameters}
+\NormalTok{par\_i }\OtherTok{\textless{}{-}} \FunctionTok{Util2Intrinsic}\NormalTok{(muNH, lambdaNH, nuNH) }\CommentTok{\# convert physical to intrinsic}
+
 \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(deltaMu)) \{}
   
-  \CommentTok{\# get intrinsic parameters}
-\NormalTok{  par\_i }\OtherTok{\textless{}{-}} \FunctionTok{Util2Intrinsic}\NormalTok{(muNH, lambdaNH, nuNH) }\CommentTok{\# convert physical to intrinsic}
   \CommentTok{\# find physical parameters for the increased muNH (accounting for the tandem effects)}
 \NormalTok{  par\_p }\OtherTok{\textless{}{-}} \FunctionTok{Util2Physical}\NormalTok{(muNH }\SpecialCharTok{+}\NormalTok{ deltaMu[i], par\_i}\SpecialCharTok{$}\NormalTok{lambda\_i, par\_i}\SpecialCharTok{$}\NormalTok{nu\_i)  }\CommentTok{\# convert intrinsic to physical}
   

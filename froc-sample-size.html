@@ -23,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2023-12-24" />
+<meta name="date" content="2023-12-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -475,22 +475,24 @@ div.csl-indent {
 <div class="sourceCode" id="cb53"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb53-1"><a href="froc-sample-size.html#cb53-1"></a>deltaMu <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="fl">0.2</span>, <span class="fl">0.01</span>)</span>
 <span id="cb53-2"><a href="froc-sample-size.html#cb53-2"></a>esROC <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">dim =</span> <span class="fu">length</span>(deltaMu))</span>
 <span id="cb53-3"><a href="froc-sample-size.html#cb53-3"></a>eswAFROC <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">dim =</span> <span class="fu">length</span>(deltaMu))</span>
-<span id="cb53-4"><a href="froc-sample-size.html#cb53-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(deltaMu)) {</span>
-<span id="cb53-5"><a href="froc-sample-size.html#cb53-5"></a>  </span>
-<span id="cb53-6"><a href="froc-sample-size.html#cb53-6"></a>  <span class="co"># get intrinsic parameters</span></span>
-<span id="cb53-7"><a href="froc-sample-size.html#cb53-7"></a>  par_i <span class="ot">&lt;-</span> <span class="fu">Util2Intrinsic</span>(muNH, lambdaNH, nuNH) <span class="co"># convert physical to intrinsic</span></span>
-<span id="cb53-8"><a href="froc-sample-size.html#cb53-8"></a>  <span class="co"># find physical parameters for the increased muNH (accounting for the tandem effects)</span></span>
-<span id="cb53-9"><a href="froc-sample-size.html#cb53-9"></a>  par_p <span class="ot">&lt;-</span> <span class="fu">Util2Physical</span>(muNH <span class="sc">+</span> deltaMu[i], par_i<span class="sc">$</span>lambda_i, par_i<span class="sc">$</span>nu_i)  <span class="co"># convert intrinsic to physical</span></span>
-<span id="cb53-10"><a href="froc-sample-size.html#cb53-10"></a>  </span>
-<span id="cb53-11"><a href="froc-sample-size.html#cb53-11"></a>  <span class="co"># AH ROC value minus NH ROC value</span></span>
-<span id="cb53-12"><a href="froc-sample-size.html#cb53-12"></a>  esROC[i] <span class="ot">&lt;-</span> <span class="fu">UtilAnalyticalAucsRSM</span>(</span>
-<span id="cb53-13"><a href="froc-sample-size.html#cb53-13"></a>    muNH <span class="sc">+</span> deltaMu[i], par_p<span class="sc">$</span>lambda, par_p<span class="sc">$</span>nu, <span class="at">lesDistr =</span> lesDistr<span class="sc">$</span>Freq)<span class="sc">$</span>aucROC <span class="sc">-</span> aucRocNH </span>
-<span id="cb53-14"><a href="froc-sample-size.html#cb53-14"></a>  </span>
-<span id="cb53-15"><a href="froc-sample-size.html#cb53-15"></a>  <span class="co"># AH wAFROC value minus NH wAFROC value</span></span>
-<span id="cb53-16"><a href="froc-sample-size.html#cb53-16"></a>  eswAFROC[i] <span class="ot">&lt;-</span> <span class="fu">UtilAnalyticalAucsRSM</span>(</span>
-<span id="cb53-17"><a href="froc-sample-size.html#cb53-17"></a>    muNH <span class="sc">+</span> deltaMu[i], par_p<span class="sc">$</span>lambda, par_p<span class="sc">$</span>nu, <span class="at">lesDistr =</span> lesDistr<span class="sc">$</span>Freq)<span class="sc">$</span>aucwAFROC <span class="sc">-</span> aucwAfrocNH </span>
-<span id="cb53-18"><a href="froc-sample-size.html#cb53-18"></a>  </span>
-<span id="cb53-19"><a href="froc-sample-size.html#cb53-19"></a>}</span></code></pre></div>
+<span id="cb53-4"><a href="froc-sample-size.html#cb53-4"></a></span>
+<span id="cb53-5"><a href="froc-sample-size.html#cb53-5"></a><span class="co"># get intrinsic parameters</span></span>
+<span id="cb53-6"><a href="froc-sample-size.html#cb53-6"></a>par_i <span class="ot">&lt;-</span> <span class="fu">Util2Intrinsic</span>(muNH, lambdaNH, nuNH) <span class="co"># convert physical to intrinsic</span></span>
+<span id="cb53-7"><a href="froc-sample-size.html#cb53-7"></a></span>
+<span id="cb53-8"><a href="froc-sample-size.html#cb53-8"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(deltaMu)) {</span>
+<span id="cb53-9"><a href="froc-sample-size.html#cb53-9"></a>  </span>
+<span id="cb53-10"><a href="froc-sample-size.html#cb53-10"></a>  <span class="co"># find physical parameters for the increased muNH (accounting for the tandem effects)</span></span>
+<span id="cb53-11"><a href="froc-sample-size.html#cb53-11"></a>  par_p <span class="ot">&lt;-</span> <span class="fu">Util2Physical</span>(muNH <span class="sc">+</span> deltaMu[i], par_i<span class="sc">$</span>lambda_i, par_i<span class="sc">$</span>nu_i)  <span class="co"># convert intrinsic to physical</span></span>
+<span id="cb53-12"><a href="froc-sample-size.html#cb53-12"></a>  </span>
+<span id="cb53-13"><a href="froc-sample-size.html#cb53-13"></a>  <span class="co"># AH ROC value minus NH ROC value</span></span>
+<span id="cb53-14"><a href="froc-sample-size.html#cb53-14"></a>  esROC[i] <span class="ot">&lt;-</span> <span class="fu">UtilAnalyticalAucsRSM</span>(</span>
+<span id="cb53-15"><a href="froc-sample-size.html#cb53-15"></a>    muNH <span class="sc">+</span> deltaMu[i], par_p<span class="sc">$</span>lambda, par_p<span class="sc">$</span>nu, <span class="at">lesDistr =</span> lesDistr<span class="sc">$</span>Freq)<span class="sc">$</span>aucROC <span class="sc">-</span> aucRocNH </span>
+<span id="cb53-16"><a href="froc-sample-size.html#cb53-16"></a>  </span>
+<span id="cb53-17"><a href="froc-sample-size.html#cb53-17"></a>  <span class="co"># AH wAFROC value minus NH wAFROC value</span></span>
+<span id="cb53-18"><a href="froc-sample-size.html#cb53-18"></a>  eswAFROC[i] <span class="ot">&lt;-</span> <span class="fu">UtilAnalyticalAucsRSM</span>(</span>
+<span id="cb53-19"><a href="froc-sample-size.html#cb53-19"></a>    muNH <span class="sc">+</span> deltaMu[i], par_p<span class="sc">$</span>lambda, par_p<span class="sc">$</span>nu, <span class="at">lesDistr =</span> lesDistr<span class="sc">$</span>Freq)<span class="sc">$</span>aucwAFROC <span class="sc">-</span> aucwAfrocNH </span>
+<span id="cb53-20"><a href="froc-sample-size.html#cb53-20"></a>  </span>
+<span id="cb53-21"><a href="froc-sample-size.html#cb53-21"></a>}</span></code></pre></div>
 <p>Here is a plot of wAFROC effect size (y-axis) vs. ROC effect size.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-10"></span>
 <img src="19-froc-sample-size_files/figure-html/unnamed-chunk-10-1.png" alt="Plot of wAFROC effect size vs. ROC effect size. The straight line fit through the origin has slope 2.169." width="672" />
