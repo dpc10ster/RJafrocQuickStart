@@ -82,7 +82,8 @@ If the NH dataset uses continuous ratings one bins the ratings:
 
 
 ```r
-# For dataset04 this is unnecessary as it is already binned, but it can't hurt
+# For dataset04 this is unnecessary as it is already binned, but it can't hurt, i.e.,
+# rocDataBinNH <- rocDataNH # gives same results as following line
 rocDataBinNH <- DfBinDataset(rocDataNH, opChType = "ROC")
 ```
 
@@ -136,7 +137,7 @@ nuNH <- median(RsmParmsNH[,,3])
 ```
 
 
-The defining values of the RSM-based NH fitting model are `muNH` = 3.3121519, `lambdaNH` = 1.714368 and `nuNH` = 0.7036564. 
+The defining values of the RSM-based NH fitting model are `muNH` = 3.3121491, `lambdaNH` = 1.714368 and `nuNH` = 0.7036564. 
 
 
 #### Compute ROC and wAFROC NH AUCs
@@ -150,7 +151,7 @@ aucwAfrocNH <- UtilAnalyticalAucsRSM(muNH, lambdaNH, nuNH, lesDistr = lesDistr$F
 ```
 
 
-The AUCs are: `aucRocNH = 0.8791542` and `aucwAfrocNH = 0.7198615`. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes both detection and localization performance (the ROC-AUC only measures detection performance). 
+The AUCs are: `aucRocNH = 0.8791541` and `aucwAfrocNH = 0.7198614`. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes both detection and localization performance (the ROC-AUC only measures detection performance). 
 
 #### Compute ROC and wAFROC Alternative Hypotheses AUCs for a range of ROC-AUC effect sizes
 
@@ -353,7 +354,7 @@ for (i in 1:length(effectSizeROC)) {
 ```
 
 
-Since the wAFROC effect size is 2.1693379 times the ROC effect size, wAFROC power is larger than ROC power. For example, for ROC effect size = 0.035 the wAFROC effect size is 0.076, the ROC power is 0.234 while the wAFROC power is 0.797. The influence of the increased wAFROC effect size is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC 
+Since the wAFROC effect size is 2.169337 times the ROC effect size, wAFROC power is larger than ROC power. For example, for ROC effect size = 0.035 the wAFROC effect size is 0.076, the ROC power is 0.234 while the wAFROC power is 0.797. The influence of the increased wAFROC effect size is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC 
 
 The following is a plot of wAFROC power vs. ROC power for the specified effect sizes.
 
@@ -390,7 +391,7 @@ scaleFactor <- ret$scaleFactor
 ```
 
 
-The fitting model is defined by `muNH` = 3.3121519,  `lambdaNH` = 1.714368  and  `nuNH` = 0.7036564 and `lesDistr$Freq` = 0.69, 0.2, 0.11. The effect size scale factor is `scaleFactor` = 2.1693379. All of these are identical to the Part I values.
+The fitting model is defined by `muNH` = 3.3121491,  `lambdaNH` = 1.714368  and  `nuNH` = 0.7036564 and `lesDistr$Freq` = 0.69, 0.2, 0.11. The effect size scale factor is `scaleFactor` = 2.169337. All of these are identical to the Part I values.
 
 
 ### Extract the wAFROC variance components  {#froc-sample-size-variance-components}
@@ -436,7 +437,7 @@ power_wafroc <- ret$powerRRRC
 
 
 ```
-## ROC-ES =  0.035 , wAFROC-ES =  0.07592683 , Power-wAFROC =  0.7972542
+## ROC-ES =  0.035 , wAFROC-ES =  0.0759268 , Power-wAFROC =  0.7972539
 ```
 
 ### Number of cases for 80 percent power for a given number of readers
@@ -476,7 +477,7 @@ ret2 <- SsSampleSizeKGivenJ(
 
 
 ```
-## ROC-ES =  0.035 , wAFROC-ES =  0.07592683 , K80RRRC =  84 , Power-wAFROC =  0.8023882
+## ROC-ES =  0.035 , wAFROC-ES =  0.0759268 , K80RRRC =  84 , Power-wAFROC =  0.8023879
 ```
 
 

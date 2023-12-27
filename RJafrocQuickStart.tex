@@ -139,7 +139,7 @@
 
 \title{The RJafroc Quick Start Book}
 \author{Dev P. Chakraborty, PhD}
-\date{2023-12-25}
+\date{2023-12-27}
 
 \begin{document}
 \maketitle
@@ -2147,7 +2147,8 @@ If the NH dataset uses continuous ratings one bins the ratings:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# For dataset04 this is unnecessary as it is already binned, but it can\textquotesingle{}t hurt}
+\CommentTok{\# For dataset04 this is unnecessary as it is already binned, but it can\textquotesingle{}t hurt, i.e.,}
+\CommentTok{\# rocDataBinNH \textless{}{-} rocDataNH \# gives same results as following line}
 \NormalTok{rocDataBinNH }\OtherTok{\textless{}{-}} \FunctionTok{DfBinDataset}\NormalTok{(rocDataNH, }\AttributeTok{opChType =} \StringTok{"ROC"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -2202,7 +2203,7 @@ I recommend taking the median (not the mean) of the \(I \times J\) values of eac
 \end{Highlighting}
 \end{Shaded}
 
-The defining values of the RSM-based NH fitting model are \texttt{muNH} = 3.3121519, \texttt{lambdaNH} = 1.714368 and \texttt{nuNH} = 0.7036564.
+The defining values of the RSM-based NH fitting model are \texttt{muNH} = 3.3121491, \texttt{lambdaNH} = 1.714368 and \texttt{nuNH} = 0.7036564.
 
 \hypertarget{compute-roc-and-wafroc-nh-aucs}{%
 \subsubsection{Compute ROC and wAFROC NH AUCs}\label{compute-roc-and-wafroc-nh-aucs}}
@@ -2216,7 +2217,7 @@ The next step is the compute the analytical (i.e., RSM-based) AUCs under the res
 \end{Highlighting}
 \end{Shaded}
 
-The AUCs are: \texttt{aucRocNH\ =\ 0.8791542} and \texttt{aucwAfrocNH\ =\ 0.7198615}. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes both detection and localization performance (the ROC-AUC only measures detection performance).
+The AUCs are: \texttt{aucRocNH\ =\ 0.8791541} and \texttt{aucwAfrocNH\ =\ 0.7198614}. Note that the wAFROC-FOM is smaller than the ROC-FOM as it includes both detection and localization performance (the ROC-AUC only measures detection performance).
 
 \hypertarget{compute-roc-and-wafroc-alternative-hypotheses-aucs-for-a-range-of-roc-auc-effect-sizes}{%
 \subsubsection{Compute ROC and wAFROC Alternative Hypotheses AUCs for a range of ROC-AUC effect sizes}\label{compute-roc-and-wafroc-alternative-hypotheses-aucs-for-a-range-of-roc-auc-effect-sizes}}
@@ -2419,7 +2420,7 @@ The for-loop (lines 3 - 36) calculates ROC power (line 19) and wAFROC power (lin
 \end{Highlighting}
 \end{Shaded}
 
-Since the wAFROC effect size is 2.1693379 times the ROC effect size, wAFROC power is larger than ROC power. For example, for ROC effect size = 0.035 the wAFROC effect size is 0.076, the ROC power is 0.234 while the wAFROC power is 0.797. The influence of the increased wAFROC effect size is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC
+Since the wAFROC effect size is 2.169337 times the ROC effect size, wAFROC power is larger than ROC power. For example, for ROC effect size = 0.035 the wAFROC effect size is 0.076, the ROC power is 0.234 while the wAFROC power is 0.797. The influence of the increased wAFROC effect size is magnified as it enters as the square in the formula for statistical power: this overwhelms the increase, noted previously, in variability of wAFROC-AUC relative to ROC-AUC
 
 The following is a plot of wAFROC power vs.~ROC power for the specified effect sizes.
 
@@ -2457,7 +2458,7 @@ The first two treatments are extracted from \texttt{dataset04} thereby yielding 
 \end{Highlighting}
 \end{Shaded}
 
-The fitting model is defined by \texttt{muNH} = 3.3121519, \texttt{lambdaNH} = 1.714368 and \texttt{nuNH} = 0.7036564 and \texttt{lesDistr\$Freq} = 0.69, 0.2, 0.11. The effect size scale factor is \texttt{scaleFactor} = 2.1693379. All of these are identical to the Part I values.
+The fitting model is defined by \texttt{muNH} = 3.3121491, \texttt{lambdaNH} = 1.714368 and \texttt{nuNH} = 0.7036564 and \texttt{lesDistr\$Freq} = 0.69, 0.2, 0.11. The effect size scale factor is \texttt{scaleFactor} = 2.169337. All of these are identical to the Part I values.
 
 \hypertarget{froc-sample-size-variance-components}{%
 \subsection{Extract the wAFROC variance components}\label{froc-sample-size-variance-components}}
@@ -2504,7 +2505,7 @@ The following example is for ROC effect size = 0.035 (line 1), 5 readers and 100
 \end{Shaded}
 
 \begin{verbatim}
-## ROC-ES =  0.035 , wAFROC-ES =  0.07592683 , Power-wAFROC =  0.7972542
+## ROC-ES =  0.035 , wAFROC-ES =  0.0759268 , Power-wAFROC =  0.7972539
 \end{verbatim}
 
 \hypertarget{number-of-cases-for-80-percent-power-for-a-given-number-of-readers}{%
@@ -2543,7 +2544,7 @@ The following code returns the number of cases needed for 80 percent power for 6
 \end{Shaded}
 
 \begin{verbatim}
-## ROC-ES =  0.035 , wAFROC-ES =  0.07592683 , K80RRRC =  84 , Power-wAFROC =  0.8023882
+## ROC-ES =  0.035 , wAFROC-ES =  0.0759268 , K80RRRC =  84 , Power-wAFROC =  0.8023879
 \end{verbatim}
 
 Here \texttt{K80RRRC} is the number of cases needed for 80 percent power when using RRRC analysis.
