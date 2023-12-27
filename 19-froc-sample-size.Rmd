@@ -83,7 +83,8 @@ rocDataNH <- DfFroc2Roc(frocDataNH)
 If the NH dataset uses continuous ratings one bins the ratings: 
 
 ```{r}
-# For dataset04 this is unnecessary as it is already binned, but it can't hurt
+# For dataset04 this is unnecessary as it is already binned, but it can't hurt, i.e.,
+# rocDataBinNH <- rocDataNH # gives same results as following line
 rocDataBinNH <- DfBinDataset(rocDataNH, opChType = "ROC")
 ```
 
