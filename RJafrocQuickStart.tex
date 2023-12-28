@@ -139,7 +139,7 @@
 
 \title{The RJafroc Quick Start Book}
 \author{Dev P. Chakraborty, PhD}
-\date{2023-12-27}
+\date{2023-12-28}
 
 \begin{document}
 \maketitle
@@ -252,25 +252,22 @@ In the ROC paradigm the observer assigns a rating to each image. A rating is an 
 \item
   The Excel file format has recently undergone changes involving three additional columns in the \texttt{Truth} worksheet. These are needed for generalization to other data collection paradigms and for better data entry error control.
 \item
-  \texttt{RJafroc} will work with original format Excel files provided the \texttt{NewExcelFileFormat} flag in \texttt{DfReadDataFile} is set to \texttt{FALSE}, which is the default (see help page below).
+  \texttt{RJafroc} will work with original format Excel files provided the \texttt{NewExcelFileFormat} flag in \texttt{DfReadDataFile} is set to \texttt{FALSE}, which is the default (see following help page).
 \item
   Going forward, one should use the new format, described below, and use \texttt{NewExcelFileFormat\ =\ TRUE} to read the file.
 \end{itemize}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"images/roc{-}data{-}format/DfReadDataFile.png"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{quick-start-roc-note}{%
+\section{Help page}\label{quick-start-roc-note}}
 
 \includegraphics[width=22in]{images/roc-data-format/DfReadDataFile}
 
 \hypertarget{quick-start-roc-excel}{%
-\section{Three worksheets in the Excel data file}\label{quick-start-roc-excel}}
+\section{Worksheets in the Excel file}\label{quick-start-roc-excel}}
 
 \begin{itemize}
 \item
-  The illustrations in this chapter are for Excel file \texttt{R/quick-start/rocCr.xlsx} in the project directory. I assume the reader has forked the \texttt{RJafrocQuickStart} repository. See Section @ref(\#quick-start-index-how-to-access-files) for how to get this file, and all other files and code in this \texttt{bookdown} book, on your computer.
+  The illustrations in this chapter are for Excel file \texttt{R/quick-start/rocCr.xlsx} in the project directory. I assume the reader has forked the \texttt{RJafrocQuickStart} repository. See Section \ref{quick-start-index-how-to-access-files} for how to download all files and code in this \texttt{bookdown} book to your computer.
 \item
   This is a \emph{toy file}, i.e., a small made-up dataset used to illustrate essential features of the data format.
 \item
@@ -287,15 +284,15 @@ The \texttt{Truth} worksheet shown above contains 6 columns: \texttt{CaseID}, \t
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  \texttt{CaseID}: \textbf{unique integers}, one per case, representing the cases in the dataset. In the current dataset, the non-diseased cases are labeled \texttt{1}, \texttt{2} and \texttt{3}, while the diseased cases are labeled \texttt{70}, \texttt{71}, \texttt{72}, \texttt{73} and \texttt{74}. The values do not have to be consecutive integers; they need not be ordered; the only requirement is that they be unique integers.
+  \texttt{CaseID}: \textbf{unique integers}, one per case, representing the cases in the dataset. In the current dataset, the non-diseased cases are labeled \texttt{1}, \texttt{2} and \texttt{3}, while the diseased cases are labeled \texttt{70}, \texttt{71}, \texttt{72}, \texttt{73} and \texttt{74}. The values do not have to be consecutive integers; they need not be ordered; the only requirement is that they be unique integers. It is recommended that small integers be used.
 \item
   \texttt{LesionID}: integers 0 or 1, with each 0 representing a non-diseased case and each 1 representing a diseased case.
 \item
   \texttt{Weight}: this field is not used for ROC data.
 \item
-  \texttt{ReaderID}: a \textbf{comma-separated} string containing the reader (i.e., radiologist or observer) labels, each represented by a \textbf{unique integer}, that have interpreted the case. In the example shown below each cell has the value \texttt{0,\ 1,\ 2,\ 3,\ 4} meaning each of these readers has interpreted all cases. With multiple readers each cell in this column has to be text formatted as otherwise Excel will not accept it. Select the worksheet, then \texttt{Format} - \texttt{Cells} - \texttt{Number} - \texttt{Text} - \texttt{OK}.
+  \texttt{ReaderID}: a \textbf{comma-separated} string containing the reader (i.e., radiologist or observer) labels, each represented by a \textbf{unique integer}, that have interpreted the case. In the example shown below each cell has the value \texttt{0,\ 1,\ 2,\ 3,\ 4} meaning each of these readers has interpreted all cases. With multiple readers each cell in this column has to be text formatted as otherwise Excel will not accept it. Select the worksheet, then \texttt{Format} - \texttt{Cells} - \texttt{Number} - \texttt{Text} - \texttt{OK}. It is highly recommended that small equal-length integers, properly ordered, be used, as otherwise the output will not be aesthetically pleasing (the code will work, but the output will be harder to interpret). For example \texttt{0,\ 1,\ 2,\ 3,\ 4} is preferred to \texttt{00,\ 10,\ 20,\ 30,\ 40} and to \texttt{1,\ 3,\ 2,\ 0,\ 4}.
 \item
-  \texttt{ModalityID}: a comma-separated string containing the modality labels, each represented by a \textbf{unique integer}. In the example each cell has the value \texttt{0,\ 1} meaning this is a two-modality study. As above, with multiple modalities each cell has to be text formatted as otherwise Excel will not accept it.
+  \texttt{ModalityID}: a comma-separated string containing the modality labels, each represented by a \textbf{unique integer}. In the example each cell has the value \texttt{0,\ 1} meaning this is a two-modality study. As above, with multiple modalities each cell has to be text formatted as otherwise Excel will not accept it. It is highly recommended that small equal-length integers, properly ordered, be used.
 \item
   \texttt{Paradigm}: this column contains two cells, \texttt{ROC} and \texttt{FCTRL}. It means that this is an ROC dataset and the study design is factorial (or fully-crossed), i.e., each reader interprets each case in each modality.
 \end{enumerate}
@@ -310,7 +307,7 @@ There are 5 diseased cases in the dataset (the number of 1's in the \texttt{Lesi
 
 \includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/rocCrFp.png}
 
-It consists of 4 columns, each of length 30 (i.e., \# of modalities x number of readers x number of non-diseased cases). The (case sensitive) column names and meanings are as follows:
+The FP/NL worksheet consists of 4 columns, each of length 30 (i.e., \# of modalities x number of readers x number of non-diseased cases). The (case sensitive) column names and meanings are as follows:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -329,7 +326,7 @@ It consists of 4 columns, each of length 30 (i.e., \# of modalities x number of 
 
 \includegraphics[width=1\textwidth,height=\textheight]{images/quick-start/rocCrTp.png}
 
-It consists of 5 columns, each of length 50 (i.e., \# of modalities x number of readers x number of diseased cases). The (case sensitive) column names and meanings are as follows:
+The TP/LL worksheet consists of 5 columns, each of length 50 (i.e., \# of modalities x number of readers x number of diseased cases). The (case sensitive) column names and meanings are as follows:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -366,7 +363,7 @@ The following code uses the function \texttt{DfReadDataFile} to read the Excel f
 \hypertarget{quick-start-roc-structure-dataset}{%
 \section{Structure of dataset object}\label{quick-start-roc-structure-dataset}}
 
-Most users will not need to be concerned with the internal structure of the dataset object \texttt{x}. For those interested in it, for my reference, and for ease of future maintenance of the software, this is deferred to Section \ref{dataset-object-details-structure-roc-dataset}.
+Most users will not need to be concerned with the internal structure of the dataset object \texttt{x}. For those interested in it, for my reference, and for ease of maintenance of the software, this is deferred to Section \ref{dataset-object-details-structure-roc-dataset}.
 
 \hypertarget{quick-start-froc-data-format}{%
 \chapter{FROC data format}\label{quick-start-froc-data-format}}

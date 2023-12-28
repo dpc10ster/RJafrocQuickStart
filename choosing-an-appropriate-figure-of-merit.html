@@ -23,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2023-12-27" />
+<meta name="date" content="2023-12-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -180,15 +180,16 @@ div.csl-indent {
 <li class="chapter" data-level="2.1" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-how-much-finished"><i class="fa fa-check"></i><b>2.1</b> How much finished 50%</a></li>
 <li class="chapter" data-level="2.2" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-intro"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
 <li class="chapter" data-level="2.3" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-note"><i class="fa fa-check"></i><b>2.3</b> Note to existing users</a></li>
-<li class="chapter" data-level="2.4" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-excel"><i class="fa fa-check"></i><b>2.4</b> Three worksheets in the Excel data file</a>
+<li class="chapter" data-level="2.4" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-note"><i class="fa fa-check"></i><b>2.4</b> Help page</a></li>
+<li class="chapter" data-level="2.5" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-excel"><i class="fa fa-check"></i><b>2.5</b> Worksheets in the Excel file</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-truth"><i class="fa fa-check"></i><b>2.4.1</b> The <code>Truth</code> worksheet</a></li>
-<li class="chapter" data-level="2.4.2" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-truth-comments"><i class="fa fa-check"></i><b>2.4.2</b> Comments on the <code>Truth</code> worksheet</a></li>
-<li class="chapter" data-level="2.4.3" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-fp"><i class="fa fa-check"></i><b>2.4.3</b> The FP/NL worksheet</a></li>
-<li class="chapter" data-level="2.4.4" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-tp"><i class="fa fa-check"></i><b>2.4.4</b> The TP/LL worksheet</a></li>
+<li class="chapter" data-level="2.5.1" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-truth"><i class="fa fa-check"></i><b>2.5.1</b> The <code>Truth</code> worksheet</a></li>
+<li class="chapter" data-level="2.5.2" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-truth-comments"><i class="fa fa-check"></i><b>2.5.2</b> Comments on the <code>Truth</code> worksheet</a></li>
+<li class="chapter" data-level="2.5.3" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-fp"><i class="fa fa-check"></i><b>2.5.3</b> The FP/NL worksheet</a></li>
+<li class="chapter" data-level="2.5.4" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-tp"><i class="fa fa-check"></i><b>2.5.4</b> The TP/LL worksheet</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-read"><i class="fa fa-check"></i><b>2.5</b> Reading the Excel file</a></li>
-<li class="chapter" data-level="2.6" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-structure-dataset"><i class="fa fa-check"></i><b>2.6</b> Structure of dataset object</a></li>
+<li class="chapter" data-level="2.6" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-read"><i class="fa fa-check"></i><b>2.6</b> Reading the Excel file</a></li>
+<li class="chapter" data-level="2.7" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-structure-dataset"><i class="fa fa-check"></i><b>2.7</b> Structure of dataset object</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html"><i class="fa fa-check"></i><b>3</b> FROC data format</a>
 <ul>
@@ -396,8 +397,8 @@ div.csl-indent {
 <div id="choice-of-fom-froc-wafroc" class="section level3 hasAnchor" number="4.15.1">
 <h3><span class="header-section-number">4.15.1</span> FOM = wAFROC<a href="choosing-an-appropriate-figure-of-merit.html#choice-of-fom-froc-wafroc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For most FROC datasets the appropriate FOM is the AUC under the weighted AFROC plot, as illustrated next for <code>daset05</code> which has two modalities and 9 readers.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb20-1" aria-hidden="true" tabindex="-1"></a>fom_wAFROC <span class="ot">&lt;-</span> <span class="fu">UtilFigureOfMerit</span>(<span class="at">dataset =</span> dataset05, <span class="at">FOM =</span> <span class="st">&quot;wAFROC&quot;</span>)</span>
-<span id="cb20-2"><a href="choosing-an-appropriate-figure-of-merit.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">lapply</span>(fom_wAFROC, format, <span class="at">decimal.mark =</span> <span class="st">&quot;.&quot;</span>, <span class="at">digits =</span> <span class="dv">4</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb19-1" aria-hidden="true" tabindex="-1"></a>fom_wAFROC <span class="ot">&lt;-</span> <span class="fu">UtilFigureOfMerit</span>(<span class="at">dataset =</span> dataset05, <span class="at">FOM =</span> <span class="st">&quot;wAFROC&quot;</span>)</span>
+<span id="cb19-2"><a href="choosing-an-appropriate-figure-of-merit.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">lapply</span>(fom_wAFROC, format, <span class="at">decimal.mark =</span> <span class="st">&quot;.&quot;</span>, <span class="at">digits =</span> <span class="dv">4</span>))</span></code></pre></div>
 <pre><code>##   X.0.7245. X.0.8024. X.0.881. X.0.9686. X.0.8096. X.0.846. X.0.6133. X.0.7514.
 ## 1    0.7245    0.8024    0.881    0.9686    0.8096    0.846    0.6133    0.7514
 ##   X.0.5773. X.0.7209. X.0.8493. X.0.8719. X.0.8928. X.0.937. X.0.8026.
@@ -408,15 +409,15 @@ div.csl-indent {
 <div id="choice-of-fom-froc-hrse" class="section level3 hasAnchor" number="4.15.2">
 <h3><span class="header-section-number">4.15.2</span> FOM = HrSe<a href="choosing-an-appropriate-figure-of-merit.html#choice-of-fom-froc-hrse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Recall that the concepts of sensitivity and specificity are reserved for ROC data - i.e., one rating per case. To compute these from FROC data one needs a method for inferring a single rating from the possibly multiple (zero or more) ratings ocurring on each case (if the case has no marks one assings a rating that is smaller than any the ratings of explicitly marked locations, e.g., minus infinity). The recommended procedure is to assign the rating of the highest rated mark on each case, of <span class="math inline">\(-\infty\)</span> if the case has no marks, as its inferred ROC rating. This has the has the effect of converting the FROC dataset to an inferred ROC dataset. The function <code>DfFroc2Roc</code> does exactly this:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb22-1" aria-hidden="true" tabindex="-1"></a>dataset05<span class="sc">$</span>descriptions<span class="sc">$</span>type</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb21-1" aria-hidden="true" tabindex="-1"></a>dataset05<span class="sc">$</span>descriptions<span class="sc">$</span>type</span></code></pre></div>
 <pre><code>## [1] &quot;FROC&quot;</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb24-1" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> <span class="fu">DfFroc2Roc</span>(dataset05)</span>
-<span id="cb24-2"><a href="choosing-an-appropriate-figure-of-merit.html#cb24-2" aria-hidden="true" tabindex="-1"></a>ds<span class="sc">$</span>descriptions<span class="sc">$</span>type</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb23-1" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> <span class="fu">DfFroc2Roc</span>(dataset05)</span>
+<span id="cb23-2"><a href="choosing-an-appropriate-figure-of-merit.html#cb23-2" aria-hidden="true" tabindex="-1"></a>ds<span class="sc">$</span>descriptions<span class="sc">$</span>type</span></code></pre></div>
 <pre><code>## [1] &quot;ROC&quot;</code></pre>
 <p><code>HrSe</code> is the abbreviation for “highest rating sensitivity”, sensitivity derived from the rating of the highest rated mark on each case. Replacing the possibly multiple ratings occurring on each case with the highest rating amounts to an assumption, a very good one in my opinion. Since the ratings are ordered labels (i.e., non-numeric vaues) any numerical computation, such as the average, would be invalid. It is also common sense: if a case has 3 marks rated 80, 30 and 15, why would the ROC rating be anything but 80. Finally, there is historical precedence for this assumption: <span class="citation">(<a href="#ref-bunch1977free" role="doc-biblioref">Bunch et al. 1977</a>; <a href="#ref-swensson1996unified" role="doc-biblioref">Swensson 1996</a>)</span>.</p>
 <p>Usage of <code>FOM = HrSe</code> is illustrated next for <code>dataset05</code>.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb26-1" aria-hidden="true" tabindex="-1"></a>fom_HrSe <span class="ot">&lt;-</span> <span class="fu">UtilFigureOfMerit</span>(<span class="at">dataset =</span> dataset05, <span class="at">FOM =</span> <span class="st">&quot;HrSe&quot;</span>)</span>
-<span id="cb26-2"><a href="choosing-an-appropriate-figure-of-merit.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">lapply</span>(fom_HrSe, format, <span class="at">decimal.mark =</span> <span class="st">&quot;.&quot;</span>, <span class="at">digits =</span> <span class="dv">4</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb25-1" aria-hidden="true" tabindex="-1"></a>fom_HrSe <span class="ot">&lt;-</span> <span class="fu">UtilFigureOfMerit</span>(<span class="at">dataset =</span> dataset05, <span class="at">FOM =</span> <span class="st">&quot;HrSe&quot;</span>)</span>
+<span id="cb25-2"><a href="choosing-an-appropriate-figure-of-merit.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">lapply</span>(fom_HrSe, format, <span class="at">decimal.mark =</span> <span class="st">&quot;.&quot;</span>, <span class="at">digits =</span> <span class="dv">4</span>))</span></code></pre></div>
 <pre><code>##   X.0.9362. X.1. X.0.8298. X.0.9574. X.0.8936. X.0.9574..1 X.0.7021. X.0.8511.
 ## 1    0.9362    1    0.8298    0.9574    0.8936      0.9574    0.7021    0.8511
 ##   X.0.8298..1 X.0.8511..1 X.0.9574..2 X.1..1 X.0.8723. X.0.9362..1 X.0.8936..1
@@ -424,11 +425,11 @@ div.csl-indent {
 ##   X.0.9149. X.0.8936..2 X.0.9787.
 ## 1    0.9149      0.8936    0.9787</code></pre>
 <p>Notice that each listed value is greater TBA?? than the corresponding value when using <code>FOM = "wAFROC"</code>. This should not come as a surprise as</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
-<span id="cb28-2"><a href="choosing-an-appropriate-figure-of-merit.html#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) {</span>
-<span id="cb28-3"><a href="choosing-an-appropriate-figure-of-merit.html#cb28-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">cat</span>(<span class="st">&quot;i = &quot;</span>, i, <span class="st">&quot;, j = &quot;</span>, j, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb28-4"><a href="choosing-an-appropriate-figure-of-merit.html#cb28-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (fom_HrSe[i,j] <span class="sc">&gt;</span> fom_wAFROC[i,j]) <span class="fu">cat</span> (<span class="st">&quot;TRUE </span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="cf">else</span> <span class="fu">cat</span>(<span class="st">&quot;FALSE </span><span class="sc">\n</span><span class="st">&quot;</span>) </span>
-<span id="cb28-5"><a href="choosing-an-appropriate-figure-of-merit.html#cb28-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="choosing-an-appropriate-figure-of-merit.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
+<span id="cb27-2"><a href="choosing-an-appropriate-figure-of-merit.html#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) {</span>
+<span id="cb27-3"><a href="choosing-an-appropriate-figure-of-merit.html#cb27-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">cat</span>(<span class="st">&quot;i = &quot;</span>, i, <span class="st">&quot;, j = &quot;</span>, j, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb27-4"><a href="choosing-an-appropriate-figure-of-merit.html#cb27-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (fom_HrSe[i,j] <span class="sc">&gt;</span> fom_wAFROC[i,j]) <span class="fu">cat</span> (<span class="st">&quot;TRUE </span><span class="sc">\n</span><span class="st">&quot;</span>) <span class="cf">else</span> <span class="fu">cat</span>(<span class="st">&quot;FALSE </span><span class="sc">\n</span><span class="st">&quot;</span>) </span>
+<span id="cb27-5"><a href="choosing-an-appropriate-figure-of-merit.html#cb27-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## i =  1 , j =  1 
 ## TRUE 
 ## i =  1 , j =  2 

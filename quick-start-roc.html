@@ -23,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2023-12-27" />
+<meta name="date" content="2023-12-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -180,15 +180,16 @@ div.csl-indent {
 <li class="chapter" data-level="2.1" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-how-much-finished"><i class="fa fa-check"></i><b>2.1</b> How much finished 50%</a></li>
 <li class="chapter" data-level="2.2" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-intro"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
 <li class="chapter" data-level="2.3" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-note"><i class="fa fa-check"></i><b>2.3</b> Note to existing users</a></li>
-<li class="chapter" data-level="2.4" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-excel"><i class="fa fa-check"></i><b>2.4</b> Three worksheets in the Excel data file</a>
+<li class="chapter" data-level="2.4" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-note"><i class="fa fa-check"></i><b>2.4</b> Help page</a></li>
+<li class="chapter" data-level="2.5" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-excel"><i class="fa fa-check"></i><b>2.5</b> Worksheets in the Excel file</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-truth"><i class="fa fa-check"></i><b>2.4.1</b> The <code>Truth</code> worksheet</a></li>
-<li class="chapter" data-level="2.4.2" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-truth-comments"><i class="fa fa-check"></i><b>2.4.2</b> Comments on the <code>Truth</code> worksheet</a></li>
-<li class="chapter" data-level="2.4.3" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-fp"><i class="fa fa-check"></i><b>2.4.3</b> The FP/NL worksheet</a></li>
-<li class="chapter" data-level="2.4.4" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-tp"><i class="fa fa-check"></i><b>2.4.4</b> The TP/LL worksheet</a></li>
+<li class="chapter" data-level="2.5.1" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-truth"><i class="fa fa-check"></i><b>2.5.1</b> The <code>Truth</code> worksheet</a></li>
+<li class="chapter" data-level="2.5.2" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-truth-comments"><i class="fa fa-check"></i><b>2.5.2</b> Comments on the <code>Truth</code> worksheet</a></li>
+<li class="chapter" data-level="2.5.3" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-fp"><i class="fa fa-check"></i><b>2.5.3</b> The FP/NL worksheet</a></li>
+<li class="chapter" data-level="2.5.4" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-tp"><i class="fa fa-check"></i><b>2.5.4</b> The TP/LL worksheet</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-read"><i class="fa fa-check"></i><b>2.5</b> Reading the Excel file</a></li>
-<li class="chapter" data-level="2.6" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-structure-dataset"><i class="fa fa-check"></i><b>2.6</b> Structure of dataset object</a></li>
+<li class="chapter" data-level="2.6" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-read"><i class="fa fa-check"></i><b>2.6</b> Reading the Excel file</a></li>
+<li class="chapter" data-level="2.7" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-structure-dataset"><i class="fa fa-check"></i><b>2.7</b> Structure of dataset object</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html"><i class="fa fa-check"></i><b>3</b> FROC data format</a>
 <ul>
@@ -391,40 +392,42 @@ div.csl-indent {
 <h2><span class="header-section-number">2.3</span> Note to existing users<a href="quick-start-roc.html#quick-start-roc-note" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>The Excel file format has recently undergone changes involving three additional columns in the <code>Truth</code> worksheet. These are needed for generalization to other data collection paradigms and for better data entry error control.</p></li>
-<li><p><code>RJafroc</code> will work with original format Excel files provided the <code>NewExcelFileFormat</code> flag in <code>DfReadDataFile</code> is set to <code>FALSE</code>, which is the default (see help page below).</p></li>
+<li><p><code>RJafroc</code> will work with original format Excel files provided the <code>NewExcelFileFormat</code> flag in <code>DfReadDataFile</code> is set to <code>FALSE</code>, which is the default (see following help page).</p></li>
 <li><p>Going forward, one should use the new format, described below, and use <code>NewExcelFileFormat = TRUE</code> to read the file.</p></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="quick-start-roc.html#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;images/roc-data-format/DfReadDataFile.png&quot;</span>)</span></code></pre></div>
+</div>
+<div id="quick-start-roc-note" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Help page<a href="quick-start-roc.html#quick-start-roc-note" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><img src="images/roc-data-format/DfReadDataFile.png" width="792" /></p>
 </div>
-<div id="quick-start-roc-excel" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> Three worksheets in the Excel data file<a href="quick-start-roc.html#quick-start-roc-excel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quick-start-roc-excel" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Worksheets in the Excel file<a href="quick-start-roc.html#quick-start-roc-excel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><p>The illustrations in this chapter are for Excel file <code>R/quick-start/rocCr.xlsx</code> in the project directory. I assume the reader has forked the <code>RJafrocQuickStart</code> repository. See Section @ref(#quick-start-index-how-to-access-files) for how to get this file, and all other files and code in this <code>bookdown</code> book, on your computer.</p></li>
+<li><p>The illustrations in this chapter are for Excel file <code>R/quick-start/rocCr.xlsx</code> in the project directory. I assume the reader has forked the <code>RJafrocQuickStart</code> repository. See Section <a href="index.html#quick-start-index-how-to-access-files">1.6</a> for how to download all files and code in this <code>bookdown</code> book to your computer.</p></li>
 <li><p>This is a <em>toy file</em>, i.e., a small made-up dataset used to illustrate essential features of the data format.</p></li>
 <li><p>The Excel file has three worksheets: <code>Truth</code>, <code>NL</code> (or <code>FP</code>) and <code>LL</code> (or <code>TP</code>). The worksheet names are case insensitive.</p></li>
 </ul>
 <p><img src="images/quick-start/rocCrTruth.png" style="width:100.0%" /></p>
-<div id="quick-start-roc-truth" class="section level3 hasAnchor" number="2.4.1">
-<h3><span class="header-section-number">2.4.1</span> The <code>Truth</code> worksheet<a href="quick-start-roc.html#quick-start-roc-truth" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="quick-start-roc-truth" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> The <code>Truth</code> worksheet<a href="quick-start-roc.html#quick-start-roc-truth" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>Truth</code> worksheet shown above contains 6 columns: <code>CaseID</code>, <code>LesionID</code>, <code>Weight</code>, <code>ReaderID</code>, <code>ModalityID</code> and <code>Paradigm</code>. These names are case sensitive.</p>
 <ol style="list-style-type: decimal">
-<li><p><code>CaseID</code>: <strong>unique integers</strong>, one per case, representing the cases in the dataset. In the current dataset, the non-diseased cases are labeled <code>1</code>, <code>2</code> and <code>3</code>, while the diseased cases are labeled <code>70</code>, <code>71</code>, <code>72</code>, <code>73</code> and <code>74</code>. The values do not have to be consecutive integers; they need not be ordered; the only requirement is that they be unique integers.</p></li>
+<li><p><code>CaseID</code>: <strong>unique integers</strong>, one per case, representing the cases in the dataset. In the current dataset, the non-diseased cases are labeled <code>1</code>, <code>2</code> and <code>3</code>, while the diseased cases are labeled <code>70</code>, <code>71</code>, <code>72</code>, <code>73</code> and <code>74</code>. The values do not have to be consecutive integers; they need not be ordered; the only requirement is that they be unique integers. It is recommended that small integers be used.</p></li>
 <li><p><code>LesionID</code>: integers 0 or 1, with each 0 representing a non-diseased case and each 1 representing a diseased case.</p></li>
 <li><p><code>Weight</code>: this field is not used for ROC data.</p></li>
-<li><p><code>ReaderID</code>: a <strong>comma-separated</strong> string containing the reader (i.e., radiologist or observer) labels, each represented by a <strong>unique integer</strong>, that have interpreted the case. In the example shown below each cell has the value <code>0, 1, 2, 3, 4</code> meaning each of these readers has interpreted all cases. With multiple readers each cell in this column has to be text formatted as otherwise Excel will not accept it. Select the worksheet, then <code>Format</code> - <code>Cells</code> - <code>Number</code> - <code>Text</code> - <code>OK</code>.</p></li>
-<li><p><code>ModalityID</code>: a comma-separated string containing the modality labels, each represented by a <strong>unique integer</strong>. In the example each cell has the value <code>0, 1</code> meaning this is a two-modality study. As above, with multiple modalities each cell has to be text formatted as otherwise Excel will not accept it.</p></li>
+<li><p><code>ReaderID</code>: a <strong>comma-separated</strong> string containing the reader (i.e., radiologist or observer) labels, each represented by a <strong>unique integer</strong>, that have interpreted the case. In the example shown below each cell has the value <code>0, 1, 2, 3, 4</code> meaning each of these readers has interpreted all cases. With multiple readers each cell in this column has to be text formatted as otherwise Excel will not accept it. Select the worksheet, then <code>Format</code> - <code>Cells</code> - <code>Number</code> - <code>Text</code> - <code>OK</code>. It is highly recommended that small equal-length integers, properly ordered, be used, as otherwise the output will not be aesthetically pleasing (the code will work, but the output will be harder to interpret). For example <code>0, 1, 2, 3, 4</code> is preferred to <code>00, 10, 20, 30, 40</code> and to <code>1, 3, 2, 0, 4</code>.</p></li>
+<li><p><code>ModalityID</code>: a comma-separated string containing the modality labels, each represented by a <strong>unique integer</strong>. In the example each cell has the value <code>0, 1</code> meaning this is a two-modality study. As above, with multiple modalities each cell has to be text formatted as otherwise Excel will not accept it. It is highly recommended that small equal-length integers, properly ordered, be used.</p></li>
 <li><p><code>Paradigm</code>: this column contains two cells, <code>ROC</code> and <code>FCTRL</code>. It means that this is an ROC dataset and the study design is factorial (or fully-crossed), i.e., each reader interprets each case in each modality.</p></li>
 </ol>
 </div>
-<div id="quick-start-roc-truth-comments" class="section level3 hasAnchor" number="2.4.2">
-<h3><span class="header-section-number">2.4.2</span> Comments on the <code>Truth</code> worksheet<a href="quick-start-roc.html#quick-start-roc-truth-comments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="quick-start-roc-truth-comments" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Comments on the <code>Truth</code> worksheet<a href="quick-start-roc.html#quick-start-roc-truth-comments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are 5 diseased cases in the dataset (the number of 1’s in the <code>LesionID</code> column of the <code>Truth</code> worksheet). There are 3 non-diseased cases in the dataset (the number of 0’s in the <code>LesionID</code> column). There are 5 readers in the dataset (each cell in the <code>ReaderID</code> column contains the string <code>0, 1, 2, 3, 4</code>). There are 2 modalities in the dataset (each cell in the <code>ModalityID</code> column contains the string <code>0, 1</code>).</p>
 </div>
-<div id="quick-start-roc-fp" class="section level3 hasAnchor" number="2.4.3">
-<h3><span class="header-section-number">2.4.3</span> The FP/NL worksheet<a href="quick-start-roc.html#quick-start-roc-fp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="quick-start-roc-fp" class="section level3 hasAnchor" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> The FP/NL worksheet<a href="quick-start-roc.html#quick-start-roc-fp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="images/quick-start/rocCrFp.png" style="width:100.0%" /></p>
-<p>It consists of 4 columns, each of length 30 (i.e., # of modalities x number of readers x number of non-diseased cases). The (case sensitive) column names and meanings are as follows:</p>
+<p>The FP/NL worksheet consists of 4 columns, each of length 30 (i.e., # of modalities x number of readers x number of non-diseased cases). The (case sensitive) column names and meanings are as follows:</p>
 <ol style="list-style-type: decimal">
 <li><p><code>ReaderID</code>: the reader labels: <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code> and <code>4</code>. Each reader label occurs 6 times (i.e., # of modalities x number of non-diseased cases).</p></li>
 <li><p><code>ModalityID</code>: the modality or treatment labels: <code>0</code> and <code>1</code>. Each label occurs 15 times (i.e., # of readers x number of non-diseased cases).</p></li>
@@ -432,10 +435,10 @@ div.csl-indent {
 <li><p><code>FP_Rating</code>: the (floating point) ratings of non-diseased cases. Each row of this worksheet contains a rating corresponding to the values of <code>ReaderID</code>, <code>ModalityID</code> and <code>CaseID</code> for that row.</p></li>
 </ol>
 </div>
-<div id="quick-start-roc-tp" class="section level3 hasAnchor" number="2.4.4">
-<h3><span class="header-section-number">2.4.4</span> The TP/LL worksheet<a href="quick-start-roc.html#quick-start-roc-tp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="quick-start-roc-tp" class="section level3 hasAnchor" number="2.5.4">
+<h3><span class="header-section-number">2.5.4</span> The TP/LL worksheet<a href="quick-start-roc.html#quick-start-roc-tp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="images/quick-start/rocCrTp.png" style="width:100.0%" /></p>
-<p>It consists of 5 columns, each of length 50 (i.e., # of modalities x number of readers x number of diseased cases). The (case sensitive) column names and meanings are as follows:</p>
+<p>The TP/LL worksheet consists of 5 columns, each of length 50 (i.e., # of modalities x number of readers x number of diseased cases). The (case sensitive) column names and meanings are as follows:</p>
 <ol style="list-style-type: decimal">
 <li><p><code>ReaderID</code>: the reader labels: <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code> and <code>4</code>. Each reader label occurs 10 times (i.e., # of modalities x number of diseased cases).</p></li>
 <li><p><code>ModalityID</code>: the modality or treatment labels: <code>0</code> and <code>1</code>. Each label occurs 25 times (i.e., # of readers x number of diseased cases).</p></li>
@@ -445,18 +448,18 @@ div.csl-indent {
 </ol>
 </div>
 </div>
-<div id="quick-start-roc-read" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> Reading the Excel file<a href="quick-start-roc.html#quick-start-roc-read" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quick-start-roc-read" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Reading the Excel file<a href="quick-start-roc.html#quick-start-roc-read" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The following code uses the function <code>DfReadDataFile</code> to read the Excel file and save it to object <code>x</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="quick-start-roc.html#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">DfReadDataFile</span>(<span class="st">&quot;R/quick-start/rocCr.xlsx&quot;</span>, <span class="at">newExcelFileFormat =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="quick-start-roc.html#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">DfReadDataFile</span>(<span class="st">&quot;R/quick-start/rocCr.xlsx&quot;</span>, <span class="at">newExcelFileFormat =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <ul>
 <li><p><code>newExcelFileFormat</code> is set to <code>TRUE</code> as otherwise columns D - F in the <code>Truth</code> worksheet are ignored and the dataset is assumed to be factorial, with <code>dataType</code> “automatically” determined from the contents of the FP and TP worksheets. <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p></li>
 <li><p>Flag <code>newExcelFileFormat = FALSE</code>, the default, is for compatibility with the original JAFROC format Excel format, which did not have columns D - F in the <code>Truth</code> worksheet. Its usage is deprecated.</p></li>
 </ul>
 </div>
-<div id="quick-start-roc-structure-dataset" class="section level2 hasAnchor" number="2.6">
-<h2><span class="header-section-number">2.6</span> Structure of dataset object<a href="quick-start-roc.html#quick-start-roc-structure-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Most users will not need to be concerned with the internal structure of the dataset object <code>x</code>. For those interested in it, for my reference, and for ease of future maintenance of the software, this is deferred to Section <a href="dataset-object-details.html#dataset-object-details-structure-roc-dataset">11.2.1</a>.</p>
+<div id="quick-start-roc-structure-dataset" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Structure of dataset object<a href="quick-start-roc.html#quick-start-roc-structure-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Most users will not need to be concerned with the internal structure of the dataset object <code>x</code>. For those interested in it, for my reference, and for ease of maintenance of the software, this is deferred to Section <a href="dataset-object-details.html#dataset-object-details-structure-roc-dataset">11.2.1</a>.</p>
 
 </div>
 </div>

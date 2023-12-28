@@ -23,7 +23,7 @@
 <meta name="author" content="Dev P. Chakraborty, PhD" />
 
 
-<meta name="date" content="2023-12-27" />
+<meta name="date" content="2023-12-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -180,15 +180,16 @@ div.csl-indent {
 <li class="chapter" data-level="2.1" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-how-much-finished"><i class="fa fa-check"></i><b>2.1</b> How much finished 50%</a></li>
 <li class="chapter" data-level="2.2" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-intro"><i class="fa fa-check"></i><b>2.2</b> Introduction</a></li>
 <li class="chapter" data-level="2.3" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-note"><i class="fa fa-check"></i><b>2.3</b> Note to existing users</a></li>
-<li class="chapter" data-level="2.4" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-excel"><i class="fa fa-check"></i><b>2.4</b> Three worksheets in the Excel data file</a>
+<li class="chapter" data-level="2.4" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-note"><i class="fa fa-check"></i><b>2.4</b> Help page</a></li>
+<li class="chapter" data-level="2.5" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-excel"><i class="fa fa-check"></i><b>2.5</b> Worksheets in the Excel file</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-truth"><i class="fa fa-check"></i><b>2.4.1</b> The <code>Truth</code> worksheet</a></li>
-<li class="chapter" data-level="2.4.2" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-truth-comments"><i class="fa fa-check"></i><b>2.4.2</b> Comments on the <code>Truth</code> worksheet</a></li>
-<li class="chapter" data-level="2.4.3" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-fp"><i class="fa fa-check"></i><b>2.4.3</b> The FP/NL worksheet</a></li>
-<li class="chapter" data-level="2.4.4" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-tp"><i class="fa fa-check"></i><b>2.4.4</b> The TP/LL worksheet</a></li>
+<li class="chapter" data-level="2.5.1" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-truth"><i class="fa fa-check"></i><b>2.5.1</b> The <code>Truth</code> worksheet</a></li>
+<li class="chapter" data-level="2.5.2" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-truth-comments"><i class="fa fa-check"></i><b>2.5.2</b> Comments on the <code>Truth</code> worksheet</a></li>
+<li class="chapter" data-level="2.5.3" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-fp"><i class="fa fa-check"></i><b>2.5.3</b> The FP/NL worksheet</a></li>
+<li class="chapter" data-level="2.5.4" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-tp"><i class="fa fa-check"></i><b>2.5.4</b> The TP/LL worksheet</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-read"><i class="fa fa-check"></i><b>2.5</b> Reading the Excel file</a></li>
-<li class="chapter" data-level="2.6" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-structure-dataset"><i class="fa fa-check"></i><b>2.6</b> Structure of dataset object</a></li>
+<li class="chapter" data-level="2.6" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-read"><i class="fa fa-check"></i><b>2.6</b> Reading the Excel file</a></li>
+<li class="chapter" data-level="2.7" data-path="quick-start-roc.html"><a href="quick-start-roc.html#quick-start-roc-structure-dataset"><i class="fa fa-check"></i><b>2.7</b> Structure of dataset object</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="quick-start-froc-data-format.html"><a href="quick-start-froc-data-format.html"><i class="fa fa-check"></i><b>3</b> FROC data format</a>
 <ul>
@@ -389,7 +390,7 @@ div.csl-indent {
 <div id="quick-start-or-text-analyze-dataset" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> Analyzing the ROC dataset<a href="quick-start-or-text.html#quick-start-or-text-analyze-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The only change is to specify <code>method = "OR"</code> in the significance testing function. The same dataset is used as was used in the previous chapter.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="quick-start-or-text.html#cb41-1" aria-hidden="true" tabindex="-1"></a>ret <span class="ot">&lt;-</span> <span class="fu">St</span>(dataset03, <span class="at">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, <span class="at">method =</span> <span class="st">&quot;OR&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="quick-start-or-text.html#cb40-1" aria-hidden="true" tabindex="-1"></a>ret <span class="ot">&lt;-</span> <span class="fu">St</span>(dataset03, <span class="at">FOM =</span> <span class="st">&quot;Wilcoxon&quot;</span>, <span class="at">method =</span> <span class="st">&quot;OR&quot;</span>)</span></code></pre></div>
 </div>
 <div id="quick-start-or-text-explanation" class="section level2 hasAnchor" number="6.4">
 <h2><span class="header-section-number">6.4</span> Explanation of the output<a href="quick-start-or-text.html#quick-start-or-text-explanation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -412,29 +413,29 @@ div.csl-indent {
 <li><code>IndividualRdr</code> is a [2x4] dataframe: the individual reader variance components averaged over treatments, see below, where <code>msTEachRdr</code> is the mean square treatment, <code>varEachRdr</code> is the variance and <code>cov1EachRdr</code> is <span class="math inline">\(Cov_1\)</span> for each reader.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="quick-start-or-text.html#cb42-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>TRanova</span>
-<span id="cb42-2"><a href="quick-start-or-text.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;              SS DF           MS</span></span>
-<span id="cb42-3"><a href="quick-start-or-text.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; T  0.0002356541  1 2.356541e-04</span></span>
-<span id="cb42-4"><a href="quick-start-or-text.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R  0.0020521800  3 6.840600e-04</span></span>
-<span id="cb42-5"><a href="quick-start-or-text.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TR 0.0001506079  3 5.020264e-05</span></span>
-<span id="cb42-6"><a href="quick-start-or-text.html#cb42-6" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>VarCom</span>
-<span id="cb42-7"><a href="quick-start-or-text.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           Estimates      Rhos</span></span>
-<span id="cb42-8"><a href="quick-start-or-text.html#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarR   2.331994e-05        NA</span></span>
-<span id="cb42-9"><a href="quick-start-or-text.html#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarTR -6.838915e-04        NA</span></span>
-<span id="cb42-10"><a href="quick-start-or-text.html#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Cov1   7.916821e-04 0.5188717</span></span>
-<span id="cb42-11"><a href="quick-start-or-text.html#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Cov2   4.836377e-04 0.3169781</span></span>
-<span id="cb42-12"><a href="quick-start-or-text.html#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Cov3   5.125091e-04 0.3359006</span></span>
-<span id="cb42-13"><a href="quick-start-or-text.html#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Var    1.525776e-03        NA</span></span>
-<span id="cb42-14"><a href="quick-start-or-text.html#cb42-14" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>IndividualTrt</span>
-<span id="cb42-15"><a href="quick-start-or-text.html#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           DF   msREachTrt  varEachTrt  cov2EachTrt</span></span>
-<span id="cb42-16"><a href="quick-start-or-text.html#cb42-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1  3 0.0004926635 0.001522778 0.0004722991</span></span>
-<span id="cb42-17"><a href="quick-start-or-text.html#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2  3 0.0002415991 0.001528775 0.0004949762</span></span>
-<span id="cb42-18"><a href="quick-start-or-text.html#cb42-18" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>IndividualRdr</span>
-<span id="cb42-19"><a href="quick-start-or-text.html#cb42-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             DF   msTEachRdr  varEachRdr  cov1EachRdr</span></span>
-<span id="cb42-20"><a href="quick-start-or-text.html#cb42-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_1  1 7.389761e-06 0.001477168 0.0005615802</span></span>
-<span id="cb42-21"><a href="quick-start-or-text.html#cb42-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_2  1 2.307702e-04 0.001518606 0.0007158133</span></span>
-<span id="cb42-22"><a href="quick-start-or-text.html#cb42-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_3  1 1.476929e-04 0.001377379 0.0007650890</span></span>
-<span id="cb42-23"><a href="quick-start-or-text.html#cb42-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_4  1 4.091217e-07 0.001729953 0.0011242462</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="quick-start-or-text.html#cb41-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>TRanova</span>
+<span id="cb41-2"><a href="quick-start-or-text.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;              SS DF           MS</span></span>
+<span id="cb41-3"><a href="quick-start-or-text.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; T  0.0002356541  1 2.356541e-04</span></span>
+<span id="cb41-4"><a href="quick-start-or-text.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R  0.0020521800  3 6.840600e-04</span></span>
+<span id="cb41-5"><a href="quick-start-or-text.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TR 0.0001506079  3 5.020264e-05</span></span>
+<span id="cb41-6"><a href="quick-start-or-text.html#cb41-6" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>VarCom</span>
+<span id="cb41-7"><a href="quick-start-or-text.html#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           Estimates      Rhos</span></span>
+<span id="cb41-8"><a href="quick-start-or-text.html#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarR   2.331994e-05        NA</span></span>
+<span id="cb41-9"><a href="quick-start-or-text.html#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; VarTR -6.838915e-04        NA</span></span>
+<span id="cb41-10"><a href="quick-start-or-text.html#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Cov1   7.916821e-04 0.5188717</span></span>
+<span id="cb41-11"><a href="quick-start-or-text.html#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Cov2   4.836377e-04 0.3169781</span></span>
+<span id="cb41-12"><a href="quick-start-or-text.html#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Cov3   5.125091e-04 0.3359006</span></span>
+<span id="cb41-13"><a href="quick-start-or-text.html#cb41-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Var    1.525776e-03        NA</span></span>
+<span id="cb41-14"><a href="quick-start-or-text.html#cb41-14" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>IndividualTrt</span>
+<span id="cb41-15"><a href="quick-start-or-text.html#cb41-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           DF   msREachTrt  varEachTrt  cov2EachTrt</span></span>
+<span id="cb41-16"><a href="quick-start-or-text.html#cb41-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1  3 0.0004926635 0.001522778 0.0004722991</span></span>
+<span id="cb41-17"><a href="quick-start-or-text.html#cb41-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2  3 0.0002415991 0.001528775 0.0004949762</span></span>
+<span id="cb41-18"><a href="quick-start-or-text.html#cb41-18" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>ANOVA<span class="sc">$</span>IndividualRdr</span>
+<span id="cb41-19"><a href="quick-start-or-text.html#cb41-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             DF   msTEachRdr  varEachRdr  cov1EachRdr</span></span>
+<span id="cb41-20"><a href="quick-start-or-text.html#cb41-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_1  1 7.389761e-06 0.001477168 0.0005615802</span></span>
+<span id="cb41-21"><a href="quick-start-or-text.html#cb41-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_2  1 2.307702e-04 0.001518606 0.0007158133</span></span>
+<span id="cb41-22"><a href="quick-start-or-text.html#cb41-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_3  1 1.476929e-04 0.001377379 0.0007650890</span></span>
+<span id="cb41-23"><a href="quick-start-or-text.html#cb41-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; rdrREADER_4  1 4.091217e-07 0.001729953 0.0011242462</span></span></code></pre></div>
 <ul>
 <li>RRRC, a list of 3 containing results of random-reader random-case analyses
 <ul>
@@ -443,19 +444,19 @@ div.csl-indent {
 <li><code>ciAvgRdrEachTrt</code>: is a [2x5] dataframe: the confidence intervals for the average reader over each treatment, see below, where <code>CILower</code> is the lower 95% confidence interval and <code>CIUpper</code> is the upper 95% confidence interval.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="quick-start-or-text.html#cb43-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>FTests</span>
-<span id="cb43-2"><a href="quick-start-or-text.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           DF           MS    FStat         p</span></span>
-<span id="cb43-3"><a href="quick-start-or-text.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Treatment  1 2.356541e-04 4.694058 0.1188379</span></span>
-<span id="cb43-4"><a href="quick-start-or-text.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error      3 5.020264e-05       NA        NA</span></span>
-<span id="cb43-5"><a href="quick-start-or-text.html#cb43-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>ciDiffTrt</span>
-<span id="cb43-6"><a href="quick-start-or-text.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                       Estimate      StdErr DF        t     PrGTt      CILower</span></span>
-<span id="cb43-7"><a href="quick-start-or-text.html#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.01085482 0.005010122  3 2.166577 0.1188379 -0.005089627</span></span>
-<span id="cb43-8"><a href="quick-start-or-text.html#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        CIUpper</span></span>
-<span id="cb43-9"><a href="quick-start-or-text.html#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.02679926</span></span>
-<span id="cb43-10"><a href="quick-start-or-text.html#cb43-10" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>ciAvgRdrEachTrt</span>
-<span id="cb43-11"><a href="quick-start-or-text.html#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            Estimate     StdErr        DF   CILower   CIUpper         Cov2</span></span>
-<span id="cb43-12"><a href="quick-start-or-text.html#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1 0.8477499 0.02440215  70.12179 0.7990828 0.8964170 0.0004722991</span></span>
-<span id="cb43-13"><a href="quick-start-or-text.html#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2 0.8368951 0.02356642 253.64403 0.7904843 0.8833058 0.0004949762</span></span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="quick-start-or-text.html#cb42-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>FTests</span>
+<span id="cb42-2"><a href="quick-start-or-text.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           DF           MS    FStat         p</span></span>
+<span id="cb42-3"><a href="quick-start-or-text.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Treatment  1 2.356541e-04 4.694058 0.1188379</span></span>
+<span id="cb42-4"><a href="quick-start-or-text.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error      3 5.020264e-05       NA        NA</span></span>
+<span id="cb42-5"><a href="quick-start-or-text.html#cb42-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>ciDiffTrt</span>
+<span id="cb42-6"><a href="quick-start-or-text.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                       Estimate      StdErr DF        t     PrGTt      CILower</span></span>
+<span id="cb42-7"><a href="quick-start-or-text.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.01085482 0.005010122  3 2.166577 0.1188379 -0.005089627</span></span>
+<span id="cb42-8"><a href="quick-start-or-text.html#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                        CIUpper</span></span>
+<span id="cb42-9"><a href="quick-start-or-text.html#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1-trtTREAT2 0.02679926</span></span>
+<span id="cb42-10"><a href="quick-start-or-text.html#cb42-10" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRRC<span class="sc">$</span>ciAvgRdrEachTrt</span>
+<span id="cb42-11"><a href="quick-start-or-text.html#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            Estimate     StdErr        DF   CILower   CIUpper         Cov2</span></span>
+<span id="cb42-12"><a href="quick-start-or-text.html#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT1 0.8477499 0.02440215  70.12179 0.7990828 0.8964170 0.0004722991</span></span>
+<span id="cb42-13"><a href="quick-start-or-text.html#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; trtTREAT2 0.8368951 0.02356642 253.64403 0.7904843 0.8833058 0.0004949762</span></span></code></pre></div>
 <ul>
 <li>FRRC, a list of 5 containing results of fixed-reader random-case analyses
 <ul>
@@ -466,16 +467,16 @@ div.csl-indent {
 <li><code>IndividualRdrVarCov1</code>: is a [4x2] dataframe: <span class="math inline">\(Var\)</span> and <span class="math inline">\(Cov_1\)</span> for individual readers.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="quick-start-or-text.html#cb44-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>FTests</span>
-<span id="cb44-2"><a href="quick-start-or-text.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
-<span id="cb44-3"><a href="quick-start-or-text.html#cb44-3" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciDiffTrt</span>
-<span id="cb44-4"><a href="quick-start-or-text.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
-<span id="cb44-5"><a href="quick-start-or-text.html#cb44-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciAvgRdrEachTrt</span>
-<span id="cb44-6"><a href="quick-start-or-text.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
-<span id="cb44-7"><a href="quick-start-or-text.html#cb44-7" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciDiffTrtEachRdr</span>
-<span id="cb44-8"><a href="quick-start-or-text.html#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
-<span id="cb44-9"><a href="quick-start-or-text.html#cb44-9" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>IndividualRdrVarCov1</span>
-<span id="cb44-10"><a href="quick-start-or-text.html#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="quick-start-or-text.html#cb43-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>FTests</span>
+<span id="cb43-2"><a href="quick-start-or-text.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
+<span id="cb43-3"><a href="quick-start-or-text.html#cb43-3" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciDiffTrt</span>
+<span id="cb43-4"><a href="quick-start-or-text.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
+<span id="cb43-5"><a href="quick-start-or-text.html#cb43-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciAvgRdrEachTrt</span>
+<span id="cb43-6"><a href="quick-start-or-text.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
+<span id="cb43-7"><a href="quick-start-or-text.html#cb43-7" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>ciDiffTrtEachRdr</span>
+<span id="cb43-8"><a href="quick-start-or-text.html#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
+<span id="cb43-9"><a href="quick-start-or-text.html#cb43-9" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>FRRC<span class="sc">$</span>IndividualRdrVarCov1</span>
+<span id="cb43-10"><a href="quick-start-or-text.html#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span></code></pre></div>
 <ul>
 <li>RRFC, a list of 3 containing results of random-reader fixed-case analyses
 <ul>
@@ -484,12 +485,12 @@ div.csl-indent {
 <li><code>ciAvgRdrEachTrt</code>: is a [2x5] dataframe: the confidence intervals for the average reader over each over each treatment.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="quick-start-or-text.html#cb45-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>FTests</span>
-<span id="cb45-2"><a href="quick-start-or-text.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
-<span id="cb45-3"><a href="quick-start-or-text.html#cb45-3" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>ciDiffTrt</span>
-<span id="cb45-4"><a href="quick-start-or-text.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
-<span id="cb45-5"><a href="quick-start-or-text.html#cb45-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>ciAvgRdrEachTrt</span>
-<span id="cb45-6"><a href="quick-start-or-text.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="quick-start-or-text.html#cb44-1" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>FTests</span>
+<span id="cb44-2"><a href="quick-start-or-text.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
+<span id="cb44-3"><a href="quick-start-or-text.html#cb44-3" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>ciDiffTrt</span>
+<span id="cb44-4"><a href="quick-start-or-text.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
+<span id="cb44-5"><a href="quick-start-or-text.html#cb44-5" aria-hidden="true" tabindex="-1"></a>ret<span class="sc">$</span>RRFC<span class="sc">$</span>ciAvgRdrEachTrt</span>
+<span id="cb44-6"><a href="quick-start-or-text.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span></code></pre></div>
 
 </div>
 </div>
